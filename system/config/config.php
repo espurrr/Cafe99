@@ -12,4 +12,12 @@ Base URL
 */
 define('BASE_URL', 'http://localhost/cafe99');
 
+/*
+Database parameters
+*/
+define('HOST','localhost');
+define('USERNAME','root');
+define('DATABASE','mvc');
+define('PASSWORD','');
+
 ?>
