@@ -63,5 +63,127 @@ class Database {
     public function Row(){
         return $this->Query->fetch(PDO::FETCH_OBJ);
     }
+    
+    /*
+    Select method accepts only the select query
+    */
+    public function Select($table_name, $options=""){
+        if(empty($options)){
+            $this->Query = $this->db->prepare("SELECT * FROM " .$table_name);
+            return $this->Query->execute();
+        }else{
+            $this->Query = $this->db->prepare("SELECT " .$options. " FROM " .$table_name);
+            return $this->Query->execute();
+        }
+    }
+
+    /*
+    Select method accepts select query along with where statements
+    */
+    public function Select_Where($table_name, $options){
+        
+        foreach($options as $key => $values):
+            @$columns .= $key . " = ? AND ";
+            @$db_values .= $values . ",";
+        endforeach;
+        //remove AND operator from the end statement
+        @$columns = rtrim($columns , " AND");
+        //remove , from the end statement
+        @$db_values = rtrim($db_values , ",");
+        //Assign string separated by , to an array 
+        @$db_values = explode(",", $db_values);
+
+        //Write the select_where query
+        $this->Query = $this->db->prepare("SELECT * FROM " .$table_name . " WHERE " .$columns);
+        $this->Query->execute($db_values);
+        // print_r($columns);
+        // print_r($db_values);
+    }
+
+    
+    /*
+    Delete method 
+    */
+    public function Delete($table_name, $options){
+        
+        foreach($options as $key => $values):
+            @$columns .= $key . " = ? AND ";
+            @$db_values .= $values . ",";
+        endforeach;
+        //remove AND operator from the end statement
+        @$columns = rtrim($columns , " AND");
+        //remove , from the end statement
+        @$db_values = rtrim($db_values , ",");
+        //Assign string separated by , to an array 
+        @$db_values = explode(",", $db_values);
+
+        //Write the select_where query
+        $this->Query = $this->db->prepare("DELETE FROM " .$table_name . " WHERE " .$columns);
+        return $this->Query->execute($db_values);
+    }
+
+    /*
+    Update method 
+    */
+    public function Update($table_name, $set_array, $options){
+        $set_columns;
+        $set_values;
+        foreach($set_array as $key => $values):
+            $set_columns .= $key . " = ?,";
+            $set_values .= $values . ",";
+        endforeach;
+        //remove , operator from the end statement
+        $set_columns = rtrim($set_columns , ",");
+
+        $where_columns;
+        $where_values;
+        foreach($options as $key => $values):
+            $where_columns .= $key . " = ? AND ";
+            $where_values .= $values . ",";
+        endforeach;
+        //remove AND operator from the end statement
+        $where_columns = rtrim($where_columns , " AND");
+
+        //combine set values and where values
+        $combine = $set_values.$where_values;
+        $combine = rtrim($combine, ",");
+        //Assign string separated by , to an array 
+        $combine = explode(",", $combine);
+   
+        //Write the update query
+        $this->Query = $this->db->prepare("UPDATE " .$table_name . " SET " .$set_columns . " WHERE " . $where_columns);
+        return $this->Query->execute($combine);
+        print_r($columns);
+        print_r($db_values);
+    }
+
+
+    /*
+    Insert method 
+    */
+    public function Insert($table_name, $columns_values){
+       
+        $columns;
+        $placeholder;
+        $placeholder_values;
+
+        foreach($columns_values as $key => $values ):
+            $columns .= $key . ",";
+            // Repalce column name on ?,
+            $placeholder .= str_replace($key, "?,", $key);
+            $placeholder_values .= $values . ",";
+        endforeach;
+    
+        //Remove comma from the end of string/statement
+        $columns = rtrim($columns, ",");
+        $placeholder = rtrim($placeholder, ",");
+        $placeholder_values = rtrim($placeholder_values, ",");
+        $placeholder_values = explode(",", $placeholder_values);
+        
+        //Write Insert Query
+        $this->Query = $this->db->prepare("INSERT INTO " . $table_name . "(" . $columns . ") VALUES (" . $placeholder . ")");
+        return $this->Query->execute($placeholder_values);
   
+      }
 }
+?>
