@@ -1,0 +1,87 @@
+.footer {
+  background-color: #e6a935;
+  padding: 0.0rem;
+}
+
+@media (min-width: 64em) {
+  .footer .container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr (1fr)[2];
+        grid-template-columns: 1fr repeat(2, 1fr);
+    -ms-grid-rows: (0.5fr)[2];
+        grid-template-rows: repeat(2, 0.5fr);
+        grid-template-areas: "logo links1 links2 " "social links1 links2 ";
+  }
+}
+
+.footer a {
+  color: white;
+}
+
+@media (max-width: 63.9375em) {
+  .footer__logo {
+    margin-bottom: 1.875rem;
+  }
+}
+
+@media (min-width: 64em) {
+  .footer__logo {
+    grid-area: logo;
+    -ms-flex-item-align: end;
+        -ms-grid-row-align: end;
+        align-self: end;
+  }
+}
+
+@media (max-width: 63.9375em) {
+  .footer__social {
+    margin-bottom: 1.875rem;
+  }
+}
+
+@media (min-width: 64em) {
+  .footer__social {
+    grid-area: social;
+  }
+}
+
+.footer__links {
+  background-color: black;
+  place-items: center;
+  margin: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media (min-width: 64em) {
+  .footer__links.col1 {
+    grid-area: links1;
+  }
+}
+
+@media (max-width: 63.9375em) {
+  .footer__links.col2 {
+    margin-bottom: 1.875rem;
+  }
+}
+
+@media (min-width: 64em) {
+  .footer__links.col2 {
+    grid-area: links2;
+  }
+}
+
+.footer__links a {
+  line-height: 4.0;
+}
+
+.footer__links a:hover {
+  color: red;
+}
+/*# sourceMappingURL=style.css.map */
