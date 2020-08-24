@@ -26,6 +26,23 @@ class JB_Controller {
         }
 
     }
+    
+    /*
+    Helper method will check the helper availability
+    */
+    public function helper($helper_names){
+
+        if(!empty($helper_names)){
+            foreach($helper_names as $helper_name):
+                if(file_exists("../system/helpers/" . $helper_name . ".php")){
+                    require_once "../system/helpers/" . $helper_name . ".php";
+           
+                }else{
+                    die("<div style='background-color:#f1f4f4;color:#afaaaa;border:1px dotted #afaaaa;padding:10px; border-radius:4px'>Sorry Helper <strong>".$helper_name."</strong> is not found</div>");
+                }
+            endforeach;
+        }
+    }
 
 }
 

@@ -11,7 +11,7 @@
         grid-template-columns: 1fr repeat(2, 1fr);
     -ms-grid-rows: (0.5fr)[2];
         grid-template-rows: repeat(2, 0.5fr);
-        grid-template-areas: "logo links1 links2 " "social links1 links2 ";
+        grid-template-areas: "logo links1 links2 " "social links1 links2 ";
   }
 }
 
