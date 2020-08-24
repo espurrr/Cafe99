@@ -156,11 +156,6 @@ function form_multipart($action, $method, $options = []){
 
 }
 
-/*
-    Form closing helper
-*/
-function form_close(){
-    return '</form>';
-}
+
 
 ?>
