@@ -2,6 +2,8 @@
 
 class JB_Controller {
 
+    use form_validation; //spl autoload will load all trait files used by Jb_Controller class
+
     public function __construct(){
         if(file_exists("../system/config/autoload.php")){
             require_once "../system/config/autoload.php";
