@@ -56,7 +56,6 @@ class JB_Controller {
     /*
     POST function
     */ 
-
     public function post($field_name){
 
         if($_SERVER['REQUEST_METHOD'] == "post" || $_SERVER['REQUEST_METHOD'] == "POST"){
@@ -84,6 +83,22 @@ class JB_Controller {
           die("<div style='background-color:#f1f4f4;color:#afaaaa;border: 1px dotted #afaaaa;padding: 10px; border-radius: 4px'>Sorry Method is not GET</div>");
         }
 
+    }
+
+    /*
+    URI Function
+    */ 
+    public function uri($segment){
+
+        if(isset($_GET['url'])){
+
+            $url = $_GET['url'];
+            $url = rtrim($url); //rtrim() method removes extra spaces from the right
+            $url = filter_var($url, FILTER_SANITIZE_URL); //FILTER_SANITIZE_URL removes all illegal characters from the url
+            $url = explode("/", $url);  //explode method split the string on specific point
+            //print_r($url);
+            return $url[$segment];
+        }
     }
 
 
