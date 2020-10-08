@@ -41,6 +41,85 @@ trait form_validation {
             }
 
         }
+        
+        /*
+        RULE => min_len : check minimum length
+        */ 
+        if(in_array("min_len", $rules)){
+            // Get the index of min_len rule
+            $min_len_index = array_search("min_len", $rules);
+            // Get the index of min_len rule value
+            $min_len_value = $min_len_index + 1;
+            // Get the value of min_len rule
+            $min_len_value = $rules[$min_len_value];
+            if(strlen($data) < $min_len_value){
+                return $this->errors[$field_name] = $label . " is less than " . $min_len_value . " characters";
+            }
+
+        }
+        
+        /*
+        RULE => max_len : check maximum length
+        */ 
+        if(in_array("max_len", $rules)){
+            //Get the index of max_len rule
+            $max_len_index = array_search("max_len", $rules);
+            //Get the index of max_len rule value
+            $max_len_value = $max_len_index + 1;
+            //Get the value of max_len rule 
+            $max_len_value = $rules[$max_len_value];
+            if(strlen($data) > $max_len_value){
+                return $this->errors[$field_name] = $label . " is grater than " . $max_len_value . " characters";
+            }
+
+        }
+        
+        /*
+        RULE => confirm : confirm password
+        */ 
+        if(in_array("confirm", $rules)){
+            //Get the index of confirm rule
+            $confirm_rule_index = array_search("confirm", $rules);
+            //Get the index of password 
+            $confirm_rule_index = $confirm_rule_index + 1;
+            //Get the password name
+            $confirm_rule_password = $rules[$confirm_rule_index];
+
+            if($_SERVER['REQUEST_METHOD'] == "POST" || $_SERVER['REQUEST_METHOD'] == "post"){
+            //Get the password value
+            $password = trim($_POST[$confirm_rule_password]);
+        } else if($_SERVER['REQUEST_METHOD'] == "GET" || $_SERVER['REQUEST_METHOD'] =="get"){
+            //Get the password value
+            $password = trim($_GET[$confirm_rule_password]);
+        }
+           if($data !== $password){
+      
+            echo $password;
+            return $this->errors[$field_name] = $label . " is not matched";
+           }
+        }
+
+        /*
+        RULE => unique : Check the email availability
+        */ 
+        if(in_array("unique", $rules)){
+            //Get the index of unique role
+            $unique_index = array_search("unique", $rules);
+           //Get the index of table name
+            $table_index = $unique_index + 1;
+            //Get table name
+            $table_name = $rules[$table_index];
+            //Include the database file 
+            require_once "../system/libraries/database.php";
+            $db = new Database;
+            if($db->Select_Where($table_name, [$field_name => $data])){
+                if($db->Count() > 0){
+                    return $this->errors[$field_name] = $label . " already exists";
+                }
+            }
+        }
+
+
     }
 
     
@@ -51,6 +130,29 @@ trait form_validation {
             return false;
         }
     }
+
+    
+    /*
+    Set form values : persistence when the button is clicked
+    */ 
+   public function set_value($field_name){
+        if($_SERVER['REQUEST_METHOD'] == "POST" || $_SERVER['REQUEST_METHOD'] == "post"){
+            if(isset($_POST[$field_name])){
+               return $_POST[$field_name];
+            } else {
+                return false;
+            }
+        
+        } else if($_SERVER['REQUEST_METHOD'] == "GET" || $_SERVER['REQUEST_METHOD'] == "get") {
+            if(isset($_GET[$field_name])){
+                return $_GET[$field_name];
+            } else {
+                return false;
+            }
+        }
+    }
+
+
 
 }
 
