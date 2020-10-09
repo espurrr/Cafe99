@@ -6,8 +6,8 @@ class JB_Controller {
 
     public function __construct(){
         $this->start();
-        if(file_exists("../system/config/autoload.php")){
-            require_once "../system/config/autoload.php";
+        if(file_exists("../application/config/autoload.php")){
+            require_once "../application/config/autoload.php";
             $helpers = $autoload['helpers'];
             $this->helper($helpers);
 

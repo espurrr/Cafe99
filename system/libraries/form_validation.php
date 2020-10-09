@@ -131,7 +131,7 @@ trait form_validation {
         }
     }
 
-    
+
     /*
     Set form values : persistence when the button is clicked
     */ 
@@ -152,6 +152,16 @@ trait form_validation {
         }
     }
 
+
+     /*
+    Password hash : a secure php built-in encryption methos
+    md5 hash is insecure, crackable (eg: from crackstation.net)
+    */ 
+    public function hash($password){
+        if(!empty($password)){
+            return password_hash($password, PASSWORD_DEFAULT);
+        }
+    }
 
 
 }

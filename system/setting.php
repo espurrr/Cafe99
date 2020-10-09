@@ -1,6 +1,6 @@
 <?php
 
-include "config/config.php";
+include "../application/config/config.php";
 
 define ("Default_controller", $default['controller']);
 define("Default_method", $default['method']);
