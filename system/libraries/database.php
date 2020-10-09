@@ -1,7 +1,8 @@
 <?php
 //error_reporting(0); //removes all error-notices from page
 class Database {
-
+    
+    use session;
     private $host = HOST;
     private $database  = DATABASE;
     private $username = USERNAME;
