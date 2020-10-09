@@ -1,7 +1,7 @@
 <?php
 
 /*
-Autoload Helpers
+Autoload Helpers : add helpers in the array
 */
 
 $autoload = [
