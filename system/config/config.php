@@ -1,23 +1,36 @@
 <?php
 
 /*
+Database parameters
+*/
+$database = [
+
+    'host'      =>  'localhost',
+    'username'  =>  'root',
+    'database'  =>  'mvc',
+    'password'  =>  ''
+
+];
+
+/*
 Default controller, method & parameter
 */
-define ("Default_controller", "Welcome");
-define("Default_method", "index");
-define("Default_param", []);
+$default = [
+
+    'controller'    =>  'welcome',
+    'method'        =>  'index',
+    'param'         =>  []
+
+];
 
 /*
 Base URL
 */
-define('BASE_URL', 'http://localhost/cafe99');
+$setting = [
 
-/*
-Database parameters
-*/
-define('HOST','localhost');
-define('USERNAME','root');
-define('DATABASE','mvc');
-define('PASSWORD','');
+    'base_url'  => 'http://localhost/lightweight'
+
+];
+
 
 ?>
