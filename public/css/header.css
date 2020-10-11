@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+} 
+img{
+  width: 300px;
+  height: 100px;
+}
+nav{
+  display: inline-flex;
+  flex-direction: row;
+  height: 100px;
+  width: 100%;
+  background: #FBDD3F;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px 0 20px;
+  flex-wrap: wrap;
+}
+nav .logo{
+  color: #fff;
+  font-size: 35px;
+  font-weight: 600;
+}
+nav ul{
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+
+}
+nav ul li{
+  margin: 0 5px;
+}
+/*TEXT STYLE*/
+nav ul li a{
+  color: #000;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 8px 15px;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+nav ul li a:hover{
+  color: #000;
+  background: #fff;
+  border-radius: 25px;
+}
+#logsign1{
+  border-radius: 10px;
+  padding: 8px 15px;
+  background-color: #FBDD3F;
+  color: black;
+  border: 2px solid #000000;
+}
+#logsign1:hover {
+  border-radius: 25px;
+  padding: 8px 15px;
+ background-color: #000;
+ color: #FFF;
+}
+#logsign2{
+  border-radius: 10px;
+  padding: 8px 15px;
+  background-color: #000;
+  color: white;
+  border: 2px solid #000000;
+}
+#logsign2:hover {
+ border-radius: 25px;
+ padding: 8px 15px;
+ border: 2px solid #000;
+ background-color: #FBDD3F;
+ color: black;
+}
+
+
+nav .menu-btn i{
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  display: none;
+}
+input[type="checkbox"]{
+  display: none;
+}
+ #logsign{
+    display: inline-flex;
+    justify-content: center;
+  }
+
+ /* SEARCH BAR*/
+
+.topnav .search-container {
+  float: right;
+}
+
+ input[type=text] {
+  padding: 6px;
+  /*margin-top: 8px;*/
+  font-size: 17px;
+  border: none;
+}
+
+ .search-container button {
+  float: right;
+  padding: 6px 10px;
+  /*margin-top: 8px;*/
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background: #ccc;
+}
+
+/*@media (max-width: 1000px){
+  nav{
+    padding: 0 20px 0 20px;
+  }
+}*/
+@media (max-width: 1149px) {
+  nav .menu-btn i{
+    display: block;
+  }
+  img{
+    width: 270px;
+    height: 80px;
+
+  }
+  .top{
+    display: inline-flex;
+  }
+  #click:checked ~ .menu-btn i:before{
+    content: "\f00d";
+  }
+  nav ul{
+    position: fixed;
+    top: 100px;
+    margin:20px 20px 20px 20px;
+    left: -100%;
+    background: #FBDD3F;
+    height: 80vh;
+    width: 90%;
+    text-align: center;
+    display: block;
+    transition: all 0.3s ease;
+    border-radius: 15px;
+  }
+  #click:checked ~ ul{
+    left: 0;
+  }
+  nav ul li{
+    width: 100%;
+    margin:50px 0px 0px 0px;
+  }
+  nav ul li a{
+    width: 100%;
+    margin-left: -100%;
+    display: block;
+    font-size: 20px;
+    transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  #click:checked ~ ul li a{
+    margin-left: 0px;
+  }
+  nav ul li a:hover{
+    background: none;
+    color: gray;
+  }
+  #logsign1{
+  border-radius: 10px;
+  padding: 8px 15px;
+  background-color: #FBDD3F;
+  color: black;
+  border: 2px solid #000000;
+}
+#logsign1:hover {
+  border-radius: 25px;
+  padding: 8px 15px;
+ background-color: #000;
+ color: #FFF;
+}
+#logsign2{
+  border-radius: 10px;
+  padding: 8px 15px;
+  background-color: #000;
+  color: white;
+  border: 2px solid #000000;
+}
+#logsign2:hover {
+ border-radius: 25px;
+ padding: 8px 15px;
+ border: 2px solid #000;
+ background-color: #FBDD3F;
+ color: black;
+}
+  #logsign{
+    display: inline-flex;
+    justify-content: center;
+  }
+    #logsign li{
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  /*SEARCH BAR*/
+  .search-container {
+    float: none;
+  }
+   input[type=text],.search-container button {
+    float: none;
+    display: inline-flex;
+    text-align: left;
+    /*width: 100%;*/
+    margin: 0;
+    padding: 14px;
+    border-radius: 25px;
+  }
+
+    input[type=text]{
+    width: 75vw;
+   }
+  input[type=text] {
+    border: 1px solid #ccc;  
+    border-radius: 15px;
+  }
+}
+
