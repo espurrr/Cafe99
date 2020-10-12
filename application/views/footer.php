@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href=".../public/css/footer.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>footer</title>
     </head>
     <body>
@@ -13,24 +14,25 @@
     <div class="container">
         <div class="footer_logo" >
         <a class="footer_logo" href="#">
-           <img src="logo.png">
+        <img src=".../images/logo.png">
          </a>
         </div>
        
         <div class="footer_social">
         <a href="#">
-            <img src="facebook.png">
+        <i class="fa fa-facebook-square" style="font-size:42px;color: black"></i>
         </a>
-    
+        
         <a href="#">
-            <img src="twitter.png">
+        <i class="fa fa-twitter-square" style="font-size:42px;color:black"></i>   
         </a>
-
+        
         <a href="#">
-           <img src="instagram.png">
+        <i class="fa fa-instagram" style="font-size:42px;color: black"></i>
         </a>
+        
         </div>
-
+ 
    
     <div class="footer__links col1">
         <a href="#">About Us</a>
