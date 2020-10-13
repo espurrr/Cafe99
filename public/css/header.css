@@ -1,9 +1,17 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500&display=swap");
+root {
+  --colorYellow: #fadc32;
+  --colorBackground: #fcfde6;
+  --colorGreen: #3ace67ee;
+  --fontFamily: "Montserrat", sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--fontFamily);
 }
 img {
   width: 300px;
@@ -22,7 +30,7 @@ nav {
 }
 nav .logo {
   color: #fff;
-  font-size: 35px;
+  font-size: 30px;
   font-weight: 600;
 }
 nav ul {
@@ -37,7 +45,7 @@ nav ul li {
 nav ul li a {
   color: #000;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 500;
   padding: 8px 15px;
   border-radius: 10px;
@@ -98,7 +106,7 @@ input[type="checkbox"] {
   float: right;
 }
 
-.search-container input[type="text"] {
+.search-container .search {
   padding: 6px;
   /*margin-top: 8px;*/
   font-size: 17px;
@@ -164,7 +172,7 @@ input[type="checkbox"] {
     width: 100%;
     margin-left: -100%;
     display: block;
-    font-size: 20px;
+    font-size: 18px;
     transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
   #click:checked ~ ul li a {
@@ -213,6 +221,7 @@ input[type="checkbox"] {
   /*SEARCH BAR*/
   .search-container {
     float: none;
+    border-radius: 25px;
   }
   .search,
   .search-container button {
@@ -226,9 +235,7 @@ input[type="checkbox"] {
   }
 
   .search {
-    width: 75vw;
-  }
-  .search {
+    width: 65vw;
     border: 1px solid #ccc;
     border-radius: 15px;
   }
