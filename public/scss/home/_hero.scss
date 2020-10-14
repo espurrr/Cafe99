@@ -1,0 +1,40 @@
+.section-1{
+    position: relative;
+    
+    &__hero-image{
+        position: absolute;
+        top:17vh;
+        left:32vw;
+        right:10vw; // mobile right side gap
+        overflow: hidden;
+
+        &__cls{
+            max-width:100%;
+            height:auto;
+            background-repeat: no-repeat;
+        }
+    }
+
+    &__hero-text{
+        font-family: 'Raleway', sans-serif;
+        
+    }
+    @media screen and (min-width:1000px){
+        .section-1__hero-text{
+            position: absolute;
+            top: 23vh;
+            left:20vw;
+            font-size: 2.8vw;
+        }
+    }
+
+    @media screen and (max-width:999px){
+        .section-1__hero-text{
+            position: absolute;
+            top: 19vh;
+            left:19vw;
+            font-size: 3vw;
+        }
+    }
+    
+}

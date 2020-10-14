@@ -1,0 +1,41 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+:root {
+  --colorYellow: #fadc32;
+  --colorBackground: #fcfde6;
+  --colorGreen: #3ace67ee;
+  --fontFamily: "Montserrat", sans-serif;
+
+  /* Alert message color variables */
+  --infoMsgFont: #059;
+  --InfoMsgBg: #bef;
+  --successMsgFont: #270;
+  --successMsgBg: #dff2bf;
+  --warningMsgFont: #9f6000;
+  --warningMsgBg: #feefb3;
+  --dangerMsgFont: #d8000c;
+  --dangerMsgBg: #ffbaba;
+}
+
+.alert {
+  margin: 40px;
+  padding: 10px;
+  border-radius: 10px;
+  max-width: calc(100vw - 40px);
+}
+.alert-info {
+  color: var(--infoMsgFont);
+  background-color: var(--InfoMsgBg);
+}
+.alert-success {
+  color: var(--successMsgFont);
+  background-color: var(--successMsgBg);
+}
+.alert-warning {
+  color: var(--warningMsgFont);
+  background-color: var(--warningMsgBg);
+}
+.alert-danger {
+  color: var(--dangerMsgFont);
+  background-color: var(--dangerMsgBg);
+}

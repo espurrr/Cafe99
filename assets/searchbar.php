@@ -1,6 +1,5 @@
 <?php 
 
-<?php 
 $conn=new mysqli('localhost','root','','cafe99');
 
 if(mysqli_connect_errno()){
