@@ -1,0 +1,71 @@
+.footer{
+    background-color:black;
+    padding: 0.0rem;
+    
+    .container{
+    
+        @include breakpoint-up(large){
+          display: grid;
+          grid-template-columns: 1fr repeat(2,1fr) ;
+          grid-template-rows:0.5fr;
+          grid-template-areas: 
+            "empty allrightreserved image"
+              
+        }
+    }
+    
+      a{
+        color: white;
+      }
+     
+ 
+     &__empty{
+        display: flex;
+      
+        @include breakpoint-up(large){
+            grid-area: empty;
+            
+          }
+        }
+      
+    &__allrightreserved{
+        display: flex;
+      color: white;
+      padding-top: 15px;
+      padding-left: 130px;
+      padding-right: 130px;
+  
+      @include breakpoint-up(large){
+        grid-area: allrightreserved;
+        
+      }
+    }
+
+       &__image{
+        display: flex;
+        padding-top: 15px;
+        padding-left: 150px;
+      
+        @include breakpoint-up(large){
+          grid-area: image;
+          
+        }
+        .fa-cc-visa{
+            padding-right: 8px;
+            font-size:48px;
+            color:rgb(102, 102, 247);
+        }
+
+        .fa-cc-mastercard{
+            padding-right: 8px;
+            font-size:48px;
+            color:rgb(102, 102, 247);
+        }
+
+        .fa-cc-amex{
+            font-size:48px;
+            color:rgb(102, 102, 247);
+        }
+       } 
+ }
+    

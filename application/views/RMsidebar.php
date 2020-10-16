@@ -14,14 +14,23 @@
                 <svg></svg>
             </a>
             <ul>
-                <li><a href="#">Announcements</a></li>
+                <li><a href="#">News Feed</a></li>
                 <li><a href="#">Users</a></li>
                 <li><a href="#">Orders</a></li>
-                <li><a href="#">Food Menu</a></li>
+                <li> <button class="dropdown-btn">Food Menu
+                            <i class=" fa fa-caret-down"></i>
+                     </button>
+                    <div class="dropdown-container">
+                    <a href="#">Food item</a>
+                    <a href="#">SubCategory</a>
+                    <a href="#">Category</a>
+                    </div>
+                </li>
                 <li><a href="#">Analytics</a></li>
             </ul>
 
         </div>
     </div>
+    <script src="./dropdownlist.js"></script>
 </body>
 </html>

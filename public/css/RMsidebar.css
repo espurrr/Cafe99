@@ -25,16 +25,32 @@
     border-top: 1px solid rgba(255,255,255,0.05);
 }
 
-.wrapper .sidebar ul li a{
+.wrapper .sidebar ul li a,.dropdown-btn{
     color: #bdb8d7 ;
     display: block;
+    border: none;
+    background: none;
 }
 
-.wrapper .sidebar ul li:hover {
+.wrapper .sidebar ul li:hover,.dropdown-btn:hover {
     background-color:gray;
 }
 
-.wrapper .sidebar ul li:hover a{
+.dropdown-container {
+    display: none;
+    background-color: #333335;
+    padding-left: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px ;
+}
+  
+  
+  .fa-caret-down{
+    float: right;
+    padding-left: 20px;
+  }
+
+.wrapper .sidebar ul li:hover a,.dropdown-btn:hover,.dropdown-container:hover{
     color: #fff;
 }
 
