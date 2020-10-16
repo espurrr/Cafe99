@@ -7,7 +7,7 @@
     .footer .container {
       display: -ms-grid;
       display: grid;
-      -ms-grid-columns: 1fr (1fr)[2];
+      -ms-grid-columns: 1fr 1fr 1fr;
           grid-template-columns: 1fr repeat(2, 1fr);
       -ms-grid-rows: 0.5fr;
           grid-template-rows: 0.5fr;
