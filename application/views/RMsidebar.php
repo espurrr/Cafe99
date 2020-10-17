@@ -10,11 +10,8 @@
     
     <div class="wrapper">
         <div class="sidebar">
-            <a class="logo" href="#">
-                <svg></svg>
-            </a>
             <ul>
-                <li><a href="#">News Feed</a></li>
+                <li><a class="active" href="#">News Feed</a></li>
                 <li><a href="#">Users</a></li>
                 <li><a href="#">Orders</a></li>
                 <li> <button class="dropdown-btn">Food Menu
