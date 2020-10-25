@@ -9,7 +9,6 @@
 </head>
 <body>
 <?php include 'header.php'?>
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <div class="parent-container" id="p-container">
       <div class="sign-up-container">
 		<form action="#"><br>

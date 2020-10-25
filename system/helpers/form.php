@@ -36,6 +36,8 @@ function form_input($fields){
            $type = "password";
         } else if($fields['type'] == "file"){
            $type = "file";
+        } else if($fields['type'] == "tel"){
+            $type = "tel";
         }
    } else {
        $value = null;

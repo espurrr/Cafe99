@@ -7,7 +7,7 @@ $database = [
 
     'host'      =>  'localhost',
     'username'  =>  'root',
-    'database'  =>  'mvc',
+    'database'  =>  'cafe99',
     'password'  =>  ''
 
 ];
@@ -17,7 +17,7 @@ Default controller, method & parameter
 */
 $default = [
 
-    'controller'    =>  'welcome',
+    'controller'    =>  'account_controller',
     'method'        =>  'index',
     'param'         =>  []
 
@@ -28,7 +28,7 @@ Base URL
 */
 $setting = [
 
-    'base_url'  => 'http://localhost/lightweight'
+    'base_url'  => 'http://localhost/cafe99'
 
 ];
 
