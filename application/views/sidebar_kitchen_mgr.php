@@ -12,6 +12,7 @@
             <li><a href="../orders/orders.php">Orders</a></li>
             <li><a class="active" href="food_menu.php">Food Menu</a></li>
         </ul>
+        <div class="logout"><ul><li><a href="#">LogOut</a></li></ul></div>
 
     </div>
 </div>
