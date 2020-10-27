@@ -117,4 +117,9 @@
       .wrapper .admin-content {
           display: none; 
       }
+      .wrapper .sidebar .logout{
+        position: static;
+        padding-top: 0;
+       
+       }
     } 
