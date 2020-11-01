@@ -2,14 +2,14 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="cust-logged-in-header.css">
+  <link rel="stylesheet" type="text/css" href="log-index.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 </head>
 
 <body>
   <div class="topnav" id="myTopnav">
-   <img class="logo" src="logo.png">
+   <img class="logo" id="mlogo" src="logo.png">
     <!-- <a href="#home" class="active"><img class="logo" src="logo.png"></a> -->
     
     <div class="all-nav" id="nav" >
@@ -60,8 +60,8 @@
       </div>
         </div>
       </div> -->
-      <div class="route-dropdown" onclick="toggleMenu(this)">
-        <a href="#" class="avatar-a" style="
+      <div class="route-dropdown" id="avat-big" onclick="toggleMenu(this)">
+        <a href="#" class="avatar-a" id="avat" style="
     padding-top: 5px;
     padding-right: 5px;
     padding-bottom: 5px;
@@ -77,7 +77,7 @@
       
       
     </div>
-    <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction1(); myFunction2()">&#9776;</a>
+    <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction1(); myFunction2();myFunction3();">&#9776;</a>
   </div>
 
 <script type="text/javascript">
@@ -95,6 +95,14 @@
       y.className += " responsive";
     } else {
       y.className = "all-nav";
+    }
+  }
+   function myFunction3() {
+    var z = document.getElementById("mlogo");
+    if (z.className === "logo") {
+      z.className += " responsive";
+    } else {
+      z.className = "logo";
     }
   }
 
