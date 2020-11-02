@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    font-family: Arial;
+  }
+  
+  .topnav {
+    margin-left: 250px;
+    display: flex;
+    overflow: hidden;
+    background: #fbdd3f;
+    height: 90px;
+    padding: 0px 50px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .dash-text{
+    float: left;
+      display: block;
+    color: #4c4c4c;
+    text-align: center;
+    text-decoration: none;
+    font-size: 23px;
+  }
+  .logo{
+    height: 68px;
+  }
+  
+  .active {
+  padding: 0px;
+  }
+  /*p {
+      display: block;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+  }*/
