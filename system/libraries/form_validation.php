@@ -12,7 +12,7 @@ trait form_validation {
         }
 
         $pattern = "/^[a-zA-Z ]+$/"; //from a-z and A-Z any character can occur more than once and whitespaces are allowed
-        $int_pattern = "/^[0-9]+$/";//from 0-9 any digit can occur more than once and whitespaces are NOT allowed
+        $int_pattern = "/^[0-9]+$/";
 
         $rules = explode("|", $rules); //split the string by pipe sign |
         /*
@@ -77,6 +77,7 @@ trait form_validation {
         /*
         RULE => confirm : confirm password
         */ 
+
         if(in_array("confirm", $rules)){
             //Get the index of confirm rule
             $confirm_rule_index = array_search("confirm", $rules);
@@ -94,7 +95,7 @@ trait form_validation {
         }
            if($data !== $password){
       
-            echo $password;
+            // echo $password;
             return $this->errors[$field_name] = $label . " is not matched";
            }
         }
@@ -131,29 +132,28 @@ trait form_validation {
         }
     }
 
-
     /*
     Set form values : persistence when the button is clicked
     */ 
+
    public function set_value($field_name){
         if($_SERVER['REQUEST_METHOD'] == "POST" || $_SERVER['REQUEST_METHOD'] == "post"){
             if(isset($_POST[$field_name])){
-               return $_POST[$field_name];
+                return $_POST[$field_name];
             } else {
                 return false;
             }
         
-        } else if($_SERVER['REQUEST_METHOD'] == "GET" || $_SERVER['REQUEST_METHOD'] == "get") {
+        }else if($_SERVER['REQUEST_METHOD'] == "GET" || $_SERVER['REQUEST_METHOD'] == "get") {
             if(isset($_GET[$field_name])){
                 return $_GET[$field_name];
             } else {
                 return false;
             }
         }
-    }
+    }  
 
-
-     /*
+    /*
     Password hash : a secure php built-in encryption methos
     md5 hash is insecure, crackable (eg: from crackstation.net)
     */ 
@@ -165,6 +165,4 @@ trait form_validation {
 
 
 }
-
-
 ?>
