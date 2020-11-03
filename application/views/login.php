@@ -14,15 +14,31 @@
 <!-- auth message -->
 <div class="authMessage">
     <?php $this->flash('signupSuccess','alert alert-success','fa fa-check'); ?>
+    <?php $this->flash('emailError','alert alert-danger','fa fa-times-circle'); ?>
+    <?php $this->flash('passwordError','alert alert-danger','fa fa-times-circle'); ?>
+
+
 </div>
 
 
 <div class="parent-container" id="p-container">
       <div class="sign-up-container">
-		<?php echo form_open("","post");?><br>
+		<?php echo form_open("account_controller/loginSubmit","post");?><br>
 			<h1>Log In</h1><br>
-            <?php echo form_input(['type'=>'email', 'name'=>'email', 'placeholder'=>'Email*'])?>
-            <?php echo form_input(['type'=>'password', 'name'=>'password', 'placeholder'=>'Password*'])?>
+            <?php echo form_input(['type'=>'email', 'name'=>'Email_address', 'placeholder'=>'Email' ,'value'=>$this->set_value('Email_address')])?>
+            <div class="error">
+            <?php if(!empty($this->errors['Email_address'])):?>
+            <?php echo $this->errors['Email_address'];?>
+            <?php endif;?>
+          </div>
+
+          <?php echo form_input(['type'=>'password', 'name'=>'User_Password', 'placeholder'=>'Password*'])?>
+          <div class="error">
+            <?php if(!empty($this->errors['User_Password'])):?>
+            <?php echo $this->errors['User_Password'];?>
+            <?php endif;?>
+          </div>
+
             <?php echo anchor("account_controller/forgot", "Forgot Password?") ?>
             <!-- <a href="<?php echo BASE_URL;?>/account_controller/forgot">Forgot Password?</a> -->
             <input type="submit" class="login" value="LOG IN">

@@ -2,14 +2,16 @@
 
 class JB_Controller {
 
-    use form_validation, session; //spl autoload will load all trait files used by Jb_Controller class
-
+    use form_validation,session; //spl autoload will load all trait files used by Lightweight class
+    
     public function __construct(){
         $this->start();
         if(file_exists("../application/config/autoload.php")){
             require_once "../application/config/autoload.php";
             $helpers = $autoload['helpers'];
             $this->helper($helpers);
+            $plugins = $autoload['plugins'];
+            $this->plugin($plugins);
 
         }
     }
@@ -38,7 +40,7 @@ class JB_Controller {
         }
 
     }
-    
+
     /*
     Helper method will check the helper availability
     */
@@ -56,9 +58,28 @@ class JB_Controller {
         }
     }
 
+      /*
+   Plugin method will check the helper availability
+    */
+    public function plugin($plugin_names){
+
+        if(!empty($plugin_names)){
+            foreach($plugin_names as $plugin_name):
+                if(file_exists("../system/plugins/" . $plugin_name . ".php")){
+                    require_once "../system/plugins/" . $plugin_name . ".php";
+           
+                }else{
+                    die("<div style='background-color:#f1f4f4;color:#afaaaa;border:1px dotted #afaaaa;padding:10px; border-radius:4px'>Sorry Plugin <strong>".$plugin_name."</strong> is not found</div>");
+                }
+            endforeach;
+        }
+    }
+
+    
     /*
     POST function
     */ 
+
     public function post($field_name){
 
         if($_SERVER['REQUEST_METHOD'] == "post" || $_SERVER['REQUEST_METHOD'] == "POST"){
@@ -91,6 +112,7 @@ class JB_Controller {
     /*
     URI Function
     */ 
+
     public function uri($segment){
 
         if(isset($_GET['url'])){
@@ -103,8 +125,6 @@ class JB_Controller {
             return $url[$segment];
         }
     }
-
-
 }
 
 ?>

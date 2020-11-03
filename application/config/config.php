@@ -33,4 +33,17 @@ $setting = [
 ];
 
 
+/*
+E-mail parameters
+*/
+$email = [
+
+    'host'          =>  'smtp.gmail.com',
+    'username'      =>  'cafe99.teamdashcode@gmail.com',
+    'password'      =>  '99*bicy-',
+    'port'          =>  587
+
+];
+
+
 ?>
