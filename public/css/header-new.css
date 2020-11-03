@@ -1,256 +1,285 @@
 body {
-    margin: 0;
-    font-family: Arial;
-  }
-  
-  
-  .all-nav{
-      float: right;
-      display: block;
-      top : 50%;
-      border-color: white;
-      border-width: 5px;
-  
-    }
-  .topnav a.icon {
-      float: right;
-      display: block;
-    display:none;
-    }
-  
-  .topnav {
-    overflow: hidden;
-    background: #fbdd3f;
-  
-  
-  }
-  
-  .topnav a{
-    float: left;
-  
+  margin: 0;
+  font-family: Arial;
+}
+
+
+.all-nav{
+    float: right;
+    display: flex;
+    align-items: center;
+    border-color: white;
+    border-width: 5px;
+    padding-top: 15px;
+   justify-content: space-around;
+   min-width: 344px;
+   }
+.topnav a.icon {
+    float: right;
     display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
+  display:none;
   }
-  .logo{
-    width: 115px;
-    height: 41px;
-    padding: 3px 0px 0px 14px;
-  }
-  
-  .active {
-  padding: 0px;
-  }
-  
-  .topnav .icon {
-    display: none;
-  }
-  
-  .waypoint-dropdown, .route-dropdown {
-    float: left;
-    overflow: auto;
-  }
-  .menu-other{
-    display: inline-flex;
-  }
-  .waypoint-dropdown .dropbtn,
+
+.topnav {
+  overflow: hidden;
+  background: #fbdd3f;
+  height: 90px;
+  align-items: center;
+  transition: all 1s ease;
+  padding: 0% 5%;
+}
+
+.topnav a{
+  float: left;
+
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.logo{
+  height: 68px;
+  padding: 12px 0px 0px 0px;
+}
+
+.active {
+padding: 0px;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+.route-dropdown, .route-dropdown{
+  float: left;
+  overflow: auto;
+  padding: 0px 5px;
+}
+
+
+.route-dropdown .dropbtn {
+  font-size: 17px;
+  border: none;
+  outline: none;
+  color: black;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  border-radius: 10px;
+  border: 2px ;
+   transition: all 1s ease;
+}
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 5px;
+  top: 79px;
+}
+.dropdown-content:before{
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 19px;
+  /*transform: translateX(-50%);*/
+  border: 10px solid;
+  border-color: transparent transparent #fff transparent;
+  z-index: 1;
+}
+
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+}
+
+.topnav a:hover,
+.route-dropdown:hover .dropbtn{
+  background-color: #555;
+  color: white;
+  border-radius: 25px;
+}
+.route-dropdown:hover .dropbtn{
+  background-color: #555;
+  color: white;
+  border-radius: 25px;
+  padding: 8px 16px;
+}
+.topnav a:hover,
+.route-dropdown:hover .dropdown-content{
+  display: block;
+
+}
+.dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+  border-radius: 0px;
+}
+#logsign1 {
+  border-radius: 10px;
+  padding: 8px 15px;
+  background-color: #fbdd3f;
+  color: black;
+  border: 2px solid #000000;
+   transition: all 1s ease;
+
+}
+#logsign1:hover {
+  border-radius: 25px;
+  padding: 8px 15px;
+  background-color: #000;
+  color: #fff;
+  transition: all 1s ease;
+}
+#logsign2 {
+  border-radius: 10px;
+  padding: 8px 15px;
+  background-color: #000;
+  color: white;
+  border: 2px solid #000000;
+  transition: all 1s ease;
+}
+#logsign2:hover {
+  border-radius: 25px;
+  padding: 8px 15px;
+  border: 2px solid #000;
+  background-color: #fbdd3f;
+  color: black;
+  transition: all 1s ease;
+}
+.signlog{
+  justify-content: center;
+}
+
+@media screen and (max-width: 854px) {
+  .topnav a:not(:first-child),
   .route-dropdown .dropbtn {
-    font-size: 17px;
-    border: none;
-    outline: none;
-    color: black;
-    padding: 14px 16px;
-    background-color: inherit;
-    font-family: inherit;
-    margin: 0;
-  }
-  
-  
-  .dropdown-content {
     display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
   }
-  
-  .dropdown-content a {
-    float: none;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
+  .topnav a.icon {
+    float: right;
     display: block;
-    text-align: left;
-  }
-  
-  .topnav a:hover,
-  .waypoint-dropdown:hover .dropbtn,
-  .route-dropdown:hover .dropbtn {
     background-color: #555;
-    color: white;
-  
   }
-  
-  .dropdown-content a:hover {
-    background-color: #ddd;
-    color: black;
+
+}
+
+@media screen and (max-width: 854px) {
+  .logo{
+    height: 68px;
+    padding: 5px 0px 0px 14px;
+    transition: all 1s ease;
   }
-  
-  .show {
-    display: block;
+   .logo.responsive{
+    height: 39px;
+    padding: 5px 0px 0px 5px;
+    transition: all 1s ease;
   }
-  
-  .waypoints {
-    display: none;
+
+.topnav{
+    position: relative;
+  height: 90px;
+    transition: all 1s ease;
+    padding: 0px 0px 0px 5%;
+
   }
-  
-  .routes {
-    display: none;
+  .topnav.responsive{
+    position: relative;
+    height: 48px;
+    transition: all 1s ease;
+    padding: 0px 0px 0px 5%;
+
   }
-  
-  .waypoint-actions {
-    display: none;
-  }
-  
-  .route-actions {
-    display: none;
-  }
-  
-  .waypoint-route:hover .waypoints {
-    display: block;
+  .topnav.responsive .icon {
     position: absolute;
-    top: 50%;
-    left: 100px;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    right: 0;
+    top: 0;
   }
-  
-  .waypoint:hover .waypoint-actions {
+  .topnav.responsive a {
+    float: none;
     display: block;
-    position: absolute;
-  /*   top: 20px; */
-    left: 50px;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    text-align: center;
+    text-decoration-color: black;
   }
-  
-  .route:hover .route-actions {
+  .topnav.responsive .route-dropdown {
+    float: none;
+    padding: 15px 0px 0px 0px;
+    border-radius: 0px;
+  }
+  .topnav.responsive .dropdown-content {
+    position: relative;
+    top: auto;
+    background:#b39e2d21;
+    text-align: center;
+    transition: all 1s ease;
+     border-radius: 0px;
+  }
+  .topnav.responsive .dropdown-content:before{
+  display: none;
+   border-radius: 0px;
+}
+  .topnav.responsive .route-dropdown .dropbtn {
     display: block;
-    position: absolute;
-  /*   top: 20px; */
-    left: 50px;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    text-align: center;
+     border-radius: 0px;
+       padding: 14px 16px;
+  }
+    .topnav.responsive .all-nav .signlog{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+  }
+     .all-nav {
+    display:block;
+    position: fixed;
+    top: 35px;
+    margin:5%;
+    left: -170%;
+    background: #fbdd3f;
+    height: 80vh;
+    width: 150%;
+    text-align: center;
+    transition: all 0.5s ease;
+    border-radius: 15px;
     z-index: 1;
-  }
-  img .avatar{
-     /*border-radius: 50%;*/
-     width:50px
-  }
-  
-  
-  @media screen and (max-width: 700px) {
-    .topnav a:not(:first-child),
-    .waypoint-dropdown .dropbtn,
-    .route-dropdown .dropbtn {
-      display: none;
-    }
-    .topnav a.icon {
-      float: right;
-      display: block;
-      background-color: #555;
-    }
-  
-  }
-  
-  @media screen and (max-width: 700px) {
-    .logo{
-      width: 109px;
-      height: 39px;
-      padding: 5px 0px 0px 14px;
-    }
-    .topnav.responsive{
-      position: relative;
-      height: 48px;
-    }
-    .topnav.responsive .icon {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .topnav.responsive a {
-      float: none;
-      display: block;
-      text-align: center;
-      text-decoration-color: black;
-    }
-    .topnav.responsive .waypoint-dropdown,
-    .topnav.responsive .route-dropdown {
-      float: none;
-    }
-    .topnav.responsive .dropdown-content {
-      position: relative;
-      /*display:block;*/
-      /*position: fixed;*/
-      /*top: 35px;
-      margin:5%;
-      left: -170%*/;
-      background:#b39e2d21;
-      /*height: 80vh;
-      width: 150%;*/
-      text-align: center;
-      transition: all 1s ease;
-    }
-    .topnav.responsive .waypoint-dropdown .dropbtn,
-    .topnav.responsive .route-dropdown .dropbtn {
-      display: block;
-      width: 100%;
-      text-align: center;
-    }
-       .all-nav {
-      display:block;
-      position: fixed;
-      top: 35px;
-      margin:5%;
-      left: -170%;
-      background: #fbdd3f;
-      height: 80vh;
-      width: 150%;
-      text-align: center;
-      transition: all 1s ease;
-      border-radius: 15px;
-      z-index: 1;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2)
-      
-    } 
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 0px;
     
-     .all-nav.responsive {
-      display:block;
-      position: fixed;
-      color:black;
-      top: 35px;
-      left: 0%;
-      background: #fbdd3f;
-      height: 80vh;
-       overflow:auto;
-      width: 90%;
-      text-align: center;
-      transition: all 1s ease;
-      border-radius: 15px;
-      z-index: 1;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2)
-      
-    } 
+  } 
   
+   .all-nav.responsive {
+    display:block;
+    position: fixed;
+    color:black;
+    top: 35px;
+    left: 0%;
+    background: #fbdd3f;
+    height: 80vh;
+    overflow:auto;
+    width: 90%;
+    text-align: center;
+    transition: all 1s ease;
+    border-radius: 15px;
+    z-index: 1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 0px;
     
-  }
+  } 
+
   
+}

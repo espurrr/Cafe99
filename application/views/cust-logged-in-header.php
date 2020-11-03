@@ -10,10 +10,9 @@
 <body>
   <div class="topnav" id="myTopnav">
    <img class="logo" id="mlogo" src="logo.png">
-    <!-- <a href="#home" class="active"><img class="logo" src="logo.png"></a> -->
     
     <div class="all-nav" id="nav" >
-      <div class="waypoint-dropdown" onclick="toggleMenu(this)">
+      <div class="route-dropdown" onclick="toggleMenu(this)">
       <button class="dropbtn">Food 
           <i class="fa fa-caret-down"></i>
       </button>
@@ -51,10 +50,7 @@
       </div>
       <div class="route-dropdown" onclick="toggleMenu(this)">
         <button class="dropbtn">Cart 
-            <!-- <i class="fa fa-caret-down"></i> -->
         </button>
-        <!-- <div id="routes" class="dropdown-content" >
-        </div> -->
       </div>
       <div class="route-dropdown " id="avatar_big" onclick="toggleMenu(this)">
         <button class="avatar-a" style="
@@ -102,38 +98,6 @@
     }
   }
 
-  function toggleMenu(e) {
-    //e.stopPropagation();
-    //console.log(e.children[1]);
-    e.children[1].classList.toggle("show");
-  }
-
-  var waypoints = document.querySelector("#waypoints");
-  var routes = document.querySelector("#routes");
-
-
-  // Detect all clicks on the document
-  document.addEventListener("click", function(event) {
-    // If user clicks inside the element, do nothing
-    if (event.target.closest(".waypoint-dropdown")) {
-      if (routes.classList.contains("show"))
-        routes.classList.toggle("show");
-      return;
-    }
-
-    if (event.target.closest(".route-dropdown")) {
-      if (waypoints.classList.contains("show"))
-        waypoints.classList.toggle("show");
-      return;
-    }
-
-    // If user clicks outside the element, hide it!
-    if (waypoints.classList.contains("show"))
-      waypoints.classList.toggle("show");
-    
-    if (routes.classList.contains("show"))
-      routes.classList.toggle("show");
-  });
 </script>
 </body>
 
