@@ -17,7 +17,7 @@
       <button class="dropbtn">Food 
           <i class="fa fa-caret-down"></i>
       </button>
-      <div id="waypoints" class="dropdown-content">
+      <div id="waypoints" class="dropdown-content" >
         <a href="#">Cat1</a>
         <a href="#">Cat2</a>
         <a href="#">Cat3</a>
@@ -29,7 +29,7 @@
         <button class="dropbtn">Drink
             <i class="fa fa-caret-down"></i>
         </button>
-        <div id="routes" class="dropdown-content">
+        <div id="routes" class="dropdown-content" >
             <a href="#">Cat1</a>
             <a href="#">Cat2</a>
             <a href="#">Cat3</a>
@@ -41,7 +41,7 @@
         <button class="dropbtn">Desert 
             <i class="fa fa-caret-down"></i>
         </button>
-        <div id="routes" class="dropdown-content">
+        <div id="routes" class="dropdown-content" >
             <a href="#">Cat1</a>
             <a href="#">Cat2</a>
             <a href="#">Cat3</a>
@@ -49,29 +49,25 @@
             <a href="#">Cat5</a>
         </div>
       </div>
-      <!-- <div class="route-dropdown" onclick="toggleMenu(this)">
-        <button class="dropbtn"><img src="img_avatar.png" class="avatar"> 
-            <i class="fa fa-caret-down"></i>
+      <div class="route-dropdown" onclick="toggleMenu(this)">
+        <button class="dropbtn">Cart 
+            <!-- <i class="fa fa-caret-down"></i> -->
         </button>
-        <div id="routes" class="dropdown-content">
-           <div class="menu-other">
-      <a href="#Subscribe">Sign Up</a>
-      <a href="#Subscribe">Login</a>
+        <!-- <div id="routes" class="dropdown-content" >
+        </div> -->
       </div>
-        </div>
-      </div> -->
-      <div class="route-dropdown" id="avat-big" onclick="toggleMenu(this)">
-        <a href="#" class="avatar-a" id="avat" style="
+      <div class="route-dropdown " id="avatar_big" onclick="toggleMenu(this)">
+        <button class="avatar-a" style="
     padding-top: 5px;
     padding-right: 5px;
     padding-bottom: 5px;
-    padding-left: 5px;">
-    <img src="img_avatar.png" class="avatar" width="50px" height="50px" ></a>
-        <div id="routes" class="dropdown-content">
-           <div class="menu-other">
-            <a href="#Subscribe">Sign Up</a>
-            <a href="#Subscribe">Login</a>
-          </div>
+    padding-left: 5px;"><img src="img_avatar.png" class="avatar" width="50px" height="50px"> 
+        </button>
+        <div id="routes" class="dropdown-content " >
+           <!-- <div class="menu-other"> -->
+              <a href="#Subscribe">Profile</a>
+              <a href="#Subscribe">Sign Out</a>
+      <!-- </div> -->
         </div>
       </div>
       
