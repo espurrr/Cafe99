@@ -74,7 +74,7 @@ class Account_controller extends JB_Controller{
     }
 
     public function login(){
-        $this->view('login');
+        $this->view('cart');
     }
 
     public function loginSubmit(){
