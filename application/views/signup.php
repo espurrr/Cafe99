@@ -17,6 +17,11 @@
     <?php include 'header.php'?>
 
     <!-- Header finished -->
+        <!-- auth message -->
+    <div class="authMessage">
+        <?php $this->flash('activationEmailError','alert alert-danger','fa fa-times-circle'); ?>
+        <?php $this->flash('signupError','alert alert-danger','fa fa-times-circle'); ?>
+    </div>
     
     <div class="parent-container" id="p-container">
       <div class="sign-up-container">

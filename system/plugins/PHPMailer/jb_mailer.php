@@ -17,7 +17,7 @@ class JB_Mailer
    
     public static function sendEmail($to_email, $to_name, $subject, $html_body, $email_body){//
  
-        $mail = new PHPMailer(TRUE);
+        $mail = new PHPMailer(TRUE); //Remove TRUE in production stage
         $mail_sent = false;
         try{
             $mail->setFrom('cafe99.teamdashcode@gmail.com', 'Lounge Cafe99');
@@ -33,6 +33,7 @@ class JB_Mailer
             }
 
             $mail->isSMTP();
+            $mail->SMTPDebug = 0;
             $mail->Host = E_HOST;
             $mail->SMTPAuth = TRUE;
             $mail->SMTPSecure = 'tls';

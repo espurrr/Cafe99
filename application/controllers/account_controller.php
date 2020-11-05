@@ -1,6 +1,6 @@
 <?php
 
-class Account_controller extends JB_Controller{
+class Account_controller extends Lightweight{
 
     public $model;
     public function __construct(){
@@ -19,7 +19,7 @@ class Account_controller extends JB_Controller{
         
         $this->validation('User_name', 'Name' , 'required|not_int|max_len|50');
         $this->validation('Email_address','Email Address', 'required|unique|users');
-        $this->validation('Phone_no','Phone no', 'unique|users|required');
+        $this->validation('Phone_no','Phone number', 'unique|users|required|len|10');
         $this->validation('User_Password','Password', 'required|min_len|5');
         $this->validation('confirm_password','Confirm Password', 'required|confirm|User_Password');
 
@@ -45,12 +45,19 @@ class Account_controller extends JB_Controller{
 
             if($this->model->signup($data)){
                 // echo "data is inserted";
-                $this-> set_flash("signupSuccess","Your account is successfully created.");
-                $this->activationEmail("boody.abay@gmail.com","Lupuchu","this is the test subject","this is the test body :) hi");//
-                $this->view('login');
+               if($this->activationEmail("boody.abay@gmail.com","Lupuchu","","",$Token)){
+                    $this-> set_flash("signupSuccess","Your account is successfully created. We've sent an email to $Email_address to verify your address. Please click on the link in the email to continue.");
+                    $this->view('login');
+               }else{
+                   //Email was not sent. need to delete the current record of the user.
+                    $this->model->deleteUser($Token);
+                    $this->set_flash("activationEmailError", "Something went wrong :( Please try again.");
+                    $this->view('signup');
+                }              
                 
             }else{
-                echo "sorry";
+                 $this->set_flash("signupError", "Something went wrong :( Please try again later.");
+                 $this->view('signup');
             }
             
 
@@ -59,22 +66,59 @@ class Account_controller extends JB_Controller{
         }
     }
 
-    public function activationEmail($recipient_email, $recipient_name, $subject, $body){//$
+    public function activationEmail($recipient_email, $recipient_name, $subject, $html_body, $token){//$
         if(file_exists('../system/plugins/PHPMailer/mailer.php')) echo 'yes IN TEST';
         $mailer = new JB_Mailer(true);
-        echo "in activationEmail ";
-        $send = $mailer->sendEmail($recipient_email, $recipient_name, $subject, "", $body);//
-        if($send) die("Sent.");
-        else die("Not sent.");
+        // echo "in activationEmail ";
+
+        $subject = "Confirm Your Email";
+        $html_body = "<html><body style=\"font-family: sans-serif;\">
+        <p>You're just one step away..</p> 
+        <a href=\"http://localhost/lightweight/account_controller/login/$token\" target=\"_blank\">
+        <button style=\"border: none;
+        padding: 1rem 2rem;
+        text-decoration: none;
+        background: #0069ed;
+        color: #ffffff;
+        font-size: 1rem;
+        line-height: 1;
+        text-align: center;\">
+
+        Click to activate your Cafe99 account
+        </a>
+        <p><i>If you received this email by mistake, simply delete it. You won't be subscribed if you don't click the confirmation link above.</i></p><p>Cheers,<br>Team Cafe99.</p>
+        </body></html>";
+
+
+        $send = $mailer->sendEmail($recipient_email, $recipient_name, $subject, $html_body, "");//
+        if($send) return TRUE;
+        else return FALSE;
+        // if($send) {
+        //     $this->set_flash("activationEmailSent", "We now need to verify your email address. We've sent an email to $recipient_email to verify your address. Please click on the link provided to continue.");
+        //     $this->view('signup');
+        // }
+        // else {
+        //     $this->set_flash("activationEmailError", "Something went wrong :( Please try again later.");
+        //     $this->view('home');
+        // }
     }
 
-    public function verifyEmail(){
+
+    public function login($token=""){
+        if(!empty($token)){
+            $result = $this->model->isToken($token);
+            if($result === "Token_not_found"){
+                $this->set_flash("tokenError", "Sorry :( You came through an Invalid Token");
+                $this->view('login');
+            }else if($result === "Activation_error"){
+                $this->set_flash("activationError", "Something went wrong :( Please try again later.");
+                $this->view('login');
+            }else if($result === "Success"){
+                $this-> set_flash("activationSuccess","Congratulations! Your account has been successfully activated.");
+                $this->view('login');
+            }
+        }
         
-       
-    }
-
-    public function login(){
-        $this->view('cart');
     }
 
     public function loginSubmit(){
@@ -97,7 +141,8 @@ class Account_controller extends JB_Controller{
             }
             
         }else{
-            $this->login();
+            $this->view('login');
+
         }
     }
 
@@ -105,15 +150,7 @@ class Account_controller extends JB_Controller{
         $this->view('forgot');
     }
 
-    public function test(){
-        // if(file_exists('../system/plugins/PHPMailer/jb_mailer.php')) echo 'yes IN TEST';
-        // else echo 'no IN TEST';
-        require '../system/plugins/PHPMailer/booboo.php';
-        // $val = 134;
-        // if (isset($val)) echo 'set mudafaksa';
-        // else echo 'sjsjs';
-        // $test->send();
-    }
+
 }
 
 

@@ -39,8 +39,8 @@ trait form_validation {
             if(!preg_match($int_pattern, $data)){
                 return $this->errors[$field_name] = $label . " must be an integer";
             }
-
         }
+
         
         /*
         RULE => min_len : check minimum length
@@ -70,6 +70,22 @@ trait form_validation {
             $max_len_value = $rules[$max_len_value];
             if(strlen($data) > $max_len_value){
                 return $this->errors[$field_name] = $label . " is grater than " . $max_len_value . " characters";
+            }
+
+        }
+
+          /*
+        RULE => len : check length
+        */ 
+        if(in_array("len", $rules)){
+            // Get the index of len rule
+            $len_index = array_search("len", $rules);
+            // Get the index of len rule value
+            $len_value = $len_index + 1;
+            // Get the value of len rule
+            $len_value = $rules[$len_value];
+            if(strlen($data) != $len_value){
+                return $this->errors[$field_name] = $label . " does not have " . $len_value . " digits";
             }
 
         }
