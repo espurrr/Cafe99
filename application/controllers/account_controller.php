@@ -1,6 +1,6 @@
 <?php
 
-class Account_controller extends Lightweight{
+class Account_controller extends JB_Controller{
 
     public $model;
     public function __construct(){
@@ -18,8 +18,8 @@ class Account_controller extends Lightweight{
     public function signupSubmit(){
         
         $this->validation('User_name', 'Name' , 'required|not_int|max_len|50');
-        $this->validation('Email_address','Email Address', 'required|unique|users');
-        $this->validation('Phone_no','Phone number', 'unique|users|required|len|10');
+        $this->validation('Email_address','Email Address', 'required|unique|user');
+        $this->validation('Phone_no','Phone number', 'unique|user|required|len|10');
         $this->validation('User_Password','Password', 'required|min_len|5');
         $this->validation('confirm_password','Confirm Password', 'required|confirm|User_Password');
 
@@ -54,7 +54,7 @@ class Account_controller extends Lightweight{
                     $this->set_flash("activationEmailError", "Something went wrong :( Please try again.");
                     $this->view('signup');
                 }              
-                
+
             }else{
                  $this->set_flash("signupError", "Something went wrong :( Please try again later.");
                  $this->view('signup');
