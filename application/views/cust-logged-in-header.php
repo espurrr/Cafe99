@@ -52,7 +52,7 @@
         <button class="dropbtn">Cart 
         </button>
       </div>
-      <div class="route-dropdown " id="avatar_big" onclick="toggleMenu(this)">
+      <div class="route-dropdown sign-log" id="avatar_big" onclick="toggleMenu(this)">
         <button class="avatar-a" style="
     padding-top: 5px;
     padding-right: 5px;
