@@ -10,9 +10,9 @@
 <body>
 
 <ul id="breadcrumbs">
-    <li>Cart</li>
-  <li><a href="#">Order</a></li>
-  <li><a href="#">Payment</a></li>
+    <li><?php echo anchor("order_controller/cust_cart", "Cart") ?></li>
+    <li>Order</li>
+    <li>Payment</li>
   
 </ul>
 
@@ -145,10 +145,11 @@
         </button>
             <div class="summary-title"><b>Order Summary</b></div><br>
             <div class="input-details">
-            <p type="Note to Chef">  <?php echo form_input(['type'=>'text', 'name'=>'message', 'placeholder'=>''])?></p>
+            <p type="Enter Coupon">  <?php echo form_input(['type'=>'text', 'name'=>'message', 'placeholder'=>''])?><button class="checkout-button coupon" href="#" >APPLY</button></p>
             </div><br>
-            <div class="total">Total: 1000.00</div><br>
-            <button class="checkout-button" href="#" >PROCEED TO CHECKOUT</button>
+            <div class="total">Service charges: 50.00</div>                
+            <div class="total"><b>Total: 1000.00</b></div><br>
+            <button class="checkout-button" href="#" ><?php echo anchor("order_controller/cust_payment", "PROCEED TO CHECKOUT") ?></button>
 
         </div>
         <!-- modal end -->
@@ -156,10 +157,11 @@
         <div class="summary-container">
             <div class="summary-title">Order Summary</div>
             <div class="input-details">
-            <p type="Note to Chef">  <?php echo form_input(['type'=>'text', 'name'=>'message', 'placeholder'=>''])?></p>
+            <p type="Enter Coupon">  <?php echo form_input(['type'=>'text', 'name'=>'message', 'placeholder'=>''])?><button class="checkout-button coupon" href="#" >APPLY</button></p>
             </div>
-            <div class="total">Total: 1000.00</div>
-            <button class="checkout-button" href="#" >PROCEED TO CHECKOUT</button>
+            <div class="total">Service charges: 50.00</div>                
+            <div class="total"><b>Total: 1000.00</b></div>
+            <button class="checkout-button" href="#" ><?php echo anchor("order_controller/cust_payment", "PROCEED TO CHECKOUT") ?></button>
             
         </div>
         

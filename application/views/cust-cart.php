@@ -11,8 +11,8 @@
 
 <ul id="breadcrumbs">
     <li>Cart</li>
-  <li><a href="#">Order</a></li>
-  <li><a href="#">Payment</a></li>
+    <li><?php echo anchor("order_controller/cust_order_info", "Order") ?></li>
+    <li>Payment</li>
   
 </ul>
 
@@ -86,7 +86,8 @@
             <p type="Note to Chef">  <?php echo form_input(['type'=>'text', 'name'=>'message', 'placeholder'=>''])?></p>
             </div><br>
             <div class="total">Total: 1000.00</div><br>
-            <button class="checkout-button" href="#" >PROCEED TO CHECKOUT</button>
+    
+            <button class="checkout-button" href="#" ><?php echo anchor("order_controller/cust_order_info", "PROCEED TO CHECKOUT") ?></button>
 
         </div>
         <!-- modal end -->
@@ -97,7 +98,7 @@
             <p type="Note to Chef">  <?php echo form_input(['type'=>'text', 'name'=>'message', 'placeholder'=>''])?></p>
             </div>
             <div class="total">Total: 1000.00</div>
-            <button class="checkout-button" href="#" >PROCEED TO CHECKOUT</button>
+            <button class="checkout-button" href="#" ><?php echo anchor("order_controller/cust_order_info", "PROCEED TO CHECKOUT") ?></button>
             
         </div>
         
