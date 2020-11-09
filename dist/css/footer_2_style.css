@@ -1,0 +1,80 @@
+.footer {
+  background-color: black;
+  padding: 0.0rem;
+}
+
+@media (min-width: 64em) {
+  .footer .container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr (1fr)[2];
+        grid-template-columns: 1fr repeat(2, 1fr);
+    -ms-grid-rows: 0.5fr;
+        grid-template-rows: 0.5fr;
+        grid-template-areas: "empty allrightreserved image";
+  }
+}
+
+.footer a {
+  color: white;
+}
+
+.footer__empty {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media (min-width: 64em) {
+  .footer__empty {
+    grid-area: empty;
+  }
+}
+
+.footer__allrightreserved {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: white;
+  padding-top: 15px;
+  padding-left: 130px;
+  padding-right: 130px;
+}
+
+@media (min-width: 64em) {
+  .footer__allrightreserved {
+    grid-area: allrightreserved;
+  }
+}
+
+.footer__image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 15px;
+  padding-left: 150px;
+}
+
+@media (min-width: 64em) {
+  .footer__image {
+    grid-area: image;
+  }
+}
+
+.footer__image .fa-cc-visa {
+  padding-right: 8px;
+  font-size: 48px;
+  color: #6666f7;
+}
+
+.footer__image .fa-cc-mastercard {
+  padding-right: 8px;
+  font-size: 48px;
+  color: #6666f7;
+}
+
+.footer__image .fa-cc-amex {
+  font-size: 48px;
+  color: #6666f7;
+}
+/*# sourceMappingURL=footer_2_style.css.map */

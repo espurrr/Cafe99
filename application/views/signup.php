@@ -7,9 +7,9 @@
       rel="stylesheet"
     />
 
-    <?php echo link_css("css/style.css"); ?>
-    <?php echo link_css("css/signup.css"); ?>
-    <?php echo link_css("css/header.css"); ?>
+    <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/signup.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/header.css?ts=<?=time()?>"); ?>
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   </head>
   <body>
