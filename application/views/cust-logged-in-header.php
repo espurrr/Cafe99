@@ -8,6 +8,8 @@
 </head>
 
 <body>
+
+
   <div class="topnav" id="myTopnav">
    <img class="logo" id="mlogo" src="logo.png">
     
@@ -17,7 +19,7 @@
           <i class="fa fa-caret-down"></i>
       </button>
       <div id="waypoints" class="dropdown-content" >
-        <a href="#">Cat1</a>
+      <?php echo anchor("food_controller/menu", "Cat1") ?>
         <a href="#">Cat2</a>
         <a href="#">Cat3</a>
         <a href="#">Cat4</a>
@@ -25,11 +27,11 @@
       </div>
     </div>
       <div class="route-dropdown" onclick="toggleMenu(this)">
-        <button class="dropbtn">Drink
+        <button class="dropbtn">Drinks
             <i class="fa fa-caret-down"></i>
         </button>
         <div id="routes" class="dropdown-content" >
-            <a href="#">Cat1</a>
+            <a href="">Cat1</a>
             <a href="#">Cat2</a>
             <a href="#">Cat3</a>
             <a href="#">Cat4</a>
@@ -37,7 +39,7 @@
         </div>
       </div>
       <div class="route-dropdown" onclick="toggleMenu(this)">
-        <button class="dropbtn">Desert 
+        <button class="dropbtn">Desserts
             <i class="fa fa-caret-down"></i>
         </button>
         <div id="routes" class="dropdown-content" >
@@ -62,7 +64,9 @@
         <div id="routes" class="dropdown-content " >
            <!-- <div class="menu-other"> -->
               <a href="#Subscribe">Profile</a>
-              <a href="#Subscribe">Sign Out</a>
+              <a href="#Subscribe">Favourites</a>
+              <a href="#Subscribe">My Orders</a>
+              <?php echo anchor("account_controller/logout", "Logout") ?>
       <!-- </div> -->
         </div>
       </div>

@@ -14,5 +14,15 @@ class Order_Controller extends JB_Controller{
         $this->view('cust-payment');
     }
 
+    public function signupSubmit(){
+        
+        $this->validation('User_name', 'Name' , 'required|not_int|max_len|50');
+        $this->validation('Email_address','Email Address', 'required|unique|user');
+        $this->validation('Phone_no','Phone number', 'unique|user|required|len|10');
+        $this->validation('User_Password','Password', 'required|min_len|5');
+        $this->validation('confirm_password','Confirm Password', 'required|confirm|User_Password');
+        
+    }
+
 }
 ?>

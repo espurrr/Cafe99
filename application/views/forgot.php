@@ -3,8 +3,8 @@
 <head>
 	<title>SignUp and Login</title>
 	
-	<?php echo link_css("css/signup.css?version=51"); ?>
-	<?php echo link_css("css/header.css"); ?>
+    <?php echo link_css("css/signup.css?ts=<?=time()?>"); ?>
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>

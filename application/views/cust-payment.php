@@ -9,12 +9,10 @@
 </head>
 <body>
 
-<ul id="breadcrumbs">
-    
+<ul id="breadcrumbs">    
     <li><?php echo anchor("order_controller/cust_cart", "Cart") ?></li>
     <li><?php echo anchor("order_controller/cust_order_info", "Order") ?></li>
-  <li>Payment</li>
-  
+    <li>Payment</li>
 </ul>
 
     <div class="cart-container">

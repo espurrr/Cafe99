@@ -141,10 +141,12 @@ class Account_controller extends JB_Controller{
                 $session_data = [
                     'user_id' => $result['data']->User_ID,
                     'user_name' => $result['data']->User_name,
+                    'role' => $result['data']->User_role,
+                    'logged' => 1,
                     'loader' => true
                 ];
                 $this->set_session($session_data);
-                $this->cust_home();
+                $this->index();
             }
             
         }else{
@@ -157,9 +159,16 @@ class Account_controller extends JB_Controller{
         $this->view('forgot');
     }
 
+    public function logout(){
+        $this->destroy_session();
+        $this->view('login');
+    }
+
     public function cust_home(){
         $this->view('cust-logged-home');
     }
+
+
 
 
 }

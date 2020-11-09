@@ -2,7 +2,7 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="header.css">
+  <?php echo link_css("css/header.css?ts=<?=time()?>"); ?>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 </head>
@@ -25,7 +25,7 @@
       </div>
     </div>
       <div class="route-dropdown" onclick="toggleMenu(this)">
-        <button class="dropbtn">Drink
+        <button class="dropbtn">Drinks
             <i class="fa fa-caret-down"></i>
         </button>
         <div id="routes" class="dropdown-content" >
@@ -37,7 +37,7 @@
         </div>
       </div>
       <div class="route-dropdown" onclick="toggleMenu(this)">
-        <button class="dropbtn">Desert 
+        <button class="dropbtn">Desserts 
             <i class="fa fa-caret-down"></i>
         </button>
         <div id="routes" class="dropdown-content" >
@@ -48,10 +48,7 @@
             <a href="#">Cat5</a>
         </div>
       </div>
-      <div class="route-dropdown" onclick="toggleMenu(this)">
-        <button class="dropbtn">Cart
-        </button>
-      </div>
+      
         <div class="signlog">
           <div class="route-dropdown" style="padding-right: 10px;" onclick="toggleMenu(this)">
         <button class="dropbtn" id="logsign1">LogIn
