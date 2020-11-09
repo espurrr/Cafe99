@@ -30,16 +30,13 @@ class Account_controller extends JB_Controller{
             $Phone_no = $this->post('Phone_no');
             // $User_Password = $this->post('User_Password');
             $User_Password = $this->hash($this->post('User_Password'));
-
             $Token = bin2hex(openssl_random_pseudo_bytes(16));
-
             $data = [
                 'User_name' => $User_name,
                 'Email_address' => $Email_address,
                 'Phone_no' => $Phone_no,
                 'User_Password' => $User_Password,
                 'Registered_date' => date("Y-m-d"),
-                'Role_ID' => 1,
                 'Token' => $Token
             ];
 
@@ -146,7 +143,19 @@ class Account_controller extends JB_Controller{
                     'loader' => true
                 ];
                 $this->set_session($session_data);
-                $this->index();
+                //to be tested
+                if($session_data['role']=="customer"){
+                    $this->index();
+                }else if($session_data['role']=="kitchen_manager"){
+                    $this->index();
+                }else if($session_data['role']=="cashier"){
+                    $this->index();
+                }else if($session_data['role']=="delivery_person"){
+                    $this->index();
+                }else if($session_data['role']=="restaurant_manager"){
+                    $this->index();
+                }
+                
             }
             
         }else{

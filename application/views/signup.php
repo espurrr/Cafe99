@@ -7,7 +7,11 @@
       rel="stylesheet"
     />
 
+<<<<<<< HEAD
     <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
+=======
+    <?php echo link_css("css/style.css"); ?>
+>>>>>>> 340a3f0ff368671d5cb6677c71b57a83bdfee2d6
     <?php echo link_css("css/signup.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/header.css?ts=<?=time()?>"); ?>
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
