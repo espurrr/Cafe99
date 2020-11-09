@@ -10,12 +10,13 @@
 }
 body {
   background: var(--colorBackground2);
+}
+.main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100vh;
 }
-
 .error {
   font-size: 13px;
   color: #ee2828;

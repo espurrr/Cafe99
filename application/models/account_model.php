@@ -20,7 +20,7 @@ class Account_model extends Database{
                 $row = $this->Row();
                 $dbPw = $row->User_Password;
                 if(password_verify($password,$dbPw)){
-                    return "Success";
+                    return ['status'=>'success', 'data'=>$row];
                 }else{
                     return "Password_not_matched";
                 }

@@ -13,7 +13,7 @@ class Account_controller extends JB_Controller{
     }
 
     public function signup(){
-        $this->view('cust-payment');
+        $this->view('signup');
     }
     public function signupSubmit(){
         
@@ -74,7 +74,7 @@ class Account_controller extends JB_Controller{
         $subject = "Confirm Your Email";
         $html_body = "<html><body style=\"font-family: sans-serif;\">
         <p>You're just one step away..</p> 
-        <a href=\"http://localhost/lightweight/account_controller/login/$token\" target=\"_blank\">
+        <a href=\"http://localhost/cafe99/account_controller/login/$token\" target=\"_blank\">
         <button style=\"border: none;
         padding: 1rem 2rem;
         text-decoration: none;
@@ -117,6 +117,8 @@ class Account_controller extends JB_Controller{
                 $this-> set_flash("activationSuccess","Congratulations! Your account has been successfully activated.");
                 $this->view('login');
             }
+        }else{
+            $this->view('login');
         }
         
     }
@@ -127,7 +129,6 @@ class Account_controller extends JB_Controller{
         if($this->run()){
             $email = $this->post('Email_address');
             $password = $this->post('User_Password');
-            echo $password;
             $result = $this->model->login($email, $password);
 
             if($result === "Email_not_found"){
@@ -136,8 +137,14 @@ class Account_controller extends JB_Controller{
             }else if($result === "Password_not_matched"){
                 $this->set_flash("passwordError", "Password is incorrect");
                 $this->login();
-            }else if($result === "Success"){
-                echo "Login successssss! yay!";
+            }else if($result['status'] === "success"){
+                $session_data = [
+                    'user_id' => $result['data']->User_ID,
+                    'user_name' => $result['data']->User_name,
+                    'loader' => true
+                ];
+                $this->set_session($session_data);
+                $this->cust_home();
             }
             
         }else{
@@ -148,6 +155,10 @@ class Account_controller extends JB_Controller{
 
     public function forgot(){
         $this->view('forgot');
+    }
+
+    public function cust_home(){
+        $this->view('cust-logged-home');
     }
 
 

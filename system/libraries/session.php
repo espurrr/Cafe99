@@ -41,12 +41,12 @@ trait Session {
         }
     }
 
-    public function flash($name, $class = ""){
+    public function flash($name, $class = "",$icon=""){
         if(!empty($name) && isset($_SESSION[$name])){
-            echo "<div class='". $class ."'>" . $_SESSION[$name] . "</div>";
+            echo "<div class='". $class ."'>" ."<i class='". $icon ."'></i>&nbsp&nbsp".  $_SESSION[$name] . "</div>";
             unset($_SESSION[$name]);//so that flash message will only display once. gone after refreshed.
         }
-    }
+    }  
 
      //Unset session data
     public function unset_session($name){

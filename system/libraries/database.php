@@ -1,7 +1,17 @@
 <?php
-//error_reporting(0); //removes all error-notices from page
+/*
+ * Database Library
+ * 
+ * includes :
+ * ++Database connectivity
+ * ++Query syntax
+ * ++Queries :
+ *      -- AllCount : counts the number of rows from the specified table
+ *      --//COMPLETE
+ *                  -
+*/
+error_reporting(0); //removes all error-notices from page
 class Database {
-    
     use session;
     private $host = HOST;
     private $database  = DATABASE;
@@ -20,7 +30,7 @@ class Database {
 
         }
     }
-      /*
+    /*
     Query method will receive all the database queries
     */
     public function Query($query, $options=[]){
@@ -64,7 +74,7 @@ class Database {
     public function Row(){
         return $this->Query->fetch(PDO::FETCH_OBJ);
     }
-    
+
     /*
     Select method accepts only the select query
     */
@@ -84,19 +94,19 @@ class Database {
     public function Select_Where($table_name, $options){
         
         foreach($options as $key => $values):
-            @$columns .= $key . " = ? AND ";
-            @$db_values .= $values . ",";
+            $columns .= $key . " = ? AND ";
+            $db_values .= $values . ",";
         endforeach;
         //remove AND operator from the end statement
-        @$columns = rtrim($columns , " AND");
+        $columns = rtrim($columns , " AND");
         //remove , from the end statement
-        @$db_values = rtrim($db_values , ",");
+        $db_values = rtrim($db_values , ",");
         //Assign string separated by , to an array 
-        @$db_values = explode(",", $db_values);
+        $db_values = explode(",", $db_values);
 
         //Write the select_where query
         $this->Query = $this->db->prepare("SELECT * FROM " .$table_name . " WHERE " .$columns);
-        $this->Query->execute($db_values);
+        return $this->Query->execute($db_values);
         // print_r($columns);
         // print_r($db_values);
     }
@@ -186,5 +196,7 @@ class Database {
         return $this->Query->execute($placeholder_values);
   
       }
+
 }
+
 ?>
