@@ -13,7 +13,7 @@ class Account_controller extends JB_Controller{
     }
 
     public function signup(){
-        $this->view('signup');
+        $this->view('restaurant-manager-dashboard/RMnewsfeed');
     }
     public function signupSubmit(){
         

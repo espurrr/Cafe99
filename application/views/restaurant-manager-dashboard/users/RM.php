@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Restaurant Manager dashboard</title>
-    <link rel="stylesheet" href="user_sidebar.css">
-    <link rel="stylesheet" href="../admin.css">
-    <link rel="stylesheet" href="../header-dashboard.css">
+    <?php echo link_css("css/user_sidebar.css?ts=<?=time()?>");?>
+    <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/admin.css?ts=<?=time()?>"); ?>
 </head>
 <body>
  <?php include "user_sidebar.php"; ?> 
- <?php include "../header-dashboard.php";?>
+ <?php include "../../header/header-dashboard.php";?>
     <div class="wrapper">
       
 
