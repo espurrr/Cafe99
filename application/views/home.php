@@ -157,5 +157,12 @@
     <?php include 'footer/footer_1.php';?>
     <?php echo link_js("js/header.js"); ?>
     <?php echo link_js("js/home.js"); ?>
+    <!-- <script>
+ var session = eval('(<?php echo json_encode($_SESSION)?>)');
+ console.log(session);
+
+
+
+</script> -->
 </body>
 </html>

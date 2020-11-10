@@ -151,16 +151,16 @@ class Account_controller extends JB_Controller{
                 if($session_data['role']=="customer"){
                     $this->index();
                 }else if($session_data['role']=="kitchen_manager"){
-                    $this->index();
+                    redirect("km_controller/index");
                 }else if($session_data['role']=="cashier"){
-                    $this->index();
+                    redirect("cashier_controller/index");
                 }else if($session_data['role']=="delivery_person"){
-                    $this->index();
+                    redirect("delivery_controller/index");
                 }else if($session_data['role']=="restaurant_manager"){
-                    $this->index();
+                    redirect("rm_controller/index");
                 }
 
-                redirect("customer_profile/index");
+                
             }
             
         }else{
@@ -171,6 +171,11 @@ class Account_controller extends JB_Controller{
 
     public function forgot(){
         $this->view('forgot');
+    }
+
+    public function logout(){
+        $this->destroy_session();
+        $this->view('login');
     }
 
 

@@ -66,7 +66,7 @@
               <a href="#Subscribe">Profile</a>
               <a href="#Subscribe">Favourites</a>
               <a href="#Subscribe">My Orders</a>
-              <?php echo anchor("account_controller/logout", "Logout") ?>
+              <?php echo anchor("customer_controller/logout", "Logout") ?>
       <!-- </div> -->
         </div>
       </div>
