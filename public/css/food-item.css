@@ -239,7 +239,6 @@ ul.breadcrumb li a:hover {
 
 .food_item_container .container__text .btn-container .btn:hover{
     cursor: pointer;
-    box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.1);
     transition: 0.4s;
 }
 
@@ -247,6 +246,7 @@ ul.breadcrumb li a:hover {
 .food_item_container .container__text .btn-container .fav{
     grid-area:a;
     border: 1px solid #aaa;
+    background-color: #fff;
 }
 .food_item_container .container__text .btn-container .fav .fa-heart{
     color: #bbb;
@@ -256,6 +256,8 @@ ul.breadcrumb li a:hover {
 .food_item_container .container__text .btn-container .fav:hover{
     border: 1px solid #bbb;
     cursor: pointer;
+    background-color: #efefef;
+
 }
 
 .food_item_container .container__text .btn-container .fav:hover .fa-heart{

@@ -1,25 +1,25 @@
 <?php
-    $server = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "cafe99_test";
+    // $server = "localhost";
+    // $username = "root";
+    // $password = "";
+    // $database = "cafe99_test";
 
-    $db = mysqli_connect($server, $username, $password, $database);
+    // $db = mysqli_connect($server, $username, $password, $database);
 
-    if(mysqli_connect_errno()){
-        echo "Error: Could not connect to database";
-        exit;
-    }
+    // if(mysqli_connect_errno()){
+    //     echo "Error: Could not connect to database";
+    //     exit;
+    // }
 
-    $sql = "SELECT * FROM bun"; 
-    $result = mysqli_query($db, $sql);
+    // $sql = "SELECT * FROM bun"; 
+    // $result = mysqli_query($db, $sql);
 ?>
 
 <!DOCTYPE html>
 <html lang="en" >
 <head>
   <!-- Header -->
-  <link rel="stylesheet" href="css/header.css?ts=<?=time()?>">
+  <?php echo link_css("css/header.css?ts=<?=time()?>"); ?>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
   <script src="js/header.js"></script>
@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
   
   <!-- Footer -->
-  <link rel="stylesheet" href="css/footer.css?ts=<?=time()?>">
+  <?php echo link_css("css/footer.css?ts=<?=time()?>"); ?>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         
 
@@ -49,27 +49,17 @@
       <?php
           while($row = mysqli_fetch_assoc($result)){
       ?>
-              <article>
-              <a href="/cafe99_food_item/food_item.php?id=<?php echo $row['id']?>"><img src="<?php echo "img/".$row['img_no'].".jpg"; ?>" alt="Bun"></a>
+              <article> 
+              <?php
+                $img_path = $row['Category']."/".$row['Subcategory']."/".str_replace(' ','',$row['Food_name'])."jpg";
+              ?>                                            
+              <a href="/cafe99_food_item/food_item.php?id=<?php echo $row['id']?>"><img src="<?php echo BASE_URL?>/public/images/food-dash-images/<?php echo $img_path;?>" alt="Bun"></a>
               <div class="text">
                   <h3><a href="/cafe99_food_item/food_item.php?id=<?php echo $row['id']?>"><?php echo $row['title']; ?></a></h3>
                   <p>LKR <?php echo $row['price']; ?><p>
               </div>
               <div class="btn-container">
                   <button class="fav btn"><i class="fas fa-heart"></i></button>
-                  <button class="cart btn"><i class="fas fa-shopping-cart"></i></button>
-              </div>
-              </article>
-              
-              <article>
-              <a href="/cafe99_food_item/food_item.php?id=<?php echo $row['id']?>"><img src="<?php echo "img/".$row['img_no'].".jpg"; ?>" alt="Bun"></a>
-              <div class="text">
-                  <h3><a href="/cafe99_food_item/food_item.php?id=<?php echo $row['id']?>"><?php echo $row['title']; ?></a></h3>
-                  <p>LKR <?php echo $row['price']; ?><p>
-              </div>
-              <div class="btn-container">
-                  <button class="fav btn"><i class="fas fa-heart"></i></button>
-                  <button class="cart btn"><i class="fas fa-shopping-cart"></i></button>
               </div>
               </article>
 

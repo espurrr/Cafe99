@@ -7,7 +7,8 @@
 /* Variable */
 :root{
     --dark-yellow:#FAD74E;
-    --favorite-btn:#a72f2f;
+    --bin-bg-hover:#efefef;
+    --bin-btn-hover:#a72f2f;
     --hover-transition:0.2s;
     --non-hover-transition:0.6s;
     --bg-texture:#FAD74E url(../img/texture.png) repeat; ;
@@ -58,7 +59,7 @@ ul.breadcrumb li a:hover {
 
 .food_menu_wrapper .grid {
     display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));/*auto-fill center items considering grid-gap and content */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-column-gap: 4%;
     grid-row-gap: 40px;
     align-items: stretch;
@@ -91,8 +92,6 @@ ul.breadcrumb li a:hover {
 
 /* Title */
 .food_menu_wrapper .grid article .text h3{
-    /* font-size: 1.4rem; */
-    /* font-family: 'Fredoka One', cursive; */
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
 
@@ -139,21 +138,20 @@ ul.breadcrumb li a:hover {
     cursor: pointer;
 }
 
-/* Favorite button */
-.food_menu_wrapper .grid article .btn-container .fav{
+/* Bin button */
+.food_menu_wrapper .grid article .btn-container .bin{
     border: 1px solid #aaa;
     background-color: #fff;
 }
-.food_menu_wrapper .grid article .btn-container .fav .fa-heart{
+.food_menu_wrapper .grid article .btn-container .bin .fa-heart{
     color: #bbb;
     transition: var(--non-hover-transition);
 }
 
-.food_menu_wrapper .grid article .btn-container .fav:hover{
-    border: 1px solid #bbb;   
-    background-color: #efefef;
+.food_menu_wrapper .grid article .btn-container .bin:hover{
+    background-color: var(--bin-bg-hover);
 }
 
-.food_menu_wrapper .grid article .btn-container .fav:hover .fa-heart{
-    color: var(--favorite-btn); 
+.food_menu_wrapper .grid article .btn-container .bin:hover .fa-heart{
+    color: var(--bin-btn-hover);
 }
