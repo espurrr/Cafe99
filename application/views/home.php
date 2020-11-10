@@ -22,9 +22,9 @@
 
 <body>
   <?php  if ($this->get_session('logged')){
-          include 'cust-logged-in-header.php';
+          include 'header/cust-logged-in-header.php';
     }else{
-      include 'header.php';
+      include 'header/header.php';
     }
      ?>
 
@@ -33,7 +33,8 @@
         <div class="section-1_wrapper">
             <section class="section-1">
                 <div class="hero-image1">
-                    <img src="../../public/images/home/hero1.png" class = "section-1__hero-image__cls"alt="Image 01">
+  
+                <img src="<?php echo BASE_URL?>/public/images/home/hero1.png" class = "section-1__hero-image__cls"alt="Image 01">
                 </div>
                 <div class="hero-image2">
                     <img src="../../public/images/home/hero2.png" class = "section-1__hero-image__cls"alt="Image 01">
@@ -153,7 +154,7 @@
         </div>
     </main>
     
-    <?php include 'footer.php';?>
+    <?php include 'footer/footer_1.php';?>
     <?php echo link_js("js/header.js"); ?>
     <?php echo link_js("js/home.js"); ?>
 </body>
