@@ -7,6 +7,9 @@ class Food_Controller extends JB_Controller{
     public function menu(){
         $this->view('food-menu');
     }
+    public function test(){
+        $this->view('deliveryperson/dp');
+    }
     
     
 
