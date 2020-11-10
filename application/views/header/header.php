@@ -9,7 +9,7 @@
 
 <body>
   <div class="topnav" id="myTopnav">
-   <img class="logo" id="mlogo" src="logo.png">
+   <img class="logo" id="mlogo" src="../../public/images/logo.png">
     
     <div class="all-nav" id="nav" >
       <div class="route-dropdown" onclick="toggleMenu(this)">

@@ -59,7 +59,7 @@
     padding-top: 5px;
     padding-right: 5px;
     padding-bottom: 5px;
-    padding-left: 5px;"><img src="img_avatar.png" class="avatar" width="50px" height="50px"> 
+    padding-left: 5px;"><img src="../../public/images/img_avatar.png" class="avatar" width="50px" height="50px"> 
         </button>
         <div id="routes" class="dropdown-content " >
            <!-- <div class="menu-other"> -->

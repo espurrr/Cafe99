@@ -2,7 +2,7 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="dash-head.css">
+  <?php echo link_css("css/dash-head.css?ts=<?=time()?>"); ?>
 </head>
 
 <body>
