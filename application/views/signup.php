@@ -9,12 +9,12 @@
 
     <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/signup.css?ts=<?=time()?>"); ?>
-    <?php echo link_css("css/header.css?ts=<?=time()?>"); ?>
+    
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   </head>
-  <body>
+  <body style="background:  #759ee9 url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
     <!-- Header starts -->
-    <?php include 'header/header.php'?>
+    <?php include '../application/views/header/header.php'?>
 
     <!-- Header finished -->
         <!-- auth message -->

@@ -129,7 +129,6 @@ class Account_controller extends JB_Controller{
         if($this->run()){
             $email = $this->post('Email_address');
             $password = $this->post('User_Password');
-            echo $password;
             $result = $this->model->login($email, $password);
 
             if($result === "Email_not_found"){

@@ -7,8 +7,8 @@
     <?php echo link_css("css/signup.css?ts=<?=time()?>"); ?>
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 </head>
-<body>
-<?php include 'header.php'?>
+<body style="background:  #d4c4e9 url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
+<?php include '../application/views/header/header.php'?>
 
 <!-- auth message -->
 <div class="authMessage">
