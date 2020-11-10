@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orders</title>
-    <link rel="stylesheet" href="sidebar.css?ts=<?=time()?>">
-    <link  rel="stylesheet" href="orders.css?ts=<?=time()?>">
-    <link rel="stylesheet" href="popup.css?ts=<?=time()?>">
-    <link rel="stylesheet" href="header.css?ts=<?=time()?>">
+    <?php echo link_css("css/kitchen-manager/orders/sidebar.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/kitchen-manager/orders/orders.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/kitchen-manager/orders/popup.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/header.css?ts=<?=time()?>"); ?>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 </head>
 <body>
     <?php include 'sidebar.php';?>
-    <?php include 'header.php';?>
+    <?php include '../header/header.php';?>
     <?php include 'popup.php';?>
     <div class="tab">
         <button class="tablinks active" onclick="changeOrderTab(event, 'Onqueue')">Onqueue</button>
@@ -218,7 +218,7 @@
             </tr>
           </table>
     </div>
-    <script src="orders.js"></script>
-    <script src="popup.js"></script>
+    <?php echo link_js("js/kitchen-manager/orders/orders.js"); ?>
+    <?php echo link_js("js/kitchen-manager/orders/popup.js"); ?>
 </body>
 </html>

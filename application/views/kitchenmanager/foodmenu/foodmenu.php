@@ -1,8 +1,8 @@
 <?php
-    include 'connection.php';
+    // include 'connection.php';
     // Loads all food items as the page loads
-    $sql = "SELECT * FROM bun"; 
-    $result = mysqli_query($db, $sql);
+    // $sql = "SELECT * FROM bun"; 
+    // $result = mysqli_query($db, $sql);
 
     // Search button
     if (isset($_GET['search'])){
@@ -31,16 +31,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Products</title>
-    <link rel="stylesheet" href="food_menu.css?ts=<?=time()?>">
-    <link rel="stylesheet" href="sidebar.css?ts=<?=time()?>">
-    <link rel="stylesheet" href="header.css?ts=<?=time()?>">
-    <script src="searchbar.js"></script> 
+    <?php echo link_css("css/kitchen-manager/foodmenu/foodmenu.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/kitchen-manager/foodmenu/sidebar.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/header.css?ts=<?=time()?>"); ?>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 </head>
 <body>
     <?php include "sidebar.php"?>
-    <?php include 'header.php';?>
+    <?php include '../header/header.php';?>
 
     <div class="tab">
         <button class="tablinks active" onclick="changeOrderTab(event, 'food')">Food</button>
@@ -91,6 +91,7 @@
     <div id="drinks" class="menu_container"><p>Drinkssss</p></div>
     <div id="desserts" class="menu_container"><p>Desserts</p></div>
 
-    <script src="food_menu.js"></script>
+    <?php echo link_js("js/kitchen-manager/foodmenu/searchbar.js"); ?>
+    <?php echo link_js("js/kitchen-manager/foodmenu/foodmenu.js"); ?>
 </body>
 </html> 

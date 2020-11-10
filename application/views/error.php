@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="error.css">
+	<?php echo link_css("css/error.css?ts=<?=time()?>"); ?>
+	
 	<title>
 		Error 404
 	</title>
@@ -14,7 +15,7 @@
 </div>
 <div class="error">
 
-	<img class="error-image"src="404.png">
+	<img class="error-image"src="../public/images/404.png">
 </div>
 <div class="error-text" >
 	<div class="text-line">

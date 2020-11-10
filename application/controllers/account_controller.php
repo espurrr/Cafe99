@@ -18,7 +18,7 @@ class Account_controller extends JB_Controller{
     public function signupSubmit(){
         
         $this->validation('User_name', 'Name' , 'required|not_int|max_len|50');
-        $this->validation('Email_address','Email Address', 'required|unique|user');
+        $this->validation('Email_address','Email Address', 'unique|user|required');
         $this->validation('Phone_no','Phone number', 'unique|user|required|len|10');
         $this->validation('User_Password','Password', 'required|min_len|5');
         $this->validation('confirm_password','Confirm Password', 'required|confirm|User_Password');
@@ -30,13 +30,16 @@ class Account_controller extends JB_Controller{
             $Phone_no = $this->post('Phone_no');
             // $User_Password = $this->post('User_Password');
             $User_Password = $this->hash($this->post('User_Password'));
+
             $Token = bin2hex(openssl_random_pseudo_bytes(16));
+
             $data = [
                 'User_name' => $User_name,
                 'Email_address' => $Email_address,
                 'Phone_no' => $Phone_no,
                 'User_Password' => $User_Password,
                 'Registered_date' => date("Y-m-d"),
+                'Role_ID' => 1,
                 'Token' => $Token
             ];
 
@@ -51,7 +54,7 @@ class Account_controller extends JB_Controller{
                     $this->set_flash("activationEmailError", "Something went wrong :( Please try again.");
                     $this->view('signup');
                 }              
-
+                
             }else{
                  $this->set_flash("signupError", "Something went wrong :( Please try again later.");
                  $this->view('signup');
@@ -126,6 +129,7 @@ class Account_controller extends JB_Controller{
         if($this->run()){
             $email = $this->post('Email_address');
             $password = $this->post('User_Password');
+            echo $password;
             $result = $this->model->login($email, $password);
 
             if($result === "Email_not_found"){
@@ -135,27 +139,14 @@ class Account_controller extends JB_Controller{
                 $this->set_flash("passwordError", "Password is incorrect");
                 $this->login();
             }else if($result['status'] === "success"){
+                // echo "Login successssss! yay!";
                 $session_data = [
                     'user_id' => $result['data']->User_ID,
                     'user_name' => $result['data']->User_name,
-                    'role' => $result['data']->User_role,
-                    'logged' => 1,
                     'loader' => true
                 ];
                 $this->set_session($session_data);
-                //to be tested
-                if($session_data['role']=="customer"){
-                    $this->index();
-                }else if($session_data['role']=="kitchen_manager"){
-                    $this->index();
-                }else if($session_data['role']=="cashier"){
-                    $this->index();
-                }else if($session_data['role']=="delivery_person"){
-                    $this->index();
-                }else if($session_data['role']=="restaurant_manager"){
-                    $this->index();
-                }
-                
+                redirect("customer_profile/index");
             }
             
         }else{
@@ -167,17 +158,6 @@ class Account_controller extends JB_Controller{
     public function forgot(){
         $this->view('forgot');
     }
-
-    public function logout(){
-        $this->destroy_session();
-        $this->view('login');
-    }
-
-    public function cust_home(){
-        $this->view('cust-logged-home');
-    }
-
-
 
 
 }
