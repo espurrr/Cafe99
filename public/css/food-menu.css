@@ -134,7 +134,7 @@ ul.breadcrumb li a:hover {
 }
 
 .food_menu_wrapper .grid article .btn-container .btn:hover{
-    box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.3);
     transition: var(--hover-transition);
     cursor: pointer;
 }
@@ -143,7 +143,6 @@ ul.breadcrumb li a:hover {
 .food_menu_wrapper .grid article .btn-container .fav{
     border: 1px solid #aaa;
     background-color: #fff;
-
 }
 .food_menu_wrapper .grid article .btn-container .fav .fa-heart{
     color: #bbb;
@@ -151,29 +150,10 @@ ul.breadcrumb li a:hover {
 }
 
 .food_menu_wrapper .grid article .btn-container .fav:hover{
-    border: 1px solid #bbb;     
+    border: 1px solid #bbb;   
+    background-color: #efefef;
 }
 
 .food_menu_wrapper .grid article .btn-container .fav:hover .fa-heart{
-    color: var(--favorite-btn);
-}
-
-/* Shopping cart button */
-.food_menu_wrapper .grid article .btn-container .cart{
-    border: 1px solid #bbb;
-    background-color: #0BCE83;
-}
-
-.food_menu_wrapper .grid article .btn-container .cart .fa-shopping-cart{
-    color:#fff;
-    transition: var(--non-hover-transition);
-}
-
-.food_menu_wrapper .grid article .btn-container .cart:hover{
-    border: 1px solid #aaa;
-    background-color: #fff;
-}
-
-.food_menu_wrapper .grid article .btn-container .cart:hover .fa-shopping-cart{
-    color:#bbb;
+    color: var(--favorite-btn); 
 }

@@ -57,19 +57,6 @@
               </div>
               <div class="btn-container">
                   <button class="fav btn"><i class="fas fa-heart"></i></button>
-                  <button class="cart btn"><i class="fas fa-shopping-cart"></i></button>
-              </div>
-              </article>
-              
-              <article>
-              <a href="/cafe99_food_item/food_item.php?id=<?php echo $row['id']?>"><img src="<?php echo "img/".$row['img_no'].".jpg"; ?>" alt="Bun"></a>
-              <div class="text">
-                  <h3><a href="/cafe99_food_item/food_item.php?id=<?php echo $row['id']?>"><?php echo $row['title']; ?></a></h3>
-                  <p>LKR <?php echo $row['price']; ?><p>
-              </div>
-              <div class="btn-container">
-                  <button class="fav btn"><i class="fas fa-heart"></i></button>
-                  <button class="cart btn"><i class="fas fa-shopping-cart"></i></button>
               </div>
               </article>
 
