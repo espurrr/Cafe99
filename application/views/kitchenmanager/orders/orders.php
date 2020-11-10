@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orders</title>
-    <link rel="stylesheet" href="../../../../public/css/kitchen-manager/orders/sidebar.css?ts=<?=time()?>">
-    <link  rel="stylesheet" href="../../../../public/css/kitchen-manager/orders/orders.css?ts=<?=time()?>">
-    <link rel="stylesheet" href="../../../../public/css/kitchen-manager/orders/popup.css?ts=<?=time()?>">
-    <link rel="stylesheet" href="../../../../public/css/header.css?ts=<?=time()?>">
+    <?php echo link_css("css/kitchen-manager/orders/sidebar.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/kitchen-manager/orders/orders.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/kitchen-manager/orders/popup.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/header.css?ts=<?=time()?>"); ?>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 </head>
 <body>
@@ -218,7 +218,7 @@
             </tr>
           </table>
     </div>
-    <script src="../../../../public/js/kitchen-manager/orders/orders.js"></script>
-    <script src="../../../../public/js/kitchen-manager/foodmenu/popup.js"></script>
+    <?php echo link_js("js/kitchen-manager/orders/orders.js"); ?>
+    <?php echo link_js("js/kitchen-manager/orders/popup.js"); ?>
 </body>
 </html>
