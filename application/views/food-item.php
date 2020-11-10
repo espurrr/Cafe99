@@ -47,7 +47,10 @@
     <div class="food_item_wrapper">
     <div class="food_item_container">
         <div class="container__image">
-            <img src="<?php echo "img/".$row['img_no'].".jpg"; ?>" alt="Food1"/>
+            <?php
+                $img_path = $row['Category']."/".$row['Subcategory']."/".str_replace(' ','',$row['Food_name'])."jpg";
+            ?>
+            <img src="<?php echo BASE_URL;?>/public/images/food-dash-images/<?php echo $img_path;?>" alt="Food1"/>
         </div>
 
         <div class="container__text">

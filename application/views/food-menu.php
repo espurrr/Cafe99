@@ -49,8 +49,11 @@
       <?php
           while($row = mysqli_fetch_assoc($result)){
       ?>
-              <article>
-              <a href="/cafe99_food_item/food_item.php?id=<?php echo $row['id']?>"><img src="<?php echo "img/".$row['img_no'].".jpg"; ?>" alt="Bun"></a>
+              <article> 
+              <?php
+                $img_path = $row['Category']."/".$row['Subcategory']."/".str_replace(' ','',$row['Food_name'])."jpg";
+              ?>                                            
+              <a href="/cafe99_food_item/food_item.php?id=<?php echo $row['id']?>"><img src="<?php echo BASE_URL?>/public/images/food-dash-images/<?php echo $img_path;?>" alt="Bun"></a>
               <div class="text">
                   <h3><a href="/cafe99_food_item/food_item.php?id=<?php echo $row['id']?>"><?php echo $row['title']; ?></a></h3>
                   <p>LKR <?php echo $row['price']; ?><p>
