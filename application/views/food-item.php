@@ -1,15 +1,15 @@
 <?php
-    $server = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "cafe99_test";
+    // $server = "localhost";
+    // $username = "root";
+    // $password = "";
+    // $database = "cafe99_test";
 
-    $db = mysqli_connect($server, $username, $password, $database);
+    // $db = mysqli_connect($server, $username, $password, $database);
 
-    if(mysqli_connect_errno()){
-        echo "Error: Could not connect to database";
-        exit;
-    }
+    // if(mysqli_connect_errno()){
+    //     echo "Error: Could not connect to database";
+    //     exit;
+    // }
     $id = $_GET['id'];
     // $id = 1;
     $sql = "SELECT * FROM bun WHERE id=$id";
@@ -21,7 +21,7 @@
 <html lang="en">
 <head>
     <!-- Header -->
-    <link rel="stylesheet" type="text/css" href="css/header.css?ts=<?=time()?>">
+    <?php echo link_css("css/header.css?ts=<?=time()?>"); ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
@@ -29,11 +29,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food item</title>
-    <link rel="stylesheet" href="css/food_item.css?ts=<?=time()?>">
+    <?php echo link_css("css/food-item.css?ts=<?=time()?>"); ?>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     
     <!-- Footer -->
-    <link rel="stylesheet" href="css/footer_2.css?ts=<?=time()?>">
+    <?php echo link_css("css/footer_2.css?ts=<?=time()?>"); ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         
 </head>
