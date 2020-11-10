@@ -20,7 +20,7 @@
 
 </head>
 
-<body>
+<body style="background: #fff url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
   <?php  if ($this->get_session('logged')){
           include 'header/cust-logged-in-header.php';
     }else{
@@ -30,14 +30,14 @@
 
     <main>
         <!-- hero image -->
-        <div class="section-1_wrapper">
+        <div class="section-1_wrapper" style="background: #FAD74E url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
             <section class="section-1">
                 <div class="hero-image1">
   
                 <img src="<?php echo BASE_URL?>/public/images/home/hero1.png" class = "section-1__hero-image__cls"alt="Image 01">
                 </div>
                 <div class="hero-image2">
-                    <img src="../../public/images/home/hero2.png" class = "section-1__hero-image__cls"alt="Image 01">
+                    <img src="<?php echo BASE_URL?>/public/images/home/hero2.png" class = "section-1__hero-image__cls"alt="Image 01">
                 </div>
                 <div class="hero-text">
                     <h1>You want it. We have it.</h1>
@@ -52,7 +52,7 @@
                 <div class="row">
                     <div class="column">
                         <div class="card">
-                                <img src="../../public/images/slider/1.jpg" alt="">
+                                <img src="<?php echo BASE_URL?>/public/images/home/slider/1.jpg" alt="">
                                 <p>Card 01</p>
                                 <p>Some text</p>
                         </div>
@@ -60,7 +60,7 @@
                 
                     <div class="column">
                         <div class="card">
-                            <img src="../../public/images/slider/2.jpg" alt="">
+                            <img src="<?php echo BASE_URL?>/public/images/home/slider/2.jpg" alt="">
                                 <p>Card 01</p>
                                 <p>Some text</p>
                         </div>
@@ -68,7 +68,7 @@
                     
                     <div class="column">
                         <div class="card">
-                            <img src="../../public/images/slider/3.jpg" alt="">
+                            <img src="<?php echo BASE_URL?>/public/images/home/slider/3.jpg" alt="">
                                 <p>Card 01</p>
                                 <p>Some text</p>
                         </div>
@@ -76,7 +76,7 @@
                     
                     <div class="column">
                         <div class="card">
-                            <img src="../../public/images/slider/4.jpg" alt="">
+                            <img src="<?php echo BASE_URL?>/public/images/home/slider/4.jpg" alt="">
                                 <p>Card 01</p>
                                 <p>Some text</p>
                         </div>
@@ -91,7 +91,7 @@
                 <div class="row">
                     <div class="column">
                         <div class="card">
-                                <img src="../../public/images/slider/1.jpg" alt="">
+                                <img src="<?php echo BASE_URL?>/public/images/home/slider/1.jpg" alt="">
                                 <p>Card 01</p>
                                 <p>Some text</p>
                         </div>
@@ -99,7 +99,7 @@
                 
                     <div class="column">
                         <div class="card">
-                            <img src="../../public/images/slider/2.jpg" alt="">
+                            <img src="<?php echo BASE_URL?>/public/images/home/slider/2.jpg" alt="">
                                 <p>Card 01</p>
                                 <p>Some text</p>
                         </div>
@@ -107,7 +107,7 @@
                     
                     <div class="column">
                         <div class="card">
-                            <img src="../../public/images/slider/3.jpg" alt="">
+                            <img src="<?php echo BASE_URL?>/public/images/home/slider/3.jpg" alt="">
                                 <p>Card 01</p>
                                 <p>Some text</p>
                         </div>
@@ -115,7 +115,7 @@
                     
                     <div class="column">
                         <div class="card">
-                            <img src="../../public/images/slider/4.jpg" alt="">
+                            <img src="<?php echo BASE_URL?>/public/images/home/slider/4.jpg" alt="">
                                 <p>Card 01</p>
                                 <p>Some text</p>
                         </div>
@@ -126,18 +126,18 @@
         <div class="env-container">
             <div class="box-list">
                 <div class="box">
-                    <div class="image" style="background-image: url('../../public/images/home/staff.svg');"></div>
+                    <div class="image" style="background-image: url('<?php echo BASE_URL?>/public/images/home/staff.svg');"></div>
                     <p class="topic">Friendly Staff</p>
                     <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni impedit laborum voluptatem incidunt aliquid sunt.</p>
                 </div>
                 <div class="box">
-                    <div class="image" style="background-image: url('../../public/images/home/cup.svg');"></div>
+                    <div class="image" style="background-image: url('<?php echo BASE_URL?>/public/images/home/cup.svg');"></div>
     
                     <p class="topic">Freshness Guaranteed</p>
                     <p class="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet et saepe, eum hic error alias.</p>
                 </div>
                 <div class="box">
-                    <div class="image" style="background-image: url('../../public/images/home/chill.svg');"></div>
+                    <div class="image" style="background-image: url('<?php echo BASE_URL?>/public/images/home/chill.svg');"></div>
     
                     <p class="topic">Feel like home</p>
                     <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem consequuntur asperiores hic, vero sint cupiditate?</p>
@@ -150,7 +150,7 @@
                 <div class="paragraph"><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem voluptatibus voluptatem aspernatur numquam, repellat enim.</p></div>
                 <div class="btn"><button href="#" onclick="scrollToTop()">Let's eat</button></div>
             </div>
-            <div class="image column2"><img src="../../public/images/home/bg-env.png" alt="Image 01"></div>
+            <div class="image column2"><img src="<?php echo BASE_URL?>/public/images/home/bg-env.png" alt="Image 01"></div>
         </div>
     </main>
     

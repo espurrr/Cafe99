@@ -45,7 +45,7 @@ chart.render();
 <html>
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="analytics-sidebar.css">
+<link rel="stylesheet" href="../../../../public/css/restaurant-manager-dashboard-css/analytics/analytics_sidebar.css">
 <script>
 window.onload = function() {
 

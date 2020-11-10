@@ -5,17 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Restaurant Manager Dashboard</title>
-    <link rel="stylesheet" href="analytics.css">
-    <link rel="stylesheet" href="analytics-sidebar.css">
-    <link rel="stylesheet" href="../header-dashboard.css">
-    <link rel="stylesheet" href="../admin.css">
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js">
-    <script src="analytics.js"></script>
+    <?php echo link_css("css/analytics_sidebar.css?ts=<?=time()?>");?>
+    <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/admin.css?ts=<?=time()?>"); ?>
+   
 </head>
 </head>
 <body>
     <?php include "analytics-sidebar.php"; ?>
-    <?php include "../header-dashboard.php"; ?> 
+    <?php include "../../header/header-dashboard.php";?>
     
     <div class="wrapper">
         <div class="admin-content">

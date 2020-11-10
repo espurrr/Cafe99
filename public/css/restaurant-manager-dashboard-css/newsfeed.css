@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+:root{
+  --sidebar-width1:250px;
+  --newsfeed-background-color:#FBDD3F;
+  --dashboard-color:#fff;
+  --nameColor1:#3b5998;
+  --nameColor2:#9197a3;
+  --employee-color: #41b060;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+body{
+  background-color: var(--newsfeed-background-color);
+
+}
+
+.newsfeed-wrapper{
+    margin-left: var(--sidebar-width);
+    background-color: var(--newsfeed-background-color);
+    height: 100vh;
+}
+
+.newsfeed-wrapper .admin-content{
+    height:100%;
+    width:100%;
+    padding: 0px 0px;
+    overflow-y:scroll;
+}
+    
+@media screen and (max-width: 500px) {
+  .newsfeed-wrapper .admin-content {
+      margin-left: 0px; 
+  }
+}   
+    
+.admin-content .page-title{
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+    
+     
+#download{
+  margin:12px auto;
+  padding-bottom: 20px;
+
+}
+
+/*  NewsFeed settings */
+.dashboard {
+  background-color: var(--dashboard-color);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: auto;
+  min-height: 250px;
+
+}
+.dashboard .post {
+  background-color:var(--dashboard-color);
+  padding:25px 14px 14px 20px;
+  width: 100%;
+}
+.dashboard .post .text_title{
+  width: 90%;
+  margin-left: 47px;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 0 0 20px 0;
+}
+.dashboard .post .text-message{
+  width: 90%;
+  margin-left: 47px;
+  font-size: 15px;
+  font-weight: 400;
+  word-wrap:break-word;
+  color: #444;
+
+}
+
+.dashboard .action{
+  padding-left: 820px;
+  font-weight:600; 
+}
+
+#download {
+	max-width: 1000px;
+	overflow:hidden;
+	line-height: 1.38;
+}
+#download .post .top {
+  margin-bottom: 11px;
+  display: flex;
+}
+#download .post .top .employee{
+  margin-left: auto;
+  margin-right: 5%;
+  font-weight: 500;
+  color:var(--employee-color);
+  padding-top: 8px;
+  user-select: none;
+}
+#download .post .top .img {
+	float: left;
+  margin-right: 12px;
+    
+}
+
+#download .post .top .name a {
+	color: var( --nameColor1);
+	font-size: 14px;
+}
+#download .post .top .name span {
+	color:var( --nameColor2);
+	font-size: 14px;
+}
+#download .post .top .text-name {
+	color: var( --nameColor1) !important;
+	font-size: 14px;
+}
+#download .post .top .name .date {
+	color: var( --nameColor2);
+}
