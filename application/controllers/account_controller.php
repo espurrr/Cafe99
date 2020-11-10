@@ -143,9 +143,24 @@ class Account_controller extends JB_Controller{
                 $session_data = [
                     'user_id' => $result['data']->User_ID,
                     'user_name' => $result['data']->User_name,
+                    'role' => $result['data']->User_role,
+                    'logged' => 1,
                     'loader' => true
                 ];
                 $this->set_session($session_data);
+                //to be tested
+                if($session_data['role']=="customer"){
+                    $this->index();
+                }else if($session_data['role']=="kitchen_manager"){
+                    $this->index();
+                }else if($session_data['role']=="cashier"){
+                    $this->index();
+                }else if($session_data['role']=="delivery_person"){
+                    $this->index();
+                }else if($session_data['role']=="restaurant_manager"){
+                    $this->index();
+                }
+
                 redirect("customer_profile/index");
             }
             

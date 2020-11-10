@@ -5,13 +5,13 @@ class Order_Controller extends JB_Controller{
         
     }
     public function cust_cart(){
-        $this->view('cust-cart');
+        $this->view('customer/cust-cart');
     }
     public function cust_order_info(){
-        $this->view('cust-order-info');
+        $this->view('customer/cust-order-info');
     }
     public function cust_payment(){
-        $this->view('cust-payment');
+        $this->view('customer/cust-payment');
     }
 
     public function signupSubmit(){

@@ -14,7 +14,7 @@
   </head>
   <body>
     <!-- Header starts -->
-    <?php include 'header.php'?>
+    <?php include 'header/header.php'?>
 
     <!-- Header finished -->
         <!-- auth message -->
@@ -68,5 +68,7 @@
           <?php echo form_close();?>
       </div>
     </div>
+    
+
   </body>
 </html>
