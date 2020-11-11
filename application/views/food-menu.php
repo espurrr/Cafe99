@@ -1,18 +1,20 @@
 <?php
-    // $server = "localhost";
-    // $username = "root";
-    // $password = "";
-    // $database = "cafe99";
+    $server = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "cafe99";
 
-    // $db = mysqli_connect($server, $username, $password, $database);
+    $db = mysqli_connect($server, $username, $password, $database);
 
-    // if(mysqli_connect_errno()){
-    //     echo "Error: Could not connect to database";
-    //     exit;
-    // }
-
-    // $sql = "SELECT * FROM fooditem"; 
-    // $result = mysqli_query($db, $sql);
+    if(mysqli_connect_errno()){
+        echo "Error: Could not connect to database";
+        exit;
+    }
+    $subcat_name = "Pizza";
+    $sql = "SELECT * FROM fooditem 
+    INNER JOIN subcategory ON fooditem.Subcategory_ID = subcategory.Subcategory_ID
+    WHERE subcategory.Subcategory_name ='".$subcat_name."'";
+    $result = mysqli_query($db, $sql);
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +39,7 @@
 
 </head>
 
-<body>
+<body style="background: #FAD74E url(<?php echo BASE_URL;?>/public/images/texture.png) repeat;">
   <?php include 'header.php';?>
   <ul class="breadcrumb">
         <li><a href="../cafe99_complete_home_final/1.1/home.php">Home</a></li>

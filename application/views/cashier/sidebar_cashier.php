@@ -24,13 +24,11 @@
 </div>
 
 <div id="news_feed" class="tabcontent">
-  <h3>News Feed</h3>
-  <p>news feed</p>
+<?php include 'newsfeed.php';?>
 </div>
 
 <div id="place_order" class="tabcontent">
-  <h3>Place Order</h3>
-  <p>place order<p> 
+<!-- <?php include '.php';?> -->
 </div>
 
 <div id="order_history" class="tabcontent">
