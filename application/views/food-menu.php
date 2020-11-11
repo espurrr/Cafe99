@@ -39,7 +39,7 @@
 
 </head>
 
-<body>
+<body style="background: #FAD74E url(<?php echo BASE_URL;?>/public/images/texture.png) repeat;">
   <?php include 'header.php';?>
   <ul class="breadcrumb">
         <li><a href="../cafe99_complete_home_final/1.1/home.php">Home</a></li>
