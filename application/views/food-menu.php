@@ -10,8 +10,10 @@
         echo "Error: Could not connect to database";
         exit;
     }
-
-    $sql = "SELECT * FROM fooditem"; 
+    $subcat_name = "Pizza";
+    $sql = "SELECT * FROM fooditem 
+    INNER JOIN subcategory ON fooditem.Subcategory_ID = subcategory.Subcategory_ID
+    WHERE subcategory.Subcategory_name ='".$subcat_name."'";
     $result = mysqli_query($db, $sql);
 ?>
 
