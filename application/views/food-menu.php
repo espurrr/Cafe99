@@ -1,18 +1,18 @@
 <?php
-    // $server = "localhost";
-    // $username = "root";
-    // $password = "";
-    // $database = "cafe99";
+    $server = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "cafe99";
 
-    // $db = mysqli_connect($server, $username, $password, $database);
+    $db = mysqli_connect($server, $username, $password, $database);
 
-    // if(mysqli_connect_errno()){
-    //     echo "Error: Could not connect to database";
-    //     exit;
-    // }
+    if(mysqli_connect_errno()){
+        echo "Error: Could not connect to database";
+        exit;
+    }
 
-    // $sql = "SELECT * FROM fooditem"; 
-    // $result = mysqli_query($db, $sql);
+    $sql = "SELECT * FROM fooditem"; 
+    $result = mysqli_query($db, $sql);
 ?>
 
 <!DOCTYPE html>
