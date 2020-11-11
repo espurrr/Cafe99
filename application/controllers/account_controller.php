@@ -9,7 +9,7 @@ class Account_controller extends JB_Controller{
     }
 
     public function index(){
-        $this->view('home');
+        $this->view('sidebar_cashier');
     }
 
     public function signup(){
