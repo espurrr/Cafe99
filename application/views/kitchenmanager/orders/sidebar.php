@@ -9,9 +9,12 @@
                 </div>
             </div>
             <ul>
-                <li><a href="../../news_feed/1.1/news_feed.php" class="normal">News Feed</a></li>
-                <li><a href="orders.php" class="active normal">Orders</a></li>
-                <li><a href="../../food_menu/1.3/food_menu.php" class="normal">Food Menu</a></li>
+                <!-- <li><a href="#" class="normal">News Feed</a></li> -->
+                <li><?php echo anchor("", "News Feed")?></li>
+                <!-- <li><a href="orders.php" class="active normal">Orders</a></li> -->
+                <li><?php echo anchor("km_controller/orders", "Orders")?></li>
+                <!-- <li><a href="../../food_menu/1.3/food_menu.php" class="normal">Food Menu</a></li> -->
+                <li><?php echo anchor("km_controller/foodmenu", "Food Menu")?></li>
             </ul>
             <div><a href="" class="logout-btn normal">Logout</a></div>
         </div>

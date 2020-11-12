@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orders</title>
     <?php echo link_css("css/kitchen-manager/orders/sidebar.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/kitchen-manager/orders/orders.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/kitchen-manager/orders/popup.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/header.css?ts=<?=time()?>"); ?>
@@ -12,7 +13,7 @@
 </head>
 <body>
     <?php include 'sidebar.php';?>
-    <?php include '../header/header.php';?>
+    <?php include '../application/views/header/header-dashboard.php';?>
     <?php include 'popup.php';?>
     <div class="tab">
         <button class="tablinks active" onclick="changeOrderTab(event, 'Onqueue')">Onqueue</button>
