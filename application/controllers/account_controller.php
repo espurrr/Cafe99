@@ -13,7 +13,7 @@ class Account_controller extends JB_Controller{
     }
 
     public function signup(){
-        $this->view('home');
+        $this->view('signup');
     }
     public function signupSubmit(){
         
