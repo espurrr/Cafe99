@@ -17,9 +17,9 @@
        
              <div class="admin-content">
                <!--    <a href="RM.php" class="button">Manage Fooditems</a>-->
-        <?php echo anchor("rm_controller/fooditem", "Manage Fooditems",$options = ["button"]) ?>
+        <?php echo anchor("rm_controller/fooditem", "Manage Fooditems",['class'=>"button"]) ?>
          <!--   <a href="create.php" class="button">Add  Fooditems</a>-->
-         <?php echo anchor("rm_controller/fooditemcreate", "Add  Fooditems",$options = ["button"]) ?>
+         <?php echo anchor("rm_controller/fooditemcreate", "Add  Fooditems",['class'=>"button"]) ?>
 
              <div class="content">
                  <h2 class="page-title">Add Fooditems</h2>
