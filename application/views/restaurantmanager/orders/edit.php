@@ -18,9 +18,9 @@
                
                   
        <!--     <a href="RM.php" class="button">Manage Orders</a>-->
-       <?php echo anchor("rm_controller/orders", "Manage Orders",$options = ["button"]) ?>
+       <?php echo anchor("rm_controller/orders", "Manage Orders",['class'=>"button"]) ?>
          <!--   <a href="create.php" class="button">Add Orders</a>-->
-            <?php echo anchor("rm_controller/orderscreate", "Add Orders",$options = ["button"]) ?>
+            <?php echo anchor("rm_controller/orderscreate", "Add Orders",['class'=>"button"]) ?>
          
             <div class="content">
                  <h2 class="page-title">Edit Orders</h2>

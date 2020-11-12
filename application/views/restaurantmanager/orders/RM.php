@@ -18,9 +18,9 @@
              <div class="admin-content">
             
        <!--     <a href="RM.php" class="button">Manage Orders</a>-->
-            <?php echo anchor("rm_controller/orders", "Manage Orders",$options = ["button"]) ?>
+            <?php echo anchor("rm_controller/orders", "Manage Orders",['class'=>"button"]) ?>
          <!--   <a href="create.php" class="button">Add Orders</a>-->
-            <?php echo anchor("rm_controller/orderscreate", "Add Orders",$options = ["button"]) ?>
+            <?php echo anchor("rm_controller/orderscreate", "Add Orders",['class'=>"button"]) ?>
 
             <div class="search-container">
             <form action="#">
@@ -53,7 +53,7 @@
                             <td>Delivery</td>
                             <td>12.30 p.m</td>
                          <!--   <td><a href="edit.php" class="edit">Edit</a></td>-->
-                            <td><?php echo anchor("rm_controller/ordersedit", "Edit",$options = ["button"]) ?></td> 
+                            <td><?php echo anchor("rm_controller/ordersedit", "Edit",['class'=>"edit"]) ?></td> 
                             <td><a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a></td>
                             
                         </tr>

@@ -19,9 +19,9 @@
             <div class="admin-content">
                 
         <!--    <a href="RM.php" class="button">Manage Fooditems</a>-->
-        <?php echo anchor("rm_controller/fooditem", "Manage Fooditems",$options = ["button"]) ?>
+        <?php echo anchor("rm_controller/fooditem", "Manage Fooditems",['class'=>"button"]) ?>
          <!--   <a href="create.php" class="button">Add  Fooditems</a>-->
-         <?php echo anchor("rm_controller/fooditemcreate", "Add  Fooditems",$options = ["button"]) ?>
+         <?php echo anchor("rm_controller/fooditemcreate", "Add  Fooditems",['class'=>"button"]) ?>
               
             <div class="search-container">
     <form action="#">
@@ -49,7 +49,7 @@
                                <td>Please note that vegetables may be substituted based on availability</td>
                                <td>Available</td>
                              <!--  <td><a href="edit.php" class="edit">Edit</a></td>-->
-                               <td><?php echo anchor("rm_controller/fooditemedit", "Edit",$options = ["button"]) ?></td> 
+                               <td><?php echo anchor("rm_controller/fooditemedit", "Edit",['class'=>"edit"]) ?></td> 
                                <td><a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a></td>
                               
                             </tr>

@@ -20,7 +20,7 @@
        
        <a href="#" class="button">Export</a>
     <!--   <a href="chart.php" class="button">Get Chart</a>-->
-       <?php echo anchor("rm_controller/analyticschart", "Get Chart",$options = ["button"]) ?>
+       <?php echo anchor("rm_controller/analyticschart", "Get Chart",['class'=>"button"]) ?>
       
 
         <div class="content">
