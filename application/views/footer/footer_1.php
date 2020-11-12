@@ -14,7 +14,7 @@
     <div class="container">
         <div class="footer__logo" >
             <a class="footer__logo__img" href="#">
-                <img src="img/logo.png">
+                <img src="<?php echo BASE_URL?>/public/images/logo.png">
             </a>
         </div>
        
