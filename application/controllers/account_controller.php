@@ -149,7 +149,7 @@ class Account_controller extends JB_Controller{
                 $this->set_session($session_data);
                 //to be tested
                 if($session_data['role']=="customer"){
-                    $this->index();
+                    redirect("customer_controller/");
                 }else if($session_data['role']=="kitchen_manager"){
                     redirect("km_controller/index");
                 }else if($session_data['role']=="cashier"){
@@ -173,10 +173,6 @@ class Account_controller extends JB_Controller{
         $this->view('forgot');
     }
 
-    public function logout(){
-        $this->destroy_session();
-        $this->view('login');
-    }
 
 
 }

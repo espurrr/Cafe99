@@ -13,7 +13,7 @@ class Cashier_Controller extends JB_Controller{
     }
 
     public function index(){
-        $this->view('deliveryperson/dp');
+        $this->view('cashier/sidebar_cashier');
 
     }
 

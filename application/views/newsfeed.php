@@ -14,7 +14,7 @@
 
 <body>
     <?php include "sidebar.php";?>
-    <?php include 'header.php';?>
+    <!-- <?php include 'header.php';?> -->
     <div class="newsfeed-wrapper">
         <div class="admin-content">
             <div class="content">

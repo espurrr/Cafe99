@@ -50,7 +50,7 @@
  var session = eval('(<?php echo json_encode($_SESSION)?>)');
  console.log(session);
 
-//you may access session variable "x" as follows
+
 
 </script>
 

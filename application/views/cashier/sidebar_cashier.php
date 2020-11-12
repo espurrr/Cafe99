@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="sidebar_cashier.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php echo link_css("css/sidebar_cashier.css?ts=<?=time()?>"); ?>
 
 </head>
 <body>
-
+<?php include  "../application/views/header/header-dashboard.php";?>
 <div class="dashboard">
   <div class="tab">
   <div class="profile-text">
@@ -24,13 +24,11 @@
 </div>
 
 <div id="news_feed" class="tabcontent">
-  <h3>News Feed</h3>
-  <p>news feed</p>
+<?php include '../application/views/newsfeed.php';?>
 </div>
 
 <div id="place_order" class="tabcontent">
-  <h3>Place Order</h3>
-  <p>place order<p> 
+<!-- <?php include '../application/views/customer/cust-cart.php';?> -->
 </div>
 
 <div id="order_history" class="tabcontent">
