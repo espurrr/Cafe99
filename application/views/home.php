@@ -23,9 +23,9 @@
 
 <body style="background: #fff url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
   <?php  if ($this->get_session('logged')){
-          include 'header/cust-logged-in-header.php';
+          include '../application/views/header/cust-logged-in-header.php';
     }else{
-      include 'header/header.php';
+      include '../application/views/header/header.php';
     }
      ?>
 

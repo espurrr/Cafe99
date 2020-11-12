@@ -10,7 +10,7 @@
 <body>
 
 <ul id="breadcrumbs">
-    <li><?php echo anchor("order_controller/cust_cart", "Cart") ?></li>
+    <li><?php echo anchor("customer_controller/mycart", "Cart") ?></li>
     <li>Order</li>
     <li>Payment</li>
   
@@ -149,7 +149,7 @@
             </div><br>
             <div class="total">Service charges: 50.00</div>                
             <div class="total"><b>Total: 1000.00</b></div><br>
-            <button class="checkout-button" href="#" ><?php echo anchor("order_controller/cust_payment", "PROCEED TO CHECKOUT") ?></button>
+            <button class="checkout-button" href="#" ><?php echo anchor("customer_controller/payment", "PROCEED TO CHECKOUT") ?></button>
 
         </div>
         <!-- modal end -->
@@ -161,7 +161,7 @@
             </div>
             <div class="total">Service charges: 50.00</div>                
             <div class="total"><b>Total: 1000.00</b></div>
-            <button class="checkout-button" href="#" ><?php echo anchor("order_controller/cust_payment", "PROCEED TO CHECKOUT") ?></button>
+            <button class="checkout-button" href="#" ><?php echo anchor("customer_controller/payment", "PROCEED TO CHECKOUT") ?></button>
             
         </div>
         

@@ -10,8 +10,8 @@
 <body>
 
 <ul id="breadcrumbs">    
-    <li><?php echo anchor("order_controller/cust_cart", "Cart") ?></li>
-    <li><?php echo anchor("order_controller/cust_order_info", "Order") ?></li>
+    <li><?php echo anchor("customer_controller/mycart", "Cart") ?></li>
+    <li><?php echo anchor("customer_controller/order", "Order") ?></li>
     <li>Payment</li>
 </ul>
 
@@ -34,7 +34,7 @@
                     </label>
     
                 </div>
-            <button class="checkout-button mob-complete" href="#" ><?php echo anchor("order_controller/cust_order_info", "COMPLETE ORDER") ?></button>
+            <button class="checkout-button mob-complete" href="#" ><?php echo anchor("customer_controller/order", "COMPLETE ORDER") ?></button>
             
                
                
