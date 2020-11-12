@@ -16,8 +16,10 @@
        
 
              <div class="admin-content">
-                <a href="RM.php" class="button">Manage Subcategories</a>
-                <a href="create.php" class="button">Add  Subcategories</a>
+             <!--   <a href="RM.php" class="button">Manage Subcategories</a>-->
+             <?php echo anchor("rm_controller/subcategory", "Manage Subcategories",$options = ["button"]) ?>
+               <!-- <a href="create.php" class="button">Add  Subcategories</a>-->
+               <?php echo anchor("rm_controller/subcategorycreate", "Add Subcategories",$options = ["button"]) ?>
 
              <div class="content">
                  <h2 class="page-title">Add Subcategories</h2>

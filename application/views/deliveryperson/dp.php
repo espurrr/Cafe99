@@ -3,8 +3,10 @@
 <head> 
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <?php echo link_css("css/deliveryperson/newsfeed.css?ts=<?=time()?>");?>
+  <link rel="stylesheet" type="text/css" href="newsfeed.css">
   <?php echo link_css("css/deliveryperson/dpstyle.css?ts=<?=time()?>");?>
+  <?php echo link_css("css/deliveryperson/newsfeed.css?ts=<?=time()?>");?>
+  <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
   #more {display: none;}
@@ -18,9 +20,14 @@
   <input type="checkbox" id="menu">
 
   <nav>
-  
+
+  <div class="header" style="height:2px;">
+ <!-- <p>Dashboard</p>-->
+  <img class="logo" id="mlogo" src="logo.png">
+  </div>
+
   <label for="menu" class="menu-bar">
-           
+   
   <i class="fa fa-bars"></i>
            
   </label>
@@ -68,7 +75,7 @@
                             <div class="news_content" style="padding-left:20px;padding-right:20px">
                             <div class="text_title"><p>Title of the annoucement</p></div>
                             <br>
-                            <div class="text-message"><p>The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta, is inviting<span id="dots">...</span><span id="more"> the community to celebrate National Pasta Month this October. With 10 locations including three scheduled to debut this fall, Squisito continues to serve up the perfect recipe for unwavering success and longevity. Despite the ongoing pandemic, Squisito remains committed to the communities in which it does business. During quarantine, the restaurant added family meal deals and access to grocery items and other provisions to offer added ease of convenience to its customers. Squisito also donated thousands of dollars to medical facilities through its catering match program as well as extended further support with complimentary meals to our healthcare heroes.</span></p></div>
+                            <div class="text-message"><p>The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta, is inviting the community to celebrate National Pasta<span id="dots">...</span><span id="more">Month this October. With 10 locations including three scheduled to debut this fall, Squisito continues to serve up the perfect recipe for unwavering success and longevity. Despite the ongoing pandemic, Squisito remains committed to the communities in which it does business. During quarantine, the restaurant added family meal deals and access to grocery items and other provisions to offer added ease of convenience to its customers. Squisito also donated thousands of dollars to medical facilities through its catering match program as well as extended further support with complimentary meals to our healthcare heroes.</span></p></div>
                             <button onclick="myFunction()" id="myBtn">Read more</button>
                            </div>
                     </div>
@@ -93,7 +100,7 @@
                             <div class="news_content" style="padding-left:20px;padding-right:20px">
                             <div class="text_title"><p>Title of the annoucement</p></div>
                             <br>
-                            <div class="text-message"><p>The number of COVID-19 cases in Sri Lanka is on the rise again, and it feels a lot heavier than the first wave. A new cluster emerged a few days back, and right now, there are 1514 active cases<span id="dots1">...</span><span id="more1"> in the country (13/10/2020, 10.54 AM). 
+                            <div class="text-message"><p>The number of COVID-19 cases in Sri Lanka is on the rise again, and it feels a lot heavier than<span id="dots1">...</span><span id="more1">the first wave. A new cluster emerged a few days back, and right now, there are 1514 active cases in the country (13/10/2020, 10.54 AM). 
  
                             However, unlike the first time, many of the restaurants, hotels, supermarkets and other retail stores are still functioning, which is a good thing. But, it's absolutely vital to do it in a manner that it protects the employees, customers, and communities.</span></p></div>
                             <button onclick="myFunction1()" id="myBtn1">Read more</button>
@@ -141,5 +148,7 @@ function myFunction1() {
 </body>
 
 </html>
+  
+  
   
   

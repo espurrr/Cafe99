@@ -19,7 +19,8 @@
         <div class="admin-content">
        
        <a href="#" class="button">Export</a>
-       <a href="chart.php" class="button">Get Chart</a>
+    <!--   <a href="chart.php" class="button">Get Chart</a>-->
+       <?php echo anchor("rm_controller/analyticschart", "Get Chart",$options = ["button"]) ?>
       
 
         <div class="content">

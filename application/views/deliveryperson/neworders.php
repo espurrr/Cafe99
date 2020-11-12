@@ -6,6 +6,7 @@
   <?php echo link_css("css/deliveryperson/dpstyle.css?ts=<?=time()?>");?>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <?php echo link_css("css/deliveryperson/modal.css?ts=<?=time()?>");?>
+  <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
  </head>
@@ -16,7 +17,11 @@
   <input type="checkbox" id="menu">
 
   <nav>
-  
+  <div class="header" style="height:2px;">
+ <!-- <p>Dashboard</p>-->
+  <img class="logo" id="mlogo" src="logo.png">
+  </div>
+
   <label for="menu" class="menu-bar">
            
   <i class="fa fa-bars"></i>

@@ -18,7 +18,8 @@
       
 
              <div class="admin-content">
-                <a href="RMnewsfeed.php" class="button">News Feed</a>
+              <!--  <a href="RMnewsfeed.php" class="button">News Feed</a>-->
+                <?php echo anchor("rm_controller/index", "News Feed",$options = ["button"]) ?>
             
 
              <div class="content">

@@ -16,10 +16,13 @@
         
              <div class="admin-content">
                 
-            <a href="RM.php" class="button">Manage Orders</a>
-            <a href="create.php" class="button">Add Orders</a>
-
-             <div class="content">
+                   
+       <!--     <a href="RM.php" class="button">Manage Orders</a>-->
+       <?php echo anchor("rm_controller/orders", "Manage Orders",$options = ["button"]) ?>
+         <!--   <a href="create.php" class="button">Add Orders</a>-->
+            <?php echo anchor("rm_controller/orderscreate", "Add Orders",$options = ["button"]) ?>
+            
+            <div class="content">
                  <h2 class="page-title">Add Orders</h2>
                 
                  <form action="RM.php" method="post">

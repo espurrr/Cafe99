@@ -18,8 +18,10 @@
         
 
             <div class="admin-content">
-                <a href="RM.php" class="button">Manage Subcategories</a>
-                <a href="create.php" class="button">Add  Subcategories</a>
+            <!--    <a href="RM.php" class="button">Manage Subcategories</a>-->
+                <?php echo anchor("rm_controller/subcategory", "Manage Subcategories",$options = ["button"]) ?>
+            <!--    <a href="create.php" class="button">Add  Subcategories</a>-->
+            <?php echo anchor("rm_controller/subcategorycreate", "Add Subcategories",$options = ["button"]) ?>
              
                 <div class="search-container">
     <form action="#">
@@ -40,7 +42,8 @@
                         <tbody>
                            <tr>
                                <td>Rice</td>
-                               <td><a href="edit.php" class="edit">Edit</a></td>
+                            <!--   <td><a href="edit.php" class="edit">Edit</a></td>-->
+                            <td><?php echo anchor("rm_controller/subcategoryedit", "Edit",$options = ["button"]) ?></td> 
                                <td><a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a></td>
                               
                             </tr>

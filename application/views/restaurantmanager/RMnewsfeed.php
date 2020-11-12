@@ -20,7 +20,8 @@
 
             <div class="admin-content">
                 <div class="newsfeed">
-                <a href="create.php" class="button">Add  News</a>
+             <!--  <a href="create.php" class="button">Add  News</a>-->
+              <?php echo anchor("rm_controller/create", "Add News",$options = ["button"]) ?>
             </div>
 
                 <div class="content">
@@ -49,7 +50,8 @@
                            </div>
                            <br>
                            <div class="action">
-                           <a href="edit.php" class="edit">Edit</a>
+                        <!--   <a href="edit.php" class="edit">Edit</a>-->
+                           <?php echo anchor("rm_controller/edit", "Edit",$options = ["edit"]) ?>
                            <a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a>
                            </div>
                     </div>
@@ -80,7 +82,8 @@
                            </div>
                            <br>
                            <div class="action">
-                           <a href="edit.php" class="edit">Edit</a>
+                        <!--   <a href="edit.php" class="edit">Edit</a>-->
+                           <?php echo anchor("rm_controller/edit", "Edit",$options = ["edit"]) ?>
                            <a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a>
                            </div>
                     </div>
@@ -111,7 +114,8 @@
                            </div>
                            <br>
                            <div class="action">
-                           <a href="edit.php" class="edit">Edit</a>
+                         <!--  <a href="edit.php" class="edit">Edit</a>-->
+                           <?php echo anchor("rm_controller/edit", "Edit",$options = ["edit"]) ?>
                            <a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a>
                            </div>
                     </div>

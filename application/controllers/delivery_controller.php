@@ -16,6 +16,18 @@ class Delivery_Controller extends JB_Controller{
         $this->view('deliveryperson/dp');
     }
 
+    public function neworders(){
+        $this->view('deliveryperson/neworders');
+    }
+
+    public function ondelivery(){
+        $this->view('deliveryperson/ondelivery');
+    }
+
+    public function dispatched(){
+        $this->view('deliveryperson/dispatched');
+    }
+
     public function logout(){
         $this->destroy_session();
         $this->view('login');

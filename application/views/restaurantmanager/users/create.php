@@ -16,9 +16,11 @@
        
 
              <div class="admin-content">
-                <a href="RM.php" class="button">Manage Users</a>
-                <a href="create.php" class="button">Add User</a>
-
+              <!--  <a href="RM.php" class="button">Manage Users</a>-->
+                <?php echo anchor("rm_controller/users", "Manage Users",$options = ["button"]) ?>
+              <!--  <a href="create.php" class="button">Add User</a>-->
+              <?php echo anchor("rm_controller/userscreate", "Add Users",$options = ["button"]) ?>
+                
              <div class="content">
                  <h2 class="page-title">Add Users</h2>
                 

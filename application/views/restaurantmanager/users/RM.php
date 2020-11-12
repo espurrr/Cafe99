@@ -17,8 +17,10 @@
 
              <div class="admin-content">
                 
-            <a href="RM.php" class="button">Manage Users</a>
-            <a href="create.php" class="button">Add User</a>
+          <!--  <a href="RM.php" class="button">Manage Users</a>-->
+            <?php echo anchor("rm_controller/users", "Manage Users",$options = ["button"]) ?>
+         <!--   <a href="create.php" class="button">Add User</a>-->
+            <?php echo anchor("rm_controller/userscreate", "Add Users",$options = ["button"]) ?>
             
             <div class="search-container">
             <form action="#">
@@ -44,7 +46,8 @@
                             <td>123</td>
                             <td>0783725988</td>
                             <td>Cashier</td>
-                            <td><a href="edit.php" class="edit">Edit</a></td>
+                          <!--  <td><a href="edit.php" class="edit">Edit</a></td>-->
+                           <td><?php echo anchor("rm_controller/userscreate", "Edit",$options = ["button"]) ?></td> 
                             <td><a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a></td>
                             
                         </tr>
@@ -54,7 +57,8 @@
                             <td>abc</td>
                             <td>0773725999</td>
                             <td>Kitchen Manager</td>
-                            <td><a href="edit.php" class="edit">Edit</a></td>
+                         <!--   <td><a href="edit.php" class="edit">Edit</a></td>-->
+                            <td><?php echo anchor("rm_controller/usersedit", "Edit",$options = ["button"]) ?></td> 
                             <td><a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a></td>
                         </tr>
                         

@@ -16,8 +16,10 @@
       
 
              <div class="admin-content">
-                <a href="RM.php" class="button">Manage Fooditems</a>
-                <a href="create.php" class="button">Add  Fooditems</a>
+                 <!--    <a href="RM.php" class="button">Manage Fooditems</a>-->
+        <?php echo anchor("rm_controller/fooditem", "Manage Fooditems",$options = ["button"]) ?>
+         <!--   <a href="create.php" class="button">Add  Fooditems</a>-->
+         <?php echo anchor("rm_controller/fooditemcreate", "Add  Fooditems",$options = ["button"]) ?>
              <div class="content">
                  <h2 class="page-title">Edit Fooditems</h2>
                 
