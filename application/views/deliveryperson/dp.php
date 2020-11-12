@@ -23,7 +23,7 @@
 
   <div class="header" style="height:2px;">
  <!-- <p>Dashboard</p>-->
-  <img class="logo" id="mlogo" src="logo.png">
+  <img class="logo" id="mlogo" src="<?php echo BASE_URL?>/public/images/logo.png" style="height:58px;">
   </div>
 
   <label for="menu" class="menu-bar">
@@ -44,8 +44,10 @@
             </div>
         </div>
             <ul>
-                <li><a href="neworders.php">Orders</a></li>
-                <li><a class="active" href="dp.php">News Feed</a></li>
+                 <!--    <li><a class="active" href="./dporders.php">Orders</a></li> -->
+            <li><?php echo anchor("delivery_controller/neworders", "Orders") ?></li>
+            <!--    <li><a  href="./dp.php">News Feed</a></li>-->
+            <li><?php echo anchor("delivery_controller/index", "News Feed",['class'=>"active"]) ?></li>
                 
                 <li><a href="#">LogOut</a></li>
                 

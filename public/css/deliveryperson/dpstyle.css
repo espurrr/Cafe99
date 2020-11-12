@@ -37,7 +37,7 @@ body{
 
 nav{
 
-    background: #1D2951;
+    background: var(--colorYellow);
     line-height: 80px;
     position: fixed;
     margin-left: 0px;
