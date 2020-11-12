@@ -1,0 +1,260 @@
+    /* fonts */
+    @import url('https://fonts.googleapis.com/css?family=Fredoka+One&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+    /* Variable */
+    :root{
+        --light-yellow:#FBDD3F;
+        --unavailable-btn:#FF5A79;
+        --unavailable-btn-hover:#f84278;
+        --available-btn:#0BCE83;
+        --available-btn-hover:#0abE84;
+        --hover-transition:0.2s;
+        --non-hover-transition:0.6s;
+        --sidebar-width:250px;
+        /* tab */
+        --dark-grey:#363740;
+        --tab-text-color:#ccc;
+        --transition-time: 0.3s;
+    }
+
+    *{
+        box-sizing: border-box;
+        padding: 0;
+        margin:0;
+        font-family: 'Montserrat', sans-serif;
+
+    }
+    /* *:focus,*:hover{
+        outline:none;
+    } */
+
+    a{
+        text-decoration: none;
+        color: #000;
+    }
+
+    body {
+        /* padding: 5% 5%; */
+        background-color:var(--light-yellow);
+    }
+
+    .menu_container{
+        display: none;
+        margin-left: var(--sidebar-width);
+
+    }
+
+    .grid {
+        padding: 30px 30px;
+        display: grid; 
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));/*auto-fill center items considering grid-gap and content */
+        grid-column-gap: 2%;
+        grid-row-gap: 40px;
+        align-items: stretch;
+    }
+
+    @media  (min-width:500px) and (max-width:600px){
+        .grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .grid article {
+        border: 1px solid #ccc;
+        box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        background-color: #fff;
+    }
+
+    /* Food item image */
+    .grid article img {
+        max-width: 100%;
+        border: 1px solid #fff;
+        border-radius: 10px;
+    }
+
+    /*  Title & Price */
+    .grid article .text{
+        padding: 0px 20px 10px 20px;
+        text-align: center;
+    }
+
+    /* Title */
+    /* .grid article .text h4{
+        font-size: 20px;
+    } */
+
+    @media  (max-width:470px){
+        .grid article .text h4{
+            font-size: 18px;
+        }
+    }
+
+    /* Product ID */
+    .grid article .text p {
+        padding-top:10px;
+        font-size: 0.9rem;
+    }
+
+    @media  (max-width:470px){
+        .grid article .text p {
+            font-size: 0.8rem;
+        }
+    }
+
+    /* Availability */
+    .menu_container .grid .text .availability{
+        text-transform: capitalize;
+        
+    } 
+
+    /* Button Container */
+    button:focus {
+        border: none;
+        outline: none;
+    }
+
+    .menu_container .btn-container {
+        padding: 0px 0px 20px 0px;
+        display: flex;
+        justify-content: space-evenly;
+        /* grid-template-columns: 1fr 4fr 4fr 1fr;
+        grid-gap: 10%;
+        grid-template-areas:"a b c d"; */
+    }
+
+    /* @media (max-width:470px){
+        .menu_container .btn-container {
+            grid-template-columns: 1fr 2fr 2fr 1fr;
+        }
+    }   
+    @media (max-width:470px){
+        .menu_container .btn-container {
+            grid-gap: 5%;
+        }
+    } */
+
+
+    /* Common For both buttons */
+    .menu_container .grid article .btn-container .btn{ 
+        height: 100%;
+        padding: 10px 30px;
+        border-radius: 10px;
+        box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.5);
+        transition: 0.6s;
+    }
+
+    .menu_container .grid article .btn-container .btn:hover{
+        box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.1);
+        transition: var(--hover-transition);
+        cursor: pointer;
+    }
+
+    /* Available button */
+    .menu_container .grid article .btn-container .available{
+        /* grid-area:b; */
+        border: 1px solid #bbb;
+        background-color: var(--available-btn);
+    }
+
+    .menu_container .grid article .btn-container .available .fa-check{
+        color:#fff;
+        transition: var(--non-hover-transition);
+    }
+
+    .menu_container .grid article .btn-container .available:hover{
+        border: 1px solid #bbb;
+        background-color: var(--available-btn-hover);
+    }
+
+
+    /* Unavailable button */
+    .menu_container .grid article .btn-container .unavailable{
+        /* grid-area:c; */
+        border: 1px solid #bbb;
+        background-color: var(--unavailable-btn);
+    }
+
+    .menu_container .grid article .btn-container .unavailable .fa-times{
+        color: #fff;
+        transition: var(--non-hover-transition);
+    }
+
+    .menu_container .grid article .btn-container .unavailable:hover{
+        border: 1px solid #bbb; 
+        background-color: var(--unavailable-btn-hover);
+    }
+
+    /* Search Bar */
+    .menu_container .search_container {
+        padding: 25px 0;
+        margin-right: 20px;
+    }
+    .search_container form{
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .menu_container input[type=text] {
+        padding: 6px;
+        margin-top: 8px;
+        font-size: 17px;
+        border: none;
+    }
+
+    .menu_container .search_container button {
+        padding: 6px 10px;
+        margin-top: 8px;
+        margin-right: 16px;
+        background: #ddd;
+        font-size: 17px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .menu_container .search_container button:hover {
+        background: #ccc;
+    }
+
+/* food tabs */
+.tab {
+    overflow: hidden;
+    margin-left: var(--sidebar-width);
+    /* border: 1px solid #ccc; */
+    background-color: #f1f1f1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 40%;
+    border-top: 1px solid var(--dark-grey);
+    border-right: 1px solid var(--dark-grey);
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 18px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    font-weight: 600;
+    background-color: var(--dark-grey);
+    color:var(--tab-text-color);
+    transition: var(--transition-time);
+  
+  }
+  
+  .tab button:hover {
+    background-color: var(--light-yellow);
+    color: #000;
+    transition: var(--transition-time);
+  }
+  
+  .tab button.active {
+    background-color: var(--light-yellow);
+    color: #000;
+  }
