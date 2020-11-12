@@ -20,6 +20,12 @@ class KM_Controller extends JB_Controller{
         $this->destroy_session();
         $this->view('login');
     }
-   
+
+    public function orders(){
+        $this->view('kitchenmanager/orders/orders');
+    }
+    public function foodmenu(){
+        $this->view('kitchenmanager/foodmenu/foodmenu');
+    }
 }
 ?>
