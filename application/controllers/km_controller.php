@@ -27,5 +27,8 @@ class KM_Controller extends JB_Controller{
     public function foodmenu(){
         $this->view('kitchenmanager/foodmenu/foodmenu');
     }
+    public function newsfeed(){
+        $this->view('kitchenmanager/newsfeed/newsfeed');
+    }
 }
 ?>
