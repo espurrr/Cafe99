@@ -100,7 +100,7 @@ body {
 .dropdown-content a {
     float: none;
     color: black;
-    padding: 12px 16px;
+    padding: 6px 16px;
     text-decoration: none;
     display: block;
     text-align: center;
@@ -134,7 +134,7 @@ body {
 #logsign1 {
     border-radius: 10px;
     padding: 8px 15px;
-    background-color: #fbdd3f;
+    background-color: #FAD74E;
     color: black;
     border: 2px solid #000000;
     transition: all 1s ease;
@@ -161,7 +161,7 @@ body {
     border-radius: 25px;
     padding: 8px 15px;
     border: 2px solid #000;
-    background-color: #fbdd3f;
+    background-color: #FAD74E;
     color: black;
     transition: all 1s ease;
 }

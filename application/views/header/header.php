@@ -5,10 +5,18 @@
   <?php echo link_css("css/header.css?ts=<?=time()?>"); ?>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+  <style>
+    #logsign1 {
+      background: #FAD74E url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;
+    }
+    #logsign2:hover {
+      background: #FAD74E url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="topnav" id="myTopnav">
+  <div class="topnav" id="myTopnav" style="background: #FAD74E url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
 
    <img class="logo" id="mlogo" src="<?php echo BASE_URL?>/public/images/logo.png">
     
@@ -50,15 +58,14 @@
         </div>
       </div>
       
-        <div class="signlog">
+        <div class="signlog" style="background: #FAD74E url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;" >
           <div class="route-dropdown" style="padding-right: 10px;" onclick="toggleMenu(this)">
-        <button class="dropbtn" id="logsign1">LogIn
-        </button>
-      </div>
-        <div class="route-dropdown" style="padding-left: 10px;" onclick="toggleMenu(this)">
-        <button class="dropbtn" id="logsign2">SignUp
-        </button>
-      </div>
+            <button class="dropbtn" id="logsign1">LogIn</button>
+          </div>
+          
+          <div class="route-dropdown" style="padding-left: 10px;" onclick="toggleMenu(this)">
+            <button class="dropbtn" id="logsign2">SignUp</button>
+          </div>
         </div>
       
     </div>
