@@ -37,7 +37,8 @@
     <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/kitchen-manager/foodmenu/foodmenu.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/kitchen-manager/foodmenu/sidebar.css?ts=<?=time()?>"); ?>
-
+    <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 </head>
@@ -358,7 +359,7 @@
             ?>
         </main>
     </div>
-
+    <?php include '../application/views/footer/footer_3.php';?>
     <?php echo link_js("js/kitchen-manager/foodmenu/searchbar.js"); ?>
     <?php echo link_js("js/kitchen-manager/foodmenu/foodmenu.js"); ?>
 </body>
