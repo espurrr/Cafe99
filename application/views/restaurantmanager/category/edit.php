@@ -17,9 +17,9 @@
 
              <div class="admin-content">
                  <!--   <a href="RM.php" class="button">Manage Categories</a>-->
-            <?php echo anchor("rm_controller/category", "Manage Categories",$options = ["button"]) ?>
+            <?php echo anchor("rm_controller/category", "Manage Categories",['class'=>"button"]) ?>
              <!--   <a href="create.php" class="button">Add  Categories</a>-->
-             <?php echo anchor("rm_controller/categorycreate", "Add Categories",$options = ["button"]) ?>
+             <?php echo anchor("rm_controller/categorycreate", "Add Categories",['class'=>"button"]) ?>
 
               
              <div class="content">

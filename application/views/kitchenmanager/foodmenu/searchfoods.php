@@ -1,5 +1,9 @@
 <?php
-    // include 'connection.php';
+    $server = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "cafe99";
+    $db = mysqli_connect($server, $username, $password, $database);
 
     if (isset($_GET['input'])){
         $name = $_GET['input'];

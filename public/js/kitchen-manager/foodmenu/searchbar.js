@@ -2,11 +2,14 @@ function showResult(str) {
     var xmlhttp=new XMLHttpRequest();
     xmlhttp.onreadystatechange=function() {
         if (this.readyState==4 && this.status==200) {
-            document.getElementById("grid").innerHTML="";
-            document.getElementById("grid").innerHTML=this.responseText;
+            // document.getElementById("grid").innerHTML="";
+            // document.getElementById("grid").innerHTML=this.responseText;
+            document.getElementsByClassName("subcategory-title").innerHTML="";
+            document.getElementsByClassName("grid").innerHTML="";
+            document.getElementsByClassName("grid").innerHTML=this.responseText;
         }
     }
-    xmlhttp.open("GET","search_foods.php?input="+str,true);
+    xmlhttp.open("GET","../../../../application/views/kitchenmanager/foodmenu/searchfoods.php?input="+str,true);
     xmlhttp.send();
 }
 

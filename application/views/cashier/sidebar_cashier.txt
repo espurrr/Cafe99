@@ -28,7 +28,7 @@
 </div>
 
 <div id="place_order" class="tabcontent">
-<!-- <?php include '../application/views/customer/cust-cart.php';?> -->
+<?php include '../application/views/customer/cust-cart.php';?>
 </div>
 
 <div id="order_history" class="tabcontent">

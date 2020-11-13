@@ -21,7 +21,7 @@
             <div class="admin-content">
                 <div class="newsfeed">
              <!--  <a href="create.php" class="button">Add  News</a>-->
-              <?php echo anchor("rm_controller/create", "Add News",$options = ["button"]) ?>
+              <?php echo anchor("rm_controller/create", "Add News",['class'=>"button"]) ?>
             </div>
 
                 <div class="content">
@@ -51,7 +51,7 @@
                            <br>
                            <div class="action">
                         <!--   <a href="edit.php" class="edit">Edit</a>-->
-                           <?php echo anchor("rm_controller/edit", "Edit",$options = ["edit"]) ?>
+                           <?php echo anchor("rm_controller/edit", "Edit",['class'=>"edit"]) ?>
                            <a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a>
                            </div>
                     </div>
@@ -83,7 +83,7 @@
                            <br>
                            <div class="action">
                         <!--   <a href="edit.php" class="edit">Edit</a>-->
-                           <?php echo anchor("rm_controller/edit", "Edit",$options = ["edit"]) ?>
+                           <?php echo anchor("rm_controller/edit", "Edit",['class'=>"edit"]) ?>
                            <a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a>
                            </div>
                     </div>
@@ -115,7 +115,7 @@
                            <br>
                            <div class="action">
                          <!--  <a href="edit.php" class="edit">Edit</a>-->
-                           <?php echo anchor("rm_controller/edit", "Edit",$options = ["edit"]) ?>
+                           <?php echo anchor("rm_controller/edit", "Edit",['class'=>"edit"]) ?>
                            <a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a>
                            </div>
                     </div>
