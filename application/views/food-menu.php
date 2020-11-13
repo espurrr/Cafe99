@@ -40,10 +40,16 @@
 </head>
 
 <body style="background: #FAD74E url(<?php echo BASE_URL;?>/public/images/texture.png) repeat;">
-  <?php include 'header.php';?>
+<?php  if ($this->get_session('logged')){
+          include '../application/views/header/cust-logged-in-header.php';
+    }else{
+      include '../application/views/header/header.php';
+    }
+?>
   <ul class="breadcrumb">
         <li><a href="../cafe99_complete_home_final/1.1/home.php">Home</a></li>
-        <li>Subcategory</li>
+        <li>Food</li>
+        <li>Cakes</li>
   </ul>
   <div class="food_menu_wrapper">
   <div class="container">
@@ -79,7 +85,7 @@
     </main>
   </div>
   </div>
-  <?php include 'footer_1.php';?>
+  <!-- <?php include '../application/views/footer/footer_1.php';?> -->
 
 </body>
 </html>

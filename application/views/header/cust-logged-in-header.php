@@ -11,7 +11,7 @@
 
 
   <div class="topnav" id="myTopnav">
-   <img class="logo" id="mlogo" src="../../public/images/logo.png">
+   <img class="logo" id="mlogo" src="<?php echo BASE_URL?>/public/images/logo.png">
     
     <div class="all-nav" id="nav" >
       <div class="route-dropdown" onclick="toggleMenu(this)">
@@ -19,11 +19,13 @@
           <i class="fa fa-caret-down"></i>
       </button>
       <div id="waypoints" class="dropdown-content" >
-      <?php echo anchor("food_controller/menu", "Cat1") ?>
-        <a href="#">Cat2</a>
-        <a href="#">Cat3</a>
-        <a href="#">Cat4</a>
-        <a href="#">Cat5</a>
+        <a href="#">Rice</a>
+        <a href="#">Pizza</a>
+        <a href="#">Savouries</a>
+        <?php echo anchor("food_controller/", "Cakes") ?>
+        <a href="#">Noodles & Pasta</a>
+        <a href="#">Biriyani</a>
+        <a href="#">Buns</a>
       </div>
     </div>
       <div class="route-dropdown" onclick="toggleMenu(this)">
@@ -31,11 +33,11 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div id="routes" class="dropdown-content" >
-            <a href="">Cat1</a>
-            <a href="#">Cat2</a>
-            <a href="#">Cat3</a>
-            <a href="#">Cat4</a>
-            <a href="#">Cat5</a>
+            <a href="">Tea</a>
+            <a href="#">Milk Shakes</a>
+            <a href="#">Ice Blended</a>
+            <a href="#">Fresh Fruit Juice</a>
+            <a href="#">Coffee</a>
         </div>
       </div>
       <div class="route-dropdown" onclick="toggleMenu(this)">
@@ -43,11 +45,11 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div id="routes" class="dropdown-content" >
-            <a href="#">Cat1</a>
-            <a href="#">Cat2</a>
-            <a href="#">Cat3</a>
-            <a href="#">Cat4</a>
-            <a href="#">Cat5</a>
+            <a href="#">Ice creams</a>
+            <a href="#">Custards & Puddings</a>
+            <a href="#">Muffins</a>
+            <a href="#">Cheesecakes</a>
+       
         </div>
       </div>
       <div class="route-dropdown" onclick="toggleMenu(this)">
@@ -59,14 +61,14 @@
     padding-top: 5px;
     padding-right: 5px;
     padding-bottom: 5px;
-    padding-left: 5px;"><img src="../../public/images/img_avatar.png" class="avatar" width="50px" height="50px"> 
+    padding-left: 5px;"><img src="<?php echo BASE_URL?>/public/images/img_avatar.png" class="avatar" width="50px" height="50px"> 
         </button>
         <div id="routes" class="dropdown-content " >
            <!-- <div class="menu-other"> -->
-              <a href="#Subscribe">Profile</a>
-              <a href="#Subscribe">Favourites</a>
-              <a href="#Subscribe">My Orders</a>
-              <?php echo anchor("customer_controller/logout", "Logout") ?>
+           <?php echo anchor("customer_controller/myprofile", "My Profile") ?>
+           <?php echo anchor("customer_controller/myfavourites", "My Favourites") ?>
+           <?php echo anchor("customer_controller/myorders", "My Orders") ?>
+          <?php echo anchor("customer_controller/logout", "Logout") ?>
       <!-- </div> -->
         </div>
       </div>

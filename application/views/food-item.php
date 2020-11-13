@@ -1,18 +1,18 @@
 <?php
-    // $server = "localhost";
-    // $username = "root";
-    // $password = "";
-    // $database = "cafe99_test";
+    $server = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "cafe99_test";
 
-    // $db = mysqli_connect($server, $username, $password, $database);
+    $db = mysqli_connect($server, $username, $password, $database);
 
-    // if(mysqli_connect_errno()){
-    //     echo "Error: Could not connect to database";
-    //     exit;
-    // }
+    if(mysqli_connect_errno()){
+        echo "Error: Could not connect to database";
+        exit;
+    }
     $id = $_GET['id'];
     // $id = 1;
-    $sql = "SELECT * FROM bun WHERE id=$id";
+    $sql = "SELECT * FROM bun WHERE id=1";
     $result = mysqli_query($db, $sql);
     $row = mysqli_fetch_assoc($result);
 ?>
@@ -38,10 +38,15 @@
         
 </head>
 <body>
-    <?php include 'header.php';?>
+<?php  if ($this->get_session('logged')){
+          include '../application/views/header/cust-logged-in-header.php';
+    }else{
+      include '../application/views/header/header.php';
+    }
+?>
     <ul class="breadcrumb">
         <li><a href="../cafe99_complete_home_final/1.1/home.php">Home</a></li>
-        <li><a href="#">Subcategory</a></li>
+        <li><a href="#">Buns</a></li>
         <li><?php echo $row['title']; ?></li>
     </ul>
     <div class="food_item_wrapper">
@@ -69,7 +74,7 @@
         </div>
     </div>
     </div>
-    <?php include 'footer_2.php';?>
+    <!-- <?php include '../application/views/footer/footer_2.php';?> -->
 
 </body>
 </html>

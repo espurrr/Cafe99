@@ -26,11 +26,13 @@
           <i class="fa fa-caret-down"></i>
       </button>
       <div id="waypoints" class="dropdown-content" >
-        <a href="#">Cat1</a>
-        <a href="#">Cat2</a>
-        <a href="#">Cat3</a>
-        <a href="#">Cat4</a>
-        <a href="#">Cat5</a>
+        <a href="#">Rice</a>
+        <a href="#">Pizza</a>
+        <a href="#">Savouries</a>
+        <?php echo anchor("food_controller/", "Cakes") ?>
+        <a href="#">Noodles & Pasta</a>
+        <a href="#">Biriyani</a>
+        <a href="#">Buns</a>
       </div>
     </div>
       <div class="route-dropdown" onclick="toggleMenu(this)">
@@ -38,11 +40,11 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div id="routes" class="dropdown-content" >
-            <a href="#">Cat1</a>
-            <a href="#">Cat2</a>
-            <a href="#">Cat3</a>
-            <a href="#">Cat4</a>
-            <a href="#">Cat5</a>
+            <a href="">Tea</a>
+            <a href="#">Milk Shakes</a>
+            <a href="#">Ice Blended</a>
+            <a href="#">Fresh Fruit Juice</a>
+            <a href="#">Coffee</a>
         </div>
       </div>
       <div class="route-dropdown" onclick="toggleMenu(this)">
@@ -50,21 +52,20 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div id="routes" class="dropdown-content" >
-            <a href="#">Cat1</a>
-            <a href="#">Cat2</a>
-            <a href="#">Cat3</a>
-            <a href="#">Cat4</a>
-            <a href="#">Cat5</a>
+            <a href="#">Ice creams</a>
+            <a href="#">Custards & Puddings</a>
+            <a href="#">Muffins</a>
+            <a href="#">Cheesecakes</a>
         </div>
       </div>
       
         <div class="signlog" style="background: #FAD74E url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;" >
           <div class="route-dropdown" style="padding-right: 10px;" onclick="toggleMenu(this)">
-            <button class="dropbtn" id="logsign1">LogIn</button>
+            <button class="dropbtn" id="logsign1"><?php echo anchor("account_controller/login", "Login") ?></button>
           </div>
           
           <div class="route-dropdown" style="padding-left: 10px;" onclick="toggleMenu(this)">
-            <button class="dropbtn" id="logsign2">SignUp</button>
+            <button class="dropbtn" id="logsign2"><?php echo anchor("account_controller/signup", "Sign Up") ?></button>
           </div>
         </div>
       

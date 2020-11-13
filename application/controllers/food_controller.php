@@ -10,6 +10,11 @@ class Food_Controller extends JB_Controller{
     public function index(){
         $this->view('food-menu');
     }
+
+    public function cake(){
+        $this->view('food-item');
+    }
+
     // public function menu(){
     //     $this->view('food-menu');
     // }
@@ -29,7 +34,7 @@ class Food_Controller extends JB_Controller{
                     $food_data['cat'] = $cat;
                     $food_data['subcat'] = $subcat;
                     $result = $this->model->sub_cat_menu($food_data);
-                    echo"rk";
+                    // echo"rk";
                     if($result === "Food_not_retrieved"){
                         $this->set_flash("databaseError", "Sorry, cannot show our food at the moment. Please try again later.");
                         echo"dberror";
