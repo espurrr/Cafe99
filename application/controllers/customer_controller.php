@@ -48,7 +48,7 @@ class Customer_controller extends JB_Controller{
     
 
     public function myfavourites(){
-        $this->view('customer/cust-favourites');
+        $this->view('customer/cust-favorites');
     }
 
     public function myorders(){

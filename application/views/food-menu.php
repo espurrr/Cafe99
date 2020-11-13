@@ -45,6 +45,23 @@
         <li><a href="../cafe99_complete_home_final/1.1/home.php">Home</a></li>
         <li>Subcategory</li>
   </ul>
+
+  <?php
+  //  print_r($data);
+    if(count($data)==3){
+      echo $data['cat'];
+      echo $data['subcat'];
+      echo $data['id'];
+    }elseif(count($data)==2){
+      echo $data['cat'];
+      echo $data['subcat'];
+    }
+       
+      
+       
+  
+  
+  ?>
   <div class="food_menu_wrapper">
   <div class="container">
     <main class="grid">

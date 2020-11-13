@@ -67,7 +67,7 @@ class Account_controller extends JB_Controller{
     }
 
     public function activationEmail($recipient_email, $recipient_name, $subject, $html_body, $token){//$
-        if(file_exists('../system/plugins/PHPMailer/mailer.php')) echo 'yes IN TEST';
+        // if(file_exists('../system/plugins/PHPMailer/mailer.php')) echo 'yes IN TEST';
         $mailer = new JB_Mailer(true);
         // echo "in activationEmail ";
 

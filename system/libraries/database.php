@@ -195,7 +195,24 @@ class Database {
         $this->Query = $this->db->prepare("INSERT INTO " . $table_name . "(" . $columns . ") VALUES (" . $placeholder . ")");
         return $this->Query->execute($placeholder_values);
   
-      }
+    }
+    // SELECT * FROM users INNER JOIN teacher ON users.id = teacher.id
+
+    public function Join($table1, $table2, $condition, $join_name = ""){
+
+        if(empty($join_name)) {
+           
+           $this->Query = $this->db->prepare("SELECT * FROM " . $table1 . " INNER JOIN " . $table2 . " ON " . $condition);
+           return $this->Query->execute();
+        } else if($join_name == "LEFT JOIN"){
+           $this->Query = $this->db->prepare("SELECT * FROM " . $table1 . " LEFT JOIN " . $table2 . " ON " . $condition);
+           return $this->Query->execute();
+        } else if($join_name == "RIGHT JOIN"){
+          $this->Query = $this->db->prepare("SELECT * FROM " . $table1 . " RIGHT JOIN " . $table2 . " ON " . $condition);
+           return $this->Query->execute();
+        }
+  
+    }
 
 }
 

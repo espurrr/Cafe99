@@ -23,7 +23,7 @@
 </head>
 
 <body>
-  <?php include '../header/cust-logged-in-header.php';?>
+  <?php include '../application/views/header/cust-logged-in-header.php';?>
   <ul class="breadcrumb">
         <li><a href="../cafe99_complete_home_final/1.1/home.php">Home</a></li>
         <li>Favorites</li>
@@ -51,7 +51,7 @@
     </main>
   </div>
   </div>
-  <?php include 'footer.php';?>
+  <?php include '../application/views/footer/footer_1.php';?>
 
 </body>
 </html>
