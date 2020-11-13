@@ -10,6 +10,8 @@
     <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/kitchen-manager/newsfeed/sidebar.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/kitchen-manager/newsfeed/newsfeed.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
+
 </head>
 
 <body>
@@ -88,44 +90,11 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="dashboard" id="download">
-                    <div class="post">
-                        <div class="top">
-                            <div class="img">
-                                <i class="fa fa-user-circle" aria-hidden="true" style="font-size:35px"></i>
-                            </div>
-                            <div class="name">
-                                <strong><a href="#" class="text-name">Kamal Perera</a></strong>
-                                <div class="date">
-                                    <span class="text-when">Yesterday at 5:00pm</span> <img src="http://social-prank.foxsash.com/assets/images/facebook/icon_public.jpg" width="16" height="16" id="visiblefor-icon">
-                                </div>
-                            </div>
-                            <div class="employee"><i class="fas fa-users"></i>  &nbsp;Kitchen Managers</div>
-                        </div>
-                        <div class="news_content">
-                            <div class="text_title"><p>Title of the annoucement</p></div>
-                            <div class="text-message"><p>The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta.
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta.
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta.
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta</p></div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
+    
+<?php include '../application/views/footer/footer_3.php';?>
 <!-- <script src="./dropdownlist.js"></script> -->
 </body>
 </html>

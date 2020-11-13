@@ -9,6 +9,8 @@
     <?php echo link_css("css/kitchen-manager/orders/orders.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/kitchen-manager/orders/popup.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/header.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
+    
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 </head>
 <body>
@@ -68,6 +70,36 @@
                     </div>
                 </td>
             </tr>
+            <tr>
+                <td>03</td>
+                <td ><div class="cell-desc">Lorem,uium dolor sit et consectetur adipisicing elit.</div></td>
+                <td>
+                    <div class="btn-container">
+                        <button class="first-btn btn">View</button>
+                        <button class="second-btn btn">Take In</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td ><div class="cell-desc">Lorem,uium dolor sit et consectetur adipisicing elit.</div></td>
+                <td>
+                    <div class="btn-container">
+                        <button class="first-btn btn">View</button>
+                        <button class="second-btn btn">Take In</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td ><div class="cell-desc">Lorem,uium dolor sit et consectetur adipisicing elit.</div></td>
+                <td>
+                    <div class="btn-container">
+                        <button class="first-btn btn">View</button>
+                        <button class="second-btn btn">Take In</button>
+                    </div>
+                </td>
+            </tr>
           </table>
     </div>
 
@@ -117,6 +149,36 @@
                     </div>
                 </td>
             </tr>
+            <tr>
+                <td>03</td>
+                <td ><div class="cell-desc">tetur adipisicing elit.</div></td>
+                <td>
+                    <div class="btn-container">
+                        <button class="first-btn btn">View</button>
+                        <button class="second-btn btn">Ready</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td ><div class="cell-desc">tetur adipisicing elit.</div></td>
+                <td>
+                    <div class="btn-container">
+                        <button class="first-btn btn">View</button>
+                        <button class="second-btn btn">Ready</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td ><div class="cell-desc">tetur adipisicing elit.</div></td>
+                <td>
+                    <div class="btn-container">
+                        <button class="first-btn btn">View</button>
+                        <button class="second-btn btn">Ready</button>
+                    </div>
+                </td>
+            </tr>
           </table>
     </div>
 
@@ -156,6 +218,36 @@
                 </td>
             </tr>
 
+            <tr>
+                <td>03</td>
+                <td ><div class="cell-desc">Lorem,uium do consectetur adipisicing elit.</div></td>
+                <td>
+                    <div class="btn-container">
+                        <button class="first-btn btn">View</button>
+                        <button class="second-btn btn">Dispatch</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td ><div class="cell-desc">Lorem,uium do consectetur adipisicing elit.</div></td>
+                <td>
+                    <div class="btn-container">
+                        <button class="first-btn btn">View</button>
+                        <button class="second-btn btn">Dispatch</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td ><div class="cell-desc">Lorem,uium do consectetur adipisicing elit.</div></td>
+                <td>
+                    <div class="btn-container">
+                        <button class="first-btn btn">View</button>
+                        <button class="second-btn btn">Dispatch</button>
+                    </div>
+                </td>
+            </tr>
             <tr>
                 <td>03</td>
                 <td ><div class="cell-desc">Lorem,uium do consectetur adipisicing elit.</div></td>
@@ -217,8 +309,40 @@
                     </div>
                 </td>
             </tr>
+            <tr>
+                <td>03</td>
+                <td ><div class="cell-desc">Lorem,usit et consectdipisicing elit.</div></td>
+                <td>
+                    <div class="btn-container">
+                        <button class="first-btn btn">View</button>
+                        <button class="second-btn btn">Remove</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td ><div class="cell-desc">Lorem,usit et consectdipisicing elit.</div></td>
+                <td>
+                    <div class="btn-container">
+                        <button class="first-btn btn">View</button>
+                        <button class="second-btn btn">Remove</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td ><div class="cell-desc">Lorem,usit et consectdipisicing elit.</div></td>
+                <td>
+                    <div class="btn-container">
+                        <button class="first-btn btn">View</button>
+                        <button class="second-btn btn">Remove</button>
+                    </div>
+                </td>
+            </tr>
           </table>
     </div>
+
+    <?php include '../application/views/footer/footer_3.php';?>
     <?php echo link_js("js/kitchen-manager/orders/orders.js"); ?>
     <?php echo link_js("js/kitchen-manager/orders/popup.js"); ?>
 </body>
