@@ -1,18 +1,18 @@
 <?php
-    // $server = "localhost";
-    // $username = "root";
-    // $password = "";
-    // $database = "cafe99_test";
+    $server = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "cafe99";
 
-    // $db = mysqli_connect($server, $username, $password, $database);
+    $db = mysqli_connect($server, $username, $password, $database);
 
-    // if(mysqli_connect_errno()){
-    //     echo "Error: Could not connect to database";
-    //     exit;
-    // }
-    $id = $_GET['id'];
-    // $id = 1;
-    $sql = "SELECT * FROM bun WHERE id=$id";
+    if(mysqli_connect_errno()){
+        echo "Error: Could not connect to database";
+        exit;
+    }
+    //$id = $_GET['id'];
+    $id = 1;
+    $sql = "SELECT * FROM fooditem WHERE id=$id";
     $result = mysqli_query($db, $sql);
     $row = mysqli_fetch_assoc($result);
 ?>
@@ -38,11 +38,11 @@
         
 </head>
 <body>
-    <?php include 'header.php';?>
+    <!-- <?php include 'header.php';?> -->
     <ul class="breadcrumb">
         <li><a href="../cafe99_complete_home_final/1.1/home.php">Home</a></li>
         <li><a href="#">Subcategory</a></li>
-        <li><?php echo $row['title']; ?></li>
+        <li><?php echo $row['Food_name']; ?></li>
     </ul>
     <div class="food_item_wrapper">
     <div class="food_item_container">
@@ -54,10 +54,10 @@
         </div>
 
         <div class="container__text">
-            <div class="availability"><p><?php echo ucfirst($row['availability']); ?></p></div>
-            <h1><?php echo $row['title']; ?></h1>
-            <div class="des"> <?php echo $row['description']; ?></div>
-            <div class="price">LKR: <?php echo $row['price'];?></div>
+            <div class="availability"><p><?php echo ucfirst($row['Availability']); ?></p></div>
+            <h1><?php echo $row['Food_name']; ?></h1>
+            <div class="des"> <?php echo $row['Description']; ?></div>
+            <div class="price">LKR: <?php echo $row['Unit_Price'];?></div>
             <div class="quantity">
                 <label>Quantity: </label>
                 <input type="text" class="input" value="1" min="1" name="quantity"/>
