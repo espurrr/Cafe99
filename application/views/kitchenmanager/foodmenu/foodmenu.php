@@ -53,20 +53,20 @@
     
     <!-- ************ Food ************ -->
     <div id="food" class="menu_container" style="display: block;">
-        <div class="search_container">
+        <!-- <div class="search_container">
             <form>
                 <input type="text" placeholder="Search.." name="search" onkeyup="showResult(this.value)">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
-        </div>
+        </div> -->
 
-        <div class="subcategory-title">Rice</div>
+        <div class="subcategory-title">Bun</div>
         <main class="grid" id="grid">
             <?php
                 $sql = "SELECT fooditem.Food_ID AS id, fooditem.Food_name AS title, fooditem.Availability AS availability, subcategory.Subcategory_name, category.Category_name 
                         FROM fooditem INNER JOIN subcategory ON fooditem.Subcategory_ID = subcategory.Subcategory_ID
                         INNER JOIN category ON subcategory.Category_ID = category.Category_ID
-                        WHERE category.Category_name = 'Food' AND subcategory.Subcategory_name = 'Rice'"; 
+                        WHERE category.Category_name = 'Food' AND subcategory.Subcategory_name = 'Bun'"; 
                 $result = mysqli_query($db, $sql);
                 while($row = mysqli_fetch_assoc($result)){
             ?>
@@ -205,22 +205,158 @@
 
     <!-- ************ Drinks ************ -->
     <div id="drinks" class="menu_container">
-        <div class="search_container">
+        <!-- <div class="search_container">
             <form>
                 <input type="text" placeholder="Search.." name="search" onkeyup="showResult(this.value)">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
-        </div>
+        </div> -->
 
+        <div class="subcategory-title">Fresh Fruit Juice</div>
+        <main class="grid" id="grid">
+            <?php
+                $sql = "SELECT fooditem.Food_ID AS id, fooditem.Food_name AS title, fooditem.Availability AS availability, subcategory.Subcategory_name, category.Category_name 
+                        FROM fooditem INNER JOIN subcategory ON fooditem.Subcategory_ID = subcategory.Subcategory_ID
+                        INNER JOIN category ON subcategory.Category_ID = category.Category_ID
+                        WHERE category.Category_name = 'Drinks' AND subcategory.Subcategory_name = 'Fresh Fruit Juice'"; 
+                $result = mysqli_query($db, $sql);
+                while($row = mysqli_fetch_assoc($result)){
+            ?>
+                <article>
+                    <?php
+                        $img_path = "/public/images/food-dash-images/".$row['Category_name'] ."/".$row['Subcategory_name']."/".str_replace(' ','',$row['title']).".jpg";  
+                    ?>
+                    <img src="<?php echo BASE_URL; echo $img_path;?>" alt="Image Not Found">
+                    <div class="text">
+                        <h4><?php echo $row['title'];?></h4>
+                        <p>Product ID :  <?php echo $row['id']; ?></p>
+                        <p class="availability" id="availability"><?php echo $row['availability']; ?></p>
+                    </div>
+
+                    <form method="POST" action="">
+                    <div class="btn-container">
+                        <button class="available btn" id="av-btn" type="submit" name="av" value="<?php echo $row['id'];?>" ><i class="fas fa-check"></i></button>
+                        <button class="unavailable btn" id="unav-btn" type="submit"  name="unav" value="<?php echo $row['id'];?>"><i class="fas fa-times"></i></button>
+                    
+                    </div>
+                    </form>
+                </article>
+            <?php
+                }
+            ?>
+        </main>
+
+        <div class="subcategory-title">Ice Blended</div>
+        <main class="grid" id="grid">
+            <?php
+                $sql = "SELECT fooditem.Food_ID AS id, fooditem.Food_name AS title, fooditem.Availability AS availability, subcategory.Subcategory_name, category.Category_name 
+                        FROM fooditem INNER JOIN subcategory ON fooditem.Subcategory_ID = subcategory.Subcategory_ID
+                        INNER JOIN category ON subcategory.Category_ID = category.Category_ID
+                        WHERE category.Category_name = 'Drinks' AND subcategory.Subcategory_name = 'Ice Blended'"; 
+                $result = mysqli_query($db, $sql);
+                while($row = mysqli_fetch_assoc($result)){
+            ?>
+                <article>
+                    <?php
+                        $img_path = "/public/images/food-dash-images/".$row['Category_name'] ."/".$row['Subcategory_name']."/".str_replace(' ','',$row['title']).".jpg";  
+                    ?>
+                    <img src="<?php echo BASE_URL; echo $img_path;?>" alt="Image Not Found">
+                    <div class="text">
+                        <h4><?php echo $row['title'];?></h4>
+                        <p>Product ID :  <?php echo $row['id']; ?></p>
+                        <p class="availability" id="availability"><?php echo $row['availability']; ?></p>
+                    </div>
+
+                    <form method="POST" action="">
+                    <div class="btn-container">
+                        <button class="available btn" id="av-btn" type="submit" name="av" value="<?php echo $row['id'];?>" ><i class="fas fa-check"></i></button>
+                        <button class="unavailable btn" id="unav-btn" type="submit"  name="unav" value="<?php echo $row['id'];?>"><i class="fas fa-times"></i></button>
+                    
+                    </div>
+                    </form>
+                </article>
+            <?php
+                }
+            ?>
+        </main>
     </div>
+
     <!-- ************ Desserts ************ -->
     <div id="desserts" class="menu_container">
-        <div class="search_container">
+        <!-- <div class="search_container">
             <form>
                 <input type="text" placeholder="Search.." name="search" onkeyup="showResult(this.value)">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
-        </div>
+        </div> -->
+
+        <div class="subcategory-title">Ice Cream</div>
+        <main class="grid" id="grid">
+            <?php
+                $sql = "SELECT fooditem.Food_ID AS id, fooditem.Food_name AS title, fooditem.Availability AS availability, subcategory.Subcategory_name, category.Category_name 
+                        FROM fooditem INNER JOIN subcategory ON fooditem.Subcategory_ID = subcategory.Subcategory_ID
+                        INNER JOIN category ON subcategory.Category_ID = category.Category_ID
+                        WHERE category.Category_name = 'Desserts' AND subcategory.Subcategory_name = 'Ice-cream'"; 
+                $result = mysqli_query($db, $sql);
+                while($row = mysqli_fetch_assoc($result)){
+            ?>
+                <article>
+                    <?php
+                        $img_path = "/public/images/food-dash-images/".$row['Category_name'] ."/".$row['Subcategory_name']."/".str_replace(' ','',$row['title']).".jpg";  
+                    ?>
+                    <img src="<?php echo BASE_URL; echo $img_path;?>" alt="Image Not Found">
+                    <div class="text">
+                        <h4><?php echo $row['title'];?></h4>
+                        <p>Product ID :  <?php echo $row['id']; ?></p>
+                        <p class="availability" id="availability"><?php echo $row['availability']; ?></p>
+                    </div>
+
+                    <form method="POST" action="">
+                    <div class="btn-container">
+                        <button class="available btn" id="av-btn" type="submit" name="av" value="<?php echo $row['id'];?>" ><i class="fas fa-check"></i></button>
+                        <button class="unavailable btn" id="unav-btn" type="submit"  name="unav" value="<?php echo $row['id'];?>"><i class="fas fa-times"></i></button>
+                    
+                    </div>
+                    </form>
+                </article>
+            <?php
+                }
+            ?>
+        </main>
+
+        <div class="subcategory-title">Cheese Cake</div>
+        <main class="grid" id="grid">
+            <?php
+                $sql = "SELECT fooditem.Food_ID AS id, fooditem.Food_name AS title, fooditem.Availability AS availability, subcategory.Subcategory_name, category.Category_name 
+                        FROM fooditem INNER JOIN subcategory ON fooditem.Subcategory_ID = subcategory.Subcategory_ID
+                        INNER JOIN category ON subcategory.Category_ID = category.Category_ID
+                        WHERE category.Category_name = 'Desserts' AND subcategory.Subcategory_name = 'CheeseCake'"; 
+                $result = mysqli_query($db, $sql);
+                while($row = mysqli_fetch_assoc($result)){
+            ?>
+                <article>
+                    <?php
+                        $img_path = "/public/images/food-dash-images/".$row['Category_name'] ."/".$row['Subcategory_name']."/".str_replace(' ','',$row['title']).".jpg";  
+                    ?>
+                    <img src="<?php echo BASE_URL; echo $img_path;?>" alt="Image Not Found">
+                    <div class="text">
+                        <h4><?php echo $row['title'];?></h4>
+                        <p>Product ID :  <?php echo $row['id']; ?></p>
+                        <p class="availability" id="availability"><?php echo $row['availability']; ?></p>
+                    </div>
+
+                    <form method="POST" action="">
+                    <div class="btn-container">
+                        <button class="available btn" id="av-btn" type="submit" name="av" value="<?php echo $row['id'];?>" ><i class="fas fa-check"></i></button>
+                        <button class="unavailable btn" id="unav-btn" type="submit"  name="unav" value="<?php echo $row['id'];?>"><i class="fas fa-times"></i></button>
+                    
+                    </div>
+                    </form>
+                </article>
+            <?php
+                }
+            ?>
+        </main>
     </div>
 
     <?php echo link_js("js/kitchen-manager/foodmenu/searchbar.js"); ?>
