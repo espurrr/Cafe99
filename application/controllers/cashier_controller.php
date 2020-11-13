@@ -32,6 +32,22 @@ class Cashier_Controller extends JB_Controller{
     public function orderfood(){
         $this->view('cashier/orderfood/orderfood');
     }
+
+    public function mycart(){
+        $this->view('cashier/orderfood/cust-cart');
+    }
+
+    public function order(){  
+        $this->view('cashier/orderfood/cust-order-info');
+    }
+
+    public function payment(){ 
+        $this->view('cashier/orderfood/cust-payment');
+    }
+
+    public function orderSubmit(){  
+        $this->view('cashier/orderfood/cust-order-info');
+    }
    
 }
 ?>

@@ -18,8 +18,9 @@
     <div class="newsfeed-wrapper">
         <div class="admin-content">
             <div class="content">
-
-                <div class="dashboard" id="download">
+                
+                <div>
+                    <!-- <div class="dashboard" id="download">
                     <div class="post">
                         <div class="top">
                             <div class="img">
@@ -52,9 +53,9 @@
                             The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta</p></div>
                         </div>
                     </div>
-                </div>
+                    </div>
 
-                <div class="dashboard" id="download">
+                    <div class="dashboard" id="download">
                     <div class="post">
                         <div class="top">
                             <div class="img">
@@ -87,9 +88,9 @@
                             The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta</p></div>
                         </div>
                     </div>
-                </div>
+                    </div>
 
-                <div class="dashboard" id="download">
+                    <div class="dashboard" id="download">
                     <div class="post">
                         <div class="top">
                             <div class="img">
@@ -122,6 +123,7 @@
                             The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta</p></div>
                         </div>
                     </div>
+                    </div> -->
                 </div>
             </div>
         </div>
