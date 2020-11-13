@@ -17,7 +17,7 @@
 
 <body>
   <div class="topnav" id="myTopnav" style="background: #FAD74E url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
-
+    
    <img class="logo" id="mlogo" src="<?php echo BASE_URL?>/public/images/logo.png">
     
     <div class="all-nav" id="nav" >

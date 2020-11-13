@@ -21,7 +21,7 @@ class Customer_controller extends JB_Controller{
 
     public function logout(){
         $this->destroy_session();
-        $this->view('login');
+        $this->view('home');
     }
 
     public function myprofile($page=""){
