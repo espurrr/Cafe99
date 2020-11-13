@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-    <?php echo link_css("css/cart.css"); ?>
+    <?php echo link_css("css/cashier/cashier_cart.css"); ?>
     <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/kitchen-manager/newsfeed/sidebar.css?ts=<?=time()?>"); ?>
     <title>Cart</title>
@@ -15,7 +15,7 @@
 
 <ul id="breadcrumbs">
     <li>Cart</li>
-    <li><?php echo anchor("customer_controller/order", "Order") ?></li>
+    <li><?php echo anchor("cashier_controller/order", "Order") ?></li>
     <li>Payment</li>
   
 </ul>
@@ -102,7 +102,7 @@
             <p type="Note to Chef">  <?php echo form_input(['type'=>'text', 'name'=>'message', 'placeholder'=>''])?></p>
             </div>
             <div class="total">Total: 1000.00</div>
-            <button class="checkout-button" href="#" ><?php echo anchor("customer_controller/order", "PROCEED TO CHECKOUT") ?></button>
+            <button class="checkout-button" href="#" ><?php echo anchor("cashier_controller/order", "PROCEED TO CHECKOUT") ?></button>
             
         </div>
         

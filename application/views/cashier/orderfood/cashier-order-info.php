@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-    <?php echo link_css("css/cart.css?version=51"); ?>
+    <?php echo link_css("css/cashier/cashier_cart.css?version=51"); ?>
+    <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/kitchen-manager/newsfeed/sidebar.css?ts=<?=time()?>"); ?>
     <title>Cart</title>
 </head>
 <body>
+    <?php include "sidebar.php";?>
+    <?php include "../application/views/header/header-dashboard.php";?> 
 
 <ul id="breadcrumbs">
-    <li><?php echo anchor("customer_controller/mycart", "Cart") ?></li>
+    <li><?php echo anchor("cashier_controller/mycart", "Cart") ?></li>
     <li>Order</li>
     <li>Payment</li>
   
@@ -149,7 +153,7 @@
             </div><br>
             <div class="total">Service charges: 50.00</div>                
             <div class="total"><b>Total: 1000.00</b></div><br>
-            <button class="checkout-button" href="#" ><?php echo anchor("customer_controller/payment", "PROCEED TO CHECKOUT") ?></button>
+            <button class="checkout-button" href="#" ><?php echo anchor("cashier_controller/payment", "PROCEED TO CHECKOUT") ?></button>
 
         </div>
         <!-- modal end -->
@@ -161,7 +165,7 @@
             </div>
             <div class="total">Service charges: 50.00</div>                
             <div class="total"><b>Total: 1000.00</b></div>
-            <button class="checkout-button" href="#" ><?php echo anchor("customer_controller/payment", "PROCEED TO CHECKOUT") ?></button>
+            <button class="checkout-button" href="#" ><?php echo anchor("cashier_controller/payment", "PROCEED TO CHECKOUT") ?></button>
             
         </div>
         

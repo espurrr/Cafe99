@@ -15,6 +15,7 @@
 body{
   background-color: var(--newsfeed-background-color);
   overflow-y: scroll;
+  
 
 }
 

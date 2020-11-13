@@ -31,7 +31,7 @@
   <!-- Content -->
   <meta charset="UTF-8">
   <title>Products</title>
-  <?php echo link_css("css/food-menu.css?ts=<?=time()?>"); ?>
+  <?php echo link_css("css/cashier/cashier_food-menu.css?ts=<?=time()?>"); ?>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
   
   <!-- Footer -->

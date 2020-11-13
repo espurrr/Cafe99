@@ -1,0 +1,165 @@
+/* fonts */
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
+
+
+/* Variable */
+:root{
+    --dark-yellow:#FAD74E;
+    --favorite-btn:#a72f2f;
+    --hover-transition:0.2s;
+    --non-hover-transition:0.6s;
+    --bg-texture:#FAD74E url(../img/texture.png) repeat;
+   
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin:0;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+body {
+    /* padding: 5% 5%; */
+    /* background-color:var(--dark-yellow); */
+}
+
+/* BreadCrumb */
+ul.breadcrumb {
+    padding: 3vh 70px;
+    list-style: none;
+    margin-left: 275px;
+}
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+.breadcrumb li+li:before {
+    padding: 8px;
+    color: #000;
+    content: "/";
+}
+ul.breadcrumb li a {
+    color: #555;
+    text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+    color: #333;
+}
+/* Food Menu */
+.food_menu_wrapper{
+    margin: 5% 10%;
+    margin-left: 275px;
+}
+
+.food_menu_wrapper .grid {
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));/*auto-fill center items considering grid-gap and content */
+    grid-column-gap: 4%;
+    grid-row-gap: 40px;
+    align-items: stretch;
+}
+
+@media  (min-width:500px) and (max-width:600px){
+    .food_menu_wrapper .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.food_menu_wrapper .grid article {
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 5px;
+}
+
+/* Food item image */
+.food_menu_wrapper .grid article img {
+    max-width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+/*  Title & Price */
+.food_menu_wrapper .grid article .text{
+    padding: 20px 20px 10px 20px;
+    text-align: center;
+}
+
+/* Title */
+.food_menu_wrapper .grid article .text h3{
+    /* font-size: 1.4rem; */
+    /* font-family: 'Fredoka One', cursive; */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+
+
+}
+
+@media  (max-width:470px){
+    .food_menu_wrapper .grid article .text h3{
+        font-size: 18px;
+    }
+}
+
+/* Price */
+.food_menu_wrapper .grid article .text p {
+    padding-top:10px;
+    font-size: 0.9rem;
+}
+
+@media  (max-width:470px){
+    .food_menu_wrapper .grid article .text p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Button Container */
+.food_menu_wrapper .btn-container {
+    padding: 10px 5px 20px 5px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* Common For both buttons */
+.food_menu_wrapper .grid article .btn-container .btn{ 
+    height: 100%;
+    padding: 10px 30px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.3);
+    transition: 0.6s;
+}
+
+.food_menu_wrapper .grid article .btn-container .btn:hover{
+    box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.3);
+    transition: var(--hover-transition);
+    cursor: pointer;
+}
+
+/* Favorite button */
+.food_menu_wrapper .grid article .btn-container .fav{
+    border: 1px solid #aaa;
+    background-color: #fff;
+}
+.food_menu_wrapper .grid article .btn-container .fav .fa-heart{
+    color: #bbb;
+    transition: var(--non-hover-transition);
+}
+
+.food_menu_wrapper .grid article .btn-container .fav:hover{
+    border: 1px solid #bbb;   
+    background-color: #efefef;
+}
+
+.food_menu_wrapper .grid article .btn-container .fav:hover .fa-heart{
+    color: var(--favorite-btn); 
+}

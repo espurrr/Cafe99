@@ -38,6 +38,7 @@
     body {
         /* padding: 5% 5%; */
         background-color:var(--light-yellow);
+        background: var(--bg-texture);
     }
 
     .menu_container{
