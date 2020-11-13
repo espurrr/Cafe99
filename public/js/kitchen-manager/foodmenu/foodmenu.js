@@ -1,4 +1,4 @@
-function changeOrderTab(evt, category) {
+function changeFoodTab(evt, category) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("menu_container");
     for (i = 0; i < tabcontent.length; i++) {
