@@ -13,7 +13,7 @@ class Cashier_Controller extends JB_Controller{
     }
 
     public function index(){
-        $this->view('cashier/orderfood/orderfood');
+        $this->view('cashier/foodmenu/food-menu');
      }
 
     public function logout(){
@@ -24,30 +24,30 @@ class Cashier_Controller extends JB_Controller{
         $this->view('cashier/orders/orders');
     }
     public function foodmenu(){
-        $this->view('cashier/foodmenu/foodmenu');
+        $this->view('cashier/foodmenu/food-menu');
     }
     public function newsfeed(){
         $this->view('cashier/newsfeed/newsfeed');
     }
-    public function orderfood(){
-        $this->view('cashier/orderfood/orderfood');
-    }
+    // public function orderfood(){
+    //     $this->view('cashier/orderfood/orderfood');
+    // }
 
     public function mycart(){
-        $this->view('cashier/orderfood/cust-cart');
+        $this->view('cashier/orderfood/cashier-cart');
     }
 
-    public function order(){  
-        $this->view('cashier/orderfood/cust-order-info');
-    }
+    // public function order(){  
+    //     $this->view('cashier/orderfood/cust-order-info');
+    // }
 
-    public function payment(){ 
-        $this->view('cashier/orderfood/cust-payment');
-    }
+    // public function payment(){ 
+    //     $this->view('cashier/orderfood/cust-payment');
+    // }
 
-    public function orderSubmit(){  
-        $this->view('cashier/orderfood/cust-order-info');
-    }
+    // public function orderSubmit(){  
+    //     $this->view('cashier/orderfood/cust-order-info');
+    // }
    
 }
 ?>

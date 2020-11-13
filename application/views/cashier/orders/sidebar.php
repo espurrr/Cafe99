@@ -9,7 +9,7 @@
                 </div>
             </div>
             <ul>
-                <li><?php echo anchor("cashier_controller/orderfood", "Place Order",['class'=>"normal"])?></li>
+                <li><?php echo anchor("cashier_controller/mycart", "Place Order",['class'=>"normal"])?></li>
                 <!-- <li><a href="#" class="normal">News Feed</a></li> -->
                 <li><?php echo anchor("cashier_controller/newsfeed", "News Feed",['class'=>"normal"])?></li>
                 <!-- <li><a href="orders.php" class="active normal">Orders</a></li> -->

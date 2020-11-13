@@ -12,7 +12,7 @@
     }
     //$id = $_GET['id'];
     $id = 1;
-    $sql = "SELECT * FROM fooditem WHERE id=$id";
+    $sql = "SELECT * FROM fooditem WHERE Food_ID=$id";
     $result = mysqli_query($db, $sql);
     $row = mysqli_fetch_assoc($result);
 ?>
@@ -69,7 +69,7 @@
         </div>
     </div>
     </div>
-    <?php include 'footer_2.php';?>
+    <!-- <?php include 'footer_2.php';?> -->
 
 </body>
 </html>

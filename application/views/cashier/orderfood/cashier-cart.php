@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <?php echo link_css("css/cart.css"); ?>
+    <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/kitchen-manager/newsfeed/sidebar.css?ts=<?=time()?>"); ?>
     <title>Cart</title>
 </head>
 <body>
+    <?php include "sidebar.php";?>
+    <?php include "../application/views/header/header-dashboard.php";?> 
 
 <ul id="breadcrumbs">
     <li>Cart</li>
