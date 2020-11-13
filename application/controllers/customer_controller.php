@@ -68,7 +68,7 @@ class Customer_controller extends JB_Controller{
         $this->view('customer/cust-payment');
     }
 
-    public function orderSubmit(){  
+    public function completeOrder(){  //last button in the payment
         $this->view('customer/cust-order-info');
     }
 

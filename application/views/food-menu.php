@@ -10,7 +10,7 @@
         echo "Error: Could not connect to database";
         exit;
     }
-    $subcat_name = "Pizza";
+    $subcat_name = "Cake";
     $sql = "SELECT * FROM fooditem 
     INNER JOIN subcategory ON fooditem.Subcategory_ID = subcategory.Subcategory_ID
     WHERE subcategory.Subcategory_name ='".$subcat_name."'";
@@ -45,23 +45,6 @@
         <li><a href="../cafe99_complete_home_final/1.1/home.php">Home</a></li>
         <li>Subcategory</li>
   </ul>
-
-  <?php
-  //  print_r($data);
-    if(count($data)==3){
-      echo $data['cat'];
-      echo $data['subcat'];
-      echo $data['id'];
-    }elseif(count($data)==2){
-      echo $data['cat'];
-      echo $data['subcat'];
-    }
-       
-      
-       
-  
-  
-  ?>
   <div class="food_menu_wrapper">
   <div class="container">
     <main class="grid">
