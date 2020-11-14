@@ -40,7 +40,6 @@
                          <input type="text" id="Pno" name="title" placeholder="Enter Phone No..."><br>
                          
 
-                        
                          <label for="role">Role</label>
                          <select id="role" name="role" >
                              <option value="RestaurantManager">Restaurant Manager</option>
@@ -49,6 +48,8 @@
                              <option value="DeliveryPerson">Delivery Person</option>
                          </select>
                         
+                         <label for="regDate">Registered Date</label>
+                         <input type="text" name="regDate" placeholder="Enter Date..."><br>
                         
                         
                         <div>
