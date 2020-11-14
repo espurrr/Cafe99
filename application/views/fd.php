@@ -40,12 +40,18 @@
 </head>
 
 <body style="background: #FAD74E url(<?php echo BASE_URL;?>/public/images/texture.png) repeat;">
-  <?php include '../application/views/header/header.php';?>
-  <ul class="breadcrumb">
+<?php  if ($this->get_session('role')=='customer'){
+          include '../application/views/header/cust-logged-in-header.php';
+    }else{
+      include '../application/views/header/header.php';
+    }
+     ?>
+       <ul class="breadcrumb">
         <!-- <li><a href="../cafe99_complete_home_final/1.1/home.php">Home</a></li> -->
         <li><?php echo anchor("account_controller/index", "Home")?></li>
+        <li><?php echo $data[0]->Category_name?></li>
 
-        <li>Subcategory</li>
+        <li><?php echo $data[0]->Subcategory_name?></li>
   </ul>
 
   <div class="food_menu_wrapper">

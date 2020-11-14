@@ -22,7 +22,7 @@
 </head>
 
 <body style="background: #fff url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
-  <?php  if ($this->get_session('logged')){
+  <?php  if ($this->get_session('role')=='customer'){
           include '../application/views/header/cust-logged-in-header.php';
     }else{
       include '../application/views/header/header.php';
