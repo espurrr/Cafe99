@@ -15,7 +15,7 @@
 <?php include  "../application/views/header/header-dashboard.php";?>
     <div class="wrapper">
        
-             <div class="admin-content">
+            <div class="admin-content">
                <!--    <a href="RM.php" class="button">Manage Fooditems</a>-->
         <?php echo anchor("rm_controller/fooditem", "Manage Fooditems",['class'=>"button"]) ?>
          <!--   <a href="create.php" class="button">Add  Fooditems</a>-->
@@ -31,14 +31,18 @@
                         <input type="text" id="fname" name="foodname" ><br>
                         
 
-                         <label for="price">Unit Price</label>
-                         <input type="text" id="price" name="Uprice" ><br>
-                          
-                         <label for="description">Description</label>
-                         <textarea name="description" id="description" ></textarea>
+                        <label for="price">Unit Price</label>
+                        <input type="text" id="price" name="Uprice" ><br>
                         
-                         <label for="availability">Availability</label>
-                         <input type="text" id="availability" name="availability" ><br>
+                        <label for="description">Description</label>
+                        <textarea name="description" id="description" ></textarea>
+                    
+                        <label for="availability" class="av-label">Availability</label>
+                        <select id="availability" name="availability">
+                            <option value="Available">Available</option>
+                            <option value="Unavailable">Unavailable</option>
+                        </select>
+                         
                         
                         
                         <div>
