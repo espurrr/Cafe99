@@ -7,9 +7,11 @@ class Food_model extends Database{
         //Issa INNERJOIN
         $subcat_name = $data['subcat'];
         $query = 
-        "SELECT * FROM fooditem 
+        "SELECT category.Category_name, subcategory.Subcategory_name, fooditem.Food_ID, fooditem.Food_name, fooditem.Unit_Price FROM fooditem
         INNER JOIN subcategory ON fooditem.Subcategory_ID = subcategory.Subcategory_ID
-        WHERE subcategory.Subcategory_name ='".$subcat_name."'";
+        INNER JOIN category ON category.Category_ID = subcategory.Category_ID 
+        WHERE subcategory.Subcategory_name='".$subcat_name."'";
+        
         $result =$this->Query($query, $options = []);
               
             if($this->Count() > 0){
