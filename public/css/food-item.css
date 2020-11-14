@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Fredoka+One&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
+
 
 :root{
     --dark-yellow:#FBDD3F;
@@ -23,6 +25,7 @@ a{
 body{
     /* background-color:var(--dark-yellow); */
     background: var(--bg-texture);
+    font-family: 'Montserrat', sans-serif;
 }
 /* BreadCrumb */
 ul.breadcrumb {
@@ -107,11 +110,11 @@ ul.breadcrumb li a:hover {
 /*  Food item text */
 
 .food_item_container .container__text{
-    padding: 10% 10% 10% 0;
+    padding: 10% 10% 10% 5%;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     /* grid-row-gap: 0px;  */
-    font-family: 'Open Sans'; 
+    font-family: 'Montserrat', sans-serif; 
 }
 @media  (min-width:700px) and (max-width:1000px){
     .food_item_container .container__text{
@@ -127,7 +130,7 @@ ul.breadcrumb li a:hover {
 
 /*  Avaialability */
 .food_item_container .container__text .availability{
-    font-family: 'Open Sans';
+    font-family: 'Montserrat', sans-serif;
     border-radius: 25px;
     height: 80%;
     width:40%;
@@ -153,7 +156,9 @@ ul.breadcrumb li a:hover {
 
 /* Title */
 .food_item_container .container__text h1{
-    font-family: 'Fredoka One', cursive;    
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 25px;
 }
 @media (min-width:700px) and (max-width:1000px){
     .food_item_container .container__text h1{
@@ -168,7 +173,7 @@ ul.breadcrumb li a:hover {
 
 /* Description  & Price */
 .food_item_container .container__text .des , .food_item_container .container__text .price{
-    font-size: 1.1rem;
+    font-size: 17px;
 }
 @media (min-width:700px) and (max-width:1000px){
     .food_item_container .container__text .des, .food_item_container .container__text .price{

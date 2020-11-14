@@ -1,20 +1,20 @@
 <?php
-    $server = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "cafe99_test";
+    // $server = "localhost";
+    // $username = "root";
+    // $password = "";
+    // $database = "cafe99_test";
 
-    $db = mysqli_connect($server, $username, $password, $database);
+    // $db = mysqli_connect($server, $username, $password, $database);
 
-    if(mysqli_connect_errno()){
-        echo "Error: Could not connect to database";
-        exit;
-    }
-    $id = $_GET['id'];
-    // $id = 1;
-    $sql = "SELECT * FROM bun WHERE id=1";
-    $result = mysqli_query($db, $sql);
-    $row = mysqli_fetch_assoc($result);
+    // if(mysqli_connect_errno()){
+    //     echo "Error: Could not connect to database";
+    //     exit;
+    // }
+    // $id = $_GET['id'];
+    // // $id = 1;
+    // $sql = "SELECT * FROM bun WHERE id=1";
+    // $result = mysqli_query($db, $sql);
+    // $row = mysqli_fetch_assoc($result);
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +37,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         
 </head>
-<body>
+<body style="background: #FAD74E url(<?php echo BASE_URL;?>/public/images/texture.png) repeat;">
 <?php  if ($this->get_session('logged')){
           include '../application/views/header/cust-logged-in-header.php';
     }else{
@@ -45,24 +45,26 @@
     }
 ?>
     <ul class="breadcrumb">
-        <li><a href="../cafe99_complete_home_final/1.1/home.php">Home</a></li>
-        <li><a href="#">Buns</a></li>
-        <li><?php echo $row['title']; ?></li>
+        <li><?php echo anchor("account_controller/index", "Home")?></li>
+        <li><?php echo $data[0]->Category_name;?></li>
+        <li><?php echo $data[0]->Subcategory_name;?></li>
     </ul>
+    <?php
+        foreach($data as $row)
+    ?>
     <div class="food_item_wrapper">
     <div class="food_item_container">
         <div class="container__image">
             <?php
-                $img_path = $row['Category']."/".$row['Subcategory']."/".str_replace(' ','',$row['Food_name'])."jpg";
+                $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
             ?>
-            <img src="<?php echo BASE_URL;?>/public/images/food-dash-images/<?php echo $img_path;?>" alt="Food1"/>
+            <img src="<?php echo $img_path; ?>" alt="Food Item"/>
         </div>
-
         <div class="container__text">
-            <div class="availability"><p><?php echo ucfirst($row['availability']); ?></p></div>
-            <h1><?php echo $row['title']; ?></h1>
-            <div class="des"> <?php echo $row['description']; ?></div>
-            <div class="price">LKR: <?php echo $row['price'];?></div>
+            <div class="availability"><p><?php echo ucfirst($row->Availability); ?></p></div>
+            <h1><?php echo $row->Food_name; ?></h1>
+            <div class="des"><?php echo $row->Description; ?></div>
+            <div class="price">LKR: <?php echo $row->Unit_Price;?></div>
             <div class="quantity">
                 <label>Quantity: </label>
                 <input type="text" class="input" value="1" min="1" name="quantity"/>
@@ -74,7 +76,7 @@
         </div>
     </div>
     </div>
-    <!-- <?php include '../application/views/footer/footer_2.php';?> -->
+    <?php include '../application/views/footer/footer_2.php';?>
 
 </body>
 </html>

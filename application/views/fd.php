@@ -50,7 +50,6 @@
         <!-- <li><a href="../cafe99_complete_home_final/1.1/home.php">Home</a></li> -->
         <li><?php echo anchor("account_controller/index", "Home")?></li>
         <li><?php echo $data[0]->Category_name?></li>
-
         <li><?php echo $data[0]->Subcategory_name?></li>
   </ul>
 
