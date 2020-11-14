@@ -16,6 +16,10 @@
 </div> -->
 
 <?php include '../application/views/header/cust-logged-in-header.php';?>
+<div class="alertMessage">
+        <?php $this->flash('updateError','alert alert-danger','fa fa-times-circle'); ?>
+        <?php $this->flash('updateSuccess','alert alert-success','fa fa-check'); ?>
+</div>
 
 <div class="profile_container">
 	<div class="avatar">

@@ -21,6 +21,7 @@
     <div class="authMessage">
         <?php $this->flash('activationEmailError','alert alert-danger','fa fa-times-circle'); ?>
         <?php $this->flash('signupError','alert alert-danger','fa fa-times-circle'); ?>
+        <?php $this->flash('deactivateSuccess','alert alert-success','fa fa-check'); ?>
     </div>
     
     <div class="parent-container" id="p-container">

@@ -26,6 +26,11 @@ function form_input($fields){
     }else{
         $value = null;
     }
+    if(array_key_exists("readonly", $fields)){
+        $readonly = $fields['readonly'];
+    }else{
+        $readonly = '';
+    }
 
     if(array_key_exists("type", $fields)){
         if($fields['type'] == "text"){
@@ -46,7 +51,7 @@ function form_input($fields){
     if($type == "file"){
         return '<input type="'. $type .'" name="'. $name .'" id="'. $id .'" class="'. $class .'">';
     } else {
-        return '<input type="'. $type .'" name="'. $name .'" id="'. $id .'" class="'. $class .'" placeholder="'.$placeholder.'" value="'. $value .'">';
+        return '<input type="'. $type .'" name="'. $name .'" id="'. $id .'" class="'. $class .'" placeholder="'.$placeholder.'" value="'. $value .'" '. $readonly .' >';
     }
 
 }

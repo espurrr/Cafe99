@@ -25,14 +25,20 @@
     <li>Deactivate Account</li>
   
 </ul>
+
+<div class="alertMessage">
+        <?php $this->flash('dbError','alert alert-danger','fa fa-times-circle'); ?>
+        <?php $this->flash('wrongGoodBye','alert alert-danger','fa fa-times-circle'); ?>
+</div>
+
   <div class="profile">
-    <?php echo form_open("","post",['class'=>'update_form']);?><br>  
+    <?php echo form_open("customer_controller/deactivate","post",['class'=>'update_form']);?><br>  
     <!-- the class didn't get named??? -->
       <h2 id="update-heading">DEACTIVATE ACCOUNT</h2>
       <div class="update-details">
         <p> Please type 'GOODBYE' if you wish to deactivate your account..</p>
          <?php echo form_input(['type'=>'text', 'name'=>'bye', 'placeholder'=>''])?><br><br>
-        <br><input type="button" class="delete" value="DELETE">
+        <br><input type="submit" class="delete" value="DELETE">
       </div>
     <?php echo form_close();?>
     

@@ -20,18 +20,40 @@
     <li>Reset Password</li>
   
 </ul>
+
+<div class="alertMessage">
+        <?php $this->flash('currPwWarning','alert alert-warning','fa fa-warning'); ?>
+        <?php $this->flash('pwSucess','alert alert-success','fa fa-check'); ?>
+</div>
+
   <div class="profile">
  
-  <?php echo form_open("","post",['class'=>'update_form']);?><br>  
+  <?php echo form_open("customer_controller/resetpw_save","post",['class'=>'update_form']);?><br>  
     <!-- the class didn't get named??? -->
   <h2 id="update-heading">RESET PASSWORD</h2>
   <div class="update-details">
-  <p type="Current Password">  <?php echo form_input(['type'=>'password', 'name'=>'curr_password', 'placeholder'=>''])?></p>
+  <p type="Current Password">  <?php echo form_input(['type'=>'password', 'name'=>'User_Password', 'placeholder'=>''])?></p>
+  <div class="error">
+    <?php if(!empty($this->errors['User_Password'])):?>
+    <?php echo $this->errors['User_Password'];?>
+    <?php endif;?>
+  </div>
   <!-- <p type="Current Password"><input type="password"></input></p> -->
-  <p type="New Password">  <?php echo form_input(['type'=>'password', 'name'=>'new_password', 'placeholder'=>''])?></p>
-  <p type="Confirm New Password">  <?php echo form_input(['type'=>'password', 'name'=>'confirm_password', 'placeholder'=>''])?></p>
+  <p type="New Password">  <?php echo form_input(['type'=>'password', 'name'=>'New_Password', 'placeholder'=>''])?></p>
+  <div class="error">
+    <?php if(!empty($this->errors['New_Password'])):?>
+    <?php echo $this->errors['New_Password'];?>
+    <?php endif;?>
+  </div>
 
-  <br><input type="button" class="save_changes" value="SAVE CHANGES">
+  <p type="Confirm New Password">  <?php echo form_input(['type'=>'password', 'name'=>'Confirm_Password', 'placeholder'=>''])?></p>
+  <div class="error">
+    <?php if(!empty($this->errors['Confirm_Password'])):?>
+    <?php echo $this->errors['Confirm_Password'];?>
+    <?php endif;?>
+  </div>
+
+  <br><input type="submit" class="save_changes" value="SAVE CHANGES">
   
 </div>
 

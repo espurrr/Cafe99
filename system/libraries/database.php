@@ -163,9 +163,9 @@ class Database {
    
         //Write the update query
         $this->Query = $this->db->prepare("UPDATE " .$table_name . " SET " .$set_columns . " WHERE " . $where_columns);
+
         return $this->Query->execute($combine);
-        print_r($columns);
-        print_r($db_values);
+     
     }
 
 
