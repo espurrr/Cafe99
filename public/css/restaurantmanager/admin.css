@@ -8,9 +8,12 @@
     --edit-btn-color:#5e74e2;
     --delete-btn-color:#f12f2ff1;
     --action-btn-color:rgb(59, 58, 58);
-    --colorGreen: #3ace67ee;
+    --colorGreen: #5cb85c;
+    --colorGreen-hover:#449d44;
     --colorWhite: white;
     --color-input:#ccc;
+    --cancel-btn:#e7e7e7;
+    --cancel-btn-hover:#dddbdb;
 }
 
 *{
@@ -21,7 +24,10 @@
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
 } 
-
+body{
+    font-family: 'Montserrat', sans-serif;
+    background: #FBDD3F url('../../images/texture.png') repeat;
+}
 .wrapper .admin-content{
     height:100vh;
     margin-left:var(--sidebar-width);
@@ -144,10 +150,33 @@ input[type=text], input[type=email] ,input[type=password], select, textarea {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 500;
+    transition: 0.3s;
+    width: 100px;
   }
   
   input[type=submit]:hover {
-    background-color: var(--colorGreen);
+    background-color: var(--colorGreen-hover);
+    transition: 0.3s;
   }
   
+  .content .btn-container{
+      float: right;
+      margin-right: 2px;
+  }
+ .content .btn-container .btn{
+    border: 1px solid var(--cancel-btn-hover);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.content .btn-container .cancel-btn{
+    padding: 12px 20px;
+    width: 100px;
+    background-color: var(--cancel-btn);
+}
+.content .btn-container .cancel-btn:hover{
+    background-color: var(--cancel-btn-hover);
+    transition: 0.3s;
+
+}
