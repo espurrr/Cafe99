@@ -8,6 +8,7 @@
     <?php echo link_css("css/restaurantmanager/users/user_sidebar.css?ts=<?=time()?>");?>
     <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/restaurantmanager/admin.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
 </head>
 <body>
 <?php include "user_sidebar.php"; ?> 
@@ -120,7 +121,7 @@
         
        
     </div>
-    
+    <?php include '../application/views/footer/footer_3.php';?>    
     
 </body>
 </html>
