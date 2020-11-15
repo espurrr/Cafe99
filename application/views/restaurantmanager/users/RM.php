@@ -40,14 +40,14 @@
                      <th>Role</th>
                      <th colspan="2">Action</th>
                     </thead>
-                    <tbody>
+                    <!--<tbody>
                         <tr>
                             <td>John</td>
                             <td>123</td>
                             <td>0783725988</td>
-                            <td>Cashier</td>
+                            <td>Cashier</td> -->
                           <!--  <td><a href="edit.php" class="edit">Edit</a></td>-->
-                           <td><?php echo anchor("rm_controller/userscreate", "Edit", ['class'=>"edit"]) ?></td> 
+                         <!--  <td><?php echo anchor("rm_controller/userscreate", "Edit", ['class'=>"edit"]) ?></td> 
                             <td><a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a></td>
                             
                         </tr>
@@ -56,13 +56,25 @@
                             <td>Ama</td>
                             <td>abc</td>
                             <td>0773725999</td>
-                            <td>Kitchen Manager</td>
+                            <td>Kitchen Manager</td>-->
                          <!--   <td><a href="edit.php" class="edit">Edit</a></td>-->
-                            <td><?php echo anchor("rm_controller/usersedit", "Edit",['class'=>"edit"]) ?></td> 
+                    <!--        <td><?php echo anchor("rm_controller/usersedit", "Edit",['class'=>"edit"]) ?></td> 
                             <td><a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a></td>
                         </tr>
                         
-                    </tbody>
+                    </tbody>-->
+<?php
+   foreach ($data as $row){
+       echo "<tr>";
+       echo "td".$row->User_name."</td>";
+       echo "td".$row->User_password."</td>";
+       echo "td".$row->Phone_no."</td>";
+       echo "td".$row->User_role ."</td>";
+       echo "</tr>";
+   }
+?>
+
+
                  </table>
                  </div>
              </div>

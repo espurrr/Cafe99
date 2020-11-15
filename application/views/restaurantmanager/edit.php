@@ -9,6 +9,7 @@
     <?php echo link_css("css/restaurantmanager/sidebar.css?ts=<?=time()?>");?>
     <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/restaurantmanager/admin.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
 
 </head>
 <body>
@@ -55,7 +56,7 @@
   <!--ckeditor-->  
  <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
  <?php echo link_js("js/restaurantmanager/RM.js?ts=<?=time()?>");?>
-
+ <?php include '../application/views/footer/footer_3.php';?>
   
 </body>
 </html>

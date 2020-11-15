@@ -2,7 +2,7 @@
 
 class Rmuser_model extends Database{
 
-    public function saverecords($data){
+    public function userscreate($data){
         if($this->Insert("user", $data)){
             return true;
         }else{
@@ -11,7 +11,7 @@ class Rmuser_model extends Database{
     }
 
     public function display_users(){
-        if($this->Select_Where("user", "")){
+        if($this->Select_Where("user", ['id' => $User_ID])){
             return true;
         }else{
             return false;
