@@ -1,5 +1,4 @@
 
-
 <div class="sidebar-wrapper">
         <div class="sidebar">
            <!-- <div class="profile-details">
@@ -10,8 +9,8 @@
                 </div>
             </div>-->
             <ul>
-                <li><a href="#" class="normal">About Us</a></li>
-                <li><a href="../contact/contact.php" class="active normal">Contact</a></li>
+                <li><a href="aboutus.php" class="active normal">About Us</a></li>
+                <li><a href="../contact/contact.php" class="normal">Contact</a></li>
                 <li><a href="../feedback/feedback.php" class="normal">Give Us Feedback</a></li>
                 <li><a href="../privacypolicy/privacy-policy.php" class="normal">Privacy Policy</a></li>
             </ul>
