@@ -32,6 +32,17 @@ class Account_model extends Database{
 
     }
 
+    public function login_time($user_id){
+        date_default_timezone_set('Asia/Colombo');
+        $login_time = date('Y-m-d H:i:s');
+        if($this->Update("user", ['DateTime_LastLoginAttempt'=>$login_time],['User_ID' => $user_id])){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
     public function isToken($token){
         if($this->Select_Where("user", ['Token' => $token])){
             if($this->Count() > 0){

@@ -48,6 +48,7 @@
         <li><?php echo anchor("account_controller/index", "Home")?></li>
         <li><?php echo $data[0]->Category_name;?></li>
         <li><?php echo $data[0]->Subcategory_name;?></li>
+        <li><?php echo $data[0]->Food_name;?></li>
     </ul>
     <?php
         foreach($data as $row)

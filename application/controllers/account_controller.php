@@ -146,21 +146,27 @@ class Account_controller extends JB_Controller{
                     'logged' => 1,
                     'loader' => true
                 ];
-                $this->set_session($session_data);
-                //tested with dummy userss 
-                if($session_data['role']=="customer"){
-                    redirect("customer_controller/");
-                }else if($session_data['role']=="kitchen_manager"){
-                    redirect("km_controller/index");
-                }else if($session_data['role']=="cashier"){
-                    redirect("cashier_controller/index");
-                }else if($session_data['role']=="delivery_person"){
-                    redirect("delivery_controller/index");
-                }else if($session_data['role']=="restaurant_manager"){
-                    redirect("rm_controller/index");
-                }
-
                 
+                
+
+
+                $this->set_session($session_data);
+                if($this->model->login_time($this->get_session('user_id'))){
+                    //tested with dummy userss 
+                    if($session_data['role']=="customer"){
+                        redirect("customer_controller/");
+                    }else if($session_data['role']=="kitchen_manager"){
+                        redirect("km_controller/index");
+                    }else if($session_data['role']=="cashier"){
+                        redirect("cashier_controller/index");
+                    }else if($session_data['role']=="delivery_person"){
+                        redirect("delivery_controller/index");
+                    }else if($session_data['role']=="restaurant_manager"){
+                        redirect("rm_controller/index");
+                    }
+                }
+                
+
             }
             
         }else{
