@@ -148,3 +148,12 @@ a{
   color: var(--text-color);
 }
 
+
+@media screen and (max-width: 800px) {
+  .sidebar{
+   display: none;
+   
+  }
+  }
+
+
