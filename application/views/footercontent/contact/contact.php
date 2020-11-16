@@ -17,7 +17,7 @@
      <br><br>
 <a href="#"><i class="fa fa-map-marker" style="font-size:24px;padding-right:20px"></i>Maharagama,Colombo</a><br><br>
 <a href="#"><i class='fas fa-phone' style='font-size:24px;padding-right:20px'></i>0112-554534</a><br><br>
-<a href="#"><i class='fas fa-at' style='font-size:24px;padding-right:20px'></i>cafe99@gmail.com</a><br>
+<a href="#"><i class='fas fa-at' style='font-size:24px;padding-right:20px'></i>cafe99.teamdashcode@gmail.com</a><br>
 
      </div>
 </div>

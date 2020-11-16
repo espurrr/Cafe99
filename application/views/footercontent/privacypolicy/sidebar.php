@@ -9,7 +9,7 @@
                 </div>
             </div>-->
             <ul>
-                <li><a href="../aboutus/#" class="normal">About Us</a></li>
+                <li><a href="../aboutus/aboutus.php" class="normal">About Us</a></li>
                 <li><a href="../contact/contact.php" class="normal">Contact</a></li>
                 <li><a href="../feedback/feedback.php" class="normal">Give Us Feedback</a></li>
                 <li><a href="privacy-policy.php" class="active normal">Privacy Policy</a></li>
@@ -17,3 +17,4 @@
            
         </div>
     </div>
+
