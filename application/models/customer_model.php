@@ -56,6 +56,30 @@ class Customer_model extends Database{
         }
     }
 
+    public function addtoFavs($user_id, $food_id){
+        $data = [
+            'Food_ID' => $food_id,
+            'User_ID' => $user_id
+        ];
+        if($this->Insert("favourites", $data)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function removeFromFavs($user_id, $food_id){
+        $data = [
+            'Food_ID' => $food_id,
+            'User_ID' => $user_id
+        ];
+        if($this->Delete("favourites", $data)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
 
 

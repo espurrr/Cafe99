@@ -57,6 +57,18 @@ class Account_model extends Database{
         }
     }
 
+    public function resetPwToken($data){
+        if($this->Select_Where("user", ['Email_address' => $data['Email_address']])){
+            if($this->Count() > 0){
+                if($this->Update("user", ['Token'=> $data['Token']], ['Email_address' => $data['Email_address']])){
+                    return "Success";
+                }else{
+                    return "Toekn_update_error";
+                }
+            }
+        }
+    }
+
     public function deleteUser($token){
         $this->Delete("user", ['Token' => $token]);      
     }

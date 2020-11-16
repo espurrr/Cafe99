@@ -136,6 +136,26 @@ trait form_validation {
             }
         }
 
+          /*
+        RULE => exists : Check whether the email address exists in the database
+        */ 
+        if(in_array("exists", $rules)){
+            //Get the index of unique role
+            $unique_index = array_search("unique", $rules);
+           //Get the index of table name
+            $table_index = $unique_index + 1;
+            //Get table name
+            $table_name = $rules[$table_index];
+            //Include the database file 
+            require_once "../system/libraries/database.php";
+            $db = new Database;
+            if($db->Select_Where($table_name, [$field_name => $data])){
+                if($db->Count() == 0){
+                    return $this->errors[$field_name] = $label . " is not registered yet";
+                }
+            }
+        }
+
 
     }
 

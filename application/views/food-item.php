@@ -78,6 +78,6 @@
     </div>
     </div>
     <?php include '../application/views/footer/footer_2.php';?>
-
+    <?php echo link_js("js/favourites.js"); ?>
 </body>
 </html>
