@@ -8,6 +8,7 @@
     <?php echo link_css("css/restaurantmanager/users/user_sidebar.css?ts=<?=time()?>");?>
     <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/restaurantmanager/admin.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
 </head>
 <body>
 <?php include "user_sidebar.php"; ?> 
@@ -24,7 +25,7 @@
              <div class="content">
                  <h2 class="page-title">Add Users</h2>
                 
-                 <form action="RM.php" method="post">
+              <!--   <form action="RM.php" method="post">
                      
                         
                         <label for="name">User Name</label>
@@ -56,13 +57,71 @@
                             <input type="submit" value="Save">
                         </div>
                     
-                 </form>
+                 </form>-->
+
+                 <?php echo form_open("Rmuser_controller/savedata","post");?><br>
+          
+          <label for="name">User Name</label>
+          <?php echo form_input(['type'=>'text', 'name'=>'name', 'placeholder'=>'Enter Name...', 'value'=>$this->set_value('User_name')])?>
+          <div class="error">
+            <?php if(!empty($this->errors['User_name'])):?>
+            <?php echo $this->errors['User_name'];?>
+            <?php endif;?>
+          </div>
+
+          <label for="email">Email Address</label>
+          <?php echo form_input(['type'=>'email', 'name'=>'email', 'placeholder'=>'Enter email address...' ,'value'=>$this->set_value('Email_address')])?>
+          <div class="error">
+            <?php if(!empty($this->errors['Email_address'])):?>
+            <?php echo $this->errors['Email_address'];?>
+            <?php endif;?>
+          </div>
+
+          <label for="Pno">Phone No</label>
+          <?php echo form_input(['type'=>'text', 'name'=>'Pno', 'placeholder'=>'Enter Phone No...', 'value'=>$this->set_value('Phone_no')])?>
+          <div class="error">
+            <?php if(!empty($this->errors['Phone_no'])):?>
+            <?php echo $this->errors['Phone_no'];?>
+            <?php endif;?>
+          </div>
+
+          <label for="password">User Password</label>
+          <?php echo form_input(['type'=>'password', 'name'=>'password', 'placeholder'=>'Enter Password...'])?>
+          <div class="error">
+            <?php if(!empty($this->errors['User_Password'])):?>
+            <?php echo $this->errors['User_Password'];?>
+            <?php endif;?>
+          </div>
+
+          <label for="role">Role</label>
+          <?php echo form_input(['type'=>'text', 'name'=>'role', 'placeholder'=>'Enter Role...', 'value'=>$this->set_value('User_role')])?>
+          <div class="error">
+            <?php if(!empty($this->errors['User_role'])):?>
+            <?php echo $this->errors['User_role'];?>
+            <?php endif;?>
+          </div>
+          
+          <label for="regDate">Registered Date</label>
+          <?php echo form_input(['type'=>'text', 'name'=>'regDate', 'placeholder'=>'Enter Register Date...', 'value'=>$this->set_value('Registered_date')])?>
+          <div class="error">
+            <?php if(!empty($this->errors['Registered_date'])):?>
+            <?php echo $this->errors['Registered_date'];?>
+            <?php endif;?>
+          </div>
+
+          <input type="submit" value="Submit">
+          
+    
+         
+          <?php echo form_close();?>
+
+
              </div>
             </div>
         
        
     </div>
-    
+    <?php include '../application/views/footer/footer_3.php';?>    
     
 </body>
 </html>

@@ -8,44 +8,56 @@
     <?php echo link_css("css/restaurantmanager/fooditem/fooditem_sidebar.css?ts=<?=time()?>");?>
     <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/restaurantmanager/admin.css?ts=<?=time()?>"); ?>
-    
+    <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
+
 </head>
 <body>
 <?php include "fooditem_sidebar.php";?>
 <?php include  "../application/views/header/header-dashboard.php";?>
     <div class="wrapper">
        
-            <div class="admin-content">
+            <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
                <!--    <a href="RM.php" class="button">Manage Fooditems</a>-->
-        <?php echo anchor("rm_controller/fooditem", "Manage Fooditems",['class'=>"button"]) ?>
+        <?php //echo anchor("rm_controller/fooditem", "Manage Fooditems",['class'=>"button"]) ?>
          <!--   <a href="create.php" class="button">Add  Fooditems</a>-->
-         <?php echo anchor("rm_controller/fooditemcreate", "Add  Fooditems",['class'=>"button"]) ?>
+         <?php //echo anchor("rm_controller/fooditemcreate", "Add  Fooditems",['class'=>"button"]) ?>
 
              <div class="content">
                  <h2 class="page-title">Add Fooditems</h2>
                 
-                 <form action="RM.php" method="post">
+                 <form action="" method="">
                      
                         
                         <label for="fname">Food name</label>
                         <input type="text" id="fname" name="foodname" ><br>
                         
+                        <label for="description">Description</label>
+                        <textarea name="description" id="description" ></textarea>
 
                         <label for="price">Unit Price</label>
                         <input type="text" id="price" name="Uprice" ><br>
                         
-                        <label for="description">Description</label>
-                        <textarea name="description" id="description" ></textarea>
-                    
+                        <label for="category" class="cat-label">Category</label>
+                        <select id="category" name="category">
+                            <option value="empty" style="display:none;"> - select a category - </option>
+                            <option value="Food" onclick="changeSubCat('Food')">Food</option>
+                            <option value="Drinks" onclick="changeSubCat('Drinks')">Drinks</option>
+                            <option value="Desserts" onclick="changeSubCat('Desserts')">Desserts</option>
+                        </select>
+
+                        </br>
+                        <label for="subcategory" class="subcat-label">Subcategory</label>
+                        <select id="subcategory" name="subcategory">
+                        </select>
+
                         <label for="availability" class="av-label">Availability</label>
                         <select id="availability" name="availability">
                             <option value="Available">Available</option>
                             <option value="Unavailable">Unavailable</option>
                         </select>
-                         
                         
-                        
-                        <div>
+                        <div class="btn-container">
+                            <button class="btn cancel-btn" id="cancel-btn"><?php echo anchor("rm_controller/fooditem", "Cancel")?></button>
                             <input type="submit" value="Save">
                         </div>
                     
@@ -55,9 +67,11 @@
         
        
     </div>
+    <?php include '../application/views/footer/footer_3.php';?>
   <!--ckeditor-->  
- <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
+ <!-- <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script> -->
  <?php echo link_js("js/restaurantmanager/RM.js?ts=<?=time()?>");?>
+ <?php echo link_js("js/restaurantmanager/food-create.js?ts=<?=time()?>");?>
     
 </body>
 </html>

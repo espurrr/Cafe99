@@ -24,7 +24,7 @@ class Account_controller extends JB_Controller{
         $this->validation('confirm_password','Confirm Password', 'required|confirm|User_Password');
 
         if($this->run()){
-            // echo "Form is submitted";
+         //   echo "Form is submitted";
             $User_name = $this->post('User_name');
             $Email_address = $this->post('Email_address');
             $Phone_no = $this->post('Phone_no');
