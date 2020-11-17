@@ -25,6 +25,6 @@
 <p>5.Third-Party Service Providers: We employ other companies and individuals to perform functions on our behalf. Examples; delivering packages and processing credit card payments. They have access to personal information needed to perform their functions, but may not use it for other purposes.</p>  
 </div>
 </div>
-<?php include 'footer/footer_1.php';?>
+<?php include '../application/views/footer/footer_1.php';?>    
 </body>
 </html>

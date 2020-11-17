@@ -26,6 +26,6 @@
 
      </div>
 </div>
-<?php include 'footer/footer_1.php';?>
+<?php include '../application/views/footer/footer_1.php';?>    
 </body>
 </html>

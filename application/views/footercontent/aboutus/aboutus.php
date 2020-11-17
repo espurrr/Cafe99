@@ -29,12 +29,12 @@
        <p>At the heart of what we do is the idea of providing a daily, fresh baking concept that complements the needs of the urban household. We strive to be the country leading bakery known for quality, service standard and value. We currently operate 50 outlets.</p>
    </div>
    <br><br><br><br><br><br>
-   <div class="img">
+ <!--  <div class="img">
        <img src="cafe99.jpg" style="padding-right:100px;">
        <img src="Staffpic.jpg" style="padding-right:100px;">
        <img src="caf.jpg">
-   </div>
+   </div>-->
 </div>
-<?php include 'footer/footer_1.php';?>
+<?php include '../application/views/footer/footer_1.php';?>    
 </body>
 </html>
