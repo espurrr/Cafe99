@@ -80,6 +80,25 @@ class Customer_model extends Database{
         }
     }
 
+    public function getFavs($user_id){
+        
+        if($this->Select_Where("favourites", ['User_id' => $user_id])){
+            if($this->Count() > 0){
+                $food = $this->AllRecords();
+                print_r($food);
+                if($food){
+                    return ['status'=>'success', 'data'=>$food];
+                }else{
+                    return "Food_not_retrieved";
+                }
+            }else{
+                return "Food_not_found";
+            }
+        }
+    }
+
+
+
 
 
 

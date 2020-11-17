@@ -8,7 +8,7 @@
     <title>Cart</title>
 </head>
 <body>
-
+<?php include '../application/views/header/cust-logged-in-header.php';?>
 <ul id="breadcrumbs">    
     <li><?php echo anchor("customer_controller/mycart", "Cart") ?></li>
     <li><?php echo anchor("customer_controller/order", "Order") ?></li>

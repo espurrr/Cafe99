@@ -88,7 +88,7 @@
 
         <div class="product-list-container">
             <div class="product-list">
-                <div class="title">Latest Products</div>
+                <div class="title">Newly Introduced</div>
                 <div class="row">
                     <div class="column">
                         <div class="card">

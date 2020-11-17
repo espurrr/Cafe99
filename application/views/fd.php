@@ -60,6 +60,7 @@
     <main class="grid">
 
       <?php
+      $isfav = new Food_model; 
       foreach($data as $row){
       ?>
 
@@ -69,11 +70,15 @@
         ?>
         <a href="#"><img src="<?php echo $img_path;?>" alt="Image Not Found"></a>
         <div class="text">
-          <h3><a href="#"><?php echo $row->Food_name; ?></a></h3>
+        <h3><?php echo anchor("food_controller/menu/".$row->Category_name."/".$row->Subcategory_name."/".$row->Food_ID, $row->Food_name) ?></h3>
           <p>LKR <?php echo $row->Unit_Price; ?></p>
         </div>
         <div class="btn-container">
-            <button id=heartbtn class="fav btn "><i class="far fa-heart heart-btn" data-id="<?php echo $row->Food_ID;?>"></i></button>
+            <?php if ($isfav->is_favorite($row->Food_ID)){ ?>
+            <button id=heartbtn class="fav btn toggle-fav"><i class="fas fa-heart heart-btn" data-id="<?php echo $row->Food_ID;?>"></i></button>
+            <?php } else{?>
+            <button id=heartbtn class="fav btn toggle-fav"><i class="far fa-heart heart-btn" data-id="<?php echo $row->Food_ID;?>"></i></button>
+            <?php } ?>
         </div>
       </article>
 

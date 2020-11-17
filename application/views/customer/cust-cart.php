@@ -9,6 +9,8 @@
 </head>
 <body>
 
+<?php include '../application/views/header/cust-logged-in-header.php';?>
+
 <ul id="breadcrumbs">
     <li>Cart</li>
     <li><?php echo anchor("customer_controller/order", "Order") ?></li>

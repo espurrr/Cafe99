@@ -19,13 +19,13 @@
           <i class="fa fa-caret-down"></i>
       </button>
       <div id="waypoints" class="dropdown-content" >
-        <a href="#">Rice</a>
-        <a href="#">Pizza</a>
-        <a href="#">Savouries</a>
-        <?php echo anchor("food_controller/", "Cakes") ?>
-        <a href="#">Noodles & Pasta</a>
-        <a href="#">Biriyani</a>
-        <a href="#">Buns</a>
+      <?php echo anchor("food_controller/menu/food/rice", "Rice") ?>
+      <?php echo anchor("food_controller/menu/food/pizza", "Pizza") ?>
+      <?php echo anchor("food_controller/menu/food/savouries", "Savouries") ?>
+      <?php echo anchor("food_controller/menu/food/cake", "Cake") ?>
+      <?php echo anchor("food_controller/menu/food/NoodlesPasta", "Noodles & Pasta") ?>
+      <?php echo anchor("food_controller/menu/food/biriyani", "Biriyani") ?>
+      <?php echo anchor("food_controller/menu/food/bun", "Buns") ?>
       </div>
     </div>
       <div class="route-dropdown" onclick="toggleMenu(this)">
@@ -33,11 +33,11 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div id="routes" class="dropdown-content" >
-            <a href="">Tea</a>
+        <?php echo anchor("food_controller/menu/drinks/tea", "Tea") ?>
             <a href="#">Milk Shakes</a>
             <a href="#">Ice Blended</a>
             <a href="#">Fresh Fruit Juice</a>
-            <a href="#">Coffee</a>
+        <?php echo anchor("food_controller/menu/drinks/coffee", "Coffee") ?>
         </div>
       </div>
       <div class="route-dropdown" onclick="toggleMenu(this)">
@@ -53,7 +53,7 @@
         </div>
       </div>
       <div class="route-dropdown" onclick="toggleMenu(this)">
-        <button class="dropbtn">Cart&nbsp;<span class="step">1</span>
+        <button class="dropbtn">Cart&nbsp;<span class="step">0</span>
         </button>
       </div>
       <div class="route-dropdown sign-log" id="avatar_big" onclick="toggleMenu(this)">
