@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <link rel="stylesheet" href="contact.css">
-    <link rel="stylesheet" href="sidebar.css">
+    <?php echo link_css("css/header.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/footer_1.css?ts=<?=time()?>"); ?>
+ <!--   <link rel="stylesheet" href="contact.css">-->
+ <?php echo link_css("css/footercontent/contact/contact.css?ts=<?=time()?>"); ?>
+ <!--   <link rel="stylesheet" href="sidebar.css">-->
+ <?php echo link_css("css/footercontent/contact/sidebar.css?ts=<?=time()?>"); ?>
     <title>Contact</title>
 </head>
 <body>
+<?php include '../application/views/header/header.php';?>   
 <?php include "sidebar.php";?>
 <div class="wrapper">
     <div class="contact-content">
@@ -21,5 +26,6 @@
 
      </div>
 </div>
+<?php include 'footer/footer_1.php';?>
 </body>
 </html>

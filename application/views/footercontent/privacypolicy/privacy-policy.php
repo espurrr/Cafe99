@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy and Policy</title>
-    <link rel="stylesheet" href="privacy-policy.css">
-    <link rel="stylesheet" href="sidebar.css">
+    <?php echo link_css("css/header.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/footer_1.css?ts=<?=time()?>"); ?>
+  <!--  <link rel="stylesheet" href="privacy-policy.css">-->
+  <?php echo link_css("css/footercontent/privacypolicy/privacy-policy.css?ts=<?=time()?>"); ?>
+  <!--  <link rel="stylesheet" href="sidebar.css">-->
+  <?php echo link_css("css/footercontent/privacypolicy/sidebar.css.css?ts=<?=time()?>"); ?>
 </head>
 <body>
+<?php include '../application/views/header/header.php';?>   
 <?php include "sidebar.php";?>
 <div class="wrapper">
 <div class="privacy-content">
@@ -20,5 +25,6 @@
 <p>5.Third-Party Service Providers: We employ other companies and individuals to perform functions on our behalf. Examples; delivering packages and processing credit card payments. They have access to personal information needed to perform their functions, but may not use it for other purposes.</p>  
 </div>
 </div>
+<?php include 'footer/footer_1.php';?>
 </body>
 </html>
