@@ -6,6 +6,9 @@
     font-family: 'Montserrat', sans-serif;
 
 }
+body{
+    background-color: #FBDD3F;
+}
 .footer-container{
     margin-left: 250px;
     padding: 20px;

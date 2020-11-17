@@ -32,9 +32,8 @@ body{
     height:100vh;
     margin-left:var(--sidebar-width);
     padding: 40px 40px 40px;
-    overflow-y:scroll;
     background-color: var(--background-color);
-    overflow: hidden;
+
 }
     
 @media screen and (max-width: 500px) {
@@ -138,8 +137,8 @@ input[type=text], input[type=email] ,input[type=password], select, textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
+    /* margin-top: 16px; */
+    margin-bottom: 2px;
     resize: vertical;
   }
   
@@ -163,6 +162,7 @@ input[type=text], input[type=email] ,input[type=password], select, textarea {
   .content .btn-container{
       float: right;
       margin-right: 2px;
+      margin-top: 20px;
   }
  .content .btn-container .btn{
     border: 1px solid var(--cancel-btn-hover);
@@ -179,4 +179,8 @@ input[type=text], input[type=email] ,input[type=password], select, textarea {
     background-color: var(--cancel-btn-hover);
     transition: 0.3s;
 
+}
+
+#category, #subcategory{
+    margin-bottom: 20px;
 }

@@ -146,3 +146,10 @@
         right: -8%;
     }
 }
+
+.dashboard-error{
+    font-size: 13px;
+    color: #ee2828;
+    font-weight: 500;
+    margin-bottom: 15px;
+}

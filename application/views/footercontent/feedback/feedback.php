@@ -5,11 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>feedback</title>
-  <link rel="stylesheet" href="feedback.css">
-  <link rel="stylesheet" href="sidebar.css">
+  <?php echo link_css("css/header.css?ts=<?=time()?>"); ?>
+  <?php echo link_css("css/footer_1.css?ts=<?=time()?>"); ?>
+<!--  <link rel="stylesheet" href="feedback.css">-->
+<?php echo link_css("css/footercontent/feedback/feedback.css?ts=<?=time()?>"); ?>
+<!--  <link rel="stylesheet" href="sidebar.css">-->
+<?php echo link_css("css/footercontent/feedback/sidebar.css?ts=<?=time()?>"); ?>
  
 </head>
 <body>
+<?php include '../application/views/header/header.php';?>   
 <?php include "sidebar.php";?>
 <div class="wrapper">
   <div class="feedback-content">
@@ -42,5 +47,6 @@
   </form>
   </div>
   </div>
+  <?php include '../application/views/footer/footer_1.php';?>    
 </body>
 </html>
