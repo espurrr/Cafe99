@@ -9,10 +9,14 @@
                 </div>
             </div>-->
             <ul>
-                <li><a href="../aboutus/aboutus.php" class="normal">About Us</a></li>
-                <li><a href="../contact/contact.php" class="normal">Contact</a></li>
-                <li><a href="feedback.php" class="active normal">Give Us Feedback</a></li>
-                <li><a href="../privacypolicy/privacy-policy.php" class="normal">Privacy Policy</a></li>
+                 <!--  <li><a href="aboutus.php" class="normal">About Us</a></li>-->
+                 <li><?php echo anchor("footercontent_controller/aboutus", "About Us",['class'=>"normal"]) ?></li>
+             <!--   <li><a href="../contact/contact.php" class="normal">Contact</a></li>-->
+             <li><?php echo anchor("footercontent_controller/contact", "Contact",['class'=>"normal"]) ?></li>
+              <!--  <li><a href="../feedback/feedback.php" class="active normal">Give Us Feedback</a></li>-->
+              <li><?php echo anchor("footercontent_controller/feedback", "Give Us Feedback",['class'=>"active normal"]) ?></li>
+             <!--   <li><a href="../privacypolicy/privacy-policy.php" class="normal">Privacy Policy</a></li>-->
+             <li><?php echo anchor("footercontent_controller/privacypolicy", "Privacy Policy",['class'=>"normal"]) ?></li>
             </ul>
            
         </div>
