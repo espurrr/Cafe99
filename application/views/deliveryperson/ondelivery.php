@@ -56,7 +56,7 @@
 <!--  <a href="ondelivery.php" button class="btn"><i class='fas fa-biking' style="font-size:24px;padding-right:40px"></i></button> </a>-->
 <?php echo anchor("delivery_controller/ondelivery", "Ondelivery",['class'=>"active",'button class'=>"btn"]) ?>
 <!--  <a href="dispatched.php" button class="btn"><i class='fas fa-clipboard-check' style="font-size:24px"></i></button> </a>-->
-<?php echo anchor("delivery_controller/ondelivery", "Dispatched",['button class'=>"btn"]) ?>
+<?php echo anchor("delivery_controller/dispatched", "Dispatched",['button class'=>"btn"]) ?>
   </div>
 
   <div class="list">
