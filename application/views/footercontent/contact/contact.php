@@ -15,7 +15,7 @@
 </head>
 <body>
 <?php include '../application/views/header/header.php';?>   
-<?php include "sidebar.php";?>
+<?php // include "sidebar.php";?>
 <div class="wrapper">
     <div class="contact-content">
      <h1>Contacts</h1>

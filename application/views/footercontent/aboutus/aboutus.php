@@ -15,12 +15,15 @@
 </head>
 <body>
 <?php include '../application/views/header/header.php';?>   
-<?php include "sidebar.php";?>
+<?php // include "sidebar.php";?>
+<!--<div class="topic">
+<h1>About Us</h1>
+</div>-->
+<br><br>
+<div class="wrapper">
 <div class="topic">
 <h1>About Us</h1>
 </div>
-<br><br>
-<div class="wrapper">
     <div class="aboutus-content">
     <h1>Providing a Daily,fresh baking concepts that complements the needs of the urban household !</h1>
    </div>

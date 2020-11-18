@@ -15,7 +15,7 @@
 </head>
 <body>
 <?php include '../application/views/header/header.php';?>   
-<?php include "sidebar.php";?>
+<?php //include "sidebar.php";?>
 <div class="wrapper">
   <div class="feedback-content">
    <h1>Feedback Form</h1>
