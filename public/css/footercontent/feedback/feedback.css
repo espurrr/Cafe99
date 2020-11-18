@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 
 :root{
-    --background-color:#1fb4be;
+    --background-color:#fcfde6;
     --post-btn-color:#4eca06;
     
 }
@@ -47,11 +47,13 @@ input[type=text], select, textarea {
     background-color: var(--background-color);
     padding: 20px;
     margin-left: 250px;
+    margin-right: 250px;
     
   }
 
   @media screen and (max-width: 800px) {
     .feedback-content{
       margin-left: 0;
+      margin-right: 0;
     }
     }
