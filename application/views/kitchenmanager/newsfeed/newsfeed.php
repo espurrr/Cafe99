@@ -15,13 +15,17 @@
 </head>
 
 <body>
+    <div class="page-container" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
     <?php include "sidebar.php";?>
-    <?php include "../application/views/header/header-dashboard.php";?> 
-    <div class="newsfeed-wrapper">
-        <div class="admin-content">
-            <div class="content">
 
-                <div class="dashboard" id="download">
+    <div class="content-wrapper" >
+    <?php include "../application/views/header/header-dashboard.php";?> 
+    
+    <div class="newsfeed-wrapper">
+        <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
+            <!-- <div class="content"> -->
+
+                <div class="dashboard">
                     <div class="post">
                         <div class="top">
                             <div class="img">
@@ -37,21 +41,12 @@
                         </div>
                         <div class="news_content">
                             <div class="text_title"><p>Title of the annoucement</p></div>
-                            <div class="text-message"><p>The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta.
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta.
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta.
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta
-                            The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta</p></div>
+                            <div class="text-message">
+                                <p>The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta.
+                                The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta.
+                                The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -91,10 +86,12 @@
                     </div>
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
     </div>
-    
-<?php include '../application/views/footer/footer_3.php';?>
+
+    </div><!-- content-wrapper ends-->
+    <?php include '../application/views/footer/footer_3.php';?>
+    </div> <!-- page-contianer ends-->
 <!-- <script src="./dropdownlist.js"></script> -->
 </body>
 </html>
