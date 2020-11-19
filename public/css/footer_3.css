@@ -9,12 +9,16 @@
 body{
     background-color: #FBDD3F;
 }
-.footer-container{
+#footer{
+    position: absolute;
+    bottom: 0;
+    width: calc(100vw - 250px - 19px);
+    height: 100px;
     margin-left: 250px;
-    padding: 20px;
-    margin-bottom: 20px;
-    position: relative;
 }
+/* .footer-container{
+    position: relative;
+} */
 .footer-container .image{
     height: 50px;
     background-size: contain;

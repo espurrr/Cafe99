@@ -42,11 +42,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 </head>
-<body>
+<body onload="changeAvButton()">
+    <div class="page-container" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
     <?php include "sidebar.php"?>
+    <div class="content-wrapper" >
+
     <?php include '../application/views/header/header-dashboard.php';?>
 
-    <div class="tab">
+    <div class="tab" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;" >
         <button class="tablinks active" onclick="changeFoodTab(event, 'food')">Food</button>
         <button class="tablinks" onclick="changeFoodTab(event, 'drinks')">Drink</button>
         <button class="tablinks" onclick="changeFoodTab(event, 'desserts')">Dessert</button>
@@ -84,8 +87,8 @@
 
                     <form method="POST" action="">
                     <div class="btn-container">
-                        <button class="available btn" id="av-btn" type="submit" name="av" value="<?php echo $row['id'];?>" ><i class="fas fa-check"></i></button>
-                        <button class="unavailable btn" id="unav-btn" type="submit"  name="unav" value="<?php echo $row['id'];?>"><i class="fas fa-times"></i></button>
+                        <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row['id'];?>" ><i class="fas fa-check"></i></button>
+                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row['id'];?>"><i class="fas fa-times"></i></button>
                     
                         <!-- <button class="available btn" id="av-btn" type="submit" name="av" value="<?php //echo $row['id'];?>" onclick="change_av(this.value)"><i class="fas fa-check"></i></button>
                         <button class="unavailable btn" id="unav-btn" type="submit"  name="unav" value="<?php //echo $row['id'];?>" onclick="change_unav(this.value)"><i class="fas fa-times"></i></button> -->
@@ -125,8 +128,8 @@
 
                     <form method="POST" action="">
                     <div class="btn-container">
-                        <button class="available btn" id="av-btn" type="submit" name="av" value="<?php echo $row['id'];?>" ><i class="fas fa-check"></i></button>
-                        <button class="unavailable btn" id="unav-btn" type="submit"  name="unav" value="<?php echo $row['id'];?>"><i class="fas fa-times"></i></button>
+                        <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row['id'];?>" ><i class="fas fa-check"></i></button>
+                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row['id'];?>"><i class="fas fa-times"></i></button>
                     
                     </div>
                     </form>
@@ -158,8 +161,8 @@
 
                     <form method="POST" action="">
                     <div class="btn-container">
-                        <button class="available btn" id="av-btn" type="submit" name="av" value="<?php echo $row['id'];?>" ><i class="fas fa-check"></i></button>
-                        <button class="unavailable btn" id="unav-btn" type="submit"  name="unav" value="<?php echo $row['id'];?>"><i class="fas fa-times"></i></button>
+                        <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row['id'];?>" ><i class="fas fa-check"></i></button>
+                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row['id'];?>"><i class="fas fa-times"></i></button>
                     
                     </div>
                     </form>
@@ -192,8 +195,8 @@
 
                     <form method="POST" action="">
                     <div class="btn-container">
-                        <button class="available btn" id="av-btn" type="submit" name="av" value="<?php echo $row['id'];?>" ><i class="fas fa-check"></i></button>
-                        <button class="unavailable btn" id="unav-btn" type="submit"  name="unav" value="<?php echo $row['id'];?>"><i class="fas fa-times"></i></button>
+                        <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row['id'];?>" ><i class="fas fa-check"></i></button>
+                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row['id'];?>"><i class="fas fa-times"></i></button>
                     
                     </div>
                     </form>
@@ -236,8 +239,8 @@
 
                     <form method="POST" action="">
                     <div class="btn-container">
-                        <button class="available btn" id="av-btn" type="submit" name="av" value="<?php echo $row['id'];?>" ><i class="fas fa-check"></i></button>
-                        <button class="unavailable btn" id="unav-btn" type="submit"  name="unav" value="<?php echo $row['id'];?>"><i class="fas fa-times"></i></button>
+                        <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row['id'];?>" ><i class="fas fa-check"></i></button>
+                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row['id'];?>"><i class="fas fa-times"></i></button>
                     
                     </div>
                     </form>
@@ -270,8 +273,8 @@
 
                     <form method="POST" action="">
                     <div class="btn-container">
-                        <button class="available btn" id="av-btn" type="submit" name="av" value="<?php echo $row['id'];?>" ><i class="fas fa-check"></i></button>
-                        <button class="unavailable btn" id="unav-btn" type="submit"  name="unav" value="<?php echo $row['id'];?>"><i class="fas fa-times"></i></button>
+                        <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row['id'];?>" ><i class="fas fa-check"></i></button>
+                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row['id'];?>"><i class="fas fa-times"></i></button>
                     
                     </div>
                     </form>
@@ -314,8 +317,8 @@
 
                     <form method="POST" action="">
                     <div class="btn-container">
-                        <button class="available btn" id="av-btn" type="submit" name="av" value="<?php echo $row['id'];?>" ><i class="fas fa-check"></i></button>
-                        <button class="unavailable btn" id="unav-btn" type="submit"  name="unav" value="<?php echo $row['id'];?>"><i class="fas fa-times"></i></button>
+                        <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row['id'];?>" ><i class="fas fa-check"></i></button>
+                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row['id'];?>"><i class="fas fa-times"></i></button>
                     
                     </div>
                     </form>
@@ -325,41 +328,46 @@
             ?>
         </main>
 
-        <div class="subcategory-title">Cheese Cake</div>
+        <!-- <div class="subcategory-title">Cheese Cake</div>
         <main class="grid" id="grid">
             <?php
-                $sql = "SELECT fooditem.Food_ID AS id, fooditem.Food_name AS title, fooditem.Availability AS availability, subcategory.Subcategory_name, category.Category_name 
-                        FROM fooditem INNER JOIN subcategory ON fooditem.Subcategory_ID = subcategory.Subcategory_ID
-                        INNER JOIN category ON subcategory.Category_ID = category.Category_ID
-                        WHERE category.Category_name = 'Desserts' AND subcategory.Subcategory_name = 'CheeseCake'"; 
-                $result = mysqli_query($db, $sql);
-                while($row = mysqli_fetch_assoc($result)){
+                // $sql = "SELECT fooditem.Food_ID AS id, fooditem.Food_name AS title, fooditem.Availability AS availability, subcategory.Subcategory_name, category.Category_name 
+                //         FROM fooditem INNER JOIN subcategory ON fooditem.Subcategory_ID = subcategory.Subcategory_ID
+                //         INNER JOIN category ON subcategory.Category_ID = category.Category_ID
+                //         WHERE category.Category_name = 'Desserts' AND subcategory.Subcategory_name = 'CheeseCake'"; 
+                // $result = mysqli_query($db, $sql);
+                // while($row = mysqli_fetch_assoc($result)){
             ?>
                 <article>
                     <?php
-                        $img_path = "/public/images/food-dash-images/".$row['Category_name'] ."/".$row['Subcategory_name']."/".str_replace(' ','',$row['title']).".jpg";  
+                        //$img_path = "/public/images/food-dash-images/".$row['Category_name'] ."/".$row['Subcategory_name']."/".str_replace(' ','',$row['title']).".jpg";  
                     ?>
-                    <img src="<?php echo BASE_URL; echo $img_path;?>" alt="Image Not Found">
+                    <img src="<?php //echo BASE_URL; echo $img_path;?>" alt="Image Not Found">
                     <div class="text">
-                        <h4><?php echo $row['title'];?></h4>
-                        <p>Product ID :  <?php echo $row['id']; ?></p>
-                        <p class="availability" id="availability"><?php echo $row['availability']; ?></p>
+                        <h4><?php //echo $row['title'];?></h4>
+                        <p>Product ID :  <?php //echo $row['id']; ?></p>
+                        <p class="availability" id="availability"><?php //echo $row['availability']; ?></p>
                     </div>
 
                     <form method="POST" action="">
                     <div class="btn-container">
-                        <button class="available btn" id="av-btn" type="submit" name="av" value="<?php echo $row['id'];?>" ><i class="fas fa-check"></i></button>
-                        <button class="unavailable btn" id="unav-btn" type="submit"  name="unav" value="<?php echo $row['id'];?>"><i class="fas fa-times"></i></button>
+                        <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php //echo $row['id'];?>" ><i class="fas fa-check"></i></button>
+                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php //echo $row['id'];?>"><i class="fas fa-times"></i></button>
                     
                     </div>
                     </form>
                 </article>
             <?php
-                }
+                //}
             ?>
-        </main>
+        </main> -->
     </div>
+
+    </div><!-- content-wrapper ends-->
     <?php include '../application/views/footer/footer_3.php';?>
+
+    </div> <!-- page-contianer ends-->
+    
     <?php echo link_js("js/kitchen-manager/foodmenu/searchbar.js"); ?>
     <?php echo link_js("js/kitchen-manager/foodmenu/foodmenu.js"); ?>
 </body>
