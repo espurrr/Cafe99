@@ -36,19 +36,20 @@
                  <table>
                      <thead>
                      <th>User Name</th>
-                     <th>User Password</th>
+                     <th>Email address</th>
                      <th>Phone Number</th>
                      <th>Role</th>
                      <th colspan="2">Action</th>
                     </thead>
-                    <!--<tbody>
+                    <!--
+                     <tbody>
                         <tr>
                             <td>John</td>
                             <td>123</td>
                             <td>0783725988</td>
-                            <td>Cashier</td> -->
-                          <!--  <td><a href="edit.php" class="edit">Edit</a></td>-->
-                         <!--  <td><?php echo anchor("rm_controller/userscreate", "Edit", ['class'=>"edit"]) ?></td> 
+                            <td>Cashier</td>
+                            <td><a href="edit.php" class="edit">Edit</a></td>
+                            <td><?php echo anchor("rm_controller/userscreate", "Edit", ['class'=>"edit"]) ?></td> 
                             <td><a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a></td>
                             
                         </tr>
@@ -57,23 +58,49 @@
                             <td>Ama</td>
                             <td>abc</td>
                             <td>0773725999</td>
-                            <td>Kitchen Manager</td>-->
-                         <!--   <td><a href="edit.php" class="edit">Edit</a></td>-->
-                    <!--        <td><?php echo anchor("rm_controller/usersedit", "Edit",['class'=>"edit"]) ?></td> 
+                            <td>Kitchen Manager</td>
+                           <td><a href="edit.php" class="edit">Edit</a></td>
+                           <td><?php echo anchor("rm_controller/usersedit", "Edit",['class'=>"edit"]) ?></td> 
                             <td><a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a></td>
                         </tr>
                         
                     </tbody>-->
-<?php
-   foreach ($data as $row){
+                  <!--  <?php
+    foreach ($data as $row){
        echo "<tr>";
-       echo "td".$row->User_name."</td>";
-       echo "td".$row->User_password."</td>";
-       echo "td".$row->Phone_no."</td>";
-       echo "td".$row->User_role ."</td>";
+       echo $row->User_name;
+       echo $row->User_password;
+       echo $row->Phone_no;
+       echo $row->User_role;
        echo "</tr>";
-   }
-?>
+  }
+?>-->
+ <!--  <tr>
+        <td><?php echo $data[0]->User_name;?></td>
+        <td><?php echo $data[0]->User_password;?></td>
+        <td><?php echo $data[0]->Phone_no;?></td>
+        <td><?php echo $data[0]->User_role;?></td>
+        <td><?php echo anchor("rm_controller/usersedit", "Edit",['class'=>"edit"]) ?></td> 
+        <td><a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a></td>
+    </tr>-->
+    
+   <?php
+        $user = new Rmuser_model; 
+        foreach($data as $row){
+          echo "<tr>";
+          echo "<td>".$row->User_name."</td>";
+          echo "<td>".$row->Email_address."</td>";
+          echo "<td>".$row->Phone_no."</td>";
+          echo "<td>".$row->User_role."</td>";
+      //    echo "<td>".anchor("rm_controller/usersedit", "Edit",['class'=>"edit"])."</td>";
+          echo "<td>".anchor("rmuser_controller/user_update_values", "Edit",['class'=>"edit"])."</td>";
+          echo "<td>".anchor("rmuser_controller/delete_user_data", "Delete",['class'=>"delete"])."</td>";
+          echo "</tr>";
+        }
+       
+    ?>
+ <!--   <?php echo $row->User_name; ?>-->
+    
 
 
                  </table>
@@ -83,6 +110,6 @@
         
        
     </div>
-    <?php include '../application/views/footer/footer_3.php';?>  
+   <?php // include '../application/views/footer/footer_3.php';?>  
 </body>
 </html>

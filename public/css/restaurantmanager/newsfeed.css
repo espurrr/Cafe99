@@ -19,7 +19,7 @@
 
 body{
   background-color: var(--newsfeed-background-color);
-
+  overflow-y:scroll;
 }
 
 .newsfeed-wrapper{
@@ -32,7 +32,7 @@ body{
     height:100%;
     width:100%;
     padding: 0px 0px;
-    overflow-y:scroll;
+/*  overflow-y:scroll;*/
 }
     
 @media screen and (max-width: 500px) {
