@@ -25,7 +25,7 @@
              <div class="content">
                  <h2 class="page-title">Edit Users</h2>
                 
-                 <form action="RM.php" method="post">
+            <!--     <form action="RM.php" method="post">
                      
                         
                         <label for="name">Name</label>
@@ -53,13 +53,58 @@
                             <input type="submit" value="Update" onclick="alert('Are you sure update')">
                         </div>
                     
-                 </form>
+                 </form>-->
+
+                 <?php echo form_open("rmuser_controller/user_update_save","post");?>
+          
+          <label for="User_name">User Name</label>
+          <?php echo form_input(['type'=>'text', 'name'=>'User_name', 'placeholder'=>$data->User_name, 'value'=>$data->User_name])?>
+          <div class="error">
+            <?php if(!empty($this->errors['User_name'])):?>
+            <?php echo $this->errors['User_name'];?>
+            <?php endif;?>
+          </div>
+
+          <label for="Email_address">Email Address</label>
+          <?php echo form_input(['type'=>'email', 'name'=>'Email_address', 'placeholder'=>$data->Email_address,'readonly'=>'readonly' ,'value'=>$data->Email_address])?>
+          <div class="error">
+            <?php if(!empty($this->errors['Email_address'])):?>
+            <?php echo $this->errors['Email_address'];?>
+            <?php endif;?>
+          </div>
+
+          <label for="Phone_no">Phone No</label>
+          <?php echo form_input(['type'=>'text', 'name'=>'Phone_no', 'placeholder'=>$data->Phone_no, 'value'=>$data->Phone_no ])?>
+          <div class="error">
+            <?php if(!empty($this->errors['Phone_no'])):?>
+            <?php echo $this->errors['Phone_no'];?>
+            <?php endif;?>
+          </div>
+
+          <label for="User_role">Role</label>
+          <?php echo form_input(['type'=>'text', 'name'=>'User_role', 'placeholder'=>$data->User_role,'value'=>$data->User_role ])?>
+          <div class="error">
+            <?php if(!empty($this->errors['User_role'])):?>
+            <?php echo $this->errors['User_role'];?>
+            <?php endif;?>
+          </div>
+          
+
+            <input type="submit" value="Update">
+          
+    
+         
+          <?php echo form_close();?>
+
+
+          </div>
+
              </div>
             </div>
         
        
     </div>
     
-    <?php include '../application/views/footer/footer_3.php';?>  
+    <?php// include '../application/views/footer/footer_3.php';?>  
 </body>
 </html>

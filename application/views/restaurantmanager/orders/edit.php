@@ -59,6 +59,6 @@
    <!--ckeditor-->  
  <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
  <?php echo link_js("js/restaurantmanager/RM.js?ts=<?=time()?>");?>
- <?php include '../application/views/footer/footer_3.php';?>    
+ <?php //include '../application/views/footer/footer_3.php';?>    
 </body>
 </html>

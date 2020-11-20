@@ -50,14 +50,14 @@ chart.render();
 window.onload = function() {
 
 var chart = new CanvasJS.Chart("chartContainer", {
-	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	theme: "dark1", // "light1", "light2", "dark1", "dark2"
 	exportEnabled: true,
 	animationEnabled: true,
 	title: {
 		text: "Sales Data Chart Of Week"
 	},
 	data: [{
-		type: "pie",
+		type: "column",
 		startAngle: 25,
 		toolTipContent: "<b>{label}</b>: {y}%",
 		showInLegend: "true",

@@ -68,7 +68,7 @@
         
        
     </div>
-    <?php include '../application/views/footer/footer_3.php';?>    
+    <?php // include '../application/views/footer/footer_3.php';?>    
  
 </body>
 </html>
