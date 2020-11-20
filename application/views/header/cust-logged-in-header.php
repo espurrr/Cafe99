@@ -22,10 +22,10 @@
       <?php echo anchor("food_controller/menu/food/rice", "Rice") ?>
       <?php echo anchor("food_controller/menu/food/pizza", "Pizza") ?>
       <?php echo anchor("food_controller/menu/food/savouries", "Savouries") ?>
-      <?php echo anchor("food_controller/menu/food/cake", "Cake") ?>
+      <?php echo anchor("food_controller/menu/food/cakes", "Cake") ?>
       <?php echo anchor("food_controller/menu/food/NoodlesPasta", "Noodles & Pasta") ?>
       <?php echo anchor("food_controller/menu/food/biriyani", "Biriyani") ?>
-      <?php echo anchor("food_controller/menu/food/bun", "Buns") ?>
+      <?php echo anchor("food_controller/menu/food/buns", "Buns") ?>
       </div>
     </div>
       <div class="route-dropdown" onclick="toggleMenu(this)">

@@ -22,6 +22,10 @@
     <!-- auth message -->
     <div class="authMessage">
         <?php $this->flash('emailSuccess','alert alert-info','fa fa-info-circle'); ?>
+        <?php $this->flash('activationError','alert alert-danger','fa fa-times-circle'); ?>
+        <?php $this->flash('tokenError','alert alert-danger','fa fa-times-circle'); ?>
+        <?php $this->flash('passwordError','alert alert-danger','fa fa-times-circle'); ?>
+
     </div>
 
     <div class="parent-container" id="p-container">

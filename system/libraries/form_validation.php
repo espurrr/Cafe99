@@ -141,7 +141,7 @@ trait form_validation {
         */ 
         if(in_array("exists", $rules)){
             //Get the index of unique role
-            $unique_index = array_search("unique", $rules);
+            $unique_index = array_search("exists", $rules);
            //Get the index of table name
             $table_index = $unique_index + 1;
             //Get table name

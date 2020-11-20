@@ -216,9 +216,34 @@ class Customer_controller extends JB_Controller{
         //$this->view('customer/cust-favorites');
     }
 
+    public function fav_delete(){
+        if(isset($_POST['action'])){
+            echo json_encode(array('action'=>$_POST['action'],'food_id'=>$_POST['food_id']));
+            //echo json_encode(array('msg'=>'does this work oyeaaass'));
+            $food_id = $_POST['food_id'];
+            $action = $_POST['action'];
+            $user_id = $this->get_session('user_id');
+            //echo $user_id;
+
+            switch($action){
+                case 'add':
+                    $this->model->addtoFavs($user_id, $food_id);
+                    //echo "added to favs successfullyyyy";
+                    break;
+                case 'remove':
+                    $this->model->removeFromFavs($user_id, $food_id);
+                    // echo "removed from favs successfullyyyy";
+                    break;
+                default:
+                    break;      
+            }
+        }      
+        //$this->view('customer/cust-favorites');
+    }
+
 
     public function myorders(){
-        // $this->view('customer/cust-orders');
+        $this->view('customer/cust-myorders');
         // NEED UI
     }
 

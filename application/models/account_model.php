@@ -46,8 +46,10 @@ class Account_model extends Database{
     public function isToken($token){
         if($this->Select_Where("user", ['Token' => $token])){
             if($this->Count() > 0){
+                $row = $this->Row();
+                $user_id = $row->User_ID;
                 if($this->Update("user", ['User_status'=> 'active', 'Token'=>""], ['Token' => $token])){
-                    return "Success";
+                    return ['status'=>'success', 'data'=>$row];
                 }else{
                     return "Activation_error";
                 }
@@ -63,7 +65,20 @@ class Account_model extends Database{
                 if($this->Update("user", ['Token'=> $data['Token']], ['Email_address' => $data['Email_address']])){
                     return "Success";
                 }else{
-                    return "Toekn_update_error";
+                    return "Token_update_error";
+                }
+            }
+        }
+    }
+
+    
+    public function updatePw($user_id, $password){
+        if($this->Select_Where("user", ['User_ID' => $user_id])){
+            if($this->Count() > 0){
+                if($this->Update("user", ['User_Password'=> $password], ['User_ID' => $user_id])){
+                    return "Success";
+                }else{
+                    return "Password_update_error";
                 }
             }
         }
@@ -72,5 +87,8 @@ class Account_model extends Database{
     public function deleteUser($token){
         $this->Delete("user", ['Token' => $token]);      
     }
+
+
+
 
 }

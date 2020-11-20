@@ -82,19 +82,28 @@ class Customer_model extends Database{
 
     public function getFavs($user_id){
         
-        if($this->Select_Where("favourites", ['User_id' => $user_id])){
+      
+        $query = 
+        "SELECT favourites.Favourite_ID, favourites.Food_ID, fooditem.Food_name, fooditem.Unit_Price, category.Category_name, subcategory.Subcategory_name 
+        FROM favourites
+        INNER JOIN fooditem ON favourites.Food_ID = fooditem.Food_ID
+        INNER JOIN subcategory ON fooditem.Subcategory_ID = subcategory.Subcategory_ID
+        INNER JOIN category ON category.Category_ID = subcategory.Category_ID 
+        WHERE favourites.User_ID = $user_id";
+        
+        $result =$this->Query($query, $options = []);
+              
             if($this->Count() > 0){
                 $food = $this->AllRecords();
-                print_r($food);
+                //print_r($food);
                 if($food){
                     return ['status'=>'success', 'data'=>$food];
                 }else{
-                    return "Food_not_retrieved";
+                    return "Favs_not_retrieved";
                 }
             }else{
-                return "Food_not_found";
+                return "Favs_not_found";
             }
-        }
     }
 
 

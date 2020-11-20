@@ -1,23 +1,23 @@
 $(document).ready(function() {
     //when user selects heart button of a food
-    $(".heart-btn").on("click", function() {
-        var food_id = $(this).data("id");
-        // alert(food_id);
+    $(".trash-btn").on("click", function() {
+        var fav_id = $(this).data("id");
+        alert(fav_id);
 
-        $fav_icon = $(this);
-
+        // $fav_icon = $(this);
+        action = "delete";
         //when you click once you'll add to favs. click again, you'll remove from favs
-        if ($fav_icon.hasClass("far fa-heart")) {
-            action = "add";
-        } else if ($fav_icon.hasClass("fas fa-heart")) {
-            action = "remove";
-        }
+        // if ($fav_icon.hasClass("far fa-heart")) {
+        //     action = "delete";
+        // } else if ($fav_icon.hasClass("fas fa-heart")) {
+        //     action = "remove";
+        // }
         $.ajax({
             data: {
                 action: action,
-                food_id: food_id,
+                fav_id: fav_id,
             },
-            type: "post",
+            type: "delete",
             url: "http://localhost/cafe99/customer_controller/fav_submit",
 
             success: function(data) {
@@ -35,6 +35,5 @@ $(document).ready(function() {
                 // alert(res.msg);
             },
         });
-        // alert('something');
     });
 });
