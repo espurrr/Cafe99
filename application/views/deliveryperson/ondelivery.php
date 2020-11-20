@@ -4,7 +4,9 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <?php echo link_css("css/deliveryperson/dpstyle.css?ts=<?=time()?>");?>
+  <?php echo link_css("css/deliveryperson/modal.css?ts=<?=time()?>");?>
   <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
+  <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
  </head>
@@ -56,7 +58,7 @@
 <!--  <a href="ondelivery.php" button class="btn"><i class='fas fa-biking' style="font-size:24px;padding-right:40px"></i></button> </a>-->
 <?php echo anchor("delivery_controller/ondelivery", "Ondelivery",['class'=>"active",'button class'=>"btn"]) ?>
 <!--  <a href="dispatched.php" button class="btn"><i class='fas fa-clipboard-check' style="font-size:24px"></i></button> </a>-->
-<?php echo anchor("delivery_controller/ondelivery", "Dispatched",['button class'=>"btn"]) ?>
+<?php echo anchor("delivery_controller/dispatched", "Dispatched",['button class'=>"btn"]) ?>
   </div>
 
   <div class="list">
@@ -70,28 +72,136 @@
     <li data-label="order no">1</li>
     <li data-label="customer name"><p>Ishan Senanayaka</p></li>
     <li data-label="customer address"><p>No.25,<br>New Rd,<br>Maharagama.</p></li>
-    <li data-label="action"><a href="#"><i class="fa fa-check-square" style="font-size:24px;color: #3ace67ee"></i></a></li>
+    <li data-label="action"><a href="#" onclick="showModal(20)"><i class="fa fa-eye" style="font-size:24px;color:rgb(6, 132, 235);padding-right:20px"></i></a><a href="#"><i class="fa fa-check-square" style="font-size:24px;color: #3ace67ee"></i></a></li>
+  
+    <div id="popup-window" class="popup-window">
+        <div class="win-content">
+            <span class="close-btn" id="close-btn"><i class="fas fa-times"></i></span>
+          <!--  <p id="orderNo"></p>-->
+            <div class="win-table">
+                <table>
+                    <colgroup>
+                        <col span="" class="col-food">
+                        <col span="" class="col-quantity">
+                      <!--  <col span="" class="col-paymentdetails">-->
+                    </colgroup>
+        
+                    <tr>
+                        <th>Food item</th>
+                        <th>Quantity</th>
+                     <!--   <th>Payment Details</th>-->
+                    </tr>
+        
+                    <tr>
+                        <td>Fish Roll</td>
+                        <td ><div class="quantity">12</div></td>
+                       
+                    </tr>
+                    <tr>
+                        <td>Chicken Fried Rice</td>
+                        <td ><div class="quantity">6</div></td>
+                        
+                    </tr>
+                  </table>
+            </div>
+        </div>
+    </div>
+
   </ul>
 
   <ul>
     <li data-label="order no">2</li>
     <li data-label="customer name"><p>Vageesha Perera</p></li>
     <li data-label="customer address"><p>No.200,<br>Highlevel Rd,<br>Maharagama.</p></li>
-    <li data-label="action"><a href="#"><i class="fa fa-check-square" style="font-size:24px;color: #3ace67ee"></i></a></li>
+    <li data-label="action"><a href="#" onclick="showModal(40)"><i class="fa fa-eye" style="font-size:24px;color:rgb(6, 132, 235);padding-right:20px"></i></a><a href="#"><i class="fa fa-check-square" style="font-size:24px;color: #3ace67ee"></i></a></li>
+    <div id="popup-window" class="popup-window">
+        <div class="win-content">
+            <span class="close-btn" id="close-btn"><i class="fas fa-times"></i></span>
+          <!--  <p id="orderNo"></p>-->
+            <div class="win-table">
+                <table>
+                    <colgroup>
+                        <col span="" class="col-food">
+                        <col span="" class="col-quantity">
+                      <!--  <col span="" class="col-paymentdetails">-->
+                    </colgroup>
+        
+                    <tr>
+                        <th>Food item</th>
+                        <th>Quantity</th>
+                     <!--   <th>Payment Details</th>-->
+                    </tr>
+        
+                    <tr>
+                        <td>Chicken Pizza</td>
+                        <td ><div class="quantity">2</div></td>
+                       
+                    </tr>
+                    <tr>
+                        <td>Tuna Bun</td>
+                        <td ><div class="quantity">6</div></td>
+                        
+                    </tr>
+                  </table>
+            </div>
+        </div>
+    </div>
+ 
+ 
   </ul>
 
   <ul>
     <li data-label="order no">3</li>
     <li data-label="customer name"><p>Nilu Vishaka</p></li>
     <li data-label="customer address"><p>No.45,<br>Pamunuwa Rd,<br>Maharagama.</p></li>
-    <li data-label="action"><a href="#"><i class="fa fa-check-square" style="font-size:24px;color: #3ace67ee"></i></a></li>
+    <li data-label="action"><a href="#" onclick="showModal(40)"><i class="fa fa-eye" style="font-size:24px;color:rgb(6, 132, 235);padding-right:20px"></i></a><a href="#"><i class="fa fa-check-square" style="font-size:24px;color: #3ace67ee"></i></a></li>
+    <div id="popup-window" class="popup-window">
+        <div class="win-content">
+            <span class="close-btn" id="close-btn"><i class="fas fa-times"></i></span>
+          <!--  <p id="orderNo"></p>-->
+            <div class="win-table">
+                <table>
+                    <colgroup>
+                        <col span="" class="col-food">
+                        <col span="" class="col-quantity">
+                      <!--  <col span="" class="col-paymentdetails">-->
+                    </colgroup>
+        
+                    <tr>
+                        <th>Food item</th>
+                        <th>Quantity</th>
+                     <!--   <th>Payment Details</th>-->
+                    </tr>
+        
+                    <tr>
+                        <td>Chocolate Cake</td>
+                        <td ><div class="quantity">2</div></td>
+                       
+                    </tr>
+                    <tr>
+                        <td>Fish Pattie</td>
+                        <td ><div class="quantity">10</div></td>
+                        
+                    </tr>
+                    <tr>
+                        <td>Vegetable Pattie</td>
+                        <td ><div class="quantity">10</div></td>
+                        
+                    </tr>
+                  </table>
+            </div>
+        </div>
+    </div>
+
+ 
   </ul>
 
 </div>
 
   
 </div>
-
+<!--<?php // include '../application/views/footer/footer_3.php';?>-->    
+<?php echo link_js("js/deliveryperson/modal.js?ts=<?=time()?>");?>
 </body>
 
 </html>

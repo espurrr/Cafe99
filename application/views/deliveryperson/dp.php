@@ -7,6 +7,7 @@
   <?php echo link_css("css/deliveryperson/dpstyle.css?ts=<?=time()?>");?>
   <?php echo link_css("css/deliveryperson/newsfeed.css?ts=<?=time()?>");?>
   <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
+  <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
   #more {display: none;}
@@ -146,7 +147,8 @@ function myFunction1() {
 }
 
 </script>
-
+<!--<?php // include '../application/views/footer/footer_3.php';?>-->    
+    
 </body>
 
 </html>

@@ -27,6 +27,13 @@ body{
   background-color: var(--light-yellow);
 
 }
+.page-container{
+  position: relative;
+  min-height: 100vh;
+}
+.content-wrapper{
+  padding-bottom: 100px; /* height of the footer */
+}
 
 /* Style the tab */
 .tab {
@@ -56,13 +63,13 @@ body{
 }
 
 .tab button:hover {
-  background-color: var(--light-yellow);
+  background-color: transparent;
   color: #000;
   transition: var(--transition-time);
 }
 
 .tab button.active {
-  background-color: var(--light-yellow);
+  background-color:transparent;
   color: #000;
 }
 
@@ -72,7 +79,7 @@ body{
   margin-left: var(--sidebar-width);
   padding: 6px 12px;
   border-top: none;
-
+  padding-bottom: 50px;
 }
 
 /* Table */

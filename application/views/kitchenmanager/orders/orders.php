@@ -14,10 +14,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 </head>
 <body>
+    <div class="page-container" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
     <?php include 'sidebar.php';?>
+    <div class="content-wrapper" >
     <?php include '../application/views/header/header-dashboard.php';?>
     <?php include 'popup.php';?>
-    <div class="tab">
+    <div class="tab" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
         <button class="tablinks active" onclick="changeOrderTab(event, 'Onqueue')">Onqueue</button>
         <button class="tablinks" onclick="changeOrderTab(event, 'Processing')">Processing</button>
         <button class="tablinks" onclick="changeOrderTab(event, 'Ready')">Ready</button>
@@ -49,7 +51,7 @@
                 </td>
             </tr>
 
-            <tr>
+            <!-- <tr>
                 <td>02</td>
                 <td ><div class="cell-desc">Lorem,uium dolor sLorem,uium dolor sit et consectetur adipisicing elit.</div></td>
                 <td>
@@ -69,8 +71,8 @@
                         <button class="second-btn btn">Take In</button>
                     </div>
                 </td>
-            </tr>
-            <tr>
+            </tr> -->
+            <!-- <tr>
                 <td>03</td>
                 <td ><div class="cell-desc">Lorem,uium dolor sit et consectetur adipisicing elit.</div></td>
                 <td>
@@ -99,7 +101,7 @@
                         <button class="second-btn btn">Take In</button>
                     </div>
                 </td>
-            </tr>
+            </tr> -->
           </table>
     </div>
 
@@ -342,7 +344,10 @@
           </table>
     </div>
 
+    </div><!-- content-wrapper ends-->
     <?php include '../application/views/footer/footer_3.php';?>
+    </div> <!-- page-contianer ends-->
+
     <?php echo link_js("js/kitchen-manager/orders/orders.js"); ?>
     <?php echo link_js("js/kitchen-manager/orders/popup.js"); ?>
 </body>
