@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Fredoka+One&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Fredoka+One&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Courgette&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
 :root {
-    --dark-yellow: #FBDD3F;
-    --availability: #03AE9A;
-    --cart-color: #0BCE83;
-    --bg-texture: #FAD74E url(../img/texture.png) repeat;
+    --dark-yellow: #fbdd3f;
+    --availability: #03ae9a;
+    --cart-color: #0bce83;
+    --bg-texture: #fad74e url(../img/texture.png) repeat;
 }
 
 
@@ -25,7 +25,7 @@ a {
 body {
     /* background-color:var(--dark-yellow); */
     background: var(--bg-texture);
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 
@@ -96,7 +96,7 @@ ul.breadcrumb li a:hover {
     border-radius: 20px;
 }
 
-@media (min-width:700px) and (max-width:1000px) {
+@media (min-width: 700px) and (max-width: 1000px) {
     .food_item_container .container__image img {
         position: absolute;
         top: 50%;
@@ -104,7 +104,7 @@ ul.breadcrumb li a:hover {
     }
 }
 
-@media (max-width:700px) {
+@media (max-width: 700px) {
     .food_item_container .container__image img {
         max-width: 50%;
         display: block;
@@ -113,7 +113,7 @@ ul.breadcrumb li a:hover {
     }
 }
 
-@media (min-width:1200px) {
+@media (min-width: 1200px) {
     .food_item_container .container__image img {
         display: block;
         margin-left: auto;
@@ -129,16 +129,16 @@ ul.breadcrumb li a:hover {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     /* grid-row-gap: 0px;  */
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
-@media (min-width:700px) and (max-width:1000px) {
+@media (min-width: 700px) and (max-width: 1000px) {
     .food_item_container .container__text {
         grid-row-gap: 20px;
     }
 }
 
-@media (max-width:700px) {
+@media (max-width: 700px) {
     .food_item_container .container__text {
         padding: 0 10% 10% 10%;
         grid-row-gap: 20px;
@@ -149,7 +149,7 @@ ul.breadcrumb li a:hover {
 /*  Avaialability */
 
 .food_item_container .container__text .availability {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     border-radius: 25px;
     height: 80%;
     width: 40%;
@@ -161,14 +161,14 @@ ul.breadcrumb li a:hover {
     box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.2);
 }
 
-@media (min-width:700px) and (max-width:1000px) {
+@media (min-width: 700px) and (max-width: 1000px) {
     .food_item_container .container__text .availability {
         height: 140%;
         width: 50%;
     }
 }
 
-@media (max-width:700px) {
+@media (max-width: 700px) {
     .food_item_container .container__text .availability {
         height: 140%;
         width: 50%;
@@ -179,18 +179,18 @@ ul.breadcrumb li a:hover {
 /* Title */
 
 .food_item_container .container__text h1 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 25px;
 }
 
-@media (min-width:700px) and (max-width:1000px) {
+@media (min-width: 700px) and (max-width: 1000px) {
     .food_item_container .container__text h1 {
         font-size: 20px;
     }
 }
 
-@media (max-width:700px) {
+@media (max-width: 700px) {
     .food_item_container .container__text h1 {
         font-size: 25px;
     }
@@ -204,14 +204,14 @@ ul.breadcrumb li a:hover {
     font-size: 17px;
 }
 
-@media (min-width:700px) and (max-width:1000px) {
+@media (min-width: 700px) and (max-width: 1000px) {
     .food_item_container .container__text .des,
     .food_item_container .container__text .price {
         font-size: 17px;
     }
 }
 
-@media (max-width:700px) {
+@media (max-width: 700px) {
     .food_item_container .container__text .des,
     .food_item_container .container__text .price {
         font-size: 16px;
@@ -221,7 +221,7 @@ ul.breadcrumb li a:hover {
 
 /* Quantity input */
 
-.food_item_container .container__text input[type=text],
+.food_item_container .container__text input[type="text"],
 .food_item_container .container__text select {
     width: 50%;
     padding: 6px 20px;
@@ -242,7 +242,7 @@ ul.breadcrumb li a:hover {
     grid-template-areas: "a b";
 }
 
-@media (max-width:600px) {
+@media (max-width: 600px) {
     .food_item_container .btn-container {
         grid-template-columns: 1fr 1fr;
     }
@@ -260,13 +260,13 @@ ul.breadcrumb li a:hover {
     height: 75%;
 }
 
-@media (max-width:600px) {
+@media (max-width: 600px) {
     .food_item_container .container__text .btn-container .btn {
         height: 100%;
     }
 }
 
-@media (min-width:600px) and (max-width:1000px) {
+@media (min-width: 600px) and (max-width: 1000px) {
     .food_item_container .container__text .btn-container .btn {
         font-size: 1rem;
         height: 100%;
@@ -274,7 +274,7 @@ ul.breadcrumb li a:hover {
     }
 }
 
-@media (max-width:600px) {
+@media (max-width: 600px) {
     .food_item_container .container__text .btn-container .btn {
         font-size: 1.1rem;
     }
@@ -339,7 +339,7 @@ ul.breadcrumb li a:hover {
 
 /* Add to cart text remove*/
 
-@media (max-width:600px) {
+@media (max-width: 600px) {
     .food_item_container .container__text .btn-container .cart-text {
         display: none;
     }
