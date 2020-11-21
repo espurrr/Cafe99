@@ -46,12 +46,13 @@
         <div class="column-line">
             <div class="column-graph">
             <?php //include "column.php"?>
-            <img src="images/analytics-chart/column.jpg">
+            <img src="<?php echo BASE_URL?>/public/images/analytics-chart/column.jpg">
+           
             </div>
 
             <div class="line-graph">
             <?php //include "line.php"?>
-            <img src="images/analytics-chart/line.jpg">
+            <img src="<?php echo BASE_URL?>/public/images/analytics-chart/line.jpg">
             </div>
             </div>
 
@@ -59,12 +60,12 @@
             <div class="cus-pay">
             <div class="customer-pie-chart">
             <?php //include "cuspie.php"?>
-            <img src="images/analytics-chart/cuspie.jpg">
+            <img src="<?php echo BASE_URL?>/public/images/analytics-chart/cuspie.jpg">
             </div>
 
             <div class="payment-pie-chart">
             <?php //include "paymentpie.php"?>
-            <img src="images/analytics-chart/paymentpie.jpg">
+            <img src="<?php echo BASE_URL?>/public/images/analytics-chart/paymentpie.jpg">
             </div>
             </div>
         </div>

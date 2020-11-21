@@ -30,7 +30,7 @@
                     </div>
                 </li>
                 <!-- <li><a href="analytics/analytics.php" class="normal">Analytics</a></li>-->
-                <li><?php// echo anchor("rm_controller/analytics", "Analytics",['class'=>"normal"]) ?></li>
+                <li><?php //echo anchor("rm_controller/analytics", "Analytics",['class'=>"normal"]) ?></li>
             </ul>
             <div><a href="#" class="logout-btn normal">Logout</a></div>
         </div>
