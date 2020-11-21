@@ -55,7 +55,7 @@
                     
                  </form>-->
 
-                 <?php echo form_open("rmuser_controller/user_update_save","post");?>
+                 <?php echo form_open("rm_controller/user_update_save","post");?>
           
           <label for="User_name">User Name</label>
           <?php echo form_input(['type'=>'text', 'name'=>'User_name', 'placeholder'=>$data->User_name, 'value'=>$data->User_name])?>
