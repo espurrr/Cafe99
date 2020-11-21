@@ -1,0 +1,68 @@
+.box{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.order-received-box {
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+    width: 15%;
+    height: auto;
+    min-height: 150px;
+    padding: 20px 20px 20px;
+    background-color: #ccc;
+
+}
+
+.order-delivered-box {
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+    width: 15%;
+    height: auto;
+    min-height: 150px;
+    padding: 20px 20px 20px;
+    background-color: #ccc;
+    
+}
+
+.new-customer-box {
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+    width: 15%;
+    height: auto;
+    min-height: 150px;
+    padding: 20px 20px 20px;
+    background-color: #ccc;
+}
+
+.net-earning-box {
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+    width:15%;
+    height: auto;
+    min-height: 150px;
+    padding: 20px 20px 20px;
+    background-color: #ccc;
+ 
+}
+
+.column-line{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.cus-pay{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
