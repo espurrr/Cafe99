@@ -224,13 +224,19 @@ class RM_Controller extends JB_Controller{
         $this->view('restaurantmanager/category/edit');
     }
 
-    public function analytics(){
+  /*  public function analytics(){
         $this->view('restaurantmanager/analytics/analytics');
     }
 
     public function analyticschart(){
         $this->view('restaurantmanager/analytics/chart');
+    }*/
+ 
+    public function analyticsnew(){
+        $this->view('restaurantmanager/analytics/analyticsnew');
     }
+
+
 
     public function logout(){
         $this->destroy_session();
