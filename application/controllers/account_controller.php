@@ -18,7 +18,7 @@ class Account_controller extends JB_Controller{
     public function signupSubmit(){
         
         $this->validation('User_name', 'Name' , 'required|not_int|max_len|50');
-        $this->validation('Email_address','Email Address', 'unique|user|required');
+        $this->validation('Email_address','Email Address', 'email|unique|user|required');
         $this->validation('Phone_no','Phone number', 'required|int|len|10');
         $this->validation('User_Password','Password', 'required|min_len|5');
         $this->validation('confirm_password','Confirm Password', 'required|confirm|User_Password');
@@ -124,7 +124,7 @@ class Account_controller extends JB_Controller{
     }
 
     public function loginSubmit(){
-        $this->validation('Email_address','Email', 'required');
+        $this->validation('Email_address','Email', 'required|email');
         $this->validation('User_Password','Password', 'required');
         if($this->run()){
             $email = $this->post('Email_address');
@@ -215,7 +215,7 @@ class Account_controller extends JB_Controller{
     }
 
     public function forgotSubmit(){
-        $this->validation('Email_address','Email Address', 'required|exists|user');
+        $this->validation('Email_address','Email Address', 'required|email|exists|user');
 
         if($this->run()){
 
@@ -260,6 +260,9 @@ class Account_controller extends JB_Controller{
                 $this->set_flash("activationError", "Sorry , something went wrong :( Please try again later.");
                 $this->view('forgot');
             }else if($result['status'] === "success"){
+                //now we have the user_id for which user, the token was assigned to
+                //we can now set a session and store the id so that,
+                //when the user clicks on resetPwSubmit, the system knows the user_id
                 $session_data = [
                     'user_id' => $result['data']->User_ID,
                     'logged' => 0,
@@ -276,8 +279,9 @@ class Account_controller extends JB_Controller{
     }
 
     public function resetPwSubmit(){
-        //this way, 
+        
         if(!$this->get_session('user_id')){
+            //this way, if there's no user_id set in the session, it means he/she came from the url. drives away to the HOME 
             redirect("account_controller/index");
         }
         $this->validation('New_Password','New Password', 'required|min_len|5');

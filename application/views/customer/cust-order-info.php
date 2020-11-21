@@ -49,14 +49,14 @@
                             <?php endif;?>
                         </div>
 
-                        <?php echo form_input(['type'=>'email', 'name'=>'Dine-in-date', 'placeholder'=>'Dine-in Date' ,'value'=>$this->set_value('Dine-in-date')])?>
+                        <?php echo form_input(['type'=>'date', 'name'=>'Dine-in-date', 'placeholder'=>'Dine-in Date' ,'value'=>$this->set_value('Dine-in-date')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['Email_address'])):?>
                             <?php echo $this->errors['Email_address'];?>
                             <?php endif;?>
                         </div>
 
-                        <?php echo form_input(['type'=>'email', 'name'=>'Dine-in-time', 'placeholder'=>'Dine-in Time' ,'value'=>$this->set_value('Dine-in-time')])?>
+                        <?php echo form_input(['type'=>'time', 'name'=>'Dine-in-time', 'placeholder'=>'Dine-in Time' ,'value'=>$this->set_value('Dine-in-time')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['Email_address'])):?>
                             <?php echo $this->errors['Email_address'];?>
@@ -72,14 +72,14 @@
                             <?php endif;?>
                         </div>
 
-                        <?php echo form_input(['type'=>'email', 'name'=>'Pick-up-date', 'placeholder'=>'Pick-up Date' ,'value'=>$this->set_value('Pick-up-date')])?>
+                        <?php echo form_input(['type'=>'date', 'name'=>'Pick-up-date', 'placeholder'=>'Pick-up Date' ,'value'=>$this->set_value('Pick-up-date')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['Email_address'])):?>
                             <?php echo $this->errors['Email_address'];?>
                             <?php endif;?>
                         </div>
 
-                        <?php echo form_input(['type'=>'email', 'name'=>'Pick-up-time', 'placeholder'=>'Pick-up Time' ,'value'=>$this->set_value('Pick-up-time')])?>
+                        <?php echo form_input(['type'=>'time', 'name'=>'Pick-up-time', 'placeholder'=>'Pick-up Time' ,'value'=>$this->set_value('Pick-up-time')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['Email_address'])):?>
                             <?php echo $this->errors['Email_address'];?>
@@ -102,14 +102,14 @@
                             <?php endif;?>
                         </div>
 
-                        <?php echo form_input(['type'=>'email', 'name'=>'Delivery-date', 'placeholder'=>'Delivery Date' ,'value'=>$this->set_value('Delivery-date')])?>
+                        <?php echo form_input(['type'=>'date', 'name'=>'Delivery-date', 'placeholder'=>'Delivery Date' ,'value'=>$this->set_value('Delivery-date')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['Email_address'])):?>
                             <?php echo $this->errors['Email_address'];?>
                             <?php endif;?>
                         </div>
 
-                        <?php echo form_input(['type'=>'email', 'name'=>'Delivery-time', 'placeholder'=>'Delivery Time' ,'value'=>$this->set_value('Delivery-time')])?>
+                        <?php echo form_input(['type'=>'time', 'name'=>'Delivery-time', 'placeholder'=>'Delivery Time' ,'value'=>$this->set_value('Delivery-time')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['Email_address'])):?>
                             <?php echo $this->errors['Email_address'];?>
