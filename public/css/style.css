@@ -195,3 +195,33 @@
     visibility: visible;
     opacity: 1;
 }
+
+
+/* BreadCrumb */
+
+ul.breadcrumb {
+    padding: 3vh 70px;
+    list-style: none;
+}
+
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+
+.breadcrumb li+li:before {
+    padding: 8px;
+    color: #000;
+    content: "/";
+}
+
+ul.breadcrumb li a {
+    color: #1943a7;
+    text-decoration: none;
+}
+
+ul.breadcrumb li a:hover {
+    transition-delay: 50ms;
+    transition: 50ms;
+    color: #5b81d8;
+}

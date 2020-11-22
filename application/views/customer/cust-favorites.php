@@ -28,10 +28,10 @@
 
 </head>
 
-<body>
+<body style="background: rgb(247, 239, 193) url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
   <?php include '../application/views/header/cust-logged-in-header.php';?>
   <ul class="breadcrumb">
-        <li><a href="../cafe99_complete_home_final/1.1/home.php">Home</a></li>
+        <li><?php echo anchor("account_controller/index", "Home") ?></li>
         <li>Favourites</li>
   </ul>
   <div class="favflash">

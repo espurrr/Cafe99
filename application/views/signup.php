@@ -12,7 +12,7 @@
     
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   </head>
-  <body style="background:  #759ee9 url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
+  <body style="background:  rgb(156, 186, 221) url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
     <!-- Header starts -->
     <?php include '../application/views/header/header.php'?>
 

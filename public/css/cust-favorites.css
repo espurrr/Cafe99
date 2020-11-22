@@ -162,7 +162,7 @@ ul.breadcrumb li a:hover {
 /* Bin button */
 
 .food_menu_wrapper .grid article .btn-container .bin {
-    border: 1px solid #aaa;
+    border: 1px solid rgb(247, 239, 193);
     background-color: #fff;
 }
 
