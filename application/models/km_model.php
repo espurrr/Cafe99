@@ -31,6 +31,27 @@
                 return false;
             }
         }
+
+        public function getOrders(){
+            $query = 
+            "SELECT orders.Order_ID, orders.Order_type, orders.Order_status, orders.Special_notes, cartitem.Quantity, fooditem.Food_name 
+            FROM orders INNER JOIN cartitem ON orders.Cart_ID = cartitem.Cart_id
+            INNER JOIN fooditem ON cartitem.Food_ID = fooditem.Food_ID";
+
+            $result =$this->Query($query, $options = []);
+
+            if($this->Count() > 0){
+                $food = $this->AllRecords();
+                //print_r($food);
+                if($food){
+                    return ['status'=>'success', 'data'=>$food];
+                }else{
+                    return "Order_not_retrieved";
+                }
+            }else{
+                return "Order_not_found";
+            }
+        }
     }
 
 ?>

@@ -4,7 +4,7 @@ class KM_Controller extends JB_Controller{
     public function __construct(){
         parent::__construct();
         $this->model = $this->model("km_model");
-        
+
         if(!$this->get_session('user_id')){
             redirect("account_controller/login");
         }
@@ -15,7 +15,8 @@ class KM_Controller extends JB_Controller{
     }
 
     public function index(){
-        $this->view('kitchenmanager/orders/orders');
+        // $this->view('kitchenmanager/orders/orders');
+        $this->view('customer/cust-cart');
     }
     
     public function logout(){
@@ -24,7 +25,18 @@ class KM_Controller extends JB_Controller{
     }
 
     public function orders(){
-        $this->view('kitchenmanager/orders/orders');
+        $result =  $this->model->getOrders();
+
+        if($result === "Order_not_retrieved"){
+            $this->set_flash("databaseError", "Sorry, cannot show orders at the moment. Please try again later.");
+            //echo"dberror";
+        }else if($result === "Order_not_found"){
+            $this->set_flash("noordersError", "Sorry, cannot show orders at the moment. Please try again later.");
+            //echo"nofood";
+        }else if($result['status'] === "success"){
+            $this->view('kitchenmanager/orders/orders',$result['data']);
+            //print_r($result['data']);
+        }
     }
     public function foodmenu(){
         $result =  $this->model->getFooditems();

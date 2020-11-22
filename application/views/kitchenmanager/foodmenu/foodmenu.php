@@ -52,8 +52,8 @@
 
     <div class="tab" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;" >
         <button class="tablinks active" onclick="changeFoodTab(event, 'food')">Food</button>
-        <button class="tablinks" onclick="changeFoodTab(event, 'drinks')">Drink</button>
-        <button class="tablinks" onclick="changeFoodTab(event, 'desserts')">Dessert</button>
+        <button class="tablinks" onclick="changeFoodTab(event, 'drinks')">Drinks</button>
+        <button class="tablinks" onclick="changeFoodTab(event, 'desserts')">Desserts</button>
     </div>
     
     <!-- ************ Food ************ -->
