@@ -51,12 +51,13 @@
                         <td>Iced Coffee</td>
                         <td ><div class="quantity">1</div></td>
                     </tr>
-                  </table>
-                  <div class="popup-btn-container">
-                      <p>Amount : LKR 680</p>
-                      <button class="popup-btn" onclick="showModal(5019)">Check Availability</button>
-                      <button class="popup-btn tooltip" onclick="showModal(5019)">Order now! <span class="tooltiptext">Your order will be automatically made for you with the same payment method and info</span></button>
-                  </div>
+                </table>
+                <p class="amount">Amount : LKR 680</p>
+
+                <div class="popup-btn-container">
+                    <button class="popup-btn btn av-btn" onclick="showModal(5019)">Check Availability</button>
+                    <button class="popup-btn tooltip btn order-now-btn" onclick="showModal(5019)">Order now! <span class="tooltiptext">Your order will be automatically made for you with the same payment method and info</span></button>
+                </div>
             </div>
         </div>
     </div>

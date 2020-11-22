@@ -9,7 +9,9 @@
   --tab-text-color:#ccc;
   --transition-time: 0.3s;
   --btn-blue:#3D6ECC;
+  --btn-blue-hover:#3464bd;
   --btn-green:#0BCE83;
+  --btn-green-hover:#10bd7b;
   --btn-red:red;
 
 
@@ -151,7 +153,7 @@ body{
   font-weight: 600;
 }
 .tabcontent .btn-container .first-btn:hover{
-  background-color: var(--btn-blue);
+  background-color: var(--btn-blue-hover);
 }
 
 /* second button */
@@ -162,7 +164,7 @@ body{
 
 }
 .tabcontent .btn-container .second-btn:hover{
-  background-color: var(--btn-green);
+  background-color: var(--btn-green-hover);
 }
 
 

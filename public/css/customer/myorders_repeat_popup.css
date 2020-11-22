@@ -1,5 +1,11 @@
 /* Pop up modal */
+:root{
+    --btn-blue:#3D6ECC;
+    --btn-blue-hover:#3464bd;
+    --btn-green:#0BCE83;
+    --btn-green-hover:#10bd7b;
 
+}
 .popup-window {
     display: none;
     position: fixed;
@@ -21,10 +27,16 @@
     min-height: 60%;
     position: relative;
 }
+@media (max-width:600px){
+    .popup-window .win-content {
+        width: 80%;  
+    }
+}
 
-.popup-window .win-content p {
-    padding-top: 20px;
-    padding-left: 106px;
+
+.popup-window .win-content .amount {
+    text-align: center;
+    padding: 20px;
 }
 
 .popup-window .close-btn {
@@ -42,7 +54,6 @@
 
 
 /* Table */
-
 .popup-window .win-table {
     display: block;
     /* padding: 6px 100px; */
@@ -58,6 +69,10 @@
     margin-left: auto;
     margin-right: auto;
     background-color: #fff;
+}
+.popup-window .win-table table tr{
+    height: 40px;
+    max-height: auto;
 }
 
 
@@ -78,4 +93,70 @@
 
 .popup-window .win-table tr:nth-child(even) {
     background-color: #f2f2f2;
+}
+
+
+/* Popup Button container */
+.popup-btn-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 40px;
+}
+
+
+/* Common for both buttons */
+.popup-btn-container .btn{
+    cursor: pointer;
+    height: 40px;
+    width:120px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 1px 1px 1px 0px #999;
+    transition: var(--non-hover-transition);
+}
+.popup-btn-container .btn:hover{
+    transition: var(--hover-transition);
+    box-shadow: 1px 1px 1px 0px #666;
+
+}
+
+/* First button */
+.popup-btn-container .av-btn{
+    background-color: var(--btn-blue);
+    color: #fff;
+    font-weight: 600;
+    justify-self: end;
+}
+.popup-btn-container .av-btn:hover{
+    background-color: var(--btn-blue-hover);
+}
+
+/* second button */
+.popup-btn-container .order-now-btn{
+    background-color: var(--btn-green);
+    color: #fff;
+    font-weight: 600;
+    justify-self: start;
+
+}
+.popup-btn-container .order-now-btn:hover{
+    background-color: var(--btn-green-hover);
+}
+
+@media (max-width:600px){
+    .popup-window table, .popup-window .amount{
+        font-size: 15px;
+    }
+    .popup-btn-container{
+        grid-template-columns: 1fr;
+        grid-gap: 20px;
+
+    }
+    .popup-btn-container .av-btn{
+        justify-self: center;
+    }
+    .popup-btn-container .order-now-btn{
+        justify-self: center;
+    }
+
 }
