@@ -174,10 +174,10 @@ class Customer_controller extends JB_Controller{
 
         if($result === "Favs_not_found"){
             $this->set_flash("favsError", "You don't have any favourites yet. Let's make some? :) ");
-            $this->view('customer/cust-favourites');
+            $this->view('customer/cust-favorites');
         }else if($result === "Favs_not_retrieved"){
             $this->set_flash("dbError", "It seems like your data is not ready yet.");
-            $this->view('customer/cust-favourites');
+            $this->view('customer/cust-favorites');
         }else if($result['status'] === "success"){
             $this->view('customer/cust-favorites',$result['data']);
         }

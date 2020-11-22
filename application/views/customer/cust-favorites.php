@@ -12,6 +12,7 @@
   <meta charset="UTF-8">
   <title>Favorites</title>
   <?php echo link_css("css/cust-favorites.css?ts=<?=time()?>"); ?>
+  <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
   <?php echo link_css("css/modal/delete_modal.css?ts=<?=time()?>"); ?>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
   
@@ -33,6 +34,10 @@
         <li><a href="../cafe99_complete_home_final/1.1/home.php">Home</a></li>
         <li>Favourites</li>
   </ul>
+  <div class="favflash">
+        <?php $this->flash('favsError','alert alert-info','fa fa-info-circle'); ?>
+        <?php $this->flash('dbError','alert alert-danger','fa fa-times-circle'); ?>
+  </div>
 
   <!-- Delete pop up modal starts here -->
   <div id="popup-window" class="popup-window">

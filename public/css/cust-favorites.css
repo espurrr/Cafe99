@@ -178,3 +178,11 @@ ul.breadcrumb li a:hover {
 .food_menu_wrapper .grid article .btn-container .bin:hover .fa-heart {
     color: var(--bin-btn-hover);
 }
+
+.favflash {
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    width: 75%;
+    transform: translate(-50%, -50%);
+}
