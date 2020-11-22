@@ -59,10 +59,12 @@
     display: flex;
     flex-flow: row wrap;
     align-items: center;
+    margin-left: 300px;
 }
 
 .cus-pay{
     display: flex;
     flex-flow: row wrap;
     align-items: center;
+    margin-left: 300px;
 }
