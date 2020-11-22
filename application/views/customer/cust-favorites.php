@@ -12,6 +12,7 @@
   <meta charset="UTF-8">
   <title>Favorites</title>
   <?php echo link_css("css/cust-favorites.css?ts=<?=time()?>"); ?>
+  <?php echo link_css("css/modal/delete_modal.css?ts=<?=time()?>"); ?>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
   
   <!-- Footer -->
@@ -30,8 +31,22 @@
   <?php include '../application/views/header/cust-logged-in-header.php';?>
   <ul class="breadcrumb">
         <li><a href="../cafe99_complete_home_final/1.1/home.php">Home</a></li>
-        <li>Favorites</li>
+        <li>Favourites</li>
   </ul>
+
+  <!-- Delete pop up modal starts here -->
+  <div id="popup-window" class="popup-window">
+                <div class="win-content">
+                    <p id="favNo"></p>
+                    <div class="btn-container">
+                        <button class="btn cancel-btn" id="modal-cancel-btn">Cancel</button>
+                        <button class="btn delete-btn" id="modal-delete-btn" data-id="" >Delete</button>
+                    </div>
+                </div>
+          </div>
+  <!-- Delete pop up modal ends here -->
+  
+
   <div class="food_menu_wrapper">
   <div class="container">
     <main class="grid">
@@ -50,7 +65,7 @@
           <p>LKR <?php echo $row->Unit_Price; ?></p>
         </div>
         <div class="btn-container">
-            <button id=heartbtn class="fav btn toggle-fav"><i class="far fa-trash-alt trash-btn" data-id="<?php echo $row->Favourite_ID;?>"></i></button>
+            <button id=trashbtn class="fav btn toggle-fav"><i class="far fa-trash-alt trash-btn" onclick='showDeleteModal("\"<?php echo $row->Food_name;?>\"",<?php echo $row->Food_ID;?>)'></i></button>
         </div>
       </article>
 
@@ -62,6 +77,8 @@
   </div>
   </div>
   <?php include '../application/views/footer/footer_1.php';?>
+ 
   <?php echo link_js("js/cust_myfavs.js"); ?>
 </body>
 </html>
+

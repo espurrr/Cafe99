@@ -1,39 +1,30 @@
-$(document).ready(function() {
-    //when user selects heart button of a food
-    $(".trash-btn").on("click", function() {
-        var fav_id = $(this).data("id");
-        alert(fav_id);
+var popup_win = document.getElementById("popup-window");
+var modal_cancel_btn = document.getElementById("modal-cancel-btn");
+var modal_delete_btn = document.getElementById("modal-delete-btn");
 
-        // $fav_icon = $(this);
-        action = "delete";
-        //when you click once you'll add to favs. click again, you'll remove from favs
-        // if ($fav_icon.hasClass("far fa-heart")) {
-        //     action = "delete";
-        // } else if ($fav_icon.hasClass("fas fa-heart")) {
-        //     action = "remove";
-        // }
-        $.ajax({
-            data: {
-                action: action,
-                fav_id: fav_id,
-            },
-            type: "delete",
-            url: "http://localhost/cafe99/customer_controller/fav_submit",
+function showDeleteModal(name, id) {
+    var food_id = id;
+    $("#modal-delete-btn").data("id", food_id); //sets data id attribute
+    popup_win.style.display = "block";
+    document.getElementById("favNo").innerHTML =
+        "Are you sure you want to delete " + name + " from favourites?";
+}
 
-            success: function(data) {
-                // console.log(data);
-                var res = JSON.parse(data);
-                if (res.action) {
-                    if (action == "add") {
-                        $fav_icon.removeClass("far fa-heart");
-                        $fav_icon.addClass("fas fa-heart");
-                    } else if (action == "remove") {
-                        $fav_icon.removeClass("fas fa-heart");
-                        $fav_icon.addClass("far fa-heart");
-                    }
-                }
-                // alert(res.msg);
-            },
-        });
+modal_cancel_btn.onclick = function() {
+    popup_win.style.display = "none";
+};
+$("#modal-delete-btn").click(function() {
+    var food_id = $(this).data("id");
+    // alert(food_id);
+    $.ajax({
+        url: "http://localhost/cafe99/customer_controller/fav_delete/" + food_id,
+
+        success: function() {
+            popup_win.style.display = "none";
+            location.reload(true);
+            // $(".food_menu_wrapper").load(location.href + " .food_menu_wrapper");
+            // tried using this, just to reload the food_menu_wrapper component..
+            // but the content position changed.. so went with reloading the whole page :)
+        },
     });
 });
