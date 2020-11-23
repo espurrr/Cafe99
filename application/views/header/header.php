@@ -61,7 +61,7 @@
       
         <div class="signlog" style="background: #FAD74E url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;" >
           <div class="route-dropdown" style="padding-right: 10px;" onclick="toggleMenu(this)">
-            <button class="dropbtn" id="logsign1"><?php echo anchor("account_controller/login", "Login") ?></button>
+            <button class="dropbtn" id="logsign1"><?php echo anchor("account_controller/login", "Login" ,['class'=>'signlogbtn']) ?></button>
           </div>
           
           <div class="route-dropdown" style="padding-left: 10px;" onclick="toggleMenu(this)">

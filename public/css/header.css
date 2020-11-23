@@ -81,7 +81,7 @@ body {
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     border-radius: 5px;
-    top: 57px;
+    top: 68px;
 }
 
 
@@ -138,6 +138,7 @@ body {
     color: black;
     border: 2px solid #000000;
     transition: all 1s ease;
+
 }
 
 #logsign1:hover {
@@ -168,6 +169,9 @@ body {
 
 .signlog {
     justify-content: center;
+}
+.signlogbtn{
+    display: none;
 }
 
 @media screen and (max-width: 854px) {

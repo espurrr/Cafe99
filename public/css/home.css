@@ -82,7 +82,9 @@
     font-weight: 400;
 
   }
-
+  .signlogbtn{
+    
+  }
   @media (min-width:1000px) and (max-width:1200px) {
     .section-1 {
       height: 70vh;
