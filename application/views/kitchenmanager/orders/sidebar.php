@@ -16,6 +16,7 @@
                 <!-- <li><a href="../../food_menu/1.3/food_menu.php" class="normal">Food Menu</a></li> -->
                 <li><?php echo anchor("km_controller/foodmenu", "Food Menu",['class'=>"normal"])?></li>
             </ul>
-            <div><a href="" class="logout-btn normal">Logout</a></div>
+            <!-- <div><a href="" class="logout-btn normal">Logout</a></div> -->
+            <div><?php echo anchor("km_controller/logout", "Logout",['class'=>"logout-btn normal"])?></div>
         </div>
     </div>

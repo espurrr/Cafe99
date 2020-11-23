@@ -178,5 +178,6 @@
     </div> <!-- page-contianer ends-->
 
     <?php echo link_js("js/kitchen-manager/orders/orders.js"); ?>
+    <?php //echo link_js("js/kitchen-manager/orders/popup.js"); ?>
 </body>
 </html>

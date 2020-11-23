@@ -10,6 +10,7 @@
                 <p class="orderNo">Order ID : <?php echo " ".$order_id;?></p>
                 <p class = "special_notes"><i class="far fa-clipboard"></i>&nbsp;&nbsp;Special Notes : <?php echo " ".$special_note;?></p>
                 <a href="" class="closebtn">×</a>
+                <!-- <button id="closebtn"class="closebtn">×</button> -->
                 <div class="win-table">
                     
                     <table>
