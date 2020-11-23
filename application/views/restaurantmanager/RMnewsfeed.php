@@ -10,7 +10,10 @@
     <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/restaurantmanager/newsfeed.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/restaurantmanager/admin.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/modal/delete_modal.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -18,6 +21,18 @@
 <?php include "../application/views/restaurantmanager/sidebar.php";?>
 <div class="content-wrapper">
 <?php include  "../application/views/header/header-dashboard.php";?>
+
+ <!-- Delete pop up modal starts here -->
+ <div id="popup-window" class="popup-window">
+                <div class="win-content">
+                    <p id="favNo"></p>
+                    <div class="btn-container">
+                        <button class="btn cancel-btn" id="modal-cancel-btn">Cancel</button>
+                        <button class="btn delete-btn" id="modal-delete-btn" data-id="" >Delete</button>
+                    </div>
+                </div>
+          </div>
+  <!-- Delete pop up modal ends here -->
 
     <div class="newsfeed-wrapper">
 
@@ -55,7 +70,7 @@
                            <div class="action">
                         <!--   <a href="edit.php" class="edit">Edit</a>-->
                            <?php echo anchor("rm_controller/edit", "Edit",['class'=>"edit"]) ?>
-                           <a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a>
+                           <a href="#" class="delete" onclick='showDeleteModal()'>Delete</a>
                            </div>
                     </div>
 
@@ -87,7 +102,7 @@
                            <div class="action">
                         <!--   <a href="edit.php" class="edit">Edit</a>-->
                            <?php echo anchor("rm_controller/edit", "Edit",['class'=>"edit"]) ?>
-                           <a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a>
+                           <a href="#" class="delete" onclick='showDeleteModal()'>Delete</a>
                            </div>
                     </div>
 
@@ -119,7 +134,8 @@
                            <div class="action">
                          <!--  <a href="edit.php" class="edit">Edit</a>-->
                            <?php echo anchor("rm_controller/edit", "Edit",['class'=>"edit"]) ?>
-                           <a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a>
+                         <!--  <a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a>-->
+                         <a href="#" class="delete" onclick='showDeleteModal()'>Delete</a>
                            </div>
                     </div>
                     
@@ -130,5 +146,6 @@
         </div>
         <?php // include '../application/views/footer/footer_3.php';?> 
         </div>
+        <?php echo link_js("js/restaurantmanager/delete.js"); ?>    
 </body>
 </html>
