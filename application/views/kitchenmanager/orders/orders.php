@@ -60,7 +60,7 @@
                 <td ><div class="cell-desc"><?php echo $values ?></div></td>
                 <td>
                     <div class="btn-container">
-                        <a href="?order_id=<?php echo $order_id ?>&values=<?php echo $values ?>&special_note=<?php echo $special_notes[$order_id]?>#popup"><button class="first-btn btn">View</button></a>
+                        <button class="first-btn btn" onclick='showModal(<?php echo $order_id; ?>,<?php echo json_encode($special_notes[$order_id]); ?> ,<?php echo json_encode($values); ?>);'>View</button>
                         <button class="second-btn btn">Take In</button>
                     </div>
                 </td>
@@ -93,7 +93,7 @@
                 <td ><div class="cell-desc"><?php echo $values ?></div></td>
                 <td>
                     <div class="btn-container">
-                        <a href="?order_id=<?php echo $order_id ?>&values=<?php echo $values ?>&special_note=<?php echo $special_notes[$order_id]?>#popup"><button class="first-btn btn">View</button></a>
+                        <button class="first-btn btn" onclick='showModal(<?php echo $order_id; ?>,<?php echo json_encode($special_notes[$order_id]); ?> ,<?php echo json_encode($values); ?>);'>View</button>                  
                         <button class="second-btn btn">Ready</button>
                     </div>
                 </td>
@@ -126,7 +126,7 @@
                 <td ><div class="cell-desc"><?php echo $values ?></div></td>
                 <td>
                     <div class="btn-container">
-                        <a href="?order_id=<?php echo $order_id ?>&values=<?php echo $values ?>&special_note=<?php echo $special_notes[$order_id]?>#popup"><button class="first-btn btn">View</button></a>
+                        <button class="first-btn btn" onclick='showModal(<?php echo $order_id; ?>,<?php echo json_encode($special_notes[$order_id]); ?> ,<?php echo json_encode($values); ?>);'>View</button>                  
                         <button class="second-btn btn">Dispatch</button>
                     </div>
                 </td>
@@ -161,7 +161,7 @@
                 <td ><div class="cell-desc"><?php echo $values ?></div></td>
                 <td>
                     <div class="btn-container">
-                        <a href="?order_id=<?php echo $order_id ?>&values=<?php echo $values ?>&special_note=<?php echo $special_notes[$order_id]?>#popup"><button class="first-btn btn">View</button></a>
+                        <button class="first-btn btn" onclick='showModal(<?php echo $order_id; ?>,<?php echo json_encode($special_notes[$order_id]); ?> ,<?php echo json_encode($values); ?>);'>View</button>                                          
                         <button class="second-btn btn">Remove</button>
                     </div>
                 </td>
@@ -178,6 +178,6 @@
     </div> <!-- page-contianer ends-->
 
     <?php echo link_js("js/kitchen-manager/orders/orders.js"); ?>
-    <?php //echo link_js("js/kitchen-manager/orders/popup.js"); ?>
+    <?php echo link_js("js/kitchen-manager/orders/popup.js"); ?>
 </body>
 </html>
