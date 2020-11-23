@@ -8,10 +8,10 @@
                 </div>
             </div>
             <ul>
-            <li><?php echo anchor("rm_controller/analyticsnew", "Overviews",['class'=>"normal"]) ?></li>
+            <li><?php echo anchor("rm_controller/index", "Overviews",['class'=>"normal"]) ?></li>
 
                   <!--    <li><a href="#" class="active normal">News Feed</a></li>-->
-              <li><?php echo anchor("rm_controller/index", "News Feed",['class'=>"normal"]) ?></li>
+              <li><?php echo anchor("rm_controller/newsfeed", "News Feed",['class'=>"normal"]) ?></li>
             <!--    <li><a href="users/RM.php" class="normal">Users</a></li>-->
             <li><?php echo anchor("rm_controller/users", "Users",['class'=>"normal"]) ?></li>
              <!--   <li><a href="orders/RM.php" class="normal">Orders</a></li>-->
@@ -31,7 +31,8 @@
                 <!-- <li><a href="analytics/analytics.php" class="normal">Analytics</a></li>-->
                 <li><?php // echo anchor("rm_controller/analytics", "Analytics",['class'=>"normal"]) ?></li>
             </ul>
-            <div><a href="#" class="logout-btn normal">Logout</a></div>
+         <!-- <div><a href="#" class="logout-btn normal">Logout</a></div>-->
+            <div><?php echo anchor("rm_controller/logout", "Logout",['class'=>"logout-btn normal"])?></div>
         </div>
     </div>
 
