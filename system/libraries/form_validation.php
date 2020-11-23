@@ -41,6 +41,15 @@ trait form_validation {
             }
         }
 
+         /*
+        RULE => email : checks whether the email is valid in terms of having a . after @ sign 
+        */ 
+        if(in_array("email", $rules)){
+            if (!filter_var($data, FILTER_VALIDATE_EMAIL)) {
+                return $this->errors[$field_name] = $label . " is not valid";
+            }
+        }
+
         
         /*
         RULE => min_len : check minimum length
@@ -141,7 +150,7 @@ trait form_validation {
         */ 
         if(in_array("exists", $rules)){
             //Get the index of unique role
-            $unique_index = array_search("unique", $rules);
+            $unique_index = array_search("exists", $rules);
            //Get the index of table name
             $table_index = $unique_index + 1;
             //Get table name
@@ -190,7 +199,7 @@ trait form_validation {
     }  
 
     /*
-    Password hash : a secure php built-in encryption methos
+    Password hash : a secure php built-in encryption method
     md5 hash is insecure, crackable (eg: from crackstation.net)
     */ 
     public function hash($password){

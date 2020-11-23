@@ -6,7 +6,7 @@
     <?php echo link_css("css/profile.css?ts=<?=time()?>"); ?>
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   </head>
-  <body style="background: #fff url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
+  <body style="background: rgb(247, 239, 193) url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
 <!-- loader
 <div class="progress">
   <div class="indeterminate"></div>
@@ -14,7 +14,7 @@
 
 <?php include '../application/views/header/cust-logged-in-header.php';?>
 
-<ul id="breadcrumbs">
+<ul class="breadcrumb">
     
     <li><?php echo anchor("customer_controller/myprofile", "Profile Menu") ?></li>
     <li>Reset Password</li>

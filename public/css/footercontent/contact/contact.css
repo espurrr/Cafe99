@@ -1,5 +1,5 @@
 :root{
-    --background-color:#FBDD3F;
+    --background-color:#fcfde6;
     
 }
 
@@ -28,13 +28,14 @@
     min-height: 250px;
     padding: 20px 20px 20px;
     background-color: #ccc;
-    margin-left: 600px;
+    margin-left:420px;
     margin-right: 200px;
 }
 
 @media screen and (max-width: 800px) {
     .contact-content {
         margin-left: 0px; 
+        margin-right: 0px;
         width:100%;
     }
   }   

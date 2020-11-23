@@ -168,7 +168,21 @@ class Customer_controller extends JB_Controller{
     
 
     public function myfavourites(){
-        $this->view('customer/cust-favorites');
+        $user_id = $this->get_session('user_id');
+
+        $result = $this->model->getFavs($user_id);
+
+        if($result === "Favs_not_found"){
+            $this->set_flash("favsError", "You don't have any favourites yet. Let's make some? :) ");
+            $this->view('customer/cust-favorites');
+        }else if($result === "Favs_not_retrieved"){
+            $this->set_flash("dbError", "It seems like your data is not ready yet.");
+            $this->view('customer/cust-favorites');
+        }else if($result['status'] === "success"){
+            $this->view('customer/cust-favorites',$result['data']);
+        }
+
+        // $this->view('customer/cust-favorites');
     }
 
     public function fav_submit(){
@@ -202,9 +216,18 @@ class Customer_controller extends JB_Controller{
         //$this->view('customer/cust-favorites');
     }
 
+    public function fav_delete($food_id){
+      
+            $user_id = $this->get_session('user_id');
+            //echo $user_id;
+            $this->model->removeFromFavs($user_id, $food_id);
+            
+        //$this->view('customer/cust-favorites');
+    }
+
 
     public function myorders(){
-        // $this->view('customer/cust-orders');
+        $this->view('customer/cust-myorders');
         // NEED UI
     }
 

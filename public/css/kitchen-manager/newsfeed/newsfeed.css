@@ -17,18 +17,22 @@ body{
   overflow-y: scroll;
 
 }
-
+.page-container{
+  position: relative;
+  min-height: 100vh;
+}
+.content-wrapper{
+  padding-bottom: 100px; /* height of the footer */
+}
 .newsfeed-wrapper{
     margin-left: var(--sidebar-width);
     background-color: var(--newsfeed-background-color);
-    height: 100vh;
 }
 
 .newsfeed-wrapper .admin-content{
-    height:100%;
     width:100%;
     padding: 0px 0px;
-    /* overflow-y: scroll; */
+    padding-bottom: 50px;
 
 }
     
@@ -38,7 +42,7 @@ body{
   }
 }
 
-#download{
+.dashboard{
   margin:12px auto;
   padding-bottom: 20px;
 
@@ -79,16 +83,16 @@ body{
 
 }
 
-#download {
+.dashboard {
 	max-width: 1000px;
 	overflow:hidden;
 	line-height: 1.38;
 }
-#download .post .top {
+.dashboard .post .top {
   margin-bottom: 11px;
   display: flex;
 }
-#download .post .top .employee{
+.dashboard .post .top .employee{
   margin-left: auto;
   margin-right: 5%;
   font-weight: 500;
@@ -96,24 +100,24 @@ body{
   padding-top: 8px;
   user-select: none;
 }
-#download .post .top .img {
+.dashboard .post .top .img {
 	float: left;
   margin-right: 12px;
     
 }
 
-#download .post .top .name a {
+.dashboard .post .top .name a {
 	color: #3b5998;
 	font-size: 14px;
 }
-#download .post .top .name span {
+.dashboard .post .top .name span {
 	color: #9197a3;
 	font-size: 14px;
 }
-#download .post .top .text-name {
+.dashboard .post .top .text-name {
 	color: #3b5998 !important;
 	font-size: 14px;
 }
-#download .post .top .name .date {
+.dashboard .post .top .name .date {
 	color: #9197a3;
 }

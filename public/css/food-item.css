@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Fredoka+One&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Fredoka+One&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Courgette&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
 :root {
-    --dark-yellow: #FBDD3F;
-    --availability: #03AE9A;
-    --cart-color: #0BCE83;
-    --bg-texture: #FAD74E url(../img/texture.png) repeat;
+    --dark-yellow: #fbdd3f;
+    --availability: #03ae9a;
+    --cart-color: #0bce83;
+    --bg-texture: #fad74e url(../img/texture.png) repeat;
 }
 
 
@@ -25,7 +25,7 @@ a {
 body {
     /* background-color:var(--dark-yellow); */
     background: var(--bg-texture);
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 
@@ -68,18 +68,34 @@ ul.breadcrumb li a:hover {
     background-color: #fff;
     border: 1px solid #ccc;
     box-shadow: 1px 1px 3px 0px #bbb;
-    border-radius: 20px;
-    padding-left: 20px;
+    border-radius: 5px;
+    padding-left: 10px;
     margin: 3% 10%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
     grid-column-gap: 10px;
+    height: 350px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1200px) {
     .food_item_container {
+        height: 300px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .food_item_container {
+        height: auto;
+        grid-template-columns: 1fr;
         padding-left: 0px;
-        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .food_item_container {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
@@ -87,37 +103,63 @@ ul.breadcrumb li a:hover {
 /*  Food item image */
 
 .food_item_container .container__image {
-    position: relative;
+    height: 100%;
+    padding: 10px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 500px) {
+    .food_item_container .container__image {
+        padding: 10px 10px;
+    }
 }
 
 .food_item_container .container__image img {
     position: relative;
+    /* max-width: 100%; */
+    border-radius: 5px;
+    height: 330px;
     max-width: 100%;
-    border-radius: 20px;
+    float: left;
 }
 
-@media (min-width:700px) and (max-width:1000px) {
+
+/* @media (min-width:1200px) {
     .food_item_container .container__image img {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
+        margin-left: 50px;
+    }
+} */
+
+@media (min-width: 1000px) and (max-width: 1200px) {
+    .food_item_container .container__image img {
+        height: 280px;
     }
 }
 
-@media (max-width:700px) {
-    .food_item_container .container__image img {
-        max-width: 50%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
-@media (min-width:1200px) {
+@media (min-width: 700px) and (max-width: 1000px) {
     .food_item_container .container__image img {
         display: block;
         margin-left: auto;
         margin-right: auto;
+        float: none;
+        height: 300px;
+    }
+}
+
+@media (max-width: 700px) {
+    .food_item_container .container__image img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        float: none;
+        height: 250px;
+    }
+}
+
+@media (max-width: 700px) {
+    .food_item_container .container__image img {
+        height: 220px;
     }
 }
 
@@ -125,20 +167,20 @@ ul.breadcrumb li a:hover {
 /*  Food item text */
 
 .food_item_container .container__text {
-    padding: 10% 10% 10% 5%;
+    padding: 5% 10% 5% 5%;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     /* grid-row-gap: 0px;  */
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
-@media (min-width:700px) and (max-width:1000px) {
+@media (min-width: 700px) and (max-width: 1000px) {
     .food_item_container .container__text {
         grid-row-gap: 20px;
     }
 }
 
-@media (max-width:700px) {
+@media (max-width: 700px) {
     .food_item_container .container__text {
         padding: 0 10% 10% 10%;
         grid-row-gap: 20px;
@@ -146,10 +188,10 @@ ul.breadcrumb li a:hover {
 }
 
 
-/*  Avaialability */
+/*  Availability */
 
 .food_item_container .container__text .availability {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     border-radius: 25px;
     height: 80%;
     width: 40%;
@@ -161,17 +203,19 @@ ul.breadcrumb li a:hover {
     box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.2);
 }
 
-@media (min-width:700px) and (max-width:1000px) {
+@media (min-width: 700px) and (max-width: 1000px) {
     .food_item_container .container__text .availability {
         height: 140%;
-        width: 50%;
+        width: 40%;
+        font-size: 13px;
     }
 }
 
-@media (max-width:700px) {
+@media (max-width: 700px) {
     .food_item_container .container__text .availability {
         height: 140%;
-        width: 50%;
+        width: 40%;
+        font-size: 15px;
     }
 }
 
@@ -179,20 +223,21 @@ ul.breadcrumb li a:hover {
 /* Title */
 
 .food_item_container .container__text h1 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 500;
-    font-size: 25px;
+    font-size: 20px;
+    /*25*/
 }
 
-@media (min-width:700px) and (max-width:1000px) {
+@media (min-width: 700px) and (max-width: 1000px) {
     .food_item_container .container__text h1 {
-        font-size: 20px;
+        font-size: 19px;
     }
 }
 
-@media (max-width:700px) {
+@media (max-width: 700px) {
     .food_item_container .container__text h1 {
-        font-size: 25px;
+        font-size: 18px;
     }
 }
 
@@ -201,27 +246,34 @@ ul.breadcrumb li a:hover {
 
 .food_item_container .container__text .des,
 .food_item_container .container__text .price {
-    font-size: 17px;
+    font-size: 15px;
 }
 
-@media (min-width:700px) and (max-width:1000px) {
+@media (min-width: 700px) and (max-width: 1000px) {
     .food_item_container .container__text .des,
     .food_item_container .container__text .price {
-        font-size: 17px;
+        font-size: 14px;
     }
 }
 
-@media (max-width:700px) {
+@media (min-width: 700px) and (max-width: 1000px) {
     .food_item_container .container__text .des,
     .food_item_container .container__text .price {
-        font-size: 16px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 700px) {
+    .food_item_container .container__text .des,
+    .food_item_container .container__text .price {
+        font-size: 12px;
     }
 }
 
 
 /* Quantity input */
 
-.food_item_container .container__text input[type=text],
+.food_item_container .container__text input[type="text"],
 .food_item_container .container__text select {
     width: 50%;
     padding: 6px 20px;
@@ -236,17 +288,20 @@ ul.breadcrumb li a:hover {
 
 .food_item_container .btn-container {
     /* padding: 20px 10%; */
-    display: grid;
+    /* display: grid;
     grid-template-columns: 1fr 3fr;
     grid-gap: 8%;
-    grid-template-areas: "a b";
+    grid-template-areas: "a b"; */
+    display: flex;
+    justify-content: space-evenly;
 }
 
-@media (max-width:600px) {
+
+/* @media (max-width:600px) {
     .food_item_container .btn-container {
         grid-template-columns: 1fr 1fr;
     }
-}
+} */
 
 
 /* For both buttons */
@@ -257,24 +312,24 @@ ul.breadcrumb li a:hover {
     box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.3);
     transition: 0.6s;
     font-size: 1.2rem;
-    height: 75%;
+    height: 100%;
 }
 
-@media (max-width:600px) {
+@media (max-width: 600px) {
     .food_item_container .container__text .btn-container .btn {
         height: 100%;
     }
 }
 
-@media (min-width:600px) and (max-width:1000px) {
+@media (min-width: 600px) and (max-width: 1000px) {
     .food_item_container .container__text .btn-container .btn {
         font-size: 1rem;
         height: 100%;
-        padding: 10px 0px;
+        padding: 10px 25px;
     }
 }
 
-@media (max-width:600px) {
+@media (max-width: 600px) {
     .food_item_container .container__text .btn-container .btn {
         font-size: 1.1rem;
     }
@@ -339,7 +394,7 @@ ul.breadcrumb li a:hover {
 
 /* Add to cart text remove*/
 
-@media (max-width:600px) {
+@media (max-width: 600px) {
     .food_item_container .container__text .btn-container .cart-text {
         display: none;
     }

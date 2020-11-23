@@ -9,13 +9,19 @@
     <!-- <?php echo link_css("css/header.css?"); ?> -->
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 </head>
-<body style="background: #fff url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
+<body style="background: rgb(247, 239, 193) url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
 <!-- loader
 <div class="progress">
   <div class="indeterminate"></div>
 </div> -->
 
 <?php include '../application/views/header/cust-logged-in-header.php';?>
+
+<ul class="breadcrumb">
+        <li><?php echo anchor("account_controller/index", "Home") ?></li>
+        <li>My Profile</li>
+</ul>
+
 <div class="alertMessage">
         <?php $this->flash('updateError','alert alert-danger','fa fa-times-circle'); ?>
         <?php $this->flash('updateSuccess','alert alert-success','fa fa-check'); ?>

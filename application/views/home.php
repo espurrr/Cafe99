@@ -88,7 +88,7 @@
 
         <div class="product-list-container">
             <div class="product-list">
-                <div class="title">Latest Products</div>
+                <div class="title">Newly Introduced</div>
                 <div class="row">
                     <div class="column">
                         <div class="card">
@@ -156,7 +156,7 @@
     </main>
     
     <?php include 'footer/footer_1.php';?>
-    <?php echo link_js("js/header.js"); ?>
+
     <?php echo link_js("js/home.js"); ?>
     <!-- <script>
  var session = eval('(<?php echo json_encode($_SESSION)?>)');

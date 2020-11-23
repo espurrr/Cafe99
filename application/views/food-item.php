@@ -55,8 +55,13 @@
     ?>
     <div class="food_item_wrapper">
     <div class="food_item_container">
+        <?php
+            $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
+        ?>
         <div class="container__image">
+            <!-- <div class="image" style="background-image: url('<?php //echo $img_path?>');"></div> -->
             <?php
+                //$img_path = "http://localhost:8080/test/VegetablesFriedRice1.jpg";
                 $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
             ?>
             <img src="<?php echo $img_path; ?>" alt="Food Item"/>
@@ -77,7 +82,7 @@
         </div>
     </div>
     </div>
-    <?php include '../application/views/footer/footer_2.php';?>
+    <?php //include '../application/views/footer/footer_2.php';?>
     <?php echo link_js("js/favourites.js"); ?>
 </body>
 </html>

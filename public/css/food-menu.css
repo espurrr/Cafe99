@@ -173,7 +173,7 @@ ul.breadcrumb li a:hover {
 }
 
 .food_menu_wrapper .grid article .btn-container .fav .fa-heart {
-    color: #bbb;
+    color: var(--favorite-btn);
     transition: var(--non-hover-transition);
 }
 

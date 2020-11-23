@@ -1,6 +1,6 @@
 :root{
     --background-color:#FBDD3F;
-    
+    --wrapper-color:#fcfde6;
 }
 
 *{
@@ -14,12 +14,12 @@
     
 }
 
-.h1{
-    margin-left:300px;
+.topic{
+    margin-left:250px;
 }
 
 .wrapper{
-    background-color: aqua;
+    background-color: var( --wrapper-color);
 }
 
 .wrapper .aboutus-content{
@@ -27,7 +27,7 @@
 }
 
 .aboutus-content {
-    margin-left: 420px;
+    margin-left: 250px;
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -37,12 +37,13 @@
     min-height: 100px;
     padding: 20px 20px 20px;
     background-color: #ccc;
-    margin-left: 600px;
+    margin-left:415px;
     margin-right: 200px;
 }
 
 .content{
     margin-left:250px;
+    margin-right:250px;
 }
 
 .wrapper.img{
@@ -50,7 +51,7 @@
 }
 
 @media screen and (max-width: 800px) {
-    .h1{
+    .topic{
         margin-left:100px;
     }
     .aboutus-content {
@@ -60,6 +61,7 @@
 
     .content{
         margin-left: 0px; 
+        margin-right:0px;
     }
 
     .wrapper .img{

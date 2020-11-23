@@ -43,7 +43,12 @@ function form_input($fields){
            $type = "file";
         } else if($fields['type'] == "tel"){
             $type = "tel";
+        }else if($fields['type'] == "date"){
+            $type = "date";
+        } else if($fields['type'] == "time"){
+            $type = "time";
         }
+
    } else {
        $value = null;
    }

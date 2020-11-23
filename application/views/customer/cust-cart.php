@@ -9,6 +9,8 @@
 </head>
 <body>
 
+<?php include '../application/views/header/cust-logged-in-header.php';?>
+
 <ul id="breadcrumbs">
     <li>Cart</li>
     <li><?php echo anchor("customer_controller/order", "Order") ?></li>
@@ -21,14 +23,15 @@
             <!-- ccccccc -->
             <div class="cart-item-container">
                 <div class="container-image">
-                    <img src="img/1.jpg" alt="Food"/>
+                    <?php $img_path = BASE_URL."/public/images/food-dash-images/food/pizza/devilledchicken.jpg";?>
+                    <img src="<?php echo $img_path;?>" alt="Image Not Found">
                 </div>
         
                 <div class="container-text">
-                        <div class="food-name">Twin stick</div>
+                        <div class="food-name">Devilled Chicken</div>
                         <div class="quantity">Quantity : <b>1</b></div>
-                        <div class="price">Price LKR: 100.00</div>
-                        <div class="subtotal">Subtotal LKR: <b>100.00</b></div>
+                        <div class="price">Price LKR: 490.00</div>
+                        <div class="subtotal">Subtotal LKR: <b>490.00</b></div>
                 </div>
 
                 <div class="btn-container">
@@ -38,13 +41,14 @@
             <!-- ccccccccc -->
             <div class="cart-item-container">
                 <div class="container-image">
-                    <img src="img/1.jpg" alt="Food"/>
+                <img src="<?php echo $img_path;?>" alt="Image Not Found">
                 </div>
         
                 <div class="container-text">
-                        <div class="food-name">Twin stick</div>
-                        <div class="price">Price LKR: 100.00</div>
-                        <div class="subtotal">Subtotal LKR: 500.00</div>
+                        <div class="food-name">Devilled Chicken</div>
+                        <div class="quantity">Quantity : <b>1</b></div>
+                        <div class="price">Price LKR: 490.00</div>
+                        <div class="subtotal">Subtotal LKR: <b>490.00</b></div>
                 </div>
 
                 <div class="btn-container">
@@ -54,13 +58,14 @@
             <!-- ccccccccc -->
             <div class="cart-item-container">
                 <div class="container-image">
-                    <img src="img/1.jpg" alt="Food"/>
+                <img src="<?php echo $img_path;?>" alt="Image Not Found">
                 </div>
         
                 <div class="container-text">
-                        <div class="food-name">Twin stick</div>
-                        <div class="price">Price LKR: 100.00</div>
-                        <div class="subtotal">Subtotal LKR: 500.00</div>
+                        <div class="food-name">Devilled Chicken</div>
+                        <div class="quantity">Quantity : <b>1</b></div>
+                        <div class="price">Price LKR: 490.00</div>
+                        <div class="subtotal">Subtotal LKR: <b>490.00</b></div>
                 </div>
 
                 <div class="btn-container">

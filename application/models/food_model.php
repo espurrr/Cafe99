@@ -57,6 +57,16 @@ class Food_model extends Database{
         
     }
 
-
+    public function is_favorite($food_id){
+        $query = 
+        "SELECT * FROM favourites WHERE food_id = ".$food_id." AND user_id = ".$_SESSION['user_id'];
+        // echo 'food_called';
+        $result =$this->Query($query, $options = []);
+        if($this->Count() > 0) return True;
+        else {
+            // echo $food_id;
+            return False;
+        }
+    }
 
 }
