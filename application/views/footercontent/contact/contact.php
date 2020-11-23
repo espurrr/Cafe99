@@ -18,11 +18,15 @@
 <?php // include "sidebar.php";?>
 <div class="wrapper">
     <div class="contact-content">
+    <br><br>
      <h1>Contacts</h1>
-     <br><br>
-<a href="#"><i class="fa fa-map-marker" style="font-size:24px;padding-right:20px"></i>Maharagama,Colombo</a><br><br>
+     <br><br><br><br>
+     <li><i class="fa fa-map-marker" style="font-size:24px;padding-right:20px"></i>Maharagama,Colombo</li><br><br><br>
+     <li><i class='fas fa-phone' style='font-size:24px;padding-right:20px'></i>0112-554534</li><br><br><br>
+     <li><i class='fas fa-at' style='font-size:24px;padding-right:20px'></i>cafe99.teamdashcode@gmail.com</li><br><br><br>
+<!--<a href="#"><i class="fa fa-map-marker" style="font-size:24px;padding-right:20px"></i>Maharagama,Colombo</a><br><br>
 <a href="#"><i class='fas fa-phone' style='font-size:24px;padding-right:20px'></i>0112-554534</a><br><br>
-<a href="#"><i class='fas fa-at' style='font-size:24px;padding-right:20px'></i>cafe99.teamdashcode@gmail.com</a><br>
+<a href="#"><i class='fas fa-at' style='font-size:24px;padding-right:20px'></i>cafe99.teamdashcode@gmail.com</a><br>-->
 
      </div>
 </div>
