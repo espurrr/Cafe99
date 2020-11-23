@@ -14,7 +14,9 @@
 </head>
 
 <body>
+<div class="page-container">
 <?php include "../application/views/restaurantmanager/sidebar.php";?>
+<div class="content-wrapper">
 <?php include  "../application/views/header/header-dashboard.php";?>
 
     <div class="newsfeed-wrapper">
@@ -125,7 +127,8 @@
                 </div>
             </div>
         </div>
+        </div>
         <?php // include '../application/views/footer/footer_3.php';?> 
-
+        </div>
 </body>
 </html>

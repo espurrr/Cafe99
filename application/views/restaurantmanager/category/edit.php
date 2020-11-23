@@ -11,7 +11,9 @@
     <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
 </head>
 <body>
+<div class="page-container">
 <?php include "category_sidebar.php";?>
+<div class="content-wrapper">
 <?php include  "../application/views/header/header-dashboard.php";?>
     <div class="wrapper">
       
@@ -42,6 +44,8 @@
         
        
     </div>
-    <?php include '../application/views/footer/footer_3.php';?>     
+    </div>
+    <?php include '../application/views/footer/footer_3.php';?>  
+    </div>   
 </body>
 </html>
