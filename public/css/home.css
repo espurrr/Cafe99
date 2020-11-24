@@ -82,9 +82,9 @@
     font-weight: 400;
 
   }
-  .signlogbtn{
+  /* .signlogbtn{
     
-  }
+  } */
   @media (min-width:1000px) and (max-width:1200px) {
     .section-1 {
       height: 70vh;
@@ -241,11 +241,21 @@
     padding: 16px;
     text-align: center;
     background-color: #f1f1f1;
+    /* min-height: 500px; */
+
 }
 .card img{
     width: 100%;
     height: auto;
 }
+.card .name{
+  font-size: 17px;
+  font-weight: 500;
+}
+.card .text{
+  font-size: 13px;
+}
+
 @media (max-width: 600px){
   .product-list .card p{
     font-size: 13px;

@@ -42,7 +42,7 @@
                 </div>
                 <div class="hero-text">
                     <h1>You want it. We have it.</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, impedit.</p>
+                    <p>Food, drinks, and desserts for dinein, delivery and pickup.</p>
                 </div>
             </section>
         </div>
@@ -53,33 +53,33 @@
                 <div class="row">
                     <div class="column">
                         <div class="card">
-                                <img src="<?php echo BASE_URL?>/public/images/home/slider/1.jpg" alt="">
-                                <p>Card 01</p>
-                                <p>Some text</p>
+                                <img src="<?php echo BASE_URL?>/public/images/food-dash-images/Food/Pizza/DevilledChicken.jpg" alt="">
+                                <p class="name">Devilled Chicken</p>
+                                <p class="text">Devilled chicken in spicy sauce with a double layer of mozzarella cheese</p>
                         </div>
                     </div>
                 
                     <div class="column">
                         <div class="card">
-                            <img src="<?php echo BASE_URL?>/public/images/home/slider/2.jpg" alt="">
-                                <p>Card 01</p>
-                                <p>Some text</p>
+                            <img src="<?php echo BASE_URL?>/public/images/food-dash-images/Food/Buns/HotDogBun.jpg" alt="">
+                                <p class="name">Hot Dog Bun</p>
+                                <p class="text">A chicken sausage with combination of tomato sauce and lemon mustard dressing</p>
                         </div>
                     </div>
                     
                     <div class="column">
                         <div class="card">
-                            <img src="<?php echo BASE_URL?>/public/images/home/slider/3.jpg" alt="">
-                                <p>Card 01</p>
-                                <p>Some text</p>
+                            <img src="<?php echo BASE_URL?>/public/images/food-dash-images/Food/Rice/VegetablesFriedRice.jpg" alt="">
+                                <p class="name">Vegetables Fried Rice</p>
+                                <p class="text">Soy sauce, white rice, toasted sesame oil, carrot, egg</p>
                         </div>
                     </div>
                     
                     <div class="column">
                         <div class="card">
-                            <img src="<?php echo BASE_URL?>/public/images/home/slider/4.jpg" alt="">
-                                <p>Card 01</p>
-                                <p>Some text</p>
+                            <img src="<?php echo BASE_URL?>/public/images/food-dash-images/Food/Buns/SausageBun.jpg" alt="">
+                                <p class="name">Sausage Bun</p>
+                                <p class="text">Butter sugar, egg wash, all purpose flour, active yeast</p>
                         </div>
                     </div>
                 </div>
@@ -92,33 +92,33 @@
                 <div class="row">
                     <div class="column">
                         <div class="card">
-                                <img src="<?php echo BASE_URL?>/public/images/home/slider/1.jpg" alt="">
-                                <p>Card 01</p>
-                                <p>Some text</p>
+                                <img src="<?php echo BASE_URL?>/public/images/food-dash-images/Food/Biriyani/FishBiriyani.jpg" alt="">
+                                <p  class="name">Fish Biriyani</p>
+                                <p class="text">Basmathi rice, Fresh Dill leaves, Jalapeno , Ginger</p>
                         </div>
                     </div>
                 
                     <div class="column">
                         <div class="card">
-                            <img src="<?php echo BASE_URL?>/public/images/home/slider/2.jpg" alt="">
-                                <p>Card 01</p>
-                                <p>Some text</p>
+                            <img src="<?php echo BASE_URL?>/public/images/food-dash-images/Drinks/Coffee/IcedCoffee.jpg" alt="">
+                                <p class="name">Iced Coffee</p>
+                                <p class="text">Chocalate Syrup, fat free, sugar subtitute</p>
                         </div>
                     </div>
                     
                     <div class="column">
                         <div class="card">
-                            <img src="<?php echo BASE_URL?>/public/images/home/slider/3.jpg" alt="">
-                                <p>Card 01</p>
-                                <p>Some text</p>
+                            <img src="<?php echo BASE_URL?>/public/images/food-dash-images/Food/Pizza/VeggieSupreme.jpg" alt="">
+                                <p class="name">Veggie Supreme</p>
+                                <p class="text">Crescent rolls, cream cheese, cheddar, fresh vegetables</p>
                         </div>
                     </div>
                     
                     <div class="column">
                         <div class="card">
-                            <img src="<?php echo BASE_URL?>/public/images/home/slider/4.jpg" alt="">
-                                <p>Card 01</p>
-                                <p>Some text</p>
+                            <img src="<?php echo BASE_URL?>/public/images/food-dash-images/Food/Buns/ChocolateBun.jpg" alt="">
+                                <p class="name">Chocolate Bun</p>
+                                <p class="text">Coco powder, Instant yeast, egg white, milk</p>
                         </div>
                     </div>
                 </div>
@@ -129,19 +129,19 @@
                 <div class="box">
                     <div class="image" style="background-image: url('<?php echo BASE_URL?>/public/images/home/staff.svg');"></div>
                     <p class="topic">Friendly Staff</p>
-                    <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni impedit laborum voluptatem incidunt aliquid sunt.</p>
+                    <p class="text">We have a staff consisting of a variety of personalities working here, To provide excelent customer service.</p>
                 </div>
                 <div class="box">
                     <div class="image" style="background-image: url('<?php echo BASE_URL?>/public/images/home/cup.svg');"></div>
     
                     <p class="topic">Freshness Guaranteed</p>
-                    <p class="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet et saepe, eum hic error alias.</p>
+                    <p class="text">It all begins with the ingredients we choose from all around Sri Lanka. We’ve partnered with local farmers and growers to source their freshest and best.</p>
                 </div>
                 <div class="box">
                     <div class="image" style="background-image: url('<?php echo BASE_URL?>/public/images/home/chill.svg');"></div>
     
                     <p class="topic">Feel like home</p>
-                    <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem consequuntur asperiores hic, vero sint cupiditate?</p>
+                    <p class="text">Making customers happy, makes us happy. Come have a good meal feeling like you are at home.</p>
                 </div>
             </div>
         </div>
