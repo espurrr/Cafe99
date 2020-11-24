@@ -66,7 +66,7 @@
 
       <article>
         <?php
-          $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
+          $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".str_replace(' ','',$row->Subcategory_name)."/".str_replace(' ','',$row->Food_name).".jpg";
         ?>
         <a href="#"><img src="<?php echo $img_path;?>" alt="Image Not Found"></a>
         <div class="text">
@@ -90,7 +90,7 @@
     </main>
   </div>
   </div>
-  <?php include '../application/views/footer/footer_2.php';?>
+  <!-- <?php include '../application/views/footer/footer_2.php';?> -->
   <?php echo link_js("js/favourites.js"); ?>
 <!-- Jquery scrips goes here -->
  

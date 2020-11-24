@@ -22,8 +22,8 @@
       <?php echo anchor("food_controller/menu/food/rice", "Rice") ?>
       <?php echo anchor("food_controller/menu/food/pizza", "Pizza") ?>
       <?php echo anchor("food_controller/menu/food/savouries", "Savouries") ?>
-      <?php echo anchor("food_controller/menu/food/cakes", "Cake") ?>
-      <?php echo anchor("food_controller/menu/food/NoodlesPasta", "Noodles & Pasta") ?>
+      <?php echo anchor("food_controller/menu/food/cakes", "Cakes") ?>
+      <?php echo anchor("food_controller/menu/food/Noodles-and-Pasta", "Noodles & Pasta") ?>
       <?php echo anchor("food_controller/menu/food/biriyani", "Biriyani") ?>
       <?php echo anchor("food_controller/menu/food/buns", "Buns") ?>
       </div>
@@ -34,9 +34,9 @@
         </button>
         <div id="routes" class="dropdown-content" >
         <?php echo anchor("food_controller/menu/drinks/tea", "Tea") ?>
-            <a href="#">Milk Shakes</a>
-            <a href="#">Ice Blended</a>
-            <a href="#">Fresh Fruit Juice</a>
+        <?php echo anchor("food_controller/menu/drinks/milkshakes", "Milkshakes") ?>
+        <?php echo anchor("food_controller/menu/drinks/ice-blended", "Ice Blended") ?>
+        <?php echo anchor("food_controller/menu/drinks/fresh-fruit-juice", "Fresh Fruit Juice") ?>
         <?php echo anchor("food_controller/menu/drinks/coffee", "Coffee") ?>
         </div>
       </div>
@@ -45,16 +45,16 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div id="routes" class="dropdown-content" >
-            <a href="#">Ice creams</a>
-            <a href="#">Custards & Puddings</a>
-            <a href="#">Muffins</a>
-            <a href="#">Cheesecakes</a>
+        <?php echo anchor("food_controller/menu/desserts/ice-creams", "Ice creams") ?>
+        <?php echo anchor("food_controller/menu/desserts/custardspuddings", "Custards & Puddings") ?>
+            <?php echo anchor("food_controller/menu/desserts/muffins", "Muffins") ?>
+            <?php echo anchor("food_controller/menu/desserts/cheesecakes", "Cheesecakes") ?>
        
         </div>
       </div>
       <div class="route-dropdown" onclick="toggleMenu(this)">
-        <button class="dropbtn">Cart&nbsp;<span class="step">0</span>
-        </button>
+        <a href="<?php echo BASE_URL?>/order_controller/cust_cart"> Cart&nbsp;<span class="step">0</span></a>
+
       </div>
       <div class="route-dropdown sign-log" id="avatar_big" onclick="toggleMenu(this)">
         <button class="avatar-a" style="

@@ -7,7 +7,8 @@
     <?php echo link_css("css/cart.css"); ?>
     <title>Cart</title>
 </head>
-<body>
+<body style="background: rgb(247, 239, 193) url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
+
 
 <?php include '../application/views/header/cust-logged-in-header.php';?>
 

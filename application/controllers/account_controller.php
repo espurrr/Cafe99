@@ -45,7 +45,7 @@ class Account_controller extends JB_Controller{
 
             if($this->model->signup($data)){
                 // echo "data is inserted";
-               if($this->activationEmail("boody.abay@gmail.com","Lupuchu","","",$Token)){
+               if($this->activationEmail($Email_address,$User_name,"","",$Token)){
                     $this-> set_flash("signupSuccess","Your account is successfully created. We've sent an email to $Email_address to verify your address. Please click on the link in the email to continue.");
                     $this->view('login');
                }else{
@@ -132,10 +132,10 @@ class Account_controller extends JB_Controller{
             $result = $this->model->login($email, $password);
 
             if($result === "Email_not_found"){
-                $this->set_flash("emailError", "Email is incorrect");
+                $this->set_flash("loginError", "Invalid login or password");
                 $this->login();
             }else if($result === "Password_not_matched"){
-                $this->set_flash("passwordError", "Password is incorrect");
+                $this->set_flash("loginError", "Invalid login or password");
                 $this->login();
             }else if($result['status'] === "success"){
                 // echo "Login successssss! yay!";
@@ -229,7 +229,7 @@ class Account_controller extends JB_Controller{
    
                if($this->model->resetPwToken($data)){
                    // echo "data is inserted";
-                  if($this->resetPwEmail("boody.abay@gmail.com","User","","",$Token)){
+                  if($this->resetPwEmail($Email_address,"User","","",$Token)){
                        $this-> set_flash("linkSentSuccess","An email is sent to $Email_address. Please click on the link when you get it.");
                        $this->view('forgot');
                   }else{
