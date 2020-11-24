@@ -17,7 +17,7 @@
 <?php include  "../application/views/header/header-dashboard.php";?>
     <div class="wrapper">
 
-             <div class="admin-content">
+             <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
                  <!--   <a href="RM.php" class="button">Manage Categories</a>-->
             <?php echo anchor("rm_controller/category", "Manage Categories",['class'=>"button"]) ?>
              <!--   <a href="create.php" class="button">Add  Categories</a>-->

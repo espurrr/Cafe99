@@ -18,7 +18,7 @@
     <div class="wrapper">
        
 
-             <div class="admin-content">
+             <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
            <!--  <a href="RM.php" class="button">Manage Subcategories</a>-->
                 <?php echo anchor("rm_controller/subcategory", "Manage Subcategories",['class'=>"button"]) ?>
              <!--   <a href="create.php" class="button">Add  Subcategories</a>-->

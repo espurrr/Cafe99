@@ -36,7 +36,7 @@
 
     <div class="newsfeed-wrapper">
 
-            <div class="admin-content">
+            <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
                 <div class="newsfeed">
              <!--  <a href="create.php" class="button">Add  News</a>-->
               <?php echo anchor("rm_controller/create", "Add News",['class'=>"button"]) ?>

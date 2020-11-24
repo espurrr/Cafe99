@@ -3,7 +3,8 @@
             <div class="profile-details">
                 <div class="avatar"><i class="fa fa-user-circle"></i></div>
                 <div class="profile-text">
-                    <p class="name">Kamal Perera</p>
+                  <!--  <p class="name">Kamal Perera</p>-->
+                    <?= $this->get_session('user_name');?>
                     <p class="role">Restaurant Manager</p>
                 </div>
             </div>

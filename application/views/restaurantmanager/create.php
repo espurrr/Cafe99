@@ -19,7 +19,7 @@
 <?php include  "../application/views/header/header-dashboard.php";?>
     <div class="wrapper">
       
-             <div class="admin-content">
+             <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
              <!--   <a href="RMnewsfeed.php" class="button">News Feed</a>-->
                 <?php echo anchor("rm_controller/index", "News Feed",['class'=>"button"]) ?>
 

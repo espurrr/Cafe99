@@ -40,18 +40,19 @@
   <div class="profile-details">
              <div class="avatar"><i class="fa fa-user-circle"></i></div>
              <div class="profile-text">
-                <p class="name">Kavinda Dias</p>
+              <!--  <p class="name">Kavinda Dias</p>-->
+              <?= $this->get_session('user_name');?>
                 <p class="role">Delivery Person</p>
             </div>
         </div>
             <ul>
                  <!--    <li><a class="active" href="./dporders.php">Orders</a></li> -->
-            <li><?php echo anchor("delivery_controller/neworders", "Orders") ?></li>
+            <li><?php echo anchor("delivery_controller/index", "Orders") ?></li>
             <!--    <li><a  href="./dp.php">News Feed</a></li>-->
-            <li><?php echo anchor("delivery_controller/index", "News Feed",['class'=>"active"]) ?></li>
+            <li><?php echo anchor("delivery_controller/newsfeed", "News Feed",['class'=>"active"]) ?></li>
                 
-                <li><a href="#">LogOut</a></li>
-                
+              <!--  <li><a href="#">LogOut</a></li>-->
+                <li><?php echo anchor("delivery_controller/logout", "Logout") ?></li>
             </ul>
 
   </div>
