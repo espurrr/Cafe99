@@ -15,8 +15,7 @@ class KM_Controller extends JB_Controller{
     }
 
     public function index(){
-        // $this->view('kitchenmanager/orders/orders');
-        $this->view('customer/cust-cart');
+        $this->orders();
     }
     
     public function logout(){
