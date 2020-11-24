@@ -17,7 +17,7 @@
     <div class="wrapper">
       
 
-             <div class="admin-content">
+             <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
                  <!--    <a href="RM.php" class="button">Manage Fooditems</a>-->
         <?php echo anchor("rm_controller/fooditem", "Manage Fooditems",['class'=>"button"]) ?>
          <!--   <a href="create.php" class="button">Add  Fooditems</a>-->

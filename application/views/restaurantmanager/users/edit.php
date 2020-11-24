@@ -18,7 +18,7 @@
     <div class="wrapper">
       
 
-             <div class="admin-content">
+             <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
               <!--  <a href="RM.php" class="button">Manage Users</a>-->
               <?php echo anchor("rm_controller/users", "Manage Users",['class'=>"button"]) ?>
               <!--  <a href="create.php" class="button">Add User</a>-->

@@ -35,17 +35,19 @@
   <div class="profile-details">
              <div class="avatar"><i class="fa fa-user-circle"></i></div>
              <div class="profile-text">
-                <p class="name">Kavinda Dias</p>
+              <!--  <p class="name">Kavinda Dias</p>-->
+              <?= $this->get_session('user_name');?>
                 <p class="role">Delivery Person</p>
             </div>
         </div>
             <ul>
                  <!--    <li><a class="active" href="./dporders.php">Orders</a></li> -->
-            <li><?php echo anchor("delivery_controller/neworders", "Orders",['class'=>"active"]) ?></li>
+            <li><?php echo anchor("delivery_controller/index", "Orders",['class'=>"active"]) ?></li>
             <!--    <li><a  href="./dp.php">News Feed</a></li>-->
-            <li><?php echo anchor("delivery_controller/index", "News Feed") ?></li>
+            <li><?php echo anchor("delivery_controller/newsfeed", "News Feed") ?></li>
                 
-                <li><a href="#">LogOut</a></li>
+              <!--  <li><a href="#">LogOut</a></li>-->
+              <li><?php echo anchor("delivery_controller/logout", "Logout") ?></li>
                 
             </ul>
 
@@ -54,11 +56,11 @@
   <div  class="Dp-content">
   <div class="icons">
   <!-- <a class="active" href="neworders.php" button class="btn">New<i class='fas fa-clipboard-list' style="font-size:24px;padding-right:40px"></i></button> </a>-->
-  <?php echo anchor("delivery_controller/neworders", "New",['button class'=>"btn"]) ?>
+  <?php echo anchor("delivery_controller/index", "New",['class'=>"add"]) ?>
 <!--  <a href="ondelivery.php" button class="btn"><i class='fas fa-biking' style="font-size:24px;padding-right:40px"></i></button> </a>-->
-<?php echo anchor("delivery_controller/ondelivery", "Ondelivery",['button class'=>"btn"]) ?>
+<?php echo anchor("delivery_controller/ondelivery", "Ondelivery",['class'=>"add"]) ?>
 <!--  <a href="dispatched.php" button class="btn"><i class='fas fa-clipboard-check' style="font-size:24px"></i></button> </a>-->
-<?php echo anchor("delivery_controller/ondelivery", "Dispatched",['class'=>"active",'button class'=>"btn"]) ?>
+<?php echo anchor("delivery_controller/ondelivery", "Dispatched",['class'=>"active",'class'=>"add"]) ?>
   </div>
 
   <div class="list">
