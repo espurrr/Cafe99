@@ -23,7 +23,7 @@ body {
     min-width: 344px;
 }
 
-.topnav a.icon {
+.topnav a .icon {
     float: right;
     display: block;
     display: none;
@@ -41,7 +41,7 @@ body {
 
 .logo {
     height: 68px;
-    padding: 12px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
 }
 
 .active {
@@ -81,7 +81,7 @@ body {
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     border-radius: 5px;
-    top: 68px;
+    top: 60px;
 }
 
 
@@ -106,9 +106,8 @@ body {
     text-align: center;
 }
 
-.topnav a:hover,
-.route-dropdown:hover .dropbtn {
-    background-color: #555;
+.topnav a:hover, .route-dropdown:hover .dropbtn {
+    background-color: transparent;
     color: white;
     border-radius: 25px;
 }
@@ -284,4 +283,15 @@ body {
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         padding: 0px;
     }
+}
+
+.topnav .signlog .signlogbtn{
+    transition: 0.8s;
+    border: 2px solid #000;
+    border-radius: 25px;
+}
+.topnav .signlog .signlogbtn:hover{
+    transition: 0.8s;
+    background-color: #000;
+
 }

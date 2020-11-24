@@ -27,7 +27,7 @@
     color: #000;
     line-height: 1.5;
     letter-spacing: 0.5px;
-    
+
   }
   
   .section-1_wrapper{
@@ -52,6 +52,8 @@
     left: -10vw;
     overflow: hidden;
     width:50%;
+    margin-top: 500px;
+
   }
   .hero-image2 {
     position: absolute;

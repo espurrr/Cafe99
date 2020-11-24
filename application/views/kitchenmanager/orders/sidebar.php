@@ -4,7 +4,7 @@
             <div class="profile-details">
                 <div class="avatar"><i class="far fa-user-circle"></i></div>
                 <div class="profile-text">
-                    <p class="name">John Smith</p>
+                    <p class="name"><?= $this->get_session('user_name'); ?></p>
                     <p class="role">Kitchen Manager</p>
                 </div>
             </div>

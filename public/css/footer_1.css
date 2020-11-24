@@ -5,13 +5,13 @@
   margin: 0;
 }
 
-a {
+.footer a {
   text-decoration: none;
   color: white;
   line-height: 4.0;
 }
 
-a:hover {
+.footer a:hover {
   color: #888;
 }
 
