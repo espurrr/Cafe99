@@ -14,6 +14,7 @@ var chart1 = new CanvasJS.Chart("chartContainer1", {
 	},
 	data: [{
 		type: "column",
+		color:"#696767",
 		startAngle: 25,
 		toolTipContent: "<b>{label}</b>: {y}%",
 		showInLegend: "true",
@@ -37,7 +38,7 @@ chart1.render();
 </script>
 </head>
 <body>
-<div id="chartContainer1" style="height: 400px; width:100%;"></div>
+<div id="chartContainer1" style="height: 500px; width:100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 </body>

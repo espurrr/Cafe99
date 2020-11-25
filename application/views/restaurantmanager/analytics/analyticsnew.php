@@ -25,42 +25,51 @@
       
 
         <div class="content">
-        <div class="box">
+        <div class="row">
+     <!--   <div class="box">-->
+            <div class="column">
             <div class="order-received-box">
             <h2>Orders received:</h2><br>
             <h2>250</h2>
             </div>
+            </div>
 
+            <div class="column">
             <div class="order-delivered-box">
             <h2>Orders deilivered:</h2><br>
             <h2>100</h2>
             </div>
+            </div>
 
+            <div class="column">
             <div class="new-customer-box">
             <h2>New Customer:</h2><br>
             <h2>23</h2>
             </div>
+            </div>
 
+            <div class="column">
             <div class="net-earning-box">
             <h2>Net earning:</h2><br>
             <h2>Rs.15,000</h2>
             </div>
+          </div> 
+            
         </div>
 <br><br><br>
         <div class="column-line">
             <div class="column-graph">
             <?php //include "column.php"?>
             <img src="<?php echo BASE_URL?>/public/images/analytics-chart/column.jpg">
-           
-            </div>
-
+           </div>
+          
             <div class="line-graph">
             <?php //include "line.php"?>
             <img src="<?php echo BASE_URL?>/public/images/analytics-chart/line.jpg">
             </div>
-            </div>
-
-            <br><br><br>
+        </div>
+            
+           
             <div class="cus-pay">
             <div class="customer-pie-chart">
             <?php //include "cuspie.php"?>

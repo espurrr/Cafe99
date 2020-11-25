@@ -22,7 +22,7 @@
 
              <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
               <!--  <a href="RMnewsfeed.php" class="button">News Feed</a>-->
-                <?php echo anchor("rm_controller/index", "News Feed",['class'=>"button"]) ?>
+                <?php echo anchor("rm_controller/newsfeed", "News Feed",['class'=>"button"]) ?>
             
 
              <div class="content">
