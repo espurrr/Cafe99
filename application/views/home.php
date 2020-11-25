@@ -148,7 +148,7 @@
 
         <div class="section-2">
             <div class="text column2">
-                <div class="paragraph"><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem voluptatibus voluptatem aspernatur numquam, repellat enim.</p></div>
+                <div class="paragraph"><p>One thousand flavors in one place</p></div>
                 <div class="btn"><button href="#" onclick="scrollToTop()">Let's eat</button></div>
             </div>
             <div class="image column2"><img src="<?php echo BASE_URL?>/public/images/home/bg-env.png" alt="Image 01"></div>

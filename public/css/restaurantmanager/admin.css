@@ -37,9 +37,12 @@ body{
 .content-wrapper{
     padding-bottom: 100px;
 }
-
+.wrapper{
+    overflow: auto;
+    margin-bottom: 50px;
+}
 .wrapper .admin-content{
-    height:100vh;
+    /* height:100vh; */
     margin-left:var(--sidebar-width);
     padding: 40px 40px 40px;
     background-color: var(--background-color);
