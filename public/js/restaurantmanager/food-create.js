@@ -1,5 +1,5 @@
-function changeSubCat(cat){
-    // var cat = document.getElementById("category").value;
+function changeSubCat(){
+    var cat = document.getElementById("category").value;
     var items;
     if (cat === "Food") {
         items = [[1,"Rice"], [2,"Pizza"], [3,"Savouries"], [4,"Cake"], [5,"Noodles & Pasta"], [6,"Biriyani"],[ 7,"Bun"]];

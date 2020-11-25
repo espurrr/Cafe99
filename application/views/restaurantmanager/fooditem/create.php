@@ -21,9 +21,9 @@
        
         <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
                <!--    <a href="RM.php" class="button">Manage Fooditems</a>-->
-        <?php echo anchor("rm_controller/fooditem", "Manage Fooditems",['class'=>"button"]) ?>
+        <?php //echo anchor("rm_controller/fooditem", "Manage Fooditems",['class'=>"button"]) ?>
          <!--   <a href="create.php" class="button">Add  Fooditems</a>-->
-        <?php echo anchor("rm_controller/fooditemcreate", "Add  Fooditems",['class'=>"button"]) ?>
+        <?php //echo anchor("rm_controller/fooditemcreate", "Add  Fooditems",['class'=>"button"]) ?>
 
             <div class="content">
                 <h2 class="page-title">Add Fooditems</h2>
@@ -33,7 +33,7 @@
                 </div>
 
                  <!-- <form action="rmfooditem_controller/createFoodItem" method="POST"> -->
-                 <?php echo form_open("rmfooditem_controller/createFoodItem","post");?>
+                <?php echo form_open("rmfooditem_controller/createFoodItem","post");?>
 
                         <label for="fname">Food name</label>
                         <input type="text" id="fname" name="Food_name" ><br>
@@ -60,11 +60,11 @@
                         </div>
 
                         <label for="category" class="cat-label">Category</label>
-                        <select id="category" name="Category_name">
+                        <select id="category" name="Category_name" onchange="changeSubCat()">
                             <option value="empty" style="display:none;"> - select a category - </option>
-                            <option value="Food" onclick="changeSubCat('Food')">Food</option>
-                            <option value="Drinks" onclick="changeSubCat('Drinks')">Drinks</option>
-                            <option value="Desserts" onclick="changeSubCat('Desserts')">Desserts</option>
+                            <option value="Food">Food</option>
+                            <option value="Drinks">Drinks</option>
+                            <option value="Desserts">Desserts</option>
                         </select>
 
                         </br>
@@ -84,12 +84,12 @@
                         </div>
                     
                 <?php echo form_close();?>
-            </div>
-        </div>
-    </div>
-    </div>
+            </div><!-- content -->
+        </div><!--admin-content ends here -->
+    </div><!-- wrapper ends here -->
+    </div><!-- content-wrapper ends here -->
     <?php include '../application/views/footer/footer_3.php';?>
-    </div>
+    </div><!-- page-container ends here -->
 <!--ckeditor-->  
 <!-- <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script> -->
 <?php //echo link_js("js/restaurantmanager/RM.js");?>

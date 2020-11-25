@@ -90,7 +90,7 @@ class Rmuser_controller extends JB_Controller{
     public function logout(){
         $this->destroy_session();
         $this->view('login');
-    }*/
+    }
     public function users(){
         $this->view('restaurantmanager/users/RM');
     }
@@ -100,7 +100,7 @@ class Rmuser_controller extends JB_Controller{
     }
 
     public function savedata(){
-     /*   $this->view('restaurantmanager/users/create');*/
+      $this->view('restaurantmanager/users/create');
      
         $this->validation('User_name', 'Name' , 'required|not_int|max_len|50');
         $this->validation('Email_address','Email address', 'unique|user|required');
@@ -129,7 +129,7 @@ class Rmuser_controller extends JB_Controller{
              // 'User_role'=>$User_role,
                 'User_status'=> "active",
                 'Registered_date' => date("Y-m-d"),
-           /*  'Registered_date' => $Registered_date,*/
+             'Registered_date' => $Registered_date,
                 'Token' => $Token
             ];
            
@@ -185,7 +185,7 @@ public function user_update_values(){
         $this->view('customer/cus_profile_update');
     }else if($result['status'] === "success"){
         $this->view('customer/cus_profile_update',$result['data']);
-    }*/
+    }
 
 }
 

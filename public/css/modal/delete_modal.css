@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
+
 :root {
     --win-bg-color: #fefefe;
     --cancel-btn: #e7e7e7;
@@ -17,50 +18,71 @@
 
 
 /*popup related */
-
 .popup-window {
     display: none;
     position: fixed;
-    z-index: 1;
     left: 0;
     top: 0;
-    /* padding-top: 100px; */
+    z-index: 1;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-.popup-window .win-content {
+.popup-window .win-content-wrapper {
     position: relative;
-    top: 50%;
+    top:50%;
     transform: translateY(-50%);
-    background-color: var(--win-bg-color);
-    margin: auto;
     padding: 0px;
-    border: 1px solid #888;
-    width: 30%;
-    min-height: 25%;
+    width: 100%;
+    height: 200px;
 }
-
+.popup-window .win-content{
+    height: 100%;
+    width: 450px;
+    margin: auto;
+    border: 1px solid #888;
+    background-color: var(--win-bg-color);
+    position: relative;
+}
 
 /* text */
-
 .popup-window .win-content p {
     margin-top: 10%;
-    display: flex;
-    justify-content: center;
+    padding: 0px 20px;
+    text-align: center;
 }
-
 
 /* buttons */
-
 .popup-window .win-content .btn-container {
+    width: 100%;
     position: absolute;
-    bottom: 25%;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 15%;
 }
+.popup-window .win-content .btn-wrapper{
+    width: 250px;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+@media (max-width:500px){
+    .popup-window .win-content{
+        width:350px
+    }
+    .popup-window .win-content p{
+        margin-top: 15%;
+    }
 
+}
+@media (max-width:400px){
+    .popup-window .win-content{
+        width:280px
+    }
+    .popup-window .win-content p{
+        margin-top: 15%;
+    }
+
+}
 .popup-window .win-content .btn {
     border: 1px solid #eee;
     border-radius: 3px;
@@ -79,7 +101,7 @@
 }
 
 .popup-window .win-content .delete-btn {
-    margin-left: 8px;
+    /* margin-left: 8px; */
     padding: 10px 15px;
     color: var(--win-bg-color);
     background-color: var(--delete-btn);

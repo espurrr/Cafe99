@@ -16,10 +16,10 @@
   <?php echo link_css("css/modal/delete_modal.css?ts=<?=time()?>"); ?>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
   
-  <!-- Footer -->
+  <!-- Footer
   <link rel="stylesheet" href="css/footer_2.css?ts=<?=time()?>">
   <?php echo link_css("css/footer.css?ts=<?=time()?>"); ?>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 
    <!-- Jquery link -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
@@ -81,7 +81,7 @@
     </main>
   </div>
   </div>
-  <?php include '../application/views/footer/footer_1.php';?>
+  <!-- <?php include '../application/views/footer/footer_2.php';?> -->
  
   <?php echo link_js("js/cust_myfavs.js"); ?>
 </body>

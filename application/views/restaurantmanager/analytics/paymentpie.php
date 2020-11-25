@@ -24,7 +24,7 @@
   </script>
   <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script></head>
   <body>
-    <div id="chartContainer4" style="height: 400px; width: 100%;">
+    <div id="chartContainer4" style="height: 500px; width: 100%;">
     </div>
   </body>
  </html>
