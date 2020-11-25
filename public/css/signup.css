@@ -108,6 +108,7 @@ body {
     width: 384px;
     max-width: 100%;
     min-height: 600px;
+    margin-bottom: 100px;
 }
 
 .sign-up-container {

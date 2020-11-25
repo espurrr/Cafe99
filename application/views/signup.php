@@ -69,7 +69,7 @@
           <?php echo form_close();?>
       </div>
     </div>
-    
+    <?php include '../application/views/footer/footer_1.php';?>
 
   </body>
 </html>

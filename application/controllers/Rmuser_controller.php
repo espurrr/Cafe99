@@ -194,12 +194,12 @@ public function user_update_save(){
    $id = $this->get_session('User_ID');
     
         $this->validation('User_name', 'Name' , 'required|not_int|max_len|50');
-        $this->validation('Email_address','Email address', 'unique|user|required');
+     //   $this->validation('Email_address','Email address', 'unique|user|required');
         $this->validation('Phone_no','Phone no', 'unique|user|required|len|10');
         $this->validation('User_Password','User password', 'required|min_len|5');
 
     if($this->run()){
-        // echo "Form is submitted";
+         echo "Form is submitted";
      
       //  $this->view('restaurantmanager/users/edit');
             $User_name = $this->post('User_name');
@@ -211,12 +211,12 @@ public function user_update_save(){
             'User_name' => $User_name,
             'Phone_no' => $Phone_no,
         //    'Email_address' => $Email_address,
-            'User_role'=>$User_role,
+            'User_role'=>$User_role
         ];
         // print_r($data);
 
         if($this->model->user_data_update($data,  $id)){
-            $this-> set_flash("updateSuccess","Hey $User_name! Your profile is successfully updated.");
+         //   $this-> set_flash("updateSuccess","Hey $User_name! Your profile is successfully updated.");
             $this->view('restaurantmanager/users/edit');
            
         }else{
@@ -229,13 +229,13 @@ public function user_update_save(){
     }
 }
 
-
-public function delete_user_data(){
+/*
+public function delete_user_data($id){
 
     $id = $this->get_session('User_ID');
     $result = $this->model->deleteuser( $id );
     $this->view('restaurantmanager/users/RM');
-} 
+} */
 
 }
 ?>

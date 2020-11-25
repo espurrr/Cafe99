@@ -33,7 +33,7 @@
   <!-- Delete pop up modal ends here -->
 
     <div class="wrapper">
-      <div class="admin-content">
+      <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
                 
           <!--  <a href="RM.php" class="button">Manage Users</a>-->
             <?php echo anchor("rm_controller/users", "Manage Users",['class'=>"button"]) ?>
@@ -111,7 +111,8 @@
           echo "<td>".$row->User_role."</td>";
       //    echo "<td>".anchor("rm_controller/usersedit", "Edit",['class'=>"edit"])."</td>";
           echo "<td>".anchor("rm_controller/user_update_values", "Edit",['class'=>"edit"])."</td>";
-          echo "<td>".anchor("rm_controller/delete_user_data", "Delete",['class'=>"delete"])."</td>";
+       //   echo "<td>".anchor("rm_controller/delete_user_data", "Delete",['class'=>"delete"])."</td>";
+       echo "<td>".anchor("rm_controller/users", "Delete",['class'=>"delete"])."</td>";
           echo "</tr>";
         }
        

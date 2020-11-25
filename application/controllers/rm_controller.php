@@ -3,7 +3,7 @@ class RM_Controller extends JB_Controller{
     public $model;
     public function __construct(){
         parent::__construct();
-       if(!$this->get_session('user_id')){
+      if(!$this->get_session('user_id')){
             redirect("account_controller/login");
         }
         if($this->get_session('role')!="restaurant_manager"){
@@ -14,6 +14,10 @@ class RM_Controller extends JB_Controller{
     }
 
     public function index(){
+        $this->view('restaurantmanager/analytics/analyticsnew');
+    }
+
+    public function newsfeed(){
         $this->view('restaurantmanager/RMnewsfeed');
     }
 
@@ -132,7 +136,7 @@ class RM_Controller extends JB_Controller{
       $id = $this->get_session('User_ID');
        
            $this->validation('User_name', 'Name' , 'required|not_int|max_len|50');
-           $this->validation('Email_address','Email address', 'unique|user|required');
+        //   $this->validation('Email_address','Email address', 'unique|user|required');
            $this->validation('Phone_no','Phone no', 'unique|user|required|len|10');
            $this->validation('User_Password','User password', 'required|min_len|5');
    
@@ -149,7 +153,7 @@ class RM_Controller extends JB_Controller{
                'User_name' => $User_name,
                'Phone_no' => $Phone_no,
            //    'Email_address' => $Email_address,
-               'User_role'=>$User_role,
+               'User_role'=>$User_role
            ];
            // print_r($data);
    
@@ -168,12 +172,12 @@ class RM_Controller extends JB_Controller{
    }
    
    
-   public function delete_user_data(){
+ /*  public function delete_user_data(){
    
        $id = $this->get_session('User_ID');
        $result = $this->model->deleteuser( $id );
        $this->view('restaurantmanager/users/RM');
-   } 
+   }*/ 
    
 
     public function orders(){
@@ -232,9 +236,9 @@ class RM_Controller extends JB_Controller{
         $this->view('restaurantmanager/analytics/chart');
     }*/
  
-    public function analyticsnew(){
+ /*   public function analyticsnew(){
         $this->view('restaurantmanager/analytics/analyticsnew');
-    }
+    }*/
 
 
 

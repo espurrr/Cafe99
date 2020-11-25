@@ -42,7 +42,7 @@
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn" onclick="showModal(121)">View</button>
-                        <button class="second-btn btn">Take In</button>
+                        <!-- <button class="second-btn btn">Take In</button> -->
                     </div>
                 </td>
             </tr>
@@ -53,7 +53,7 @@
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn">View</button>
-                        <button class="second-btn btn">Take In</button>
+                        <!-- <button class="second-btn btn">Take In</button> -->
                     </div>
                 </td>
             </tr>
@@ -64,7 +64,7 @@
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn">View</button>
-                        <button class="second-btn btn">Take In</button>
+                        <!-- <button class="second-btn btn">Take In</button> -->
                     </div>
                 </td>
             </tr>
@@ -91,7 +91,7 @@
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn">View</button>
-                        <button class="second-btn btn">Ready</button>
+                        <!-- <button class="second-btn btn">Ready</button> -->
                     </div>
                 </td>
             </tr>
@@ -102,7 +102,7 @@
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn">View</button>
-                        <button class="second-btn btn">Ready</button>
+                        <!-- <button class="second-btn btn">Ready</button> -->
                     </div>
                 </td>
             </tr>
@@ -113,7 +113,7 @@
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn">View</button>
-                        <button class="second-btn btn">Ready</button>
+                        <!-- <button class="second-btn btn">Ready</button> -->
                     </div>
                 </td>
             </tr>
@@ -140,7 +140,7 @@
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn">View</button>
-                        <button class="second-btn btn">Dispatch</button>
+                        <!-- <button class="second-btn btn">Dispatch</button> -->
                     </div>
                 </td>
             </tr>
@@ -151,7 +151,7 @@
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn">View</button>
-                        <button class="second-btn btn">Dispatch</button>
+                        <!-- <button class="second-btn btn">Dispatch</button> -->
                     </div>
                 </td>
             </tr>
@@ -162,7 +162,7 @@
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn">View</button>
-                        <button class="second-btn btn">Dispatch</button>
+                        <!-- <button class="second-btn btn">Dispatch</button> -->
                     </div>
                 </td>
             </tr>
@@ -191,7 +191,7 @@
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn">View</button>
-                        <button class="second-btn btn">Remove</button>
+                        <!-- <button class="second-btn btn">Remove</button> -->
                     </div>
                 </td>
             </tr>
@@ -202,7 +202,7 @@
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn">View</button>
-                        <button class="second-btn btn">Remove</button>
+                        <!-- <button class="second-btn btn">Remove</button> -->
                     </div>
                 </td>
             </tr>
@@ -213,7 +213,7 @@
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn">View</button>
-                        <button class="second-btn btn">Remove</button>
+                        <!-- <button class="second-btn btn">Remove</button> -->
                     </div>
                 </td>
             </tr>

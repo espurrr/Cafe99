@@ -14,7 +14,7 @@ class Rmuser_model extends Database{
     public function display_users($data){
         $query ="SELECT User_name,Email_address,Phone_no,User_role FROM user";
         $result =$this->Query($query, $options = []);
-        echo "$User_name";
+     //   echo "$User_name";
     //    if($this->Select_Where("user", ['User_id' => $user_id])){
             if($this->Count() > 0){
                 $userdata = $this->AllRecords();
@@ -51,7 +51,7 @@ class Rmuser_model extends Database{
 
     public function user_data_update($data,  $id){
       //  print_r($data);
-      echo "Hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii";
+    //  echo "Hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii";
         if($this->Update("user", $data,['User_ID' =>  $id])){
             return true;
         }else{
@@ -61,14 +61,14 @@ class Rmuser_model extends Database{
     }
 
     public function deleteuser( $id){
-        echo "Hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii";
-        $query ="DELETE FROM user WHERE User_ID=$id";
-        $result =$this->Query($query, $options = []);
-     /*   if($this->Delete("user", ['User_ID' =>  $id])){
+    //   echo "Hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii";
+     /*   $query ="DELETE FROM user WHERE User_ID=$id";
+        $result =$this->Query($query, $options = []);*/
+        if($this->Delete("user", ['User_ID' =>  $id])){
             return true;
         }else{
             return false;
-        }*/
+        }
     }
 
 }

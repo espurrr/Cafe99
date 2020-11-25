@@ -18,7 +18,7 @@
     <?php include  "../application/views/header/header-dashboard.php";?>
     
     <div class="wrapper">
-        <div class="admin-content">
+        <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
        
    <!--<a href="#" class="button">Export</a>
        <a href="chart.php" class="button">Get Chart</a>-->
@@ -27,19 +27,23 @@
         <div class="content">
         <div class="box">
             <div class="order-received-box">
-            <h2>Orders received</h2>
+            <h2>Orders received:</h2><br>
+            <h2>250</h2>
             </div>
 
             <div class="order-delivered-box">
-            <h2>Orders deilivered</h2>
+            <h2>Orders deilivered:</h2><br>
+            <h2>100</h2>
             </div>
 
             <div class="new-customer-box">
-            <h2>New Customer</h2>
+            <h2>New Customer:</h2><br>
+            <h2>23</h2>
             </div>
 
             <div class="net-earning-box">
-            <h2>Net earning</h2>
+            <h2>Net earning:</h2><br>
+            <h2>Rs.15,000</h2>
             </div>
         </div>
 <br><br><br>
