@@ -25,24 +25,7 @@
          
             <div class="cart-item-container left">
             <form>
-                <!-- <h2>Order type</h2><br>
-                <div class="radios">
-                    <label class="radio-inline">
-                        <input type="radio" name="opinion" id="r_dine" onclick="detailsDisplay()" checked/>
-                        <i></i>
-                        <span>Dine-in</span>
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="opinion" id="r_pick" onclick="detailsDisplay()"/>
-                        <i></i>
-                        <span>Pick-up</span>
-                    </label>
-                    <label>
-                        <input type="radio" name="opinion" id="r_deli" onclick="detailsDisplay()"/>
-                        <i></i>
-                        <span>Delivery</span>
-                    </label>
-                </div> -->
+               
                 <h2>Details</h2><br>
                 <div class="details">
                     <div id="dine-in">

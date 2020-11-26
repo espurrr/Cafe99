@@ -83,7 +83,7 @@
             </div>
             <div class="total">Service charges: 50.00</div>                
             <div class="total"><b>Total: 1000.00</b></div>
-            <button class="checkout-button" href="#" ><?php echo anchor("order_controller/cust_order_info", "COMPLETE ORDER") ?></button>
+            <button class="checkout-button" href="#" ><?php echo anchor("cashier_controller/foodmenu", "COMPLETE ORDER") ?></button>
             
         </div>
         
