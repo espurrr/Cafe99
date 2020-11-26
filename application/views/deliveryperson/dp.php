@@ -69,11 +69,11 @@
                             <div class="name">
                                 <strong><a href="#"><span class="text-name">Kamal Perera</span></a></strong>
                                 <div class="date">
-                                    <span class="text-when">2020/10/23 at 4:00pm</span> ·<img src="http://social-prank.foxsash.com/assets/images/facebook/icon_public.jpg" width="16" height="16" id="visiblefor-icon">
+                                    <span class="text-when">2020/10/23 at 4:00pm</span> 
                                 </div>
                             </div>
                     </div>
-                            <div class="employee"><i class="fa fa-users"></i>  &nbsp;All Employees</div>
+                            <div class="employee"><i class="fa fa-users"></i>  &nbsp;Delivery Person</div>
                             </div>
 
                             <div class="news_content" style="padding-left:20px;padding-right:20px">
@@ -94,7 +94,7 @@
                             <div class="name">
                                 <strong><a href="#"><span class="text-name">Kamal Perera</span></a></strong>
                                 <div class="date">
-                                    <span class="text-when">2020/10/15 at 9:00am</span> ·<img src="http://social-prank.foxsash.com/assets/images/facebook/icon_public.jpg" width="16" height="16" id="visiblefor-icon">
+                                    <span class="text-when">2020/10/15 at 9:00am</span> 
                                 </div>
                             </div>
                     </div>

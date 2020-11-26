@@ -20,7 +20,7 @@ var chart1 = new CanvasJS.Chart("chartContainer1", {
 		showInLegend: "true",
 		legendText: "{label}",
 		indexLabelFontSize: 16,
-		indexLabel: "{label} - {y}%",
+		indexLabel: "{y}%",
 		dataPoints: [
 			{ y: 17.36, label: "Sunday" },
 			{ y: 12.40, label: "Monday" },
