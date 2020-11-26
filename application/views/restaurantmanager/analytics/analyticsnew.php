@@ -29,29 +29,29 @@
      <!--   <div class="box">-->
             <div class="column">
             <div class="order-received-box">
-            <h2>Orders received:</h2><br>
-            <h2>250</h2>
+            <h3>Orders received</h3><br>
+            <h1>250</h1>
             </div>
             </div>
 
             <div class="column">
             <div class="order-delivered-box">
-            <h2>Orders deilivered:</h2><br>
-            <h2>100</h2>
+            <h3>Orders deilivered</h3><br>
+            <h1>100</h1>
             </div>
             </div>
 
             <div class="column">
             <div class="new-customer-box">
-            <h2>New Customer:</h2><br>
-            <h2>23</h2>
+            <h3>New Customer</h3><br>
+            <h1>23</h1>
             </div>
             </div>
 
             <div class="column">
             <div class="net-earning-box">
-            <h2>Net earning:</h2><br>
-            <h2>Rs.15,000</h2>
+            <h3>Net earning</h3><br>
+            <h1>Rs.15,000</h1>
             </div>
           </div> 
             

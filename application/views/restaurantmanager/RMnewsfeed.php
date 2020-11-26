@@ -54,7 +54,7 @@
                             <div class="name">
                                 <strong><a href="#"><span class="text-name">Kamal Perera</span></a></strong>
                                 <div class="date">
-                                    <span class="text-when">2020/10/23 at 4:00pm</span> ·<img src="http://social-prank.foxsash.com/assets/images/facebook/icon_public.jpg" width="16" height="16" id="visiblefor-icon">
+                                    <span class="text-when">2020/10/23 at 4:00pm</span> 
                                 </div>
                             </div>
                     </div>
@@ -84,7 +84,7 @@
                             <div class="name">
                                 <strong><a href="#"><span class="text-name">Kamal Perera</span></a></strong>
                                 <div class="date">
-                                    <span class="text-when">2020/10/15 at 9:00am</span> ·<img src="http://social-prank.foxsash.com/assets/images/facebook/icon_public.jpg" width="16" height="16" id="visiblefor-icon">
+                                    <span class="text-when">2020/10/15 at 9:00am</span> 
                                 </div>
                             </div>
                     </div>
@@ -116,7 +116,7 @@
                             <div class="name">
                                 <strong><a href="#"><span class="text-name">Kamal Perera</span></a></strong>
                                 <div class="date">
-                                    <span class="text-when">2020/10/30 at 11:30am</span> ·<img src="http://social-prank.foxsash.com/assets/images/facebook/icon_public.jpg" width="16" height="16" id="visiblefor-icon">
+                                    <span class="text-when">2020/10/30 at 11:30am</span> 
                                 </div>
                             </div>
                     </div>
