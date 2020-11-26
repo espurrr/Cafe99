@@ -14,7 +14,9 @@
 </head>
 </head>
 <body>
+<div class="page-container">
     <?php include "analytics-sidebar.php"; ?>
+    <div class="content-wrapper">
     <?php include  "../application/views/header/header-dashboard.php";?>
     
     <div class="wrapper">
@@ -86,7 +88,8 @@
    
   
 </div>
-<?php //include '../application/views/footer/footer_3.php';?> 
-
+</div><!-- content-wrapper ends here -->
+<?php include '../application/views/footer/footer_3.php';?> 
+</div><!-- page-container ends here -->
 </body>
 </html>

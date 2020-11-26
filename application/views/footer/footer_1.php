@@ -26,14 +26,22 @@
  
    
         <div class="footer__links col1">
-            <a href="#">About Us</a>
-            <a href="#">FAQs</a>
-            <a href="#">Contact</a>
+        <!--    <a href="#">About Us</a>-->
+            <?php echo anchor("footercontent_controller/aboutus", "About Us") ?>
+
+         <!--   <a href="#">FAQs</a>-->
+
+         <!--   <a href="#">Contact</a>-->
+            <?php echo anchor("footercontent_controller/contact", "Contact") ?>
         </div>
   
         <div class="footer__links col2">
-            <a href="#">Give Us Feedback</a>
-            <a href="#">Privacy Policy</a>
+          <!--  <a href="#">Give Us Feedback</a>-->
+            <?php echo anchor("footercontent_controller/feedback", "Give Us Feedback") ?>
+            
+          <!--  <a href="#">Privacy Policy</a>-->
+            <?php echo anchor("footercontent_controller/privacypolicy", "Privacy Policy") ?>
+
         </div>
     </div> 
 </footer>

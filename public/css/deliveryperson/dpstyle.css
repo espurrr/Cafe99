@@ -257,7 +257,9 @@ nav .menu-bar{
 
 /* big */
 @media screen and (min-width:600px) {
-
+.page-title{
+  margin-left: -200px;
+}
   .icons{
     padding-left: 240px;
   }

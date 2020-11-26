@@ -129,7 +129,7 @@
        
     
     </div>
-   <?php //include '../application/views/footer/footer_3.php';?>
+   <?php include '../application/views/footer/footer_3.php';?>
    </div>  
    <?php echo link_js("js/restaurantmanager/delete.js"); ?>    
 </body>

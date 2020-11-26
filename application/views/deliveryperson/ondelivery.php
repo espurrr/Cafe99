@@ -63,6 +63,10 @@
 <?php echo anchor("delivery_controller/dispatched", "Dispatched",['class'=>"add"]) ?>
   </div>
 
+  <div class="page-title">
+<h2>Ondelivery Orders</h2>
+</div>
+
   <div class="list">
   <ul>
     <li>Order No</li>

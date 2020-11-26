@@ -52,7 +52,7 @@
 
 @media screen and (max-width: 800px) {
     .topic{
-        margin-left:100px;
+        margin-left:150px;
     }
     .aboutus-content {
         margin-left: 0px; 
@@ -68,3 +68,9 @@
         margin-left:100px; 
     }
   }   
+
+  @media screen and (max-width:400px) {
+    .topic{
+        margin-left:100px;
+    }  
+  }

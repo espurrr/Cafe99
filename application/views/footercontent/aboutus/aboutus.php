@@ -29,6 +29,10 @@
    </div>
 <br><br>
    <div class="content">
+   <p>The Cafe99 Restaurant & Lounge 
+      is a neighbourhood favourite, 
+      serving a range of mouth-watering food and fresh brewed coffee, since 1999.
+   </p><br>
        <p>At the heart of what we do is the idea of providing a daily, fresh baking concept that complements the needs of the urban household. We strive to be the country leading bakery known for quality, service standard and value. We currently operate 50 outlets.</p>
    </div>
    <br><br><br><br><br><br>

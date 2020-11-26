@@ -18,6 +18,8 @@
 
 .wrapper .privacy-content{
     background-color: var(--background-color);
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 
