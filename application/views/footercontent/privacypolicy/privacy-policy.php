@@ -12,7 +12,13 @@
   <?php echo link_css("css/footercontent/privacypolicy/sidebar.css.css?ts=<?=time()?>"); ?>
 </head>
 <body>
-<?php include '../application/views/header/header.php';?>   
+<?php   
+        if ($this->get_session('role')=='customer'){
+            include '../application/views/header/cust-logged-in-header.php';
+        }else{
+            include '../application/views/header/header.php';
+        }
+    ?> 
 <?php //include "sidebar.php";?>
 <div class="wrapper">
 <div class="privacy-content">

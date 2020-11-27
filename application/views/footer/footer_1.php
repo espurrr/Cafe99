@@ -10,7 +10,7 @@
 <body>
       
     
-<footer class="footer" style="background: #fff url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
+<footer class="footer" id="footer" style="background: #fff url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
     <div class="container">
         <div class="footer__logo" >
             <a class="footer__logo__img" href="#">

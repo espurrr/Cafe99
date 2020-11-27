@@ -22,7 +22,7 @@ body {
 
 .topnav {
     overflow: hidden;
-    background: #fbdd3f;
+    /* background: #fbdd3f; */
     height: 90px;
     align-items: center;
     transition: all 1s ease;
@@ -82,7 +82,7 @@ z-index: 1;
 
 .logo {
     height: 68px;
-    padding: 12px 0px 0px 0%;
+    padding: 0px 0px 0px 0%;
 }
 
 .active {
@@ -168,20 +168,20 @@ z-index: 1;
 
 .topnav a:hover,
 .route-dropdown:hover .dropbtn {
-    background-color: #555;
-    color: white;
+    background-color: transparent;
+    /* color: white; */
     border-radius: 25px;
 }
 
 .route-dropdown:hover .avatar-a {
-    background-color: #555;
+    /* background-color: #555; */
     color: white;
     border-radius: 50px;
 }
 
 .route-dropdown:hover .dropbtn {
-    background-color: #555;
-    color: white;
+    /* background-color: #555; */
+    color: #000;
     border-radius: 25px;
     padding: 8px 16px;
 }
@@ -208,12 +208,15 @@ z-index: 1;
         display: block;
         background-color: #555;
     }
+    .dropdown-content a:hover {
+        background-color: transparent;
+    }
 }
 
 @media screen and (max-width: 854px) {
     .logo {
         height: 68px;
-        padding: 5px 0px 0px 14px;
+        padding: 0px 0px 0px 14px;
         transition: all 1s ease;
     }
     .logo.responsive {
@@ -299,7 +302,7 @@ z-index: 1;
         top: 35px;
         margin: 5%;
         left: -170%;
-        background: #fbdd3f;
+        /* background: #fbdd3f; */
         height: 80vh;
         width: 150%;
         text-align: center;
@@ -315,7 +318,7 @@ z-index: 1;
         color: black;
         top: 35px;
         left: 0%;
-        background: #fbdd3f;
+        /* background: #fbdd3f; */
         height: 80vh;
         overflow: auto;
         width: 90%;

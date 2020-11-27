@@ -22,12 +22,16 @@
 </head>
 
 <body style="background: #fff url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
-  <?php  if ($this->get_session('role')=='customer'){
-          include '../application/views/header/cust-logged-in-header.php';
-    }else{
-      include '../application/views/header/header.php';
-    }
-     ?>
+<div class="page-container">
+<div class="content-wrapper" >
+
+    <?php   
+        if ($this->get_session('role')=='customer'){
+            include '../application/views/header/cust-logged-in-header.php';
+        }else{
+            include '../application/views/header/header.php';
+        }
+    ?>
 
     <main>
         <!-- hero image -->
@@ -154,8 +158,10 @@
             <div class="image column2"><img src="<?php echo BASE_URL?>/public/images/home/bg-env.png" alt="Image 01"></div>
         </div>
     </main>
-    
+    </div><!-- content-wrapper ends-->
     <?php include 'footer/footer_1.php';?>
+    </div> <!-- page-contianer ends-->
+
 
     <?php echo link_js("js/home.js"); ?>
     <!-- <script>

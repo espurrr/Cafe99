@@ -7,17 +7,15 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 </head>
 
-<body>
+<body style="background: #FAD74E url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
 
 
-  <div class="topnav" id="myTopnav">
-   <img class="logo" id="mlogo" src="<?php echo BASE_URL?>/public/images/logo.png">
+  <div class="topnav" id="myTopnav" style="background: #FAD74E url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
+  <a href="<?php echo BASE_URL?>/account_controller/index" class="logo-link"><img class="logo" id="mlogo" src="<?php echo BASE_URL?>/public/images/logo.png"></a>
     
-    <div class="all-nav" id="nav" >
+    <div class="all-nav" id="nav" style="background: #FAD74E url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
       <div class="route-dropdown" onclick="toggleMenu(this)">
-      <button class="dropbtn">Food 
-          <i class="fa fa-caret-down"></i>
-      </button>
+      <button class="dropbtn">Food<i class="fa fa-caret-down"></i></button>
       <div id="waypoints" class="dropdown-content" >
       <?php echo anchor("food_controller/menu/food/rice", "Rice") ?>
       <?php echo anchor("food_controller/menu/food/pizza", "Pizza") ?>
@@ -29,9 +27,7 @@
       </div>
     </div>
       <div class="route-dropdown" onclick="toggleMenu(this)">
-        <button class="dropbtn">Drinks
-            <i class="fa fa-caret-down"></i>
-        </button>
+        <button class="dropbtn">Drinks<i class="fa fa-caret-down"></i></button>
         <div id="routes" class="dropdown-content" >
         <?php echo anchor("food_controller/menu/drinks/tea", "Tea") ?>
         <?php echo anchor("food_controller/menu/drinks/milkshakes", "Milkshakes") ?>
@@ -56,12 +52,14 @@
         <a href="<?php echo BASE_URL?>/order_controller/cust_cart"> Cart&nbsp;<span class="step">0</span></a>
 
       </div>
-      <div class="route-dropdown sign-log" id="avatar_big" onclick="toggleMenu(this)">
+      <div class="route-dropdown sign-log" id="avatar_big" onclick="toggleMenu(this)" style="background: #FAD74E url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
         <button class="avatar-a" style="
-    padding-top: 5px;
-    padding-right: 5px;
-    padding-bottom: 5px;
-    padding-left: 5px;"><img src="<?php echo BASE_URL?>/public/images/img_avatar.png" class="avatar" width="50px" height="50px"> 
+          padding-top: 5px;
+          padding-right: 5px;
+          padding-bottom: 5px;
+          padding-left: 5px;
+          background: #FAD74E url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
+          <img src="<?php echo BASE_URL?>/public/images/img_avatar.png" class="avatar" width="50px" height="50px"> 
         </button>
         <div id="routes" class="dropdown-content " >
            <!-- <div class="menu-other"> -->

@@ -14,7 +14,14 @@
     <title>About Us</title>
 </head>
 <body>
-<?php include '../application/views/header/header.php';?>   
+   <?php   
+        if ($this->get_session('role')=='customer'){
+            include '../application/views/header/cust-logged-in-header.php';
+        }else{
+            include '../application/views/header/header.php';
+        }
+    ?>
+
 <?php // include "sidebar.php";?>
 <!--<div class="topic">
 <h1>About Us</h1>
