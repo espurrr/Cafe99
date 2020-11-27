@@ -199,12 +199,14 @@ trait form_validation {
     }  
 
     /*
-    Password hash : a secure php built-in encryption method
+    Password hash : a secure php built-in encryption method.
+    bcrypt is a password-hashing function designed by Niels Provos and David Mazières, 
+    based on the Blowfish cipher.
     md5 hash is insecure, crackable (eg: from crackstation.net)
     */ 
     public function hash($password){
         if(!empty($password)){
-            return password_hash($password, PASSWORD_DEFAULT);
+            return password_hash($password, PASSWORD_BCRYPT);
         }
     }
 

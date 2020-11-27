@@ -17,6 +17,7 @@
     <?php $this->flash('activationError','alert alert-danger','fa fa-times-circle'); ?>
     <?php $this->flash('tokenError','alert alert-danger','fa fa-times-circle'); ?>
     <?php $this->flash('activationSuccess','alert alert-success','fa fa-check'); ?>
+    <?php $this->flash('notActivatedYetInfo','alert alert-info','fa fa-info-circle'); ?>
     <?php $this->flash('passwordResetSuccess','alert alert-success','fa fa-check'); ?>
     
 </div>

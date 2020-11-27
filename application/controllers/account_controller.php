@@ -142,6 +142,7 @@ class Account_controller extends JB_Controller{
                 $session_data = [
                     'user_id' => $result['data']->User_ID,
                     'user_name' => $result['data']->User_name,
+                    'user_status' => $result['data']->User_status,
                     'role' => $result['data']->User_role,
                     'logged' => 1,
                     'loader' => true
@@ -150,8 +151,11 @@ class Account_controller extends JB_Controller{
                 $this->set_session($session_data);
                 if($this->model->login_time($this->get_session('user_id'))){
                     //tested with dummy userss 
-                    if($session_data['role']=="customer"){
+                    if($session_data['role']=="customer" AND $session_data['user_status']=="active" ){
                         redirect("customer_controller/");
+                    }else if($session_data['role']=="customer" AND $session_data['user_status']=="inactive"){
+                        $this->set_flash("notActivatedYetInfo","Opps! Looks like you haven't activated your account yet. Please check the email we sent.");
+                        $this->view('login');
                     }else if($session_data['role']=="kitchen_manager"){
                         redirect("km_controller/index");
                     }else if($session_data['role']=="cashier"){
