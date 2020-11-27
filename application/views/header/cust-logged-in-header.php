@@ -61,7 +61,7 @@
           background: #FAD74E url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
           <img src="<?php echo BASE_URL?>/public/images/img_avatar.png" class="avatar" width="50px" height="50px"> 
         </button>
-        <div id="routes" class="dropdown-content " >
+        <div id="routes" class="dropdown-content-profile">
            <!-- <div class="menu-other"> -->
            <?php echo anchor("customer_controller/myprofile", "My Profile") ?>
            <?php echo anchor("customer_controller/myfavourites", "My Favourites") ?>

@@ -12,7 +12,13 @@
 body {
     background: var(--colorBackground2);
 }
-
+.page-container{
+    position: relative;
+    min-height: 100vh;
+  }
+  .content-wrapper{
+    padding-bottom: 180px; /* height of the footer */
+  }
 .main-container {
     display: flex;
     flex-direction: column;

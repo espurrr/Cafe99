@@ -8,6 +8,8 @@
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 </head>
 <body style="background:  #d4c4e9 url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
+<div class="page-container">
+<div class="content-wrapper">
 <?php include '../application/views/header/header.php'?>
 
 <!-- auth message -->
@@ -48,8 +50,9 @@
         <?php echo form_close();?>
 	</div>
 </div>
-
+</div><!-- content-wrapper ends-->
 <?php include '../application/views/footer/footer_1.php';?>
+</div> <!-- page-contianer ends-->
 
 <script>
  var session = eval('(<?php echo json_encode($_SESSION)?>)');

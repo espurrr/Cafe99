@@ -18,12 +18,11 @@
             </a>
         </div>
        
-        <div class="footer__social">
+        <div class="footer__social" style="background: #fff url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
             <a href="#"><i class="fa fa-facebook-square"></i></a>
             <a href="#"><i class="fa fa-twitter-square"></i></a>
             <a href="#"><i class="fa fa-instagram"></i></a> 
         </div>
- 
    
         <div class="footer__links col1">
         <!--    <a href="#">About Us</a>-->
