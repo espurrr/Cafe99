@@ -16,6 +16,14 @@
     
 } 
 
+.page-container{
+    position: relative;
+    min-height: 100vh;
+  }
+  .content-wrapper{
+    padding-bottom: 180px; /* height of the footer */
+  }
+
 .wrapper .privacy-content{
     background-color: var(--background-color);
     margin-top: 25px;

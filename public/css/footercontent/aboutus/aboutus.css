@@ -1,6 +1,6 @@
 :root{
     --background-color:#FBDD3F;
-    --wrapper-color:#fcfde6;
+    --wrapper-color: #1fb4be;
 }
 
 *{
@@ -14,16 +14,24 @@
     
 }
 
-.topic{
-    margin-left:250px;
-}
+ .page-container{
+    position: relative;
+    min-height: 100vh;
+  }
+  .content-wrapper{
+    padding-bottom: 180px; /* height of the footer */
+  }
 
+.topic{
+    margin-left:625px;
+}
+/*
 .wrapper{
     background-color: var( --wrapper-color);
-}
+}*/
 
 .wrapper .aboutus-content{
-    background-color: var(--background-color);
+    background-color: var(--wrapper-color);
 }
 
 .aboutus-content {

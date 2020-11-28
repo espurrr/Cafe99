@@ -13,7 +13,10 @@
  <?php echo link_css("css/footercontent/aboutus/sidebar.css?ts=<?=time()?>"); ?>
     <title>About Us</title>
 </head>
-<body>
+<body style="background: #fff url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
+<div class="page-container">
+<div class="content-wrapper" >
+
    <?php   
         if ($this->get_session('role')=='customer'){
             include '../application/views/header/cust-logged-in-header.php';
@@ -32,7 +35,7 @@
 <h1>About Us</h1>
 </div>
     <div class="aboutus-content">
-    <h1>Providing a Daily,fresh baking concepts that complements the needs of the urban household !</h1>
+    <h2 style="color:white;">Providing a Daily,fresh baking concepts that complements the needs of the urban household !!!</h2>
    </div>
 <br><br>
    <div class="content">
@@ -49,6 +52,8 @@
        <img src="caf.jpg">
    </div>-->
 </div>
-<?php include '../application/views/footer/footer_1.php';?>    
+</div><!-- content-wrapper ends-->
+<?php include '../application/views/footer/footer_1.php';?>  
+</div> <!-- page-contianer ends-->  
 </body>
 </html>
