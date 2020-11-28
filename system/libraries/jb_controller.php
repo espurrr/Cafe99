@@ -22,7 +22,9 @@ class JB_Controller {
         if(file_exists("../application/views/".$view_name.".php")){
             require_once "../application/views/" .$view_name. ".php";
         }else{
-            die("<div style='background-color:#f1f4f4;color:#afaaaa;border:1px dotted #afaaaa;padding:10px; border-radius:4px'>Sorry View <strong>".$view_name."</strong> is not found</div>");
+            include "../application/views/error.php";
+            die();
+            // die("<div style='background-color:#f1f4f4;color:#afaaaa;border:1px dotted #afaaaa;padding:10px; border-radius:4px'>Sorry View <strong>".$view_name."</strong> is not found</div>");
         }
     }
 
@@ -36,7 +38,9 @@ class JB_Controller {
             $update_model_name = ucwords($model_name);
             return new $update_model_name;
         }else{
-            die("<div style='background-color:#f1f4f4;color:#afaaaa;border:1px dotted #afaaaa;padding:10px; border-radius:4px'>Sorry Model <strong>".$model_name."</strong> is not found</div>");
+            include "../application/views/error.php";
+            die();
+            // die("<div style='background-color:#f1f4f4;color:#afaaaa;border:1px dotted #afaaaa;padding:10px; border-radius:4px'>Sorry Model <strong>".$model_name."</strong> is not found</div>");
         }
 
     }

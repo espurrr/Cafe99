@@ -12,13 +12,17 @@
 body {
     background: var(--colorBackground2);
 }
-.page-container{
+
+.page-container {
     position: relative;
     min-height: 100vh;
-  }
-  .content-wrapper{
-    padding-bottom: 180px; /* height of the footer */
-  }
+}
+
+.content-wrapper {
+    padding-bottom: 180px;
+    /* height of the footer */
+}
+
 .main-container {
     display: flex;
     flex-direction: column;
@@ -86,6 +90,11 @@ body {
     border-color: #ffffff;
 }
 
+.sign-up-container input[name="User_Password"] {
+    width: 284px;
+    border-color: #ffffff;
+}
+
 .sign-up-container form {
     background-color: #ffffff;
     display: flex;
@@ -134,3 +143,41 @@ body {
     width: 75%;
     transform: translate(-50%, -50%);
 }
+
+
+/* Form tool tip styling: starts*/
+
+.form_tooltip {
+    color: #000000;
+    position: relative;
+    cursor: help;
+}
+
+.form_tooltip span {
+    display: none;
+    position: absolute;
+    z-index: 150;
+}
+
+.form_tooltip:hover span {
+    display: initial;
+    border-radius: 5px 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    font-family: Calibri, Tahoma, Geneva, sans-serif;
+    left: 0.4em;
+    top: 3em;
+    z-index: 150;
+    width: 275px;
+}
+
+.classic {
+    padding: 0.1em 1em;
+}
+
+.classic {
+    background: #FFFFAA;
+    border: 1px solid #FFAD33;
+}
+
+
+/* Form tool tip styling: ends*/

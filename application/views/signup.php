@@ -39,24 +39,30 @@
             <?php echo $this->errors['User_name'];?>
             <?php endif;?>
           </div>
+
           <?php echo form_input(['type'=>'email', 'name'=>'Email_address', 'placeholder'=>'Email*' ,'value'=>$this->set_value('Email_address')])?>
           <div class="error">
             <?php if(!empty($this->errors['Email_address'])):?>
             <?php echo $this->errors['Email_address'];?>
             <?php endif;?>
           </div>
-          <?php echo form_input(['type'=>'tel', 'name'=>'Phone_no', 'placeholder'=>'Phone number', 'value'=>$this->set_value('Phone_no')])?>
+     
+          <?php echo form_input(['type'=>'tel', 'name'=>'Phone_no', 'placeholder'=>'Phone number*', 'value'=>$this->set_value('Phone_no')])?>
           <div class="error">
             <?php if(!empty($this->errors['Phone_no'])):?>
             <?php echo $this->errors['Phone_no'];?>
             <?php endif;?>
           </div>
+
+          <div class="form_tooltip"><span class="classic">Must contain at least 8 characters</span>
           <?php echo form_input(['type'=>'password', 'name'=>'User_Password', 'placeholder'=>'Password*'])?>
+          </div>
           <div class="error">
             <?php if(!empty($this->errors['User_Password'])):?>
             <?php echo $this->errors['User_Password'];?>
             <?php endif;?>
           </div>
+          
           <?php echo form_input(['type'=>'password', 'name'=>'confirm_password', 'placeholder'=>'Confirm Password*'])?>
           <div class="error">
             <?php if(!empty($this->errors['confirm_password'])):?>

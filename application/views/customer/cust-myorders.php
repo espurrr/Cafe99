@@ -20,6 +20,8 @@
 </head>
 
 <body style="background: rgb(247, 239, 193) url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
+<div class="page-container">
+<div class="content-wrapper">
   <?php include '../application/views/header/cust-logged-in-header.php';?>
   <ul class="breadcrumb">
         <li><?php echo anchor("account_controller/index", "Home") ?></li>
@@ -84,7 +86,7 @@
       <td data-label="Order Status">Preparing</td>
       <td data-label="Amount">LKR 680</td>
       <td><div class="btn-container">
-      <button class="repeat-btn btn tooltip" onclick="showModal(5019)">Repeat <span class="tooltiptext">Gets you to the repeat order window</span></button>
+      <button class="repeat-btn btn tooltip" onclick="showModal(5019)">Re-order <span class="tooltiptext">Gets you to the repeat order window</span></button>
         </div></td>
     </tr>
     <tr>
@@ -94,7 +96,7 @@
       <td data-label="Order Status">Preparing</td>
       <td data-label="Amount">LKR 680</td>
       <td><div class="btn-container">
-      <button class="repeat-btn btn tooltip" onclick="showModal(5259)">Repeat <span class="tooltiptext">Gets you to the repeat order window</span></button>
+      <button class="repeat-btn btn tooltip" onclick="showModal(5259)">Re-order<span class="tooltiptext">Gets you to the repeat order window</span></button>
     
         </div></td>
     </tr>
@@ -104,7 +106,9 @@
 </div>
     </div>
   
-  <!-- <?php include '../application/views/footer/footer_1.php';?> -->
+    </div><!-- content-wrapper ends-->
+<?php include '../application/views/footer/footer_1.php';?>
+</div> <!-- page-contianer ends-->
   <?php echo link_js("js/cust_myfavs.js"); ?>
 
   <script>

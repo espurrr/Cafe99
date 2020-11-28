@@ -20,7 +20,7 @@ class Account_controller extends JB_Controller{
         $this->validation('User_name', 'Name' , 'required|not_int|max_len|50');
         $this->validation('Email_address','Email Address', 'email|unique|user|required');
         $this->validation('Phone_no','Phone number', 'required|int|len|10');
-        $this->validation('User_Password','Password', 'required|min_len|5');
+        $this->validation('User_Password','Password', 'required|min_len|8');
         $this->validation('confirm_password','Confirm Password', 'required|confirm|User_Password');
 
         if($this->run()){

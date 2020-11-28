@@ -31,6 +31,17 @@ html {
     }
 }
 
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+.content-wrapper {
+    padding-bottom: 180px;
+    padding-top: 0;
+    /* height of the footer */
+}
+
 .profile_container {
     width: 100%;
     height: 80%;
@@ -38,6 +49,7 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 50px;
 }
 
 .profile_container .avatar {
@@ -153,9 +165,9 @@ html {
     color: #000000;
 }
 
-.update-details input::value {
-    font-weight: 300;
-    font-size: 15px;
+.update-details input[value] {
+    font-weight: 400;
+    font-size: 16px;
     color: black;
 }
 

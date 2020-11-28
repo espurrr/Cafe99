@@ -22,7 +22,9 @@ class Route{
                 unset($url[0]); //removes the url[0] from the array
                 //echo "Controller is found";
             }else{
-                die("<div style='background-color:#f1f4f4;color:#afaaaa;border:1px dotted #afaaaa;padding:10px; border-radius:4px'>Sorry controller <strong>".$url[0]."</strong> is not found</div>");
+                include "../application/views/error.php";
+                die();
+                // die("<div style='background-color:#f1f4f4;color:#afaaaa;border:1px dotted #afaaaa;padding:10px; border-radius:4px'>Sorry controller <strong>".$url[0]."</strong> is not found</div>");
 
                 //echo "Sorry controller is not found";
             }
@@ -46,7 +48,9 @@ class Route{
                 $this->Method = $url[1];
                 unset($url[1]);
             }else{
-                die("<div style='background-color:#f1f4f4;color:#afaaaa;border:1px dotted #afaaaa;padding:10px; border-radius:4px'>Sorry controller <strong>".$url[1]."</strong> is not found</div>");
+                include "../application/views/error.php";
+                die();
+                // die("<div style='background-color:#f1f4f4;color:#afaaaa;border:1px dotted #afaaaa;padding:10px; border-radius:4px'>Sorry controller <strong>".$url[1]."</strong> is not found</div>");
 
                 //echo "Sorry method is not found";
             }

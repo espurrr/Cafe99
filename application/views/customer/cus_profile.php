@@ -14,7 +14,8 @@
 <div class="progress">
   <div class="indeterminate"></div>
 </div> -->
-
+<div class="page-container">
+<div class="content-wrapper">
 <?php include '../application/views/header/cust-logged-in-header.php';?>
 
 <ul class="breadcrumb">
@@ -44,6 +45,8 @@
 </div>
 
 
-
+</div><!-- content-wrapper ends-->
+<?php include '../application/views/footer/footer_1.php';?>
+</div> <!-- page-contianer ends-->
 </body>
 </html>
