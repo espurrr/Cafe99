@@ -63,6 +63,7 @@ a{
 }
 
 .sidebar-wrapper .sidebar .profile-details .profile-text .role{
+  margin-top: 5px;
   font-size: 11px;
 }
 

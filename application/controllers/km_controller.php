@@ -53,7 +53,17 @@ class KM_Controller extends JB_Controller{
     }
 
     public function newsfeed(){
-        $this->view('kitchenmanager/newsfeed/newsfeed');
+        $result = $this->model->getAnnouncement();
+        //$this->view('kitchenmanager/newsfeed/newsfeed');
+        if($result === "Announcement_not_retrieved"){
+            $this->set_flash("databaseError", "Sorry, cannot show Announcement at the moment. Please try again later.");
+            //echo"dberror";
+        }else if($result === "Announcement_not_found"){
+            $this->set_flash("noAnnouncementError", "Sorry, cannot show Announcement at the moment. Please try again later.");
+            //echo"noAnnouncement";
+        }else if($result['status'] === "success"){
+            $this->view('kitchenmanager/newsfeed/newsfeed',$result['data']);
+        }
     }
 
     public function updateAvailability(){

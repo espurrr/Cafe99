@@ -3,6 +3,7 @@
 :root{
   --sidebar-width1:250px;
   --newsfeed-background-color:#FBDD3F;
+  --read-more-color: #0a639e;
 }
 
 *{
@@ -80,9 +81,25 @@ body{
   font-weight: 400;
   word-wrap:break-word;
   color: #444;
-
+}
+.dashboard .post .text-message .dots{
+  display: inline;
+}
+.dashboard .post .text-message .readMore{
+  display:inline; 
+  color: var(--read-more-color);
 }
 
+.dashboard .post .text-message .more{
+  display: none;
+}
+.dashboard .post .text-message .readLess{
+  display:none; 
+  color: var(--read-more-color);
+}
+.dashboard .post .text-message .readMore:hover, .dashboard .post .text-message .readLess:hover{
+  cursor: pointer;
+}
 .dashboard {
 	max-width: 1000px;
 	overflow:hidden;
