@@ -62,7 +62,7 @@
                             </div>
 
                             <div class="news_content">
-                            <div class="text_title"><p>Title of the annoucement</p></div>
+                            <div class="text_title"><p><b>Title of the annoucement</b></p></div>
                             <br>
                             <div class="text-message"><p>The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta, is inviting the community to celebrate National Pasta Month this October. With 10 locations including three scheduled to debut this fall, Squisito continues to serve up the perfect recipe for unwavering success and longevity. Despite the ongoing pandemic, Squisito remains committed to the communities in which it does business. During quarantine, the restaurant added family meal deals and access to grocery items and other provisions to offer added ease of convenience to its customers. Squisito also donated thousands of dollars to medical facilities through its catering match program as well as extended further support with complimentary meals to our healthcare heroes... </p></div>
                            </div>
@@ -92,7 +92,7 @@
                             </div>
 
                             <div class="news_content">
-                            <div class="text_title"><p>Title of the annoucement</p></div>
+                            <div class="text_title"><p><b>Title of the annoucement</b></p></div>
                             <br>
                             <div class="text-message"><p>The number of COVID-19 cases in Sri Lanka is on the rise again, and it feels a lot heavier than the first wave. A new cluster emerged a few days back, and right now, there are 1514 active cases in the country (13/10/2020, 10.54 AM). 
  
@@ -124,7 +124,7 @@
                             </div>
 
                             <div class="news_content">
-                            <div class="text_title"><p>Title of the annoucement</p></div>
+                            <div class="text_title"><p><b>Title of the annoucement</b></p></div>
                             <br>
                             <div class="text-message"><p>The number of COVID-19 cases in Sri Lanka is on the rise again, and it feels a lot heavier than the first wave. A new cluster emerged a few days back, and right now, there are 1514 active cases in the country (13/10/2020, 10.54 AM). 
  
@@ -144,7 +144,7 @@
             </div>
         </div>
         </div>
-        <?php // include '../application/views/footer/footer_3.php';?> 
+        <?php  include '../application/views/footer/footer_3.php';?> 
         </div>
         <?php echo link_js("js/restaurantmanager/delete.js"); ?>    
 </body>
