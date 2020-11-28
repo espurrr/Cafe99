@@ -8,7 +8,6 @@
 }
 
 .popup-window {
-    display: none;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -27,6 +26,8 @@
     width: 60%;
     min-height: 60%;
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 @media (max-width:600px) {
@@ -35,7 +36,7 @@
     }
 }
 
-.popup-window .win-content .amount {
+.popup-window .win-content .para {
     text-align: center;
     padding: 20px;
 }
@@ -155,7 +156,7 @@
 
 @media (max-width:600px) {
     .popup-window table,
-    .popup-window .amount {
+    .popup-window .para {
         font-size: 15px;
     }
     .popup-btn-container {
@@ -168,4 +169,12 @@
     .popup-btn-container .order-now-btn {
         justify-self: center;
     }
+}
+
+
+/* order payement successful part */
+
+.fa-check {
+    color: var(--btn-green);
+    padding-left: 40%;
 }
