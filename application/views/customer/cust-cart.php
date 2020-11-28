@@ -38,7 +38,8 @@
                 <div class="btn-container">
                     <a href="#" class="delete"><i class="fas fa-trash-alt"></i></a>
                 </div>
-            </div>
+            </div><!-- cart-item-container -->
+
             <!-- ccccccccc -->
             <div class="cart-item-container">
                 <div class="container-image">
@@ -72,8 +73,8 @@
                 <div class="btn-container">
                     <a href="#" class="delete"><i class="fas fa-trash-alt"></i></a>
                 </div>
-            </div>
-        </div>
+            </div> 
+        </div><!-- cart-items ends here
 
         <div class="cart">
             <a href="#" id="float">
@@ -84,12 +85,12 @@
         <div class="overlay" id="overlay"></div>
         <!-- modal starts -->
         <div class="modal" id="modal">
-        <button class="modal-close-btn" id="close-btn">
-            <i class="fa fa-times" title="cross"></i>
-        </button>
+            <button class="modal-close-btn" id="close-btn">
+                <i class="fa fa-times" title="cross"></i>
+            </button>
             <div class="summary-title"><b>Order Summary</b></div><br>
             <div class="input-details">
-            <p type="Note to Chef">  <?php echo form_input(['type'=>'text', 'name'=>'message', 'placeholder'=>''])?></p>
+                <p type="Note to Chef">  <?php echo form_input(['type'=>'text', 'name'=>'message', 'placeholder'=>''])?></p>
             </div><br>
             <div class="total">Total: 1000.00</div><br>
     
@@ -101,7 +102,7 @@
         <div class="summary-container">
             <div class="summary-title">Order Summary</div>
             <div class="input-details">
-            <p type="Note to Chef">  <?php echo form_input(['type'=>'text', 'name'=>'message', 'placeholder'=>''])?></p>
+                <p type="Note to Chef">  <?php echo form_input(['type'=>'text', 'name'=>'message', 'placeholder'=>''])?></p>
             </div>
             <div class="total">Total: 1000.00</div>
             <button class="checkout-button" href="#" ><?php echo anchor("customer_controller/order", "PROCEED TO CHECKOUT") ?></button>
@@ -109,7 +110,7 @@
         </div>
         
        
-    </div>
+    </div><!-- cart-container ends here -->
     <script>
         // Modal script
         document.getElementById('float').addEventListener('click', function() {
