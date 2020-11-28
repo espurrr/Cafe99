@@ -10,6 +10,8 @@
         --unavailable-btn-hover:#f84278;
         --available-btn:#0BCE83;
         --available-btn-hover:#0abE84;
+        --inactive-btn:#efefef;
+
         --hover-transition:0.2s;
         --non-hover-transition:0.6s;
         --sidebar-width:250px;
@@ -38,13 +40,26 @@
     body {
         /* padding: 5% 5%; */
         background-color:var(--light-yellow);
-        background: var(--bg-texture);
     }
-
+    .page-container{
+        position: relative;
+        min-height: 100vh;
+    }
+    .content-wrapper{
+        padding-bottom: 100px; /* height of the footer */
+    }
     .menu_container{
         display: none;
         margin-left: var(--sidebar-width);
+        position: relative;
+    }
 
+    .menu_container .subcategory-title{
+        border-bottom: 1px solid #000;
+        margin-top: 30px;
+        margin-left: 30px;
+        margin-right: 30px;
+        font-size: 20px;
     }
 
     .grid {
@@ -61,6 +76,7 @@
             grid-template-columns: 1fr 1fr;
         }
     }
+    
 
     .grid article {
         border: 1px solid #ccc;
@@ -116,75 +132,78 @@
         border: none;
         outline: none;
     }
-
+    
     .menu_container .btn-container {
-        padding: 0px 0px 20px 0px;
+        /* padding: 0px 0px 20px 0px; */
+        margin: 30px 0px 0px 0px;
         display: flex;
-        justify-content: space-evenly;
-        /* grid-template-columns: 1fr 4fr 4fr 1fr;
-        grid-gap: 10%;
-        grid-template-areas:"a b c d"; */
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        
     }
-
-    /* @media (max-width:470px){
-        .menu_container .btn-container {
-            grid-template-columns: 1fr 2fr 2fr 1fr;
-        }
-    }   
-    @media (max-width:470px){
-        .menu_container .btn-container {
-            grid-gap: 5%;
-        }
-    } */
-
+    .input-cart{
+        width: 50px;
+        height: 30px;
+        text-align: center;
+        border: 5px solid rgb(0, 0, 0);
+    }
+    .button-cart{
+        width: 30px;
+        height: 30px;
+    }
 
     /* Common For both buttons */
     .menu_container .grid article .btn-container .btn{ 
         height: 100%;
         padding: 10px 30px;
         border-radius: 10px;
-        box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.5);
+        border: 1px solid #bbb;
+        box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.3);
         transition: 0.6s;
+        width: 75%;
+        margin: 5px;
     }
 
     .menu_container .grid article .btn-container .btn:hover{
-        box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.1);
         transition: var(--hover-transition);
         cursor: pointer;
     }
 
-    /* Available button */
-    .menu_container .grid article .btn-container .available{
-        /* grid-area:b; */
-        border: 1px solid #bbb;
-        background-color: var(--available-btn);
+    .menu_container .grid article .btn-container .inactive{
+        background-color: var(--inactive-btn);
+        border: 1px solid #efefef;
+    } 
+    .menu_container .grid article .btn-container .inactive:hover{
+        cursor: auto;
     }
 
-    .menu_container .grid article .btn-container .available .fa-check{
+    .menu_container .grid article .btn-container .inactive .fa-check,
+    .menu_container .grid article .btn-container .inactive .fa-times{
+        color:#ccc;
+    }
+
+    .menu_container .grid article .btn-container .available .fa-check,
+    .menu_container .grid article .btn-container .unavailable .fa-times{
         color:#fff;
         transition: var(--non-hover-transition);
     }
 
+    /* Available button */
+    .menu_container .grid article .btn-container .available{
+        background-color: var(--available-btn);
+    }
+
     .menu_container .grid article .btn-container .available:hover{
-        border: 1px solid #bbb;
         background-color: var(--available-btn-hover);
     }
 
-
     /* Unavailable button */
     .menu_container .grid article .btn-container .unavailable{
-        /* grid-area:c; */
-        border: 1px solid #bbb;
         background-color: var(--unavailable-btn);
     }
 
-    .menu_container .grid article .btn-container .unavailable .fa-times{
-        color: #fff;
-        transition: var(--non-hover-transition);
-    }
-
     .menu_container .grid article .btn-container .unavailable:hover{
-        border: 1px solid #bbb; 
         background-color: var(--unavailable-btn-hover);
     }
 
@@ -250,12 +269,16 @@
   }
   
   .tab button:hover {
-    background-color: var(--light-yellow);
+    background-color: transparent;
     color: #000;
     transition: var(--transition-time);
   }
   
   .tab button.active {
-    background-color: var(--light-yellow);
+    background-color: transparent;
     color: #000;
+  }
+  .status-msg-wrapper{
+      margin-top: 20px;
+      padding: 0 20px;
   }
