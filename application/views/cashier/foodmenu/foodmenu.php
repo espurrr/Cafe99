@@ -52,7 +52,7 @@
     <meta charset="UTF-8">
     <title>Products</title>
     <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
-    <?php echo link_css("css/kitchen-manager/foodmenu/foodmenu.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/cashier/foodmenu/foodmenu.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/kitchen-manager/foodmenu/sidebar.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
@@ -110,8 +110,12 @@
                     <?php echo form_open("km_controller/updateAvailability","POST");?>
                     <!-- <form action="" method="POST"> -->
                     <div class="btn-container">
-                        <!-- <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row->Food_ID;?>" ><i class="fas fa-check"></i></button>
-                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row->Food_ID;?>"><i class="fas fa-times"></i></button>                  -->
+                         <div class="row">
+                                <button class="button-cart">-</button>
+                                    <input type="text" class="input-cart" value="1" min="1" />
+                                <button class="button-cart">+</button>
+                            </div>
+                        <button class="btn" >Add to Cart</button>
                     </div>
                     <?php echo form_close();?>
                     <!-- </form> -->
@@ -315,8 +319,9 @@
                     <?php echo form_open("km_controller/updateAvailability","POST");?>
                     <!-- <form action="" method="POST"> -->
                     <div class="btn-container">
-                        <!-- <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row->Food_ID;?>" ><i class="fas fa-check"></i></button>
-                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row->Food_ID;?>"><i class="fas fa-times"></i></button>                  -->
+                      <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row->Food_ID;?>" ><i class="fas fa-check"></i></button>
+                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row->Food_ID;?>"><i class="fas fa-times"></i></button>
+
                     </div>
                     <?php echo form_close();?>
                     <!-- </form> -->
@@ -344,9 +349,8 @@
                     <?php echo form_open("km_controller/updateAvailability","POST");?>
                     <!-- <form action="" method="POST"> -->
                     <div class="btn-container">
-                        <!-- <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row->Food_ID;?>" ><i class="fas fa-check"></i></button>
-                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row->Food_ID;?>"><i class="fas fa-times"></i></button>                  -->
-                    </div>
+                        <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row->Food_ID;?>" ><i class="fas fa-check"></i></button>
+                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row->Food_ID;?>"><i class="fas fa-times"></i></button>                    </div>
                     <?php echo form_close();?>
                     <!-- </form> -->
                 </article>
@@ -572,3 +576,25 @@
     <?php echo link_js("js/kitchen-manager/foodmenu/foodmenu.js"); ?>
 </body>
 </html> 
+<script>
+    $(function() {
+ $(".button-cart").on("click", function() {
+   var $button = $(this);
+   var $parent = $button.parent(); 
+   var oldValue = $parent.find('.input-cart').val();
+
+   if ($button.text() == "+") {
+      var newVal = parseFloat(oldValue) + 1;
+    } else {
+       // Don't allow decrementing below zero
+      if (oldValue > 1) {
+        var newVal = parseFloat(oldValue) - 1;
+        } else {
+        newVal = 1;
+      }
+      }
+    $parent.find('a.add-to-cart').attr('data-quantity', newVal);
+    $parent.find('.input-cart').val(newVal);
+ });
+});
+</script>

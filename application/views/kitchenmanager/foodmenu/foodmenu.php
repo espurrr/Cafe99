@@ -190,11 +190,11 @@
         <?php endforeach; ?>
         </main>
         
-        <div class="subcategory-title">NoodlesPasta</div>
+        <div class="subcategory-title">Noodles & Pasta</div>
         <main class="grid">
 
         <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Food" && $row->Subcategory_name === "NoodlesPasta"):?>
+        <?php if($row->Category_name === "Food" && $row->Subcategory_name === "NoodlesPastas"):?>
                 <article>
                     <?php
                         $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
@@ -462,7 +462,7 @@
         <main class="grid">
 
         <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Desserts" && $row->Subcategory_name === "Custards&Puddings"):?>
+        <?php if($row->Category_name === "Desserts" && $row->Subcategory_name === "CustardsandPuddings"):?>
                 <article>
                     <?php
                         $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";

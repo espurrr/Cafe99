@@ -13,7 +13,10 @@
  <?php echo link_css("css/footercontent/contact/sidebar.css?ts=<?=time()?>"); ?>
     <title>Contact</title>
 </head>
-<body>
+<body style="background: #fff url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
+<div class="page-container">
+<div class="content-wrapper" >
+
 <?php   
         if ($this->get_session('role')=='customer'){
             include '../application/views/header/cust-logged-in-header.php';
@@ -36,6 +39,8 @@
 
      </div>
 </div>
-<?php include '../application/views/footer/footer_1.php';?>    
+</div><!-- content-wrapper ends-->
+<?php include '../application/views/footer/footer_1.php';?> 
+</div> <!-- page-contianer ends-->     
 </body>
 </html>

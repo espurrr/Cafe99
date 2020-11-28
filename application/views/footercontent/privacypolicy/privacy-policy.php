@@ -11,7 +11,10 @@
   <!--  <link rel="stylesheet" href="sidebar.css">-->
   <?php echo link_css("css/footercontent/privacypolicy/sidebar.css.css?ts=<?=time()?>"); ?>
 </head>
-<body>
+<body style="background: #fff url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
+<div class="page-container">
+<div class="content-wrapper" >
+
 <?php   
         if ($this->get_session('role')=='customer'){
             include '../application/views/header/cust-logged-in-header.php';
@@ -31,6 +34,8 @@
 <p>5.Third-Party Service Providers: We employ other companies and individuals to perform functions on our behalf. Examples; delivering packages and processing credit card payments. They have access to personal information needed to perform their functions, but may not use it for other purposes.</p>  
 </div>
 </div>
-<?php include '../application/views/footer/footer_1.php';?>    
+</div><!-- content-wrapper ends-->
+<?php include '../application/views/footer/footer_1.php';?> 
+</div> <!-- page-contianer ends-->   
 </body>
 </html>
