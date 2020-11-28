@@ -33,12 +33,12 @@ body{
 .newsfeed-wrapper{
     margin-left: var(--sidebar-width);
     background-color: var(--newsfeed-background-color);
-    height: 100vh;
+  /*  height: 100vh;*/
 }
 
 .newsfeed-wrapper .admin-content{
     height:100%;
-    width:100%;
+ /*   width:100%;*/
     padding: 0px 0px;
     margin: 4px 30px;
 /*  overflow-y:scroll;*/
