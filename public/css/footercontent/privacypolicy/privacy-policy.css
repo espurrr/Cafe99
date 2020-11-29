@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 
 :root{
-    --background-color:#fcfde6;
+    --background-color:#f1f1f1;
     
 }
 
@@ -18,12 +18,17 @@
 
 .page-container{
     position: relative;
-    min-height: 100vh;
+    min-height: 125vh;
   }
   .content-wrapper{
-    padding-bottom: 180px; /* height of the footer */
+    padding-bottom: 200px; /* height of the footer */
   }
-
+  .wrapper{
+    margin-top: 100px;
+    height: 100%;
+    width:100%;
+    margin-bottom: 100px;
+  }
 .wrapper .privacy-content{
     background-color: var(--background-color);
     margin-top: 25px;
@@ -32,7 +37,7 @@
 
 
 .privacy-content {
-    margin-left: 420px;
+    /* margin-left: 420px; */
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -42,15 +47,30 @@
     min-height: 250px;
     padding: 20px 20px 20px;
     background-color: #ccc;
-    margin-left: 450px;
-    margin-right: 200px;
+    /* margin-left: 450px; */
+    /* margin-right: 200px; */
+    margin: auto;
+}
+.privacy-content h1{
+    text-align: center;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1024px) {
+    .privacy-content {
+        width: 60%;
+    }
+}
+@media screen and (max-width: 650px) {
+    .privacy-content {
+        width: 80%;
+    }
+}
+
+/* @media screen and (max-width: 800px) {
     .privacy-content {
         margin-left: 0px; 
         margin-right: 0px; 
         width:100%;
     }
-  }   
+  }    */
      

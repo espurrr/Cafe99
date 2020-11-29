@@ -1,5 +1,5 @@
 :root{
-    --background-color:#fcfde6;
+    --background-color:#f1f1f1;
     
 }
 
@@ -16,10 +16,15 @@
 
 .page-container{
     position: relative;
-    min-height: 100vh;
+    min-height: 125vh;
+  }
+  .wrapper{
+    margin-top: 100px;
+    height: 100%;
+    width:100%;
   }
   .content-wrapper{
-    padding-bottom: 180px; /* height of the footer */
+    padding-bottom: 200px; /* height of the footer */
   }
 
 .wrapper .contact-content{
@@ -29,9 +34,9 @@
 }
 
 .contact-content {
-    margin-left: 420px;
+    /* margin-left: 420px; */
     font-size: 14px;
-    border: 1px solid #ccc;
+    border: 1px solid transparent;
     border-radius: 10px;
     box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
     width: 40%;
@@ -39,14 +44,38 @@
     min-height: 250px;
     padding: 20px 20px 20px;
     background-color: #ccc;
-    margin-left:420px;
-    margin-right: 200px;
+    /* margin-left:420px; */
+    /* margin-right: 200px; */
+    margin: auto;
+}
+.contact-content h1{
+    text-align: center;
+}
+.contact-content li{
+    margin-left: 5%;
+}
+@media screen and (max-width: 1024px) {
+    .contact-content {
+        width: 60%;
+    }
+}
+@media screen and (max-width: 650px) {
+    .contact-content {
+        width: 80%;
+    }
+}
+@media screen and (max-width: 650px) {
+    .contact-content li, .contact-content i{
+        font-size: 13px;
+    }
+
+
 }
 
-@media screen and (max-width: 800px) {
+/* @media screen and (max-width: 800px) {
     .contact-content {
         margin-left: 0px; 
         margin-right: 0px;
         width:100%;
     }
-  }   
+  }    */

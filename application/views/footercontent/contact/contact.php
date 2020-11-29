@@ -28,7 +28,7 @@
 <div class="wrapper">
     <div class="contact-content">
     <br><br>
-     <h1>Contacts</h1>
+     <h1>Contact us</h1>
      <br><br><br><br>
      <li><i class="fa fa-map-marker" style="font-size:24px;padding-right:20px"></i>Maharagama,Colombo</li><br><br><br>
      <li><i class='fas fa-phone' style='font-size:24px;padding-right:20px'></i>0112-554534</li><br><br><br>

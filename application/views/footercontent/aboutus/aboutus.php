@@ -34,9 +34,9 @@
 <div class="topic">
 <h1>About Us</h1>
 </div>
-    <div class="aboutus-content">
+    <!-- <div class="aboutus-content">
     <h2 style="color:white;">Providing a Daily,fresh baking concepts that complements the needs of the urban household !!!</h2>
-   </div>
+   </div> -->
 <br><br>
    <div class="content">
    <p>The Cafe99 Restaurant & Lounge 
@@ -45,7 +45,7 @@
    </p><br>
        <p>At the heart of what we do is the idea of providing a daily, fresh baking concept that complements the needs of the urban household. We strive to be the country leading bakery known for quality, service standard and value. We currently operate 50 outlets.</p>
    </div>
-   <br><br><br><br><br><br>
+   <!-- <br><br><br><br><br><br> -->
  <!--  <div class="img">
        <img src="cafe99.jpg" style="padding-right:100px;">
        <img src="Staffpic.jpg" style="padding-right:100px;">
