@@ -77,7 +77,7 @@ body {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 160px;
+    min-width: 220px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     border-radius: 5px;
@@ -108,13 +108,13 @@ body {
 
 .topnav a:hover, .route-dropdown:hover .dropbtn {
     background-color: transparent;
-    color: white;
+    /* color: white; */
     border-radius: 25px;
 }
 
 .route-dropdown:hover .dropbtn {
-    background-color: #555;
-    color: white;
+    /* background-color: #555; */
+    /* color: white; */
     border-radius: 25px;
     padding: 8px 16px;
 }
@@ -125,9 +125,10 @@ body {
 }
 
 .dropdown-content a:hover {
-    background-color: #ddd;
+    /* background-color: #ddd; */
     color: black;
     border-radius: 0px;
+    font-size: 18px;
 }
 
 #logsign1 {
@@ -293,5 +294,5 @@ body {
 .topnav .signlog .signlogbtn:hover{
     transition: 0.8s;
     background-color: #000;
-
+    color: #fff;
 }
