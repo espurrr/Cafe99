@@ -42,7 +42,7 @@
         </button>
         <div id="routes" class="dropdown-content" >
         <?php echo anchor("food_controller/menu/desserts/icecreams", "Ice creams") ?>
-        <?php echo anchor("food_controller/menu/desserts/custardspuddings", "Custards & Puddings") ?>
+        <?php echo anchor("food_controller/menu/desserts/custardsandpuddings", "Custards & Puddings") ?>
             <?php echo anchor("food_controller/menu/desserts/muffins", "Muffins") ?>
             <?php echo anchor("food_controller/menu/desserts/cheesecakes", "Cheesecakes") ?>
        
