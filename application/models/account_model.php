@@ -17,9 +17,24 @@ class Account_model extends Database{
         if($this->Select_Where("user", ['Email_address' => $email])){
 
             if($this->Count() > 0){
+
+                $options = array('cost' => 12); //cost factor of the hashing algorithm
+
                 $row = $this->Row();
                 $dbPw = $row->User_Password;
+
+                // Verify stored hash against plain-text password
                 if(password_verify($password,$dbPw)){
+                    // Check if a newer hashing algorithm is available
+                    // or the cost has changed
+                    if (password_needs_rehash($dbPw, PASSWORD_DEFAULT)) {
+                        //If so, create a new hash
+                        $newHash = password_hash($password, PASSWORD_DEFAULT, $options);
+
+                        //Update the new hash in the database
+                        $this->Update("user", ['User_Password'=>$newHash],['Email_address' => $email]);
+                    }
+                    // Logs user in
                     return ['status'=>'success', 'data'=>$row];
                 }else{
                     return "Password_not_matched";

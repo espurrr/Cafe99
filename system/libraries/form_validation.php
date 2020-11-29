@@ -206,7 +206,10 @@ trait form_validation {
     */ 
     public function hash($password){
         if(!empty($password)){
-            return password_hash($password, PASSWORD_BCRYPT);
+            // default cost factor is 10. OWASP recommendation is 12. 
+            //Reference:https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html
+            $options = array('cost' => 12);
+            return password_hash($password, PASSWORD_DEFAULT,$options);
         }
     }
 

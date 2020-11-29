@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-    <?php echo link_css("css/cart.css?version=51"); ?>
+    <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/cart.css?ts=<?=time()?>"); ?>
+    
     <title>Cart</title>
 </head>
 <body style="background: rgb(247, 239, 193) url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
 
 <?php include '../application/views/header/cust-logged-in-header.php';?>
-<ul id="breadcrumbs">
+<ul class="breadcrumb">
     <li><?php echo anchor("account_controller/index", "Home") ?></li>
     <li><?php echo anchor("customer_controller/mycart", "Cart") ?></li>
     <li>Order</li>
@@ -41,23 +43,48 @@
                         <span>Delivery</span>
                     </label>
                 </div>
+                <h2>Order is for</h2><br>
+                <div class="radios">
+                    <label class="radio-inline">
+                        <input type="radio" name="opinion2" id="me" onclick="detailsDisplay()" checked/>
+                        <i></i>
+                        <span>Me</span>
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="opinion2" id="someone_else" onclick="detailsDisplay()"/>
+                        <i></i>
+                        <span>Someone else</span>
+                    </label>
+                  
+                </div>
                 <h2>Details</h2><br>
                 <div class="details">
-                    <div id="dine-in">
-                        <?php echo form_input(['type'=>'text', 'name'=>'Customer_name', 'placeholder'=>'Receiver\'s Name', 'value'=>$this->set_value('Customer_name')])?>
+                    <div id="receiver">
+                    <p> Receiver's information </p>
+                        <?php echo form_input(['type'=>'text', 'name'=>'Customer_name', 'placeholder'=>'Name*', 'value'=>$this->set_value('Customer_name')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['User_name'])):?>
                             <?php echo $this->errors['User_name'];?>
                             <?php endif;?>
                         </div>
+                        <?php echo form_input(['type'=>'tel', 'name'=>'Customer_phone', 'placeholder'=>'Phone no.*' ,'value'=>$this->set_value('Customer_phone')])?>
+                        <div class="error">
+                            <?php if(!empty($this->errors['Email_address'])):?>
+                            <?php echo $this->errors['Email_address'];?>
+                            <?php endif;?>
+                        </div>
+                    </div><br>
 
+                    <div id="dine-in">
+                    
+                        <p> Dine-in Date </p>
                         <?php echo form_input(['type'=>'date', 'name'=>'Dine-in-date', 'placeholder'=>'Dine-in Date' ,'value'=>$this->set_value('Dine-in-date')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['Email_address'])):?>
                             <?php echo $this->errors['Email_address'];?>
                             <?php endif;?>
                         </div>
-
+                        <p> Dine-in Time </p>
                         <?php echo form_input(['type'=>'time', 'name'=>'Dine-in-time', 'placeholder'=>'Dine-in Time' ,'value'=>$this->set_value('Dine-in-time')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['Email_address'])):?>
@@ -67,20 +94,15 @@
                     </div>
 
                     <div id="pick-up">
-                        <?php echo form_input(['type'=>'text', 'name'=>'Customer_name', 'placeholder'=>'Receiver\'s Name', 'value'=>$this->set_value('Customer_name')])?>
-                        <div class="error">
-                            <?php if(!empty($this->errors['User_name'])):?>
-                            <?php echo $this->errors['User_name'];?>
-                            <?php endif;?>
-                        </div>
-
+                       
+                        <p> Pick-up Date </p>
                         <?php echo form_input(['type'=>'date', 'name'=>'Pick-up-date', 'placeholder'=>'Pick-up Date' ,'value'=>$this->set_value('Pick-up-date')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['Email_address'])):?>
                             <?php echo $this->errors['Email_address'];?>
                             <?php endif;?>
                         </div>
-
+                        <p> Pick-up Time </p>
                         <?php echo form_input(['type'=>'time', 'name'=>'Pick-up-time', 'placeholder'=>'Pick-up Time' ,'value'=>$this->set_value('Pick-up-time')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['Email_address'])):?>
@@ -90,27 +112,22 @@
                     </div>
 
                     <div id="delivery">
-                        <?php echo form_input(['type'=>'text', 'name'=>'Customer_name', 'placeholder'=>'Receiver\'s Name', 'value'=>$this->set_value('Customer_name')])?>
+
+                    <p> Delivery Address </p>
+                        <?php echo form_input(['type'=>'text', 'name'=>'Delivery_address', 'placeholder'=>'Address*', 'value'=>$this->set_value('Delivery_address')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['User_name'])):?>
                             <?php echo $this->errors['User_name'];?>
                             <?php endif;?>
                         </div>
-
-                        <?php echo form_input(['type'=>'text', 'name'=>'Delivery_address', 'placeholder'=>'Delivery Address', 'value'=>$this->set_value('Delivery_address')])?>
-                        <div class="error">
-                            <?php if(!empty($this->errors['User_name'])):?>
-                            <?php echo $this->errors['User_name'];?>
-                            <?php endif;?>
-                        </div>
-
+                    <p> Delivery Date </p>
                         <?php echo form_input(['type'=>'date', 'name'=>'Delivery-date', 'placeholder'=>'Delivery Date' ,'value'=>$this->set_value('Delivery-date')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['Email_address'])):?>
                             <?php echo $this->errors['Email_address'];?>
                             <?php endif;?>
                         </div>
-
+                    <p> Delivery Time </p>
                         <?php echo form_input(['type'=>'time', 'name'=>'Delivery-time', 'placeholder'=>'Delivery Time' ,'value'=>$this->set_value('Delivery-time')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['Email_address'])):?>
@@ -189,16 +206,26 @@
         
         function detailsDisplay() {
             // Get the checkbox
+
+            var me = document.getElementById("me");
+            var someone_else = document.getElementById("someone_else");
+
             var dine = document.getElementById("r_dine");
             var pick = document.getElementById("r_pick");
             var deli = document.getElementById("r_deli");
             // Get the output text
+            var receiver_text = document.getElementById("receiver");
             var dine_text = document.getElementById("dine-in");
             var pick_text  = document.getElementById("pick-up");
             var deli_text  = document.getElementById("delivery");
 
+
             // If the checkbox is checked, display the output text
-        
+            if (me.checked == true){
+                receiver_text.style.display = "none";
+            }else if(someone_else.checked == true){
+                receiver_text.style.display = "initial";
+            }
             if (dine.checked == true){
                 dine_text.style.display = "initial";
                 pick_text.style.display = "none";
@@ -208,7 +235,7 @@
                 dine_text.style.display = "none";
                 pick_text.style.display = "initial";
                 deli_text.style.display = "none";
-            } else{
+            } else if(deli.checked == true){
                 dine_text.style.display = "none";
                 pick_text.style.display = "none";
                 deli_text.style.display = "initial";

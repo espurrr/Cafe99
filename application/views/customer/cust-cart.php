@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-    <?php echo link_css("css/cart.css"); ?>
+    <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/cart.css?ts=<?=time()?>"); ?>
     <title>Cart</title>
 </head>
 <body style="background: rgb(247, 239, 193) url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
@@ -12,10 +13,10 @@
 
 <?php include '../application/views/header/cust-logged-in-header.php';?>
 
-<ul id="breadcrumbs">
+<ul class="breadcrumb">
     <li><?php echo anchor("account_controller/index", "Home") ?></li>
-    <li>Cart</li>
-    <li><?php echo anchor("customer_controller/order", "Order") ?></li>
+    <li><?php echo anchor("customer_controller/mycart", "Cart") ?></li>
+    <li>Order</li>
     <li>Payment</li>
   
 </ul>
@@ -75,7 +76,7 @@
                     <a href="#" class="delete"><i class="fas fa-trash-alt"></i></a>
                 </div>
             </div> 
-        </div><!-- cart-items ends here
+        </div><!-- cart-items ends here-->
 
         <div class="cart">
             <a href="#" id="float">

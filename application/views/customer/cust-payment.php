@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/cart.css?version=51"); ?>
     <?php echo link_css("css/customer/order_success_popup.css?ts=<?=time()?>"); ?>
     <title>Cart</title>
@@ -11,7 +12,7 @@
 <body style="background: rgb(247, 239, 193) url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
 
 <?php include '../application/views/header/cust-logged-in-header.php';?>
-<ul id="breadcrumbs">    
+<ul class="breadcrumb">    
     <li><?php echo anchor("account_controller/index", "Home") ?></li>
     <li><?php echo anchor("customer_controller/mycart", "Cart") ?></li>
     <li><?php echo anchor("customer_controller/order", "Order") ?></li>
@@ -24,7 +25,7 @@
             <div class="win-content">
                 <div class="win-table">
                     <i class="fas fa-check fa-8x"></i>
-                    <p class="para">Congratulations! Your order has been placed successfully.<br><br>We have emailed you the order details. <br>Please Check inbox.</p>
+                    <p class="para"><b>Congratulations!</b><br> Your order has been placed successfully.<br><br>We have emailed you the order details. <br>Please Check inbox.</p>
 
                     <div class="popup-btn-container">
                         <button id="ok-btn" class="popup-btn btn av-btn"><?php echo anchor("account_controller/index", "OK") ?></button>
@@ -158,9 +159,10 @@
         }
 
         window.onclick = function(event) {
-          if (event.target == win_content_wrapper) {
-            popup_win.style.display = "none";
-          }
+            window.location.href = "http://localhost/cafe99/account_controller/index";
+        //   if (event.target == win_content_wrapper) {
+        //     popup_win.style.display = "none";
+        //   }
         }
 
   </script>
