@@ -18,16 +18,16 @@
 </ul>
 
  <!-- Pop up modal starts here -->
+    <div id="popup-window" class="popup-window">
+        <div id="win-content-wrapper"class="win-content-wrapper">
+            <div class="win-content">
+                <div class="win-table">
+                    <i class="fas fa-check fa-8x"></i>
+                    <p class="para">Congratulations! Your order has been placed successfully.<br><br>We have emailed you the order details. <br>Please Check inbox.</p>
 
- <div id="popup-window" class="popup-window">
-        <div class="win-content">
-            
-            <div class="win-table">
-                <i class="fas fa-check fa-8x"></i>
-                <p class="para">Congratulations! Your order has been placed successfully.<br><br>We have emailed you the order details. <br>Please Check inbox.</p>
-
-                <div class="popup-btn-container">
-                    <button id="orderSuccess" class="popup-btn btn av-btn"><?php echo anchor("account_controller/index", "OK") ?></button>
+                    <div class="popup-btn-container">
+                        <button id="ok-btn" class="popup-btn btn av-btn"><?php echo anchor("account_controller/index", "OK") ?></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -145,24 +145,22 @@
     
     <script>//order successful modal
         var popup_win = document.getElementById("popup-window");
-        var view_btn = document.getElementById("ok-btn");
-       
+        var ok_btn = document.getElementById("ok-btn");
+        var win_content_wrapper = document.getElementById("win-content-wrapper");
 
         function showModal(){
           popup_win.style.display = "block";
         }
 
-        close_btn.onclick = function() {
+        ok_btn.onclick = function() {
             popup_win.style.display = "none";
         }
 
         window.onclick = function(event) {
-          if (event.target == popup_win) {
+          if (event.target == win_content_wrapper) {
             popup_win.style.display = "none";
           }
         }
-
-    };
 
   </script>
     
