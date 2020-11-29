@@ -312,7 +312,7 @@
         <main class="grid">
 
         <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Drinks" && $row->Subcategory_name === "Fresh Fruit Juice"):?>
+        <?php if($row->Category_name === "Drinks" && $row->Subcategory_name === "FreshFruitJuice"):?>
                 <article>
                     <?php
                         $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
@@ -341,7 +341,7 @@
         <main class="grid">
 
         <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Drinks" && $row->Subcategory_name === "Ice Blended"):?>
+        <?php if($row->Category_name === "Drinks" && $row->Subcategory_name === "IceBlended"):?>
                 <article>
                     <?php
                         $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
@@ -370,7 +370,7 @@
         <main class="grid">
 
         <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Drinks" && $row->Subcategory_name === "Milk Shakes"):?>
+        <?php if($row->Category_name === "Drinks" && $row->Subcategory_name === "MilkShakes"):?>
                 <article>
                     <?php
                         $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
@@ -433,7 +433,7 @@
         <main class="grid">
 
         <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Desserts" && $row->Subcategory_name === "Ice creams"):?>
+        <?php if($row->Category_name === "Desserts" && $row->Subcategory_name === "Icecreams"):?>
                 <article>
                     <?php
                         $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
