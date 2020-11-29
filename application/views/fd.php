@@ -66,8 +66,9 @@
 
       <article>
         <?php
-          $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
-        ?>
+
+$img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
+?>
         <a href="#"><img src="<?php echo $img_path;?>" alt="Image Not Found"></a>
         <div class="text">
         <h3><?php echo anchor("food_controller/menu/".$row->Category_name."/".$row->Subcategory_name."/".$row->Food_ID, $row->Food_name) ?></h3>

@@ -28,7 +28,7 @@
       <?php echo anchor("food_controller/menu/food/pizza", "Pizza") ?>
       <?php echo anchor("food_controller/menu/food/savouries", "Savouries") ?>
       <?php echo anchor("food_controller/menu/food/cakes", "Cakes") ?>
-      <?php echo anchor("food_controller/menu/food/Noodles-and-Pasta", "Noodles & Pasta") ?>
+      <?php echo anchor("food_controller/menu/food/noodlespastas", "Noodles & Pasta") ?>
       <?php echo anchor("food_controller/menu/food/biriyani", "Biriyani") ?>
       <?php echo anchor("food_controller/menu/food/buns", "Buns") ?>
       </div>
@@ -39,8 +39,8 @@
           <div id="routes" class="dropdown-content" >
         <?php echo anchor("food_controller/menu/drinks/tea", "Tea") ?>
         <?php echo anchor("food_controller/menu/drinks/milkshakes", "Milkshakes") ?>
-        <?php echo anchor("food_controller/menu/drinks/ice-blended", "Ice Blended") ?>
-        <?php echo anchor("food_controller/menu/drinks/fresh-fruit-juice", "Fresh Fruit Juice") ?>
+        <?php echo anchor("food_controller/menu/drinks/iceblended", "Ice Blended") ?>
+        <?php echo anchor("food_controller/menu/drinks/freshfruitjuice", "Fresh Fruit Juice") ?>
         <?php echo anchor("food_controller/menu/drinks/coffee", "Coffee") ?>
         </div>
       </div>
@@ -48,8 +48,8 @@
       <div class="route-dropdown" onclick="toggleMenu(this)">
         <button class="dropbtn">Desserts<i class="fa fa-caret-down"></i></button>
         <div id="routes" class="dropdown-content" >
-        <?php echo anchor("food_controller/menu/desserts/ice-creams", "Ice creams") ?>
-        <?php echo anchor("food_controller/menu/desserts/custardspuddings", "Custards & Puddings") ?>
+        <?php echo anchor("food_controller/menu/desserts/icecreams", "Ice creams") ?>
+        <?php echo anchor("food_controller/menu/desserts/custardsandpuddings", "Custards & Puddings") ?>
             <?php echo anchor("food_controller/menu/desserts/muffins", "Muffins") ?>
             <?php echo anchor("food_controller/menu/desserts/cheesecakes", "Cheesecakes") ?>
        

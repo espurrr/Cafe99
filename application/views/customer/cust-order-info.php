@@ -11,6 +11,7 @@
 
 <?php include '../application/views/header/cust-logged-in-header.php';?>
 <ul id="breadcrumbs">
+    <li><?php echo anchor("account_controller/index", "Home") ?></li>
     <li><?php echo anchor("customer_controller/mycart", "Cart") ?></li>
     <li>Order</li>
     <li>Payment</li>
