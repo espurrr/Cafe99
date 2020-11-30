@@ -15,23 +15,7 @@
 </head>
 
 <body>
-<?php
-    function get_num_of_chars($string) { 
-        $string = preg_replace('/\s+/', ' ', trim($string)); 
-        $words = explode("", $string); 
-        return count($words); 
-    }
-    $str = "
-    The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta.
-    The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta.
-    The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta.
-    The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta.
-    The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta.
-    The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta.
-    The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta.
-    The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta.
-    The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta.";
-?>
+
     <div class="page-container" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
     <?php include "sidebar.php";?>
 

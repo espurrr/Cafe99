@@ -9,7 +9,6 @@
     <?php echo link_css("css/restaurantmanager/sidebar.css?ts=<?=time()?>");?>
     <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/restaurantmanager/newsfeed.css?ts=<?=time()?>"); ?>
-    <?php echo link_css("css/restaurantmanager/admin.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/modal/delete_modal.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
 
@@ -19,7 +18,7 @@
 <body>
 <div class="page-container">
 <?php include "../application/views/restaurantmanager/sidebar.php";?>
-<div class="content-wrapper">
+<div class="content-wrapper" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
 <?php include  "../application/views/header/header-dashboard.php";?>
 
   <!-- Delete pop up modal starts here -->
@@ -38,7 +37,7 @@
     </div><!-- popup=window ends here -->
   <!-- Delete pop up modal ends here -->
 
-    <div class="newsfeed-wrapper">
+    <div class="newsfeed-wrapper" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
 
             <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
                 <div class="newsfeed">
@@ -51,39 +50,47 @@
               
                  <div class="dashboard" id="download">
                     <div class="post">
-                    <div class="top">
-                            <div class="img">
-                            <i class="fa fa-user-circle" aria-hidden="true" style="font-size:60px"></i>
-                            </div>
-                            <div class="name">
-                                <strong><a href="#"><span class="text-name">Kamal Perera</span></a></strong>
-                                <div class="date">
-                                    <span class="text-when">2020/10/23 at 4:00pm</span> 
+                        <div class="top">
+                                <div class="img">
+                                    <i class="fa fa-user-circle" aria-hidden="true" style="font-size:35px"></i>
                                 </div>
-                            </div>
-                    </div>
-                            <div class="employee"><i class="fa fa-users"></i>  &nbsp;All Employees</div>
-                            </div>
+                                <div class="name">
+                                    <strong><a href="#"><span class="text-name">Kamal Perera</span></a></strong>
+                                    <div class="date">
+                                        <span class="text-when">2020/10/23 at 4:00pm</span> 
+                                    </div>
+                                </div>
+                        <div class="employee"><i class="fa fa-users"></i>  &nbsp;All Employees</div>
+                        </div><!-- top ends here-->
 
-                            <div class="news_content">
+                        <div class="news_content">
                             <div class="text_title"><p><b>Title of the annoucement</b></p></div>
                             <br>
-                            <div class="text-message"><p>The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta, is inviting the community to celebrate National Pasta Month this October. With 10 locations including three scheduled to debut this fall, Squisito continues to serve up the perfect recipe for unwavering success and longevity. Despite the ongoing pandemic, Squisito remains committed to the communities in which it does business. During quarantine, the restaurant added family meal deals and access to grocery items and other provisions to offer added ease of convenience to its customers. Squisito also donated thousands of dollars to medical facilities through its catering match program as well as extended further support with complimentary meals to our healthcare heroes... </p></div>
-                           </div>
-                           <br>
-                           <div class="action">
-                        <!--   <a href="edit.php" class="edit">Edit</a>-->
-                           <?php echo anchor("rm_controller/edit", "Edit",['class'=>"edit"]) ?>
-                           <a href="#" class="delete" onclick='showDeleteModal()'>Delete</a>
-                           </div>
-                    </div>
+                            <div class="text-message"><p>The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta, 
+                                is inviting the community to celebrate National Pasta Month this October. With 10 locations including three 
+                                scheduled to debut this fall, Squisito continues to serve up the perfect recipe for unwavering success and longevity. 
+                                Despite the ongoing pandemic, Squisito remains committed to the communities in which it does business. During quarantine, th
+                                e restaurant added family meal deals and access to grocery items and other provisions to offer added ease of convenience to its cu
+                                stomers. Squisito also donated thousands of dollars to medical facilities through its catering match program as well as extended furth
+                                er support with complimentary meals to our healthcare heroes... </p>
+                            </div>
+                        </div><!-- news_content ends here-->
+                        <div class="action">
+                            <div class="link-wrapper">
+                                <!--   <a href="edit.php" class="edit">Edit</a>-->
+                                <?php echo anchor("rm_controller/edit", "Edit",['class'=>"edit"]) ?>
+                                <a href="#" class="delete" onclick='showDeleteModal()'>Delete</a>
+                            </div>
+                        </div>
+                    </div><!-- post ends here-->
+                    </div><!-- dashboard ends here-->
 
                     <div class="dashboard" id="download">
                     <div class="post">
                     <div class="top">
                    
                     <div class="img">
-                            <i class="fa fa-user-circle" aria-hidden="true" style="font-size:60px"></i>
+                            <i class="fa fa-user-circle" aria-hidden="true" style="font-size:35px"></i>
                             </div>
                             <div class="name">
                                 <strong><a href="#"><span class="text-name">Kamal Perera</span></a></strong>
@@ -91,7 +98,6 @@
                                     <span class="text-when">2020/10/15 at 9:00am</span> 
                                 </div>
                             </div>
-                    </div>
                             <div class="employee"><i class="fa fa-users"></i>  &nbsp;All Employees</div>
                             </div>
 
@@ -104,10 +110,13 @@
                            </div>
                            <br>
                            <div class="action">
-                        <!--   <a href="edit.php" class="edit">Edit</a>-->
-                           <?php echo anchor("rm_controller/edit", "Edit",['class'=>"edit"]) ?>
-                           <a href="#" class="delete" onclick='showDeleteModal()'>Delete</a>
+                                <div class="link-wrapper">
+                                    <!--<a href="edit.php" class="edit">Edit</a>-->
+                                    <?php echo anchor("rm_controller/edit", "Edit",['class'=>"edit"]) ?>
+                                    <a href="#" class="delete" onclick='showDeleteModal()'>Delete</a>
+                            </div>
                            </div>
+                    </div>
                     </div>
 
                     
@@ -115,7 +124,7 @@
                     <div class="post">
                     <div class="top">
                             <div class="img">
-                            <i class="fa fa-user-circle" aria-hidden="true" style="font-size:60px"></i>
+                            <i class="fa fa-user-circle" aria-hidden="true" style="font-size:35px"></i>
                             </div>
                             <div class="name">
                                 <strong><a href="#"><span class="text-name">Kamal Perera</span></a></strong>
@@ -123,7 +132,6 @@
                                     <span class="text-when">2020/10/30 at 11:30am</span> 
                                 </div>
                             </div>
-                    </div>
                             <div class="employee"><i class="fa fa-users"></i>  &nbsp;All Employees</div>
                             </div>
 
@@ -136,11 +144,14 @@
                            </div>
                            <br>
                            <div class="action">
-                         <!--  <a href="edit.php" class="edit">Edit</a>-->
-                           <?php echo anchor("rm_controller/edit", "Edit",['class'=>"edit"]) ?>
-                         <!--  <a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a>-->
-                         <a href="#" class="delete" onclick='showDeleteModal()'>Delete</a>
+                                <div class="link-wrapper">
+                                        <!--  <a href="edit.php" class="edit">Edit</a>-->
+                                        <?php echo anchor("rm_controller/edit", "Edit",['class'=>"edit"]) ?>
+                                        <!--  <a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a>-->
+                                        <a href="#" class="delete" onclick='showDeleteModal()'>Delete</a>
+                                </div>
                            </div>
+                    </div>
                     </div>
                     
 
