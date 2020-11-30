@@ -433,7 +433,7 @@
         <main class="grid">
 
         <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Desserts" && $row->Subcategory_name === "Icecreams"):?>
+        <?php if($row->Category_name === "Desserts" && $row->Subcategory_name === "IceCreams"):?>
                 <article>
                     <?php
                         $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
