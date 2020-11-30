@@ -27,28 +27,41 @@
              <div class="content">
                  <h2 class="page-title">Add Announcements</h2>
                 
-                 <form action="RMnewsfeed.php" method="post">
-                     
-                        
-                        <label for="Anndate">Announcement Date</label>
-                        <input type="text" id="Anndate" name="Adate" ><br>
-                        
+                <!-- taken from food.create -->
+                 <div class="status-msg" style="margin-bottom:20px">
+                    <?php $this->flash('fooditemSuccess','alert alert-success','fa fa-check'); ?>
+                </div>
+    
 
-                         
-                         <label for="Anntime">Announcement Time</label>
-                         <input type="text" id="Anntime" name="Atime" ><br>
-                          
-                         <label for="content">Content</label>
-                         <textarea name="content" id="content" ></textarea>
+                 <!-- <form action="RMnewsfeed.php" method="post"> -->
+                 <?php echo form_open("rmnewsfeed_controller/create","post");?>   
+                 
+                        <!-- <label for="Ann_id">Announcement_id</label>
+                        <input type="text" id="Ann_id" name="Ann_id" ><br> -->
+
+                        <label for="Ann_title">Title</label>
+                        <input type="text" id="Ann_title" name="Ann_title" ><br>
+
+                        <label for="Ann_date">Date</label>
+                        <input type="date" id="Ann_date" name="Ann_date" ><br>
                         
-                        
-                        
-                        
+                        <label for="Ann_time">Time</label>
+                         <input type="time" id="Ann_time" name="Ann_time" ><br>
+
+                        <label for="content">Content</label>
+                        <textarea name="content" id="content" ></textarea>
+
+                        <label for="Ann_towhom">To Whom</label>
+                        <input type="text" id="Ann_towhom" name="Ann_towhom" ><br>
+
+                        <!-- <label for="Ann_user">User ID</label> -->
+                        <!-- <input type="text" id="Ann_user" name="Ann_user" ><br> -->
+
                         <div>
                             <input type="submit" value="Save">
                         </div>
-                    
-                 </form>
+                        <?php echo form_close();?>  
+                 <!-- </form> -->
              </div>
             </div>
         
