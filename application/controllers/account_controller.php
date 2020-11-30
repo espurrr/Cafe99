@@ -44,7 +44,7 @@ class Account_controller extends JB_Controller{
 
             if($this->model->signup($data)){
                 // echo "data is inserted";
-               if($this->activationEmail("boody.abay@gmail.com",$User_name,"","",$Token)){
+               if($this->activationEmail($Email_address,$User_name,"","",$Token)){
                     $this-> set_flash("signupSuccess","Your account is successfully created. We've sent an email to $Email_address to verify your address. Please click on the link in the email to continue.");
                     $this->view('login');
                }else{
