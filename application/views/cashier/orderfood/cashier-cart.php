@@ -15,8 +15,8 @@
 
     <ul id="breadcrumbs">
     <li>Cart</li>
-    <li><?php echo anchor("cashier_controller/order", "Order") ?></li>
-    <li>Payment</li>
+    <!-- <li><?php echo anchor("cashier_controller/order", "Order") ?></li>
+    <li>Payment</li> -->
   
 </ul>
 
@@ -94,7 +94,8 @@
             </div><br>
             <div class="total">Total: 1000.00</div><br>
     
-            <button class="checkout-button" href="#" ><?php echo anchor("cashier_controller/order", "PROCEED TO CHECKOUT") ?></button>
+            <!-- <button class="checkout-button" href="#" ><?php echo anchor("cashier_controller/order", "PROCEED TO CHECKOUT") ?></button> -->
+            <button class="checkout-button" href="#" ><?php echo anchor("cashier_controller/foodmenu", "COMPLETE ORDER") ?></button>
 
         </div>
         <!-- modal end -->
@@ -105,7 +106,8 @@
             <p type="Note to Chef">  <?php echo form_input(['type'=>'text', 'name'=>'message', 'placeholder'=>''])?></p>
             </div>
             <div class="total">Total: 1000.00</div>
-            <button class="checkout-button" href="#" ><?php echo anchor("cashier_controller/order", "PROCEED TO CHECKOUT") ?></button>
+            <!-- <button class="checkout-button" href="#" ><?php echo anchor("cashier_controller/order", "PROCEED TO CHECKOUT") ?></button> -->
+            <button class="checkout-button" href="#" ><?php echo anchor("cashier_controller/foodmenu", "COMPLETE ORDER") ?></button>
             
         </div>
         

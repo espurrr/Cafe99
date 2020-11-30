@@ -143,8 +143,12 @@
                     <?php echo form_open("km_controller/updateAvailability","POST");?>
                     <!-- <form action="" method="POST"> -->
                     <div class="btn-container">
-                        <!-- <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row->Food_ID;?>" ><i class="fas fa-check"></i></button>
-                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row->Food_ID;?>"><i class="fas fa-times"></i></button>                  -->
+                    <div class="row">
+                                <button class="button-cart">-</button>
+                                    <input type="text" class="input-cart" value="1" min="1" />
+                                <button class="button-cart">+</button>
+                            </div>
+                        <button class="btn" >Add to Cart</button>
                     </div>
                     <?php echo form_close();?>
                     <!-- </form> -->
@@ -172,9 +176,13 @@
                     <?php echo form_open("km_controller/updateAvailability","POST");?>
                     <!-- <form action="" method="POST"> -->
                     <div class="btn-container">
-                        <!-- <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row->Food_ID;?>" ><i class="fas fa-check"></i></button>
-                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row->Food_ID;?>"><i class="fas fa-times"></i></button>                  -->
-                    </div>
+                    <div class="row">
+                                <button class="button-cart">-</button>
+                                    <input type="text" class="input-cart" value="1" min="1" />
+                                <button class="button-cart">+</button>
+                            </div>
+                        <button class="btn" >Add to Cart</button>    
+                     </div>
                     <?php echo form_close();?>
                     <!-- </form> -->
                 </article>
@@ -201,8 +209,13 @@
                     <?php echo form_open("km_controller/updateAvailability","POST");?>
                     <!-- <form action="" method="POST"> -->
                     <div class="btn-container">
-                        <!-- <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row->Food_ID;?>" ><i class="fas fa-check"></i></button>
-                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row->Food_ID;?>"><i class="fas fa-times"></i></button>                  -->
+                        
+                    <div class="row">
+                                <button class="button-cart">-</button>
+                                    <input type="text" class="input-cart" value="1" min="1" />
+                                <button class="button-cart">+</button>
+                            </div>
+                        <button class="btn" >Add to Cart</button>
                     </div>
                     <?php echo form_close();?>
                     <!-- </form> -->
@@ -230,8 +243,12 @@
                     <?php echo form_open("km_controller/updateAvailability","POST");?>
                     <!-- <form action="" method="POST"> -->
                     <div class="btn-container">
-                        <!-- <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row->Food_ID;?>" ><i class="fas fa-check"></i></button>
-                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row->Food_ID;?>"><i class="fas fa-times"></i></button>                  -->
+                    <div class="row">
+                                <button class="button-cart">-</button>
+                                    <input type="text" class="input-cart" value="1" min="1" />
+                                <button class="button-cart">+</button>
+                            </div>
+                        <button class="btn" >Add to Cart</button>
                     </div>
                     <?php echo form_close();?>
                     <!-- </form> -->
@@ -259,8 +276,12 @@
                     <?php echo form_open("km_controller/updateAvailability","POST");?>
                     <!-- <form action="" method="POST"> -->
                     <div class="btn-container">
-                        <!-- <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row->Food_ID;?>" ><i class="fas fa-check"></i></button>
-                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row->Food_ID;?>"><i class="fas fa-times"></i></button>                  -->
+                    <div class="row">
+                                <button class="button-cart">-</button>
+                                    <input type="text" class="input-cart" value="1" min="1" />
+                                <button class="button-cart">+</button>
+                            </div>
+                        <button class="btn" >Add to Cart</button>
                     </div>
                     <?php echo form_close();?>
                     <!-- </form> -->
@@ -288,8 +309,12 @@
                     <?php echo form_open("km_controller/updateAvailability","POST");?>
                     <!-- <form action="" method="POST"> -->
                     <div class="btn-container">
-                        <!-- <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row->Food_ID;?>" ><i class="fas fa-check"></i></button>
-                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row->Food_ID;?>"><i class="fas fa-times"></i></button>                  -->
+                    <div class="row">
+                                <button class="button-cart">-</button>
+                                    <input type="text" class="input-cart" value="1" min="1" />
+                                <button class="button-cart">+</button>
+                            </div>
+                        <button class="btn" >Add to Cart</button>
                     </div>
                     <?php echo form_close();?>
                     <!-- </form> -->
@@ -319,9 +344,12 @@
                     <?php echo form_open("km_controller/updateAvailability","POST");?>
                     <!-- <form action="" method="POST"> -->
                     <div class="btn-container">
-                      <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row->Food_ID;?>" ><i class="fas fa-check"></i></button>
-                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row->Food_ID;?>"><i class="fas fa-times"></i></button>
-
+                    <div class="row">
+                                <button class="button-cart">-</button>
+                                    <input type="text" class="input-cart" value="1" min="1" />
+                                <button class="button-cart">+</button>
+                            </div>
+                        <button class="btn" >Add to Cart</button>
                     </div>
                     <?php echo form_close();?>
                     <!-- </form> -->
@@ -349,8 +377,12 @@
                     <?php echo form_open("km_controller/updateAvailability","POST");?>
                     <!-- <form action="" method="POST"> -->
                     <div class="btn-container">
-                        <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row->Food_ID;?>" ><i class="fas fa-check"></i></button>
-                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row->Food_ID;?>"><i class="fas fa-times"></i></button>                    </div>
+                    <div class="row">
+                                <button class="button-cart">-</button>
+                                    <input type="text" class="input-cart" value="1" min="1" />
+                                <button class="button-cart">+</button>
+                            </div>
+                        <button class="btn" >Add to Cart</button>
                     <?php echo form_close();?>
                     <!-- </form> -->
                 </article>
@@ -377,8 +409,12 @@
                     <?php echo form_open("km_controller/updateAvailability","POST");?>
                     <!-- <form action="" method="POST"> -->
                     <div class="btn-container">
-                        <!-- <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row->Food_ID;?>" ><i class="fas fa-check"></i></button>
-                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row->Food_ID;?>"><i class="fas fa-times"></i></button>                  -->
+                    <div class="row">
+                                <button class="button-cart">-</button>
+                                    <input type="text" class="input-cart" value="1" min="1" />
+                                <button class="button-cart">+</button>
+                            </div>
+                        <button class="btn" >Add to Cart</button>
                     </div>
                     <?php echo form_close();?>
                     <!-- </form> -->
@@ -406,8 +442,12 @@
                     <?php echo form_open("km_controller/updateAvailability","POST");?>
                     <!-- <form action="" method="POST"> -->
                     <div class="btn-container">
-                        <!-- <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row->Food_ID;?>" ><i class="fas fa-check"></i></button>
-                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row->Food_ID;?>"><i class="fas fa-times"></i></button>                  -->
+                    <div class="row">
+                                <button class="button-cart">-</button>
+                                    <input type="text" class="input-cart" value="1" min="1" />
+                                <button class="button-cart">+</button>
+                            </div>
+                        <button class="btn" >Add to Cart</button>
                     </div>
                     <?php echo form_close();?>
                     <!-- </form> -->
@@ -435,8 +475,12 @@
                     <?php echo form_open("km_controller/updateAvailability","POST");?>
                     <!-- <form action="" method="POST"> -->
                     <div class="btn-container">
-                        <!-- <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row->Food_ID;?>" ><i class="fas fa-check"></i></button>
-                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row->Food_ID;?>"><i class="fas fa-times"></i></button>                  -->
+                    <div class="row">
+                                <button class="button-cart">-</button>
+                                    <input type="text" class="input-cart" value="1" min="1" />
+                                <button class="button-cart">+</button>
+                            </div>
+                        <button class="btn" >Add to Cart</button>
                     </div>
                     <?php echo form_close();?>
                     <!-- </form> -->
@@ -469,8 +513,13 @@
                     <?php echo form_open("km_controller/updateAvailability","POST");?>
                     <!-- <form action="" method="POST"> -->
                     <div class="btn-container">
-                        <!-- <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row->Food_ID;?>" ><i class="fas fa-check"></i></button>
-                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row->Food_ID;?>"><i class="fas fa-times"></i></button>                  -->
+                    <div class="row">
+                                <button class="button-cart">-</button>
+                                    <input type="text" class="input-cart" value="1" min="1" />
+                                <button class="button-cart">+</button>
+                            </div>
+                        <button class="btn" >Add to Cart</button>
+                        
                     </div>
                     <?php echo form_close();?>
                     <!-- </form> -->
@@ -498,8 +547,13 @@
                     <?php echo form_open("km_controller/updateAvailability","POST");?>
                     <!-- <form action="" method="POST"> -->
                     <div class="btn-container">
-                        <!-- <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row->Food_ID;?>" ><i class="fas fa-check"></i></button>
-                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row->Food_ID;?>"><i class="fas fa-times"></i></button>                  -->
+                    <div class="row">
+                                <button class="button-cart">-</button>
+                                    <input type="text" class="input-cart" value="1" min="1" />
+                                <button class="button-cart">+</button>
+                            </div>
+                        <button class="btn" >Add to Cart</button>
+                        
                     </div>
                     <?php echo form_close();?>
                     <!-- </form> -->
@@ -527,8 +581,13 @@
                     <?php echo form_open("km_controller/updateAvailability","POST");?>
                     <!-- <form action="" method="POST"> -->
                     <div class="btn-container">
-                        <!-- <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row->Food_ID;?>" ><i class="fas fa-check"></i></button>
-                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row->Food_ID;?>"><i class="fas fa-times"></i></button>                  -->
+                    <div class="row">
+                                <button class="button-cart">-</button>
+                                    <input type="text" class="input-cart" value="1" min="1" />
+                                <button class="button-cart">+</button>
+                            </div>
+                        <button class="btn" >Add to Cart</button>
+                        
                     </div>
                     <?php echo form_close();?>
                     <!-- </form> -->
@@ -556,8 +615,13 @@
                     <?php echo form_open("km_controller/updateAvailability","POST");?>
                     <!-- <form action="" method="POST"> -->
                     <div class="btn-container">
-                        <!-- <button class="btn inactive av-btn" disabled type="submit" name="av" value="<?php echo $row->Food_ID;?>" ><i class="fas fa-check"></i></button>
-                        <button class="btn inactive unav-btn" disabled type="submit"  name="unav" value="<?php echo $row->Food_ID;?>"><i class="fas fa-times"></i></button>                  -->
+                    <div class="row">
+                                <button class="button-cart">-</button>
+                                    <input type="text" class="input-cart" value="1" min="1" />
+                                <button class="button-cart">+</button>
+                            </div>
+                        <button class="btn" >Add to Cart</button>
+                        
                     </div>
                     <?php echo form_close();?>
                     <!-- </form> -->
