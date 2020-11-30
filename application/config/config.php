@@ -28,7 +28,7 @@ Base URL
 */
 $setting = [
 
-    'base_url'  => 'http://localhost/cafe99'
+    'base_url'  => 'http://localhost:8080/cafe99'
 
 ];
 
