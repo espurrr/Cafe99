@@ -71,6 +71,10 @@ a{
   position: relative;
 }
 
+.sidebar-wrapper .sidebar .btn-logout{
+  position: relative;
+  padding: 10px;
+}
 .sidebar-wrapper .sidebar ul li a, .dropdown-btn{
     display: block;
     padding:25px;
