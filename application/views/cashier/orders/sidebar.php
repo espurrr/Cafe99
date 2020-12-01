@@ -4,7 +4,7 @@
             <div class="profile-details">
                 <div class="avatar"><i class="far fa-user-circle"></i></div>
                 <div class="profile-text">
-                    <p class="name">John Smith</p>
+                    <p class="name"><?= $this->get_session('user_name'); ?></p>
                     <p class="role">Cashier</p>
                 </div>
             </div>
@@ -18,6 +18,6 @@
                 <li><?php echo anchor("cashier_controller/foodmenu", "Food Menu",['class'=>"normal"])?></li>
                 
             </ul>
-            <div><a href="" class="logout-btn normal">Logout</a></div>
+            <div><?php echo anchor("cashier_controller/logout", "Log Out",['class'=>"normal"])?></div>
         </div>
     </div>
