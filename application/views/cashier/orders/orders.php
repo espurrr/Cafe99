@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 </head>
 <body>
+    <div class="page-container" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
     <?php include 'sidebar.php';?>
     <?php include '../application/views/header/header-dashboard.php';?>
     <?php include 'popup.php';?>
@@ -38,7 +39,7 @@
 
             <tr>
                 <td>01</td>
-                <td ><div class="cell-desc">Lorem,u dolor sit et consectetur adipisicing elit.</div></td>
+                <td ><div class="cell-desc">Twin stick,Pizza</div></td>
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn" onclick="showModal(121)">View</button>
@@ -49,7 +50,7 @@
 
             <tr>
                 <td>02</td>
-                <td ><div class="cell-desc">Lorem,uium dolor sLorem,uium dolor sit et consectetur adipisicing elit.</div></td>
+                <td ><div class="cell-desc">Twin stick,Pizza</div></td>
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn">View</button>
@@ -60,7 +61,7 @@
 
             <tr>
                 <td>03</td>
-                <td ><div class="cell-desc">Lorem,uium dolor sit et consectetur adipisicing elit.</div></td>
+                <td ><div class="cell-desc">Twin stick,Pizza</div></td>
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn">View</button>
@@ -87,7 +88,7 @@
 
             <tr>
                 <td>01</td>
-                <td ><div class="cell-desc"> adipisicing elit.</div></td>
+                <td ><div class="cell-desc">Twin stick,Pizza</div></td>
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn">View</button>
@@ -98,7 +99,7 @@
 
             <tr>
                 <td>02</td>
-                <td ><div class="cell-desc">r adipisicing elit.</div></td>
+                <td ><div class="cell-desc">Twin stick,Pizza</div></td>
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn">View</button>
@@ -109,7 +110,7 @@
 
             <tr>
                 <td>03</td>
-                <td ><div class="cell-desc">tetur adipisicing elit.</div></td>
+                <td ><div class="cell-desc">Twin stick,Pizza</div></td>
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn">View</button>
@@ -136,7 +137,7 @@
 
             <tr>
                 <td>01</td>
-                <td ><div class="cell-desc">Lorem,uium ctetur adipisicing elit.</div></td>
+                <td ><div class="cell-desc">Twin stick,Pizza</div></td>
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn">View</button>
@@ -147,7 +148,7 @@
 
             <tr>
                 <td>02</td>
-                <td ><div class="cell-desc">Lorem,uium dolor sit et consectetur alit.</div></td>
+                <td ><div class="cell-desc">Twin stick,Pizza</div></td>
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn">View</button>
@@ -158,7 +159,7 @@
 
             <tr>
                 <td>03</td>
-                <td ><div class="cell-desc">Lorem,uium do consectetur adipisicing elit.</div></td>
+                <td ><div class="cell-desc">Twin stick,Pizza</div></td>
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn">View</button>
@@ -187,7 +188,7 @@
 
             <tr>
                 <td>01</td>
-                <td ><div class="cell-desc">Lorem,uium dolors ecteturt.</div></td>
+                <td ><div class="cell-desc">Twin stick,Pizza</div></td>
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn">View</button>
@@ -198,7 +199,7 @@
 
             <tr>
                 <td>02</td>
-                <td ><div class="cell-desc">Lorem,t et consectetur adipisicing elit.</div></td>
+                <td ><div class="cell-desc">Twin stick,Pizza</div></td>
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn">View</button>
@@ -209,7 +210,7 @@
 
             <tr>
                 <td>03</td>
-                <td ><div class="cell-desc">Lorem,usit et consectdipisicing elit.</div></td>
+                <td ><div class="cell-desc">Twin stick,Pizza</div></td>
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn">View</button>
@@ -219,7 +220,9 @@
             </tr>
           </table>
     </div>
+    <?php include '../application/views/footer/footer_3.php';?>
     <?php echo link_js("js/kitchen-manager/orders/orders.js"); ?>
     <?php echo link_js("js/kitchen-manager/orders/popup.js"); ?>
+    
 </body>
 </html>

@@ -10,15 +10,16 @@
     <title>Cart</title>
 </head>
 <body>
+    <div class="page-container" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
     <?php include "sidebar.php";?>
     <?php include "../application/views/header/header-dashboard.php";?> 
 
     <ul id="breadcrumbs">
-    <li>Cart</li>
-    <!-- <li><?php echo anchor("cashier_controller/order", "Order") ?></li>
-    <li>Payment</li> -->
+        <li>Cart</li>
+        <!-- <li><?php echo anchor("cashier_controller/order", "Order") ?></li>
+        <li>Payment</li> -->
   
-</ul>
+    </ul>
 
     <div class="cart-container">
         <div class="cart-items">
@@ -131,6 +132,6 @@
 
 
     </script>
-    
+    <?php include '../application/views/footer/footer_3.php';?>
 </body>
 </html>
