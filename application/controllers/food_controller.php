@@ -44,7 +44,7 @@ class Food_Controller extends JB_Controller{
                         $this->set_flash("nofoodError", "Sorry, there are no $subcat available for now.");
                         echo"noffood";
                     }else if($result['status'] === "success"){
-                        $this->view('fd',$result['data']);
+                        $this->view('food-menu',$result['data']);
                     }
                     break;
 

@@ -55,7 +55,7 @@
                     </label>
     
                 </div>
-            <button class="checkout-button mob-complete" onclick="showModal()">complete</button>
+            <button class="checkout-button mob-complete" onclick="showModal()">COMPLETE ORDER</button>
             
                
                
@@ -99,7 +99,7 @@
             </div>
             <div class="total">Service charges: 50.00</div>                
             <div class="total"><b>Total: 1000.00</b></div>
-            <button class="checkout-button" onclick="showModal()" >complete</button>
+            <button class="checkout-button" onclick="showModal()" >COMPLETE ORDER</button>
             
         </div>
         
@@ -159,10 +159,10 @@
         }
 
         window.onclick = function(event) {
-            window.location.href = "http://localhost/cafe99/account_controller/index";
-        //   if (event.target == win_content_wrapper) {
-        //     popup_win.style.display = "none";
-        //   }
+            // window.location.href = "http://localhost/cafe99/account_controller/index";
+          if (event.target == win_content_wrapper) {
+            popup_win.style.display = "none";
+          }
         }
 
   </script>
