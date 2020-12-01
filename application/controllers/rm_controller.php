@@ -47,7 +47,7 @@ class RM_Controller extends JB_Controller{
            $this->validation('User_name', 'Name' , 'required|not_int|max_len|50');
            $this->validation('Email_address','Email address', 'unique|user|required');
            $this->validation('Phone_no','Phone no', 'unique|user|required|len|10');
-           $this->validation('User_Password','User password', 'required|min_len|5');
+           $this->validation('User_Password','User password', 'required|min_len|8');
    
            if($this->run()){
           //   echo "data insert";
