@@ -15,6 +15,9 @@ class Home_controller extends JB_Controller{
     public function four_0_four(){
         $this->view('error');
     }
+    public function forbidden(){
+        $this->view('forbidden');
+    }
 
 }
 
