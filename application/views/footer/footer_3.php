@@ -10,7 +10,7 @@
 <footer id="footer" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
     <div class="footer-container">
         <div class="image" style="background-image: url('<?php echo BASE_URL?>/public/images/logo.png');"></div>
-        <div class="text"><p>Powered by Team DashCode</p></div>
+        <div class="text"><p>Powered by Team DashCodes</p></div>
     </div>
 </footer>
 <!-- 

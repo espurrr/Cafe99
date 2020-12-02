@@ -55,7 +55,7 @@
         public function getAnnouncement(){
             $query = "SELECT announcement.Announcement_id, announcement.Announcement_title, announcement.Announcement_date, announcement.Announcement_time, 
             announcement.Content, announcement.To_whom, user.User_name FROM announcement INNER JOIN user ON announcement.User_ID = user.User_ID
-            WHERE announcement.To_whom = 'All Employees' OR announcement.To_whom = 'Kitchen managers'";
+            WHERE announcement.To_whom = 'All Employees' OR announcement.To_whom = 'Kitchen managers' ORDER BY announcement.Announcement_date DESC";
 
             $result =$this->Query($query, $options = []);
             if($this->Count() > 0){
