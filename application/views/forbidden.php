@@ -25,7 +25,7 @@
      
 <div class="error-text" >
 	<h1 class="text">Ooops...</h1>
-	<h1 class="text">Something is missing</h1>
+	<h1 class="text">Can't let you in</h1>
 </div>
 <div class="error">
 

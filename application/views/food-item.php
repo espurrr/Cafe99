@@ -30,6 +30,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food item</title>
     <?php echo link_css("css/food-item.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     
     <!-- Footer -->
@@ -50,6 +51,12 @@
         <li><?php echo $data[0]->Subcategory_name;?></li>
         <li><?php echo $data[0]->Food_name;?></li>
     </ul>
+
+    <div class="authMessage">
+        <?php $this->flash('nofoodItemError','alert alert-warning','fa fa-warning'); ?>
+        <?php $this->flash('databaseError','alert alert-danger','fa fa-times-circle'); ?>
+    </div>
+
     <?php
         foreach($data as $row)
     ?>

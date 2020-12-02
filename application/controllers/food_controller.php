@@ -39,10 +39,10 @@ class Food_Controller extends JB_Controller{
                     // echo"rk";
                     if($result === "Food_not_retrieved"){
                         $this->set_flash("databaseError", "Sorry, cannot show our food at the moment. Please try again later.");
-                        echo"dberror";
+                        $this->view('food-menu');
                     }else if($result === "Food_not_found"){
                         $this->set_flash("nofoodError", "Sorry, there are no $subcat available for now.");
-                        echo"noffood";
+                        $this->view('food-menu');
                     }else if($result['status'] === "success"){
                         $this->view('food-menu',$result['data']);
                     }
@@ -56,10 +56,10 @@ class Food_Controller extends JB_Controller{
                     // echo"inside";
                     if($result === "Item_not_retrieved"){
                         $this->set_flash("databaseError", "Sorry, cannot show our food at the moment. Please try again later.");
-                        echo"dberror";
+                        $this->view('food-item');
                     }else if($result === "Food_not_found"){
                         $this->set_flash("nofoodItemError", "Sorry, there are no such dish available.");
-                        echo"noffood";
+                        $this->view('food-item');
                     }else if($result['status'] === "success"){
                         $this->view('food-item',$result['data']);
                     }

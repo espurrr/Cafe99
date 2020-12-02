@@ -10,7 +10,7 @@ class Customer_controller extends JB_Controller{
         }
         if($this->get_session('role')!="customer"){
             $this->destroy_session();
-            redirect("account_controller/login");
+            redirect("home_controller/forbidden");
             // $this->view('error');
 
         }

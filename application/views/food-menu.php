@@ -30,6 +30,7 @@
   <meta charset="UTF-8">
   <title>Products</title>
   <?php echo link_css("css/food-menu.css?ts=<?=time()?>"); ?>
+  <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
   
   <!-- Footer -->
@@ -54,6 +55,11 @@
         <li><?php echo $data[0]->Category_name?></li>
         <li><?php echo $data[0]->Subcategory_name?></li>
   </ul>
+
+  <div class="authMessage">
+    <?php $this->flash('nofoodError','alert alert-warning','fa fa-warning'); ?>
+    <?php $this->flash('databaseError','alert alert-danger','fa fa-times-circle'); ?>
+  </div>
 
   <div class="food_menu_wrapper">
   <div class="container">
