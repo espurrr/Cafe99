@@ -31,26 +31,29 @@
 </div>-->
 <br><br>
 <div class="wrapper">
-<div class="topic">
-<h1>About Us</h1>
-</div>
+    <div class="topic">
+        <h1>About Us</h1>
+    </div>
     <!-- <div class="aboutus-content">
     <h2 style="color:white;">Providing a Daily,fresh baking concepts that complements the needs of the urban household !!!</h2>
-   </div> -->
-<br><br>
-   <div class="content">
-   <p>The Cafe99 Restaurant & Lounge 
-      is a neighbourhood favourite, 
-      serving a range of mouth-watering food and fresh brewed coffee, since 1999.
-   </p><br>
-       <p>At the heart of what we do is the idea of providing a daily, fresh baking concept that complements the needs of the urban household. We strive to be the country leading bakery known for quality, service standard and value. We currently operate 50 outlets.</p>
-   </div>
+    </div> -->
+    <br><br>
+    <div class="content">
+        <p>The Cafe99 Restaurant & Lounge 
+        is a neighbourhood favourite, 
+        serving a range of mouth-watering food and fresh brewed coffee, since 1999.
+        </p><br>
+        <p>At the heart of what we do is the idea of providing a daily, fresh baking concept that complements the needs of the urban household. We strive to be the country leading bakery known for quality, service standard and value. We currently operate 50 outlets.</p>
+    </div>
    <!-- <br><br><br><br><br><br> -->
  <!--  <div class="img">
        <img src="cafe99.jpg" style="padding-right:100px;">
        <img src="Staffpic.jpg" style="padding-right:100px;">
        <img src="caf.jpg">
    </div>-->
+    <!-- <div class="about-us-image">
+        <img src="<?php //echo BASE_URL?>/public/images/aboutus.png" class = ""alt="Image 01">
+    </div> -->
 </div>
 </div><!-- content-wrapper ends-->
 <?php include '../application/views/footer/footer_1.php';?>  
