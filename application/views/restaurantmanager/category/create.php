@@ -9,6 +9,7 @@
     <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/restaurantmanager/admin.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
 </head>
 <body>
 <div class="page-container">
@@ -28,7 +29,11 @@
              <div class="content">
                  <h2 class="page-title">Add Categories</h2>
                 
-                 <form action="RM.php" method="post">
+                 <div class="status-msg" style="margin-bottom:20px">
+                    <?php $this->flash('categorySuccess','alert alert-success','fa fa-check'); ?>
+                </div>
+
+               <!--  <form action="RM.php" method="post">
                      
                         
                         <label for="cname">Category name</label>
@@ -38,7 +43,21 @@
                             <input type="submit" value="Save">
                         </div>
                     
-                 </form>
+                 </form>-->
+                 <?php echo form_open("rmuser_controller/createCategory","post");?>
+                 <label for="catname">Category name</label>
+                 <input type="text" id="catname" name="Category_name" ><br>
+                 <div class="dashboard-error">
+                            <?php if(!empty($this->errors['Category_name'])):?>
+                            <?php echo $this->errors['Category_name'];?>
+                            <?php endif;?>
+                        </div>
+                        <input type="submit" value="Submit">
+          
+    
+         
+          <?php echo form_close();?>
+
              </div>
             </div>
         

@@ -68,7 +68,7 @@ class RM_Controller extends JB_Controller{
                    'Email_address' => $Email_address,
                    'Phone_no' => $Phone_no,
                    'User_Password' => $User_Password,
-                // 'User_role'=>$User_role,
+                   'User_role'=>$User_role,
                    'User_status'=> "active",
                    'Registered_date' => date("Y-m-d"),
               /*  'Registered_date' => $Registered_date,*/
@@ -172,12 +172,13 @@ class RM_Controller extends JB_Controller{
    }
    
    
- /*  public function delete_user_data(){
+   public function delete_user_data(){
    
        $id = $this->get_session('User_ID');
        $result = $this->model->deleteuser( $id );
-       $this->view('restaurantmanager/users/RM');
-   }*/ 
+  //   $this->model->deleteuser( $id );
+    //   $this->view('restaurantmanager/users/RM');
+   } 
    
 
     public function orders(){

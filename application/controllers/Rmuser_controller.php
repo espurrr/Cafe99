@@ -237,5 +237,61 @@ public function delete_user_data($id){
     $this->view('restaurantmanager/users/RM');
 } */
 
+public function createSubcategory(){
+    $this->validation('Subcategory_name', 'Subcategory name' , 'required');
+  //  $this->validation('Category_ID','Category','required');
+
+    if($this->run()){
+        $Subcategory_name = $this->post('Subcategory_name');
+    //    $Category_ID=$this->post('Category_ID');//will replace the ID later because it is FK
+
+        $data=['Subcategory_name'=>$Subcategory_name,
+      //  'Category_ID'=>$Category_ID
+    ];
+
+    if($this->model->addSubcategory($data)){
+        $this->set_flash("subcategorySuccess", "Subcategory added successfully");
+        $this->view('restaurantmanager/subcategory/create');
+
+    }else{
+        $this->set_flash("subcategoryError", "Something went wrong :( Please try again later.");
+        $this->view('restaurantmanager/subcategory/create');
+
+    }
+
+    }else{
+        $this->view('restaurantmanager/subcategory/create');
+
+    }
+}
+
+public function createCategory(){
+    $this->validation('Category_name', 'Category name' , 'required');
+  
+
+    if($this->run()){
+        $Subcategory_name = $this->post('Category_name');
+    
+        $data=['Category_name'=>$Category_name,
+     
+    ];
+
+    if($this->model->addCategory($data)){
+        $this->set_flash("categorySuccess", "Category added successfully");
+        $this->view('restaurantmanager/category/create');
+
+    }else{
+        $this->set_flash("categoryError", "Something went wrong :( Please try again later.");
+        $this->view('restaurantmanager/category/create');
+
+    }
+
+    }else{
+        $this->view('restaurantmanager/category/create');
+
+    }
+}
+
+
 }
 ?>

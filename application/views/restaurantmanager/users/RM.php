@@ -115,8 +115,8 @@
           echo "<td>".$row->User_role."</td>";
       //    echo "<td>".anchor("rm_controller/usersedit", "Edit",['class'=>"edit"])."</td>";
           echo "<td>".anchor("rm_controller/user_update_values", "Edit",['class'=>"edit"])."</td>";
-       //   echo "<td>".anchor("rm_controller/delete_user_data", "Delete",['class'=>"delete"])."</td>";
-       echo "<td>".anchor("rm_controller/users", "Delete",['class'=>"delete"])."</td>";
+          echo "<td>".anchor("rm_controller/delete_user_data", "Delete",['class'=>"delete"])."</td>";
+      // echo "<td>".anchor("rm_controller/users", "Delete",['class'=>"delete"])."</td>";
           echo "</tr>";
         }
        

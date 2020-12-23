@@ -71,6 +71,26 @@ class Rmuser_model extends Database{
         }
     }
 
+    public function addSubcategory($data){
+     //   print_r($data);
+            if($this->Insert("subcategory", $data)){
+                return true;
+            }else{
+                return false;
+            }
+           
+        }
+    
+        public function addCategory($data){
+            //   print_r($data);
+                   if($this->Insert("category", $data)){
+                       return true;
+                   }else{
+                       return false;
+                   }
+                  
+               }
+
 }
 
 ?>

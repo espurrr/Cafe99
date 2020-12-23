@@ -101,13 +101,13 @@
             <?php endif;?>
           </div>
 
-       <!--   <label for="User_role">Role</label>
+          <label for="User_role">Role</label>
           <?php echo form_input(['type'=>'text', 'name'=>'User_role', 'placeholder'=>'Enter Role...', 'value'=>$this->set_value('User_role')])?>
           <div class="error">
             <?php if(!empty($this->errors['User_role'])):?>
             <?php echo $this->errors['User_role'];?>
             <?php endif;?>
-          </div>-->
+          </div>
           
          <!-- <label for="Registered_date">Registered Date</label>
           <?php echo form_input(['type'=>'text', 'name'=>'Registered_date', 'placeholder'=>'Enter Register Date...', 'value'=>$this->set_value('Registered_date')])?>
