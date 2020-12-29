@@ -11,6 +11,7 @@
   --delete-btn-color:#f12f2ff1;
   --colorWhite: white;
   --action-btn-color:rgb(59, 58, 58);
+  --read-more-color: #124f77;
 
 }
 
@@ -113,6 +114,25 @@ body{
   word-wrap:break-word;
   color: #444;
 
+}
+
+.dashboard .post .text-message .dots{
+  display: inline;
+}
+.dashboard .post .text-message .readMore{
+  display:inline; 
+  color: var(--read-more-color);
+}
+
+.dashboard .post .text-message .more{
+  display: none;
+}
+.dashboard .post .text-message .readLess{
+  display:none; 
+  color: var(--read-more-color);
+}
+.dashboard .post .text-message .readMore:hover, .dashboard .post .text-message .readLess:hover{
+  cursor: pointer;
 }
 
 .dashboard .action{
