@@ -9,6 +9,7 @@
     <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/restaurantmanager/admin.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
 </head>
 <body>
 <div class="page-container">
@@ -27,7 +28,10 @@
              <div class="content">
                  <h2 class="page-title">Edit Subcategories</h2>
                 
-                 <form action="RM.php" method="post">
+                 <div class="status-msg" style="margin-bottom:20px">
+                    <?php $this->flash('UpdateSuccess','alert alert-success','fa fa-check'); ?>
+                </div>
+              <!--   <form action="RM.php" method="post">
                      
                         
                         <label for="subname">Subcategory name</label>
@@ -37,7 +41,23 @@
                             <input type="submit" value="Update" onclick="alert('Are you sure update')">
                         </div>
                     
-                 </form>
+                 </form>-->
+
+                 <?php echo form_open("rm_controller/subcategory_update_save","post");?>
+                 <label for="subname">Subcategory name</label>
+             <!--    <input type="text" id="subname" name="Subcategory_name" ><br>-->
+             <?php echo form_input(['type'=>'text', 'name'=>'Subcategory_name','value'=>$data->Subcategory_name])?><br>
+                 <div class="dashboard-error">
+                            <?php if(!empty($this->errors['Subcategory_name'])):?>
+                            <?php echo $this->errors['Subcategory_name'];?>
+                            <?php endif;?>
+                        </div>
+                        <input type="submit" value="Update">
+          
+    
+         
+          <?php echo form_close();?>
+
              </div>
             </div>
         

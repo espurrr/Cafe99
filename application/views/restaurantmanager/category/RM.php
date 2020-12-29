@@ -46,7 +46,7 @@
              <!--   <a href="RM.php" class="button">Manage Categories</a>-->
             <?php echo anchor("rm_controller/category", "Manage Categories",['class'=>"button"]) ?>
              <!--   <a href="create.php" class="button">Add  Categories</a>-->
-             <?php echo anchor("rm_controller/categorycreate", "Add Categories",['class'=>"button"]) ?>
+             <?php echo anchor("rm_controller/createCategory", "Add Categories",['class'=>"button"]) ?>
 
               
                 <div class="search-container">
@@ -65,15 +65,27 @@
                         <th colspan="2">Action</th>
                         </thead>
                         
-                        <tbody>
+                       <!-- <tbody>
                            <tr>
-                               <td>Food</td>
+                               <td>Food</td>-->
                             <!--   <td><a href="edit.php" class="edit">Edit</a></td>-->
-                               <td><?php echo anchor("rm_controller/categoryedit", "Edit",['class'=>"edit"]) ?></td> 
+                             <!--  <td><?php echo anchor("rm_controller/categoryedit", "Edit",['class'=>"edit"]) ?></td> 
                                <td><a href="#" class="delete" onclick='showDeleteModal()'>Delete</a></td>
                               
                             </tr>
-                        </tbody>
+                        </tbody>-->
+
+                        <?php
+                        $fooditem=new Rm_model;
+                        foreach($data as $row){
+                            echo "<tr>";
+                            echo "<td>".$row->Category_name."</td>";
+                            echo "<td>".anchor("rm_controller/category_update_values?Category_ID=".$row->Category_ID."", "Edit",['class'=>"edit"])."</td>";
+                            echo "<td>".anchor("rm_controller/delete_category?Category_ID=".$row->Category_ID."", "Delete",['class'=>"delete"])."</td>";
+                            echo "</tr>";
+
+                        }
+                        ?>
                     </table>
                     </div>
                 </div>

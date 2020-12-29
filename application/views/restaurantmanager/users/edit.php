@@ -9,6 +9,7 @@
     <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/restaurantmanager/admin.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
 </head>
 <body>
 <div class="page-container">
@@ -27,6 +28,9 @@
              <div class="content">
                  <h2 class="page-title">Edit Users</h2>
                 
+                 <div class="status-msg" style="margin-bottom:20px">
+                    <?php $this->flash('UpdateSuccess','alert alert-success','fa fa-check'); ?>
+                </div>
             <!--     <form action="RM.php" method="post">
                      
                         

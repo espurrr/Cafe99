@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <title>Restaurant Manager dashboard</title>
     <?php echo link_css("css/restaurantmanager/sidebar.css?ts=<?=time()?>");?>
     <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
@@ -155,12 +156,65 @@
                     </div>
                     
 
+                     <?php foreach($data as $row): ?>
+                <div class="dashboard" id="download">
+                    <div class="post">
+                        <div class="top">
+                            <div class="img">
+                                <i class="fa fa-user-circle" aria-hidden="true" style="font-size:35px"></i>
+                            </div>
+                            <div class="name">
+                                <strong><a href="#" class="text-name"><?php echo $row->User_name;?></a></strong>
+                                <div class="date">
+                                    <span class="text-when"><?php echo $row->Announcement_date." at ".substr($row->Announcement_time,0,5) ?></span>
+                                </div>
+                            </div>
+                            <div class="employee"><i class="fas fa-users"></i>  &nbsp;<?php echo $row->To_whom;?></div>
+                        </div><!-- top ends here -->
+                        <div class="news_content">
+                            <div class="text_title"><p><?php echo $row->Announcement_title;?></p></div>
+                            <div class="text-message">
+                            <?php
+                                $str = $row->Content;
+                                if(strlen($str) > 240):
+                            ?>
+                                    <div class="a-id" style="display:none"><?php echo $row->Announcement_id ?></div>
+                                    <p><?php echo substr($str,0,240) ?>
+                                    <span class="dots">......</span>
+                                    <a class="readMore" onclick="readMore(<?php echo $row->Announcement_id ?>)"> Read More </a>
+                                    <span class="more"><?php echo substr($str,240) ?> </span>
+                                    <a class="readLess" onclick="readMore(<?php echo $row->Announcement_id ?>)"> Read Less </a>
+                                    </p>
+                            <?php
+                                else:
+                            ?>
+                                    <p><?php echo substr($str,0); ?></p>
+                            <?php
+                                endif;
+                            ?>
+                            </div>
+                            <br>
+                            <div class="action">
+                                <div class="link-wrapper">
+                                        <!--  <a href="edit.php" class="edit">Edit</a>-->
+                                        <?php echo anchor("rm_controller/newsfeed_update_values?Announcement_ID=".$row->Announcement_id."", "Edit",['class'=>"edit"]) ?>
+                                        <!--  <a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a>-->
+                                      <!--  <a href="#" class="delete" onclick='showDeleteModal()'>Delete</a>-->
+                                        <?php echo anchor("rm_controller/delete_newsfeed?Announcement_ID=".$row->Announcement_id."", "Delete",['class'=>"delete"]) ?>
+                                </div>
+                           </div>
+                        </div><!-- news_content ends here -->
+                    </div><!-- post ends here -->
+                </div><!-- dashbaord ends here -->
+                <?php endforeach; ?>
+
                 </div>
             </div>
         </div>
         </div>
         <?php  include '../application/views/footer/footer_3.php';?> 
         </div>
-        <?php echo link_js("js/restaurantmanager/delete.js"); ?>    
+        <?php echo link_js("js/restaurantmanager/delete.js"); ?> 
+        <?php echo link_js("js/restaurantmanager/newsfeed.js"); ?>   
 </body>
 </html>

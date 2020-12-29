@@ -45,7 +45,7 @@
             <!--    <a href="RM.php" class="button">Manage Subcategories</a>-->
                 <?php echo anchor("rm_controller/subcategory", "Manage Subcategories",['class'=>"button"]) ?>
             <!--    <a href="create.php" class="button">Add  Subcategories</a>-->
-            <?php echo anchor("rm_controller/subcategorycreate", "Add Subcategories",['class'=>"button"]) ?>
+            <?php echo anchor("rm_controller/createSubcategory", "Add Subcategories",['class'=>"button"]) ?>
              
                 <div class="search-container">
     <form action="#">
@@ -63,15 +63,26 @@
                         <th colspan="2">Action</th>
                         </thead>
                         
-                        <tbody>
+                      <!--  <tbody>
                            <tr>
-                               <td>Rice</td>
+                               <td>Rice</td>-->
                             <!--   <td><a href="edit.php" class="edit">Edit</a></td>-->
-                            <td><?php echo anchor("rm_controller/subcategoryedit", "Edit",['class'=>"edit"]) ?></td> 
+                         <!--   <td><?php echo anchor("rm_controller/subcategoryedit", "Edit",['class'=>"edit"]) ?></td> 
                                <td><a href="#" class="delete" onclick='showDeleteModal()'>Delete</a></td>
                               
                             </tr>
-                        </tbody>
+                        </tbody>-->
+                        <?php
+                        $fooditem=new Rm_model;
+                        foreach($data as $row){
+                            echo "<tr>";
+                            echo "<td>".$row->Subcategory_name."</td>";
+                            echo "<td>".anchor("rm_controller/subcategory_update_values?Subcategory_ID=".$row->Subcategory_ID."", "Edit",['class'=>"edit"])."</td>";
+                            echo "<td>".anchor("rm_controller/delete_subcategory?Subcategory_ID=".$row->Subcategory_ID."", "Delete",['class'=>"delete"])."</td>";
+                            echo "</tr>";
+
+                        }
+                        ?>
                     </table>
                     </div>
                 </div>

@@ -43,9 +43,10 @@
                         </div>
                     
                  </form>-->
-                 <?php echo form_open("rmuser_controller/createSubcategory","post");?>
+                 <?php echo form_open("rm_controller/createSubcategory","post");?>
                  <label for="subname">Subcategory name</label>
-                 <input type="text" id="subname" name="Subcategory_name" ><br>
+               <!--  <input type="text" id="subname" name="Subcategory_name" ><br>-->
+                 <?php echo form_input(['type'=>'text', 'name'=>'Subcategory_name','value'=>$this->set_value('Subcategory_name')])?><br>
                  <div class="dashboard-error">
                             <?php if(!empty($this->errors['Subcategory_name'])):?>
                             <?php echo $this->errors['Subcategory_name'];?>

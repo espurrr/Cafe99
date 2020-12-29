@@ -10,6 +10,7 @@
     <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/restaurantmanager/admin.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
 
 </head>
 <body>
@@ -29,17 +30,17 @@
                 
                 <!-- taken from food.create -->
                  <div class="status-msg" style="margin-bottom:20px">
-                    <?php $this->flash('fooditemSuccess','alert alert-success','fa fa-check'); ?>
+                    <?php $this->flash('newsfeedSuccess','alert alert-success','fa fa-check'); ?>
                 </div>
     
 
                  <!-- <form action="RMnewsfeed.php" method="post"> -->
-                 <?php echo form_open("rmnewsfeed_controller/create","post");?>   
+                 <?php echo form_open("rm_controller/create","post");?>   
                  
                         <!-- <label for="Ann_id">Announcement_id</label>
                         <input type="text" id="Ann_id" name="Ann_id" ><br> -->
 
-                        <label for="Ann_title">Title</label>
+                     <!--   <label for="Ann_title">Title</label>
                         <input type="text" id="Ann_title" name="Ann_title" ><br>
 
                         <label for="Ann_date">Date</label>
@@ -52,16 +53,42 @@
                         <textarea name="content" id="content" ></textarea>
 
                         <label for="Ann_towhom">To Whom</label>
-                        <input type="text" id="Ann_towhom" name="Ann_towhom" ><br>
+                        <input type="text" id="Ann_towhom" name="Ann_towhom" ><br>-->
 
                         <!-- <label for="Ann_user">User ID</label> -->
                         <!-- <input type="text" id="Ann_user" name="Ann_user" ><br> -->
 
+                  <!--      <div>
+                            <input type="submit" value="Save">
+                        </div>-->
+                        
+                      <!--  <label for="Ann_id">Announcement_id</label>-->
+                    <!--    <?php echo form_input(['type'=>'text','id'=>'Ann_id', 'name'=>'Ann_id','value'=>$this->set_value('Announcement_id')])?>-->
+
+                        <label for="Ann_title">Title</label>
+                        <?php echo form_input(['type'=>'text','id'=>'Ann_title', 'name'=>'Ann_title','value'=>$this->set_value('Announcement_title')])?><br>
+
+                        <label for="Ann_date">Date</label><br>
+                        <?php echo form_input(['type'=>'date','id'=>'Ann_date', 'name'=>'Ann_date','value'=>$this->set_value('Announcement_date')])?><br>
+
+                        <label for="Ann_time">Time</label><br>
+                        <?php echo form_input(['type'=>'time','id'=>'Ann_time', 'name'=>'Ann_time','value'=>$this->set_value('Announcement_time')])?><br>
+
+                        <label for="content">Content</label>
+                        <?php echo form_input(['type'=>'text','id'=>'content', 'name'=>'content','value'=>$this->set_value('Content')])?><br>
+
+                        <label for="Ann_towhom">To Whom</label>
+                        <?php echo form_input(['type'=>'text','id'=>'Ann_towhom', 'name'=>'Ann_towhom','value'=>$this->set_value('To_whom')])?><br>
+
                         <div>
                             <input type="submit" value="Save">
                         </div>
+
                         <?php echo form_close();?>  
                  <!-- </form> -->
+
+
+                 
              </div>
             </div>
         

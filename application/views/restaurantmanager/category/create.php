@@ -44,9 +44,10 @@
                         </div>
                     
                  </form>-->
-                 <?php echo form_open("rmuser_controller/createCategory","post");?>
+                 <?php echo form_open("rm_controller/createCategory","post");?>
                  <label for="catname">Category name</label>
-                 <input type="text" id="catname" name="Category_name" ><br>
+              <!--   <input type="text" id="catname" name="Category_name" ><br>-->
+              <?php echo form_input(['type'=>'text', 'name'=>'Category_name','value'=>$this->set_value('Category_name')])?><br>
                  <div class="dashboard-error">
                             <?php if(!empty($this->errors['Category_name'])):?>
                             <?php echo $this->errors['Category_name'];?>

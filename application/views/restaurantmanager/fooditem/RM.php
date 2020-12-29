@@ -46,7 +46,7 @@
         <!--    <a href="RM.php" class="button">Manage Fooditems</a>-->
         <?php echo anchor("rm_controller/fooditem", "Manage Fooditems",['class'=>"button"]) ?>
          <!--   <a href="create.php" class="button">Add  Fooditems</a>-->
-         <?php echo anchor("rm_controller/fooditemcreate", "Add  Fooditems",['class'=>"button"]) ?>
+         <?php echo anchor("rm_controller/createFoodItem", "Add  Fooditems",['class'=>"button"]) ?>
               
             <div class="search-container">
     <form action="#">
@@ -67,18 +67,33 @@
                         <th colspan="2">Action</th>
                         </thead>
                         
-                        <tbody>
+                      <!--  <tbody>
                            <tr>
                                <td>Chicken Fried Rice</td>
                                <td>490</td>
                                <td>Please note that vegetables may be substituted based on availability</td>
-                               <td>Available</td>
+                               <td>Available</td>-->
                              <!--  <td><a href="edit.php" class="edit">Edit</a></td>-->
-                               <td><?php echo anchor("rm_controller/fooditemedit", "Edit",['class'=>"edit"]) ?></td> 
+                             <!--  <td><?php echo anchor("rm_controller/fooditemedit", "Edit",['class'=>"edit"]) ?></td> 
                                <td><a href="#" class="delete"  onclick='showDeleteModal()'>Delete</a></td>
                               
                             </tr>
-                        </tbody>
+                        </tbody>-->
+
+                        <?php
+                        $fooditem=new Rm_model;
+                        foreach($data as $row){
+                            echo "<tr>";
+                            echo "<td>".$row->Food_name."</td>";
+                            echo "<td>".$row->Unit_Price."</td>";
+                            echo "<td>".$row->Description."</td>";
+                            echo "<td>".$row->Availability."</td>";
+                            echo "<td>".anchor("rm_controller/fooditem_update_values?Food_ID=".$row->Food_ID."", "Edit",['class'=>"edit"])."</td>";
+                            echo "<td>".anchor("rm_controller/delete_fooditem?Food_ID=".$row->Food_ID."", "Delete",['class'=>"delete"])."</td>";
+                            echo "</tr>";
+
+                        }
+                        ?>
                     </table>
                     </div>
                 </div>

@@ -33,7 +33,7 @@
                 </div>
 
                  <!-- <form action="rmfooditem_controller/createFoodItem" method="POST"> -->
-                <?php echo form_open("rmfooditem_controller/createFoodItem","post");?>
+                <?php echo form_open("rm_controller/createFoodItem","post");?>
 
                         <label for="fname">Food name</label>
                         <input type="text" id="fname" name="Food_name" ><br>

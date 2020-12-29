@@ -8,6 +8,7 @@
     <?php echo link_css("css/restaurantmanager/fooditem/fooditem_sidebar.css?ts=<?=time()?>");?>
     <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/restaurantmanager/admin.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
 </head>
 <body>
 <div class="page-container">
@@ -25,7 +26,10 @@
              <div class="content">
                  <h2 class="page-title">Edit Fooditems</h2>
                 
-                 <form action="RM.php" method="post">
+                 <div class="status-msg" style="margin-bottom:20px">
+                    <?php $this->flash('UpdateSuccess','alert alert-success','fa fa-check'); ?>
+                </div>
+             <!--    <form action="RM.php" method="post">
                      
                         
                         <label for="fname">Food name</label>
@@ -46,7 +50,66 @@
                             <input type="submit" value="Update" onclick="alert('Are you sure update')">
                         </div>
                     
-                 </form>
+                 </form>-->
+                 <?php echo form_open("rm_controller/fooditem_update_save","post");?>
+
+<label for="fname">Food name</label>
+<input type="text" id="fname" name="Food_name" ><br>
+<?php //echo form_input(['type'=>'text','id'=>'fname', 'name'=>'Food_name','value'=>$data->Food_name)]?><br>
+<div class="dashboard-error">
+    <?php if(!empty($this->errors['Food_name'])):?>
+    <?php echo $this->errors['Food_name'];?>
+    <?php endif;?>
+</div>
+
+<label for="description">Description</label>
+<textarea id="description" name="Description"></textarea>
+<?php //echo form_input(['type'=>'textarea','id'=>'description', 'name'=>'Description','value'=>$data->Description)]?><br>
+<div class="dashboard-error">
+    <?php if(!empty($this->errors['Description'])):?>
+    <?php echo $this->errors['Description'];?>
+    <?php endif;?>
+</div>
+
+<label for="price">Unit Price</label>
+<input type="text" id="price" name="Unit_Price" ><br>
+<?php //echo form_input(['type'=>'text','id'=>'price', 'name'=>'Unit_Price','value'=>$data->Unit_Price)]?><br>
+<div class="dashboard-error">
+    <?php if(!empty($this->errors['Unit_Price'])):?>
+    <?php echo $this->errors['Unit_Price'];?>
+    <?php endif;?>
+</div>
+
+<label for="category" class="cat-label">Category</label>
+<?php //echo form_input(['type'=>'text','id'=>'category', 'name'=>'Category_name','value'=>$data->Category_name)]?><br>
+<select id="category" name="Category_name" onchange="changeSubCat()">
+    <option value="empty" style="display:none;"> - select a category - </option>
+    <option value="Food">Food</option>
+    <option value="Drinks">Drinks</option>
+    <option value="Desserts">Desserts</option>
+</select>
+
+</br>
+<label for="subcategory" class="subcat-label">Subcategory </label>
+<?php //echo form_input(['type'=>'text','id'=>'subcategory', 'name'=>'Subcategory_ID','value'=>$data->Subcategory_ID)]?><br>
+<select id="subcategory" name="Subcategory_ID">
+</select>
+
+<label for="availability" class="av-label"> Availability</label>
+<?php //echo form_input(['type'=>'text','id'=>'availability', 'name'=>'Availability','value'=>$data->Availability)]?><br>
+<select id="availability" name="Availability">
+    <option value="Available">Available</option>
+    <option value="Unavailable">Unavailable</option>
+</select>
+
+<div class="btn-container">
+    <button class="btn cancel-btn" id="cancel-btn"><?php echo anchor("rm_controller/fooditem", "Cancel")?></button>
+    <input type="submit" value="Update">
+</div>
+
+<?php echo form_close();?>
+                 
+                 
              </div>
             </div>
         

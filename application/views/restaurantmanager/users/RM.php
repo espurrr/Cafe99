@@ -42,7 +42,7 @@
           <!--  <a href="RM.php" class="button">Manage Users</a>-->
             <?php echo anchor("rm_controller/users", "Manage Users",['class'=>"button"]) ?>
          <!--   <a href="create.php" class="button">Add User</a>-->
-            <?php echo anchor("rm_controller/userscreate", "Add Users",['class'=>"button"]) ?>
+            <?php echo anchor("rm_controller/savedata", "Add Users",['class'=>"button"]) ?>
             
             <div class="search-container">
             <form action="#">
@@ -56,6 +56,7 @@
                  <div style="overflow-x:auto;">
                  <table>
                      <thead>
+                     <th>User ID</th>
                      <th>User Name</th>
                      <th>Email address</th>
                      <th>Phone Number</th>
@@ -109,13 +110,14 @@
         $user = new Rmuser_model; 
         foreach($data as $row){
           echo "<tr>";
+          echo "<td>".$row->User_ID."</td>";
           echo "<td>".$row->User_name."</td>";
           echo "<td>".$row->Email_address."</td>";
           echo "<td>".$row->Phone_no."</td>";
           echo "<td>".$row->User_role."</td>";
       //    echo "<td>".anchor("rm_controller/usersedit", "Edit",['class'=>"edit"])."</td>";
-          echo "<td>".anchor("rm_controller/user_update_values", "Edit",['class'=>"edit"])."</td>";
-          echo "<td>".anchor("rm_controller/delete_user_data", "Delete",['class'=>"delete"])."</td>";
+          echo "<td>".anchor("rm_controller/user_update_values?User_ID=".$row->User_ID."", "Edit",['class'=>"edit"])."</td>";
+          echo "<td>".anchor("rm_controller/delete_user_data?User_ID=".$row->User_ID."", "Delete",['class'=>"delete"])."</td>";
       // echo "<td>".anchor("rm_controller/users", "Delete",['class'=>"delete"])."</td>";
           echo "</tr>";
         }
