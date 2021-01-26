@@ -49,7 +49,8 @@
         </div>
       </div>
       <div class="route-dropdown" onclick="toggleMenu(this)">
-        <a href="<?php echo BASE_URL?>/order_controller/cust_cart"> Cart&nbsp;<span class="step">0</span></a>
+      
+        <a href="<?php echo BASE_URL?>/customer_controller/mycart"> Cart&nbsp;<span id="step"><?= $this->get_session('cart_item_count')?></span></a>
 
       </div>
       <div class="route-dropdown sign-log" id="avatar_big" onclick="toggleMenu(this)" style="background: #FAD74E url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">

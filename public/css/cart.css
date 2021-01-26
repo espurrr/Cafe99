@@ -461,3 +461,11 @@ label:hover {
 #ok-btn a {
     color: white;
 }
+
+.cartflash {
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    width: 75%;
+    transform: translate(-50%, -50%);
+}

@@ -81,7 +81,6 @@ class Customer_model extends Database{
     }
 
     public function getFavs($user_id){
-        
       
         $query = 
         "SELECT favourites.Favourite_ID, favourites.Food_ID, fooditem.Food_name, fooditem.Unit_Price, category.Category_name, subcategory.Subcategory_name 
@@ -103,6 +102,45 @@ class Customer_model extends Database{
                 }
             }else{
                 return "Favs_not_found";
+            }
+    }
+
+
+    public function addtoCart($data_cartitem, $data_cart){
+
+        if($this->Insert("cartitem", $data_cartitem)){
+            if($this->Update("cart", $data_cart, ['Cart_id' => $data_cartitem['Cart_id']])){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+
+    public function get_cart_items($cart_id){
+      
+        $query = 
+        "SELECT cartitem.CartItem_ID, cartitem.Quantity, cartitem.Price, cartitem.CartItem_total, cartitem.Food_ID, fooditem.Food_name, category.Category_name, subcategory.Subcategory_name
+        FROM cartitem
+        INNER JOIN fooditem ON cartitem.Food_ID = fooditem.Food_ID
+        INNER JOIN subcategory ON fooditem.Subcategory_ID = subcategory.Subcategory_ID
+        INNER JOIN category ON category.Category_ID = subcategory.Category_ID 
+        WHERE cartitem.Cart_ID='".$cart_id."' ORDER BY cartitem.CreationDateTime ASC ";
+        
+        $result =$this->Query($query, $options = []);
+              
+            if($this->Count() > 0){
+                $item = $this->AllRecords();
+                // print_r($food);
+                if($item){
+                    return ['status'=>'success', 'data'=>$item];
+                }else{
+                    return "Cart_items_not_retrieved";
+                }
+            }else{
+                return "Empty_cart";
             }
     }
 

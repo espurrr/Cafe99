@@ -273,7 +273,7 @@ ul.breadcrumb li a:hover {
 
 /* Quantity input */
 
-.food_item_container .container__text input[type="text"],
+.food_item_container .container__text input[type="number"],
 .food_item_container .container__text select {
     width: 50%;
     padding: 6px 20px;
@@ -369,7 +369,7 @@ ul.breadcrumb li a:hover {
 /* Add to cart button */
 
 .food_item_container .container__text .btn-container .cart {
-    grid-area: b;
+    grid-area: a;
     border: 1px solid #bbb;
     background-color: var(--cart-color);
     color: #fff;
