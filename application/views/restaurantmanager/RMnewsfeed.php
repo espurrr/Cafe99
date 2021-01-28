@@ -49,112 +49,7 @@
                 <div class="content">
                 <h2 class="page-title">News</h2>
               
-                 <div class="dashboard" id="download">
-                    <div class="post">
-                        <div class="top">
-                                <div class="img">
-                                    <i class="fa fa-user-circle" aria-hidden="true" style="font-size:35px"></i>
-                                </div>
-                                <div class="name">
-                                    <strong><a href="#"><span class="text-name">Kamal Perera</span></a></strong>
-                                    <div class="date">
-                                        <span class="text-when">2020/10/23 at 4:00pm</span> 
-                                    </div>
-                                </div>
-                        <div class="employee"><i class="fa fa-users"></i>  &nbsp;All Employees</div>
-                        </div><!-- top ends here-->
 
-                        <div class="news_content">
-                            <div class="text_title"><p><b>Title of the annoucement</b></p></div>
-                            <br>
-                            <div class="text-message"><p>The nation’s most beloved fast-casual Italian franchise, Squisito Pizza & Pasta, 
-                                is inviting the community to celebrate National Pasta Month this October. With 10 locations including three 
-                                scheduled to debut this fall, Squisito continues to serve up the perfect recipe for unwavering success and longevity. 
-                                Despite the ongoing pandemic, Squisito remains committed to the communities in which it does business. During quarantine, th
-                                e restaurant added family meal deals and access to grocery items and other provisions to offer added ease of convenience to its cu
-                                stomers. Squisito also donated thousands of dollars to medical facilities through its catering match program as well as extended furth
-                                er support with complimentary meals to our healthcare heroes... </p>
-                            </div>
-                        </div><!-- news_content ends here-->
-                        <div class="action">
-                            <div class="link-wrapper">
-                                <!--   <a href="edit.php" class="edit">Edit</a>-->
-                                <?php echo anchor("rm_controller/edit", "Edit",['class'=>"edit"]) ?>
-                                <a href="#" class="delete" onclick='showDeleteModal()'>Delete</a>
-                            </div>
-                        </div>
-                    </div><!-- post ends here-->
-                    </div><!-- dashboard ends here-->
-
-                    <div class="dashboard" id="download">
-                    <div class="post">
-                    <div class="top">
-                   
-                    <div class="img">
-                            <i class="fa fa-user-circle" aria-hidden="true" style="font-size:35px"></i>
-                            </div>
-                            <div class="name">
-                                <strong><a href="#"><span class="text-name">Kamal Perera</span></a></strong>
-                                <div class="date">
-                                    <span class="text-when">2020/10/15 at 9:00am</span> 
-                                </div>
-                            </div>
-                            <div class="employee"><i class="fa fa-users"></i>  &nbsp;All Employees</div>
-                            </div>
-
-                            <div class="news_content">
-                            <div class="text_title"><p><b>Title of the annoucement</b></p></div>
-                            <br>
-                            <div class="text-message"><p>The number of COVID-19 cases in Sri Lanka is on the rise again, and it feels a lot heavier than the first wave. A new cluster emerged a few days back, and right now, there are 1514 active cases in the country (13/10/2020, 10.54 AM). 
- 
-                                                         However, unlike the first time, many of the restaurants, hotels, supermarkets and other retail stores are still functioning, which is a good thing. But, it's absolutely vital to do it in a manner that it protects the employees, customers, and communities... </p></div>
-                           </div>
-                           <br>
-                           <div class="action">
-                                <div class="link-wrapper">
-                                    <!--<a href="edit.php" class="edit">Edit</a>-->
-                                    <?php echo anchor("rm_controller/edit", "Edit",['class'=>"edit"]) ?>
-                                    <a href="#" class="delete" onclick='showDeleteModal()'>Delete</a>
-                            </div>
-                           </div>
-                    </div>
-                    </div>
-
-                    
-                    <div class="dashboard" id="download">
-                    <div class="post">
-                    <div class="top">
-                            <div class="img">
-                            <i class="fa fa-user-circle" aria-hidden="true" style="font-size:35px"></i>
-                            </div>
-                            <div class="name">
-                                <strong><a href="#"><span class="text-name">Kamal Perera</span></a></strong>
-                                <div class="date">
-                                    <span class="text-when">2020/10/30 at 11:30am</span> 
-                                </div>
-                            </div>
-                            <div class="employee"><i class="fa fa-users"></i>  &nbsp;All Employees</div>
-                            </div>
-
-                            <div class="news_content">
-                            <div class="text_title"><p><b>Title of the annoucement</b></p></div>
-                            <br>
-                            <div class="text-message"><p>The number of COVID-19 cases in Sri Lanka is on the rise again, and it feels a lot heavier than the first wave. A new cluster emerged a few days back, and right now, there are 1514 active cases in the country (13/10/2020, 10.54 AM). 
- 
-                                                         However, unlike the first time, many of the restaurants, hotels, supermarkets and other retail stores are still functioning, which is a good thing. But, it's absolutely vital to do it in a manner that it protects the employees, customers, and communities... </p></div>
-                           </div>
-                           <br>
-                           <div class="action">
-                                <div class="link-wrapper">
-                                        <!--  <a href="edit.php" class="edit">Edit</a>-->
-                                        <?php echo anchor("rm_controller/edit", "Edit",['class'=>"edit"]) ?>
-                                        <!--  <a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a>-->
-                                        <a href="#" class="delete" onclick='showDeleteModal()'>Delete</a>
-                                </div>
-                           </div>
-                    </div>
-                    </div>
-                    
 
                      <?php foreach($data as $row): ?>
                 <div class="dashboard" id="download">
@@ -197,10 +92,10 @@
                             <div class="action">
                                 <div class="link-wrapper">
                                         <!--  <a href="edit.php" class="edit">Edit</a>-->
-                                        <?php echo anchor("rm_controller/newsfeed_update_values?Announcement_ID=".$row->Announcement_id."", "Edit",['class'=>"edit"]) ?>
+                                        <?php echo anchor("rm_controller/newsfeed_update_values?Announcement_id=".$row->Announcement_id."", "Edit",['class'=>"edit"]) ?>
                                         <!--  <a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a>-->
                                       <!--  <a href="#" class="delete" onclick='showDeleteModal()'>Delete</a>-->
-                                        <?php echo anchor("rm_controller/delete_newsfeed?Announcement_ID=".$row->Announcement_id."", "Delete",['class'=>"delete"]) ?>
+                                        <?php echo anchor("rm_controller/delete_newsfeed?Announcement_id=".$row->Announcement_id."", "Delete",['class'=>"delete"]) ?>
                                 </div>
                            </div>
                         </div><!-- news_content ends here -->

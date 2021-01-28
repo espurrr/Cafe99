@@ -103,6 +103,51 @@ class Account_model extends Database{
         $this->Delete("user", ['Token' => $token]);      
     }
 
+    /**
+     *  Customer cart database requests
+     */
+
+    public function createCart($user_id){
+
+        date_default_timezone_set('Asia/Colombo');
+        $creation_date_time = date('Y-m-d H:i:s');
+
+        $data = [
+            'User_ID' => $user_id,
+            'CreationDateTime' => $creation_date_time
+        ];
+
+        if($this->Insert("cart", $data)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function getAssignedCart($user_id){
+
+        if($this->Select_Where("cart", ['User_ID' => $user_id])){
+            if($this->Count() > 0){
+                $row = $this->Row();
+                return $row;
+            }
+            return false;
+        }
+        return false;
+    }
+
+    public function updateIsAssignedCart($user_id){
+        if($this->Select_Where("user", ['User_ID' => $user_id])){
+            if($this->Count() > 0){
+                if($this->Update("user", ['isAssignedCart'=> 1], ['User_ID' => $user_id])){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }
+    }
+
 
 
 

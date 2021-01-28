@@ -36,6 +36,7 @@ class RM_Controller extends JB_Controller{
             // $Ann_user = $this->post('Ann_user');
              // will replace with the ID later
             
+             
             $data = [
                 // 'Announcement_id'=> $Ann_id,
                 'Announcement_title'=> $Ann_title,
@@ -545,7 +546,7 @@ class RM_Controller extends JB_Controller{
    // delete fooditem
     public function delete_fooditem(){
     $food_id=$this->get('Food_ID');
-  //  echo $food_id;
+   echo $food_id;
     $result=$this->model->deletefooditem($food_id);
     redirect('rm_controller/fooditem');
     }

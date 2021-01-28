@@ -163,9 +163,9 @@
             <i class="fa fa-times" title="cross"></i>
         </button>
             <div class="summary-title"><b>Order Summary</b></div><br>
-            <div class="input-details">
+            <!-- <div class="input-details">
             <p type="Enter Coupon">  <?php echo form_input(['type'=>'text', 'name'=>'message', 'placeholder'=>''])?><button class="checkout-button coupon" href="#" >APPLY</button></p>
-            </div><br>
+            </div><br> -->
             <div class="total">Service charges: 50.00</div>                
             <div class="total"><b>Total: 1000.00</b></div><br>
             <button class="checkout-button" href="#" ><?php echo anchor("customer_controller/payment", "PROCEED TO CHECKOUT") ?></button>
@@ -175,9 +175,9 @@
 
         <div class="summary-container">
             <div class="summary-title">Order Summary</div>
-            <div class="input-details">
+            <!-- <div class="input-details">
             <p type="Enter Coupon">  <?php echo form_input(['type'=>'text', 'name'=>'message', 'placeholder'=>''])?><button class="checkout-button coupon" href="#" >APPLY</button></p>
-            </div>
+            </div> -->
             <div class="total">Service charges: 50.00</div>                
             <div class="total"><b>Total: 1000.00</b></div>
             <button class="checkout-button" href="#" ><?php echo anchor("customer_controller/payment", "PROCEED TO CHECKOUT") ?></button>
