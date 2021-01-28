@@ -21,9 +21,9 @@
 
              <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
              <!--   <a href="RM.php" class="button">Manage Subcategories</a>-->
-             <?php echo anchor("rm_controller/subcategory", "Manage Subcategories",['class'=>"button"]) ?>
+             <?php //echo anchor("rm_controller/subcategory", "Manage Subcategories",['class'=>"button"]) ?>
                <!-- <a href="create.php" class="button">Add  Subcategories</a>-->
-               <?php echo anchor("rm_controller/subcategorycreate", "Add Subcategories",['class'=>"button"]) ?>
+               <?php //echo anchor("rm_controller/subcategorycreate", "Add Subcategories",['class'=>"button"]) ?>
 
              <div class="content">
                  <h2 class="page-title">Add Subcategories</h2>
@@ -44,7 +44,7 @@
                     
                  </form>-->
                  <?php echo form_open("rm_controller/createSubcategory","post");?>
-                 <label for="subname">Subcategory name</label>
+                 <label for="subname">Subcategory name</label><br><br>
                <!--  <input type="text" id="subname" name="Subcategory_name" ><br>-->
                  <?php echo form_input(['type'=>'text', 'name'=>'Subcategory_name','value'=>$this->set_value('Subcategory_name')])?><br>
                  <div class="dashboard-error">
@@ -52,7 +52,11 @@
                             <?php echo $this->errors['Subcategory_name'];?>
                             <?php endif;?>
                         </div>
-                        <input type="submit" value="Submit">
+
+                <div class="btn-container">
+                    <button type="submit" formaction="<?php echo BASE_URL?>/rm_controller/subcategory" class="btn cancel-btn">Cancel</button>
+                    <input type="submit" value="Add">
+                </div>
           
     
          

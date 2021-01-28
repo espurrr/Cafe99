@@ -10,6 +10,7 @@
     <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/restaurantmanager/admin.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/modal/delete_modal.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 
@@ -20,7 +21,6 @@
 <?php include "fooditem_sidebar.php";?>
 <div class="content-wrapper">
 <?php include  "../application/views/header/header-dashboard.php";?>
-
 
  <!-- Delete pop up modal starts here -->
  <div id="popup-window" class="popup-window">
@@ -44,27 +44,36 @@
             <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
                 
         <!--    <a href="RM.php" class="button">Manage Fooditems</a>-->
-        <?php echo anchor("rm_controller/fooditem", "Manage Fooditems",['class'=>"button"]) ?>
+        <?php //echo anchor("rm_controller/fooditem", "Manage Fooditems",['class'=>"button"]) ?>
          <!--   <a href="create.php" class="button">Add  Fooditems</a>-->
          <?php echo anchor("rm_controller/createFoodItem", "Add  Fooditems",['class'=>"button"]) ?>
               
-            <div class="search-container">
-    <form action="#">
-      <input type="text" style="width:79%" placeholder="Search.." name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-  </div>
+        <div class="search-container">
+            <?php echo form_open("rm_controller/searchfood", "POST");?>
+                <input type="text" placeholder="Search.." style="width:79%" name="search" value="<?php if($foodname != "") echo $foodname; ?>">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            <?php echo form_close();?>
+        </div>
 
                 <div class="content">
                     <h2 class="page-title">Manage Fooditems</h2>
+
+                    <div class="status-msg-wrapper">
+                        <div class="status-msg" style="margin-bottom:20px">
+                            <?php $this->flash('RM_fooditem_databaseError', 'alert alert-danger','fa fa-times-circle'); ?>
+                            <?php $this->flash('RM_fooditem_NotFound', 'alert alert-warning','fa fa-times-circle'); ?>
+                            <?php $this->flash('fooditemSuccess','alert alert-success','fa fa-check'); ?>
+                        </div>
+                    </div> <!-- status-msg-wrapper ends here -->
+
                     <div style="overflow-x:auto;">
                     <table>
                         <thead>
+                        <th>Food ID</th>
                         <th>Food name</th>
                         <th>Unit Price</th>
-                        <th>Description</th>
                         <th>Availability</th>
-                        <th colspan="2">Action</th>
+                        <th colspan="3">Action</th>
                         </thead>
                         
                       <!--  <tbody>
@@ -74,26 +83,21 @@
                                <td>Please note that vegetables may be substituted based on availability</td>
                                <td>Available</td>-->
                              <!--  <td><a href="edit.php" class="edit">Edit</a></td>-->
-                             <!--  <td><?php echo anchor("rm_controller/fooditemedit", "Edit",['class'=>"edit"]) ?></td> 
+                             <!--  <td><?php //echo anchor("rm_controller/fooditemedit", "Edit",['class'=>"edit"]) ?></td> 
                                <td><a href="#" class="delete"  onclick='showDeleteModal()'>Delete</a></td>
                               
                             </tr>
                         </tbody>-->
-
-                        <?php
-                        $fooditem=new Rm_model;
-                        foreach($data as $row){
-                            echo "<tr>";
-                            echo "<td>".$row->Food_name."</td>";
-                            echo "<td>".$row->Unit_Price."</td>";
-                            echo "<td>".$row->Description."</td>";
-                            echo "<td>".$row->Availability."</td>";
-                            echo "<td>".anchor("rm_controller/fooditem_update_values?Food_ID=".$row->Food_ID."", "Edit",['class'=>"edit"])."</td>";
-                            echo "<td>".anchor("rm_controller/delete_fooditem?Food_ID=".$row->Food_ID."", "Delete",['class'=>"delete"])."</td>";
-                            echo "</tr>";
-
-                        }
-                        ?>
+                        <?php foreach($data as $row): ?>
+                        <tr>
+                        <td><?php echo $row->Food_ID ?></td>
+                        <td><?php echo $row->Food_name ?></td>
+                        <td><?php echo $row->Unit_Price ?></td>
+                        <td><?php echo $row->Availability ?></td>
+                        <td> <?php echo anchor("rm_controller/fooditem_update_values?Food_ID=".$row->Food_ID."", "Edit",['class'=>"edit"])?> </td>
+                        <td> <?php echo anchor("rm_controller/delete_fooditem?Food_ID=".$row->Food_ID."", "Delete",['class'=>"delete"])?> </td>
+                        </tr>
+                        <?php endforeach; ?>
                     </table>
                     </div>
                 </div>
@@ -102,5 +106,6 @@
             <?php include '../application/views/footer/footer_3.php';?>
     </div>
     <?php echo link_js("js/restaurantmanager/delete.js"); ?>  
+    <?php echo link_js("js/restaurantmanager/fooditem/more_details.js"); ?>  
 </body>
 </html>

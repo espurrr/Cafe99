@@ -29,7 +29,8 @@
                 <h2 class="page-title">Add Fooditems</h2>
 
                 <div class="status-msg" style="margin-bottom:20px">
-                    <?php $this->flash('fooditemSuccess','alert alert-success','fa fa-check'); ?>
+                    <?php $this->flash('fooditemError','alert alert-warning','fa fa-check'); ?>
+                    <?php $this->flash('fooditemError','alert alert-warning','fa fa-check'); ?>
                 </div>
 
                  <!-- <form action="rmfooditem_controller/createFoodItem" method="POST"> -->
@@ -79,8 +80,8 @@
                         </select>
                         
                         <div class="btn-container">
-                            <button class="btn cancel-btn" id="cancel-btn"><?php echo anchor("rm_controller/fooditem", "Cancel")?></button>
-                            <input type="submit" value="Save">
+                            <button type="submit" formaction="<?php echo BASE_URL?>/rm_controller/fooditem" class="btn cancel-btn">Cancel</button>
+                            <input type="submit" value="Add">
                         </div>
                     
                 <?php echo form_close();?>

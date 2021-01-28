@@ -11,6 +11,7 @@
     <?php echo link_css("css/restaurantmanager/admin.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/modal/delete_modal.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 
@@ -43,22 +44,30 @@
 
             <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
             <!--    <a href="RM.php" class="button">Manage Subcategories</a>-->
-                <?php echo anchor("rm_controller/subcategory", "Manage Subcategories",['class'=>"button"]) ?>
+                <?php //echo anchor("rm_controller/subcategory", "Manage Subcategories",['class'=>"button"]) ?>
             <!--    <a href="create.php" class="button">Add  Subcategories</a>-->
             <?php echo anchor("rm_controller/createSubcategory", "Add Subcategories",['class'=>"button"]) ?>
              
-                <div class="search-container">
-    <form action="#">
-      <input type="text" style="width:79%" placeholder="Search.." name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-  </div>
+            <div class="search-container">
+                <?php echo form_open("rm_controller/searchSubcategory", "POST");?>
+                    <input type="text" placeholder="Search.." style="width:79%" name="search" value="<?php if($subcategory_name != "") echo $subcategory_name; ?>">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                <?php echo form_close();?>
+            </div>
 
                 <div class="content">
                     <h2 class="page-title">Manage Subcategories</h2>
+                    <div class="status-msg-wrapper">
+                        <div class="status-msg" style="margin-bottom:20px">
+                            <?php $this->flash('RM_subcategory_databaseError','alert alert-danger','fa fa-times-circle'); ?>
+                            <?php $this->flash('RM_subcategory_NotFound','alert alert-warning','fa fa-times-circle'); ?>
+                        </div>
+                    </div> <!-- status-msg-wrapper ends here -->
+
                     <div style="overflow-x:auto;">
                     <table>
                         <thead>
+                        <th>Subcategory ID</th>
                         <th>Subcategory name</th>
                         <th colspan="2">Action</th>
                         </thead>
@@ -67,15 +76,16 @@
                            <tr>
                                <td>Rice</td>-->
                             <!--   <td><a href="edit.php" class="edit">Edit</a></td>-->
-                         <!--   <td><?php echo anchor("rm_controller/subcategoryedit", "Edit",['class'=>"edit"]) ?></td> 
+                         <!--   <td><?php //echo anchor("rm_controller/subcategoryedit", "Edit",['class'=>"edit"]) ?></td> 
                                <td><a href="#" class="delete" onclick='showDeleteModal()'>Delete</a></td>
                               
                             </tr>
                         </tbody>-->
                         <?php
-                        $fooditem=new Rm_model;
+                        
                         foreach($data as $row){
                             echo "<tr>";
+                            echo "<td>".$row->Subcategory_ID."</td>";
                             echo "<td>".$row->Subcategory_name."</td>";
                             echo "<td>".anchor("rm_controller/subcategory_update_values?Subcategory_ID=".$row->Subcategory_ID."", "Edit",['class'=>"edit"])."</td>";
                             echo "<td>".anchor("rm_controller/delete_subcategory?Subcategory_ID=".$row->Subcategory_ID."", "Delete",['class'=>"delete"])."</td>";

@@ -10,21 +10,49 @@
     <?php echo link_css("css/kitchen-manager/orders/popup.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/header.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
-    
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 </head>
 <body>
     <div class="page-container" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
     <?php include 'sidebar.php';?>
-    <div class="content-wrapper" >
+    <div class="content-wrapper">
     <?php include '../application/views/header/header-dashboard.php';?>
     <?php include 'popup.php';?>
+
     <div class="tab" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
+    <?php if($status == "Onqueue"): ?>
         <button class="tablinks active" onclick="changeOrderTab(event, 'Onqueue')">Onqueue</button>
         <button class="tablinks" onclick="changeOrderTab(event, 'Processing')">Processing</button>
         <button class="tablinks" onclick="changeOrderTab(event, 'Ready')">Ready</button>
         <button class="tablinks" onclick="changeOrderTab(event, 'Dispatched')">Dispatched</button>
     </div>
+    <?php endif; ?>
+
+    <?php if($status == "Processing"): ?>
+        <button class="tablinks" onclick="changeOrderTab(event, 'Onqueue')">Onqueue</button>
+        <button class="tablinks active" onclick="changeOrderTab(event, 'Processing')">Processing</button>
+        <button class="tablinks" onclick="changeOrderTab(event, 'Ready')">Ready</button>
+        <button class="tablinks" onclick="changeOrderTab(event, 'Dispatched')">Dispatched</button>
+    </div>
+    <?php endif; ?>
+
+    <?php if($status == "Ready"): ?>
+        <button class="tablinks" onclick="changeOrderTab(event, 'Onqueue')">Onqueue</button>
+        <button class="tablinks" onclick="changeOrderTab(event, 'Processing')">Processing</button>
+        <button class="tablinks active" onclick="changeOrderTab(event, 'Ready')">Ready</button>
+        <button class="tablinks" onclick="changeOrderTab(event, 'Dispatched')">Dispatched</button>
+    </div>
+    <?php endif; ?>
+
+    <?php if($status == "Dispatched"): ?>
+        <button class="tablinks" onclick="changeOrderTab(event, 'Onqueue')">Onqueue</button>
+        <button class="tablinks" onclick="changeOrderTab(event, 'Processing')">Processing</button>
+        <button class="tablinks" onclick="changeOrderTab(event, 'Ready')">Ready</button>
+        <button class="tablinks active" onclick="changeOrderTab(event, 'Dispatched')">Dispatched</button>
+    </div>
+    <?php endif; ?>
+
     <?php
         $concat_data = [];
         $special_notes = [];
@@ -39,7 +67,7 @@
         }
         //print_r($special_notes);
     ?>
-    <div id="Onqueue" class="tabcontent" style="display: block;">
+    <div id="Onqueue" class="tabcontent" style="display: <?php echo ($status == "Onqueue") ? "block": "none"; ?>;">
         <table>
             <colgroup>
                 <col span="" class="col-orderID">
@@ -61,7 +89,10 @@
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn" onclick='showModal(<?php echo $order_id; ?>,<?php echo json_encode($special_notes[$order_id]); ?> ,<?php echo json_encode($values); ?>);'>View</button>
-                        <button class="second-btn btn">Take In</button>
+                        <?php echo form_open("km_controller/updateOrderStatus","POST");?>
+                        <button class="second-btn btn" name="onqueue" value="<?php echo $order_id;?>">Take In</button>
+                        <?php echo form_close();?>
+
                     </div>
                 </td>
             </tr>
@@ -72,7 +103,7 @@
           </table>
     </div>
 
-    <div id="Processing" class="tabcontent">
+    <div id="Processing" class="tabcontent" style="display: <?php echo ($status == "Processing") ? "block": "none"; ?>;">
         <table>
             <colgroup>
                 <col span="" class="col-orderID">
@@ -94,7 +125,9 @@
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn" onclick='showModal(<?php echo $order_id; ?>,<?php echo json_encode($special_notes[$order_id]); ?> ,<?php echo json_encode($values); ?>);'>View</button>                  
-                        <button class="second-btn btn">Ready</button>
+                        <?php echo form_open("km_controller/updateOrderStatus","POST");?>
+                        <button class="second-btn btn" name="processing" value="<?php echo $order_id;?>">Ready</button>
+                        <?php echo form_close();?>
                     </div>
                 </td>
             </tr>
@@ -105,7 +138,7 @@
         </table>
     </div>
 
-    <div id="Ready" class="tabcontent">
+    <div id="Ready" class="tabcontent" style="display: <?php echo ($status == "Ready") ? "block": "none"; ?>;">
     <table>
             <colgroup>
                 <col span="" class="col-orderID">
@@ -127,7 +160,9 @@
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn" onclick='showModal(<?php echo $order_id; ?>,<?php echo json_encode($special_notes[$order_id]); ?> ,<?php echo json_encode($values); ?>);'>View</button>                  
-                        <button class="second-btn btn">Dispatch</button>
+                        <?php echo form_open("km_controller/updateOrderStatus","POST");?>
+                        <button class="second-btn btn" name="ready" value="<?php echo $order_id;?>">Dispatch</button>
+                        <?php echo form_close();?>
                     </div>
                 </td>
             </tr>
@@ -140,7 +175,7 @@
             
     </div>
 
-    <div id="Dispatched" class="tabcontent">
+    <div id="Dispatched" class="tabcontent" style="display: <?php echo ($status == "Dispatched") ? "block": "none"; ?>;">
         <table>
             <colgroup>
                 <col span="" class="col-orderID">
@@ -162,7 +197,9 @@
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn" onclick='showModal(<?php echo $order_id; ?>,<?php echo json_encode($special_notes[$order_id]); ?> ,<?php echo json_encode($values); ?>);'>View</button>                                          
-                        <button class="second-btn btn">Remove</button>
+                        <?php echo form_open("km_controller/updateOrderStatus","POST");?>
+                        <button class="second-btn btn" name="dispatched" value="<?php echo $order_id;?>">Remove</button>
+                        <?php echo form_close();?>
                     </div>
                 </td>
             </tr>

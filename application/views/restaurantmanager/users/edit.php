@@ -21,9 +21,9 @@
 
              <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
               <!--  <a href="RM.php" class="button">Manage Users</a>-->
-              <?php echo anchor("rm_controller/users", "Manage Users",['class'=>"button"]) ?>
+              <?php //echo anchor("rm_controller/users", "Manage Users",['class'=>"button"]) ?>
               <!--  <a href="create.php" class="button">Add User</a>-->
-              <?php echo anchor("rm_controller/userscreate", "Add Users",['class'=>"button"]) ?>
+              <?php //echo anchor("rm_controller/userscreate", "Add Users",['class'=>"button"]) ?>
 
              <div class="content">
                  <h2 class="page-title">Edit Users</h2>
@@ -61,16 +61,20 @@
                     
                  </form>-->
 
-                 <?php echo form_open("rm_controller/user_update_save","post");?>
-          
-          <label for="User_name">User Name</label>
+                 <?php echo form_open("rm_controller/user_update_save","POST");?>
+
+          <label for="User_name">User ID</label>
+          <?php echo form_input(['type'=>'text', 'name'=>'User_ID', 'value'=>$data->User_ID, 'readonly'=> 'readonly'])?>
+
+          <br><br>
+          <label for="User_name">Username</label>
           <?php echo form_input(['type'=>'text', 'name'=>'User_name', 'placeholder'=>$data->User_name, 'value'=>$data->User_name])?>
           <div class="error">
             <?php if(!empty($this->errors['User_name'])):?>
             <?php echo $this->errors['User_name'];?>
             <?php endif;?>
           </div>
-
+          <br>
           <label for="Email_address">Email Address</label>
           <?php echo form_input(['type'=>'email', 'name'=>'Email_address', 'placeholder'=>$data->Email_address,'readonly'=>'readonly' ,'value'=>$data->Email_address])?>
           <div class="error">
@@ -78,7 +82,7 @@
             <?php echo $this->errors['Email_address'];?>
             <?php endif;?>
           </div>
-
+          <br>
           <label for="Phone_no">Phone No</label>
           <?php echo form_input(['type'=>'text', 'name'=>'Phone_no', 'placeholder'=>$data->Phone_no, 'value'=>$data->Phone_no ])?>
           <div class="error">
@@ -86,7 +90,7 @@
             <?php echo $this->errors['Phone_no'];?>
             <?php endif;?>
           </div>
-
+          <br>
           <label for="User_role">Role</label>
           <?php echo form_input(['type'=>'text', 'name'=>'User_role', 'placeholder'=>$data->User_role,'value'=>$data->User_role ])?>
           <div class="error">
@@ -95,8 +99,10 @@
             <?php endif;?>
           </div>
           
-
-            <input type="submit" value="Update">
+          <div class="btn-container">
+              <button type="submit" formaction="<?php echo BASE_URL?>/rm_controller/users" class="btn cancel-btn">Cancel</button>
+              <input type="submit" value="Update">
+          </div>
           
     
          

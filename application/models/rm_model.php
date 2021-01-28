@@ -81,9 +81,9 @@ class Rm_model extends Database{
              }
          }
 
-    public function display_users($data){
-        $query ="SELECT User_ID,User_name,Email_address,Phone_no,User_role FROM user";
-        $result =$this->Query($query, $options = []);
+    public function display_users(){
+        $query = "SELECT User_ID,User_name,Email_address,Phone_no,User_role FROM user";
+        $result = $this->Query($query, $options = []);
      //   echo "$User_name";
     //    if($this->Select_Where("user", ['User_id' => $user_id])){
             if($this->Count() > 0){
@@ -91,13 +91,30 @@ class Rm_model extends Database{
                 if($userdata){
                     return ['status'=>'success', 'data'=> $userdata];
                 }else{
-                    return "Data_not_retrieved";
+                    return "user_not_retrieved";
                 }
             }else{
-                return "User_not_found";
+                return "user_not_found";
             }
            
      //   }
+    }
+    public function searchUser($username){
+        $query = "SELECT User_ID, User_name, Email_address, Phone_no, User_role FROM user WHERE User_name LIKE '%$username%'";
+
+        $result =$this->Query($query, $options = []);
+
+        if($this->Count() > 0){
+            $users = $this->AllRecords();
+            // print_r($food);
+            if($users){
+                return ['status'=>'success', 'data'=>$users];
+            }else{
+                return "User_not_retrieved";
+            }
+        }else{
+            return "User_not_found";
+        }
     }
 
   
@@ -156,7 +173,7 @@ class Rm_model extends Database{
     }
 
     public function display_fooditem($data){
-        $query ="SELECT Food_ID,Food_name,Unit_Price,Description,Availability FROM fooditem";
+        $query ="SELECT * FROM fooditem";
         $result =$this->Query($query, $options = []);
      
     //    if($this->Select_Where("fooditem", ['Food_ID' => $food_id])){
@@ -173,21 +190,50 @@ class Rm_model extends Database{
            
      //   }
     }
+    public function searchFooditem($foodname){
+        $query = 
+        "SELECT fooditem.Food_ID, fooditem.Food_name, fooditem.Availability,
+        subcategory.Subcategory_ID, subcategory.Subcategory_name, category.Category_ID, category.Category_name 
+        FROM fooditem 
+        INNER JOIN subcategory ON fooditem.Subcategory_ID = subcategory.Subcategory_ID
+        INNER JOIN category ON subcategory.Category_ID = category.Category_ID 
+        WHERE fooditem.Food_name LIKE '%".$foodname."%' OR subcategory.Subcategory_name LIKE '%".$foodname."%'";
 
-    public function fooditem_data($food_id){
-        
-        if($this->Select_Where("fooditem", ['Food_ID' =>  $food_id])){
-            if($this->Count() > 0){
-                $row = $this->Row();
-                if($row){
-                    return ['status'=>'success', 'data'=>$row];
-                }else{
-                    return "Fooditem_not_retrieved";
-                }
+        $result =$this->Query($query, $options = []);
+
+        if($this->Count() > 0){
+            $food = $this->AllRecords();
+            // print_r($food);
+            if($food){
+                return ['status'=>'success', 'data'=>$food];
             }else{
-                return "fooditem_not_found";
+                return "Food_not_retrieved";
             }
- 
+        }else{
+            return "Food_not_found";
+        }
+    }
+    public function fooditem_data($food_id){
+        $query = 
+            "SELECT fooditem.Food_ID, fooditem.Food_name, fooditem.Availability, fooditem.Description, fooditem.Unit_Price,
+            subcategory.Subcategory_ID, subcategory.Subcategory_name, category.Category_ID, category.Category_name 
+            FROM fooditem 
+            INNER JOIN subcategory ON fooditem.Subcategory_ID = subcategory.Subcategory_ID
+            INNER JOIN category ON subcategory.Category_ID = category.Category_ID 
+            WHERE fooditem.Food_ID = $food_id";
+        
+        $result =$this->Query($query, $options = []);
+
+        if($this->Count() > 0){
+            $food = $this->AllRecords();
+            // print_r($food);
+            if($food){
+                return ['status'=>'success', 'data'=>$food];
+            }else{
+                return "RM_fooditem_NotFound";
+            }
+        }else{
+            return "Food_not_retrieved";
         }
     }
 
@@ -241,6 +287,26 @@ class Rm_model extends Database{
                 }
                
          //   }
+        }
+
+        public function searchSubcategory($subcategory_name){
+            $query = 
+            "SELECT Subcategory_ID,Subcategory_name FROM subcategory
+             WHERE Subcategory_name LIKE '%".$subcategory_name."%'";
+
+            $result = $this->Query($query, $options = []);
+
+            if($this->Count() > 0){
+                $subcats = $this->AllRecords();
+                // print_r($food);
+                if($subcats){
+                    return ['status'=>'success', 'data'=>$subcats];
+                }else{
+                    return "subcategory_not_retrieved";
+                }
+            }else{
+                return "subcategory_not_found";
+            }
         }
 
         public function subcategory_data($subcat_id){
@@ -310,6 +376,25 @@ class Rm_model extends Database{
                    
              //   }
             }
+            public function searchCategory($category_name){
+                $query = 
+                "SELECT Category_ID, Category_name FROM category
+                 WHERE Category_name LIKE '%".$category_name."%'";
+    
+                $result = $this->Query($query, $options = []);
+    
+                if($this->Count() > 0){
+                    $subcats = $this->AllRecords();
+                    // print_r($food);
+                    if($subcats){
+                        return ['status'=>'success', 'data'=>$subcats];
+                    }else{
+                        return "category_not_retrieved";
+                    }
+                }else{
+                    return "category_not_found";
+                }
+            }
 
             public function category_data($cat_id){
         
@@ -349,6 +434,42 @@ class Rm_model extends Database{
                               return false;
                           }
                       }
+
+    public function getorders(){
+        $query =  "SELECT * FROM orders";
+
+        $result =$this->Query($query, $options = []);
+
+        if($this->Count() > 0){
+            $orders = $this->AllRecords();
+            //print_r($food);
+            if($orders){
+                return ['status'=>'success', 'data'=>$orders];
+            }else{
+                return "Order_not_retrieved";
+            }
+        }else{
+            return "Order_not_found";
+        }
+    }
+
+    public function searchOrder($order_id){
+        $query =  "SELECT * FROM orders WHERE Order_ID = $order_id";
+
+        $result =$this->Query($query, $options = []);
+
+        if($this->Count() > 0){
+            $orders = $this->AllRecords();
+            //print_r($food);
+            if($orders){
+                return ['status'=>'success', 'data'=>$orders];
+            }else{
+                return "Order_not_retrieved";
+            }
+        }else{
+            return "Order_not_found";
+        }
+    }
 
 }
 

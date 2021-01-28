@@ -20,9 +20,9 @@
 
              <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
                  <!--   <a href="RM.php" class="button">Manage Categories</a>-->
-            <?php echo anchor("rm_controller/category", "Manage Categories",['class'=>"button"]) ?>
+            <?php //echo anchor("rm_controller/category", "Manage Categories",['class'=>"button"]) ?>
              <!--   <a href="create.php" class="button">Add  Categories</a>-->
-             <?php echo anchor("rm_controller/categorycreate", "Add Categories",['class'=>"button"]) ?>
+             <?php //echo anchor("rm_controller/categorycreate", "Add Categories",['class'=>"button"]) ?>
 
               
 
@@ -45,7 +45,7 @@
                     
                  </form>-->
                  <?php echo form_open("rm_controller/createCategory","post");?>
-                 <label for="catname">Category name</label>
+                 <label for="catname">Category name</label><br><br>
               <!--   <input type="text" id="catname" name="Category_name" ><br>-->
               <?php echo form_input(['type'=>'text', 'name'=>'Category_name','value'=>$this->set_value('Category_name')])?><br>
                  <div class="dashboard-error">
@@ -53,7 +53,10 @@
                             <?php echo $this->errors['Category_name'];?>
                             <?php endif;?>
                         </div>
-                        <input type="submit" value="Submit">
+                <div class="btn-container">
+                    <button type="submit" formaction="<?php echo BASE_URL?>/rm_controller/category" class="btn cancel-btn">Cancel</button>
+                    <input type="submit" value="Add">
+                </div>
           
     
          

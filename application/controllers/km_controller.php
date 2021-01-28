@@ -1,6 +1,6 @@
 <?php
 class KM_Controller extends JB_Controller{
-
+    public $model;
     public function __construct(){
         parent::__construct();
         $this->model = $this->model("km_model");
@@ -23,7 +23,7 @@ class KM_Controller extends JB_Controller{
         $this->view('login');
     }
 
-    public function orders(){
+    public function orders($status = "Onqueue"){
         $result =  $this->model->getOrders();
 
         if($result === "Order_not_retrieved"){
@@ -33,23 +33,77 @@ class KM_Controller extends JB_Controller{
             $this->set_flash("noordersError", "Sorry, cannot show orders at the moment. Please try again later.");
             //echo"nofood";
         }else if($result['status'] === "success"){
-            $this->view('kitchenmanager/orders/orders',$result['data']);
+            //$this->view('kitchenmanager/orders/orders',$result['data']);
             //print_r($result['data']);
+            $data = $result['data'];
+            // print_r($data);
+            if(file_exists("../application/views/kitchenmanager/orders/orders.php")){
+                require_once "../application/views/kitchenmanager/orders/orders.php";
+            }else{
+                include "../application/views/error.php";
+                die();
+                // die("<div style='background-color:#f1f4f4;color:#afaaaa;border:1px dotted #afaaaa;padding:10px; border-radius:4px'>Sorry View <strong>".$view_name."</strong> is not found</div>");
+            }
         }
     }
-    public function foodmenu(){
+    public function foodmenu($status = "Food", $searched = false){
         $result =  $this->model->getFooditems();
 
-        if($result === "Food_not_retrieved"){
+        if($result === "Food_not_retrieved" || $result === "Subcat_not_retrieved" || $result === "Category_not_retrieved"){
             $this->set_flash("databaseError", "Sorry, cannot show fooditems at the moment. Please try again later.");
             //echo"dberror";
-        }else if($result === "Food_not_found"){
+        }else if($result === "Food_not_found" || $result === "Subcat_not_found" || $result === "Category_not_found"){
             $this->set_flash("nofoodError", "Sorry, cannot show fooditems at the moment. Please try again later.");
             //echo"nofood";
         }else if($result['status'] === "success"){
-            $this->view('kitchenmanager/foodmenu/foodmenu',$result['data']);
+            $data = $result['data'];
+            // print_r($data);
+
+            // $this->view('kitchenmanager/foodmenu/foodmenu',$result['data']);
+            if(file_exists("../application/views/kitchenmanager/foodmenu/foodmenu.php")){
+                require_once "../application/views/kitchenmanager/foodmenu/foodmenu.php";
+            }else{
+                include "../application/views/error.php";
+                die();
+                // die("<div style='background-color:#f1f4f4;color:#afaaaa;border:1px dotted #afaaaa;padding:10px; border-radius:4px'>Sorry View <strong>".$view_name."</strong> is not found</div>");
+            }
         }
 
+    }
+
+    public function searchfood($status = "Food"){
+        if(isset($_POST["search"])){
+            $foodname = $_POST["search"];
+            $searched = ($foodname == "")? false : true;
+
+            if($searched == false){
+                $this->foodmenu($status);
+            }else{
+                $result =  $this->model->getSearchFooditems($foodname);
+                if($result === "Food_not_retrieved" || $result === "Category_not_retrieved"){
+                    $this->set_flash("databaseError", "Sorry, cannot show fooditems at the moment. Please try again later.");
+                    //echo"dberror";
+                }else if($result === "Food_not_found" || $result === "Category_not_found"){
+                    $this->set_flash("foodNotFound", "It looks like there aren't many great matches for your search");
+                    $this->foodmenu();
+                    //echo"nofood";
+                }else if($result['status'] === "success"){
+                    $data = $result['data'];
+                    // print_r($data);
+    
+                    // $this->view('kitchenmanager/foodmenu/foodmenu',$result['data']);
+                    if(file_exists("../application/views/kitchenmanager/foodmenu/foodmenu.php")){
+                        require_once "../application/views/kitchenmanager/foodmenu/foodmenu.php";
+                    }else{
+                        include "../application/views/error.php";
+                        die();
+                        // die("<div style='background-color:#f1f4f4;color:#afaaaa;border:1px dotted #afaaaa;padding:10px; border-radius:4px'>Sorry View <strong>".$view_name."</strong> is not found</div>");
+                    }
+                }
+            }
+        }else{
+            $this->foodmenu($status);
+        }
     }
 
     public function newsfeed(){
@@ -57,43 +111,72 @@ class KM_Controller extends JB_Controller{
         //$this->view('kitchenmanager/newsfeed/newsfeed');
         if($result === "Announcement_not_retrieved"){
             $this->set_flash("databaseError", "Sorry, cannot show Announcement at the moment. Please try again later.");
-            //echo"dberror";
+            $this->view('kitchenmanager/newsfeed/newsfeed');
+            // echo"dberror";
         }else if($result === "Announcement_not_found"){
             $this->set_flash("noAnnouncementError", "Sorry, cannot show Announcement at the moment. Please try again later.");
-            //echo"noAnnouncement";
+            $this->view('kitchenmanager/newsfeed/newsfeed');
+            // echo"noAnnouncement";
         }else if($result['status'] === "success"){
             $this->view('kitchenmanager/newsfeed/newsfeed',$result['data']);
         }
     }
 
-    public function updateAvailability(){
+    public function updateAvailability($refresh_state="Food"){
         if (isset($_POST['av'])){
             $food_id = (int)$_POST['av'];
             $data = ['Availability'=>'Available'];
-
-            if($this->model->updateAvailability($data , $food_id)){
-                $this-> set_flash("updateSuccess","Food item updated successfully");
-            }
-            else{
-                $this-> set_flash("updateUnsuccess","Food item wasn't updated successfully");
-            }
-            redirect('km_controller/foodmenu');
         }
         if (isset($_POST['unav'])){
             $food_id = (int)$_POST['unav'];
             $data = ['Availability'=>'Unavailable'];
-
-            if($this->model->updateAvailability($data , $food_id)){
-                $this-> set_flash("updateSuccess","Food item updated successfully");
-            }
-            else{
-                $this-> set_flash("updateUnsuccess","Food item wasn't updated successfully");
-
-            }
-            redirect('km_controller/foodmenu');
         }
+
+        if($this->model->updateAvailability($data , $food_id)){
+            $this-> set_flash("updateSuccess","Food item updated successfully");
+        }
+        else{
+            $this-> set_flash("updateUnsuccess","Food item wasn't updated successfully");
+        }
+        echo $refresh_state;
+        redirect("km_controller/foodmenu/".$refresh_state);
         
 
+    } // updateFooditemAvailability ends here
+
+    public function updateOrderStatus(){
+        if (isset($_POST['onqueue'])){
+            $order_id = (int)$_POST['onqueue'];
+            $data = ['Order_status' => 'Processing'];
+            $refresh_state = "Onqueue";
+        }
+
+        if (isset($_POST['processing'])){
+            $order_id = (int)$_POST['processing'];
+            $data = ['Order_status' => 'Ready'];
+            $refresh_state = "Processing";
+        }
+
+        if (isset($_POST['ready'])){
+            $order_id = (int)$_POST['ready'];
+            $data = ['Order_status' => 'Dispatched'];
+            $refresh_state = "Ready";
+        }
+
+        if (isset($_POST['dispatched'])){
+            $order_id = (int)$_POST['dispatched'];
+            $data = ['Order_status' => 'Done'];
+            $refresh_state = "Dispatched";
+        }
+
+        if($this->model->updateOrderStatus($data , $order_id)){
+            $this-> set_flash("orderUpdateSuccess","Order item updated successfully");
+        }
+        else{
+            $this-> set_flash("orderUpdateUnsuccess","Order item wasn't updated successfully");
+        }
+        redirect("km_controller/orders/".$refresh_state);
     }
+
 }
 ?>

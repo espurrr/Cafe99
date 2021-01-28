@@ -11,7 +11,13 @@
     <?php echo link_css("css/restaurantmanager/admin.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/modal/delete_modal.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
+    <style>
+        .edit{
+            margin-right: 40px
+        }
 
+    </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 
 
@@ -44,24 +50,32 @@
 
             <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
              <!--   <a href="RM.php" class="button">Manage Categories</a>-->
-            <?php echo anchor("rm_controller/category", "Manage Categories",['class'=>"button"]) ?>
+            <?php //echo anchor("rm_controller/category", "Manage Categories",['class'=>"button"]) ?>
              <!--   <a href="create.php" class="button">Add  Categories</a>-->
              <?php echo anchor("rm_controller/createCategory", "Add Categories",['class'=>"button"]) ?>
 
               
-                <div class="search-container">
-    <form action="#">
-      <input type="text" style="width:79%" placeholder="Search.." name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-  </div>
+            <div class="search-container">
+                <?php echo form_open("rm_controller/searchCategory", "POST");?>
+                    <input type="text" placeholder="Search.." style="width:79%" name="search" value="<?php if($category_name != "") echo $category_name; ?>">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                <?php echo form_close();?>
+            </div>
 
                 <div class="content">
                     <h2 class="page-title">Manage Categories</h2>
+
+                    <div class="status-msg-wrapper">
+                        <div class="status-msg" style="margin-bottom:20px">
+                            <?php $this->flash('RM_category_databaseError','alert alert-danger','fa fa-times-circle'); ?>
+                            <?php $this->flash('RM_category_NotFound','alert alert-warning','fa fa-times-circle'); ?>
+                        </div>
+                    </div> <!-- status-msg-wrapper ends here -->
+
                     <div style="overflow-x:auto;">
                     <table>
                         <thead>
-                        <th>Category name</th>
+                        <th colspan="8">Category name</th>
                         <th colspan="2">Action</th>
                         </thead>
                         
@@ -79,9 +93,9 @@
                         $fooditem=new Rm_model;
                         foreach($data as $row){
                             echo "<tr>";
-                            echo "<td>".$row->Category_name."</td>";
-                            echo "<td>".anchor("rm_controller/category_update_values?Category_ID=".$row->Category_ID."", "Edit",['class'=>"edit"])."</td>";
-                            echo "<td>".anchor("rm_controller/delete_category?Category_ID=".$row->Category_ID."", "Delete",['class'=>"delete"])."</td>";
+                            echo "<td colspan=\"8\">".$row->Category_name."</td>";
+                            echo "<td colspan=\"2\">".anchor("rm_controller/category_update_values?Category_ID=".$row->Category_ID."", "Edit",['class'=>"edit"]);
+                            echo "".anchor("rm_controller/delete_category?Category_ID=".$row->Category_ID."", "Delete",['class'=>"delete"])."</td>";
                             echo "</tr>";
 
                         }

@@ -10,6 +10,7 @@
     <?php echo link_css("css/restaurantmanager/admin.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/modal/delete_modal.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 
@@ -40,19 +41,31 @@
       <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
                 
           <!--  <a href="RM.php" class="button">Manage Users</a>-->
-            <?php echo anchor("rm_controller/users", "Manage Users",['class'=>"button"]) ?>
+            <?php //echo anchor("rm_controller/users", "Manage Users",['class'=>"button"]) ?>
          <!--   <a href="create.php" class="button">Add User</a>-->
             <?php echo anchor("rm_controller/savedata", "Add Users",['class'=>"button"]) ?>
             
-            <div class="search-container">
-            <form action="#">
-      <input type="text" style="width:79%" placeholder="Search.." name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-  </div>
+        <div class="search-container">
+            <?php echo form_open("rm_controller/search_user", "POST");?>
+                <input type="text" style="width:79%" placeholder="Search..." name="search" value="<?php echo $username; ?>">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            <?php echo form_close();?>
+
+        </div>
 
              <div class="content">
                  <h2 class="page-title">Manage Users</h2>
+
+                 <div class="status-msg-wrapper">
+                    <div class="status-msg" style="margin-bottom:20px">
+                        <?php $this->flash('RM_user_not_retrieved','alert alert-danger','fa fa-times-circle'); ?>
+                        <?php $this->flash('RM_user_not_found','alert alert-warning','fa fa-times-circle'); ?>
+
+                        <?php $this->flash('RM_user_databaseError','alert alert-danger','fa fa-times-circle'); ?>
+                        <?php $this->flash('RM_user_NotFound','alert alert-warning','fa fa-times-circle'); ?>
+                    </div>
+                </div> <!-- status-msg-wrapper ends here -->
+                
                  <div style="overflow-x:auto;">
                  <table>
                      <thead>
@@ -71,7 +84,7 @@
                             <td>0783725988</td>
                             <td>Cashier</td>
                             <td><a href="edit.php" class="edit">Edit</a></td>
-                            <td><?php echo anchor("rm_controller/userscreate", "Edit", ['class'=>"edit"]) ?></td> 
+                            <td><?php //echo anchor("rm_controller/userscreate", "Edit", ['class'=>"edit"]) ?></td> 
                             <td><a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a></td>
                             
                         </tr>
@@ -82,7 +95,7 @@
                             <td>0773725999</td>
                             <td>Kitchen Manager</td>
                            <td><a href="edit.php" class="edit">Edit</a></td>
-                           <td><?php echo anchor("rm_controller/usersedit", "Edit",['class'=>"edit"]) ?></td> 
+                           <td><?php //echo anchor("rm_controller/usersedit", "Edit",['class'=>"edit"]) ?></td> 
                             <td><a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a></td>
                         </tr>
                         
@@ -107,7 +120,6 @@
     </tr>-->
     
    <?php
-        $user = new Rmuser_model; 
         foreach($data as $row){
           echo "<tr>";
           echo "<td>".$row->User_ID."</td>";

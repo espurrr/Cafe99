@@ -21,9 +21,9 @@
 
              <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
               <!--  <a href="RM.php" class="button">Manage Users</a>-->
-                <?php echo anchor("rm_controller/users", "Manage Users",['class'=>"button"]) ?>
+                <?php //echo anchor("rm_controller/users", "Manage Users",['class'=>"button"]) ?>
               <!--  <a href="create.php" class="button">Add User</a>-->
-              <?php echo anchor("rm_controller/userscreate", "Add Users",['class'=>"button"]) ?>
+              <?php //echo anchor("rm_controller/userscreate", "Add Users",['class'=>"button"]) ?>
                 
                 
              <div class="content">
@@ -117,7 +117,10 @@
             <?php endif;?>
           </div>-->
 
-          <input type="submit" value="Submit">
+          <div class="btn-container">
+            <button type="submit" formaction="<?php echo BASE_URL?>/rm_controller/users" class="btn cancel-btn">Cancel</button>
+            <input type="submit" value="Add user">
+          </div>
           
     
          

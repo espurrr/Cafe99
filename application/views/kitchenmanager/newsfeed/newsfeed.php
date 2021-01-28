@@ -11,6 +11,7 @@
     <?php echo link_css("css/kitchen-manager/newsfeed/sidebar.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/kitchen-manager/newsfeed/newsfeed.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
 
 </head>
 
@@ -21,9 +22,16 @@
 
     <div class="content-wrapper" >
     <?php include "../application/views/header/header-dashboard.php";?> 
-    
     <div class="newsfeed-wrapper">
         <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
+
+            <div class="status-msg-wrapper">
+                <div class="status-msg" style="margin-bottom:20px">
+                    <?php $this->flash('databaseError','alert alert-warning','fa fa-check'); ?>
+                    <?php $this->flash('noAnnouncementError','alert alert-warning','fa fa-times-circle'); ?>
+                </div>
+            </div>
+            
                 <?php foreach($data as $row): ?>
                 <div class="dashboard" id="download">
                     <div class="post">

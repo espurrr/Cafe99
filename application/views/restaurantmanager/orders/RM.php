@@ -10,6 +10,7 @@
     <?php echo link_css("css/restaurantmanager/admin.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/modal/delete_modal.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 </head>
@@ -41,46 +42,55 @@
          <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
             
        <!--     <a href="RM.php" class="button">Manage Orders</a>-->
-            <?php echo anchor("rm_controller/orders", "Manage Orders",['class'=>"button"]) ?>
+            <?php //echo anchor("rm_controller/orders", "Manage Orders",['class'=>"button"]) ?>
          <!--   <a href="create.php" class="button">Add Orders</a>-->
             <?php echo anchor("rm_controller/orderscreate", "Add Orders",['class'=>"button"]) ?>
 
             <div class="search-container">
-            <form action="#">
-      <input type="text" style="width:79%" placeholder="Search.." name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-  </div>
+                <?php echo form_open("rm_controller/searchOrders", "POST");?>
+                    <input type="text" placeholder="Search.." style="width:79%" name="search" value="<?php if($order_id != "") echo $order_id; ?>">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                <?php echo form_close();?>
+            </div>
 
              <div class="content">
                  <h2 class="page-title">Manage Orders</h2>
+
+                 <div class="status-msg-wrapper">
+                    <div class="status-msg" style="margin-bottom:20px">
+                        <?php $this->flash('RM_order_databaseError','alert alert-danger','fa fa-times-circle'); ?>
+                        <?php $this->flash('RM_order_NotFound','alert alert-warning','fa fa-times-circle'); ?>
+                    </div>
+                </div> <!-- status-msg-wrapper ends here -->
+
                  <div style="overflow-x:auto;">
                  <table>
                      <thead>
-                     <th>Order DateTime</th>
+                     <th>Order ID</th>
+                     <th>Date & Time</th>
                      <th>Total Price</th>
                      <th>Special Notes</th>
                      <th>Payment Method</th>
-                     <th>Order Status</th>
                      <th>Order Type</th>
                      <th>Dispatch Time</th>
                      <th colspan="2">Action</th>
                     </thead>
                     <tbody>
+                <?php foreach($data as $row): ?>
                         <tr>
-                            <td>2020.10.11</td>
-                            <td>1000</td>
-                            <td></td>
-                            <td>Payhere</td>
-                            <td>Completed</td>
-                            <td>Delivery</td>
-                            <td>12.30 p.m</td>
+                            <td><?php echo $row->Order_ID ?></td>
+                            <td><?php echo substr($row->Order_Date_Time,0,16) ?></td> 
+                            <td><?php echo $row->Total_price ?></td>
+                            <td><?php echo $row->Special_notes ?></td>
+                            <td><?php echo $row->Payment_Method ?></td>
+                            <td><?php echo $row->Order_type ?></td>
+                            <td><?php echo $row->Kitchen_Dispatch_DateTime ?></td>
                          <!--   <td><a href="edit.php" class="edit">Edit</a></td>-->
                             <td><?php echo anchor("rm_controller/ordersedit", "Edit",['class'=>"edit"]) ?></td> 
                             <td><a href="#" class="delete" onclick='showDeleteModal()'>Delete</a></td>
                             
                         </tr>
-
+                <?php endforeach ?>
                       
                     </tbody>
                  </table>

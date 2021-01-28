@@ -36,7 +36,7 @@ body{
   padding-bottom: 150px; /* height of the footer */
 }
 .newsfeed .button{
-  background-color:var(--action-btn-color);;
+  background-color:var(--action-btn-color);
   border: none;
   color: var( --colorWhite);
   padding: 15px 32px;
@@ -47,6 +47,7 @@ body{
   margin: 4px 2px;
   cursor: pointer;
   font-weight: 600;
+  margin-left: 100px;
 }
 .newsfeed-wrapper{
     margin-left: var(--sidebar-width);

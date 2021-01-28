@@ -10,7 +10,6 @@ class RM_Controller extends JB_Controller{
             $this->destroy_session();
             redirect("account_controller/login");
         }
-        $this->model = $this->model("rmuser_model");
         $this->model = $this->model("rm_model");
     }
 
@@ -195,16 +194,57 @@ class RM_Controller extends JB_Controller{
    
    
    //read users
-   public function users($id="User_ID"){
+   
+   public function users($id = "User_ID"){
        if(empty($id)){
            $this->view('restaurantmanager/users/RM');
    
        }else{
            $user_data['id'] = $id;
-           $result=$this->model->display_users($user_data);
-           $this->view('restaurantmanager/users/RM',$result['data']);
+           $result = $this->model->display_users();
+
+            if($result === "user_not_retrieved"){
+                $this->set_flash("RM_user_not_retrieved", "Sorry, cannot show orders at the moment. Please try again later.");
+                //echo"dberror";
+            }else if($result === "user_not_found"){
+                $this->set_flash("RM_user_not_found", "Sorry, cannot show orders at the moment. Please try again later.");
+                //echo"nofood";
+            }
+           $this->view('restaurantmanager/users/RM', $result['data']);
    }
    }
+
+    public function search_user(){
+        if(isset($_POST["search"])){
+            $username = $_POST["search"];
+            $searched = ($foodname == "") ? false : true;
+            $result =  $this->model->searchUser($username);
+
+            if($result === "User_not_retrieved"){
+                $this->set_flash("RM_user_databaseError", "Sorry, cannot show fooditems at the moment. Please try again later.");
+                //echo"dberror";
+            }else {
+                if($result === "User_not_found"){
+                    $this->set_flash("RM_user_NotFound", "It looks like there aren't many great matches for your search");
+                    //echo"nofood";
+                }
+                else if($result['status'] === "success"){
+                    // $this->view('restaurantmanager/fooditem/RM',$result['data']);
+                    // print_r($result['data']);
+                    $data = $result['data'];
+                }
+                if(file_exists("../application/views/restaurantmanager/users/RM.php")){
+                    require_once "../application/views/restaurantmanager/users/RM.php";
+                }else{
+                    include "../application/views/error.php";
+                    die();
+                    // die("<div style='background-color:#f1f4f4;color:#afaaaa;border:1px dotted #afaaaa;padding:10px; border-radius:4px'>Sorry View <strong>".$view_name."</strong> is not found</div>");
+                }
+            }
+        }else{
+            $this->users();
+        }
+    }
    
    //update users
    public function user_update_values(){
@@ -232,7 +272,7 @@ class RM_Controller extends JB_Controller{
    
    public function user_update_save(){
    //   $id = $this->get_session('user_id');
-    $id=$this->get('User_ID'); 
+    $id=$this->post('User_ID'); 
 //$id=$_GET['User_ID'];
     //echo $id;
            $this->validation('User_name', 'Name' , 'required|not_int|max_len|50');
@@ -259,11 +299,11 @@ class RM_Controller extends JB_Controller{
    
            if($this->model->user_data_update($data,  $id)){
                $this-> set_flash("updateSuccess","Hey $User_name! Your profile is successfully updated.");
-               $this->view('restaurantmanager/users/edit');
+               $this->users();
               
            }else{
                $this->set_flash("updateError", "Something went wrong :( Please try again.");
-               $this->view('restaurantmanager/users/edit');
+               $this->users();
            }
            
        }else{
@@ -284,8 +324,61 @@ class RM_Controller extends JB_Controller{
    
 
     public function orders(){
-        $this->view('restaurantmanager/orders/RM');
+        $result =  $this->model->getOrders();
+
+        if($result === "Order_not_retrieved"){
+            $this->set_flash("RM_Order_not_retrieved", "Sorry, cannot show orders at the moment. Please try again later.");
+            //echo"dberror";
+        }else if($result === "Order_not_found"){
+            $this->set_flash("RM_Order_not_found", "Sorry, cannot show orders at the moment. Please try again later.");
+            //echo"nofood";
+        }else if($result['status'] === "success"){
+            // $this->view('restaurantmanager/orders/RM');
+            //print_r($result['data']);
+            $data = $result['data'];
+            // print_r($data);
+            if(file_exists("../application/views/restaurantmanager/orders/RM.php")){
+                require_once "../application/views/restaurantmanager/orders/RM.php";
+            }else{
+                include "../application/views/error.php";
+                die();
+                // die("<div style='background-color:#f1f4f4;color:#afaaaa;border:1px dotted #afaaaa;padding:10px; border-radius:4px'>Sorry View <strong>".$view_name."</strong> is not found</div>");
+            }
+        }
     }
+
+    public function searchOrders(){
+        if(isset($_POST["search"])){
+            $order_id = $_POST["search"];
+            // $searched = ($order_id == "") ? false : true;
+            $result =  $this->model->searchOrder($order_id);
+
+            if($result === "Order_not_retrieved"){
+                $this->set_flash("RM_order_databaseError", "Sorry, cannot show fooditems at the moment. Please try again later.");
+                //echo"dberror";
+            }else {
+                if($result === "Order_not_found"){
+                    $this->set_flash("RM_order_NotFound", "It looks like there aren't many great matches for your search");
+                    //echo"nofood";
+                }
+                else if($result['status'] === "success"){
+                    // $this->view('restaurantmanager/fooditem/RM',$result['data']);
+                    // print_r($result['data']);
+                    $data = $result['data'];
+                }
+                if(file_exists("../application/views/restaurantmanager/orders/RM.php")){
+                    require_once "../application/views/restaurantmanager/orders/RM.php";
+                }else{
+                    include "../application/views/error.php";
+                    die();
+                    // die("<div style='background-color:#f1f4f4;color:#afaaaa;border:1px dotted #afaaaa;padding:10px; border-radius:4px'>Sorry View <strong>".$view_name."</strong> is not found</div>");
+                }
+            }
+        }else{
+            $this->orders();
+        }
+    }
+
 
     public function orderscreate(){
         $this->view('restaurantmanager/orders/create');
@@ -328,7 +421,7 @@ class RM_Controller extends JB_Controller{
             
             if($this->model->addFoodItem($data)){
                 $this->set_flash("fooditemSuccess", "Fooditem added successfully");
-                $this->view('restaurantmanager/fooditem/create');
+                $this->fooditem();
 
             }else{
                 $this->set_flash("fooditemError", "Something went wrong :( Please try again later.");
@@ -353,15 +446,59 @@ class RM_Controller extends JB_Controller{
             $this->view('restaurantmanager/fooditem/RM',$result['data']);
     }
     }
+    public function searchfood(){
+        if(isset($_POST["search"])){
+            $foodname = $_POST["search"];
+            $searched = ($foodname == "") ? false : true;
+            $result =  $this->model->searchFooditem($foodname);
+
+            if($result === "Food_not_retrieved"){
+                $this->set_flash("RM_fooditem_databaseError", "Sorry, cannot show fooditems at the moment. Please try again later.");
+                //echo"dberror";
+            }else {
+                if($result === "Food_not_found"){
+                    $this->set_flash("RM_fooditem_NotFound", "It looks like there aren't many great matches for your search");
+                    //echo"nofood";
+                }
+                else if($result['status'] === "success"){
+                    // $this->view('restaurantmanager/fooditem/RM',$result['data']);
+                    // print_r($result['data']);
+                    $data = $result['data'];
+                }
+                if(file_exists("../application/views/restaurantmanager/fooditem/RM.php")){
+                    require_once "../application/views/restaurantmanager/fooditem/RM.php";
+                }else{
+                    include "../application/views/error.php";
+                    die();
+                    // die("<div style='background-color:#f1f4f4;color:#afaaaa;border:1px dotted #afaaaa;padding:10px; border-radius:4px'>Sorry View <strong>".$view_name."</strong> is not found</div>");
+                }
+            }
+        }else{
+            $this->foodmenu();
+        }
+
+    }
 
     //update fooditem
     public function fooditem_update_values(){
    
         $food_id=$this->get('Food_ID');
-      // echo $food_id;
-           $result = $this->model->fooditem_data($food_id);
-      // print_r($result);
-           $this->view('restaurantmanager/fooditem/edit',$result['data']);
+        // echo $food_id;
+        $result = $this->model->fooditem_data($food_id);
+        // print_r($result);
+        // $this->view('restaurantmanager/fooditem/edit',$result['data']);
+
+        if($result === "Food_not_retrieved"){
+            $this->set_flash("RM_edit_fooditem_databaseError", "Sorry, cannot show fooditems at the moment. Please try again later.");
+            // echo"dberror";
+        }else if($result === "Food_not_found"){
+            $this->set_flash("RM_edit_fooditem_NotFound", "It looks like there aren't many great matches for your search");
+            // echo"nofood";
+        }
+        else if($result['status'] === "success"){
+            $this->view('restaurantmanager/fooditem/edit', $result['data']);
+            // print_r($result['data']);
+        }
     }
 
     public function fooditem_update_save(){
@@ -455,6 +592,42 @@ class RM_Controller extends JB_Controller{
     }
     }
 
+    public function searchSubcategory(){
+        if(isset($_POST["search"])){
+            $subcategory_name = $_POST["search"];
+            $searched = ($subcategory_name == "") ? false : true;
+            $result =  $this->model->searchSubcategory($subcategory_name);
+
+            if($result === "subcategory_not_retrieved"){
+                $this->set_flash("RM_subcategory_databaseError", "Sorry, cannot show fooditems at the moment. Please try again later.");
+                //echo"dberror";
+            }else {
+                if($result === "subcategory_not_found"){
+                    $this->set_flash("RM_subcategory_NotFound", "It looks like there aren't many great matches for your search");
+                    // $this->fooditem();
+                    //echo"nofood";
+                }
+                else if($result['status'] === "success"){
+                    // $this->view('restaurantmanager/fooditem/RM',$result['data']);
+                    // print_r($result['data']);
+                    $data = $result['data'];
+                    // print_r($data);
+                }
+
+                if(file_exists("../application/views/restaurantmanager/subcategory/RM.php")){
+                    require_once "../application/views/restaurantmanager/subcategory/RM.php";
+                }else{
+                    include "../application/views/error.php";
+                    die();
+                    // die("<div style='background-color:#f1f4f4;color:#afaaaa;border:1px dotted #afaaaa;padding:10px; border-radius:4px'>Sorry View <strong>".$view_name."</strong> is not found</div>");
+                }
+                
+            }
+        }else{
+            $this->subcategory();
+        }
+    }
+
     //update subcategory
     public function subcategory_update_values(){
    
@@ -540,6 +713,42 @@ class RM_Controller extends JB_Controller{
             $result=$this->model->display_category($category_data);
             $this->view('restaurantmanager/category/RM',$result['data']);
     }
+    }
+
+    public function searchCategory(){
+        if(isset($_POST["search"])){
+            $category_name = $_POST["search"];
+            $searched = ($category_name == "") ? false : true;
+            $result =  $this->model->searchCategory($category_name);
+
+            if($result === "category_not_retrieved"){
+                $this->set_flash("RM_category_databaseError", "Sorry, cannot show fooditems at the moment. Please try again later.");
+                //echo"dberror";
+            }else {
+                if($result === "category_not_found"){
+                    $this->set_flash("RM_category_NotFound", "It looks like there aren't many great matches for your search");
+                    // $this->fooditem();
+                    //echo"nofood";
+                }
+                else if($result['status'] === "success"){
+                    // $this->view('restaurantmanager/fooditem/RM',$result['data']);
+                    // print_r($result['data']);
+                    $data = $result['data'];
+                    // print_r($data);
+                }
+
+                if(file_exists("../application/views/restaurantmanager/category/RM.php")){
+                    require_once "../application/views/restaurantmanager/category/RM.php";
+                }else{
+                    include "../application/views/error.php";
+                    die();
+                    // die("<div style='background-color:#f1f4f4;color:#afaaaa;border:1px dotted #afaaaa;padding:10px; border-radius:4px'>Sorry View <strong>".$view_name."</strong> is not found</div>");
+                }
+                
+            }
+        }else{
+            $this->category();
+        }
     }
 
     //update category

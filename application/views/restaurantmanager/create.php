@@ -65,23 +65,24 @@
                       <!--  <label for="Ann_id">Announcement_id</label>-->
                     <!--    <?php echo form_input(['type'=>'text','id'=>'Ann_id', 'name'=>'Ann_id','value'=>$this->set_value('Announcement_id')])?>-->
 
-                        <label for="Ann_title">Title</label>
+                        <label for="Ann_title">Title</label><br>
                         <?php echo form_input(['type'=>'text','id'=>'Ann_title', 'name'=>'Ann_title','value'=>$this->set_value('Announcement_title')])?><br>
-
+                        <br>
                         <label for="Ann_date">Date</label><br>
                         <?php echo form_input(['type'=>'date','id'=>'Ann_date', 'name'=>'Ann_date','value'=>$this->set_value('Announcement_date')])?><br>
-
+                        <br>
                         <label for="Ann_time">Time</label><br>
                         <?php echo form_input(['type'=>'time','id'=>'Ann_time', 'name'=>'Ann_time','value'=>$this->set_value('Announcement_time')])?><br>
-
-                        <label for="content">Content</label>
+                        <br>
+                        <label for="content">Content</label><br>
                         <?php echo form_input(['type'=>'text','id'=>'content', 'name'=>'content','value'=>$this->set_value('Content')])?><br>
-
-                        <label for="Ann_towhom">To Whom</label>
+                        <br>
+                        <label for="Ann_towhom">To Whom</label><br>
                         <?php echo form_input(['type'=>'text','id'=>'Ann_towhom', 'name'=>'Ann_towhom','value'=>$this->set_value('To_whom')])?><br>
 
-                        <div>
-                            <input type="submit" value="Save">
+                        <div class="btn-container">
+                            <button type="submit" formaction="<?php echo BASE_URL?>/rm_controller/newsfeed" class="btn cancel-btn">Cancel</button>
+                            <input type="submit" value="Add">
                         </div>
 
                         <?php echo form_close();?>  

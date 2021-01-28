@@ -21,9 +21,9 @@
                
                   
        <!--     <a href="RM.php" class="button">Manage Orders</a>-->
-       <?php echo anchor("rm_controller/orders", "Manage Orders",['class'=>"button"]) ?>
+       <?php //echo anchor("rm_controller/orders", "Manage Orders",['class'=>"button"]) ?>
          <!--   <a href="create.php" class="button">Add Orders</a>-->
-            <?php echo anchor("rm_controller/orderscreate", "Add Orders",['class'=>"button"]) ?>
+            <?php //echo anchor("rm_controller/orderscreate", "Add Orders",['class'=>"button"]) ?>
          
             <div class="content">
                  <h2 class="page-title">Edit Orders</h2>
@@ -48,9 +48,10 @@
                      <input type="text" id="otype" name="otype" ><br>
                      
                     
-                        <div>
-                            <input type="submit" value="Update" onclick="alert('Are you sure update')">
-                        </div>
+                    <div class="btn-container">
+                        <button type="submit" formaction="<?php echo BASE_URL?>/rm_controller/orders" class="btn cancel-btn">Cancel</button>
+                        <input type="submit" value="Update">
+                    </div>
                     
                  </form>
              </div>
