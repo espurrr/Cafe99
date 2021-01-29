@@ -10,15 +10,25 @@
     <?php echo link_css("css/kitchen-manager/orders/popup.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/header.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 </head>
+
 <body>
     <div class="page-container" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
     <?php include 'sidebar.php';?>
     <div class="content-wrapper">
     <?php include '../application/views/header/header-dashboard.php';?>
     <?php include 'popup.php';?>
+
+    <!-- ************ Flash msgs ************ -->
+    <div class="status-msg-wrapper">
+        <div class="status-msg" style="margin-bottom:20px">
+            <?php $this->flash('databaseError','alert alert-danger','fa fa-check'); ?>
+            <?php $this->flash('noordersError','alert alert-warning','fa fa-times-circle'); ?>
+        </div>
+    </div>
 
     <div class="tab" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
     <?php if($status == "Onqueue"): ?>

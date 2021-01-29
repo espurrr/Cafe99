@@ -15,7 +15,7 @@ class KM_Controller extends JB_Controller{
     }
 
     public function index(){
-        $this->orders();
+        $this->foodmenu();
     }
     
     public function logout(){
@@ -28,15 +28,17 @@ class KM_Controller extends JB_Controller{
 
         if($result === "Order_not_retrieved"){
             $this->set_flash("databaseError", "Sorry, cannot show orders at the moment. Please try again later.");
+            $this->view('kitchenmanager/orders/orders');
             //echo"dberror";
         }else if($result === "Order_not_found"){
             $this->set_flash("noordersError", "Sorry, cannot show orders at the moment. Please try again later.");
+            $this->view('kitchenmanager/orders/orders');
             //echo"nofood";
         }else if($result['status'] === "success"){
             //$this->view('kitchenmanager/orders/orders',$result['data']);
             //print_r($result['data']);
+
             $data = $result['data'];
-            // print_r($data);
             if(file_exists("../application/views/kitchenmanager/orders/orders.php")){
                 require_once "../application/views/kitchenmanager/orders/orders.php";
             }else{
@@ -138,11 +140,27 @@ class KM_Controller extends JB_Controller{
         else{
             $this-> set_flash("updateUnsuccess","Food item wasn't updated successfully");
         }
-        echo $refresh_state;
+        // echo $refresh_state;
         redirect("km_controller/foodmenu/".$refresh_state);
         
 
     } // updateFooditemAvailability ends here
+
+    public function updateCurrentCount($food_id, $refresh_state="Food"){
+        if (isset($_POST['quantity'])){
+            $quantity = (int)$_POST['quantity'];
+            $data = ['Current_count'=>$quantity];
+        }
+
+        if($this->model->updateCurrentCount($data , $food_id)){
+            $this-> set_flash("updateSuccess","Food item updated successfully");
+        }
+        else{
+            $this-> set_flash("updateUnsuccess","Food item wasn't updated successfully");
+        }
+        // echo $refresh_state;
+        redirect("km_controller/foodmenu/".$refresh_state);
+    }
 
     public function updateOrderStatus(){
         if (isset($_POST['onqueue'])){

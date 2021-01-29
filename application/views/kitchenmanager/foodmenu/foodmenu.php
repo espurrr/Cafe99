@@ -35,6 +35,7 @@
     <?php foreach($data['category'] as $category): ?>
     <div id="<?php echo strtolower($category->Category_name) ?>" class="menu_container" style="display: <?php echo ($status == $category->Category_name) ? "block": "none"; ?>;">
     
+    <!-- ************ Search bar ************ -->
         <div class="search_container">
             <?php //echo form_open("km_controller/searchfood/Food", "POST");?>
             <form action="<?php echo BASE_URL; ?>/km_controller/searchfood/<?php echo $category->Category_name ?>" method="POST">
@@ -67,8 +68,19 @@
                         $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
                     ?>
                     <img src="<?php echo $img_path;?>" alt="Image Not Found">
-                    <div class="text">
+                    <div class="foodname">
                         <h4><?php echo $row->Food_name;?></h4>
+                    </div>
+
+                    <div class="quantity">
+                    <?php echo form_open("km_controller/updateCurrentCount/".$row->Food_ID."/".$category->Category_name, "POST");?>
+                        <label for="quantity">Count :</label>
+                        <input type="number" id="quantity" name="quantity" value=<?php echo $row->Current_count;?> min="1" max="1000">
+                        <input type="submit">
+                    <?php echo form_close();?>
+                    </div>
+
+                    <div class="text">
                         <p>Product ID :  <?php echo $row->Food_ID; ?></p>
                         <p class="availability"><?php echo $row->Availability; ?></p>
                     </div>
@@ -102,11 +114,23 @@
                                     $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
                                 ?>
                                 <img src="<?php echo $img_path;?>" alt="Image Not Found">
-                                <div class="text">
+                                <div class="foodname">
                                     <h4><?php echo $row->Food_name;?></h4>
+                                </div>
+
+                                <div class="quantity">
+                                <?php echo form_open("km_controller/updateCurrentCount/".$row->Food_ID."/".$category->Category_name, "POST");?>
+                                    <label for="quantity">Count :</label>
+                                    <input type="number" id="quantity" name="quantity" value=<?php echo $row->Current_count;?> min="1" max="1000">
+                                    <input type="submit">
+                                <?php echo form_close();?>
+                                </div>
+
+                                <div class="text">
                                     <p>Product ID :  <?php echo $row->Food_ID; ?></p>
                                     <p class="availability"><?php echo $row->Availability; ?></p>
                                 </div>
+                                
 
                                 <?php echo form_open("km_controller/updateAvailability/".$row->Category_name, "POST");?>
                                 <!-- <form action="" method="POST"> -->

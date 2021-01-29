@@ -20,8 +20,10 @@ body {
     color: #4c4c4c;
     text-align: center;
     text-decoration: none;
-    font-size: 23px;
+    font-size: 18px;
+    user-select: none;
   }
+
   .logo{
     height: 68px;
   }
