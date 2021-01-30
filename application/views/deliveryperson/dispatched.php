@@ -75,6 +75,25 @@
     <li>Customer Address</li>
     <li>Action</li>
   </ul>
+
+  <?php
+  $order = new dp_model; 
+  foreach($data as $row){  
+  ?> 
+
+<ul>
+<li data-label="order no"><?php echo $row->Order_ID; ?></li>
+<li data-label="customer name"><?php echo $row->User_name; ?></li>
+<li data-label="customer address"><?php echo $row->Delivery_address; ?></li>
+<li data-label="action"><a href="#" onclick="showModal(50)"><i class="fa fa-eye" style="font-size:24px;color:rgb(6, 132, 235);padding-right:20px"></i></a><a href="#"><i class="fa fa-remove" style="font-size:24px;color: #f15852ee"></i></a></li>
+ 
+</ul>
+
+  <?php
+  }
+  ?>  
+
+<!--following row is not get from database -->
   <ul>
     <li data-label="order no">1</li>
     <li data-label="customer name"><p>Ishan Senanayaka</p></li>
@@ -116,92 +135,7 @@
   
   </ul>
 
-  <ul>
-    <li data-label="order no">2</li>
-    <li data-label="customer name"><p>Vageesha Perera</p></li>
-    <li data-label="customer address"><p>No.200,<br>Highlevel Rd,<br>Maharagama.</p></li>
-    <li data-label="action"><a href="#" onclick="showModal(60)"><i class="fa fa-eye" style="font-size:24px;color:rgb(6, 132, 235);padding-right:20px"></i></a><a href="#"><i class="fa fa-remove" style="font-size:24px;color: #f15852ee"></i></a></li>
-    <div id="popup-window" class="popup-window">
-        <div class="win-content">
-            <span class="close-btn" id="close-btn"><i class="fas fa-times"></i></span>
-          <!--  <p id="orderNo"></p>-->
-            <div class="win-table">
-                <table>
-                    <colgroup>
-                        <col span="" class="col-food">
-                        <col span="" class="col-quantity">
-                      <!--  <col span="" class="col-paymentdetails">-->
-                    </colgroup>
-        
-                    <tr>
-                        <th>Food item</th>
-                        <th>Quantity</th>
-                     <!--   <th>Payment Details</th>-->
-                    </tr>
-        
-                    <tr>
-                        <td>Chicken Pizza</td>
-                        <td ><div class="quantity">2</div></td>
-                       
-                    </tr>
-                    <tr>
-                        <td>Tuna Bun</td>
-                        <td ><div class="quantity">6</div></td>
-                        
-                    </tr>
-                  </table>
-            </div>
-        </div>
-    </div>
  
- 
-  </ul>
-
-  <ul>
-    <li data-label="order no">3</li>
-    <li data-label="customer name"><p>Nilu Vishaka</p></li>
-    <li data-label="customer address"><p>No.45,<br>Pamunuwa Rd,<br>Maharagama.</p></li>
-    <li data-label="action"><a href="#" onclick="showModal(90)"><i class="fa fa-eye" style="font-size:24px;color:rgb(6, 132, 235);padding-right:20px"></i></a><a href="#"><i class="fa fa-remove" style="font-size:24px;color: #f15852ee"></i></a></li>
-    <div id="popup-window" class="popup-window">
-        <div class="win-content">
-            <span class="close-btn" id="close-btn"><i class="fas fa-times"></i></span>
-          <!--  <p id="orderNo"></p>-->
-            <div class="win-table">
-                <table>
-                    <colgroup>
-                        <col span="" class="col-food">
-                        <col span="" class="col-quantity">
-                      <!--  <col span="" class="col-paymentdetails">-->
-                    </colgroup>
-        
-                    <tr>
-                        <th>Food item</th>
-                        <th>Quantity</th>
-                     <!--   <th>Payment Details</th>-->
-                    </tr>
-        
-                    <tr>
-                        <td>Chocolate Cake</td>
-                        <td ><div class="quantity">2</div></td>
-                       
-                    </tr>
-                    <tr>
-                        <td>Fish Pattie</td>
-                        <td ><div class="quantity">10</div></td>
-                        
-                    </tr>
-                    <tr>
-                        <td>Vegetable Pattie</td>
-                        <td ><div class="quantity">10</div></td>
-                        
-                    </tr>
-                  </table>
-            </div>
-        </div>
-    </div>
-
- 
-  </ul>
 
      
 </div>
