@@ -40,26 +40,26 @@
     <div class="cart-items">
          
             <div class="cart-item-container left">
-            <form>
+            <?php echo form_open("customer_controller/completeOrder","post",['id'=>"detailsform"]);?>
                 <h2>Payment Method</h2><br>
                 <div class="radios">
                     <label class="radio-inline">
-                        <input type="radio" name="opinion" id="payhere" onclick="paymentMethod()" checked/>
+                        <input type="radio" name="pay_option" value="payhere" id="payhere" onclick="paymentMethod()" />
                         <i></i>
                         <span><a href="<Your_PayHere_Link_Here>"><img src="https://www.payhere.lk/downloads/images/pay_with_payhere.png" alt="Pay with PayHere" width="150"/></a></span>
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="opinion" id="cash" onclick="paymentMethod()"/>
+                        <input type="radio" name="pay_option" value="cash" id="cash" onclick="paymentMethod()" checked/>
                         <i></i>
                         <span>Cash on Service</span>
                     </label>
     
                 </div>
-            <button class="checkout-button mob-complete" onclick="showModal()">COMPLETE ORDER</button>
+            <button class="checkout-button" onclick="showModal()">COMPLETE ORDER</button>
             
                
                
-            </form>
+            <?php echo form_close();?>   
             </div>
         </div>
     
@@ -99,7 +99,7 @@
             </div>
             <div class="total">Service charges: 50.00</div>                
             <div class="total"><b>Total: 1000.00</b></div>
-            <button class="checkout-button" onclick="showModal()" >COMPLETE ORDER</button>
+            
             
         </div>
         
@@ -166,6 +166,12 @@
         }
 
   </script>
+
+<script>
+ var session = eval('(<?php echo json_encode($_SESSION)?>)');
+ console.log(session);
+
+</script>
     
 </body>
 </html>

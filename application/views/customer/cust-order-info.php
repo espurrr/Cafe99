@@ -24,21 +24,21 @@
     <div class="cart-items">
          
             <div class="cart-item-container left">
-            <form>
+            <?php echo form_open("customer_controller/proceedToPaymentDetails","post",['id'=>"detailsform"]);?>
                 <h2>Order type</h2><br>
                 <div class="radios">
                     <label class="radio-inline">
-                        <input type="radio" name="opinion" id="r_dine" onclick="detailsDisplay()" checked/>
+                        <input type="radio" name="opinion" value="dine-in" id="r_dine" onclick="detailsDisplay()" checked/>
                         <i></i>
                         <span>Dine-in</span>
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="opinion" id="r_pick" onclick="detailsDisplay()"/>
+                        <input type="radio" name="opinion" value="pick-up" id="r_pick" onclick="detailsDisplay()"/>
                         <i></i>
                         <span>Pick-up</span>
                     </label>
                     <label>
-                        <input type="radio" name="opinion" id="r_deli" onclick="detailsDisplay()"/>
+                        <input type="radio" name="opinion" value="delivery" id="r_deli" onclick="detailsDisplay()"/>
                         <i></i>
                         <span>Delivery</span>
                     </label>
@@ -46,12 +46,12 @@
                 <h2>Order is for</h2><br>
                 <div class="radios">
                     <label class="radio-inline">
-                        <input type="radio" name="opinion2" id="me" onclick="detailsDisplay()" checked/>
+                        <input type="radio" name="opinion2" value="me" id="me" onclick="detailsDisplay()" checked/>
                         <i></i>
                         <span>Me</span>
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="opinion2" id="someone_else" onclick="detailsDisplay()"/>
+                        <input type="radio" name="opinion2" value="else" id="someone_else" onclick="detailsDisplay()"/>
                         <i></i>
                         <span>Someone else</span>
                     </label>
@@ -63,32 +63,29 @@
                     <p> Receiver's information </p>
                         <?php echo form_input(['type'=>'text', 'name'=>'Customer_name', 'placeholder'=>'Name*', 'value'=>$this->set_value('Customer_name')])?>
                         <div class="error">
-                            <?php if(!empty($this->errors['User_name'])):?>
-                            <?php echo $this->errors['User_name'];?>
+                            <?php if(!empty($this->errors['Customer_name'])):?>
+                            <?php echo $this->errors['Customer_name'];?>
                             <?php endif;?>
                         </div>
                         <?php echo form_input(['type'=>'tel', 'name'=>'Customer_phone', 'placeholder'=>'Phone no.*' ,'value'=>$this->set_value('Customer_phone')])?>
                         <div class="error">
-                            <?php if(!empty($this->errors['Email_address'])):?>
-                            <?php echo $this->errors['Email_address'];?>
+                            <?php if(!empty($this->errors['Customer_phone'])):?>
+                            <?php echo $this->errors['Customer_phone'];?>
                             <?php endif;?>
                         </div>
                     </div><br>
-
+                    
+                    <?php date_default_timezone_set('Asia/Colombo');?> 
                     <div id="dine-in">
                     
-                        <p> Dine-in Date </p>
-                        <?php echo form_input(['type'=>'date', 'name'=>'Dine-in-date', 'placeholder'=>'Dine-in Date' ,'value'=>$this->set_value('Dine-in-date')])?>
-                        <div class="error">
-                            <?php if(!empty($this->errors['Email_address'])):?>
-                            <?php echo $this->errors['Email_address'];?>
-                            <?php endif;?>
-                        </div>
+                        <p> Dine-in Date</p>
+                        <?php echo form_input(['type'=>'date', 'name'=>'Dine-in-date', 'placeholder'=>'Dine-in Date' ,'value'=>date('Y-m-d'), 'min'=>date('Y-m-d'), 'max'=>date('Y-m-d')])?>
+                       
                         <p> Dine-in Time </p>
-                        <?php echo form_input(['type'=>'time', 'name'=>'Dine-in-time', 'placeholder'=>'Dine-in Time' ,'value'=>$this->set_value('Dine-in-time')])?>
+                        <?php echo form_input(['type'=>'time', 'name'=>'Dine-in-time', 'placeholder'=>'Dine-in Time' , 'value'=>$this->set_value('Dine-in-time'), 'min'=>date('06:00'), 'max'=>date('19:00')])?>
                         <div class="error">
-                            <?php if(!empty($this->errors['Email_address'])):?>
-                            <?php echo $this->errors['Email_address'];?>
+                            <?php if(!empty($this->errors['Dine-in-time'])):?>
+                            <?php echo $this->errors['Dine-in-time'];?>
                             <?php endif;?>
                         </div>
                     </div>
@@ -96,14 +93,14 @@
                     <div id="pick-up">
                        
                         <p> Pick-up Date </p>
-                        <?php echo form_input(['type'=>'date', 'name'=>'Pick-up-date', 'placeholder'=>'Pick-up Date' ,'value'=>$this->set_value('Pick-up-date')])?>
+                        <?php echo form_input(['type'=>'date', 'name'=>'Pick-up-date', 'placeholder'=>'Pick-up Date' ,'value'=>date('Y-m-d'), 'min'=>date('Y-m-d'), 'max'=>date('Y-m-d')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['Email_address'])):?>
                             <?php echo $this->errors['Email_address'];?>
                             <?php endif;?>
                         </div>
                         <p> Pick-up Time </p>
-                        <?php echo form_input(['type'=>'time', 'name'=>'Pick-up-time', 'placeholder'=>'Pick-up Time' ,'value'=>$this->set_value('Pick-up-time')])?>
+                        <?php echo form_input(['type'=>'time', 'name'=>'Pick-up-time', 'placeholder'=>'Pick-up Time' , 'value'=>$this->set_value('Pick-up-time'), 'min'=>date('06:00'), 'max'=>date('19:00')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['Email_address'])):?>
                             <?php echo $this->errors['Email_address'];?>
@@ -114,21 +111,21 @@
                     <div id="delivery">
 
                     <p> Delivery Address </p>
-                        <?php echo form_input(['type'=>'text', 'name'=>'Delivery_address', 'placeholder'=>'Address*', 'value'=>$this->set_value('Delivery_address')])?>
+                        <?php echo form_input(['type'=>'text', 'name'=>'Delivery-address', 'placeholder'=>'Address*', 'value'=>$this->set_value('Delivery-address')])?>
                         <div class="error">
-                            <?php if(!empty($this->errors['User_name'])):?>
-                            <?php echo $this->errors['User_name'];?>
+                            <?php if(!empty($this->errors['Delivery-address'])):?>
+                            <?php echo $this->errors['Delivery-address'];?>
                             <?php endif;?>
                         </div>
                     <p> Delivery Date </p>
-                        <?php echo form_input(['type'=>'date', 'name'=>'Delivery-date', 'placeholder'=>'Delivery Date' ,'value'=>$this->set_value('Delivery-date')])?>
+                        <?php echo form_input(['type'=>'date', 'name'=>'Delivery-date', 'placeholder'=>'Delivery Date' ,'value'=>date('Y-m-d'), 'min'=>date('Y-m-d'), 'max'=>date('Y-m-d')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['Email_address'])):?>
                             <?php echo $this->errors['Email_address'];?>
                             <?php endif;?>
                         </div>
                     <p> Delivery Time </p>
-                        <?php echo form_input(['type'=>'time', 'name'=>'Delivery-time', 'placeholder'=>'Delivery Time' ,'value'=>$this->set_value('Delivery-time')])?>
+                        <?php echo form_input(['type'=>'time', 'name'=>'Delivery-time', 'placeholder'=>'Delivery Time' ,'value'=>$this->set_value('Delivery-time'), 'min'=>date('06:00'), 'max'=>date('19:00')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['Email_address'])):?>
                             <?php echo $this->errors['Email_address'];?>
@@ -138,9 +135,9 @@
 
                     
 
-                </div>
-               
-            </form>
+                </div><br>
+                <input type="submit" class="checkout-button" value="CONTINUE">
+                <?php echo form_close();?>    
             </div>
         </div>
     
@@ -168,7 +165,8 @@
             </div><br> -->
             <div class="total">Service charges: 50.00</div>                
             <div class="total"><b>Total: 1000.00</b></div><br>
-            <button class="checkout-button" href="#" ><?php echo anchor("customer_controller/payment", "PROCEED TO CHECKOUT") ?></button>
+            
+            <!-- <button class="checkout-button" href="#" ><?php echo anchor("customer_controller/payment", "PROCEED TO CHECKOUT") ?></button> -->
 
         </div>
         <!-- modal end -->
@@ -180,10 +178,11 @@
             </div> -->
             <div class="total">Service charges: 50.00</div>                
             <div class="total"><b>Total: 1000.00</b></div>
-            <button class="checkout-button" href="#" ><?php echo anchor("customer_controller/payment", "PROCEED TO CHECKOUT") ?></button>
+            <!-- <input type="submit" class="checkout-button" value="PROCEED TO CHECKOUT"> -->
+            <!-- <button class="checkout-button" href="#" ><?php echo anchor("customer_controller/payment", "PROCEED TO CHECKOUT") ?></button> -->
             
         </div>
-        
+        <?php echo form_close();?>  
        
     </div>
 
@@ -246,6 +245,10 @@
 
 
     </script>
-    
+    <script>
+ var session = eval('(<?php echo json_encode($_SESSION)?>)');
+ console.log(session);
+
+</script>
 </body>
 </html>

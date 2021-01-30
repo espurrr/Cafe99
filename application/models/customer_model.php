@@ -144,6 +144,74 @@ class Customer_model extends Database{
             }
     }
 
+    public function createOtherRecipient($user_id, $cart_id, $rec_name, $rec_phone){
+        $data =[
+            'User_ID' => $user_id,
+            'Cart_ID' => $cart_id,
+            'Name' => $rec_name,
+            'Phone_Number' => $rec_phone
+        ];
+    
+        if($this->Insert("other_recipient", $data)){
+            return true;
+        }else{
+            return false;
+        }
+    
+        
+    }
+
+    public function updateOtherRecipient($user_id, $cart_id, $rec_name, $rec_phone){
+        $data =[
+            'User_ID' => $user_id,
+            'Cart_ID' => $cart_id,
+            'Name' => $rec_name,
+            'Phone_Number' => $rec_phone
+        ];
+        if($this->Update("other_recipient", $data,['Cart_ID' => $cart_id])){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
+
+    public function updateOrderDetailsInCart($data, $cart_id){
+    
+        if($this->Update("cart", $data,['Cart_ID' => $cart_id])){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
+
+    public function get_cart_data($cart_id){
+      
+        if($this->Select_Where("cart", ['Cart_id' => $cart_id])){
+
+            if($this->Count() > 0){
+                $row = $this->Row();
+                return ['status'=>'success', 'data'=>$row];
+            }else{
+                return "cart_not_found";
+            }
+
+        }
+
+    }
+
+    public function createNewOrder($data){
+     
+        if($this->Insert("orders", $data)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+
 
 
 

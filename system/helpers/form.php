@@ -31,6 +31,16 @@ function form_input($fields){
     }else{
         $readonly = '';
     }
+    if(array_key_exists("min", $fields)){
+        $min = $fields['min'];
+    }else{
+        $min = null;
+    }
+    if(array_key_exists("max", $fields)){
+        $max = $fields['max'];
+    }else{
+        $max = null;
+    }
 
     if(array_key_exists("type", $fields)){
         if($fields['type'] == "text"){
@@ -55,7 +65,10 @@ function form_input($fields){
 
     if($type == "file"){
         return '<input type="'. $type .'" name="'. $name .'" id="'. $id .'" class="'. $class .'">';
-    } else {
+    } else if($type == "date" || $type =="time"){
+        return '<input type="'. $type .'" name="'. $name .'" id="'. $id .'" class="'. $class . '" min="'. $min .'" max="'. $max . '" value="'. $value . '">' ;
+    }
+    else {
         return '<input type="'. $type .'" name="'. $name .'" id="'. $id .'" class="'. $class .'" placeholder="'.$placeholder.'" value="'. $value .'" '. $readonly .' >';
     }
 

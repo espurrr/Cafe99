@@ -393,7 +393,10 @@ body {
     justify-items: center;
 }
 
-form {
+
+/* used in order infor and payment info pages */
+
+#detailsform {
     position: absolute;
     left: 40%;
     transform: translateX(-50%);
@@ -468,4 +471,10 @@ label:hover {
     left: 50%;
     width: 75%;
     transform: translate(-50%, -50%);
+}
+
+.error {
+    font-size: 13px;
+    color: #ee2828;
+    font-weight: 500;
 }

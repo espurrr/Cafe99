@@ -78,7 +78,7 @@ trait form_validation {
             //Get the value of max_len rule 
             $max_len_value = $rules[$max_len_value];
             if(strlen($data) > $max_len_value){
-                return $this->errors[$field_name] = $label . " is grater than " . $max_len_value . " characters";
+                return $this->errors[$field_name] = $label . " is greater than " . $max_len_value . " characters";
             }
 
         }
@@ -145,7 +145,7 @@ trait form_validation {
             }
         }
 
-          /*
+        /*
         RULE => exists : Check whether the email address exists in the database
         */ 
         if(in_array("exists", $rules)){
@@ -163,6 +163,24 @@ trait form_validation {
                     return $this->errors[$field_name] = $label . " is not registered yet";
                 }
             }
+        }
+        
+        /*
+        RULE => service_time : time should be 30 mins ahead from current time
+        */ 
+        if(in_array("service_time", $rules)){
+           
+            date_default_timezone_set('Asia/Colombo');
+            //given time
+            $order_time = strtotime($data);
+            //current date
+            $current_time =  strtotime(date('H:i'));
+            $min_order_time = strtotime(date('H:i', strtotime('+30 minutes',$current_time)));
+            if($order_time<$min_order_time){
+                // echo "order_time", $order_time,"------","min_order_time",$min_order_time;
+                return $this->errors[$field_name] = $label . " should be atleast 30 mins ahead from now";
+            }
+
         }
 
 

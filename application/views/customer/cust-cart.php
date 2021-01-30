@@ -70,25 +70,32 @@
             <button class="modal-close-btn" id="close-btn">
                 <i class="fa fa-times" title="cross"></i>
             </button>
+            <?php echo form_open("customer_controller/proceedToOrderDetails","post");?><br>
+
             <div class="summary-title"><b>Order Summary</b></div><br>
             <div class="input-details">
-                <p type="Note to Chef">  <?php echo form_input(['type'=>'text', 'name'=>'message', 'placeholder'=>''])?></p>
+                <p type="Special Notes to Chef">  <?php echo form_input(['type'=>'text', 'name'=>'specialnote', 'value'=>$this->get_session('cart_special_notes')])?></p>
             </div><br>
             <div class="total">Total: <b>LKR <?= $this->get_session('cart_sub_total');?></b></div><br>
-    
-            <button class="checkout-button" href="#" ><?php echo anchor("customer_controller/order", "PROCEED TO CHECKOUT") ?></button>
+            <input type="submit" class="checkout-button" value="PROCEED TO CHECKOUT">
 
+            
+            <?php echo form_close();?>    
         </div>
         <!-- modal end -->
 
         <div class="summary-container">
-            <div class="summary-title">Order Summary</div>
-            <div class="input-details">
-                <p type="Note to Chef">  <?php echo form_input(['type'=>'text', 'name'=>'message', 'placeholder'=>''])?></p>
-            </div>
-            <div class="total">Total: <b>LKR <?= $this->get_session('cart_sub_total');?></b></div>
-            <button class="checkout-button" href="#" ><?php echo anchor("customer_controller/order", "PROCEED TO CHECKOUT") ?></button>
-            
+
+        <?php echo form_open("customer_controller/proceedToOrderDetails","post");?><br>
+            <div class="summary-title">Order Summary</div><br>
+            <div class="input-details"><br>
+                <p type="Special Notes to Chef">  <?php echo form_input(['type'=>'text', 'name'=>'specialnote', 'value'=> $this->get_session('cart_special_notes')])?></p>
+               
+            </div><br><br>
+            <div class="total">Total: <b>LKR <?= $this->get_session('cart_sub_total');?></b></div><br>
+            <input type="submit" class="checkout-button" value="PROCEED TO CHECKOUT">
+
+        <?php echo form_close();?>    
         </div>
         
        

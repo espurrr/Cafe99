@@ -299,17 +299,171 @@ class Customer_controller extends JB_Controller{
         
     }
 
+    public function removefromcart(){
 
+    }
+
+    public function proceedToOrderDetails(){
+        
+        $this->validation('specialnote','Special Notes', 'max_len|100');
+    
+        if($this->run()){
+
+
+           $note = $this->post('specialnote');
+           $this->set_session('cart_special_notes',$note);
+           $this->view('customer/cust-order-info');
+
+        }else{
+            redirect("customer_controller/mycart");  
+        }
+
+    }
+
+    public function proceedToPaymentDetails(){
+       
+        $user_id = $this->get_session('user_id');
+        $cart_id = $this->get_session('cart_id');
+        $order_address = NULL;  //for dinein and pickup, theres no address
+
+        $order_type = $this->post('opinion');
+        $order_is_for = $this->post('opinion2');
+        // echo $order_type;
+        // echo $order_is_for;
+
+        //order type
+        if($order_type=='dine-in'){
+            $this->validation('Dine-in-time', 'Dine-in time' , 'service_time');
+      
+            $order_date = $this->post('Dine-in-date');
+            $order_time = $this->post('Dine-in-time');
+            // echo $order_date;
+            // echo $order_time;
+       }else if($order_type=='pick-up'){
+            $this->validation('Pick-up-time', 'Pick-up time' , 'service_time');
+
+            $order_date = $this->post('Pick-up-date');
+            $order_time = $this->post('Pick-up-time');
+            // echo $order_date;
+            // echo $order_time;
+        }else if($order_type=='delivery'){
+            $this->validation('Delivery-address', 'Delivery address' , 'required');
+            $this->validation('Delivery-time', 'Delivery time' , 'service_time');
+            $order_date = $this->post('Delivery-date');
+            $order_time = $this->post('Delivery-time');
+            $order_address = $this->post('Delivery-address');
+            // echo $order_date;
+            // echo $order_time;
+            // echo $order_address;
+        }
+
+        //order is for whom?
+        if($order_is_for=='me'){
+            $order_is_for_me = 1;
+            $order_receiver_id = $user_id;
+            // echo $order_receiver_id;
+        }else if($order_is_for=='else'){
+            $order_is_for_me = 0;
+            $this->validation('Customer_name', 'Receiver\'s name' , 'required|not_int|max_len|50');
+            $this->validation('Customer_phone', 'Receiver\'s phone no.' , 'required|int|len|10');
+            $rec_name = $this->post('Customer_name');
+            $rec_phone = $this->post('Customer_phone');
+
+            if($this->get_session('order_is_for_me')==0){   //order recipient is already created, now the user wishes to edit the details
+                $this->model->updateOtherRecipient($user_id, $cart_id, $rec_name, $rec_phone);
+            }else{
+                // make a new receipient in table
+                $this->model->createOtherRecipient($user_id, $cart_id, $rec_name, $rec_phone);
+            }
+            
+         
+            // echo $order_receiver_id;
+            // echo $rec_name;
+            // echo $rec_phone;
+       }
+        
+        if($this->run()){
+            if($order_is_for_me==0){ //if order is for other recipient
+                //mod session data, modifying here because session_start happens after this->run
+                $this->set_session('order_is_for_me',0);   /////////////////////////////////////why doesnt it workkkkkkk???     
+            }
+            date_default_timezone_set('Asia/Colombo');
+            $mod_time = date('Y-m-d H:i:s');
+                
+            $data = [
+                'Special_notes' => $this->get_session('cart_special_notes'),
+                'Order_type' => $order_type,
+                'Order_is_for_me' => $order_is_for_me,
+                'Service_date' => $order_date,
+                'Service_time' => $order_time,
+                'Service_address' => $order_address,
+                'ModifiedDateTime' => $mod_time
+            ];
+            //update food cart in db
+            $this->model->updateOrderDetailsInCart($data, $cart_id);         
+            //navigate to payment page
+            $this->view('customer/cust-payment');
+
+        }else{
+            $this->view('customer/cust-order-info');
+        }
+         
+          
+
+    }
+
+    public function completeOrder(){
+       
+        $user_id = $this->get_session('user_id');
+        $cart_id = $this->get_session('cart_id');
+        date_default_timezone_set('Asia/Colombo');
+
+        $payment_type = $this->post('pay_option');// can be 'payhere', 'cash'
+
+        //get cart data
+        $cart_data = $this->model->get_cart_data($cart_id);
+        
+        if($cart_data['status'] === "success"){
+   
+            $data = [
+                'Order_Date_Time' => date($cart_data['data']->Service_date ." ". $cart_data['data']->Service_time), //combined serve date and time
+                'Item_count' => $cart_data['data']->Item_count,
+                'Total_price' => $cart_data['data']->Sub_total, //disregarded discounts here...
+                'Special_notes' => $cart_data['data']->Special_notes,
+                'Payment_method' => $payment_type,     //payement method from local variable
+                'Order_type' => $cart_data['data']->Order_type,
+                'Order_is_for_me' => $cart_data['data']->Order_is_for_me,
+                'User_ID' => $cart_data['data']->User_ID,
+                'Cart_id' => $cart_data['data']->Cart_id,
+            ];
+
+            if($payment_type=="cash"){
+                //make a new order
+                if($this->model->createNewOrder($data)){
+                    echo "cash order success";
+                }else{
+                    echo "cash order failed";
+                }
+            }
+            
+            else if($payment_type=="payhere"){
+                //payment gatewayyyyy
+                //if the paymen_status == sucess only make a new order
+            }      
+
+        }
+     
+        
+        $this->view('customer/cust-order-info');
+
+    
+    }
     public function order(){  
         $this->view('customer/cust-order-info');
     }
 
     public function payment(){ 
         $this->view('customer/cust-payment');
-    }
-
-    public function completeOrder(){  //last button in the payment
-        $this->view('customer/cust-order-info');
     }
 
 

@@ -144,10 +144,12 @@ class Account_controller extends JB_Controller{
                     'user_status' => $result['data']->User_status,
                     'role' => $result['data']->User_role,
                     'cart_assigned' => $result['data']->isAssignedCart, //customer already has a cart or not
-                    'cart_id' => 0,
+                    'cart_id' => "0",
                     'cart_item_count' => 0, //db request to get the cart item_count from cart table
                     'cart_sub_total' => 0,
-                    'logged' => 1,
+                    'cart_special_notes' => "",
+                    'order_is_for_me' => 1,
+                    'logged' => "1",
                     'loader' => true
                 ];
                             
@@ -163,6 +165,7 @@ class Account_controller extends JB_Controller{
                             $this->set_session('cart_id',$cart_data->Cart_id);
                             $this->set_session('cart_item_count',$cart_data->Item_count);
                             $this->set_session('cart_sub_total',$cart_data->Sub_total);
+                            $this->set_session('order_is_for_me',$cart_data->Order_is_for_me);
                            
 
                         }else{  //no cart assigned..should create one
