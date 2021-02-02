@@ -196,6 +196,41 @@ class Database {
         return $this->Query->execute($placeholder_values);
   
     }
+
+       /*
+    Insert method 
+    */
+    public function InsertAndReturnID($table_name, $columns_values){
+       
+        $columns;
+        $placeholder;
+        $placeholder_values;
+
+        foreach($columns_values as $key => $values ):
+            $columns .= $key . ",";
+            // Repalce column name on ?,
+            $placeholder .= str_replace($key, "?,", $key);
+            $placeholder_values .= $values . ",";
+        endforeach;
+    
+        //Remove comma from the end of string/statement
+        $columns = rtrim($columns, ",");
+        $placeholder = rtrim($placeholder, ",");
+        $placeholder_values = rtrim($placeholder_values, ",");
+        $placeholder_values = explode(",", $placeholder_values);
+        
+        //Write Insert Query
+        $this->Query = $this->db->prepare("INSERT INTO " . $table_name . "(" . $columns . ") VALUES (" . $placeholder . ")");
+        
+        if($this->Query->execute($placeholder_values)){
+            $last_id = $this->db->lastInsertId();   //get the inserted record primary key ID
+            return $last_id; //insertion successful -> return ID
+        }else{
+            return false;   //insertion failed -> return 0
+        }
+        
+  
+    }
     // SELECT * FROM users INNER JOIN teacher ON users.id = teacher.id
 
     public function Join($table1, $table2, $condition, $join_name = ""){

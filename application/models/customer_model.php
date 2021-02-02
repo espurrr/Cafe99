@@ -177,8 +177,9 @@ class Customer_model extends Database{
     }
 
     public function updateOrderDetailsInCart($data, $cart_id){
-    
+        // print_r($data);
         if($this->Update("cart", $data,['Cart_ID' => $cart_id])){
+            print_r($data);
             return true;
         }else{
             return false;
@@ -201,19 +202,63 @@ class Customer_model extends Database{
 
     }
 
-    public function createNewOrder($data){
-     
-        if($this->Insert("orders", $data)){
-            return true;
-        }else{
+    public function createNewOrder($data, $cart_id){
+
+        $user_id = $data['User_ID'];
+
+        $Order_ID = $this->InsertAndReturnID("orders", $data);
+        if(!$Order_ID){ //order creation failed
             return false;
         }
+        //now order is created
+        //cart items should me migrated to order items table
+        //get cart items
+        if($this->Select_Where("cartitem", ['Cart_id' => $cart_id] )){
+            if($this->Count() > 0){
+                $cartitems = $this->AllRecords();
+                //print_r($cartitems);
+                foreach($cartitems as $row){
+                    $orderitem_data = [
+                        'Order_ID' => $Order_ID,
+                        'Food_ID' => $row->Food_ID,
+                        'Quantity' => $row->Quantity,
+                        'Price' => $row->Price,
+                        'Food_Discount' => $row->Discount
+                    ];
+                    //insert each order item
+                    $this->Insert("order_item", $orderitem_data);
+                }
+            }else{
+                return false;
+            }
+        }
+        //delete cart-items
+        $this->Delete("cartitem", ['Cart_id' => $cart_id]);
+        //if the order is for someone else -> 0
+        //the other recipient table should be modified with the order_id
+        if(!$data['Order_is_for_me']){
+            $this->Update("other_recipient", ['Order_ID' => $Order_ID , 'Cart_ID' => NULL],['Cart_ID' => $cart_id]);
+        }
+        //delete cart
+        $this->Delete("cart", ['Cart_id' => $cart_id]);
+
+        //create new cart
+        date_default_timezone_set('Asia/Colombo');
+        $creation_date_time = date('Y-m-d H:i:s');
+        
+        $new_cart_data = [
+            'User_ID' => $user_id,
+            'CreationDateTime' => $creation_date_time
+        ];
+
+        $new_cart_ID = $this->InsertAndReturnID("cart", $new_cart_data);
+        if(!$new_cart_ID){  //new cart is not created
+            return false;
+        }
+        return $new_cart_ID;
+
     }
-
-
-
-
-
+ 
 
 
 

@@ -94,16 +94,12 @@
                        
                         <p> Pick-up Date </p>
                         <?php echo form_input(['type'=>'date', 'name'=>'Pick-up-date', 'placeholder'=>'Pick-up Date' ,'value'=>date('Y-m-d'), 'min'=>date('Y-m-d'), 'max'=>date('Y-m-d')])?>
-                        <div class="error">
-                            <?php if(!empty($this->errors['Email_address'])):?>
-                            <?php echo $this->errors['Email_address'];?>
-                            <?php endif;?>
-                        </div>
+                      
                         <p> Pick-up Time </p>
                         <?php echo form_input(['type'=>'time', 'name'=>'Pick-up-time', 'placeholder'=>'Pick-up Time' , 'value'=>$this->set_value('Pick-up-time'), 'min'=>date('06:00'), 'max'=>date('19:00')])?>
                         <div class="error">
-                            <?php if(!empty($this->errors['Email_address'])):?>
-                            <?php echo $this->errors['Email_address'];?>
+                            <?php if(!empty($this->errors['Pick-in-time'])):?>
+                            <?php echo $this->errors['Pick-in-time'];?>
                             <?php endif;?>
                         </div>
                     </div>
@@ -119,16 +115,12 @@
                         </div>
                     <p> Delivery Date </p>
                         <?php echo form_input(['type'=>'date', 'name'=>'Delivery-date', 'placeholder'=>'Delivery Date' ,'value'=>date('Y-m-d'), 'min'=>date('Y-m-d'), 'max'=>date('Y-m-d')])?>
-                        <div class="error">
-                            <?php if(!empty($this->errors['Email_address'])):?>
-                            <?php echo $this->errors['Email_address'];?>
-                            <?php endif;?>
-                        </div>
+                        
                     <p> Delivery Time </p>
                         <?php echo form_input(['type'=>'time', 'name'=>'Delivery-time', 'placeholder'=>'Delivery Time' ,'value'=>$this->set_value('Delivery-time'), 'min'=>date('06:00'), 'max'=>date('19:00')])?>
                         <div class="error">
-                            <?php if(!empty($this->errors['Email_address'])):?>
-                            <?php echo $this->errors['Email_address'];?>
+                            <?php if(!empty($this->errors['Delivery-time'])):?>
+                            <?php echo $this->errors['Delivery-time'];?>
                             <?php endif;?>
                         </div>
                     </div>

@@ -324,7 +324,7 @@ class Customer_controller extends JB_Controller{
        
         $user_id = $this->get_session('user_id');
         $cart_id = $this->get_session('cart_id');
-        $order_address = NULL;  //for dinein and pickup, theres no address
+        $order_address = "";  //for dinein and pickup, theres no address
 
         $order_type = $this->post('opinion');
         $order_is_for = $this->post('opinion2');
@@ -333,22 +333,23 @@ class Customer_controller extends JB_Controller{
 
         //order type
         if($order_type=='dine-in'){
-            $this->validation('Dine-in-time', 'Dine-in time' , 'service_time');
+            $this->validation('Dine-in-time', 'Dine-in time' , 'required|service_time');
       
             $order_date = $this->post('Dine-in-date');
             $order_time = $this->post('Dine-in-time');
             // echo $order_date;
             // echo $order_time;
        }else if($order_type=='pick-up'){
-            $this->validation('Pick-up-time', 'Pick-up time' , 'service_time');
+            $this->validation('Pick-up-time', 'Pick-up time' , 'required|service_time');
 
             $order_date = $this->post('Pick-up-date');
             $order_time = $this->post('Pick-up-time');
             // echo $order_date;
             // echo $order_time;
         }else if($order_type=='delivery'){
+            // echo 'delivery';
             $this->validation('Delivery-address', 'Delivery address' , 'required');
-            $this->validation('Delivery-time', 'Delivery time' , 'service_time');
+            $this->validation('Delivery-time', 'Delivery time' , 'required|service_time');
             $order_date = $this->post('Delivery-date');
             $order_time = $this->post('Delivery-time');
             $order_address = $this->post('Delivery-address');
@@ -389,7 +390,7 @@ class Customer_controller extends JB_Controller{
             }
             date_default_timezone_set('Asia/Colombo');
             $mod_time = date('Y-m-d H:i:s');
-                
+            
             $data = [
                 'Special_notes' => $this->get_session('cart_special_notes'),
                 'Order_type' => $order_type,
@@ -399,6 +400,7 @@ class Customer_controller extends JB_Controller{
                 'Service_address' => $order_address,
                 'ModifiedDateTime' => $mod_time
             ];
+            //print_r($data);
             //update food cart in db
             $this->model->updateOrderDetailsInCart($data, $cart_id);         
             //navigate to payment page
@@ -432,23 +434,25 @@ class Customer_controller extends JB_Controller{
                 'Special_notes' => $cart_data['data']->Special_notes,
                 'Payment_method' => $payment_type,     //payement method from local variable
                 'Order_type' => $cart_data['data']->Order_type,
+                'Delivery_Address' => $cart_data['data']->Service_address,
                 'Order_is_for_me' => $cart_data['data']->Order_is_for_me,
                 'User_ID' => $cart_data['data']->User_ID,
-                'Cart_id' => $cart_data['data']->Cart_id,
             ];
 
             if($payment_type=="cash"){
                 //make a new order
-                if($this->model->createNewOrder($data)){
+                $new_cart_ID = $this->model->createNewOrder($data, $cart_id);
+                if($new_cart_ID){
                     echo "cash order success";
                 }else{
                     echo "cash order failed";
                 }
+    
             }
             
             else if($payment_type=="payhere"){
                 //payment gatewayyyyy
-                //if the paymen_status == sucess only make a new order
+                //if the payment_status == success only make a new order
             }      
 
         }
