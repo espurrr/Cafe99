@@ -117,10 +117,11 @@ class Account_model extends Database{
             'CreationDateTime' => $creation_date_time
         ];
 
-        if($this->Insert("cart", $data)){
-            return true;
-        }else{
+        $cart_id = $this->InsertAndReturnID("cart", $data);
+        if(!$cart_id){
             return false;
+        }else{
+            return $cart_id;
         }
     }
 

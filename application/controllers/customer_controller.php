@@ -347,12 +347,13 @@ class Customer_controller extends JB_Controller{
             // echo $order_date;
             // echo $order_time;
         }else if($order_type=='delivery'){
-            // echo 'delivery';
+           // echo 'delivery';
             $this->validation('Delivery-address', 'Delivery address' , 'required');
-            $this->validation('Delivery-time', 'Delivery time' , 'required|service_time');
+            $this->validation('Delivery-time', 'Delivery time' , 'required');//....................................................................|service_time put
             $order_date = $this->post('Delivery-date');
             $order_time = $this->post('Delivery-time');
             $order_address = $this->post('Delivery-address');
+            $order_address = str_replace(',', '$', $order_address);
             // echo $order_date;
             // echo $order_time;
             // echo $order_address;
@@ -400,7 +401,7 @@ class Customer_controller extends JB_Controller{
                 'Service_address' => $order_address,
                 'ModifiedDateTime' => $mod_time
             ];
-            //print_r($data);
+            // print_r($data);
             //update food cart in db
             $this->model->updateOrderDetailsInCart($data, $cart_id);         
             //navigate to payment page

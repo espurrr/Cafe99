@@ -160,7 +160,6 @@ class Database {
         $combine = rtrim($combine, ",");
         //Assign string separated by , to an array 
         $combine = explode(",", $combine);
-   
         //Write the update query
         $this->Query = $this->db->prepare("UPDATE " .$table_name . " SET " .$set_columns . " WHERE " . $where_columns);
 

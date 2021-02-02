@@ -179,7 +179,6 @@ class Customer_model extends Database{
     public function updateOrderDetailsInCart($data, $cart_id){
         // print_r($data);
         if($this->Update("cart", $data,['Cart_ID' => $cart_id])){
-            print_r($data);
             return true;
         }else{
             return false;

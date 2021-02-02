@@ -144,7 +144,7 @@ class Account_controller extends JB_Controller{
                     'user_status' => $result['data']->User_status,
                     'role' => $result['data']->User_role,
                     'cart_assigned' => $result['data']->isAssignedCart, //customer already has a cart or not
-                    'cart_id' => "0",
+                    'cart_id' => 0,
                     'cart_item_count' => 0, //db request to get the cart item_count from cart table
                     'cart_sub_total' => 0,
                     'cart_special_notes' => "",
@@ -169,11 +169,12 @@ class Account_controller extends JB_Controller{
                            
 
                         }else{  //no cart assigned..should create one
-                            $create_cart = $this->model->createCart($this->get_session('user_id'));
-                            if($create_cart){
+                            $new_cart_id = $this->model->createCart($this->get_session('user_id'));
+                            if($new_cart_id){
                                 //update user data that cart is assigned -> 1
                                 $this->model->updateIsAssignedCart($this->get_session('user_id'));
                                 $this->set_session('cart_assigned',1);
+                                $this->set_session('cart_id',$new_cart_id);
                                 
                             }
                             //no need to make a db request to get the cart count cause it's already 0 in session data
