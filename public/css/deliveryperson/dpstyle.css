@@ -20,6 +20,7 @@
   --table-stripped-color: #f2f2f2;
   --fontFamily: "Montserrat", sans-serif;
   --fontWeight:bold;
+  --dark-grey:#363740;
 }
 
 *{
@@ -194,8 +195,8 @@ nav .menu-bar{
 
  .Dp-content{
     height:100%;
-    margin-left:200px;
-    padding: 90px 42px 40px;
+    /* margin-left:200px; */
+    padding: 90px 0px 40px 0px;
     overflow-y:scroll;
     
     }
@@ -213,7 +214,7 @@ nav .menu-bar{
         margin-bottom: 2.5rem;
     }
     
-    .manage,.add,.news{
+    .manage, .news{
       background-color:var(--action-btn-color);;
       border: none;
       color: var( --colorWhite);
@@ -232,12 +233,26 @@ nav .menu-bar{
 
  
 .icons{
-  padding-left: 6px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0px;
+  padding: 0px 10px;
 }
 
-.icons a.active{
-  background-color:  var(--active-background-color);
-    color: var(--active-text-color);
+.icons .add{
+  border: 1px solid var(--dark-grey);
+  text-align: center;
+  padding: 15px 0px;
+  font-weight: 500;
+  background-color: var(--dark-grey);
+  color: #fff;
+}
+
+.icons .active{
+  background-color:transparent;
+  color: #000;
+  border: 1px solid var(--dark-grey);
+
 }
 
 .icons a:hover{
@@ -245,10 +260,12 @@ nav .menu-bar{
   background:var(--hover-active);
  
 }
-
+.title{
+  margin-top: 20px;
+}
 
 .list ul:nth-child(odd) {
-  background-color:#ddd;
+  background-color:#f2f2f2;
 }
 
 .list ul:nth-child(even) {
@@ -290,7 +307,6 @@ nav .menu-bar{
 
   .icons{
     margin-top: 20px;
-    padding-left: 15px;
   }
 
   .list ul {
@@ -347,8 +363,20 @@ nav .menu-bar{
   }
   
 }
+.fa-bars{
+  color: #000;
+}
+.fa-eye{
+  font-size:24px;
+  color:#0684eb;
+  padding-right:20px;
+}
 
-
- 
-      
-      
+.fa-check-square{
+  font-size:24px;
+  color: #3ace67ee;
+}
+.list ul{
+  box-shadow: 1px 1px 1px 0px #bbb;
+  border-radius: 5px;
+}

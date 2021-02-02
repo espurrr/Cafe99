@@ -103,11 +103,15 @@
         }
 
         public function getOrders(){
+            // $query = 
+            // "SELECT orders.Order_ID, orders.Order_type, orders.Order_status, orders.Special_notes, cartitem.Quantity, fooditem.Food_name 
+            // FROM orders INNER JOIN cartitem ON orders.Cart_ID = cartitem.Cart_id
+            // INNER JOIN fooditem ON cartitem.Food_ID = fooditem.Food_ID";
             $query = 
-            "SELECT orders.Order_ID, orders.Order_type, orders.Order_status, orders.Special_notes, cartitem.Quantity, fooditem.Food_name 
+            "SELECT orders.Order_ID, orders.Order_type, orders.Order_status, orders.Special_notes, fooditem.Food_name 
             FROM orders INNER JOIN cartitem ON orders.Cart_ID = cartitem.Cart_id
             INNER JOIN fooditem ON cartitem.Food_ID = fooditem.Food_ID";
-
+            
             $result =$this->Query($query, $options = []);
 
             if($this->Count() > 0){

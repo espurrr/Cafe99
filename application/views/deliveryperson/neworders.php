@@ -25,7 +25,7 @@
 
   <label for="menu" class="menu-bar">
            
-  <i class="fa fa-bars"></i>
+  <i class="fa fa-bars" ></i>
            
   </label>
 
@@ -55,15 +55,15 @@
   <div  class="Dp-content">
   <div class="icons">
  <!-- <a class="active" href="neworders.php" button class="btn">New<i class='fas fa-clipboard-list' style="font-size:24px;padding-right:40px"></i></button> </a>-->
- <?php echo anchor("delivery_controller/index", "New",['class'=>"active",'class'=>"add"]) ?>
+ <?php echo anchor("delivery_controller/index", "New",['class'=>"add active"]) ?>
 <!--  <a href="ondelivery.php" button class="btn"><i class='fas fa-biking' style="font-size:24px;padding-right:40px"></i></button> </a>-->
-<?php echo anchor("delivery_controller/ondelivery", "Ondelivery",['class'=>"add"]) ?>
+<?php echo anchor("delivery_controller/ondelivery", "On delivery",['class'=>"add"]) ?>
 <!--  <a href="dispatched.php" button class="btn"><i class='fas fa-clipboard-check' style="font-size:24px"></i></button> </a>-->
 <?php echo anchor("delivery_controller/dispatched", "Dispatched",['class'=>"add"]) ?>
   </div>
 
 <div class="page-title">
-<h2>New Orders</h2>
+<!-- <h2 class="title">New Orders</h2> -->
 </div>
 
   <div class="list">
@@ -71,7 +71,7 @@
     <li>Order No</li>
     <li>Customer Name</li>
     <li>Customer Address</li>
-    <li>Action</li>
+    <li class="action">Action</li>
   </ul>
 
   <?php
@@ -95,7 +95,7 @@
 <li data-label="order no"><?php echo $row->Order_ID; ?></li>
 <li data-label="customer name"><?php echo $row->User_name; ?></li>
 <li data-label="customer address"><?php echo $row->Delivery_address; ?></li>
-<li data-label="action"><a href="#" onclick="showModal(50)"><i class="fa fa-eye" style="font-size:24px;color:rgb(6, 132, 235);padding-right:20px"></i></a><a href="#"><i class="fa fa-check-square" style="font-size:24px;color: #3ace67ee"></i></a></li>
+<li data-label="action"><a href="#" onclick="showModal(50)"><i class="fa fa-eye"></i></a><a href="#"><i class="fa fa-check-square"></i></a></li>
  
 </ul>
 
@@ -109,7 +109,7 @@
     <li data-label="order no">1</li>
     <li data-label="customer name"><p>Ishan Senanayaka</p></li>
     <li data-label="customer address"><p>No.25,<br>New Rd,<br>Maharagama.</p></li>
-    <li data-label="action"><a href="#" onclick="showModal(50)"><i class="fa fa-eye" style="font-size:24px;color:rgb(6, 132, 235);padding-right:20px"></i></a><a href="#"><i class="fa fa-check-square" style="font-size:24px;color: #3ace67ee"></i></a></li>
+    <li data-label="action"><a href="#" onclick="showModal(50)"><i class="fa fa-eye" style="font-size:24px;"></i></a><a href="#"><i class="fa fa-check-square" style="font-size:24px;"></i></a></li>
  
     <div id="popup-window" class="popup-window">
         <div class="win-content">

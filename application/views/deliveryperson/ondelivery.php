@@ -58,13 +58,13 @@
   <!-- <a class="active" href="neworders.php" button class="btn">New<i class='fas fa-clipboard-list' style="font-size:24px;padding-right:40px"></i></button> </a>-->
   <?php echo anchor("delivery_controller/index", "New",['class'=>"add"]) ?>
 <!--  <a href="ondelivery.php" button class="btn"><i class='fas fa-biking' style="font-size:24px;padding-right:40px"></i></button> </a>-->
-<?php echo anchor("delivery_controller/ondelivery", "Ondelivery",['class'=>"active",'class'=>"add"]) ?>
+<?php echo anchor("delivery_controller/ondelivery", "Ondelivery",['class'=>"add active"]) ?>
 <!--  <a href="dispatched.php" button class="btn"><i class='fas fa-clipboard-check' style="font-size:24px"></i></button> </a>-->
 <?php echo anchor("delivery_controller/dispatched", "Dispatched",['class'=>"add"]) ?>
   </div>
 
   <div class="page-title">
-<h2>Ondelivery Orders</h2>
+<!-- <h2 class="title">Ondelivery Orders</h2> -->
 </div>
 
   <div class="list">

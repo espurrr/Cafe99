@@ -61,11 +61,11 @@
 <!--  <a href="ondelivery.php" button class="btn"><i class='fas fa-biking' style="font-size:24px;padding-right:40px"></i></button> </a>-->
 <?php echo anchor("delivery_controller/ondelivery", "Ondelivery",['class'=>"add"]) ?>
 <!--  <a href="dispatched.php" button class="btn"><i class='fas fa-clipboard-check' style="font-size:24px"></i></button> </a>-->
-<?php echo anchor("delivery_controller/dispatched", "Dispatched",['class'=>"active",'class'=>"add"]) ?>
+<?php echo anchor("delivery_controller/dispatched", "Dispatched",['class'=>" add active"]) ?>
   </div>
 
   <div class="page-title">
-<h2>Dispatched Orders</h2>
+<!-- <h2 class="title">Dispatched Orders</h2> -->
 </div>
 
   <div class="list">
