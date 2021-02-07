@@ -9,6 +9,7 @@
     <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/restaurantmanager/admin.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
 </head>
 <body>
 <div class="page-container">
@@ -27,8 +28,12 @@
             
             <div class="content">
                  <h2 class="page-title">Add Orders</h2>
+
+                 <div class="status-msg" style="margin-bottom:20px">
+                    <?php $this->flash('OrderSuccess','alert alert-success','fa fa-check'); ?>
+                </div>
                 
-                 <form action="RM.php" method="post">
+               <!--  <form action="RM.php" method="post">
                      
                         
                         <label for="totalprice">Total Price</label>
@@ -57,7 +62,66 @@
                             <input type="submit" value="Add">
                         </div>
                     
-                 </form>
+                 </form>-->
+                 <?php echo form_open("rm_controller/createOrders","post");?>
+
+                 <label for="orderdatetime">Order Date & Time</label><br>
+                 <?php echo form_input(['type'=>'date', 'name'=>'Order_Date_Time','value'=>$this->set_value('Order_Date_Time')])?><br>
+                 <div class="dashboard-error">
+                            <?php if(!empty($this->errors['Order_Date_Time'])):?>
+                            <?php echo $this->errors['Order_Date_Time'];?>
+                            <?php endif;?>
+                        </div>
+                 
+                 <label for="totalprice">Total Price</label><br>
+                 <?php echo form_input(['type'=>'text', 'name'=>'Total_price','value'=>$this->set_value('Total_price')])?><br>
+                 <div class="dashboard-error">
+                            <?php if(!empty($this->errors['Total_price'])):?>
+                            <?php echo $this->errors['Total_price'];?>
+                            <?php endif;?>
+                        </div>
+
+                <label for="snotes">Special Notes</label><br>
+                <?php echo form_input(['type'=>'text','id'=>'content', 'name'=>'Special_notes','value'=>$this->set_value('Special_notes')])?><br>
+                 <div class="dashboard-error">
+                            <?php if(!empty($this->errors['Special_notes'])):?>
+                            <?php echo $this->errors['Special_notes'];?>
+                            <?php endif;?>
+                        </div>
+                
+                <label for="paymethod">Payment Method</label><br>  
+                <?php echo form_input(['type'=>'text', 'name'=>'Payment_Method','value'=>$this->set_value('Payment_Method')])?><br>
+                 <div class="dashboard-error">
+                            <?php if(!empty($this->errors['Payment_Method'])):?>
+                            <?php echo $this->errors['Payment_Method'];?>
+                            <?php endif;?>
+                        </div>
+
+                <label for="ostatus">Order Status</label><br>
+                <?php echo form_input(['type'=>'text', 'name'=>'Order_status','value'=>$this->set_value('Order_status')])?><br>
+                 <div class="dashboard-error">
+                            <?php if(!empty($this->errors['Order_status'])):?>
+                            <?php echo $this->errors['Order_status'];?>
+                            <?php endif;?>
+                        </div>
+
+                <label for="otype">Order Type</label><br>
+                <?php echo form_input(['type'=>'text', 'name'=>'Order_type','value'=>$this->set_value('Order_type')])?><br>
+                 <div class="dashboard-error">
+                            <?php if(!empty($this->errors['Order_type'])):?>
+                            <?php echo $this->errors['Order_type'];?>
+                            <?php endif;?>
+                        </div>
+
+
+
+                       <div class="btn-container">
+                            <button type="submit" formaction="<?php echo BASE_URL?>/rm_controller/orders" class="btn cancel-btn">Cancel</button>
+                            <input type="submit" value="Add">
+                        </div>
+
+                        <?php echo form_close();?>
+
              </div>
             </div>
         

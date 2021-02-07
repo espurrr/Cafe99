@@ -34,8 +34,15 @@ class RM_Controller extends JB_Controller{
             //$Ann_towhom = $this->post('Ann_towhom');
             $Ann_towhom=$_POST['Ann_towhom'];
             // $Ann_user = $this->post('Ann_user');
+         //   $Ann_user=$this->get_session('user_id');
              // will replace with the ID later
             
+           /*  $Ann_title = $this->post('Ann_title'); 
+             $Ann_date = $this->post('Ann_date');
+             $Ann_time = $this->post('Ann_time');
+             $content = $this->post('content');
+             $Ann_towhom = $this->post('Ann_towhom');*/
+             
              
             $data = [
                 // 'Announcement_id'=> $Ann_id,
@@ -43,8 +50,8 @@ class RM_Controller extends JB_Controller{
                 'Announcement_date'=> $Ann_date,
                 'Announcement_time'=> $Ann_time,
                 'Content'=> $content,
-                'To_whom'=> $Ann_towhom               
-                // 'User_ID'=> $Ann_user,
+                'To_whom'=> $Ann_towhom ,              
+                // 'User_ID'=> $Ann_user
             ];
             
             if($this->model->addNews($data)){
@@ -130,8 +137,8 @@ class RM_Controller extends JB_Controller{
    }
 
  //delete newsfeed  
-    public function delete_newsfeed(){
-    $newsfeed_id=$this->get('Announcement_id');
+    public function delete_newsfeed($newsfeed_id){
+   // $newsfeed_id=$this->get('Announcement_id');
   // echo $newsfeed_id;
     $result=$this->model->deletenewsfeed($newsfeed_id);
     redirect('rm_controller/newsfeed');
@@ -313,16 +320,58 @@ class RM_Controller extends JB_Controller{
    }
    
    //delete users
-   public function delete_user_data(){
+   public function delete_user_data($id){
    
      //  $id = $this->get_session('user_id');
-     $id=$this->get('User_ID');
+    // $id=$this->get('User_ID');
       // echo $id;
        $result = $this->model->deleteuser( $id );
    redirect('rm_controller/users');
     //   $this->view('restaurantmanager/users/RM');
    } 
-   
+
+   //create orders
+public function createOrders(){
+    $this->validation('Total_price', 'Total price' , 'required');
+ //   $this->validation('Special_notes','Special notes','required');
+    $this->validation('Payment_Method','Payment method','required');
+    $this->validation('Order_status','Order status','required');
+    $this->validation('Order_type','Order type','required');
+  
+      if($this->run()){
+          $Order_Date_Time=$this->post('Order_Date_Time'); 
+          $Total_price = $this->post('Total_price');
+          $Special_notes=$this->post('Special_notes');
+          $Payment_method=$this->post('Payment_Method');
+          $Order_status=$this->post('Order_status');
+          $Order_type=$this->post('Order_type');
+          $User_ID=$this->get_session('User_ID');
+  
+          $data=['Order_Date_Time'=>$Order_Date_Time,
+          'Total_price'=>$Total_price,
+          'Special_notes'=>$Special_notes,
+          'Payment_Method'=>$Payment_Method,
+          'Order_status'=>$Order_status,
+          'Order_type'=>$Order_type,
+          'User_ID'=>$User_ID
+
+      ];
+  
+      if($this->model->addOrders($data)){
+          $this->set_flash("OrderSuccess", "Order added successfully");
+          $this->view('restaurantmanager/orders/create');
+  
+      }else{
+          $this->set_flash("OrderError", "Something went wrong :( Please try again later.");
+          $this->view('restaurantmanager/orders/create');
+  
+      }
+  
+      }else{
+          $this->view('restaurantmanager/orders/create');
+  
+      }
+}
 
     public function orders(){
         $result =  $this->model->getOrders();
@@ -380,14 +429,74 @@ class RM_Controller extends JB_Controller{
         }
     }
 
+    //update orders
+    public function order_update_values(){
+        $order_id=$this->get('Order_ID');
+        //echo $order_id;
+        $result=$this->model->order_data($order_id);
+        //print_r($result);
+        $this->view('restaurantmanager/orders/edit',$result['data']);
+    }
 
-    public function orderscreate(){
+    public function order_update_save(){
+        $order_id=$this->get('Order_ID');
+        
+        $this->validation('Total_price', 'Total price' , 'required');
+   //     $this->validation('Special_notes','Special notes','required');
+        $this->validation('Payment_Method','Payment method','required');
+        $this->validation('Order_status','Order status','required');
+        $this->validation('Order_type','Order type','required');
+      
+          if($this->run()){
+              $Order_Date_Time=$this->post('Order_Date_Time'); 
+              $Total_price = $this->post('Total_price');
+              $Special_notes=$this->post('Special_notes');
+              $Payment_method=$this->post('Payment_Method');
+              $Order_status=$this->post('Order_status');
+              $Order_type=$this->post('Order_type');
+              $User_ID=$this->get_session('User_ID');
+      
+              $data=['Order_Date_Time'=>$Order_Date_Time,
+              'Total_price'=>$Total_price,
+              'Special_notes'=>$Special_notes,
+              'Payment_Method'=>$Payment_Method,
+              'Order_status'=>$Order_status,
+              'Order_type'=>$Order_type,
+              'User_ID'=>$User_ID
+    
+          ];
+      
+          if($this->model->order_data_update($data)){
+              $this->set_flash("updateSuccess", "Order is successfully updated.");
+              $this->view('restaurantmanager/orders/edit');
+      
+          }else{
+              $this->set_flash("updateError", "Something went wrong :( Please try again later.");
+              $this->view('restaurantmanager/orders/edit');
+      
+          }
+      
+          }else{
+              //redirect('rm_controller/orders');
+          }
+        
+    }
+
+    //delete orders
+    public function delete_orders($order_id){
+        //$order_id=$this->get('Order_ID');
+       // echo $order_id;
+       $result=$this->model->deleteorder($order_id);
+       redirect('rm_controller/orders');
+    }
+
+ /*   public function orderscreate(){
         $this->view('restaurantmanager/orders/create');
     }
 
     public function ordersedit(){
         $this->view('restaurantmanager/orders/edit');
-    }
+    }*/
 
   
 //create fooditem
@@ -544,9 +653,9 @@ class RM_Controller extends JB_Controller{
     }
 
    // delete fooditem
-    public function delete_fooditem(){
-    $food_id=$this->get('Food_ID');
-   echo $food_id;
+    public function delete_fooditem($food_id){
+ //   $food_id=$this->get('Food_ID');
+ //  echo $food_id;
     $result=$this->model->deletefooditem($food_id);
     redirect('rm_controller/fooditem');
     }
@@ -668,8 +777,8 @@ class RM_Controller extends JB_Controller{
     }
 
     //delete subcategory
-    public function delete_subcategory(){
-        $subcat_id=$this->get('Subcategory_ID');
+    public function delete_subcategory($subcat_id){
+       // $subcat_id=$this->get('Subcategory_ID');
         //  echo $subcat_id;
           $result=$this->model->deletesubcategory($subcat_id);
           redirect('rm_controller/subcategory');
@@ -790,8 +899,8 @@ class RM_Controller extends JB_Controller{
     }
 
 //delete category
-    public function delete_category(){
-        $cat_id=$this->get('Category_ID');
+    public function delete_category($cat_id){
+       // $cat_id=$this->get('Category_ID');
         //  echo $cat_id;
           $result=$this->model->deletecategory($cat_id);
           redirect('rm_controller/category');  

@@ -33,7 +33,7 @@
   <div id="popup-window" class="popup-window">
         <div class="win-content-wrapper">
             <div class="win-content">
-                <p>Are you sure you want to delete?</p>
+                <p id="message">Are you sure you want to delete?</p>
                 <div class="btn-container">
                     <div class="btn-wrapper">
                         <button class="btn cancel-btn" id="modal-cancel-btn">Cancel</button>
@@ -95,8 +95,9 @@
                             echo "<tr>";
                             echo "<td colspan=\"8\">".$row->Category_name."</td>";
                             echo "<td colspan=\"2\">".anchor("rm_controller/category_update_values?Category_ID=".$row->Category_ID."", "Edit",['class'=>"edit"]);
-                            echo "".anchor("rm_controller/delete_category?Category_ID=".$row->Category_ID."", "Delete",['class'=>"delete"])."</td>";
-                            echo "</tr>";
+                          //  echo "".anchor("rm_controller/delete_category?Category_ID=".$row->Category_ID."", "Delete",['class'=>"delete"])."</td>";?>
+                          <td><a class="delete" onclick='showDeleteModal(<?php echo $row->Category_ID?>)'>Delete</a></td>
+                         <?php   echo "</tr>";
 
                         }
                         ?>
@@ -107,6 +108,6 @@
             </div>
             <?php include '../application/views/footer/footer_3.php';?>  
             </div> 
-            <?php echo link_js("js/restaurantmanager/delete.js"); ?>   
+            <?php echo link_js("js/restaurantmanager/delete/category_delete.js"); ?>   
 </body>
 </html>

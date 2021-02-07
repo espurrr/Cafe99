@@ -24,7 +24,7 @@
   <div id="popup-window" class="popup-window">
         <div class="win-content-wrapper">
             <div class="win-content">
-                <p>Are you sure you want to delete?</p>
+                <p id="message">Are you sure you want to delete?</p>
                 <div class="btn-container">
                     <div class="btn-wrapper">
                         <button class="btn cancel-btn" id="modal-cancel-btn">Cancel</button>
@@ -44,7 +44,7 @@
        <!--     <a href="RM.php" class="button">Manage Orders</a>-->
             <?php //echo anchor("rm_controller/orders", "Manage Orders",['class'=>"button"]) ?>
          <!--   <a href="create.php" class="button">Add Orders</a>-->
-            <?php echo anchor("rm_controller/orderscreate", "Add Orders",['class'=>"button"]) ?>
+            <?php echo anchor("rm_controller/createOrders", "Add Orders",['class'=>"button"]) ?>
 
             <div class="search-container">
                 <?php echo form_open("rm_controller/searchOrders", "POST");?>
@@ -82,12 +82,12 @@
                             <td><?php echo substr($row->Order_Date_Time,0,16) ?></td> 
                             <td><?php echo $row->Total_price ?></td>
                             <td><?php echo $row->Special_notes ?></td>
-                            <td><?php echo $row->Payment_Method ?></td>
+                            <td><?php echo $row->Payment_method ?></td>
                             <td><?php echo $row->Order_type ?></td>
                             <td><?php echo $row->Kitchen_Dispatch_DateTime ?></td>
                          <!--   <td><a href="edit.php" class="edit">Edit</a></td>-->
-                            <td><?php echo anchor("rm_controller/ordersedit", "Edit",['class'=>"edit"]) ?></td> 
-                            <td><a href="#" class="delete" onclick='showDeleteModal()'>Delete</a></td>
+                            <td><?php echo anchor("rm_controller/order_update_values?Order_ID=".$row->Order_ID."", "Edit",['class'=>"edit"]) ?></td> 
+                            <td><a class="delete" onclick='showDeleteModal(<?php echo $row->Order_ID?>)'>Delete</a></td>
                             
                         </tr>
                 <?php endforeach ?>
@@ -102,6 +102,6 @@
     </div>
     <?php  include '../application/views/footer/footer_3.php';?>    
     </div>
-    <?php echo link_js("js/restaurantmanager/delete.js"); ?>   
+    <?php echo link_js("js/restaurantmanager/delete/order_delete.js"); ?>   
 </body>
 </html>

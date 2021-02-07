@@ -26,7 +26,7 @@
  <div id="popup-window" class="popup-window">
         <div class="win-content-wrapper">
             <div class="win-content">
-                <p>Are you sure you want to delete?</p>
+                <p id="message">Are you sure you want to delete?</p>
                 <div class="btn-container">
                     <div class="btn-wrapper">
                         <button class="btn cancel-btn" id="modal-cancel-btn">Cancel</button>
@@ -95,7 +95,8 @@
                         <td><?php echo $row->Unit_Price ?></td>
                         <td><?php echo $row->Availability ?></td>
                         <td> <?php echo anchor("rm_controller/fooditem_update_values?Food_ID=".$row->Food_ID."", "Edit",['class'=>"edit"])?> </td>
-                        <td> <?php echo anchor("rm_controller/delete_fooditem?Food_ID=".$row->Food_ID."", "Delete",['class'=>"delete"])?> </td>
+                      <!--  <td> <?php //echo anchor("rm_controller/delete_fooditem?Food_ID=".$row->Food_ID."", "Delete",['class'=>"delete"])?> </td>-->
+                        <td><a class="delete" onclick='showDeleteModal(<?php echo $row->Food_ID?>)'>Delete</a></td>
                         </tr>
                         <?php endforeach; ?>
                     </table>
@@ -105,7 +106,7 @@
             </div>
             <?php include '../application/views/footer/footer_3.php';?>
     </div>
-    <?php echo link_js("js/restaurantmanager/delete.js"); ?>  
+    <?php echo link_js("js/restaurantmanager/delete/fooditem_delete.js"); ?>  
     <?php echo link_js("js/restaurantmanager/fooditem/more_details.js"); ?>  
 </body>
 </html>

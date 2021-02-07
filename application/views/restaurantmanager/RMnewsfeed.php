@@ -26,7 +26,7 @@
   <div id="popup-window" class="popup-window">
         <div class="win-content-wrapper">
             <div class="win-content">
-                <p>Are you sure you want to delete?</p>
+                <p id="message">Are you sure you want to delete?</p>
                 <div class="btn-container">
                     <div class="btn-wrapper">
                         <button class="btn cancel-btn" id="modal-cancel-btn">Cancel</button>
@@ -94,8 +94,8 @@
                                         <!--  <a href="edit.php" class="edit">Edit</a>-->
                                         <?php echo anchor("rm_controller/newsfeed_update_values?Announcement_id=".$row->Announcement_id."", "Edit",['class'=>"edit"]) ?>
                                         <!--  <a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a>-->
-                                      <!--  <a href="#" class="delete" onclick='showDeleteModal()'>Delete</a>-->
-                                        <?php echo anchor("rm_controller/delete_newsfeed?Announcement_id=".$row->Announcement_id."", "Delete",['class'=>"delete"]) ?>
+                                        <a class="delete" onclick='showDeleteModal(<?php echo $row->Announcement_id;?>)'>Delete</a>
+                                        <?php //echo anchor("rm_controller/delete_newsfeed?Announcement_id=".$row->Announcement_id."", "Delete",['class'=>"delete"]) ?>
                                 </div>
                            </div>
                         </div><!-- news_content ends here -->
@@ -109,7 +109,7 @@
         </div>
         <?php  include '../application/views/footer/footer_3.php';?> 
         </div>
-        <?php echo link_js("js/restaurantmanager/delete.js"); ?> 
+        <?php echo link_js("js/restaurantmanager/delete/newsfeed_delete.js"); ?> 
         <?php echo link_js("js/restaurantmanager/newsfeed.js"); ?>   
 </body>
 </html>

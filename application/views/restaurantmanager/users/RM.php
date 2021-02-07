@@ -25,7 +25,7 @@
   <div id="popup-window" class="popup-window">
         <div class="win-content-wrapper">
             <div class="win-content">
-                <p>Are you sure you want to delete?</p>
+                <p id="message">Are you sure you want to delete?</p>
                 <div class="btn-container">
                     <div class="btn-wrapper">
                         <button class="btn cancel-btn" id="modal-cancel-btn">Cancel</button>
@@ -129,9 +129,11 @@
           echo "<td>".$row->User_role."</td>";
       //    echo "<td>".anchor("rm_controller/usersedit", "Edit",['class'=>"edit"])."</td>";
           echo "<td>".anchor("rm_controller/user_update_values?User_ID=".$row->User_ID."", "Edit",['class'=>"edit"])."</td>";
-          echo "<td>".anchor("rm_controller/delete_user_data?User_ID=".$row->User_ID."", "Delete",['class'=>"delete"])."</td>";
-      // echo "<td>".anchor("rm_controller/users", "Delete",['class'=>"delete"])."</td>";
-          echo "</tr>";
+       //   echo "<td>".anchor("rm_controller/delete_user_data?User_ID=".$row->User_ID."", "Delete",['class'=>"delete"])."</td>";
+      // echo "<td>".anchor("rm_controller/users", "Delete",['class'=>"delete"])."</td>";?>
+         <td><a class="delete" onclick='showDeleteModal(<?php echo $row->User_ID;?>)'>Delete</a></td>
+        <?php  echo "</tr>";
+        
         }
        
     ?>
@@ -149,6 +151,6 @@
     </div>
    <?php include '../application/views/footer/footer_3.php';?>
    </div>  
-   <?php echo link_js("js/restaurantmanager/delete.js"); ?>    
+   <?php echo link_js("js/restaurantmanager/delete/user_delete.js"); ?>    
 </body>
 </html>

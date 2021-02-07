@@ -471,6 +471,55 @@ class Rm_model extends Database{
         }
     }
 
+    public function addOrders($data){
+       //   print_r($data);
+       if($this->Insert("orders", $data)){
+        return true;
+    }else{
+        return false;
+    }  
+    }
+
+    
+    public function order_data($order_id){
+        
+        if($this->Select_Where("orders", ['Order_ID' =>  $order_id])){
+            if($this->Count() > 0){
+                $row = $this->Row();
+                if($row){
+                    return ['status'=>'success', 'data'=>$row];
+                }else{
+                    return "Order_not_retrieved";
+                }
+            }else{
+                return "Order_not_found";
+            }
+ 
+        }
+    }
+
+    public function order_data_update($data,  $order_id){
+        //  print_r($data);
+     
+          if($this->Update("orders", $data,['Order_ID' =>  $order_id])){
+              return true;
+          }else{
+              return false;
+          }
+    
+      }
+
+    public function deleteorder($order_id){
+        $data=[
+            'Order_ID'=>$order_id
+                  ];
+                  if($this->Delete("orders", $data)){
+                      return true;
+                  }else{
+                      return false;
+                  }
+              }
+
 }
 
 ?>
