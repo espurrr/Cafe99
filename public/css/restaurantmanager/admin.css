@@ -143,6 +143,7 @@ body{
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
+    cursor: pointer;
     font-weight: 600;
 }
 .admin-content .view{
