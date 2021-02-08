@@ -364,6 +364,7 @@ class Customer_controller extends JB_Controller{
             $order_is_for_me = 1;
             $order_receiver_id = $user_id;
             // echo $order_receiver_id;
+
         }else if($order_is_for=='else'){
             $order_is_for_me = 0;
             $this->validation('Customer_name', 'Receiver\'s name' , 'required|not_int|max_len|50');
@@ -378,7 +379,7 @@ class Customer_controller extends JB_Controller{
                 $this->model->createOtherRecipient($user_id, $cart_id, $rec_name, $rec_phone);
             }
             
-         
+
             // echo $order_receiver_id;
             // echo $rec_name;
             // echo $rec_phone;
@@ -391,7 +392,13 @@ class Customer_controller extends JB_Controller{
             }
             date_default_timezone_set('Asia/Colombo');
             $mod_time = date('Y-m-d H:i:s');
-            
+
+            //we make a token just in case the user selects payhere. there should be a way to
+            //identify the cart as payhere gateway only respond with order_id as the param. 
+            //in our case we havent created the order yet.
+
+            $Token_Payhere_Order_ID = bin2hex(openssl_random_pseudo_bytes(16));
+
             $data = [
                 'Special_notes' => $this->get_session('cart_special_notes'),
                 'Order_type' => $order_type,
@@ -399,13 +406,20 @@ class Customer_controller extends JB_Controller{
                 'Service_date' => $order_date,
                 'Service_time' => $order_time,
                 'Service_address' => $order_address,
-                'ModifiedDateTime' => $mod_time
+                'ModifiedDateTime' => $mod_time,
+                'Token_Payhere_Order_ID' => $Token_Payhere_Order_ID
             ];
             // print_r($data);
             //update food cart in db
-            $this->model->updateOrderDetailsInCart($data, $cart_id);         
-            //navigate to payment page
-            $this->view('customer/cust-payment');
+            $this->model->updateOrderDetailsInCart($data, $cart_id);   
+
+
+            $order_data_for_payhere = [
+                'order_id' => $Token_Payhere_Order_ID,
+                'amount' => $this->get_session('cart_sub_total') + $this->get_session('cart_sub_total')*0.05 , //including service charges
+                'first_name' => $this->get_session('user_name'),
+            ];
+            $this->view('customer/cust-payment',$order_data_for_payhere);//-----------------------------------can use this data to check if delivery ? shipping cost- 0
 
         }else{
             $this->view('customer/cust-order-info');
@@ -421,7 +435,7 @@ class Customer_controller extends JB_Controller{
         $cart_id = $this->get_session('cart_id');
         date_default_timezone_set('Asia/Colombo');
 
-        $payment_type = $this->post('pay_option');// can be 'payhere', 'cash'
+        $payment_type = $this->post('pay_option');// if this arrives here, must be cash
 
         //get cart data
         $cart_data = $this->model->get_cart_data($cart_id);
@@ -431,7 +445,8 @@ class Customer_controller extends JB_Controller{
             $data = [
                 'Order_Date_Time' => date($cart_data['data']->Service_date ." ". $cart_data['data']->Service_time), //combined serve date and time
                 'Item_count' => $cart_data['data']->Item_count,
-                'Total_price' => $cart_data['data']->Sub_total, //disregarded discounts here...
+                'Total_price' => $cart_data['data']->Sub_total + $cart_data['data']->Sub_total*0.05, //including service charge, disregarded discounts here...
+                'Service_charge' => $cart_data['data']->Sub_total*0.05, //service charge is 5%
                 'Special_notes' => $cart_data['data']->Special_notes,
                 'Payment_method' => $payment_type,     //payement method from local variable
                 'Order_type' => $cart_data['data']->Order_type,
@@ -443,26 +458,133 @@ class Customer_controller extends JB_Controller{
             if($payment_type=="cash"){
                 //make a new order
                 $new_cart_ID = $this->model->createNewOrder($data, $cart_id);
+                //header cart count flag sets to zero
+                $_SESSION['cart_item_count'] = 0;
+                //header cart count flag sets to zero
+                $_SESSION['cart_id'] = $new_cart_ID;
                 if($new_cart_ID){
-                    echo "cash order success";
+                    //order success
+                    $this->view('customer/cust-order-success',$data);
                 }else{
-                    echo "cash order failed";
+                    //order failed
+                    $this->view('customer/cust-order-success',$data);
                 }
     
             }
             
-            else if($payment_type=="payhere"){
-                //payment gatewayyyyy
-                //if the payment_status == success only make a new order
+            if($payment_type=="payhere"){
+               //taken care of by payment gateway
             }      
 
         }
      
-        
+
         $this->view('customer/cust-order-info');
 
     
     }
+
+
+    public function payhere_form(){  
+
+        $this->view('customer/cust-order-success');
+    }
+
+    public function payhere_notify(){  //updates the database.. cannot be tested unless it has a dedicated IP
+
+        $merchant_id         = $_POST['merchant_id'];
+        $order_id             = $_POST['order_id'];
+        $payhere_amount     = $_POST['payhere_amount'];
+        $payhere_currency    = $_POST['payhere_currency'];
+        $status_code         = $_POST['status_code'];
+        $md5sig                = $_POST['md5sig'];
+
+        $merchant_secret = 'XXXXXXXXXXXXX'; // Replace with your Merchant Secret (Can be found on your PayHere account's Settings page)
+
+        $local_md5sig = strtoupper (md5 ( $merchant_id . $order_id . $payhere_amount . $payhere_currency . $status_code . strtoupper(md5($merchant_secret)) ) );
+
+        if (($local_md5sig === $md5sig) AND ($status_code == 2) ){
+                //TODO: Update your database as payment success
+                $data = [
+                    'Order_ID'=>$_POST['order_id'],
+                    'Amount'=>$_POST['payhere_amount'],
+                    'Currency'=>$_POST['payhere_currency'],
+                    'Status_code'=>$_POST['status_code']
+                ];
+
+                $this->model->updatePayhereInfo($data);
+
+        }
+        
+    }
+
+    public function payhere_success(){
+        if(isset($_GET['order_id'])){
+            $order_id = $_GET['order_id'];
+            $data = [
+                'Order_ID' => $order_id,
+                'Status' => 'success'
+            ];
+            $this->model->Payhere_update($data);
+    
+            date_default_timezone_set('Asia/Colombo');
+    
+            //get cart data
+            $cart_data = $this->model->payhere_get_cart_data($order_id);
+            
+            if($cart_data['status'] === "success"){
+       
+                $data_order = [
+                    'Order_Date_Time' => date($cart_data['data']->Service_date ." ". $cart_data['data']->Service_time), //combined serve date and time
+                    'Item_count' => $cart_data['data']->Item_count,
+                    'Total_price' => $cart_data['data']->Sub_total + $cart_data['data']->Sub_total*0.05, //including service charge, disregarded discounts here...
+                    'Service_charge' => $cart_data['data']->Sub_total*0.05, //service charge is 5%
+                    'Special_notes' => $cart_data['data']->Special_notes,
+                    'Payment_method' => "payhere",     //payement was completed via payhere gateway
+                    'Order_type' => $cart_data['data']->Order_type,
+                    'Delivery_Address' => $cart_data['data']->Service_address,
+                    'Order_is_for_me' => $cart_data['data']->Order_is_for_me,
+                    'User_ID' => $cart_data['data']->User_ID,
+                ];
+    
+                //make a new order
+                $new_cart_ID = $this->model->createNewOrder($data_order, $cart_data['data']->Cart_id);
+                //header cart count flag sets to zero
+                $_SESSION['cart_item_count'] = 0;
+                //header cart count flag sets to zero
+                $_SESSION['cart_id'] = $new_cart_ID;
+
+                if($new_cart_ID){
+                    //order success
+                    $this->view('customer/cust-order-success',$data);
+                }
+            
+            }
+           
+        }  
+
+    }
+
+    public function payhere_failed(){ 
+
+        if(isset($_GET['order_id'])){
+            $order_id = $_GET['order_id'];
+          
+            //get the cart id 
+            $cart_data = $this->model->payhere_get_cart_data($order_id);
+
+            $user_id =  $cart_data['data']->User_ID;
+            $data = [
+                'Order_ID' => $order_id,
+                'Status' => 'failed',
+                'User_ID' => $user_id
+            ];
+            $this->model->Payhere_update($data);
+        }  
+
+        $this->view('customer/cust-order-failed',$data);
+    }
+
     public function order(){  
         $this->view('customer/cust-order-info');
     }

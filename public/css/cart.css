@@ -147,6 +147,10 @@ body {
     font-weight: 500;
 }
 
+.final {
+    font-size: larger;
+}
+
 .checkout-button {
     background-color: var(--buy-color);
     color: #fff;
@@ -161,6 +165,23 @@ body {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    padding: 0 10px;
+}
+
+.paycash-button {
+    background-color: var(--buy-color);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    width: 250px;
+    height: 50px;
+    margin: 12% auto;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+    left: 50%;
+    transform: translateX(-175px);
     padding: 0 10px;
 }
 
@@ -395,6 +416,16 @@ body {
 
 
 /* used in order infor and payment info pages */
+
+#paymentform {
+    position: relative;
+    left: 40%;
+    transform: translateX(-50%);
+    margin: 100px auto;
+    padding-left: 85px;
+    padding-right: 50px;
+    background-color: brown;
+}
 
 #detailsform {
     position: absolute;

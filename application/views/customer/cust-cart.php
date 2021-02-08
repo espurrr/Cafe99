@@ -76,7 +76,7 @@
             <div class="input-details">
                 <p type="Special Notes to Chef">  <?php echo form_input(['type'=>'text', 'name'=>'specialnote', 'value'=>$this->get_session('cart_special_notes')])?></p>
             </div><br>
-            <div class="total">Total: <b>LKR <?= $this->get_session('cart_sub_total');?></b></div><br>
+            <div class="total"><b>Total: LKR <?php echo number_format($this->get_session('cart_sub_total'),2,'.', ','); ?></b></div><br>
             <input type="submit" class="checkout-button" value="PROCEED TO CHECKOUT">
 
             
@@ -92,7 +92,7 @@
                 <p type="Special Notes to Chef">  <?php echo form_input(['type'=>'text', 'name'=>'specialnote', 'value'=> $this->get_session('cart_special_notes')])?></p>
                
             </div><br><br>
-            <div class="total">Total: <b>LKR <?= $this->get_session('cart_sub_total');?></b></div><br>
+            <div class="total"><b>Total: LKR <?php echo number_format($this->get_session('cart_sub_total'),2,'.', ','); ?></b></div><br>
             <input type="submit" class="checkout-button" value="PROCEED TO CHECKOUT">
 
         <?php echo form_close();?>    

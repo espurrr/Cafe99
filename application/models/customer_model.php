@@ -212,6 +212,7 @@ class Customer_model extends Database{
         //now order is created
         //cart items should me migrated to order items table
         //get cart items
+        echo "order made";
         if($this->Select_Where("cartitem", ['Cart_id' => $cart_id] )){
             if($this->Count() > 0){
                 $cartitems = $this->AllRecords();
@@ -227,12 +228,14 @@ class Customer_model extends Database{
                     //insert each order item
                     $this->Insert("order_item", $orderitem_data);
                 }
+                echo "cart items migrated successfully";
             }else{
                 return false;
             }
         }
         //delete cart-items
         $this->Delete("cartitem", ['Cart_id' => $cart_id]);
+        echo "old cart items deleted";
         //if the order is for someone else -> 0
         //the other recipient table should be modified with the order_id
         if(!$data['Order_is_for_me']){
@@ -240,6 +243,7 @@ class Customer_model extends Database{
         }
         //delete cart
         $this->Delete("cart", ['Cart_id' => $cart_id]);
+        echo "old cart deleted";
 
         //create new cart
         date_default_timezone_set('Asia/Colombo');
@@ -258,7 +262,33 @@ class Customer_model extends Database{
 
     }
  
+   
+    public function  payhere_get_cart_data($order_id){
+      
+        if($this->Select_Where("cart", ['Token_Payhere_Order_ID' => $order_id])){
 
+            if($this->Count() > 0){
+                $row = $this->Row();
+                return ['status'=>'success', 'data'=>$row];
+            }else{
+                return "cart_not_found";
+            }
+
+        }
+
+    }
+
+
+    public function Payhere_update($data){
+           
+        if($this->Insert("payhere_order_status", $data)){
+            return true;
+        }else{
+            return false;
+        }
+    
+        
+    }
 
 
 

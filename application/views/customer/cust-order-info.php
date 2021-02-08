@@ -151,12 +151,13 @@
         <button class="modal-close-btn" id="close-btn">
             <i class="fa fa-times" title="cross"></i>
         </button>
-            <div class="summary-title"><b>Order Summary</b></div><br>
+            <div class="summary-title"><h2>Order Summary</h2></div><br>
             <!-- <div class="input-details">
             <p type="Enter Coupon">  <?php echo form_input(['type'=>'text', 'name'=>'message', 'placeholder'=>''])?><button class="checkout-button coupon" href="#" >APPLY</button></p>
             </div><br> -->
-            <div class="total">Service charges: 50.00</div>                
-            <div class="total"><b>Total: 1000.00</b></div><br>
+            <div class="total">Subtotal: LKR <?php echo number_format($this->get_session('cart_sub_total'),2,'.', ','); ?></div><br>
+            <div class="total">Service charges (5.00%): LKR <?php echo number_format($this->get_session('cart_sub_total')*0.05,2,'.', ','); ?></div>   <br>                 
+            <div class="total final"><b>Total: LKR <?php echo number_format($this->get_session('cart_sub_total')*0.05 + $this->get_session('cart_sub_total'), 2,'.', ','); ?></b></div><br>
             
             <!-- <button class="checkout-button" href="#" ><?php echo anchor("customer_controller/payment", "PROCEED TO CHECKOUT") ?></button> -->
 
@@ -164,12 +165,13 @@
         <!-- modal end -->
 
         <div class="summary-container">
-            <div class="summary-title">Order Summary</div>
+            <div class="summary-title"><h3>Order Summary</h3></div>
             <!-- <div class="input-details">
             <p type="Enter Coupon">  <?php echo form_input(['type'=>'text', 'name'=>'message', 'placeholder'=>''])?><button class="checkout-button coupon" href="#" >APPLY</button></p>
             </div> -->
-            <div class="total">Service charges: 50.00</div>                
-            <div class="total"><b>Total: 1000.00</b></div>
+            <div class="total">Subtotal: LKR <?php echo number_format($this->get_session('cart_sub_total'),2,'.', ','); ?></div>
+            <div class="total">Service charges(5.00%): LKR <?php echo number_format($this->get_session('cart_sub_total')*0.05,2,'.', ','); ?></div>                
+            <div class="total final"><b>Total: LKR <?php echo number_format($this->get_session('cart_sub_total')*0.05 + $this->get_session('cart_sub_total'), 2,'.', ','); ?></b></div>
             <!-- <input type="submit" class="checkout-button" value="PROCEED TO CHECKOUT"> -->
             <!-- <button class="checkout-button" href="#" ><?php echo anchor("customer_controller/payment", "PROCEED TO CHECKOUT") ?></button> -->
             
