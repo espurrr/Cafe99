@@ -4,10 +4,9 @@ class dp_model extends Database{
 
     public function display_neworders($data){
     //    if($this->Select_Where("delivery_order_details", ['Order_ID' => $id])){
-        $query ="SELECT delivery_order_details.Order_ID,delivery_order_details.Delivery_address,delivery_order_details.Delivery_time,
-        delivery_order_details.Delivery_order_status,user.User_name FROM 
-        ((orders INNER JOIN delivery_order_details ON orders.Order_ID=delivery_order_details.Order_ID) 
-        INNER JOIN user ON orders.User_ID=user.User_ID)";
+        $query ="SELECT orders.Order_ID,orders.Delivery_Address,orders.Delivery_Dispatch_DateTime,
+        orders.Order_status,user.User_name FROM 
+        (orders INNER JOIN user ON orders.User_ID=user.User_ID) WHERE orders.Order_type='delivery'";
         $result =$this->Query($query, $options = []);
      
     //    if($this->Select_Where("delivery_order_details", ['Order_ID' => $id])){
@@ -27,10 +26,9 @@ class dp_model extends Database{
 
     public function display_ondelivery($data){
         //    if($this->Select_Where("delivery_order_details", ['Order_ID' => $id])){
-            $query ="SELECT delivery_order_details.Order_ID,delivery_order_details.Delivery_address,delivery_order_details.Delivery_time,
-            delivery_order_details.Delivery_order_status,user.User_name FROM 
-            ((orders INNER JOIN delivery_order_details ON orders.Order_ID=delivery_order_details.Order_ID) 
-            INNER JOIN user ON orders.User_ID=user.User_ID)";
+            $query ="SELECT orders.Order_ID,orders.Delivery_Address,orders.Delivery_Dispatch_DateTime,
+            orders.Order_status,user.User_name FROM 
+            (orders INNER JOIN user ON orders.User_ID=user.User_ID) WHERE orders.Order_type='delivery'";
             $result =$this->Query($query, $options = []);
          
         //    if($this->Select_Where("delivery_order_details", ['Order_ID' => $id])){
@@ -50,10 +48,9 @@ class dp_model extends Database{
 
         public function display_dispatched($data){
             //    if($this->Select_Where("delivery_order_details", ['Order_ID' => $id])){
-                $query ="SELECT delivery_order_details.Order_ID,delivery_order_details.Delivery_address,delivery_order_details.Delivery_time,
-                delivery_order_details.Delivery_order_status,user.User_name FROM 
-                ((orders INNER JOIN delivery_order_details ON orders.Order_ID=delivery_order_details.Order_ID) 
-                INNER JOIN user ON orders.User_ID=user.User_ID)";
+                $query ="SELECT orders.Order_ID,orders.Delivery_Address,orders.Delivery_Dispatch_DateTime,
+                orders.Order_status,user.User_name FROM 
+                (orders INNER JOIN user ON orders.User_ID=user.User_ID) WHERE orders.Order_type='delivery'";
                 $result =$this->Query($query, $options = []);
              
             //    if($this->Select_Where("delivery_order_details", ['Order_ID' => $id])){
