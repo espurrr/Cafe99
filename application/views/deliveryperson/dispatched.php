@@ -84,7 +84,7 @@
 <ul>
 <li data-label="order no"><?php echo $row->Order_ID; ?></li>
 <li data-label="customer name"><?php echo $row->User_name; ?></li>
-<li data-label="customer address"><?php echo $row->Delivery_address; ?></li>
+<li data-label="customer address"><?php echo $row->Delivery_Address; ?></li>
 <li data-label="action"><a href="#" onclick="showModal(50)"><i class="fa fa-eye" style="font-size:24px;color:rgb(6, 132, 235);padding-right:20px"></i></a><a href="#"><i class="fa fa-remove" style="font-size:24px;color: #f15852ee"></i></a></li>
  
 </ul>
