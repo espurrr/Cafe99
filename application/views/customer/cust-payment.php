@@ -45,7 +45,7 @@
                         </label>
         
                     </div>
-              
+                
                     <input type="hidden" name="merchant_id" value="1216595">    <!-- Replace your Merchant ID -->
                     <input type="hidden" name="return_url" value="<?=BASE_URL?>/customer_controller/payhere_success/">
                     <input type="hidden" name="cancel_url" value="<?=BASE_URL?>/customer_controller/payhere_failed/">
@@ -57,7 +57,7 @@
                     <input type="hidden" name="amount" value=<?=$data['amount'] ?>>  
                     <!-- Customer Details -->
                     <input type="hidden" name="first_name" value=<?=$data['first_name'] ?>>
-                    <input type="hidden" name="last_name" value=""><br>
+                    <input type="hidden" name="last_name" value="-"><br>
                     <input type="hidden" name="email" value="-">
                     <input type="hidden" name="phone" value="-"><br>
                     <input type="hidden" name="address" value="-">
@@ -103,11 +103,11 @@
     </script>
 
 
-<!-- <script>
+<script>
  var session = eval('(<?php echo json_encode($_SESSION)?>)');
  console.log(session);
 
-</script> -->
+</script>
     
 </body>
 </html>

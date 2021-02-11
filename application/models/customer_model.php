@@ -258,7 +258,11 @@ class Customer_model extends Database{
         if(!$new_cart_ID){  //new cart is not created
             return false;
         }
-        return $new_cart_ID;
+        $return_data = [
+            'newCartID' => $new_cart_ID,
+            'orderID' => $Order_ID
+        ];
+        return $return_data;
 
     }
  

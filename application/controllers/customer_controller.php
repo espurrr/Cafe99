@@ -486,8 +486,9 @@ class Customer_controller extends JB_Controller{
 
 
     public function payhere_form(){  
-
-        $this->view('customer/cust-order-success');
+        header("Location: https://sandbox.payhere.lk/pay/checkout");
+        die();
+        // $this->view('customer/cust-order-success');
     }
 
     public function payhere_notify(){  //updates the database.. cannot be tested unless it has a dedicated IP
@@ -548,16 +549,21 @@ class Customer_controller extends JB_Controller{
                 ];
     
                 //make a new order
-                $new_cart_ID = $this->model->createNewOrder($data_order, $cart_data['data']->Cart_id);
+                $result_data = $this->model->createNewOrder($data_order, $cart_data['data']->Cart_id);
                 //header cart count flag sets to zero
                 $_SESSION['cart_item_count'] = 0;
                 //header cart count flag sets to zero
-                $_SESSION['cart_id'] = $new_cart_ID;
+                $_SESSION['cart_id'] = $result_data['newCartID'];
+                
+                //email the invoice
 
-                if($new_cart_ID){
+                $result_data['Status'] = 'success';
+
+                if($result_data['newCartID']){
                     //order success
-                    $this->view('customer/cust-order-success',$data);
+                    $this->view('customer/cust-isorderplaced',$result_data);    /////////////////////////////////////payment successs page
                 }
+               
             
             }
            
@@ -582,7 +588,7 @@ class Customer_controller extends JB_Controller{
             $this->model->Payhere_update($data);
         }  
 
-        $this->view('customer/cust-order-failed',$data);
+        $this->view('customer/cust-order-isorderplaced',$data);             /////////////////////////////////////payment failed page
     }
 
     public function order(){  

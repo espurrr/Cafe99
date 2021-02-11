@@ -27,6 +27,25 @@
         <li><?php echo anchor("account_controller/index", "Home") ?></li>
         <li>My Orders</li>
   </ul>
+
+
+    <!-- Pop up modal starts here -->
+<!-- <div id="popup-window" class="popup-window">
+        <div id="win-content-wrapper"class="win-content-wrapper">
+            <div class="win-content">
+                <div class="win-table">
+                    <i class="fas fa-check fa-8x"></i>
+                    <p class="para">Congratulations! Your order has been placed successfully.<br><br>We have emailed you the order details. <br>Please Check inbox.</p>
+
+                    <div class="popup-btn-container">
+                        <button id="ok-btn" class="popup-btn btn av-btn"><?php echo anchor("account_controller/index", "OK") ?></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div> -->
+    <!-- Pop up modal ends here -->
+
   <!-- Pop up modal starts here -->
 
   <div id="popup-window" class="popup-window">
