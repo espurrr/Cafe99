@@ -40,7 +40,7 @@
                                 <i class="fa fa-user-circle" aria-hidden="true" style="font-size:35px"></i>
                             </div>
                             <div class="name">
-                                <strong><a href="#" class="text-name"><?php echo $row->User_name;?></a></strong>
+                                <strong><a href="#" class="text-name"><?php echo ($row->User_name === NULL)?"User":$row->User_name ?></a></strong>
                                 <div class="date">
                                     <span class="text-when"><?php echo $row->Announcement_date." at ".substr($row->Announcement_time,0,5) ?></span> <img src="http://social-prank.foxsash.com/assets/images/facebook/icon_public.jpg" width="16" height="16" id="visiblefor-icon">
                                 </div>

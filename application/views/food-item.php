@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
+    <!-- search bar -->
+    <?php echo link_css("css/cust-searchbar.css?ts=<?=time()?>"); ?>
+
     <!-- Content -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,7 +41,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Jquery link -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script> -->
 
         
 </head>
@@ -51,8 +54,9 @@
 ?>
     <ul class="breadcrumb">
         <li><?php echo anchor("account_controller/index", "Home")?></li>
-        <li><?php echo $data[0]->Subcategory_name;?></li>
-        <li><?php echo $data[0]->Food_name;?></li>
+        <li><?php echo $data['data'][0]->Category_name?></li>
+        <li><?php echo anchor("food_controller/menu/".$data['data'][0]->Category_name."/". $data['data'][0]->Subcategory_name, $data['data'][0]->Subcategory_name)?></li>
+        <li><?php echo $data['data'][0]->Food_name;?></li>
     </ul>
 
     <div class="authMessage">
@@ -60,39 +64,61 @@
         <?php $this->flash('databaseError','alert alert-danger','fa fa-times-circle'); ?>
         <?php $this->flash('addtocartSuccess','alert alert-success','fa fa-check'); ?>
     </div>
-   
+
+    <!-- Food names are concatenated into a single string -->
+    <?php
+        $food_names = "";
+        foreach($data['food_names'] as $row){
+            $food_names .= $row->Food_name . ",";
+        }
+        $food_names = rtrim($food_names, ",");
+    ?>
+    <!-- Hidden field to store all the foodname -->
+    <input type="hidden" id="search_food_names" value="<?php echo $food_names; ?>">
+
+    <!-- Search bar -->
+    <div class="search_container" style="top: 13%;">
+        <?php //echo form_open("food_controller/searchfood", "POST");?>
+        <form autocomplete="off" action="<?php echo BASE_URL ?>/food_controller/search_food" method="POST">
+            <div class="autocomplete" style="width:300px;">
+            <input id="search" type="text" name="search_food" placeholder="Search...">
+            </div>
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+        <?php //echo form_close();?>
+    </div>
     
     <div class="food_item_wrapper">
     <div class="food_item_container">
         <?php
-            $img_path = BASE_URL."/public/images/food-dash-images/".$data[0]->Category_name."/".$data[0]->Subcategory_name."/".str_replace(' ','',$data[0]->Food_name).".jpg";
+            $img_path = BASE_URL."/public/images/food-dash-images/".$data['data'][0]->Category_name."/".$data['data'][0]->Subcategory_name."/".str_replace(' ','',$data['data'][0]->Food_name).".jpg";
         ?>
         <div class="container__image">
             <!-- <div class="image" style="background-image: url('<?php //echo $img_path?>');"></div> -->
             <?php
                 //$img_path = "http://localhost:8080/test/VegetablesFriedRice1.jpg";
-                $img_path = BASE_URL."/public/images/food-dash-images/".$data[0]->Category_name."/".$data[0]->Subcategory_name."/".str_replace(' ','',$data[0]->Food_name).".jpg";
+                $img_path = BASE_URL."/public/images/food-dash-images/".$data['data'][0]->Category_name."/".$data['data'][0]->Subcategory_name."/".str_replace(' ','',$data['data'][0]->Food_name).".jpg";
             ?>
             <img src="<?php echo $img_path; ?>" alt="Food Item"/>
         </div>
         <div class="container__text">
-            <div class="availability"><p><?php echo ucfirst($data[0]->Availability); ?></p></div>
+            <div class="availability"><p><?php echo ucfirst($data['data'][0]->Availability); ?></p></div>
             
-            <h1><?php echo $data[0]->Food_name; ?></h1>
-            <div class="des"><?php echo $data[0]->Description; ?></div>
-            <div class="price" >LKR: <?php echo $data[0]->Unit_Price;?></div>
+            <h1><?php echo $data['data'][0]->Food_name; ?></h1>
+            <div class="des"><?php echo $data['data'][0]->Description; ?></div>
+            <div class="price" >LKR: <?php echo $data['data'][0]->Unit_Price;?></div>
             <div class="quantity">
                 <label>Quantity:&nbsp; </label>
-                <input type="number" id="qty" class="input" name="quantity" value="1" min="1" max="<?php echo $data[0]->Current_count;?>">
+                <input type="number" id="qty" class="input" name="quantity" value="1" min="1" max="<?php echo $data['data'][0]->Current_count;?>">
          
             </div>
             <div class="btn-container">
                 <button href="#" class="fav btn"><i class="fas fa-heart"></i></button>
                 <button 
                 class="cart btn shoppingcartbtn" 
-                data-id="<?php echo $data[0]->Food_ID;?>"
-                data-name="<?php echo $data[0]->Food_name;?>"
-                data-price="<?php echo $data[0]->Unit_Price;?>"
+                data-id="<?php echo $data['data'][0]->Food_ID;?>"
+                data-name="<?php echo $data['data'][0]->Food_name;?>"
+                data-price="<?php echo $data['data'][0]->Unit_Price;?>"
                 >
                 <i class="fas fa-shopping-cart" ></i> <span class="cart-text">&nbsp;&nbsp; Add to Cart</span></button>
             </div>
@@ -101,5 +127,7 @@
     </div>
     <?php //include '../application/views/footer/footer_2.php';?>
     <?php echo link_js("js/cust_addtocart.js"); ?>
+    <?php echo link_js("js/cust_searchbar.js"); ?>
+
 </body>
 </html>

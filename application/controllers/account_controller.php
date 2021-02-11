@@ -6,10 +6,13 @@ class Account_controller extends JB_Controller{
     public function __construct(){
         parent::__construct();
         $this->model = $this->model("account_model");
+        $this->food_model = $this->model("food_model");
     }
 
     public function index(){
-        $this->view('home');
+        $food_names = $this->food_model->get_food_names();
+        // print_r($food_names['data']);
+        $this->view('home',['food_names'=>$food_names['data']]);
     }
 
     public function signup(){

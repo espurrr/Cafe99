@@ -11,7 +11,7 @@
         --available-btn:#0BCE83;
         --available-btn-hover:#0abE84;
         --inactive-btn:#efefef;
-        --stock-btn-color: #888;
+        --stock-btn-color: #d0e8fc;
 
         --hover-transition:0.2s;
         --non-hover-transition:0.6s;
@@ -118,12 +118,14 @@
         height: 30px;
         padding-left: 10px;
         width: 60px;
+        border: 1px solid #999;
     }
 
     .grid article .quantity input[type=submit]{
         padding: 0px 5px 0px 5px;
         height: 30px;
-        /* background-color:var(--stock-btn-color); */
+        background-color:var(--stock-btn-color);
+        border: 1px solid #999;
     }
 
     /*  Title & Price */

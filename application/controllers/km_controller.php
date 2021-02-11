@@ -120,6 +120,7 @@ class KM_Controller extends JB_Controller{
             $this->view('kitchenmanager/newsfeed/newsfeed');
             // echo"noAnnouncement";
         }else if($result['status'] === "success"){
+
             $this->view('kitchenmanager/newsfeed/newsfeed',$result['data']);
         }
     }

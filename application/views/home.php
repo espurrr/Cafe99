@@ -8,6 +8,9 @@
     <?php echo link_css("css/header.css?ts=<?=time()?>"); ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    
+    <!-- search bar -->
+    <?php echo link_css("css/cust-searchbar.css?ts=<?=time()?>"); ?>
 
     <!-- hero and content -->
     <?php echo link_css("css/home.css?ts=<?=time()?>"); ?>
@@ -22,6 +25,18 @@
 </head>
 
 <body style="background: #fff url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
+<!-- Food names are concatenated into a single string -->
+<?php
+    $food_names = "";
+    foreach($data['food_names'] as $row){
+        // echo $row->Food_name;
+        $food_names .= $row->Food_name . ",";
+    }
+    $food_names = rtrim($food_names, ",");
+?>
+<!-- Hidden field to store all the foodname -->
+<input type="hidden" id="search_food_names" value="<?php echo $food_names; ?>">
+
 <div class="page-container">
 <div class="content-wrapper" >
 
@@ -32,19 +47,33 @@
             include '../application/views/header/header.php';
         }
     ?>
+    
 
     <main>
         <!-- hero image -->
         <div class="section-1_wrapper" style="background: #FAD74E url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
             <section class="section-1">
+            
                 <div class="hero-image1">
-  
-                <img src="<?php echo BASE_URL?>/public/images/home/hero1.png" class = "section-1__hero-image__cls"alt="Image 01">
+                
+                    <img src="<?php echo BASE_URL?>/public/images/home/hero1.png" class = "section-1__hero-image__cls"alt="Image 01">
                 </div>
                 <div class="hero-image2">
                     <img src="<?php echo BASE_URL?>/public/images/home/hero2.png" class = "section-1__hero-image__cls"alt="Image 01">
                 </div>
                 <div class="hero-text">
+                    <!-- Search bar -->
+                    <div class="search_container" id="search" style="top: 3.5%;">
+                        <?php //echo form_open("food_controller/searchfood", "POST");?>
+                        <form autocomplete="off" action="<?php echo BASE_URL ?>/food_controller/search_food" method="POST">
+                            <div class="autocomplete" style="width:300px;">
+                            <input id="search" type="text" name="search_food" placeholder="Search...">
+                            </div>
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                        <?php //echo form_close();?>
+                    </div>
+
                     <h1>You want it. We have it.</h1>
                     <p>Food, drinks, and desserts for dinein, delivery and pickup.</p>
                 </div>
@@ -163,7 +192,9 @@
     </div> <!-- page-contianer ends-->
 
 
-    <?php echo link_js("js/home.js"); ?>
+    <?php //echo link_js("js/home.js"); ?>
+    <?php echo link_js("js/cust_searchbar.js"); ?>
+
     <!-- <script>
  var session = eval('(<?php echo json_encode($_SESSION)?>)');
  console.log(session);

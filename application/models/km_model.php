@@ -103,14 +103,10 @@
         }
 
         public function getOrders(){
-            // $query = 
-            // "SELECT orders.Order_ID, orders.Order_type, orders.Order_status, orders.Special_notes, cartitem.Quantity, fooditem.Food_name 
-            // FROM orders INNER JOIN cartitem ON orders.Cart_ID = cartitem.Cart_id
-            // INNER JOIN fooditem ON cartitem.Food_ID = fooditem.Food_ID";
             $query = 
-            "SELECT orders.Order_ID, orders.Order_type, orders.Order_status, orders.Special_notes, fooditem.Food_name 
-            FROM orders INNER JOIN cartitem ON orders.Cart_ID = cartitem.Cart_id
-            INNER JOIN fooditem ON cartitem.Food_ID = fooditem.Food_ID";
+            "SELECT orders.Order_ID, orders.Order_type, orders.Order_status, orders.Special_notes, order_item.Quantity, fooditem.Food_name 
+            FROM orders INNER JOIN order_item ON orders.Order_ID = order_item.Order_id
+            INNER JOIN fooditem ON order_item.Food_ID = fooditem.Food_ID";
             
             $result =$this->Query($query, $options = []);
 
@@ -127,15 +123,25 @@
             }
         }
         public function getAnnouncement(){
-            $query = "SELECT announcement.Announcement_id, announcement.Announcement_title, announcement.Announcement_date, announcement.Announcement_time, 
-            announcement.Content, announcement.To_whom, user.User_name FROM announcement INNER JOIN user ON announcement.User_ID = user.User_ID
-            WHERE announcement.To_whom = 'All Employees' OR announcement.To_whom = 'Kitchen managers' ORDER BY announcement.Announcement_date DESC";
+            $query = 
+            "(SELECT announcement.Announcement_id, announcement.Announcement_title, announcement.Announcement_date, announcement.Announcement_time, 
+            announcement.Content, announcement.To_whom, user.User_name 
+            FROM announcement INNER JOIN user ON announcement.User_ID = user.User_ID
+            WHERE announcement.To_whom = 'All Employees' OR announcement.To_whom = 'Kitchen managers'
+            ORDER BY announcement.Announcement_date DESC)
+            UNION
+            (SELECT announcement.Announcement_id, announcement.Announcement_title, announcement.Announcement_date, announcement.Announcement_time, 
+            announcement.Content, announcement.To_whom, announcement.User_ID
+            FROM announcement
+            WHERE Announcement.User_ID IS NULL AND (announcement.To_whom = 'All Employees' OR announcement.To_whom = 'Kitchen managers')
+            ORDER BY announcement.Announcement_date DESC)";
 
             $result = $this->Query($query, $options = []);
             if($this->Count() > 0){
                 $announcement = $this->AllRecords();
                 //print_r($announcement);
                 if($announcement){
+                    $announcement = array_reverse($announcement, true);
                     return ['status'=>'success', 'data'=>$announcement];
                 }else{
                     return "Announcement_not_retrieved";

@@ -5,10 +5,23 @@
     --btn-blue-hover: #3464bd;
     --btn-green: #0BCE83;
     --btn-green-hover: #10bd7b;
+    --btn-red: #f84278;
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin:0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
 }
 
 .popup-window {
-    display: none;
+    display: block;
     position: fixed;
     top: 0px;
     left: 0px;
@@ -193,5 +206,10 @@
 
 .fa-check {
     color: var(--btn-green);
+    margin: auto;
+}
+
+.fa-times{
+    color: var(--btn-red);
     margin: auto;
 }
