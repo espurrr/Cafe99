@@ -7,10 +7,9 @@ $(document).ready(function() {
         var food_name = $(this).data("name");
         var price = $(this).data("price");
         var qty = $("#qty").val();
-        //alert(price);
+        // alert(price);
         // alert(qty);
         // alert(food_id);
-
         $.ajax({
             data: {
                 action: "addtocart",

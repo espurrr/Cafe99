@@ -108,5 +108,6 @@ function autocomplete(searchbar, food_arr) {
 
 var food_names = document.getElementById("search_food_names").value;
 food_names = food_names.split(",");
-// var food_names = ["pizza", "bun", "rice", "qqq", "www"]
+
+// var food_names = ["pizza", "bun", "rice", "juice", "cake"];
 autocomplete(document.getElementById("search"), food_names);
