@@ -457,30 +457,29 @@ class Customer_controller extends JB_Controller{
 
             if($payment_type=="cash"){
                 //make a new order
-                $new_cart_ID = $this->model->createNewOrder($data, $cart_id);
-                //header cart count flag sets to zero
+                $result_data = $this->model->createNewOrder($data, $cart_id);
+                   //header cart count flag sets to zero
                 $_SESSION['cart_item_count'] = 0;
+                //cart sub total flag sets to zero
+                $_SESSION['cart_sub_total'] = 0;
+                //cart special notes flag sets to zero
+                $_SESSION['cart_special_notes'] = "";
+                //order for whome flag sets to zero
+                $_SESSION['order_is_for_me'] = 1;
                 //header cart count flag sets to zero
-                $_SESSION['cart_id'] = $new_cart_ID;
-                if($new_cart_ID){
+                $_SESSION['cart_id'] = $result_data['newCartID'];
+                
+                $result_data['Status'] = 'success';
+
+                if($result_data['newCartID']){
                     //order success
-                    $this->view('customer/cust-order-success',$data);
-                }else{
-                    //order failed
-                    $this->view('customer/cust-order-success',$data);
+                    $this->view('customer/cust-isorderplaced',$result_data);    /////////////////////////////////////payment successs page
                 }
     
-            }
-            
-            if($payment_type=="payhere"){
-               //taken care of by payment gateway
-            }      
+            }        
+           
 
         }
-     
-
-        $this->view('customer/cust-order-info');
-
     
     }
 
@@ -521,18 +520,22 @@ class Customer_controller extends JB_Controller{
 
     public function payhere_success(){
         if(isset($_GET['order_id'])){
+
             $order_id = $_GET['order_id'];
+
+            //get cart data
+            $cart_data = $this->model->payhere_get_cart_data($order_id);
+
             $data = [
                 'Order_ID' => $order_id,
-                'Status' => 'success'
+                'Status' => 'success',
+                'User_ID' => $cart_data['data']->User_ID
             ];
+
             $this->model->Payhere_update($data);
     
             date_default_timezone_set('Asia/Colombo');
     
-            //get cart data
-            $cart_data = $this->model->payhere_get_cart_data($order_id);
-            
             if($cart_data['status'] === "success"){
        
                 $data_order = [
@@ -547,11 +550,17 @@ class Customer_controller extends JB_Controller{
                     'Order_is_for_me' => $cart_data['data']->Order_is_for_me,
                     'User_ID' => $cart_data['data']->User_ID,
                 ];
-    
+                
                 //make a new order
                 $result_data = $this->model->createNewOrder($data_order, $cart_data['data']->Cart_id);
                 //header cart count flag sets to zero
                 $_SESSION['cart_item_count'] = 0;
+                //cart sub total flag sets to zero
+                $_SESSION['cart_sub_total'] = 0;
+                //cart special notes flag sets to zero
+                $_SESSION['cart_special_notes'] = "";
+                //order for whome flag sets to zero
+                $_SESSION['order_is_for_me'] = 1;
                 //header cart count flag sets to zero
                 $_SESSION['cart_id'] = $result_data['newCartID'];
                 

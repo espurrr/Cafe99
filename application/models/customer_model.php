@@ -212,7 +212,7 @@ class Customer_model extends Database{
         //now order is created
         //cart items should me migrated to order items table
         //get cart items
-        echo "order made";
+        // echo "order made";
         if($this->Select_Where("cartitem", ['Cart_id' => $cart_id] )){
             if($this->Count() > 0){
                 $cartitems = $this->AllRecords();
@@ -228,14 +228,14 @@ class Customer_model extends Database{
                     //insert each order item
                     $this->Insert("order_item", $orderitem_data);
                 }
-                echo "cart items migrated successfully";
+                // echo "cart items migrated successfully";
             }else{
                 return false;
             }
         }
         //delete cart-items
         $this->Delete("cartitem", ['Cart_id' => $cart_id]);
-        echo "old cart items deleted";
+        // echo "old cart items deleted";
         //if the order is for someone else -> 0
         //the other recipient table should be modified with the order_id
         if(!$data['Order_is_for_me']){
@@ -243,7 +243,7 @@ class Customer_model extends Database{
         }
         //delete cart
         $this->Delete("cart", ['Cart_id' => $cart_id]);
-        echo "old cart deleted";
+        // echo "old cart deleted";
 
         //create new cart
         date_default_timezone_set('Asia/Colombo');

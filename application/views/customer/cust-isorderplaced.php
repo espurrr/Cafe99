@@ -5,7 +5,7 @@
     <title>Profile</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500&display=swap" rel="stylesheet">
     <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
-    <?php echo link_css("css/profile.css?ts=<?=time()?>"); ?>
+   
     <!-- <?php echo link_css("css/header.css?"); ?> -->
     <?php echo link_css("css/customer/order_success_popup.css?"); ?>
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
@@ -19,10 +19,6 @@
 <div class="content-wrapper">
 <?php include '../application/views/header/cust-logged-in-header.php';?>
 
-<ul class="breadcrumb">
-        <li><?php echo anchor("account_controller/index", "Home") ?></li>
-        <li>My Profile</li>
-</ul>
 
    <!-- Pop up modal starts here -->
 <div id="popup-window" class="popup-window">
@@ -56,10 +52,6 @@
     <!-- Pop up modal ends here -->
 
 
-<?php echo $data['orderID'], $data['Status']?> 
-<!-- Status = 'success' or 'failed'-->
-
-<?php echo $this->get_session('cart_id')?>
 </div><!-- content-wrapper ends-->
 <?php include '../application/views/footer/footer_1.php';?>
 </div> <!-- page-contianer ends-->
