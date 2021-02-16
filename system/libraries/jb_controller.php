@@ -2,7 +2,7 @@
 
 class JB_Controller {
 
-    use form_validation,session; //spl autoload will load all trait files used by Lightweight class
+    use form_validation,session,logging; //spl autoload will load all trait files used by JB_controller
     
     public function __construct(){
         $this->start();
