@@ -28,6 +28,7 @@ class Account_controller extends JB_Controller{
 
         if($this->run()){
          //   echo "Form is submitted";
+            $ip = $_SERVER['SERVER_ADDR'];
             $User_name = $this->post('User_name');
             $Email_address = $this->post('Email_address');
             $Phone_no = $this->post('Phone_no');
@@ -47,18 +48,26 @@ class Account_controller extends JB_Controller{
 
             if($this->model->signup($data)){
                 // echo "data is inserted";
+                //logs
+                $this->informational("new customer account added: @email = $Email_address, @ip = $ip");
                if($this->activationEmail($Email_address,$User_name,"","",$Token)){
+                   //logs
+                    $this->informational("customer account activation mail sent; @email = $Email_address");
                     $this-> set_flash("signupSuccess","Your account is successfully created. We've sent an email to $Email_address to verify your address. Please click on the link in the email to continue.");
                     $this->view('login');
                }else{
                    //Email was not sent. need to delete the current record of the user.
                     $this->model->deleteUser($Token);
                     $this->set_flash("activationEmailError", "Something went wrong :( Please try again.");
+                    //logs
+                    $this->notice("failed to send customer account activation mail; data deleted; @email = $Email_address");
                     $this->view('signup');
                 }              
                 
             }else{
                  $this->set_flash("signupError", "Something went wrong :( Please try again later.");
+                  //logs
+                  $this->notice("failed to add new customer; @email = $Email_address");
                  $this->view('signup');
             }
             
@@ -132,17 +141,21 @@ class Account_controller extends JB_Controller{
             $email = $this->post('Email_address');
             $password = $this->post('User_Password');
             $result = $this->model->login($email, $password);
+            $ip = $_SERVER['SERVER_ADDR'];
 
             if($result === "Email_not_found"){
                 $this->set_flash("loginError", "Invalid login or password");
                 $this->login();
             }else if($result === "Password_not_matched"){
                 $this->set_flash("loginError", "Invalid login or password");
+                //logs
+                $this->notice("authentication failure: @email = $email, @ip = $ip");
                 $this->login();
             }else if($result['status'] === "success"){
                 // echo "Login successssss! yay!";
+                $user_id = $result['data']->User_ID;
                 $session_data = [
-                    'user_id' => $result['data']->User_ID,
+                    'user_id' => $user_id,
                     'user_name' => $result['data']->User_name,
                     'user_status' => $result['data']->User_status,
                     'role' => $result['data']->User_role,
@@ -155,8 +168,11 @@ class Account_controller extends JB_Controller{
                     'logged' => "1",
                     'loader' => true
                 ];
-                            
+                
                 $this->set_session($session_data);
+                //logs
+                $this->informational("session opened for user $user_id");
+
                 if($this->model->login_time($this->get_session('user_id'))){
                     
                     if($session_data['role']=="customer" AND $session_data['user_status']=="active" ){
@@ -180,6 +196,8 @@ class Account_controller extends JB_Controller{
                                 $this->set_session('cart_id',$new_cart_id);
                                 
                             }
+                            //logs
+                            $this->informational("cart $new_cart_id assigned for user $user_id");
                             //no need to make a db request to get the cart count cause it's already 0 in session data
                         }
                     
@@ -261,16 +279,21 @@ class Account_controller extends JB_Controller{
                    'Email_address' => $Email_address,
                    'Token' => $Token
                ];
-   
+                //logs
+                $this->informational("password reset attempt @email=$Email_address");
                if($this->model->resetPwToken($data)){
                    // echo "data is inserted";
                   if($this->resetPwEmail($Email_address,"User","","",$Token)){
-                       $this-> set_flash("linkSentSuccess","An email is sent to $Email_address. Please click on the link when you get it.");
-                       $this->view('forgot');
+                        $this-> set_flash("linkSentSuccess","An email is sent to $Email_address. Please click on the link when you get it.");
+                        //logs
+                        $this->informational("password reset attempt; reset link sent; @email =  $Email_address");
+                        $this->view('forgot');
                   }else{
-                      //Email was not sent. need to delete the current record of the user.
-                       $this->model->deleteUser($Token);
+                      //Email was not sent. need to delete the allocated token for the user.
+                       $this->model->nullToken($Token);
                        $this->set_flash("resetEmailError", "Something went wrong :( Please try again.");
+                       //logs
+                       $this->notice("password reset attempt; reset link failed to send to $Email_address");
                        $this->view('forgot');
                    }              
                    
@@ -298,12 +321,14 @@ class Account_controller extends JB_Controller{
                 //now we have the user_id for which user, the token was assigned to
                 //we can now set a session and store the id so that,
                 //when the user clicks on resetPwSubmit, the system knows the user_id
+                $user_id = $result['data']->User_ID;
                 $session_data = [
-                    'user_id' => $result['data']->User_ID,
+                    'user_id' => $user_id,
                     'logged' => 0,
                     'loader' => true
                 ];       
                 $this->set_session($session_data);
+                $this->informational("reset pw session opened for user $user_id");
                 $this->view('resetpw');
             }
         }else{
@@ -332,7 +357,11 @@ class Account_controller extends JB_Controller{
             }else if($result=== "Success"){
                 // echo "Login successssss! yay!";
                 $this->destroy_session();
+                //logs
+                $this->informational("reset pw session closed for user $user_id");
+                $this->notice("password reset attempt; successful @email = $Email_address");
                 $this->set_flash("passwordResetSuccess", "You have successfully changed your password. Login now!");
+                
                 $this->view('login');               
 
             }

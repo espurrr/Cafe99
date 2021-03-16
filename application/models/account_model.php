@@ -99,6 +99,19 @@ class Account_model extends Database{
         }
     }
 
+    public function nullToken($token){
+        if($this->Select_Where("user", ['Token' => $token])){
+            if($this->Count() > 0){
+                if($this->Update("user", ['Token'=> ""], ['Token' => $token])){
+                    return "Success";
+                }else{
+                    return "Token_update_error";
+                }
+            }
+        }
+            
+    }
+
     public function deleteUser($token){
         $this->Delete("user", ['Token' => $token]);      
     }
