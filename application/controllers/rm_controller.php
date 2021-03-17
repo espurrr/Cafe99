@@ -12,9 +12,34 @@ class RM_Controller extends JB_Controller{
         }
         $this->model = $this->model("rm_model");
     }
+    
+   /* public function index(){
+        $result=$this->model->getAnalytics();
 
+        if($result === "Analytics_not_retrieved"){
+            $this->set_flash("databaseError", "Sorry, cannot show Overviews at the moment. Please try again later.");
+            //echo"dberror";
+        }else if($result === "Analytics_not_found"){
+            $this->set_flash("noOverviewsError", "Sorry, cannot show Overviews at the moment. Please try again later.");
+            //echo"noOverviews";
+        }else if($result['status'] === "success"){
+            $this->view('restaurantmanager/analytics/analyticsnew',$result['data']);
+        }
+
+      //$this->view('restaurantmanager/analytics/analyticsnew');
+    }*/
+
+//create overviews
     public function index(){
-        $this->view('restaurantmanager/analytics/analyticsnew');
+        $this->overview();
+    }
+
+    public function overview(){
+    //cards
+    $results_cards=$this->model->getcards_data();
+    
+    $this->view('restaurantmanager/analytics/analyticsnew',$results_cards['data']);
+
     }
 
   

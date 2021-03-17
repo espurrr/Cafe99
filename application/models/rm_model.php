@@ -2,6 +2,62 @@
 
 class Rm_model extends Database{
 
+   /* public function getAnalytics(){
+        //echo "This is Overviews page";
+        $count_query="SELECT COUNT(Order_ID) FROM orders";
+        $delivery_count_query="SELECT COUNT(Order_ID) FROM orders where Order_type='delivery'";
+        $sum_query="SELECT SUM(Total_price) FROM orders";
+        $new_customer_query="SELECT COUNT(User_ID) FROM users where User_role='customer' AND Registered_date=2020-02-23";
+
+
+        $result =$this->Query($count_query, $options = []);
+        if($this->Count() > 0){
+          $count=$this->Row();
+         // print_r($count); 
+          if($count){
+            return ['status'=>'success', 'data'=>$count];
+        }else{
+            return "Data_not_retrieved";
+        } 
+        }else{
+            return "Data_not_found";
+        }*/
+        
+
+        public function getcards_data(){
+
+        $count_query="SELECT COUNT(Order_ID) as OrderCount FROM orders";
+        $delivery_count_query="SELECT COUNT(Order_ID) as DeliveryOrderCount FROM orders where Order_type='delivery'";
+        $sum_query="SELECT SUM(Total_price) as TotalPrice FROM orders";
+        $new_customer_query="SELECT COUNT(User_ID) as NewCustomerCount FROM user where User_role='customer' AND Registered_date='2020-02-23'";
+
+
+        $result =$this->Query($count_query, $options = []);
+        $count=$this->Row()->OrderCount;
+       // print_r($count);
+        $delivery_count_result=$this->Query($delivery_count_query, $options = []);
+        $delivery_count=$this->Row()->DeliveryOrderCount;
+       // print_r($delivery_count);
+        $sum_result=$this->Query($sum_query, $options = []);
+        $sum=$this->Row()->TotalPrice;
+       // print_r($sum);
+        $new_customer_result=$this->Query($new_customer_query, $options = []);
+        $new_customer=$this->Row()->NewCustomerCount;
+       // print_r($new_customer);
+
+        $data=[
+            'count'=>$count,
+            'delivery_count'=>$delivery_count,
+            'sum'=>$sum,
+            'new_customer'=>$new_customer,
+        ];
+        if($data){
+        return ['status'=>'success', 'data'=>$data];
+    }else{
+        return "Data_not_retrieved";
+    }
+                }
+
     public function addNews($data){
 
         if($this->Insert("announcement", $data)){
