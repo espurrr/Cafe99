@@ -119,6 +119,20 @@ class Customer_model extends Database{
         }
     }
 
+    public function removefromCart($cart_id, $food_id, $food_qty){
+        $data = [
+            'Food_ID' => $food_id,
+            'Cart_id' => $cart_id,
+            'Quantity' => $food_qty
+        ];
+  
+        if($this->Delete("cartitem", $data)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public function get_cart_items($cart_id){
       
         $query = 

@@ -299,8 +299,12 @@ class Customer_controller extends JB_Controller{
         
     }
 
-    public function removefromcart(){
 
+    public function removefromcart($food_id, $food_qty){
+        
+        $cart_id = $this->get_session('cart_id');
+    
+        $this->model->removefromCart($cart_id, $food_id, $food_qty);
     }
 
     public function proceedToOrderDetails(){

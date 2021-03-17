@@ -43,7 +43,7 @@
   <div id="popup-window" class="popup-window">
         <div class="win-content-wrapper">
             <div class="win-content">
-                <p>Are you sure you want to delete?</p>
+                <p id="favNo">Are you sure you want to delete?</p>
                 <div class="btn-container">
                     <div class="btn-wrapper">
                         <button class="btn cancel-btn" id="modal-cancel-btn">Cancel</button>
