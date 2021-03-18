@@ -67,7 +67,7 @@
                 </div>
 
                 <div class="btn-container">
-                    <a href="#" class="delete"><i class="fas fa-trash-alt" onclick='showDeleteModal(<?php echo $row->Quantity;?>,"\"<?php echo $row->Food_name;?>\"",<?php echo $row->Food_ID;?>)'></i></a>
+                    <a href="#" class="delete"><i class="fas fa-trash-alt" onclick='showDeleteModal(<?php echo $row->Quantity;?>,"\"<?php echo $row->Food_name;?>\"",<?php echo $row->Food_ID;?>,<?php echo $row->Price; ?>)'></i></a>
                 </div>
             </div>
             <!-- cart-item-container ends-->

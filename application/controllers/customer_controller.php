@@ -226,11 +226,6 @@ class Customer_controller extends JB_Controller{
     }
 
 
-    public function myorders(){
-        $this->view('customer/cust-myorders');
-        // NEED UI
-    }
-
     public function mycart(){
         $cart_id = $this->get_session('cart_id');
         $result = $this->model->get_cart_items($cart_id);
@@ -300,11 +295,33 @@ class Customer_controller extends JB_Controller{
     }
 
 
-    public function removefromcart($food_id, $food_qty){
+    public function removefromcart($food_id, $food_qty, $food_price){
         
         $cart_id = $this->get_session('cart_id');
-    
-        $this->model->removefromCart($cart_id, $food_id, $food_qty);
+        //to update count in table 
+        $current_count = $this->get_session('cart_item_count');
+        $new_count = $current_count - 1;
+
+        //to update subtotal in table
+        $cart_item_total = $food_qty * $food_price;
+        $current_cart_subtotal = $this->get_session('cart_sub_total');
+        $new_cart_subtotal = $current_cart_subtotal - $cart_item_total;
+
+        $data = [
+            'cart_id' => $cart_id,
+            'food_id' => $food_id,
+            'food_qty' => $food_qty,
+            'food_price' => $food_price,
+            'cart_item_count' =>  $new_count,
+            'cart_subtotal' => $new_cart_subtotal
+        ];
+
+        $result = $this->model->removefromCart($data);
+        
+        if($result){
+            $this->set_session('cart_item_count', $new_count);
+            $this->set_session('cart_sub_total', $new_cart_subtotal);
+        }
     }
 
     public function proceedToOrderDetails(){
@@ -612,5 +629,98 @@ class Customer_controller extends JB_Controller{
         $this->view('customer/cust-payment');
     }
 
+    
+  
+    public function myorders(){
+
+        $user_id = $this->get_session('user_id');
+
+        $result = $this->model->getMyOrders($user_id);
+
+        if($result === "orders_not_found"){
+            $this->set_flash("Orders404Error", "You haven't made any order yet. Let's place one? :) ");
+            $this->view('customer/cust-myorders');
+
+        }else if($result['status'] === "success"){
+
+            $result_array = $result['data'];
+            $order_list = [];
+
+            foreach($result_array as $order){
+                $datetime = $order->Order_Date_Time;
+                //print_r($result['data']);
+                $only_date = date("Y-m-d",strtotime($datetime));
+
+                $o_status = $order->Order_status;
+                $o_type = $order->Order_type;
+                $p_method = $order->Payment_method;
+
+                //onqueue, processing are status of order in KM's POV
+                //which should be "Preparing" in customer's POV
+                if($o_status =="onqueue" or $o_status =="processing"){
+                    $order_status = "Preparing";
+
+                //when order is ready in kitchen, 
+                //DINE-IN, PICK-UP order=>
+                    //which should be "Ready" or "Awaiting Pickup" in customer's POV
+                //DELIVERY order => dispatched to a certain delivery person chosen by KM
+                    //which should be "Awaiting delivery" in customer's POV
+                }else if($o_status =="ready" and $o_type == "dine-in" ){
+                    $order_status = "Ready";
+                }else if($o_status =="ready" and $o_type == "pick-up" ){
+                    $order_status = "Awaiting Pickup";
+                }else if($o_status =="ready" and $o_type == "delivery" ){
+                    $order_status = "Awaiting delivery";
+
+                //when order is dispatched from  kitchen, 
+                //DINE-IN order => dispatched to waiter
+                //PICK-UP order => dispatched to customer
+                //DELIVERY orders dont have a status "dispatched" instead it has "delivery_new"
+                    //which should be "Ready" in customer's POV
+                }else if($o_status =="dispatched" and $o_type == "dine-in"){
+                    $order_status = "Served";
+                }else if($o_status =="dispatched" and $o_type == "pick-up"){
+                    $order_status = "Picked up";
+                }
+                else if($o_status =="delivery_new"){
+                    $order_status = "Awaiting delivery";
+                }
+                //other status of DELIVERY orders =>
+                else if($o_status =="delivery_ondelivery"){
+                    $order_status = "On Delivery";
+                }
+                else if($o_status =="delivery_dispatched"){
+                    $order_status = "Delivered";
+                }
+
+                //Payment method
+                if($p_method == "cash"){
+                    $payment_method = "Cash on Service";
+                }else if($p_method == "payhere"){
+                    $payment_method = "PayHere";
+                }
+
+                //prepare the amount to print
+                $amount =  $order->Total_price;
+                $amount = number_format($amount, 2, ".", ",");
+          
+                //one order row
+                $order_row = [
+                    "Order_ID" => $order->Order_ID,
+                    "Date" =>  $only_date,
+                    "Payment_Method" => $payment_method,
+                    "Order_Status" => $order_status,
+                    "Amount" => $amount
+                ];
+
+                //append order_row array to the order_list after converting it to stdObj
+                array_push($order_list, (object)$order_row);
+
+            }
+
+            $this->view('customer/cust-myorders',$order_list);
+        }
+
+    }
 
 }

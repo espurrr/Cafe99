@@ -119,15 +119,25 @@ class Customer_model extends Database{
         }
     }
 
-    public function removefromCart($cart_id, $food_id, $food_qty){
-        $data = [
-            'Food_ID' => $food_id,
-            'Cart_id' => $cart_id,
-            'Quantity' => $food_qty
+    public function removefromCart($data){
+        $cartitem_data = [
+            'Food_ID' => $data['food_id'],
+            'Cart_id' => $data['cart_id'],
+            'Quantity' => $data['food_qty']
         ];
+
+        $cart_data = [
+            'Item_count' => $data['cart_item_count'],
+            'Sub_total' =>$data['cart_subtotal']
+        ];
+       
   
-        if($this->Delete("cartitem", $data)){
-            return true;
+        if($this->Delete("cartitem", $cartitem_data)){
+            if($this->Update("cart", $cart_data, ['Cart_id' => $data['cart_id']])){
+                return true;
+            }else{
+                return false;
+            }
         }else{
             return false;
         }
@@ -307,8 +317,21 @@ class Customer_model extends Database{
     
         
     }
+    
+    public function  getMyOrders($user_id){
+      
+        if($this->Select_Where("orders", ['User_ID' => $user_id])){
 
+            if($this->Count() > 0){
+                $orders = $this->AllRecords();
+                return ['status'=>'success', 'data'=>$orders];
+            }else{
+                return "orders_not_found";
+            }
 
+        }
+
+    }
 
 
 

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -29,22 +28,6 @@
   </ul>
 
 
-    <!-- Pop up modal starts here -->
-<!-- <div id="popup-window" class="popup-window">
-        <div id="win-content-wrapper"class="win-content-wrapper">
-            <div class="win-content">
-                <div class="win-table">
-                    <i class="fas fa-check fa-8x"></i>
-                    <p class="para">Congratulations! Your order has been placed successfully.<br><br>We have emailed you the order details. <br>Please Check inbox.</p>
-
-                    <div class="popup-btn-container">
-                        <button id="ok-btn" class="popup-btn btn av-btn"><?php echo anchor("account_controller/index", "OK") ?></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div> -->
-    <!-- Pop up modal ends here -->
 
   <!-- Pop up modal starts here -->
 
@@ -85,40 +68,36 @@
     <!-- Pop up modal ends here -->
   
 <div class="tabcontent" style="display: block;">
-          <table>
+<table>
   <caption>My Orders</caption>
   <thead>
     <tr>
       <th scope="col">Order ID</th>
       <th scope="col">Date</th>
-      <th scope="col">Payment Status</th>
+      <th scope="col">Payment Method</th>
       <th scope="col">Order Status</th>
       <th scope="col">Amount</th>
       <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
+  <?php
+    foreach($data as $row){
+  ?>
     <tr>
-      <td data-label="Order ID" >5019</td>
-      <td data-label="Date">23/11/2020</td>
-      <td data-label="Payment Status">Cash on Service</td>
-      <td data-label="Order Status">Preparing</td>
-      <td data-label="Amount">LKR 680</td>
+      <td data-label="Order ID" ><?php echo $row->Order_ID; ?></td>
+      <td data-label="Date"><?php echo $row->Date; ?></td>
+      <td data-label="Payment Method"><?php echo $row->Payment_Method; ?></td>
+      <td data-label="Order Status"><?php echo $row->Order_Status; ?></td>
+      <td data-label="Amount">LKR &nbsp;<?php echo $row->Amount; ?></td>
       <td><div class="btn-container">
       <button class="repeat-btn btn tooltip" onclick="showModal(5019)">Re-order <span class="tooltiptext">Gets you to the repeat order window</span></button>
         </div></td>
     </tr>
-    <tr>
-      <td data-label="Order ID" >5259</td>
-      <td data-label="Date">24/11/2020</td>
-      <td data-label="Payment Status">Cash on Service</td>
-      <td data-label="Order Status">Preparing</td>
-      <td data-label="Amount">LKR 680</td>
-      <td><div class="btn-container">
-      <button class="repeat-btn btn tooltip" onclick="showModal(5259)">Re-order<span class="tooltiptext">Gets you to the repeat order window</span></button>
-    
-        </div></td>
-    </tr>
+
+  <?php
+    }
+  ?>
  
   </tbody>
 </table>
@@ -126,7 +105,7 @@
     </div>
   
     </div><!-- content-wrapper ends-->
-<?php include '../application/views/footer/footer_1.php';?>
+
 </div> <!-- page-contianer ends-->
   <?php echo link_js("js/cust_myfavs.js"); ?>
 
