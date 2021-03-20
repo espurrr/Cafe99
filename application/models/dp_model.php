@@ -6,7 +6,7 @@ class dp_model extends Database{
     //    if($this->Select_Where("delivery_order_details", ['Order_ID' => $id])){
         $query ="SELECT orders.Order_ID,orders.Delivery_Address,orders.Delivery_Dispatch_DateTime,
         orders.Order_status,user.User_name FROM 
-        (orders INNER JOIN user ON orders.User_ID=user.User_ID) WHERE orders.Order_type='delivery'";
+        (orders INNER JOIN user ON orders.User_ID=user.User_ID) WHERE orders.Order_type='delivery' AND orders.Order_status='delivery_new'";
         $result =$this->Query($query, $options = []);
      
     //    if($this->Select_Where("delivery_order_details", ['Order_ID' => $id])){
@@ -28,7 +28,7 @@ class dp_model extends Database{
         //    if($this->Select_Where("delivery_order_details", ['Order_ID' => $id])){
             $query ="SELECT orders.Order_ID,orders.Delivery_Address,orders.Delivery_Dispatch_DateTime,
             orders.Order_status,user.User_name FROM 
-            (orders INNER JOIN user ON orders.User_ID=user.User_ID) WHERE orders.Order_type='delivery'";
+            (orders INNER JOIN user ON orders.User_ID=user.User_ID) WHERE orders.Order_type='delivery' AND orders.Order_status='delivery_ondelivery'";
             $result =$this->Query($query, $options = []);
          
         //    if($this->Select_Where("delivery_order_details", ['Order_ID' => $id])){
@@ -50,7 +50,7 @@ class dp_model extends Database{
             //    if($this->Select_Where("delivery_order_details", ['Order_ID' => $id])){
                 $query ="SELECT orders.Order_ID,orders.Delivery_Address,orders.Delivery_Dispatch_DateTime,
                 orders.Order_status,user.User_name FROM 
-                (orders INNER JOIN user ON orders.User_ID=user.User_ID) WHERE orders.Order_type='delivery'";
+                (orders INNER JOIN user ON orders.User_ID=user.User_ID) WHERE orders.Order_type='delivery' AND orders.Order_status='delivery_dispatched'";
                 $result =$this->Query($query, $options = []);
              
             //    if($this->Select_Where("delivery_order_details", ['Order_ID' => $id])){
@@ -86,6 +86,32 @@ class dp_model extends Database{
             return "Announcement_not_found";
         }
 
+    }
+
+    public function updateOrderStatusNew($data, $order_id){
+        if($this->Update("orders", $data, ['Order_ID' => $order_id])){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function updateOrderStatusOndelivery($data, $order_id){
+        if($this->Update("orders", $data, ['Order_ID' => $order_id])){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function deleteOrder($order_id){
+        $data=['Order_ID'=>$order_id];
+
+        if($this->Delete("orders",$data)){
+        return true;
+    }else{
+        return false;
+    }
     }
 
 
