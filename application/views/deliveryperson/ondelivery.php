@@ -84,7 +84,11 @@
 <li data-label="order no"><?php echo $row->Order_ID; ?></li>
 <li data-label="customer name"><?php echo $row->User_name; ?></li>
 <li data-label="customer address"><?php echo $row->Delivery_Address; ?></li>
-<li data-label="action"><a href="#" onclick="showModal(50)"><i class="fa fa-eye" style="font-size:24px;color:rgb(6, 132, 235);padding-right:20px"></i></a><a href="#"><i class="fa fa-check-square" style="font-size:24px;color: #3ace67ee"></i></a></li>
+<li data-label="action"><button class="btn" onclick="showModal(50)"><i class="fa fa-eye" style="font-size:24px;color:rgb(6, 132, 235);padding-right:20px"></i></button>
+<?php echo form_open("delivery_controller/updateOrderStatusOndelivery","post"); ?>
+<button class="check-btn"><i class="fa fa-check-square" style="font-size:24px;color: #3ace67ee" value="<?php echo $row->Order_ID; ?>"></i></button>
+<?php echo form_close(); ?>
+</li>
  
 </ul>
 

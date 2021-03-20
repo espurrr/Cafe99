@@ -6,6 +6,7 @@
   <?php echo link_css("css/deliveryperson/dpstyle.css?ts=<?=time()?>");?>
   <?php echo link_css("css/deliveryperson/modal.css?ts=<?=time()?>");?>
   <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
+  <?php echo link_css("css/modal/delete_modal.css?ts=<?=time()?>"); ?>
   <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
@@ -85,7 +86,8 @@
 <li data-label="order no"><?php echo $row->Order_ID; ?></li>
 <li data-label="customer name"><?php echo $row->User_name; ?></li>
 <li data-label="customer address"><?php echo $row->Delivery_Address; ?></li>
-<li data-label="action"><a href="#" onclick="showModal(50)"><i class="fa fa-eye" style="font-size:24px;color:rgb(6, 132, 235);padding-right:20px"></i></a><a href="#"><i class="fa fa-remove" style="font-size:24px;color: #f15852ee"></i></a></li>
+<li data-label="action"><button class="btn" onclick="showModal(50)"><i class="fa fa-eye" style="font-size:24px;color:rgb(6, 132, 235);padding-right:20px"></i></button>
+<button class="btn"><i class="fa fa-remove" style="font-size:24px;color: #f15852ee"></i></button></li>
  
 </ul>
 
@@ -141,8 +143,10 @@
 </div>
 <!--<?php //include '../application/views/footer/footer_3.php';?> -->   
 <?php echo link_js("js/deliveryperson/modal.js?ts=<?=time()?>");?>
+<?php //echo link_js("js/deliveryperson/delete.js"); ?>
 </body>
 
 </html>
+  
   
   
