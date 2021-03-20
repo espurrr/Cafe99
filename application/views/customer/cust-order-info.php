@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/cart.css?ts=<?=time()?>"); ?>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCFf0ePaevUaQtMRNnPtMQwcgS5q-SZxLw"></script>
     <title>Cart</title>
 </head>
 <body style="background: rgb(247, 239, 193) url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
@@ -107,17 +108,17 @@
                     <div id="delivery">
 
                     <p> Delivery Address </p>
-                        <?php echo form_input(['type'=>'text', 'name'=>'Delivery-address', 'placeholder'=>'Address*', 'value'=>$this->set_value('Delivery-address')])?>
+                        <?php echo form_input(['type'=>'text', 'id'=>'address_input', 'class'=>'del_details' ,'name'=>'Delivery-address', 'placeholder'=>'Address*', 'value'=>$this->set_value('Delivery-address')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['Delivery-address'])):?>
                             <?php echo $this->errors['Delivery-address'];?>
                             <?php endif;?>
                         </div>
                     <p> Delivery Date </p>
-                        <?php echo form_input(['type'=>'date', 'name'=>'Delivery-date', 'placeholder'=>'Delivery Date' ,'value'=>date('Y-m-d'), 'min'=>date('Y-m-d'), 'max'=>date('Y-m-d')])?>
+                        <?php echo form_input(['type'=>'date','class'=>'del_details' , 'name'=>'Delivery-date', 'placeholder'=>'Delivery Date' ,'value'=>date('Y-m-d'), 'min'=>date('Y-m-d'), 'max'=>date('Y-m-d')])?>
                         
                     <p> Delivery Time </p>
-                        <?php echo form_input(['type'=>'time', 'name'=>'Delivery-time', 'placeholder'=>'Delivery Time' ,'value'=>$this->set_value('Delivery-time'), 'min'=>date('06:00'), 'max'=>date('19:00')])?>
+                        <?php echo form_input(['type'=>'time','class'=>'del_details' , 'name'=>'Delivery-time', 'placeholder'=>'Delivery Time' ,'value'=>$this->set_value('Delivery-time'), 'min'=>date('06:00'), 'max'=>date('19:00')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['Delivery-time'])):?>
                             <?php echo $this->errors['Delivery-time'];?>
@@ -235,14 +236,47 @@
             }
                 
         }
-
-
-
     </script>
     <script>
- var session = eval('(<?php echo json_encode($_SESSION)?>)');
- console.log(session);
+        var session = eval('(<?php echo json_encode($_SESSION)?>)');
+        console.log(session);
 
-</script>
+        function validationFunction() {
+            var num_of_done_fields = 0;
+            $('.del_details').each(function() {
+                if($(this).val()){
+                    num_of_done_fields++;
+                }
+            });
+            if(num_of_done_fields == 3) 
+                return true;
+            
+            return false;
+        }
+
+        $(document).ready(function () {
+            var autocomplete;
+            autocomplete = new google.maps.places.Autocomplete((document.getElementById("address_input")), {
+                types: ['geocode'],
+                componentRestrictions: {
+                    country: "LK"
+                }
+            });
+
+            $(window).keydown(function(key){
+                if( (key.keyCode == 13) && (validationFunction() == false) ) {
+                    key.preventDefault();
+                    return false;
+                }
+            });
+        });
+
+        document.addEventListener("keyup", function(key){
+            if( (key.keyCode == 13) && (validationFunction() == true) ) {
+                document.getElementById("detailsform").submit();
+            }
+        });
+
+    </script>
 </body>
 </html>
