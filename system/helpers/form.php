@@ -57,6 +57,8 @@ function form_input($fields){
             $type = "date";
         } else if($fields['type'] == "time"){
             $type = "time";
+        } else if($fields['type'] == "radio"){
+            $type= "radio";
         }
 
    } else {
