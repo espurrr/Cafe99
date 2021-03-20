@@ -103,8 +103,8 @@
 
 .popup-btn-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 40px;
+    /* grid-template-columns: 1fr 1fr;
+    grid-gap: 40px; */
 }
 
 
@@ -128,16 +128,18 @@
 
 /* First button */
 
-.popup-btn-container .av-btn {
+
+/* .popup-btn-container .av-btn {
     background-color: var(--btn-blue);
     color: #fff;
     font-weight: 600;
     justify-self: end;
-}
+} */
 
-.popup-btn-container .av-btn:hover {
+
+/* .popup-btn-container .av-btn:hover {
     background-color: var(--btn-blue-hover);
-}
+} */
 
 
 /* second button */
@@ -146,7 +148,12 @@
     background-color: var(--btn-green);
     color: #fff;
     font-weight: 600;
-    justify-self: start;
+    justify-self: center;
+}
+
+.popup-btn-container small {
+    color: darkred;
+    justify-self: center;
 }
 
 .popup-btn-container .order-now-btn:hover {

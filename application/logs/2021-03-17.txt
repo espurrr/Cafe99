@@ -1,8 +1,0 @@
-2021-03-17 18:35:19		localhost/cafe99/account_controller/loginSubmit				session opened for user 217		6 INFORMATIONAL
-2021-03-17 20:02:37		localhost/cafe99/account_controller/loginSubmit				session opened for user 217		6 INFORMATIONAL
-2021-03-17 20:39:01		localhost/cafe99/account_controller/loginSubmit				session opened for user 217		6 INFORMATIONAL
-2021-03-17 21:14:25		localhost/cafe99/account_controller/loginSubmit				session opened for user 217		6 INFORMATIONAL
-2021-03-17 21:21:47		localhost/cafe99/account_controller/loginSubmit				session opened for user 217		6 INFORMATIONAL
-2021-03-17 21:25:41		localhost/cafe99/account_controller/loginSubmit				session opened for user 217		6 INFORMATIONAL
-2021-03-17 21:26:47		localhost/cafe99/account_controller/loginSubmit				session opened for user 217		6 INFORMATIONAL
-2021-03-17 21:28:05		localhost/cafe99/account_controller/loginSubmit				session opened for user 217		6 INFORMATIONAL

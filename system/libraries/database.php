@@ -111,6 +111,30 @@ class Database {
         // print_r($db_values);
     }
 
+    /*
+    Select method accepts select query along with where statements
+    with sorting order=> desc / asc
+    */
+    public function Select_Where_OrderBy($table_name, $options, $orderbyfield, $order){
+        
+        foreach($options as $key => $values):
+            $columns .= $key . " = ? AND ";
+            $db_values .= $values . ",";
+        endforeach;
+        //remove AND operator from the end statement
+        $columns = rtrim($columns , " AND");
+        //remove , from the end statement
+        $db_values = rtrim($db_values , ",");
+        //Assign string separated by , to an array 
+        $db_values = explode(",", $db_values);
+
+        //Write the select_where query
+        $this->Query = $this->db->prepare("SELECT * FROM " .$table_name . " WHERE " .$columns ." ORDER BY ". $orderbyfield . " " . $order);
+        return $this->Query->execute($db_values);
+        // print_r($columns);
+        // print_r($db_values);
+    }
+
     
     /*
     Delete method 

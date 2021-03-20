@@ -320,7 +320,7 @@ class Customer_model extends Database{
     
     public function  getMyOrders($user_id){
       
-        if($this->Select_Where("orders", ['User_ID' => $user_id])){
+        if($this->Select_Where_OrderBy("orders", ['User_ID' => $user_id], "Order_ID", "DESC")){
 
             if($this->Count() > 0){
                 $orders = $this->AllRecords();

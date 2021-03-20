@@ -117,7 +117,7 @@ class Customer_controller extends JB_Controller{
         $user_id = $this->get_session('user_id');
         
         $this->validation('User_Password', 'Current Password' , 'required');
-        $this->validation('New_Password','New Password', 'required|min_len|5');
+        $this->validation('New_Password','New Password', 'required|min_len|8');
         $this->validation('Confirm_Password','Confirm Password', 'required|confirm|New_Password');
 
   
@@ -132,6 +132,8 @@ class Customer_controller extends JB_Controller{
                 
             }else if($result==="success"){
                 $this->set_flash("pwSucess", "Your password has been changed successfully.");
+                //send a notification email to user
+
                 $this->view('customer/cus_profile_pw');
             }
 
@@ -319,8 +321,8 @@ class Customer_controller extends JB_Controller{
         $result = $this->model->removefromCart($data);
         
         if($result){
-            $this->set_session('cart_item_count', $new_count);
-            $this->set_session('cart_sub_total', $new_cart_subtotal);
+            $_SESSION['cart_item_count'] = $new_count;
+            $_SESSION['cart_sub_total'] = $new_cart_subtotal;
         }
     }
 
@@ -586,6 +588,21 @@ class Customer_controller extends JB_Controller{
                 $_SESSION['cart_id'] = $result_data['newCartID'];
                 
                 //email the invoice
+                //get email of the user 
+
+                if($this->invoiceEmail($order_id, $data_order)){
+                    //logs
+                     $this->informational("email invoice sent; @orderID = $order_id, @email = $Email_address");
+                     $this-> set_flash("signupSuccess","Your account is successfully created. We've sent an email to $Email_address to verify your address. Please click on the link in the email to continue.");
+                     $this->view('login');
+                }else{
+                    //Email was not sent. need to delete the current record of the user.
+                     $this->model->deleteUser($Token);
+                     $this->set_flash("activationEmailError", "Something went wrong :( Please try again.");
+                     //logs
+                     $this->notice("failed to send customer account activation mail; data deleted; @email = $Email_address");
+                     $this->view('signup');
+                 }   
 
                 $result_data['Status'] = 'success';
 
@@ -723,4 +740,20 @@ class Customer_controller extends JB_Controller{
 
     }
 
+
+
+    public function invoiceEmail($recipient_email, $recipient_name, $subject, $html_body, $order_data){//$
+        // if(file_exists('../system/plugins/PHPMailer/mailer.php')) echo 'yes IN TEST';
+        $mailer = new JB_Mailer(true);
+        // echo "in activationEmail ";
+
+        $subject = "Confirm Your Email";
+        $html_body = "";
+
+
+        $send = $mailer->sendEmail($recipient_email, $recipient_name, $subject, $html_body, "");//
+        if($send) return TRUE;
+        else return FALSE;
+       
+    }
 }

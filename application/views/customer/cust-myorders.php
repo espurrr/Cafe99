@@ -59,9 +59,10 @@
                 <p class="amount">Amount : LKR 680</p>
 
                 <div class="popup-btn-container">
-                    <button class="popup-btn btn av-btn" onclick="showModal(5019)">Check Availability</button>
-                    <button class="popup-btn tooltip btn order-now-btn" onclick="showModal(5019)">Order now! <span class="tooltiptext">Your order will be automatically made for you with the same payment method and info</span></button>
-                </div>
+                    <!-- <button class="popup-btn btn av-btn" onclick="showModal(5019)">Check Availability</button> -->
+                    <small>The amount might be slightly changed due to variance of prices if any.</small>   <br>
+                    <button class="popup-btn tooltip btn order-now-btn" onclick="showModal(5019)">Order now! <span class="tooltiptext">Your order will be automatically made for you with the same payment method and info</span></button> 
+                  </div>
             </div>
         </div>
     </div>
@@ -91,7 +92,7 @@
       <td data-label="Order Status"><?php echo $row->Order_Status; ?></td>
       <td data-label="Amount">LKR &nbsp;<?php echo $row->Amount; ?></td>
       <td><div class="btn-container">
-      <button class="repeat-btn btn tooltip" onclick="showModal(5019)">Re-order <span class="tooltiptext">Gets you to the repeat order window</span></button>
+      <button class="repeat-btn btn tooltip" onclick="showModal(<?php echo $row->Order_ID; ?>)">Re-order <span class="tooltiptext">Gets you to the repeat order window</span></button>
         </div></td>
     </tr>
 
@@ -107,7 +108,7 @@
     </div><!-- content-wrapper ends-->
 
 </div> <!-- page-contianer ends-->
-  <?php echo link_js("js/cust_myfavs.js"); ?>
+  <?php echo link_js("js/cust_reorder.js"); ?>
 
   <script>
         var popup_win = document.getElementById("popup-window");

@@ -17,28 +17,19 @@ trait logging {
     // https://tools.ietf.org/html/rfc5424
 
     protected $level = array(
-        0 => 'EMERGENCY',         // system is unusable
-        1 => 'ALERT',             // action must be taken immediately
-        2 => 'CRITICAL',          // critical conditions
-        3 => 'ERROR',             // error conditions
-        4 => 'WARNING',           //warning conditions
-        5 => 'NOTICE',            // normal but significant condition
-        6 => 'INFORMATIONAL',     // informational messages
-        7 => 'DEBUG',             // debug-level messages
+
+        0 => 'ALERT',             // action must be taken immediately
+        1 => 'ERROR',             // error conditions
+        2 => 'WARNING',           //warning conditions
+        3 => 'INFORMATIONAL',     // informational messages
+
     );
 
      
     // alias functions
-    public function emergency($log_msg){
-        $this->write_log($log_msg, 0);
-    }
 
     public function alert($log_msg){
         $this->write_log($log_msg, 1);
-    }
-
-    public function critical($log_msg){
-        $this->write_log($log_msg, 2);
     }
 
     public function error($log_msg){
@@ -49,16 +40,8 @@ trait logging {
         $this->write_log($log_msg, 4);
     }
 
-    public function notice($log_msg){
-        $this->write_log($log_msg, 5);
-    }
-
     public function informational($log_msg){
         $this->write_log($log_msg, 6);
-    }
-
-    public function debug($log_msg){
-        $this->write_log($log_msg, 7);
     }
 
 
