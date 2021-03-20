@@ -95,8 +95,11 @@
 <li data-label="order no"><?php echo $row->Order_ID; ?></li>
 <li data-label="customer name"><?php echo $row->User_name; ?></li>
 <li data-label="customer address"><?php echo $row->Delivery_Address; ?></li>
-<li data-label="action"><a href="#" onclick="showModal(50)"><i class="fa fa-eye" style="font-size:24px;"></i></a><a href="#"><i class="fa fa-check-square" style="font-size:24px;"></i></a></li>
- 
+<li data-label="action"><button class="btn" onclick="showModal(50)"><i class="fa fa-eye" style="font-size:24px;"></i></button>
+<?php echo form_open("delivery_controller/updateOrderStatusNew","post"); ?>
+<button class="check-btn"><i class="fa fa-check-square" style="font-size:24px;" value="<?php echo $row->Order_ID; ?>"></i></button>
+<?php echo form_close(); ?>
+</li>
 </ul>
 
   <?php
@@ -106,10 +109,11 @@
 <!--following row is not get from database -->
   <ul>
   
-    <li data-label="order no">1</li>
+   <!-- <li data-label="order no">1</li>
     <li data-label="customer name"><p>Ishan Senanayaka</p></li>
     <li data-label="customer address"><p>No.25,<br>New Rd,<br>Maharagama.</p></li>
-    <li data-label="action"><a href="#" onclick="showModal(50)"><i class="fa fa-eye" style="font-size:24px;"></i></a><a href="#"><i class="fa fa-check-square" style="font-size:24px;"></i></a></li>
+    <li data-label="action"><a href="#" onclick="showModal(50)"><i class="fa fa-eye" style="font-size:24px;"></i></a>
+    <a href="#"><i class="fa fa-check-square" style="font-size:24px;"></i></a></li>-->
  
     <div id="popup-window" class="popup-window">
         <div class="win-content">
