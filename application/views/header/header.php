@@ -21,6 +21,19 @@
    <a href="<?php echo BASE_URL?>/account_controller/index" class="logo-link"><img class="logo" id="mlogo" src="<?php echo BASE_URL?>/public/images/logo.png"></a>
     
     <div class="all-nav" id="nav" style="background: #FAD74E url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
+      
+      <!-- Search bar -->
+      <div class="search_container search_header" id="search_header_container" style="display: none">
+          <?php //echo form_open("food_controller/searchfood", "POST");?>
+          <form autocomplete="off" action="<?php echo BASE_URL ?>/food_controller/search_food" method="POST">
+              <div class="autocomplete" style="width:300px;">
+                <input id="search_header" type="text" name="search_food" placeholder="Search...">
+              </div>
+              <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+          <?php //echo form_close();?>
+      </div>
+      
       <div class="route-dropdown" onclick="toggleMenu(this)">
           <button class="dropbtn">Food<i class="fa fa-caret-down"></i></button>
           <div id="waypoints" class="dropdown-content" >

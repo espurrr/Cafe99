@@ -62,12 +62,13 @@
                     <img src="<?php echo BASE_URL?>/public/images/home/hero2.png" class = "section-1__hero-image__cls"alt="Image 01">
                 </div>
                 <div class="hero-text">
+
                     <!-- Search bar -->
-                    <div class="search_container" id="search" style="top: 3.5%;">
+                    <div class="search_container search_page" id="search_page_container" style="display: none">
                         <?php //echo form_open("food_controller/searchfood", "POST");?>
                         <form autocomplete="off" action="<?php echo BASE_URL ?>/food_controller/search_food" method="POST">
                             <div class="autocomplete" style="width:300px;">
-                            <input id="search" type="text" name="search_food" placeholder="Search...">
+                                <input id="search_page" type="text" name="search_food" placeholder="Search...">
                             </div>
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
@@ -192,7 +193,7 @@
     </div> <!-- page-contianer ends-->
 
 
-    <?php //echo link_js("js/home.js"); ?>
+    <?php echo link_js("js/home.js"); ?>
     <?php echo link_js("js/cust_searchbar.js"); ?>
 
     <!-- <script>

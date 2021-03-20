@@ -7,16 +7,23 @@
 }
 
 /* Search bar */
-@media (max-width: 910px) {
-    .search_container{
+/* @media (max-width: 910px) {
+    .search_page{
         display: none;
     }
 
-}
-.search_container{
+} */
+.search_page{
     position: absolute;
     top: 15%;
     right: 85px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.search_header{
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -29,8 +36,8 @@
     position: relative;
     display: inline-block;
 }
-
-.search_container input#search {
+ 
+.search_container input {
     border: 1px solid transparent;
     background-color: #fff;
     padding: 10px;

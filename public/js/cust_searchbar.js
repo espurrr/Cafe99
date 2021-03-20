@@ -4,7 +4,7 @@ function autocomplete(searchbar, food_arr) {
   var currentFocus;
 
   searchbar.addEventListener("input", function(e) { /* Runs when type in the search bar */
-      var val = this.value; /* Val is set to the element on which the listener is placed */
+      var val = this.value; /* Val is assigned the value we type in the search bar input field */
       
       closeAllLists();
       if (!val)
@@ -20,9 +20,18 @@ function autocomplete(searchbar, food_arr) {
 
       var list_item_limit = 0;
       for (var i = 0; i < food_arr.length; i++) {
-        if (food_arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-          if(list_item_limit == 8)
+        var regex = new RegExp(".*" + val + ".*", "i");
+        var res = regex.test(food_arr[i]);
+
+        if (res) {
+          if(screen.width >= 910){
+            if(list_item_limit == 8)
               break;
+          }else{
+            if(list_item_limit == 4)
+              break;
+          }
+
           list_item_limit++;
           var list_item = document.createElement("DIV"); /* Create a DIV element for each matching element */
           list_item.innerHTML = food_arr[i];
@@ -108,6 +117,18 @@ function autocomplete(searchbar, food_arr) {
 
 var food_names = document.getElementById("search_food_names").value;
 food_names = food_names.split(",");
-
 // var food_names = ["pizza", "bun", "rice", "juice", "cake"];
-autocomplete(document.getElementById("search"), food_names);
+
+if(screen.width >= 910){
+  document.getElementById("search_page_container").style.display = "block";
+  document.getElementById("search_header_container").style.display = "none";
+  autocomplete(document.getElementById("search_page"), food_names);
+
+}else{
+  document.getElementById("search_page_container").style.display = "none";
+  document.getElementById("search_header_container").style.display = "block";
+  autocomplete(document.getElementById("search_header"), food_names);
+
+}
+
+
