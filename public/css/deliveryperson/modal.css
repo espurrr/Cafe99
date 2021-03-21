@@ -7,87 +7,108 @@
     }
 
     /* popup related */
-    .popup-window {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
-    left: 0;
-    top: 0;
-    padding-top: 100px;
-    width: 100%; 
-    height: 100%;
-    background-color: rgba(0,0,0,0.4); 
+    .order-popup-window {
+        display: none; 
+        position: fixed; 
+        z-index: 1; 
+        left: 0;
+        top: 0;
+        padding-top: 100px;
+        width: 100%; 
+        height: 100%;
+        background-color: rgba(0,0,0,0.4); 
     }
 
-    .popup-window .win-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    min-height: 60%;
-    position: relative;
+    .order-popup-window .win-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 15px;
+        border: 1px solid #888;
+        width: 90%;
+        min-height: 60%;
+        max-height: 90%;
+        position: relative;
+        overflow-y: scroll;
+
     }
-    .popup-window .win-content p{
+    .order-popup-window .win-content p{
         padding-top:20px;
         padding-left: 106px;
     }
 
-    .popup-window .close-btn {
-    color: #ccc;
-    float: right;
-    font-size: 30px;
+    .order-popup-window .close-btn {
+        color: #ccc;
+        float: right;
+        font-size: 25px;
     }
 
-    .popup-window .close-btn:hover, .popup-window .close-btn:focus {
-    color: #888;
-    text-decoration: none;
-    cursor: pointer;
+    .order-popup-window .close-btn:hover, .order-popup-window .close-btn:focus {
+        color: #888;
+        text-decoration: none;
+        cursor: pointer;
     }
 
     /* Table */
-    .popup-window .win-table {
+    .order-popup-window .win-table {
         display: block;
         /*padding: 6px;*/
         border-top: none;
+        margin-bottom: 10px;
+
     }
-    .popup-window .win-table table {
+    .order-popup-window .win-table table {
         border-collapse: collapse;
         border-spacing: 0px;
-        width: 98%;
+        width: 70%;
         border: 1px solid #bbb;
         margin-top: 20px;
         margin-left: auto;
         margin-right: auto;
         background-color: #fff;
+        word-wrap: break-word;
+        font-size: 15px;
+
     }
     /*  Column Specifics */
-    .popup-window .win-table table colgroup .col-food{
-        width:50%;
+    .order-popup-window .win-table table colgroup .col-food{
+        width:70%;
     }
-    .popup-window .win-table table colgroup .col-quantity{
-        width:50%;
+    .order-popup-window .win-table table colgroup .col-quantity{
+        width:30%;
     }
-  /*  .popup-window .win-table table colgroup .col-paymentdetails{
-        width:50%;
-    }*/
-    .popup-window .win-table th, .win-table td {
+
+    .order-popup-window .win-table table .foodname{
+        display: block;
+        width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+  
+    .order-popup-window .win-table th, .win-table td {
         text-align: center;
-        padding: 16px;
+        padding: 10px;
     }
-    .popup-window .win-table tr:nth-child(even) {
+    .order-popup-window .win-table tr:nth-child(even) {
         background-color: #f2f2f2;
     }
 
 
     @media screen and (max-width:500px) {
     
-        .popup-window .win-table {
+        .order-popup-window .win-table {
             display: block;
             padding: 6px 0px;
             border-top: none;
             
         }
         
-      }
-      
+    }
+
+    .order-popup-window .win-cust-address{
+        margin-top: 20px;
+        margin-left: 8px;
+        word-wrap: break-word;
+        font-size: 15px;
+    }
+

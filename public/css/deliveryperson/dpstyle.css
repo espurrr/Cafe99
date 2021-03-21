@@ -369,7 +369,6 @@ nav .menu-bar{
 .fa-eye{
   font-size:24px;
   color:#0684eb;
-  padding-right:20px;
 }
 
 .fa-check-square{
@@ -379,4 +378,72 @@ nav .menu-bar{
 .list ul{
   box-shadow: 1px 1px 1px 0px #bbb;
   border-radius: 5px;
+}
+
+.order_table{
+  width: 95%;
+  margin: auto;
+  margin-bottom: 10px;
+  background-color: var(--table-background-color);
+  border-radius: 7px;
+  border: 1px solid #aaa;
+  border-collapse: separate;
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+
+}
+.order_table tr {
+  height: 30px;
+
+}
+
+.order_table tr th{
+  font-size: 12px;
+  width: 30%;
+  text-align: left;
+  border-bottom: 1px solid #f2f2f2;
+  padding-left: 5px;
+}
+
+.order_table tr td{
+  font-size: 14px;
+  border-bottom: 1px solid #f2f2f2;
+  padding-left: 5px;
+
+}
+.order_table .btn_row{
+  height: 40px;
+}
+
+.order_table .view_btn_th{
+  border-bottom: none;
+}
+.order_table .update_btn_td{
+  border-bottom: none;
+}
+
+.order_table .view_btn, .order_table .update_btn{
+  font-size: 25px;
+  background-color: var(--table-background-color);
+  border: none;
+}
+
+.order_table .view_btn{
+  margin-left: calc(50%);
+
+}
+.order_table .update_btn{
+  margin-left: calc(50% - 12px);
+}
+
+.order_table .cust_name, .order_table .cust_address{
+  display: block;
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+} 
+
+.Dp-content .status-msg-wrapper{
+  width: 80%;
+  margin: auto;
 }

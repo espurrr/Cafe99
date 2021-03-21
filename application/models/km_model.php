@@ -159,6 +159,26 @@
                 return false;
             }
         }
+
+        public function getOrderType($order_id){
+            $query = "SELECT orders.Order_type FROM orders WHERE orders.Order_ID =".$order_id;
+
+            $result = $this->Query($query, $options = []);
+            if($this->Count() > 0){
+                $order_type = $this->AllRecords();
+                if($order_type){
+                    if($this->Count() > 0){
+                        // print_r($order_type);
+                        return ['status'=>'success', 'data'=>$order_type];
+                    }    
+                }else{
+                    return "Order_type_not_retrieved";
+                }
+            }else{
+                return "Order_type_not_found";
+
+            }
+        }
     }
 
 ?>
