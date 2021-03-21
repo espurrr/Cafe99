@@ -7,6 +7,8 @@
   <?php echo link_css("css/deliveryperson/modal.css?ts=<?=time()?>");?>
   <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
   <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
+  <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
@@ -14,6 +16,7 @@
 
    
 <body>
+  <?php include 'del_order_popup.php';?>
  
   <input type="checkbox" id="menu">
 
@@ -67,82 +70,76 @@
 <!-- <h2 class="title">Ondelivery Orders</h2> -->
 </div>
 
-  <div class="list">
-  <ul>
+  <div class="status-msg-wrapper">
+    <div class="status-msg" style="margin-bottom:20px">
+        <?php $this->flash('databaseError','alert alert-warning','fa fa-times-circle'); ?>
+        <?php $this->flash('noOndeliveryOrderError','alert alert-warning','fa fa-info-circle'); ?>
+    </div>
+  </div>
+
+  <!-- <div class="list"> -->
+  <!-- <ul>
     <li>Order No</li>
     <li>Customer Name</li>
     <li>Customer Address</li>
     <li>Action</li>
-  </ul>
+  </ul> -->
+  <?php
+        $concat_data = [];
+        $cust_names = [];
+        $cust_address = [];
+        
+        foreach ($data as $row){
+          // Foodname and quantity are concatenated under each order_id
+          $concat_data[$row->Order_ID] .= $row->Food_name."-".$row->Quantity.","; 
+          $cust_names[$row->Order_ID] = $row->User_name;
+          $cust_address[$row->Order_ID] = $row->Delivery_Address;
+        }
+
+        foreach($concat_data as $order_id => $values){
+            $concat_data[$order_id] = rtrim($concat_data[$order_id],",");
+        }
+  ?>
 
   <?php
-  $order = new dp_model; 
-  foreach($data as $row){  
+  // $order = new dp_model; 
+  foreach($concat_data as $order_id => $values):
+  
   ?> 
+<table class="order_table">
+  <tr>
+    <th>Order ID</th>
+    <td><?php echo $order_id; ?></td>
+  </tr>
+  <tr>
+    <th>Customer name</th>
+    <td ><div class="cust_name"><?php echo $cust_names[$order_id] ?></div></td>
+  </tr>
+  <tr>
+    <th>Address</th>
+    <td><div class="cust_address"><?php  echo str_replace("$", "," ,$cust_address[$order_id] ) ?></div></td>
+  </tr>
+  <tr class="btn_row">
+    <th class="view_btn_th">
+      <button id="view-btn" class="view_btn" onclick='showModal(<?php echo json_encode(str_replace("$", "," ,$cust_address[$order_id] ))?>, <?php echo json_encode($values)?>)'><i class="fa fa-eye"></i></button>
+    </th>
 
-<ul>
-<li data-label="order no"><?php echo $row->Order_ID; ?></li>
-<li data-label="customer name"><?php echo $row->User_name; ?></li>
-<li data-label="customer address"><?php echo $row->Delivery_Address; ?></li>
-<li data-label="action"><button class="btn" onclick="showModal(50)"><i class="fa fa-eye" style="font-size:24px;color:rgb(6, 132, 235);padding-right:20px"></i></button>
-<?php echo form_open("delivery_controller/updateOrderStatusOndelivery","post"); ?>
-<button class="check-btn"><i class="fa fa-check-square" style="font-size:24px;color: #3ace67ee" value="<?php echo $row->Order_ID; ?>"></i></button>
-<?php echo form_close(); ?>
-</li>
- 
-</ul>
+    <td class="update_btn_td">
+      <button class="update_btn" onclick=""><i class="fa fa-check-square"></i></button>
+    </td>
+  </tr>
+</table>
+
 
   <?php
-  }
+    endforeach;
   ?>  
-  
-<!--following row is not get from database -->
-  <ul>
-    <li data-label="order no">1</li>
-    <li data-label="customer name"><p>Ishan Senanayaka</p></li>
-    <li data-label="customer address"><p>No.25,<br>New Rd,<br>Maharagama.</p></li>
-    <li data-label="action"><a href="#" onclick="showModal(20)"><i class="fa fa-eye" style="font-size:24px;color:rgb(6, 132, 235);padding-right:20px"></i></a><a href="#"><i class="fa fa-check-square" style="font-size:24px;color: #3ace67ee"></i></a></li>
-  
-    <div id="popup-window" class="popup-window">
-        <div class="win-content">
-            <span class="close-btn" id="close-btn"><i class="fas fa-times"></i></span>
-          <!--  <p id="orderNo"></p>-->
-            <div class="win-table">
-                <table>
-                    <colgroup>
-                        <col span="" class="col-food">
-                        <col span="" class="col-quantity">
-                      <!--  <col span="" class="col-paymentdetails">-->
-                    </colgroup>
-        
-                    <tr>
-                        <th>Food item</th>
-                        <th>Quantity</th>
-                     <!--   <th>Payment Details</th>-->
-                    </tr>
-        
-                    <tr>
-                        <td>Fish Roll</td>
-                        <td ><div class="quantity">12</div></td>
-                       
-                    </tr>
-                    <tr>
-                        <td>Chicken Fried Rice</td>
-                        <td ><div class="quantity">6</div></td>
-                        
-                    </tr>
-                  </table>
-            </div>
-        </div>
-    </div>
-
-  </ul>
 
  
  
   
 
-</div>
+
 
   
 </div>

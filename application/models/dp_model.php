@@ -4,10 +4,15 @@ class dp_model extends Database{
 
     public function display_neworders($data){
     //    if($this->Select_Where("delivery_order_details", ['Order_ID' => $id])){
-        $query ="SELECT orders.Order_ID,orders.Delivery_Address,orders.Delivery_Dispatch_DateTime,
-        orders.Order_status,user.User_name FROM 
-        (orders INNER JOIN user ON orders.User_ID=user.User_ID) WHERE orders.Order_type='delivery' AND orders.Order_status='delivery_new'";
-        $result =$this->Query($query, $options = []);
+        $query ="SELECT orders.Order_ID, orders.Delivery_Address, orders.Delivery_Dispatch_DateTime, orders.Order_status,
+        user.User_name,
+        order_item.Quantity, fooditem.Food_name
+        FROM orders INNER JOIN user ON orders.User_ID=user.User_ID
+        INNER JOIN order_item ON orders.Order_ID = order_item.Order_id
+        INNER JOIN fooditem ON order_item.Food_ID = fooditem.Food_ID
+        WHERE orders.Order_type='delivery' AND orders.Order_status='delivery_new'";
+
+        $result = $this->Query($query, $options = []);
      
     //    if($this->Select_Where("delivery_order_details", ['Order_ID' => $id])){
             if($this->Count() > 0){
@@ -15,10 +20,10 @@ class dp_model extends Database{
                 if($order_data){
                     return ['status'=>'success', 'data'=> $order_data];
                 }else{
-                    return "Data_not_retrieved";
+                    return "Order_not_retrieved";
                 }
             }else{
-                return "Fooditem_not_found";
+                return "Order_not_found";
             }
            
      //   }
@@ -26,9 +31,14 @@ class dp_model extends Database{
 
     public function display_ondelivery($data){
         //    if($this->Select_Where("delivery_order_details", ['Order_ID' => $id])){
-            $query ="SELECT orders.Order_ID,orders.Delivery_Address,orders.Delivery_Dispatch_DateTime,
-            orders.Order_status,user.User_name FROM 
-            (orders INNER JOIN user ON orders.User_ID=user.User_ID) WHERE orders.Order_type='delivery' AND orders.Order_status='delivery_ondelivery'";
+            $query ="SELECT orders.Order_ID, orders.Delivery_Address, orders.Delivery_Dispatch_DateTime, orders.Order_status,
+            user.User_name, 
+            order_item.Quantity, fooditem.Food_name
+            FROM orders INNER JOIN user ON orders.User_ID=user.User_ID 
+            INNER JOIN order_item ON orders.Order_ID = order_item.Order_id
+            INNER JOIN fooditem ON order_item.Food_ID = fooditem.Food_ID
+            WHERE orders.Order_type='delivery' AND orders.Order_status='delivery_ondelivery'";
+
             $result =$this->Query($query, $options = []);
          
         //    if($this->Select_Where("delivery_order_details", ['Order_ID' => $id])){
@@ -37,10 +47,10 @@ class dp_model extends Database{
                     if($order_data){
                         return ['status'=>'success', 'data'=> $order_data];
                     }else{
-                        return "Data_not_retrieved";
+                        return "Order_not_retrieved";
                     }
                 }else{
-                    return "Fooditem_not_found";
+                    return "Order_not_found";
                 }
                
          //   }
@@ -48,9 +58,13 @@ class dp_model extends Database{
 
         public function display_dispatched($data){
             //    if($this->Select_Where("delivery_order_details", ['Order_ID' => $id])){
-                $query ="SELECT orders.Order_ID,orders.Delivery_Address,orders.Delivery_Dispatch_DateTime,
-                orders.Order_status,user.User_name FROM 
-                (orders INNER JOIN user ON orders.User_ID=user.User_ID) WHERE orders.Order_type='delivery' AND orders.Order_status='delivery_dispatched'";
+                $query ="SELECT orders.Order_ID,orders.Delivery_Address,orders.Delivery_Dispatch_DateTime,orders.Order_status,
+                user.User_name,
+                order_item.Quantity, fooditem.Food_name
+                FROM orders INNER JOIN user ON orders.User_ID=user.User_ID
+                INNER JOIN order_item ON orders.Order_ID = order_item.Order_id
+                INNER JOIN fooditem ON order_item.Food_ID = fooditem.Food_ID
+                WHERE orders.Order_type='delivery' AND orders.Order_status='delivery_dispatched'";
                 $result =$this->Query($query, $options = []);
              
             //    if($this->Select_Where("delivery_order_details", ['Order_ID' => $id])){
@@ -59,10 +73,10 @@ class dp_model extends Database{
                         if($order_data){
                             return ['status'=>'success', 'data'=> $order_data];
                         }else{
-                            return "Data_not_retrieved";
+                            return "Order_not_retrieved";
                         }
                     }else{
-                        return "Fooditem_not_found";
+                        return "Order_not_found";
                     }
                    
              //   }
