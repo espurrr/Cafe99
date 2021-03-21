@@ -183,6 +183,19 @@ trait form_validation {
 
         }
 
+          /*
+        RULE => service_time : time should be 30 mins ahead from current time
+        */ 
+        if(in_array("Maharagama", $rules)){
+                      
+            $pos = stripos($data, "Maharagama");
+
+            // Nope, 'Maharagama' was not in the address (case ignored)
+            if ($pos === false) {
+                return $this->errors[$field_name] = "Should be somewhere in Maharagama";
+            }
+        }
+
 
     }
 

@@ -21,6 +21,20 @@ class Customer_model extends Database{
 
     }
 
+    public function getEmail($user_id){
+
+        if($this->Select_Where("user", ['User_id' => $user_id])){
+            if($this->Count() > 0){
+                $row = $this->Row();
+                return $row->Email_address;
+            }else{
+                return false;
+            }
+
+        }
+
+    }
+
     public function cus_data_update($data, $user_id){
   
         if($this->Update("user", $data,['User_ID' => $user_id])){
@@ -330,6 +344,28 @@ class Customer_model extends Database{
             }
 
         }
+
+    }
+
+    public function  getOrderItems($order_id){
+      
+        $query = 
+        "SELECT fooditem.Food_name, order_item.Quantity, order_item.Price
+        FROM order_item
+        INNER JOIN fooditem ON order_item.Food_ID = fooditem.Food_ID
+        WHERE order_item.Order_ID='".$order_id."' ";
+        
+        $result =$this->Query($query, $options = []);
+              
+
+            if($this->Count() > 0){
+                $order_items = $this->AllRecords();
+                //print_r($order_items);
+                return ['status'=>'success', 'data'=>$order_items];
+            }else{
+                return "order_items_not_found";
+            }
+
 
     }
 

@@ -371,7 +371,7 @@ class Customer_controller extends JB_Controller{
             // echo $order_time;
         }else if($order_type=='delivery'){
            // echo 'delivery';
-            $this->validation('Delivery-address', 'Delivery address' , 'required');
+            $this->validation('Delivery-address', 'Delivery address' , 'required|Maharagama');
             $this->validation('Delivery-time', 'Delivery time' , 'required');//....................................................................|service_time put
             $order_date = $this->post('Delivery-date');
             $order_time = $this->post('Delivery-time');
@@ -494,6 +494,9 @@ class Customer_controller extends JB_Controller{
                 
                 $result_data['Status'] = 'success';
 
+                $this->invoiceEmail($result_data['orderID'], $data);
+                    //logs
+                   
                 if($result_data['newCartID']){
                     //order success
                     $this->view('customer/cust-isorderplaced',$result_data);    /////////////////////////////////////payment successs page
@@ -588,22 +591,8 @@ class Customer_controller extends JB_Controller{
                 $_SESSION['cart_id'] = $result_data['newCartID'];
                 
                 //email the invoice
-                //get email of the user 
-
-                if($this->invoiceEmail($order_id, $data_order)){
-                    //logs
-                     $this->informational("email invoice sent; @orderID = $order_id, @email = $Email_address");
-                     $this-> set_flash("signupSuccess","Your account is successfully created. We've sent an email to $Email_address to verify your address. Please click on the link in the email to continue.");
-                     $this->view('login');
-                }else{
-                    //Email was not sent. need to delete the current record of the user.
-                     $this->model->deleteUser($Token);
-                     $this->set_flash("activationEmailError", "Something went wrong :( Please try again.");
-                     //logs
-                     $this->notice("failed to send customer account activation mail; data deleted; @email = $Email_address");
-                     $this->view('signup');
-                 }   
-
+                $this->invoiceEmail($result_data['orderID'], $data_order);
+                //logs
                 $result_data['Status'] = 'success';
 
                 if($result_data['newCartID']){
@@ -742,18 +731,286 @@ class Customer_controller extends JB_Controller{
 
 
 
-    public function invoiceEmail($recipient_email, $recipient_name, $subject, $html_body, $order_data){//$
+    public function invoiceEmail($order_id, $data_order){//$
         // if(file_exists('../system/plugins/PHPMailer/mailer.php')) echo 'yes IN TEST';
         $mailer = new JB_Mailer(true);
         // echo "in activationEmail ";
+        $payment_method = $data_order['Payment_method'];
+        $item_count = $data_order['Item_count'];
+        $order_item_list = $this->model->getOrderItems($order_id);
+        $total_amount = $data_order['Total_price'];
+        $service_charge = $data_order['Service_charge'];
+        $recipient_name = $this->get_session('user_name');
+        //get recipient email address
+        $recipient_email = $this->model->getEmail($this->get_session('user_id'));
 
-        $subject = "Confirm Your Email";
-        $html_body = "";
+        date_default_timezone_set('Asia/Colombo');
+        $dateOfOrder = date("Y.m.d");
+        $subject = "Your Order #$order_id is placed";
 
+        $email_head = "<html>
+        <head>
+            <style type=\"text/css\" rel=\"stylesheet\" media=\"all\">
+                @import url(\"https://fonts.googleapis.com/css?family=Nunito+Sans:400,700&display=swap\");
+                body {
+                    width: 100% !important;
+                    height: 100%;
+                    margin: 0;
+                }
+                
+                a {
+                    color: #3869D4;
+                }
+                
+                a img {
+                    border: none;
+                }
+                
+                td {
+                    word-break: break-word;
+                }
+                
+                body,
+                td,
+                th {
+                    font-family: \"Nunito Sans\", Helvetica, Arial, sans-serif;
+                }
+                
+                h1 {
+                    margin-top: 0;
+                    color: #333333;
+                    font-size: 22px;
+                    font-weight: bold;
+                    text-align: left;
+                }
+                
+                h2 {
+                    margin-top: 0;
+                    color: #333333;
+                    font-size: 16px;
+                    font-weight: bold;
+                    text-align: left;
+                }
+                
+                h3 {
+                    margin-top: 0;
+                    color: #333333;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-align: left;
+                }
+                
+                td,
+                th {
+                    font-size: 16px;
+                }
+                
+                p,
+                ul,
+                ol,
+                blockquote {
+                    margin: .4em 0 1.1875em;
+                    font-size: 16px;
+                    line-height: 1.625;
+                }
+                
+                p.sub {
+                    font-size: 13px;
+                }
+                
+                .align-right {
+                    text-align: right;
+                }
+                
+                .align-left {
+                    text-align: left;
+                }
+                
+                .align-center {
+                    text-align: center;
+                }
+                
+                @media only screen and (max-width: 500px) {
+                    .button {
+                        width: 100% !important;
+                        text-align: center !important;
+                    }
+                }
+                
+                .purchase {
+                    width: 100%;
+                    margin: 0;
+                    padding: 35px 0;
+                }
+                
+                .purchase_content {
+                    width: 100%;
+                    margin: 0;
+                    padding: 25px 0 0 0;
+                }
+                
+                .purchase_item {
+                    padding: 10px 0;
+                    color: #51545E;
+                    font-size: 15px;
+                    line-height: 18px;
+                }
+                
+                .purchase_heading {
+                    padding-bottom: 8px;
+                    border-bottom: 1px solid #EAEAEC;
+                }
+                
+                .purchase_heading p {
+                    margin: 0;
+                    color: #85878E;
+                    font-size: 12px;
+                }
+                
+                .purchase_footer {
+                    padding-top: 15px;
+                    border-top: 1px solid #EAEAEC;
+                }
+                
+                .purchase_total {
+                    margin: 0;
+                    text-align: right;
+                    font-weight: bold;
+                    color: #333333;
+                }
+                
+                .purchase_total--label {
+                    padding: 0 15px 0 0;
+                }
+                
+                body {
+                    background-color: white;
+                    color: #51545E;
+                }
+                
+                p {
+                    color: #51545E;
+                }
+                
+                p.sub {
+                    color: #6B6E76;
+                }
+                
+                .email-wrapper {
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    background-color: #F4F4F7;
+                }
+                
+                .email-content {
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+                }
+                
+                .email-body {
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    background-color: #FFFFFF;
+                }
+                
+                .email-body_inner {
+                    width: 570px;
+                    margin: 0 auto;
+                    padding: 0;
+                    background-color: #FFFFFF;
+                }
+                
+                .email-footer {
+                    width: 570px;
+                    margin: 0 auto;
+                    padding: 0;
+                    text-align: center;
+                }
+                
+                .content-cell {
+                    padding: 35px;
+                }
+                
+                @media only screen and (max-width: 600px) {
+                    .email-body_inner,
+                    .email-footer {
+                        width: 100% !important;
+                    }
+                }
+            </style>
+        
+        </head>
+        ";
+        $email_body = "
+        <body>
+        <table class=\"email-wrapper\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">
+            <tr>
+                <td align=\"center\">
+                    <table class=\"email-content\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">
+                        <tr>
+                            <td class=\"email-body\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">
+                                <table class=\"email-body_inner\" align=\"center\" width=\"570\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">
+                                    <tr>
+                                        <td class=\"content-cell\">
+                                            <div class=\"f-fallback\">
+                                                <h1>Hi $recipient_name,</h1>
+                                                <p>Thanks for your order. This is an invoice for your recently placed order.</p>
+                                                <table class=\"purchase\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">
+                                                    <tr>
+                                                        <td>
+                                                            <h3>Order #$order_id</h3>
+                                                        </td>
+                                                        <td>
+                                                            <h3 class=\"align-right\">$dateOfOrder</h3>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan=\"2\">
+                                                            <table class=\"purchase_content\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\">
+                                                                <p> Payment method : $payment_method </p>
+                                                                <tr>
+                                                                    <th class=\"purchase_heading\" align=\"left\">
+                                                                        <p class=\"f-fallback\">Description</p>
+                                                                    </th>
+                                                                    <th class=\"purchase_heading\" align=\"right\">
+                                                                        <p class=\"f-fallback\">Amount</p>
+                                                                    </th>
+                                                                </tr>
+        ";
+        $order_item_records = "";
+        foreach($order_item_list['data'] as $row){
+            //append each order string to order_item_records
+            $order_item_records .= "<tr>
+                     <td width=\"80%\" class=\"purchase_item\"><span class=\"f-fallback\">$row->Food_name x $row->Quantity</span></td>
+                     <td class=\"align-right\" width=\"20%\" class=\"purchase_item\"><span class=\"f-fallback\">$row->Price</span></td>
+                </tr>";
+        }
+        $service_charge_row .= "<tr>
+                <td width=\"80%\" class=\"purchase_item\"><span class=\"f-fallback\">Service Charges(5%)</span></td>
+                <td class=\"align-right\" width=\"20%\" class=\"purchase_item\"><span class=\"f-fallback\">$service_charge</span></td>
+                </tr>";
+        $email_footer = "
+        <tr>
+            <td width=\"80%\" class=\"purchase_footer\" valign=\"middle\">
+                <p class=\"f-fallback purchase_total purchase_total--label\">Total</p>
+            </td>
+            <td width=\"20%\" class=\"purchase_footer\" valign=\"middle\">
+                <p class=\"f-fallback purchase_total\">$total_amount</p>
+            </td></tr></table></td></tr></table>
+        <p>If you have any questions about this invoice, simply reply to this email or reach out to our <a href=\"mailto:cafe99.teamdashcode@gmail.com\">support team</a> for help.</p>
+        <p>Cheers,<br>Team Cafe99.</p></div></td></tr></table></td></tr></table></td></tr></table></body></html>
+        ";
+        $html_body = $email_head . $email_body . $order_item_records . $service_charge_row . $email_footer ;
 
         $send = $mailer->sendEmail($recipient_email, $recipient_name, $subject, $html_body, "");//
-        if($send) return TRUE;
+
+        if($send){
+            $this->informational("email invoice sent; @orderID = $order_id, @email = $recipient_email");
+            return TRUE;
+        } 
         else return FALSE;
-       
     }
 }
