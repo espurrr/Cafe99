@@ -8,6 +8,7 @@
     <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/kitchen-manager/orders/orders.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/kitchen-manager/orders/popup.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/kitchen-manager/orders/delivery_order_popup.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/header.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
@@ -67,15 +68,26 @@
         $concat_data = [];
         $special_notes = [];
         $order_status = [];
+        $order_types = [];
+        $dp_ids_names = "";
+
         foreach ($data as $row){
             $concat_data[$row->Order_ID] .= $row->Food_name."-".$row->Quantity.","; // Foodname and quantity
             $special_notes[$row->Order_ID] = $row->Special_notes;   //Special notes related to a specific order_No
             $order_status[$row->Order_ID] = $row->Order_status;
+            $order_types[$row->Order_ID] = $row->Order_type;
         }
+        // print_r($order_types);
+
         foreach($concat_data as $order_id => $values){
             $concat_data[$order_id] = rtrim($concat_data[$order_id],",");
         }
         //print_r($special_notes);
+
+        foreach($dp_data as $row){
+            $dp_ids_names .= $row->User_ID."-".$row->User_name.",";
+        }
+        $dp_ids_names = rtrim($dp_ids_names, ",");
     ?>
     <div id="Onqueue" class="tabcontent" style="display: <?php echo ($status == "Onqueue") ? "block": "none"; ?>;">
         <table>
@@ -165,14 +177,33 @@
             <?php if($order_status[$order_id] == "Ready" || $order_status[$order_id] == "ready"):?>
 
             <tr>
-                <td><?php echo $order_id ?></td>
+                <td>
+                    <?php 
+                        if($order_types[$order_id] == "delivery"){
+                            echo $order_id .str_repeat('&nbsp;', 3)."(Delivery)";
+                        }else{
+                            echo $order_id;
+                        }
+                    ?>
+                </td>
                 <td ><div class="cell-desc"><?php echo $values ?></div></td>
                 <td>
                     <div class="btn-container">
                         <button class="first-btn btn" onclick='showModal(<?php echo $order_id; ?>,<?php echo json_encode($special_notes[$order_id]); ?> ,<?php echo json_encode($values); ?>);'>View</button>                  
-                        <?php echo form_open("km_controller/updateOrderStatus","POST");?>
-                        <button class="second-btn btn" name="ready" value="<?php echo $order_id;?>">Dispatch</button>
-                        <?php echo form_close();?>
+                        <?php 
+                            if($order_types[$order_id] == "delivery"):
+                                include 'delivery_order_popup.php';
+                        ?>
+                                <button class="second-btn btn" onclick='showDelOrderModal(<?php echo $order_id?>, <?php echo json_encode($dp_ids_names); ?> )'> Dispatch </button>
+
+                        <?php
+                            else:
+                                echo form_open("km_controller/updateOrderStatus","POST");
+                        ?>
+                                <button class="second-btn btn" name="ready" value="<?php echo $order_id ?>">Dispatch</button>
+                        <?php   echo form_close();
+                            endif;
+                        ?>
                     </div>
                 </td>
             </tr>
@@ -226,5 +257,6 @@
 
     <?php echo link_js("js/kitchen-manager/orders/orders.js"); ?>
     <?php echo link_js("js/kitchen-manager/orders/popup.js"); ?>
+    <?php echo link_js("js/kitchen-manager/orders/delivery_order_popup.js"); ?>
 </body>
 </html>

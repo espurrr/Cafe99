@@ -10,7 +10,7 @@ class dp_model extends Database{
         FROM orders INNER JOIN user ON orders.User_ID=user.User_ID
         INNER JOIN order_item ON orders.Order_ID = order_item.Order_id
         INNER JOIN fooditem ON order_item.Food_ID = fooditem.Food_ID
-        WHERE orders.Order_type='delivery' AND orders.Order_status='delivery_new'";
+        WHERE orders.Order_type='delivery' AND orders.Order_status='delivery_new' AND orders.Delivery_Person=".$data['id'];
 
         $result = $this->Query($query, $options = []);
      
@@ -37,7 +37,7 @@ class dp_model extends Database{
             FROM orders INNER JOIN user ON orders.User_ID=user.User_ID 
             INNER JOIN order_item ON orders.Order_ID = order_item.Order_id
             INNER JOIN fooditem ON order_item.Food_ID = fooditem.Food_ID
-            WHERE orders.Order_type='delivery' AND orders.Order_status='delivery_ondelivery'";
+            WHERE orders.Order_type='delivery' AND orders.Order_status='delivery_ondelivery' AND orders.Delivery_Person=".$data['id'];
 
             $result =$this->Query($query, $options = []);
          
@@ -64,7 +64,7 @@ class dp_model extends Database{
                 FROM orders INNER JOIN user ON orders.User_ID=user.User_ID
                 INNER JOIN order_item ON orders.Order_ID = order_item.Order_id
                 INNER JOIN fooditem ON order_item.Food_ID = fooditem.Food_ID
-                WHERE orders.Order_type='delivery' AND orders.Order_status='delivery_dispatched'";
+                WHERE orders.Order_type='delivery' AND orders.Order_status='delivery_dispatched' AND orders.Delivery_Person=".$data['id'];
                 $result =$this->Query($query, $options = []);
              
             //    if($this->Select_Where("delivery_order_details", ['Order_ID' => $id])){

@@ -23,7 +23,7 @@ class Delivery_Controller extends JB_Controller{
             $this->view('deliveryperson/neworders');
     
         }else{
-            $order_data['id'] = $id;
+            $order_data['id'] = $this->get_session('user_id');
             $result = $this->model->display_neworders($order_data);
 
             if($result === "Order_not_found"){
@@ -51,7 +51,7 @@ class Delivery_Controller extends JB_Controller{
         if(empty($id)){
             $this->view('deliveryperson/ondelivery');  
         }else{
-            $order_data['id'] = $id;
+            $order_data['id'] = $this->get_session('user_id');
             $result = $this->model->display_ondelivery($order_data);
 
             if($result === "Order_not_found"){
@@ -75,7 +75,7 @@ class Delivery_Controller extends JB_Controller{
       if(empty($id)){
           $this->view('deliveryperson/dispatched');
       }else{
-        $order_data['id'] = $id;
+        $order_data['id'] = $this->get_session('user_id');
         $result = $this->model->display_dispatched($order_data);
 
         if($result === "Order_not_found"){

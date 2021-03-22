@@ -38,7 +38,10 @@ class KM_Controller extends JB_Controller{
             //$this->view('kitchenmanager/orders/orders',$result['data']);
             //print_r($result['data']);
 
-            $data = $result['data'];
+            $data = $result['data']['orders'];
+            $dp_data =  $result['data']['dp'];
+            // print_r($dp_data);
+
             if(file_exists("../application/views/kitchenmanager/orders/orders.php")){
                 require_once "../application/views/kitchenmanager/orders/orders.php";
             }else{
@@ -216,6 +219,28 @@ class KM_Controller extends JB_Controller{
             $this-> set_flash("orderUpdateUnsuccess","Order item wasn't updated successfully");
         }
         redirect("km_controller/orders/".$refresh_state);
+    }
+
+    public function updateDeliveryOrderStatus(){
+        if (isset($_POST['delivery_persons_id'])){
+            $post_data = $_POST['delivery_persons_id'];
+            $post_data = explode(",", $post_data);
+            $order_id = $post_data[0];
+            $del_person_id = $post_data[1];
+            // echo $order_id;
+            // echo $del_person_id;
+
+            $data = ['Order_status' => 'delivery_new', "Delivery_Person" => $del_person_id];
+            $refresh_state = "Ready";
+
+            if($this->model->updateDeliveryOrderStatus($data , $order_id)){
+                $this-> set_flash("orderUpdateSuccess","Order item updated successfully");
+            }else{
+                $this-> set_flash("orderUpdateUnsuccess","Order item wasn't updated successfully");
+            }
+            redirect("km_controller/orders/".$refresh_state);
+        }   
+
     }
 
 }

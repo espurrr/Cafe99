@@ -108,13 +108,26 @@
             FROM orders INNER JOIN order_item ON orders.Order_ID = order_item.Order_id
             INNER JOIN fooditem ON order_item.Food_ID = fooditem.Food_ID";
             
+            $dp_query = "SELECT user.User_ID, user.User_name FROM user WHERE user.User_role='delivery_person'";
+
             $result =$this->Query($query, $options = []);
 
             if($this->Count() > 0){
-                $food = $this->AllRecords();
-                //print_r($food);
-                if($food){
-                    return ['status'=>'success', 'data'=>$food];
+                $orders = $this->AllRecords();
+                //print_r($orders);
+                if($orders){
+                    $dp_result = $this->Query($dp_query, $options = []);
+                    if($this->Count() > 0){
+                        $dp = $this->AllRecords();
+                        if($dp){
+                            return ['status'=>'success', 'data'=>['orders'=>$orders, 'dp'=>$dp]];
+
+                        }else{
+                            return "Delivery_person_not_retrieved";
+                        }
+                    }else{
+                        return "Delivery_person_not_found";
+                    }
                 }else{
                     return "Order_not_retrieved";
                 }
@@ -179,6 +192,14 @@
             }else{
                 return "Order_type_not_found";
 
+            }
+        }
+
+        public function updateDeliveryOrderStatus($data , $order_id){
+            if($this->Update("orders", $data, ['Order_ID' => $order_id])){
+                return true;
+            }else{
+                return false;
             }
         }
     }
