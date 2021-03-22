@@ -29,17 +29,17 @@
                 <h2>Order type</h2><br>
                 <div class="radios">
                     <label class="radio-inline">
-                        <input type="radio" name="opinion" value="dine-in" id="r_dine" onclick="detailsDisplay()" checked/>
+                        <input type="radio" name="opinion" value="dine-in" id="r_dine" onclick="detailsDisplay()" <?php if($_POST['opinion']=="dine-in" or $_POST['opinion']==NULL) echo "checked=\"checked\""; ?>/>
                         <i></i>
                         <span>Dine-in</span>
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="opinion" value="pick-up" id="r_pick" onclick="detailsDisplay()"/>
+                        <input type="radio" name="opinion" value="pick-up" id="r_pick" onclick="detailsDisplay()" <?php if($_POST['opinion']=="pick-up") echo "checked=\"checked\""; ?>/>
                         <i></i>
                         <span>Pick-up</span>
                     </label>
                     <label>
-                        <input type="radio" name="opinion" value="delivery" id="r_deli" onclick="detailsDisplay()"/>
+                        <input type="radio" name="opinion" value="delivery" id="r_deli" onclick="detailsDisplay()" <?php if($_POST['opinion']=="delivery") echo "checked=\"checked\""; ?>/>
                         <i></i>
                         <span>Delivery</span>
                     </label>
@@ -220,16 +220,16 @@
             }else if(someone_else.checked == true){
                 receiver_text.style.display = "initial";
             }
-            if (dine.checked == true){
+            if (<?php echo json_encode($_POST['opinion'])?> == "dine-in" || dine.checked == true ){
                 dine_text.style.display = "initial";
                 pick_text.style.display = "none";
                 deli_text.style.display = "none";
 
-            } else if (pick.checked == true){
+            } else if (<?php echo json_encode($_POST['opinion'])?> == "pick-up" || pick.checked == true ){
                 dine_text.style.display = "none";
                 pick_text.style.display = "initial";
                 deli_text.style.display = "none";
-            } else if(deli.checked == true){
+            } else if(<?php echo json_encode($_POST['opinion'])?> == "delivery" || deli.checked == true ){
                 dine_text.style.display = "none";
                 pick_text.style.display = "none";
                 deli_text.style.display = "initial";

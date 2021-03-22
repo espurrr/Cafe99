@@ -27,7 +27,7 @@
 
             <div class="status-msg-wrapper">
                 <div class="status-msg" style="margin-bottom:20px">
-                    <?php $this->flash('databaseError','alert alert-warning','fa fa-check'); ?>
+                    <?php $this->flash('databaseError','alert alert-warning','fa fa-times-circle'); ?>
                     <?php $this->flash('noAnnouncementError','alert alert-warning','fa fa-times-circle'); ?>
                 </div>
             </div>

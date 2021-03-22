@@ -69,9 +69,18 @@ class Rm_model extends Database{
     }
 
     public function getAnnouncement(){
-        $query = "SELECT announcement.Announcement_id, announcement.Announcement_title, announcement.Announcement_date, announcement.Announcement_time, 
-        announcement.Content, announcement.To_whom, user.User_name FROM announcement INNER JOIN user ON announcement.User_ID = user.User_ID
-        WHERE announcement.To_whom = 'All Employees' OR announcement.To_whom = 'Restaurant managers' OR announcement.To_whom = 'Kitchen managers' OR announcement.To_whom = 'Cashier' OR announcement.To_whom = 'Delivery Person' ORDER BY announcement.Announcement_date DESC";
+        $query = 
+        "(SELECT announcement.Announcement_id, announcement.Announcement_title, announcement.Announcement_date, 
+        announcement.Announcement_time, announcement.Content, announcement.To_whom, user.User_name 
+        FROM announcement INNER JOIN user ON announcement.RM_User_ID = user.User_ID)
+
+        UNION
+
+        (SELECT announcement.Announcement_id, announcement.Announcement_title, announcement.Announcement_date, announcement.Announcement_time, 
+        announcement.Content, announcement.To_whom, announcement.RM_User_ID
+        FROM announcement
+        WHERE announcement.RM_User_ID IS NULL
+        ORDER BY announcement.Announcement_date DESC)";
 
         $result =$this->Query($query, $options = []);
         if($this->Count() > 0){

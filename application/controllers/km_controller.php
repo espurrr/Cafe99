@@ -166,20 +166,41 @@ class KM_Controller extends JB_Controller{
     public function updateOrderStatus(){
         if (isset($_POST['onqueue'])){
             $order_id = (int)$_POST['onqueue'];
-            $data = ['Order_status' => 'Processing'];
+            $data = ['Order_status' => 'processing'];
             $refresh_state = "Onqueue";
         }
 
         if (isset($_POST['processing'])){
             $order_id = (int)$_POST['processing'];
-            $data = ['Order_status' => 'Ready'];
+            $data = ['Order_status' => 'ready'];
             $refresh_state = "Processing";
         }
 
         if (isset($_POST['ready'])){
             $order_id = (int)$_POST['ready'];
-            $data = ['Order_status' => 'Dispatched'];
-            $refresh_state = "Ready";
+            $result = $this->model->getOrderType($order_id);
+
+
+            if($result === "Order_type_not_retrieved"){
+                $this->set_flash("databaseError", "Sorry, cannot show order type at the moment. Please try again later.");
+                $this->view('kitchenmanager/orders/orders');
+                //echo"dberror";
+            }else if($result === "Order_type_not_found"){
+                $this->set_flash("noorderTypeError", "Sorry, cannot show order type at the moment. Please try again later.");
+                $this->view('kitchenmanager/orders/orders');
+                //echo"nofood";
+            }else if($result['status'] === "success"){
+                $order_type = $result['data'][0]->Order_type;
+                //echo $order_type;
+            }
+            if($order_type == "delivery"){
+                $data = ['Order_status' => 'delivery_new'];
+                $refresh_state = "Ready";
+            }else{
+                $data = ['Order_status' => 'dispatched'];
+                $refresh_state = "Ready";
+            }
+            
         }
 
         if (isset($_POST['dispatched'])){
