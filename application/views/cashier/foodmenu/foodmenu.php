@@ -94,540 +94,540 @@
         <div class="subcategory-title">Rice</div>
         <main class="grid">
 
-        <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Food" && $row->Subcategory_name === "Rice"):?>
-                <article>
-                    <?php
-                        $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
-                    ?>
-                    <img src="<?php echo $img_path;?>" alt="Image Not Found">
-                    <div class="text">
-                        <h4><?php echo $row->Food_name;?></h4>
-                        <p>Product ID :  <?php echo $row->Food_ID; ?></p>
-                        <p class="availability"><?php echo $row->Availability; ?></p>
-                    </div>
+            <?php foreach($data as $row): ?>
+            <?php if($row->Category_name === "Food" && $row->Subcategory_name === "Rice"):?>
+                    <article>
+                        <?php
+                            $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
+                        ?>
+                        <!-- <img src="<?php echo $img_path;?>" alt="Image Not Found"> -->
+                        <div class="text">
+                            <h4><?php echo $row->Food_name;?></h4>
+                            <p>Product ID :  <?php echo $row->Food_ID; ?></p>
+                            <p class="availability"><?php echo $row->Availability; ?></p>
+                        </div>
 
-                    <?php echo form_open("km_controller/updateAvailability","POST");?>
-                    <!-- <form action="" method="POST"> -->
-                    <div class="btn-container">
-                         <div class="row">
-                                <button class="button-cart">-</button>
-                                    <input type="text" class="input-cart" value="1" min="1" />
-                                <button class="button-cart">+</button>
-                            </div>
-                        <button class="btn" >Add to Cart</button>
-                    </div>
-                    <?php echo form_close();?>
-                    <!-- </form> -->
-                </article>
-        <?php endif; ?>
-        <?php endforeach; ?>
+                        <?php echo form_open("km_controller/updateAvailability","POST");?>
+                        <!-- <form action="" method="POST"> -->
+                        <div class="btn-container">
+                            <div class="row">
+                                    <!-- <button class="button-cart">-</button> -->
+                                        <input type="text" class="input-cart" value="1" min="1" />
+                                    <!-- <button class="button-cart">+</button> -->
+                                </div>
+                            <button class="btn" >Add to Cart</button>
+                        </div>
+                        <?php echo form_close();?>
+                        <!-- </form> -->
+                    </article>
+            <?php endif; ?>
+            <?php endforeach; ?>
         </main>
 
         <div class="subcategory-title">Pizza</div>
         <main class="grid">
 
-        <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Food" && $row->Subcategory_name === "Pizza"):?>
-                <article>
-                    <?php
-                        $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
-                    ?>
-                    <img src="<?php echo $img_path;?>" alt="Image Not Found">
-                    <div class="text">
-                        <h4><?php echo $row->Food_name;?></h4>
-                        <p>Product ID :  <?php echo $row->Food_ID; ?></p>
-                        <p class="availability"><?php echo $row->Availability; ?></p>
-                    </div>
+            <?php foreach($data as $row): ?>
+            <?php if($row->Category_name === "Food" && $row->Subcategory_name === "Pizza"):?>
+                    <article>
+                        <?php
+                            $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
+                        ?>
+                        <!-- <img src="<?php echo $img_path;?>" alt="Image Not Found"> -->
+                        <div class="text">
+                            <h4><?php echo $row->Food_name;?></h4>
+                            <p>Product ID :  <?php echo $row->Food_ID; ?></p>
+                            <p class="availability"><?php echo $row->Availability; ?></p>
+                        </div>
 
-                    <?php echo form_open("km_controller/updateAvailability","POST");?>
-                    <!-- <form action="" method="POST"> -->
-                    <div class="btn-container">
-                    <div class="row">
-                                <button class="button-cart">-</button>
-                                    <input type="text" class="input-cart" value="1" min="1" />
-                                <button class="button-cart">+</button>
-                            </div>
-                        <button class="btn" >Add to Cart</button>
-                    </div>
-                    <?php echo form_close();?>
-                    <!-- </form> -->
-                </article>
-        <?php endif; ?>
-        <?php endforeach; ?>
+                        <?php echo form_open("km_controller/updateAvailability","POST");?>
+                        <!-- <form action="" method="POST"> -->
+                        <div class="btn-container">
+                        <div class="row">
+                                    <!-- <button class="button-cart">-</button> -->
+                                        <input type="text" class="input-cart" value="1" min="1" />
+                                    <!-- <button class="button-cart">+</button> -->
+                                </div>
+                            <button class="btn" >Add to Cart</button>
+                        </div>
+                        <?php echo form_close();?>
+                        <!-- </form> -->
+                    </article>
+            <?php endif; ?>
+            <?php endforeach; ?>
         </main>
 
         <div class="subcategory-title">Savouries</div>
         <main class="grid">
 
-        <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Food" && $row->Subcategory_name === "Savouries"):?>
-                <article>
-                    <?php
-                        $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
-                    ?>
-                    <img src="<?php echo $img_path;?>" alt="Image Not Found">
-                    <div class="text">
-                        <h4><?php echo $row->Food_name;?></h4>
-                        <p>Product ID :  <?php echo $row->Food_ID; ?></p>
-                        <p class="availability"><?php echo $row->Availability; ?></p>
-                    </div>
+            <?php foreach($data as $row): ?>
+            <?php if($row->Category_name === "Food" && $row->Subcategory_name === "Savouries"):?>
+                    <article>
+                        <?php
+                            $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
+                        ?>
+                        <!-- <img src="<?php echo $img_path;?>" alt="Image Not Found"> -->
+                        <div class="text">
+                            <h4><?php echo $row->Food_name;?></h4>
+                            <p>Product ID :  <?php echo $row->Food_ID; ?></p>
+                            <p class="availability"><?php echo $row->Availability; ?></p>
+                        </div>
 
-                    <?php echo form_open("km_controller/updateAvailability","POST");?>
-                    <!-- <form action="" method="POST"> -->
-                    <div class="btn-container">
-                    <div class="row">
-                                <button class="button-cart">-</button>
-                                    <input type="text" class="input-cart" value="1" min="1" />
-                                <button class="button-cart">+</button>
-                            </div>
-                        <button class="btn" >Add to Cart</button>    
-                     </div>
-                    <?php echo form_close();?>
-                    <!-- </form> -->
-                </article>
-        <?php endif; ?>
-        <?php endforeach; ?>
+                        <?php echo form_open("km_controller/updateAvailability","POST");?>
+                        <!-- <form action="" method="POST"> -->
+                        <div class="btn-container">
+                        <div class="row">
+                                    <!-- <button class="button-cart">-</button> -->
+                                        <input type="text" class="input-cart" value="1" min="1" />
+                                    <!-- <button class="button-cart">+</button> -->
+                                </div>
+                            <button class="btn" >Add to Cart</button>    
+                        </div>
+                        <?php echo form_close();?>
+                        <!-- </form> -->
+                    </article>
+            <?php endif; ?>
+            <?php endforeach; ?>
         </main>
 
         <div class="subcategory-title">Cakes</div>
         <main class="grid">
 
-        <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Food" && $row->Subcategory_name === "Cakes"):?>
-                <article>
-                    <?php
-                        $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
-                    ?>
-                    <img src="<?php echo $img_path;?>" alt="Image Not Found">
-                    <div class="text">
-                        <h4><?php echo $row->Food_name;?></h4>
-                        <p>Product ID :  <?php echo $row->Food_ID; ?></p>
-                        <p class="availability"><?php echo $row->Availability; ?></p>
-                    </div>
+            <?php foreach($data as $row): ?>
+            <?php if($row->Category_name === "Food" && $row->Subcategory_name === "Cakes"):?>
+                    <article>
+                        <?php
+                            $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
+                        ?>
+                        <!-- <img src="<?php echo $img_path;?>" alt="Image Not Found"> -->
+                        <div class="text">
+                            <h4><?php echo $row->Food_name;?></h4>
+                            <p>Product ID :  <?php echo $row->Food_ID; ?></p>
+                            <p class="availability"><?php echo $row->Availability; ?></p>
+                        </div>
 
-                    <?php echo form_open("km_controller/updateAvailability","POST");?>
-                    <!-- <form action="" method="POST"> -->
-                    <div class="btn-container">
-                        
-                    <div class="row">
-                                <button class="button-cart">-</button>
-                                    <input type="text" class="input-cart" value="1" min="1" />
-                                <button class="button-cart">+</button>
-                            </div>
-                        <button class="btn" >Add to Cart</button>
-                    </div>
-                    <?php echo form_close();?>
-                    <!-- </form> -->
-                </article>
-        <?php endif; ?>
-        <?php endforeach; ?>
+                        <?php echo form_open("km_controller/updateAvailability","POST");?>
+                        <!-- <form action="" method="POST"> -->
+                        <div class="btn-container">
+                            
+                        <div class="row">
+                                    <!-- <button class="button-cart">-</button> -->
+                                        <input type="text" class="input-cart" value="1" min="1" />
+                                    <!-- <button class="button-cart">+</button> -->
+                                </div>
+                            <button class="btn" >Add to Cart</button>
+                        </div>
+                        <?php echo form_close();?>
+                        <!-- </form> -->
+                    </article>
+            <?php endif; ?>
+            <?php endforeach; ?>
         </main>
         
         <div class="subcategory-title">NoodlesPasta</div>
         <main class="grid">
 
-        <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Food" && $row->Subcategory_name === "NoodlesPasta"):?>
-                <article>
-                    <?php
-                        $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
-                    ?>
-                    <img src="<?php echo $img_path;?>" alt="Image Not Found">
-                    <div class="text">
-                        <h4><?php echo $row->Food_name;?></h4>
-                        <p>Product ID :  <?php echo $row->Food_ID; ?></p>
-                        <p class="availability"><?php echo $row->Availability; ?></p>
-                    </div>
+            <?php foreach($data as $row): ?>
+            <?php if($row->Category_name === "Food" && $row->Subcategory_name === "NoodlesPasta"):?>
+                    <article>
+                        <?php
+                            $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
+                        ?>
+                        <!-- <img src="<?php echo $img_path;?>" alt="Image Not Found"> -->
+                        <div class="text">
+                            <h4><?php echo $row->Food_name;?></h4>
+                            <p>Product ID :  <?php echo $row->Food_ID; ?></p>
+                            <p class="availability"><?php echo $row->Availability; ?></p>
+                        </div>
 
-                    <?php echo form_open("km_controller/updateAvailability","POST");?>
-                    <!-- <form action="" method="POST"> -->
-                    <div class="btn-container">
-                    <div class="row">
-                                <button class="button-cart">-</button>
-                                    <input type="text" class="input-cart" value="1" min="1" />
-                                <button class="button-cart">+</button>
-                            </div>
-                        <button class="btn" >Add to Cart</button>
-                    </div>
-                    <?php echo form_close();?>
-                    <!-- </form> -->
-                </article>
-        <?php endif; ?>
-        <?php endforeach; ?>
+                        <?php echo form_open("km_controller/updateAvailability","POST");?>
+                        <!-- <form action="" method="POST"> -->
+                        <div class="btn-container">
+                        <div class="row">
+                                    <!-- <button class="button-cart">-</button> -->
+                                        <input type="text" class="input-cart" value="1" min="1" />
+                                    <!-- <button class="button-cart">+</button> -->
+                                </div>
+                            <button class="btn" >Add to Cart</button>
+                        </div>
+                        <?php echo form_close();?>
+                        <!-- </form> -->
+                    </article>
+            <?php endif; ?>
+            <?php endforeach; ?>
         </main>
 
         <div class="subcategory-title">Biriyani</div>
         <main class="grid">
 
-        <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Food" && $row->Subcategory_name === "Biriyani"):?>
-                <article>
-                    <?php
-                        $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
-                    ?>
-                    <img src="<?php echo $img_path;?>" alt="Image Not Found">
-                    <div class="text">
-                        <h4><?php echo $row->Food_name;?></h4>
-                        <p>Product ID :  <?php echo $row->Food_ID; ?></p>
-                        <p class="availability"><?php echo $row->Availability; ?></p>
-                    </div>
+            <?php foreach($data as $row): ?>
+            <?php if($row->Category_name === "Food" && $row->Subcategory_name === "Biriyani"):?>
+                    <article>
+                        <?php
+                            $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
+                        ?>
+                        <!-- <img src="<?php echo $img_path;?>" alt="Image Not Found"> -->
+                        <div class="text">
+                            <h4><?php echo $row->Food_name;?></h4>
+                            <p>Product ID :  <?php echo $row->Food_ID; ?></p>
+                            <p class="availability"><?php echo $row->Availability; ?></p>
+                        </div>
 
-                    <?php echo form_open("km_controller/updateAvailability","POST");?>
-                    <!-- <form action="" method="POST"> -->
-                    <div class="btn-container">
-                    <div class="row">
-                                <button class="button-cart">-</button>
-                                    <input type="text" class="input-cart" value="1" min="1" />
-                                <button class="button-cart">+</button>
-                            </div>
-                        <button class="btn" >Add to Cart</button>
-                    </div>
-                    <?php echo form_close();?>
-                    <!-- </form> -->
-                </article>
-        <?php endif; ?>
-        <?php endforeach; ?>
+                        <?php echo form_open("km_controller/updateAvailability","POST");?>
+                        <!-- <form action="" method="POST"> -->
+                        <div class="btn-container">
+                        <div class="row">
+                                    <!-- <button class="button-cart">-</button> -->
+                                        <input type="text" class="input-cart" value="1" min="1" />
+                                    <!-- <button class="button-cart">+</button> -->
+                                </div>
+                            <button class="btn" >Add to Cart</button>
+                        </div>
+                        <?php echo form_close();?>
+                        <!-- </form> -->
+                    </article>
+            <?php endif; ?>
+            <?php endforeach; ?>
         </main>
 
         <div class="subcategory-title">Buns</div>
         <main class="grid">
 
-        <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Food" && $row->Subcategory_name === "Buns"):?>
-                <article>
-                    <?php
-                        $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
-                    ?>
-                    <img src="<?php echo $img_path;?>" alt="Image Not Found">
-                    <div class="text">
-                        <h4><?php echo $row->Food_name;?></h4>
-                        <p>Product ID :  <?php echo $row->Food_ID; ?></p>
-                        <p class="availability"><?php echo $row->Availability; ?></p>
-                    </div>
+            <?php foreach($data as $row): ?>
+            <?php if($row->Category_name === "Food" && $row->Subcategory_name === "Buns"):?>
+                    <article>
+                        <?php
+                            $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
+                        ?>
+                        <!-- <img src="<?php echo $img_path;?>" alt="Image Not Found"> -->
+                        <div class="text">
+                            <h4><?php echo $row->Food_name;?></h4>
+                            <p>Product ID :  <?php echo $row->Food_ID; ?></p>
+                            <p class="availability"><?php echo $row->Availability; ?></p>
+                        </div>
 
-                    <?php echo form_open("km_controller/updateAvailability","POST");?>
-                    <!-- <form action="" method="POST"> -->
-                    <div class="btn-container">
-                    <div class="row">
-                                <button class="button-cart">-</button>
-                                    <input type="text" class="input-cart" value="1" min="1" />
-                                <button class="button-cart">+</button>
-                            </div>
-                        <button class="btn" >Add to Cart</button>
-                    </div>
-                    <?php echo form_close();?>
-                    <!-- </form> -->
-                </article>
-        <?php endif; ?>
-        <?php endforeach; ?>
+                        <?php echo form_open("km_controller/updateAvailability","POST");?>
+                        <!-- <form action="" method="POST"> -->
+                        <div class="btn-container">
+                        <div class="row">
+                                    <!-- <button class="button-cart">-</button> -->
+                                        <input type="text" class="input-cart" value="1" min="1" />
+                                    <!-- <button class="button-cart">+</button> -->
+                                </div>
+                            <button class="btn" >Add to Cart</button>
+                        </div>
+                        <?php echo form_close();?>
+                        <!-- </form> -->
+                    </article>
+            <?php endif; ?>
+            <?php endforeach; ?>
         </main>
     </div>
+
     <div id="drinks" class="menu_container" >
 
         <div class="subcategory-title">Coffee</div>
         <main class="grid">
 
-        <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Drinks" && $row->Subcategory_name === "Coffee"):?>
-                <article>
-                    <?php
-                        $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
-                    ?>
-                    <img src="<?php echo $img_path;?>" alt="Image Not Found">
-                    <div class="text">
-                        <h4><?php echo $row->Food_name;?></h4>
-                        <p>Product ID :  <?php echo $row->Food_ID; ?></p>
-                        <p class="availability"><?php echo $row->Availability; ?></p>
-                    </div>
+            <?php foreach($data as $row): ?>
+            <?php if($row->Category_name === "Drinks" && $row->Subcategory_name === "Coffee"):?>
+                    <article>
+                        <?php
+                            $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
+                        ?>
+                        <!-- <img src="<?php echo $img_path;?>" alt="Image Not Found"> -->
+                        <div class="text">
+                            <h4><?php echo $row->Food_name;?></h4>
+                            <p>Product ID :  <?php echo $row->Food_ID; ?></p>
+                            <p class="availability"><?php echo $row->Availability; ?></p>
+                        </div>
 
-                    <?php echo form_open("km_controller/updateAvailability","POST");?>
-                    <!-- <form action="" method="POST"> -->
-                    <div class="btn-container">
-                    <div class="row">
-                                <button class="button-cart">-</button>
-                                    <input type="text" class="input-cart" value="1" min="1" />
-                                <button class="button-cart">+</button>
-                            </div>
-                        <button class="btn" >Add to Cart</button>
-                    </div>
-                    <?php echo form_close();?>
-                    <!-- </form> -->
-                </article>
-        <?php endif; ?>
-        <?php endforeach; ?>
+                        <?php echo form_open("km_controller/updateAvailability","POST");?>
+                        <!-- <form action="" method="POST"> -->
+                        <div class="btn-container">
+                        <div class="row">
+                                    <!-- <button class="button-cart">-</button> -->
+                                        <input type="text" class="input-cart" value="1" min="1" />
+                                    <!-- <button class="button-cart">+</button> -->
+                                </div>
+                            <button class="btn" >Add to Cart</button>
+                        </div>
+                        <?php echo form_close();?>
+                        <!-- </form> -->
+                    </article>
+            <?php endif; ?>
+            <?php endforeach; ?>
         </main>
 
         <div class="subcategory-title">Fresh Fruit Juice</div>
         <main class="grid">
 
-        <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Drinks" && $row->Subcategory_name === "Fresh Fruit Juice"):?>
-                <article>
-                    <?php
-                        $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
-                    ?>
-                    <img src="<?php echo $img_path;?>" alt="Image Not Found">
-                    <div class="text">
-                        <h4><?php echo $row->Food_name;?></h4>
-                        <p>Product ID :  <?php echo $row->Food_ID; ?></p>
-                        <p class="availability"><?php echo $row->Availability; ?></p>
-                    </div>
+            <?php foreach($data as $row): ?>
+            <?php if($row->Category_name === "Drinks" && $row->Subcategory_name === "Fresh Fruit Juice"):?>
+                    <article>
+                        <?php
+                            $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
+                        ?>
+                        <img src="<?php echo $img_path;?>" alt="Image Not Found">
+                        <div class="text">
+                            <h4><?php echo $row->Food_name;?></h4>
+                            <p>Product ID :  <?php echo $row->Food_ID; ?></p>
+                            <p class="availability"><?php echo $row->Availability; ?></p>
+                        </div>
 
-                    <?php echo form_open("km_controller/updateAvailability","POST");?>
-                    <!-- <form action="" method="POST"> -->
-                    <div class="btn-container">
-                    <div class="row">
-                                <button class="button-cart">-</button>
-                                    <input type="text" class="input-cart" value="1" min="1" />
-                                <button class="button-cart">+</button>
-                            </div>
-                        <button class="btn" >Add to Cart</button>
-                    <?php echo form_close();?>
-                    <!-- </form> -->
-                </article>
-        <?php endif; ?>
-        <?php endforeach; ?>
+                        <?php echo form_open("km_controller/updateAvailability","POST");?>
+                        <!-- <form action="" method="POST"> -->
+                        <div class="btn-container">
+                        <div class="row">
+                                    <!-- <button class="button-cart">-</button> -->
+                                        <input type="text" class="input-cart" value="1" min="1" />
+                                    <!-- <button class="button-cart">+</button> -->
+                                </div>
+                            <button class="btn" >Add to Cart</button>
+                        <?php echo form_close();?>
+                        <!-- </form> -->
+                    </article>
+            <?php endif; ?>
+            <?php endforeach; ?>
         </main>
 
         <div class="subcategory-title">Ice Blended</div>
         <main class="grid">
 
-        <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Drinks" && $row->Subcategory_name === "Ice Blended"):?>
-                <article>
-                    <?php
-                        $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
-                    ?>
-                    <img src="<?php echo $img_path;?>" alt="Image Not Found">
-                    <div class="text">
-                        <h4><?php echo $row->Food_name;?></h4>
-                        <p>Product ID :  <?php echo $row->Food_ID; ?></p>
-                        <p class="availability"><?php echo $row->Availability; ?></p>
-                    </div>
+            <?php foreach($data as $row): ?>
+            <?php if($row->Category_name === "Drinks" && $row->Subcategory_name === "Ice Blended"):?>
+                    <article>
+                        <?php
+                            $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
+                        ?>
+                        <img src="<?php echo $img_path;?>" alt="Image Not Found">
+                        <div class="text">
+                            <h4><?php echo $row->Food_name;?></h4>
+                            <p>Product ID :  <?php echo $row->Food_ID; ?></p>
+                            <p class="availability"><?php echo $row->Availability; ?></p>
+                        </div>
 
-                    <?php echo form_open("km_controller/updateAvailability","POST");?>
-                    <!-- <form action="" method="POST"> -->
-                    <div class="btn-container">
-                    <div class="row">
-                                <button class="button-cart">-</button>
-                                    <input type="text" class="input-cart" value="1" min="1" />
-                                <button class="button-cart">+</button>
-                            </div>
-                        <button class="btn" >Add to Cart</button>
-                    </div>
-                    <?php echo form_close();?>
-                    <!-- </form> -->
-                </article>
-        <?php endif; ?>
-        <?php endforeach; ?>
+                        <?php echo form_open("km_controller/updateAvailability","POST");?>
+                        <!-- <form action="" method="POST"> -->
+                        <div class="btn-container">
+                        <div class="row">
+                                    <!-- <button class="button-cart">-</button> -->
+                                        <input type="text" class="input-cart" value="1" min="1" />
+                                    <!-- <button class="button-cart">+</button> -->
+                                </div>
+                            <button class="btn" >Add to Cart</button>
+                        </div>
+                        <?php echo form_close();?>
+                        <!-- </form> -->
+                    </article>
+            <?php endif; ?>
+            <?php endforeach; ?>
         </main>
 
         <div class="subcategory-title">Milk Shakes</div>
         <main class="grid">
 
-        <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Drinks" && $row->Subcategory_name === "Milk Shakes"):?>
-                <article>
-                    <?php
-                        $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
-                    ?>
-                    <img src="<?php echo $img_path;?>" alt="Image Not Found">
-                    <div class="text">
-                        <h4><?php echo $row->Food_name;?></h4>
-                        <p>Product ID :  <?php echo $row->Food_ID; ?></p>
-                        <p class="availability"><?php echo $row->Availability; ?></p>
-                    </div>
+            <?php foreach($data as $row): ?>
+            <?php if($row->Category_name === "Drinks" && $row->Subcategory_name === "Milk Shakes"):?>
+                    <article>
+                        <?php
+                            $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
+                        ?>
+                        <img src="<?php echo $img_path;?>" alt="Image Not Found">
+                        <div class="text">
+                            <h4><?php echo $row->Food_name;?></h4>
+                            <p>Product ID :  <?php echo $row->Food_ID; ?></p>
+                            <p class="availability"><?php echo $row->Availability; ?></p>
+                        </div>
 
-                    <?php echo form_open("km_controller/updateAvailability","POST");?>
-                    <!-- <form action="" method="POST"> -->
-                    <div class="btn-container">
-                    <div class="row">
-                                <button class="button-cart">-</button>
-                                    <input type="text" class="input-cart" value="1" min="1" />
-                                <button class="button-cart">+</button>
-                            </div>
-                        <button class="btn" >Add to Cart</button>
-                    </div>
-                    <?php echo form_close();?>
-                    <!-- </form> -->
-                </article>
-        <?php endif; ?>
-        <?php endforeach; ?>
+                        <?php echo form_open("km_controller/updateAvailability","POST");?>
+                        <!-- <form action="" method="POST"> -->
+                        <div class="btn-container">
+                        <div class="row">
+                                    <!-- <button class="button-cart">-</button> -->
+                                        <input type="text" class="input-cart" value="1" min="1" />
+                                    <!-- <button class="button-cart">+</button> -->
+                                </div>
+                            <button class="btn" >Add to Cart</button>
+                        </div>
+                        <?php echo form_close();?>
+                        <!-- </form> -->
+                    </article>
+            <?php endif; ?>
+            <?php endforeach; ?>
         </main>
 
         <div class="subcategory-title">Tea</div>
         <main class="grid">
 
-        <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Drinks" && $row->Subcategory_name === "Tea"):?>
-                <article>
-                    <?php
-                        $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
-                    ?>
-                    <img src="<?php echo $img_path;?>" alt="Image Not Found">
-                    <div class="text">
-                        <h4><?php echo $row->Food_name;?></h4>
-                        <p>Product ID :  <?php echo $row->Food_ID; ?></p>
-                        <p class="availability"><?php echo $row->Availability; ?></p>
-                    </div>
+            <?php foreach($data as $row): ?>
+            <?php if($row->Category_name === "Drinks" && $row->Subcategory_name === "Tea"):?>
+                    <article>
+                        <?php
+                            $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
+                        ?>
+                        <!-- <img src="<?php echo $img_path;?>" alt="Image Not Found"> -->
+                        <div class="text">
+                            <h4><?php echo $row->Food_name;?></h4>
+                            <p>Product ID :  <?php echo $row->Food_ID; ?></p>
+                            <p class="availability"><?php echo $row->Availability; ?></p>
+                        </div>
 
-                    <?php echo form_open("km_controller/updateAvailability","POST");?>
-                    <!-- <form action="" method="POST"> -->
-                    <div class="btn-container">
-                    <div class="row">
-                                <button class="button-cart">-</button>
-                                    <input type="text" class="input-cart" value="1" min="1" />
-                                <button class="button-cart">+</button>
-                            </div>
-                        <button class="btn" >Add to Cart</button>
-                    </div>
-                    <?php echo form_close();?>
-                    <!-- </form> -->
-                </article>
-        <?php endif; ?>
-        <?php endforeach; ?>
+                        <?php echo form_open("km_controller/updateAvailability","POST");?>
+                        <!-- <form action="" method="POST"> -->
+                        <div class="btn-container">
+                        <div class="row">
+                                    <!-- <button class="button-cart">-</button> -->
+                                        <input type="text" class="input-cart" value="1" min="1" />
+                                    <!-- <button class="button-cart">+</button> -->
+                                </div>
+                            <button class="btn" >Add to Cart</button>
+                        </div>
+                        <?php echo form_close();?>
+                        <!-- </form> -->
+                    </article>
+            <?php endif; ?>
+            <?php endforeach; ?>
         </main>
 
     </div>
-
-
+    
     <div id="desserts" class="menu_container">
 
         <div class="subcategory-title">Ice creams</div>
         <main class="grid">
 
-        <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Desserts" && $row->Subcategory_name === "Ice creams"):?>
-                <article>
-                    <?php
-                        $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
-                    ?>
-                    <img src="<?php echo $img_path;?>" alt="Image Not Found">
-                    <div class="text">
-                        <h4><?php echo $row->Food_name;?></h4>
-                        <p>Product ID :  <?php echo $row->Food_ID; ?></p>
-                        <p class="availability"><?php echo $row->Availability; ?></p>
-                    </div>
+            <?php foreach($data as $row): ?>
+            <?php if($row->Category_name === "Desserts" && $row->Subcategory_name === "Ice creams"):?>
+                    <article>
+                        <?php
+                            $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
+                        ?>
+                        <!-- <img src="<?php echo $img_path;?>" alt="Image Not Found"> -->
+                        <div class="text">
+                            <h4><?php echo $row->Food_name;?></h4>
+                            <p>Product ID :  <?php echo $row->Food_ID; ?></p>
+                            <p class="availability"><?php echo $row->Availability; ?></p>
+                        </div>
 
-                    <?php echo form_open("km_controller/updateAvailability","POST");?>
-                    <!-- <form action="" method="POST"> -->
-                    <div class="btn-container">
-                    <div class="row">
-                                <button class="button-cart">-</button>
-                                    <input type="text" class="input-cart" value="1" min="1" />
-                                <button class="button-cart">+</button>
-                            </div>
-                        <button class="btn" >Add to Cart</button>
-                        
-                    </div>
-                    <?php echo form_close();?>
-                    <!-- </form> -->
-                </article>
-        <?php endif; ?>
-        <?php endforeach; ?>
+                        <?php echo form_open("km_controller/updateAvailability","POST");?>
+                        <!-- <form action="" method="POST"> -->
+                        <div class="btn-container">
+                        <div class="row">
+                                    <!-- <button class="button-cart">-</button> -->
+                                        <input type="text" class="input-cart" value="1" min="1" />
+                                    <!-- <button class="button-cart">+</button> -->
+                                </div>
+                            <button class="btn" >Add to Cart</button>
+                            
+                        </div>
+                        <?php echo form_close();?>
+                        <!-- </form> -->
+                    </article>
+            <?php endif; ?>
+            <?php endforeach; ?>
         </main>
 
         <div class="subcategory-title">Custards & Puddings</div>
         <main class="grid">
 
-        <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Desserts" && $row->Subcategory_name === "Custards&Puddings"):?>
-                <article>
-                    <?php
-                        $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
-                    ?>
-                    <img src="<?php echo $img_path;?>" alt="Image Not Found">
-                    <div class="text">
-                        <h4><?php echo $row->Food_name;?></h4>
-                        <p>Product ID :  <?php echo $row->Food_ID; ?></p>
-                        <p class="availability"><?php echo $row->Availability; ?></p>
-                    </div>
+            <?php foreach($data as $row): ?>
+            <?php if($row->Category_name === "Desserts" && $row->Subcategory_name === "Custards&Puddings"):?>
+                    <article>
+                        <?php
+                            $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
+                        ?>
+                        <!-- <img src="<?php echo $img_path;?>" alt="Image Not Found"> -->
+                        <div class="text">
+                            <h4><?php echo $row->Food_name;?></h4>
+                            <p>Product ID :  <?php echo $row->Food_ID; ?></p>
+                            <p class="availability"><?php echo $row->Availability; ?></p>
+                        </div>
 
-                    <?php echo form_open("km_controller/updateAvailability","POST");?>
-                    <!-- <form action="" method="POST"> -->
-                    <div class="btn-container">
-                    <div class="row">
-                                <button class="button-cart">-</button>
-                                    <input type="text" class="input-cart" value="1" min="1" />
-                                <button class="button-cart">+</button>
-                            </div>
-                        <button class="btn" >Add to Cart</button>
-                        
-                    </div>
-                    <?php echo form_close();?>
-                    <!-- </form> -->
-                </article>
-        <?php endif; ?>
-        <?php endforeach; ?>
+                        <?php echo form_open("km_controller/updateAvailability","POST");?>
+                        <!-- <form action="" method="POST"> -->
+                        <div class="btn-container">
+                        <div class="row">
+                                    <!-- <button class="button-cart">-</button> -->
+                                        <input type="text" class="input-cart" value="1" min="1" />
+                                    <!-- <button class="button-cart">+</button> -->
+                                </div>
+                            <button class="btn" >Add to Cart</button>
+                            
+                        </div>
+                        <?php echo form_close();?>
+                        <!-- </form> -->
+                    </article>
+            <?php endif; ?>
+            <?php endforeach; ?>
         </main>
 
         <div class="subcategory-title">Muffins</div>
         <main class="grid">
 
-        <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Desserts" && $row->Subcategory_name === "Muffins"):?>
-                <article>
-                    <?php
-                        $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
-                    ?>
-                    <img src="<?php echo $img_path;?>" alt="Image Not Found">
-                    <div class="text">
-                        <h4><?php echo $row->Food_name;?></h4>
-                        <p>Product ID :  <?php echo $row->Food_ID; ?></p>
-                        <p class="availability"><?php echo $row->Availability; ?></p>
-                    </div>
+            <?php foreach($data as $row): ?>
+            <?php if($row->Category_name === "Desserts" && $row->Subcategory_name === "Muffins"):?>
+                    <article>
+                        <?php
+                            $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
+                        ?>
+                        <!-- <img src="<?php echo $img_path;?>" alt="Image Not Found"> -->
+                        <div class="text">
+                            <h4><?php echo $row->Food_name;?></h4>
+                            <p>Product ID :  <?php echo $row->Food_ID; ?></p>
+                            <p class="availability"><?php echo $row->Availability; ?></p>
+                        </div>
 
-                    <?php echo form_open("km_controller/updateAvailability","POST");?>
-                    <!-- <form action="" method="POST"> -->
-                    <div class="btn-container">
-                    <div class="row">
-                                <button class="button-cart">-</button>
-                                    <input type="text" class="input-cart" value="1" min="1" />
-                                <button class="button-cart">+</button>
-                            </div>
-                        <button class="btn" >Add to Cart</button>
-                        
-                    </div>
-                    <?php echo form_close();?>
-                    <!-- </form> -->
-                </article>
-        <?php endif; ?>
-        <?php endforeach; ?>
+                        <?php echo form_open("km_controller/updateAvailability","POST");?>
+                        <!-- <form action="" method="POST"> -->
+                        <div class="btn-container">
+                        <div class="row">
+                                    <!-- <button class="button-cart">-</button> -->
+                                        <input type="text" class="input-cart" value="1" min="1" />
+                                    <!-- <button class="button-cart">+</button> -->
+                                </div>
+                            <button class="btn" >Add to Cart</button>
+                            
+                        </div>
+                        <?php echo form_close();?>
+                        <!-- </form> -->
+                    </article>
+            <?php endif; ?>
+            <?php endforeach; ?>
         </main>
 
         <div class="subcategory-title">Cheese Cakes</div>
         <main class="grid">
 
-        <?php foreach($data as $row): ?>
-        <?php if($row->Category_name === "Desserts" && $row->Subcategory_name === "CheeseCakes"):?>
-                <article>
-                    <?php
-                        $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
-                    ?>
-                    <img src="<?php echo $img_path;?>" alt="Image Not Found">
-                    <div class="text">
-                        <h4><?php echo $row->Food_name;?></h4>
-                        <p>Product ID :  <?php echo $row->Food_ID; ?></p>
-                        <p class="availability"><?php echo $row->Availability; ?></p>
-                    </div>
+            <?php foreach($data as $row): ?>
+            <?php if($row->Category_name === "Desserts" && $row->Subcategory_name === "CheeseCakes"):?>
+                    <article>
+                        <?php
+                            $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
+                        ?>
+                        <!-- <img src="<?php echo $img_path;?>" alt="Image Not Found"> -->
+                        <div class="text">
+                            <h4><?php echo $row->Food_name;?></h4>
+                            <p>Product ID :  <?php echo $row->Food_ID; ?></p>
+                            <p class="availability"><?php echo $row->Availability; ?></p>
+                        </div>
 
-                    <?php echo form_open("km_controller/updateAvailability","POST");?>
-                    <!-- <form action="" method="POST"> -->
-                    <div class="btn-container">
-                    <div class="row">
-                                <button class="button-cart">-</button>
-                                    <input type="text" class="input-cart" value="1" min="1" />
-                                <button class="button-cart">+</button>
-                            </div>
-                        <button class="btn" >Add to Cart</button>
-                        
-                    </div>
-                    <?php echo form_close();?>
-                    <!-- </form> -->
-                </article>
-        <?php endif; ?>
-        <?php endforeach; ?>
+                        <?php echo form_open("km_controller/updateAvailability","POST");?>
+                        <!-- <form action="" method="POST"> -->
+                        <div class="btn-container">
+                        <div class="row">
+                                    <!-- <button class="button-cart">-</button> -->
+                                        <input type="text" class="input-cart" value="1" min="1" />
+                                    <!-- <button class="button-cart">+</button> -->
+                                </div>
+                            <button class="btn" >Add to Cart</button>
+                            
+                        </div>
+                        <?php echo form_close();?>
+                        <!-- </form> -->
+                    </article>
+            <?php endif; ?>
+            <?php endforeach; ?>
         </main>
     </div>
 

@@ -64,7 +64,7 @@
 
     .grid {
         padding: 30px 30px;
-        display: grid; 
+        /* display: grid;  */
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));/*auto-fill center items considering grid-gap and content */
         grid-column-gap: 2%;
         grid-row-gap: 40px;
@@ -80,10 +80,13 @@
     
 
     .grid article {
+        display: flex;
+        justify-content: space-between;
         border: 1px solid #ccc;
         box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
         border-radius: 10px;
         background-color: #fff;
+        margin: 5px;
     }
 
     /* Food item image */
@@ -96,7 +99,7 @@
     /*  Title & Price */
     .grid article .text{
         padding: 0px 20px 10px 20px;
-        text-align: center;
+        text-align: left;
     }
 
     /* Title */
@@ -136,11 +139,13 @@
     
     .menu_container .btn-container {
         /* padding: 0px 0px 20px 0px; */
-        margin: 30px 0px 0px 0px;
-        display: flex;
+        /* margin: 30px 0px 0px 0px; */
+        /* display: flex; */
+        display: -webkit-inline-box;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
+        padding: 18px;
         
     }
     .input-cart{
