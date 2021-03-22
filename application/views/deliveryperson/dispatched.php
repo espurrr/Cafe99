@@ -74,6 +74,9 @@
 
   <div class="status-msg-wrapper">
     <div class="status-msg" style="margin-bottom:20px">
+        <?php $this->flash('orderUpdateSuccess','alert alert-success','fa fa-check'); ?>
+        <?php $this->flash('orderUpdateUnsuccess','alert alert-danger','fa fa-times-circle'); ?>
+        <div id="status_msg_break"></div>
         <?php $this->flash('databaseError','alert alert-warning','fa fa-info-circle'); ?>
         <?php $this->flash('noDispatchedOrderError','alert alert-warning','fa fa-info-circle'); ?>
     </div>
@@ -129,7 +132,9 @@
     </th>
 
     <td class="update_btn_td">
-      <button class="update_btn" onclick=""><i class="fa fa-check-square"></i></button>
+      <?php echo form_open("delivery_controller/updateOrderStatusDispatched","POST");?>
+          <button class="update_btn" name="dispatched" value="<?php echo $order_id;?>"><i class="fa fa-check-square"></i></button>
+      <?php echo form_close();?>
     </td>
   </tr>
 </table>
@@ -147,6 +152,16 @@
 <!--<?php //include '../application/views/footer/footer_3.php';?> -->   
 <?php echo link_js("js/deliveryperson/modal.js?ts=<?=time()?>");?>
 <?php //echo link_js("js/deliveryperson/delete.js"); ?>
+
+<script>
+    var num_of_alerts = document.getElementsByClassName("alert").length;
+    // alert("Elements: " + num_of_alerts);
+    if(num_of_alerts == 2){
+        var br_tag = document.createElement('br');
+        document.getElementById("status_msg_break").appendChild(br_tag);
+    }
+    
+</script>
 </body>
 
 </html>

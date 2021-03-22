@@ -111,10 +111,9 @@ class Delivery_Controller extends JB_Controller{
 
     //update delivery_new as delivery_ondelivery
     public function updateOrderStatusNew(){
-       $order_id=$_POST['Order_ID'];
-      // $order_id=$this->post('Order_ID');
-
+        $order_id = $_POST['neworders'];
         $data=['Order_status'=>'delivery_ondelivery'];
+
         if($this->model->updateOrderStatusNew($data , $order_id)){
             $this-> set_flash("orderUpdateSuccess","Order item updated successfully");
         }
@@ -126,10 +125,9 @@ class Delivery_Controller extends JB_Controller{
 
     //update delivery_ondelivery as delivery_dispatched
     public function updateOrderStatusOndelivery(){
-        $order_id=$_POST['Order_ID'];
-       // $order_id=$this->post('Order_ID');
+        $order_id=$_POST['ondelivery'];
 
-        $data=['Order_status'=>'delivery_disapatched'];
+        $data=['Order_status'=>'delivery_dispatched'];
         if($this->model->updateOrderStatusOndelivery($data , $order_id)){
             $this-> set_flash("orderUpdateSuccess","Order item updated successfully");
         }
@@ -138,12 +136,20 @@ class Delivery_Controller extends JB_Controller{
         }
         redirect("delivery_controller/ondelivery");
     }
- 
-    //delete order from delivery_dispatched list
-    public function deleteOrder($order_id){
-    $result=$this->model->deleteOrder($order_id);
-    redirect('deliverycontroller/dispatched');
+    
+    public function updateOrderStatusDispatched(){
+        $order_id=$_POST['dispatched'];
+
+        $data=['Order_status'=>'done'];
+        if($this->model->updateOrderStatusDispatched($data , $order_id)){
+            $this-> set_flash("orderUpdateSuccess","Order item updated successfully");
+        }
+        else{
+            $this-> set_flash("orderUpdateUnsuccess","Order item wasn't updated successfully");
+        }
+        redirect("delivery_controller/dispatched");
     }
+    
 
     public function logout(){
         $this->destroy_session();

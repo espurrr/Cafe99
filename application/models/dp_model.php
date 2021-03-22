@@ -118,15 +118,14 @@ class dp_model extends Database{
         }
     }
 
-    public function deleteOrder($order_id){
-        $data=['Order_ID'=>$order_id];
-
-        if($this->Delete("orders",$data)){
-        return true;
-    }else{
-        return false;
+    public function updateOrderStatusDispatched($data, $order_id){
+        if($this->Update("orders", $data, ['Order_ID' => $order_id])){
+            return true;
+        }else{
+            return false;
+        }
     }
-    }
+    
 
 
 }
