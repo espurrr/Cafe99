@@ -117,7 +117,7 @@
                     <div class="post">
                         <div class="top">
                             <div class="img">
-                                <i class="fa fa-user-circle" aria-hidden="true" style="font-size:35px"></i>
+                                <i class="fa fa-user-circle" aria-hidden="true"></i>
                             </div>
                             <div class="name">
                                 <strong><a href="#" class="text-name"><?php echo $row->User_name;?></a></strong>

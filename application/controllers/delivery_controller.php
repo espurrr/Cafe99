@@ -27,11 +27,11 @@ class Delivery_Controller extends JB_Controller{
             $result = $this->model->display_neworders($order_data);
 
             if($result === "Order_not_found"){
-                $this->set_flash("noNewOrderError", "No new orders at the moment. Please try again later.");
+                $this->set_flash("noNewOrderError", "No new orders at the moment.");
                 $this->index("");
                 //echo"dberror";
             }else if($result === "Order_not_retrieved"){
-                $this->set_flash("databaseError", "No New orders at the moment.");
+                $this->set_flash("databaseError", "No New orders at the moment.  Please try again later.");
 
             }else if($result['status'] === "success"){
                 // print_r($result['data']);
@@ -55,11 +55,11 @@ class Delivery_Controller extends JB_Controller{
             $result = $this->model->display_ondelivery($order_data);
 
             if($result === "Order_not_found"){
-                $this->set_flash("noOndeliveryOrderError", "No ondelivery orders at the moment. Please try again later.");
+                $this->set_flash("noOndeliveryOrderError", "No ondelivery orders at the moment.");
                 $this->ondelivery("");
                 //echo"dberror";
             }else if($result === "Order_not_retrieved"){
-                $this->set_flash("databaseError", "No ondelivery orders at the moment.");
+                $this->set_flash("databaseError", "No ondelivery orders at the moment.  Please try again later.");
 
             }else if($result['status'] === "success"){
                 // print_r($result['data']);
@@ -79,11 +79,11 @@ class Delivery_Controller extends JB_Controller{
         $result = $this->model->display_dispatched($order_data);
 
         if($result === "Order_not_found"){
-            $this->set_flash("noDispatchedOrderError", "No dispatched orders at the moment. Please try again later.");
+            $this->set_flash("noDispatchedOrderError", "No dispatched orders at the moment.");
             $this->dispatched("");
             //echo"dberror";
         }else if($result === "Order_not_retrieved"){
-            $this->set_flash("databaseError", "No dipatched orders at the moment.");
+            $this->set_flash("databaseError", "No dipatched orders at the moment.  Please try again later.");
 
         }else if($result['status'] === "success"){
             // print_r($result['data']);

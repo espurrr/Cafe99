@@ -51,7 +51,11 @@ body{
 }
 
 }   
-    
+
+.newsfeed-wrapper .img i{
+    font-size: 25px;
+}
+ 
     
 .Dp-content .page-title{
     text-align: center;
@@ -94,23 +98,24 @@ body{
 }
 .dashboard .post {
   background-color: #fff;
-  padding:25px 14px 14px 20px;
+  padding:25px 14px 14px 14px;
   width: 100%;
 }
 .dashboard .post .text_title{
   width: 90%;
-  margin-left: 47px;
-  font-size: 20px;
+  margin-left: 36px;
+  font-size: 15px;
   font-weight: 600;
-  padding: 0 0 20px 0;
+  padding: 0 15px 20px 0;
 }
 .dashboard .post .text-message{
   width: 90%;
-  margin-left: 47px;
-  font-size: 15px;
+  margin-left: 36px;
+  font-size: 12px;
   font-weight: 400;
   word-wrap:break-word;
   color: #444;
+  padding-right: 20px;
 
 }
 
@@ -149,6 +154,7 @@ body{
   color: #41b060;
   padding-top: 8px;
   user-select: none;
+  font-size: 11px;
 }
 #download .post .top .img {
 	float: left;
@@ -156,17 +162,13 @@ body{
     
 }
 
-#download .post .top .name a {
-	color: #3b5998;
-	font-size: 14px;
-}
 #download .post .top .name span {
 	color: #9197a3;
-	font-size: 14px;
+	font-size: 11px;
 }
 #download .post .top .text-name {
 	color: #3b5998 !important;
-	font-size: 14px;
+	font-size: 12px;
 }
 #download .post .top .name .date {
 	color: #9197a3;
