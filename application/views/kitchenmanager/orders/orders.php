@@ -82,7 +82,7 @@
         foreach($concat_data as $order_id => $values){
             $concat_data[$order_id] = rtrim($concat_data[$order_id],",");
         }
-        //print_r($special_notes);
+        // print_r($special_notes);
 
         foreach($dp_data as $row){
             $dp_ids_names .= $row->User_ID."-".$row->User_name.",";
@@ -110,7 +110,7 @@
                 <td ><div class="cell-desc"><?php echo $values ?></div></td>
                 <td>
                     <div class="btn-container">
-                        <button class="first-btn btn" onclick='showModal(<?php echo $order_id; ?>,<?php echo json_encode($special_notes[$order_id]); ?> ,<?php echo json_encode($values); ?>);'>View</button>
+                        <button class="first-btn btn" onclick='showModal(<?php echo $order_id ?>, <?php echo json_encode($special_notes[$order_id]) ?>, <?php echo json_encode($values) ?>)'>View</button>
                         <?php echo form_open("km_controller/updateOrderStatus","POST");?>
                         <button class="second-btn btn" name="onqueue" value="<?php echo $order_id;?>">Take In</button>
                         <?php echo form_close();?>

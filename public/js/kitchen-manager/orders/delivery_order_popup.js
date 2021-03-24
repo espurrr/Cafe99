@@ -1,13 +1,13 @@
-var popup_win = document.getElementById("del-popup-window");
-var win_content_wrapper = document.getElementById("del-win-content-wrapper");
-var close_btn = document.getElementById("del-close-btn");
+var del_popup_win = document.getElementById("del-popup-window");
+var del_win_content_wrapper = document.getElementById("del-win-content-wrapper");
+var del_close_btn = document.getElementById("del-close-btn");
 
 function showDelOrderModal(order_id, del_persons) {
     // order_id=12;
     // del_persons = "12-www,15-yyy,21-ppp";
     del_persons = del_persons.split(",");
 
-    popup_win.style.display = "block";
+    del_popup_win.style.display = "block";
     var form = "";
     var i, temp;
 
@@ -31,11 +31,14 @@ function showDelOrderModal(order_id, del_persons) {
 
 }
 
-close_btn.onclick = function() {
-    popup_win.style.display = "none";
+del_close_btn.onclick = function() {
+    del_popup_win.style.display = "none";
 }
 
 window.onclick = function(event) {
+    if (event.target == del_win_content_wrapper) {
+        del_popup_win.style.display = "none";
+    }
     if (event.target == win_content_wrapper) {
         popup_win.style.display = "none";
     }

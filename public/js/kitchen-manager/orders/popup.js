@@ -4,6 +4,7 @@ var close_btn = document.getElementById("close-btn");
 
 function showModal(id, special_note, food_str) { //coconut-2,tea-4,pizza-1
     popup_win.style.display = "block";
+    // alert("In showModal()");
 
     food_arr = food_str.split(",");
     var table = "";
@@ -32,8 +33,9 @@ close_btn.onclick = function() {
     popup_win.style.display = "none";
 }
 
-window.onclick = function(event) {
-    if (event.target == win_content_wrapper) {
-        popup_win.style.display = "none";
-    }
-}
+// This part is included in delivery_order_popup.js, window.onclick function
+// window.onclick = function(event) { 
+//     if (event.target == win_content_wrapper) {
+//         popup_win.style.display = "none";
+//     }
+// }
