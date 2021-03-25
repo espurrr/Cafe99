@@ -43,7 +43,20 @@ class Cashier_Controller extends JB_Controller{
 
     }
     public function newsfeed(){
-        $this->view('cashier/newsfeed/newsfeed');
+        $result = $this->model->getAnnouncement();
+        //$this->view('cashier/newsfeed/newsfeed');
+        if($result === "Announcement_not_retrieved"){
+            $this->set_flash("databaseError", "Sorry, cannot show Announcement at the moment. Please try again later.");
+            $this->view('cashier/newsfeed/newsfeed');
+            // echo"dberror";
+        }else if($result === "Announcement_not_found"){
+            $this->set_flash("noAnnouncementError", "There is no announcements at the moment");
+            $this->view('cashier/newsfeed/newsfeed');
+            // echo"noAnnouncement";
+        }else if($result['status'] === "success"){
+            $this->view('cashier/newsfeed/newsfeed', $result['data']);
+
+        }
     }
     public function orderfood(){
         $this->view('cashier/orderfood/orderfood');
