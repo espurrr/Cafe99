@@ -34,17 +34,19 @@
 
         public function getOrders(){
             $query = 
-            "SELECT orders.Order_ID, orders.Order_type, orders.Order_status, orders.Special_notes, cartitem.Quantity, fooditem.Food_name 
-            FROM orders INNER JOIN cartitem ON orders.Cart_ID = cartitem.Cart_id
-            INNER JOIN fooditem ON cartitem.Food_ID = fooditem.Food_ID";
+            "SELECT orders.Order_ID, orders.Order_type, orders.Order_status, orders.Special_notes, order_item.Quantity, 
+            fooditem.Food_name 
+            FROM orders INNER JOIN order_item ON orders.Order_ID = order_item.Order_id
+            INNER JOIN fooditem ON order_item.Food_ID = fooditem.Food_ID
+            WHERE orders.Order_type = 'dine-in' OR orders.Order_type = 'pick-up'";
 
             $result =$this->Query($query, $options = []);
 
             if($this->Count() > 0){
-                $food = $this->AllRecords();
-                //print_r($food);
-                if($food){
-                    return ['status'=>'success', 'data'=>$food];
+                $orders = $this->AllRecords();
+                // print_r($orders);
+                if($orders){
+                    return ['status'=>'success', 'data'=>$orders];
                 }else{
                     return "Order_not_retrieved";
                 }
@@ -70,6 +72,7 @@
             ORDER BY announcement.Announcement_date DESC)";
 
             $result = $this->Query($query, $options = []);
+
             if($this->Count() > 0){
                 $announcement = $this->AllRecords();
                 // print_r($announcement);

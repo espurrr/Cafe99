@@ -18,6 +18,6 @@
                 <li><?php echo anchor("cashier_controller/foodmenu", "Food Menu",['class'=>"normal"])?></li>
                 
             </ul>
-            <div class="logout-btn"><?php echo anchor("cashier_controller/logout", "Log Out",['class'=>"normal"])?></div>
+            <div><?php echo anchor("cashier_controller/logout", "Log Out",['class'=>"logout-btn normal"])?></div>
         </div>
     </div>

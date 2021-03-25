@@ -2,31 +2,38 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    /* margin: 0;
-    padding: 0; */
+    margin: 0;
+    padding: 0;
 }
 
 /* popup related */
 .popup-window {
-display: none; 
-position: fixed; 
-z-index: 1; 
-left: 0;
-top: 0;
-padding-top: 100px;
-width: 100%; 
-height: 100%;
-background-color: rgba(0,0,0,0.4); 
+    display: none; 
+    position: fixed; 
+    z-index: 10; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(0,0,0,0.4); 
+}
+.win-content-wrapper{
+    height: 100%;
+    width:100%;
+    position: relative;
 }
 
 .popup-window .win-content {
-background-color: #fefefe;
-margin: auto;
-padding: 20px;
-border: 1px solid #888;
-width: 60%;
-min-height: 60%;
-position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    min-height: 60%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 .popup-window .win-content p{
     padding-top:20px;
@@ -34,15 +41,41 @@ position: relative;
 }
 
 .popup-window .close-btn {
-color: #ccc;
-float: right;
-font-size: 30px;
+    color: #ccc;
+    float: right;
+    font-size: 30px;
 }
 
 .popup-window .close-btn:hover, .popup-window .close-btn:focus {
-color: #888;
-text-decoration: none;
-cursor: pointer;
+    color: #888;
+    text-decoration: none;
+    cursor: pointer;
+}
+.popup-window .orderNo{
+    padding: 5px 100px;
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.popup-window .special-note{
+    padding: 5px 100px;
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.popup-window .order-type{
+    padding: 5px 100px;
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.popup-window .fontWeight{
+    font-weight: 500;
+    display: inline-block;
 }
 
 /* Table */

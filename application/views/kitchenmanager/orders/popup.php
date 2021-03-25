@@ -4,6 +4,7 @@
             <span class="close-btn" id="close-btn"><i class="fas fa-times"></i></span>
             <div id="orderNo" class="orderNo"></div>
             <div id="special-note"class ="special-note"></div>
+            <div id="order-type"class ="order-type"></div>
             <div class="win-table" id="win-table">
                 
             </div>

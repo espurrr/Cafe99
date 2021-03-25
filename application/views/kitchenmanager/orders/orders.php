@@ -110,7 +110,7 @@
                 <td ><div class="cell-desc"><?php echo $values ?></div></td>
                 <td>
                     <div class="btn-container">
-                        <button class="first-btn btn" onclick='showModal(<?php echo $order_id ?>, <?php echo json_encode($special_notes[$order_id]) ?>, <?php echo json_encode($values) ?>)'>View</button>
+                        <button class="first-btn btn" onclick='showModal(<?php echo $order_id ?>, <?php echo json_encode($special_notes[$order_id]) ?>, <?php echo json_encode($values) ?>, <?php echo json_encode($order_types[$order_id]) ?>)'>View</button>
                         <?php echo form_open("km_controller/updateOrderStatus","POST");?>
                         <button class="second-btn btn" name="onqueue" value="<?php echo $order_id;?>">Take In</button>
                         <?php echo form_close();?>
@@ -146,7 +146,7 @@
                 <td ><div class="cell-desc"><?php echo $values ?></div></td>
                 <td>
                     <div class="btn-container">
-                        <button class="first-btn btn" onclick='showModal(<?php echo $order_id; ?>,<?php echo json_encode($special_notes[$order_id]); ?> ,<?php echo json_encode($values); ?>);'>View</button>                  
+                        <button class="first-btn btn" onclick='showModal(<?php echo $order_id; ?>,<?php echo json_encode($special_notes[$order_id]); ?> ,<?php echo json_encode($values); ?>, <?php echo json_encode($order_types[$order_id]) ?>);'>View</button>                  
                         <?php echo form_open("km_controller/updateOrderStatus","POST");?>
                         <button class="second-btn btn" name="processing" value="<?php echo $order_id;?>">Ready</button>
                         <?php echo form_close();?>
@@ -189,7 +189,7 @@
                 <td ><div class="cell-desc"><?php echo $values ?></div></td>
                 <td>
                     <div class="btn-container">
-                        <button class="first-btn btn" onclick='showModal(<?php echo $order_id; ?>,<?php echo json_encode($special_notes[$order_id]); ?> ,<?php echo json_encode($values); ?>);'>View</button>                  
+                        <button class="first-btn btn" onclick='showModal(<?php echo $order_id; ?>,<?php echo json_encode($special_notes[$order_id]); ?> ,<?php echo json_encode($values); ?>, <?php echo json_encode($order_types[$order_id]) ?>);'>View</button>                  
                         <?php 
                             if($order_types[$order_id] == "delivery"):
                                 include 'delivery_order_popup.php';
@@ -237,7 +237,7 @@
                 <td ><div class="cell-desc"><?php echo $values ?></div></td>
                 <td>
                     <div class="btn-container">
-                        <button class="first-btn btn" onclick='showModal(<?php echo $order_id; ?>,<?php echo json_encode($special_notes[$order_id]); ?> ,<?php echo json_encode($values); ?>);'>View</button>                                          
+                        <button class="first-btn btn" onclick='showModal(<?php echo $order_id; ?>,<?php echo json_encode($special_notes[$order_id]); ?> ,<?php echo json_encode($values); ?>, <?php echo json_encode($order_types[$order_id]) ?>);'>View</button>                                          
                         <?php echo form_open("km_controller/updateOrderStatus","POST");?>
                         <button class="second-btn btn" name="dispatched" value="<?php echo $order_id;?>">Remove</button>
                         <?php echo form_close();?>

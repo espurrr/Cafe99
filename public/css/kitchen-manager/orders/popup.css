@@ -64,6 +64,18 @@ body {
     margin-right: auto;
 }
 
+.popup-window .order-type{
+    padding: 5px 100px;
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.popup-window .fontWeight{
+    font-weight: 500;
+    display: inline-block;
+}
+
 /* Table */
 .popup-window .win-table {
     display: block;

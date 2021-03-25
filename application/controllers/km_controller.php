@@ -119,7 +119,7 @@ class KM_Controller extends JB_Controller{
             $this->view('kitchenmanager/newsfeed/newsfeed');
             // echo"dberror";
         }else if($result === "Announcement_not_found"){
-            $this->set_flash("noAnnouncementError", "Sorry, cannot show Announcement at the moment. Please try again later.");
+            $this->set_flash("noAnnouncementError", "There is no announcement at the moment.");
             $this->view('kitchenmanager/newsfeed/newsfeed');
             // echo"noAnnouncement";
         }else if($result['status'] === "success"){

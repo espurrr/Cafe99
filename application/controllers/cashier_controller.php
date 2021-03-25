@@ -22,12 +22,38 @@ class Cashier_Controller extends JB_Controller{
         $this->destroy_session();
         $this->view('login');
     }
-    public function orders(){
-        $this->view('cashier/orders/orders');
+    public function orders($status = "Onqueue"){
+        $result =  $this->model->getOrders();
+
+        if($result === "Order_not_retrieved"){
+            $this->set_flash("databaseError", "Sorry, cannot show orders at the moment. Please try again later.");
+            $this->view('cashier/orders/orders');
+            //echo"dberror";
+        }else if($result === "Order_not_found"){
+            $this->set_flash("noordersError", "Sorry, cannot show orders at the moment. Please try again later.");
+            $this->view('cashier/orders/orders');
+            //echo"nofood";
+        }else if($result['status'] === "success"){
+            //$this->view('cashier/orders/orders',$result['data']);
+            // print_r($result['data']);
+
+            $data = $result['data'];
+            // $this->view('cashier/orders/orders');
+
+            if(file_exists("../application/views/cashier/orders/orders.php")){
+                require_once "../application/views/cashier/orders/orders.php";
+            }else{
+                include "../application/views/error.php";
+                die();
+                // die("<div style='background-color:#f1f4f4;color:#afaaaa;border:1px dotted #afaaaa;padding:10px; border-radius:4px'>Sorry View <strong>".$view_name."</strong> is not found</div>");
+            }
+        }
     }
+
     // public function foodmenu(){
     //     $this->view('cashier/foodmenu/foodmenu');
     // }
+
     public function foodmenu(){
         $result =  $this->model->getFooditems();
 
