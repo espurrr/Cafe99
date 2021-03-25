@@ -36,32 +36,32 @@
             <span class="close-btn" id="close-btn"><i class="fas fa-times"></i></span>
             <p id="orderNo"></p>
             <div class="win-table">
-                <table>
+                <table id="orderItems">
                     <colgroup>
                         <col span="" class="col-food">
                         <col span="" class="col-quantity">
                     </colgroup>
-        
-                    <tr>
-                        <th>Food item</th>
-                        <th>Quantity</th>
-                    </tr>
-        
-                    <tr>
-                        <td>Tuna Sandwich</td>
-                        <td ><div class="quantity">2</div></td>
-                    </tr>
-                    <tr>
-                        <td>Iced Coffee</td>
-                        <td ><div class="quantity">1</div></td>
-                    </tr>
+                    <thead>
+                      <tr>
+                         <th>Food item</th>
+                         <th>Quantity</th>
+                      </tr>
+                    </thead>
+                    <tbody id="rows">
+                        <!-- items of the order will be filled in by JS script -->
+                    </tbody>
                 </table>
-                <p class="amount">Amount : LKR 680</p>
+                <p id="popup_amount">Amount : LKR 680</p>
 
                 <div class="popup-btn-container">
                     <!-- <button class="popup-btn btn av-btn" onclick="showModal(5019)">Check Availability</button> -->
-                    <small>The amount might be slightly changed due to variance of prices if any.</small>   <br>
-                    <button class="popup-btn tooltip btn order-now-btn" onclick="showModal(5019)">Order now! <span class="tooltiptext">Your order will be automatically made for you with the same payment method and info</span></button> 
+                    <small>*The amount might be changed slightly due to variance of prices if any</small>   
+                    <small>*The order recipient will be you</small> 
+                    <small>*The order time will be set to 30 mins past current time</small>    
+                    <small>*Payment should be done in cash</small>   
+                    <small>*All other order details will remain same</small>  
+                    <br>
+                    <button id="reorder_now" class="popup-btn tooltip btn order-now-btn" onclick="showModal(5019)">Order now! </button> 
                   </div>
             </div>
         </div>
@@ -92,8 +92,9 @@
       <td data-label="Order Status"><?php echo $row->Order_Status; ?></td>
       <td data-label="Amount">LKR &nbsp;<?php echo $row->Amount; ?></td>
       <td><div class="btn-container">
-      <button class="repeat-btn btn tooltip" onclick="showModal(<?php echo $row->Order_ID; ?>)">Re-order <span class="tooltiptext">Gets you to the repeat order window</span></button>
-        </div></td>
+      <button class="repeat-btn btn tooltip" onclick="showModal(<?php echo $row->Order_ID; ?>,<?php echo  htmlspecialchars(json_encode($row->Item_list)) ;?>,<?php echo $row->Amount; ?>)">Re-order<span class="tooltiptext">Gets you to the repeat order window</span></button>
+        <!-- Your HTML attribute value is delimited with " characters.The " in the data will cut off the attribute value.You need to encode your data (using htmlspecialchars) for embedding in HTML -->
+    </div></td>
     </tr>
 
   <?php
@@ -110,9 +111,8 @@
 </div> <!-- page-contianer ends-->
   <?php echo link_js("js/cust_reorder.js"); ?>
 
-  <script>
+  <!-- <script>
         var popup_win = document.getElementById("popup-window");
-        var view_btn = document.getElementById("view-btn");
         var close_btn = document.getElementById("close-btn");
 
         function showModal(id){
@@ -130,6 +130,6 @@
           }
         }
 
-  </script>
+  </script> -->
 </body>
 </html>

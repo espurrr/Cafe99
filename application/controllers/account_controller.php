@@ -60,14 +60,14 @@ class Account_controller extends JB_Controller{
                     $this->model->deleteUser($Token);
                     $this->set_flash("activationEmailError", "Something went wrong :( Please try again.");
                     //logs
-                    $this->notice("failed to send customer account activation mail; data deleted; @email = $Email_address");
+                    $this->informational("failed to send customer account activation mail; data deleted; @email = $Email_address");
                     $this->view('signup');
                 }              
                 
             }else{
                  $this->set_flash("signupError", "Something went wrong :( Please try again later.");
                   //logs
-                  $this->notice("failed to add new customer; @email = $Email_address");
+                  $this->informational("failed to add new customer; @email = $Email_address");
                  $this->view('signup');
             }
             
@@ -84,6 +84,7 @@ class Account_controller extends JB_Controller{
 
         $subject = "Confirm Your Email";
         $html_body = "<html><body style=\"font-family: sans-serif;\">
+        <h3> Hi $recipient_name,</h3>
         <p>You're just one step away..</p> 
         <a href=\"http://localhost/cafe99/account_controller/login/$token\" target=\"_blank\">
         <button style=\"border: none;
@@ -149,7 +150,7 @@ class Account_controller extends JB_Controller{
             }else if($result === "Password_not_matched"){
                 $this->set_flash("loginError", "Invalid login or password");
                 //logs
-                $this->notice("authentication failure: @email = $email, @ip = $ip");
+                $this->informational("authentication failure: @email = $email, @ip = $ip");
                 $this->login();
             }else if($result['status'] === "success"){
                 // echo "Login successssss! yay!";
@@ -359,7 +360,7 @@ class Account_controller extends JB_Controller{
                 $this->destroy_session();
                 //logs
                 $this->informational("reset pw session closed for user $user_id");
-                $this->notice("password reset attempt; successful @email = $Email_address");
+                $this->informational("password reset attempt; successful @email = $Email_address");
                 $this->set_flash("passwordResetSuccess", "You have successfully changed your password. Login now!");
                 
                 $this->view('login');               

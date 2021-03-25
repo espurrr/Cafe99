@@ -369,6 +369,112 @@ class Customer_model extends Database{
 
     }
 
+    public function  getOrderItemsforMyOrders($order_id){
+      
+        $query = 
+        "SELECT fooditem.Food_name, order_item.Quantity
+        FROM order_item
+        INNER JOIN fooditem ON order_item.Food_ID = fooditem.Food_ID
+        WHERE order_item.Order_ID='".$order_id."' ";
+        
+        $result =$this->Query($query, $options = []);
+              
+
+            if($this->Count() > 0){
+                $order_items = $this->AllRecords();
+                //print_r($order_items);
+                return ['status'=>'success', 'data'=>$order_items];
+            }else{
+                return "order_items_not_found";
+            }
+
+
+    }
+
+    public function  getQtywithItemCount_reorder($order_id){
+      
+        $query = 
+        "SELECT order_item.Quantity AS Quantity , fooditem.Current_count AS Current_count,
+        FROM order_item
+        INNER JOIN fooditem ON order_item.Food_ID = fooditem.Food_ID
+        WHERE order_item.Order_ID='".$order_id."' ";
+        
+        $result =$this->Query($query, $options = []);
+
+            if($this->Count() > 0){
+                $order_items = $this->AllRecords();
+                //print_r($order_items);
+                return ['status'=>'success', 'data'=>$order_items];
+            }else{
+                return "order_items_not_found";
+            }
+
+
+    }
+
+    public function getOrderDetails($order_id){
+
+        if($this->Select_Where("orders", ['Order_ID' => $order_id])){
+
+            if($this->Count() > 0){
+                $row = $this->Row();
+                return $row;
+            }else{
+                return "order_not_found";
+            }
+
+        }
+    }
+
+    public function createReorder($data, $old_order_id){
+        echo "shere";
+        $new_order_ID = $this->InsertAndReturnID("orders", $data);
+        if(!$new_order_ID){ //order creation failed
+            return false;
+        }
+        //now the inital reorder is created
+        //order items should be created with current pricing protocol
+        $query = 
+        "SELECT order_item.Food_ID as Food_ID, order_item.Quantity AS Quantity, fooditem.Unit_price AS Price
+        FROM order_item
+        INNER JOIN fooditem ON order_item.Food_ID = fooditem.Food_ID
+        WHERE order_item.Order_ID='".$old_order_id."' ";
+        
+        $result =$this->Query($query, $options = []);
+
+            if($this->Count() > 0){
+                $order_items = $this->AllRecords();
+                //print_r($order_items);
+                $total_price = 0; //variable to sum subtotals
+
+                foreach($order_items as $row){
+                    $total_price += $row->Quantity * $row->Price; //sum subtotals
+                    $orderitem_data = [
+                        'Order_ID' => $new_order_ID,
+                        'Food_ID' => $row->Food_ID,
+                        'Quantity' => $row->Quantity,
+                        'Price' => $row->Price,
+                        'Food_Discount' => 0    //no food discount when reordering
+                    ];
+                    //insert each order item
+                    $this->Insert("order_item", $orderitem_data);
+                }
+
+                $service_charge = $total_price * 0.05;
+
+                //update order table with total price, service charge
+                if($this->Update("orders", ['Total_price'=>$total_price, 'Service_charge'=>$service_charge],['Order_ID' => $new_order_ID])){
+                    return true;
+                }else{
+                    return "tot_sercharge_not_updated";
+                }
+               
+            }else{
+                return "order_items_not_found";
+            }
+
+    }
+
 
 
 }

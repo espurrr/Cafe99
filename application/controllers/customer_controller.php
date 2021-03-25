@@ -698,6 +698,16 @@ class Customer_controller extends JB_Controller{
                 else if($o_status =="delivery_dispatched"){
                     $order_status = "Delivered";
                 }
+                //order completed
+                else if($o_status =="done" and $o_type == "dine-in"){
+                    $order_status = "Served";
+                }
+                else if($o_status =="done" and $o_type == "pick-up"){
+                    $order_status = "Picked up";
+                }
+                else if($o_status =="done" and $o_type == "delivery" ){
+                    $order_status = "Delivered";
+                }
 
                 //Payment method
                 if($p_method == "cash"){
@@ -708,22 +718,25 @@ class Customer_controller extends JB_Controller{
 
                 //prepare the amount to print
                 $amount =  $order->Total_price;
-                $amount = number_format($amount, 2, ".", ",");
+                $amount = number_format($amount, 2, ".", "");
           
+                $order_items = $this->model->getOrderItemsforMyOrders($order->Order_ID);
+                $order_item_list = $order_items['data'];
                 //one order row
                 $order_row = [
                     "Order_ID" => $order->Order_ID,
                     "Date" =>  $only_date,
                     "Payment_Method" => $payment_method,
                     "Order_Status" => $order_status,
-                    "Amount" => $amount
+                    "Amount" => $amount,
+                    "Item_list" => $order_item_list
                 ];
 
                 //append order_row array to the order_list after converting it to stdObj
                 array_push($order_list, (object)$order_row);
 
             }
-
+            //print_r($order_list);
             $this->view('customer/cust-myorders',$order_list);
         }
 
@@ -1013,4 +1026,66 @@ class Customer_controller extends JB_Controller{
         } 
         else return FALSE;
     }
+    
+    public function reorder_checkFoodItemAvailability($order_id){
+
+        //get order items from order_items and fooditem tables (ordered qty, food item_count)
+        $food_items_and_qty = $this->model->getQtywithItemCount_reorder($order_id);
+        if($food_items_and_qty['status'] === "success"){
+            echo "checkavail";
+            foreach($food_items_and_qty['data'] as $item){
+                if($item->Quantity >= $item->Current_count){
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
+
+    public function reorderSubmit($order_id){
+
+        if(!$this->reorder_checkFoodItemAvailability($order_id)){
+            // $this->set_flash("ItemsNotSufficient", "Sorry, some of the items you tried to reorder are not available right now");
+             echo "not suff";
+            // $this->view('customer/cust-myorders');
+        }else{
+            echo " suff";
+            $user_id = $this->get_session('user_id');
+            date_default_timezone_set('Asia/Colombo');
+            $order_data = $this->model->getOrderDetails($order_id);
+
+            //order time is due, current time + 30 mins
+            $current_time =  strtotime(date('H:i'));
+            $order_time = strtotime(date('H:i', strtotime('+30 minutes',$current_time)));
+               
+            $data = [
+                'Order_Date_Time' => date("Y-m-d ". $order_time), //combined order time with current date 
+                'Item_count' => $order_data->Item_count,
+                'Total_price' => 0, //temp set to zero, cause prices might have changed 
+                'Service_charge' => 0, //temp set to zero
+                'Special_notes' => $order_data->Special_notes,
+                'Payment_method' => "cash",     //reordering is only for cash 
+                'Order_type' => $order_data->Payment_method,
+                'Delivery_Address' => $order_data->Payment_method,
+                'Order_is_for_me' => 1, //reordering is only for self
+                'User_ID' => $order_data->User_ID,
+            ];
+            
+            //make a new order with current prices for the food items
+            $result_data = $this->model->createReorder($data, $order_id);
+            // $this->invoiceEmail($result_data['orderID'], $data);
+            //logs
+            
+            // if($result_data['newCartID']){
+            //     //order success
+            //     $this->view('customer/cust-isorderplaced',$result_data);    /////////////////////////////////////payment successs page
+            // }
+
+        }    
+
+    }
+
+  
+
 }

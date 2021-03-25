@@ -35,7 +35,7 @@
     }
 }
 
-.popup-window .win-content .amount {
+.popup-window .win-content #popup_amount {
     text-align: center;
     padding: 20px;
 }
@@ -162,7 +162,7 @@
 
 @media (max-width:600px) {
     .popup-window table,
-    .popup-window .amount {
+    .popup-window #popup_amount {
         font-size: 15px;
     }
     .popup-btn-container {
