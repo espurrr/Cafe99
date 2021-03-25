@@ -45,7 +45,7 @@
 
         
 </head>
-<body style="background: #FAD74E url(<?php echo BASE_URL;?>/public/images/texture.png) repeat;">
+<body style="background: #FAD74E url(<?php echo BASE_URL;?>/public/images/texture.png) repeat;" onload="avColorChange()">
 <?php  if ($this->get_session('logged')){
           include '../application/views/header/cust-logged-in-header.php';
     }else{
@@ -102,7 +102,7 @@
             <img src="<?php echo $img_path; ?>" alt="Food Item"/>
         </div>
         <div class="container__text">
-            <div class="availability"><p><?php echo ucfirst($data['data'][0]->Availability); ?></p></div>
+            <div class="availability" id="availability"><p><?php echo ucfirst($data['data'][0]->Availability); ?></p></div>
             
             <h1><?php echo $data['data'][0]->Food_name; ?></h1>
             <div class="des"><?php echo $data['data'][0]->Description; ?></div>
@@ -114,7 +114,8 @@
             </div>
             <div class="btn-container">
                 <button href="#" class="fav btn"><i class="fas fa-heart"></i></button>
-                <button 
+                
+                <button id="add_to_cart_btn"
                 class="cart btn shoppingcartbtn" 
                 data-id="<?php echo $data['data'][0]->Food_ID;?>"
                 data-name="<?php echo $data['data'][0]->Food_name;?>"
@@ -128,6 +129,16 @@
     <?php //include '../application/views/footer/footer_2.php';?>
     <?php echo link_js("js/cust_addtocart.js"); ?>
     <?php echo link_js("js/cust_searchbar.js"); ?>
-
+        <script>
+            function avColorChange(){
+                var av_btn = document.getElementById("availability");
+                if(av_btn.textContent == "Available"){
+                    av_btn.classList.add("av-color");
+                }else{
+                    av_btn.classList.add("unav-color");
+                    document.getElementById("add_to_cart_btn").disabled = true;
+                }
+            }
+        </script>
 </body>
 </html>

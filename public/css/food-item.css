@@ -4,6 +4,7 @@
 :root {
     --dark-yellow: #fbdd3f;
     --availability: #03ae9a;
+    --unavailability: #FF5A79;
     --cart-color: #0bce83;
     --bg-texture: #fad74e url(../img/texture.png) repeat;
 }
@@ -198,9 +199,18 @@ ul.breadcrumb li a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--availability);
     color: #fff;
     box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+.food_item_container .container__text .av-color {
+    background-color: var(--availability);
+
+}
+
+.food_item_container .container__text .unav-color {
+    background-color: var(--unavailability);
+    
 }
 
 @media (min-width: 700px) and (max-width: 1000px) {
