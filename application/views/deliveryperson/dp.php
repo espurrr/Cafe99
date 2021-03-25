@@ -17,11 +17,11 @@
  </head>
 
    
-<body>
+<body style="background: #FAD74E url(<?php echo BASE_URL;?>/public/images/texture.png) repeat;">
  
   <input type="checkbox" id="menu">
 
-  <nav>
+  <nav style="background: #FAD74E url(<?php echo BASE_URL;?>/public/images/texture.png) repeat;">
 
   <div class="header" style="height:2px;">
  <!-- <p>Dashboard</p>-->
@@ -58,7 +58,7 @@
 
   </div>
   <div class="newsfeed-wrapper">
-  <div  class="Dp-content">
+  <div  class="Dp-content" style="background: #FAD74E url(<?php echo BASE_URL;?>/public/images/texture.png) repeat;">
   <div class="content">
       <h2 class="page-title">News</h2>
    <!--   <div class="dashboard" id="download">

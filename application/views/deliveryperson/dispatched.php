@@ -16,12 +16,12 @@
  </head>
 
    
-<body>
+<body style="background: #FAD74E url(<?php echo BASE_URL;?>/public/images/texture.png) repeat;">
   <?php include 'del_order_popup.php';?>
  
   <input type="checkbox" id="menu">
 
-  <nav>
+  <nav style="background: #FAD74E url(<?php echo BASE_URL;?>/public/images/texture.png) repeat;">
   <div class="header" style="height:2px;">
  <!-- <p>Dashboard</p>-->
   <img class="logo" id="mlogo" src="<?php echo BASE_URL?>/public/images/logo.png" style="height:58px;">
