@@ -276,8 +276,8 @@ class Customer_model extends Database{
         // echo "old cart items deleted";
         //if the order is for someone else -> 0
         //the other recipient table should be modified with the order_id
-        if(!$data['Order_is_for_me']){
-            $this->Update("other_recipient", ['Order_ID' => $Order_ID , 'Cart_ID' => NULL],['Cart_ID' => $cart_id]);
+        if($data['Order_is_for_me']==0){
+            $this->Update("other_recipient", ['Order_ID' => $Order_ID ],['Cart_ID' => $cart_id]);
         }
         //delete cart
         $this->Delete("cart", ['Cart_id' => $cart_id]);
@@ -423,6 +423,17 @@ class Customer_model extends Database{
                 return "order_not_found";
             }
 
+        }
+    }
+
+    public function getOtherRecipient($order_id){
+        
+        if($this->Select_Where("other_recipient", ['Order_ID' => $order_id])){
+            if($this->Count() > 0){
+                $row = $this->Row();                   
+                return $row->Name;
+                
+            }
         }
     }
 

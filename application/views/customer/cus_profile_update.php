@@ -37,9 +37,6 @@
         <p type="Name">  <?php echo form_input(['type'=>'text', 'name'=>'User_name', 'value'=>$data->User_name])?></p>
         <p type="Email">  <?php echo form_input(['type'=>'email', 'name'=>'Email_address', 'value'=>$data->Email_address, 'placeholder'=>$data->Email_address,'readonly'=>'readonly'])?></p>
         <p type="Phone number"><?php echo form_input(['type'=>'tel', 'name'=>'Phone_no', 'value'=>$data->Phone_no ,'placeholder'=> $data->Phone_no])?></p>
-        <p type="Address Line 1"><?php echo form_input(['type'=>'text', 'name'=>'AddressLine1', 'value'=>$data->AddressLine1, 'placeholder'=> $data->AddressLine1])?></p>
-        <p type="Address Line 2"><?php echo form_input(['type'=>'text', 'name'=>'AddressLine2', 'value'=>$data->AddressLine2, 'placeholder'=> $data->AddressLine2])?></p>
-        <p type="City"><?php echo form_input(['type'=>'text', 'name'=>'City', 'value'=>$data->City, 'placeholder'=> $data->City])?></p>
         <br><input type="submit" class="save_changes" value="SAVE CHANGES">
       </div>
 

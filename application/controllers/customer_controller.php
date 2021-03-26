@@ -76,25 +76,16 @@ class Customer_controller extends JB_Controller{
         
         $this->validation('User_name', 'Name' , 'required|not_int|max_len|50');
         $this->validation('Phone_no','Phone number', 'required|int|len|10');
-        $this->validation('AddressLine1','Address Line 1', '');
-        $this->validation('AddressLine2','Address Line 2', '');
-        $this->validation('City','City', '');
   
         if($this->run()){
             // echo "Form is submitted";
          
             $User_name = $this->post('User_name');
             $Phone_no = $this->post('Phone_no');
-            $AddressLine1 = $this->post('AddressLine1');
-            $AddressLine2 = $this->post('AddressLine2');
-            $City = $this->post('City');
-
+        
             $data = [
                 'User_name' => $User_name,
                 'Phone_no' => $Phone_no,
-                'AddressLine1' => $AddressLine1,
-                'AddressLine2' => $AddressLine2,
-                'City' => $City
             ];
             // print_r($data);
 
@@ -400,6 +391,8 @@ class Customer_controller extends JB_Controller{
             }else{
                 // make a new receipient in table
                 $this->model->createOtherRecipient($user_id, $cart_id, $rec_name, $rec_phone);
+                //set session order is not for me
+                $_SESSION['order_is_for_me'] = 0;
             }
             
 
@@ -457,55 +450,66 @@ class Customer_controller extends JB_Controller{
         $user_id = $this->get_session('user_id');
         $cart_id = $this->get_session('cart_id');
         date_default_timezone_set('Asia/Colombo');
+        $ip = $_SERVER['SERVER_ADDR'];
 
         $payment_type = $this->post('pay_option');// if this arrives here, must be cash
 
         //get cart data
         $cart_data = $this->model->get_cart_data($cart_id);
-        
-        if($cart_data['status'] === "success"){
+
+        //A possible attempt to form resubmission
+        if($cart_data['data']->Item_count==0){
+            //logs
+            $this->warning("possible form resubmission (create order): @user = $user_id, @ip = $ip");
+            $this->set_flash("OrderFormResubmission", "Opps! Sorry, You cannot resubmit the form");
+            $this->view('customer/cust-cart');
+
+        }else{
+            if($cart_data['status'] === "success"){
    
-            $data = [
-                'Order_Date_Time' => date($cart_data['data']->Service_date ." ". $cart_data['data']->Service_time), //combined serve date and time
-                'Item_count' => $cart_data['data']->Item_count,
-                'Total_price' => $cart_data['data']->Sub_total + $cart_data['data']->Sub_total*0.05, //including service charge, disregarded discounts here...
-                'Service_charge' => $cart_data['data']->Sub_total*0.05, //service charge is 5%
-                'Special_notes' => $cart_data['data']->Special_notes,
-                'Payment_method' => $payment_type,     //payement method from local variable
-                'Order_type' => $cart_data['data']->Order_type,
-                'Delivery_Address' => $cart_data['data']->Service_address,
-                'Order_is_for_me' => $cart_data['data']->Order_is_for_me,
-                'User_ID' => $cart_data['data']->User_ID,
-            ];
-
-            if($payment_type=="cash"){
-                //make a new order
-                $result_data = $this->model->createNewOrder($data, $cart_id);
-                   //header cart count flag sets to zero
-                $_SESSION['cart_item_count'] = 0;
-                //cart sub total flag sets to zero
-                $_SESSION['cart_sub_total'] = 0;
-                //cart special notes flag sets to zero
-                $_SESSION['cart_special_notes'] = "";
-                //order for whome flag sets to zero
-                $_SESSION['order_is_for_me'] = 1;
-                //header cart count flag sets to zero
-                $_SESSION['cart_id'] = $result_data['newCartID'];
-                
-                $result_data['Status'] = 'success';
-
-                $this->invoiceEmail($result_data['orderID'], $data);
-                    //logs
-                   
-                if($result_data['newCartID']){
-                    //order success
-                    $this->view('customer/cust-isorderplaced',$result_data);    /////////////////////////////////////payment successs page
-                }
+                $data = [
+                    'Order_Date_Time' => date($cart_data['data']->Service_date ." ". $cart_data['data']->Service_time), //combined serve date and time
+                    'Item_count' => $cart_data['data']->Item_count,
+                    'Total_price' => $cart_data['data']->Sub_total + $cart_data['data']->Sub_total*0.05, //including service charge, disregarded discounts here...
+                    'Service_charge' => $cart_data['data']->Sub_total*0.05, //service charge is 5%
+                    'Special_notes' => $cart_data['data']->Special_notes,
+                    'Payment_method' => $payment_type,     //payement method from local variable
+                    'Order_type' => $cart_data['data']->Order_type,
+                    'Delivery_Address' => $cart_data['data']->Service_address,
+                    'Order_is_for_me' => $cart_data['data']->Order_is_for_me,
+                    'User_ID' => $cart_data['data']->User_ID,
+                ];
     
-            }        
-           
-
+                if($payment_type=="cash"){
+                    //make a new order
+                    $result_data = $this->model->createNewOrder($data, $cart_id);
+                       //header cart count flag sets to zero
+                    $_SESSION['cart_item_count'] = 0;
+                    //cart sub total flag sets to zero
+                    $_SESSION['cart_sub_total'] = 0;
+                    //cart special notes flag sets to zero
+                    $_SESSION['cart_special_notes'] = "";
+                    //order for whome flag sets to zero
+                    $_SESSION['order_is_for_me'] = 1;
+                    //header cart count flag sets to zero
+                    $_SESSION['cart_id'] = $result_data['newCartID'];
+                    
+                    $result_data['Status'] = 'success';
+    
+                    $this->invoiceEmail($result_data['orderID'], $data);
+                        //logs
+                       
+                    if($result_data['newCartID']){
+                        //order success
+                        $this->view('customer/cust-isorderplaced',$result_data);    /////////////////////////////////////payment successs page
+                    }
+        
+                }        
+               
+            }
         }
+        
+        
     
     }
 
@@ -749,17 +753,21 @@ class Customer_controller extends JB_Controller{
         $mailer = new JB_Mailer(true);
         // echo "in activationEmail ";
         $payment_method = $data_order['Payment_method'];
+        $order_type = $data_order['Order_type'];
+        $delivery_address = $data_order['Delivery_Address'];
         $item_count = $data_order['Item_count'];
         $order_item_list = $this->model->getOrderItems($order_id);
         $total_amount = $data_order['Total_price'];
         $service_charge = $data_order['Service_charge'];
         $recipient_name = $this->get_session('user_name');
+        $isOrderforMe = $data_order['Order_is_for_me'];
         //get recipient email address
         $recipient_email = $this->model->getEmail($this->get_session('user_id'));
 
         date_default_timezone_set('Asia/Colombo');
         $dateOfOrder = date("Y.m.d");
-        $subject = "Your Order #$order_id is placed";
+        
+        $subject = "Your $order_type order #$order_id is placed";
 
         $email_head = "<html>
         <head>
@@ -1005,18 +1013,32 @@ class Customer_controller extends JB_Controller{
                 <td width=\"80%\" class=\"purchase_item\"><span class=\"f-fallback\">Service Charges(5%)</span></td>
                 <td class=\"align-right\" width=\"20%\" class=\"purchase_item\"><span class=\"f-fallback\">$service_charge</span></td>
                 </tr>";
-        $email_footer = "
+        $total_row = "
         <tr>
             <td width=\"80%\" class=\"purchase_footer\" valign=\"middle\">
                 <p class=\"f-fallback purchase_total purchase_total--label\">Total</p>
             </td>
             <td width=\"20%\" class=\"purchase_footer\" valign=\"middle\">
-                <p class=\"f-fallback purchase_total\">$total_amount</p>
-            </td></tr></table></td></tr></table>
+                <p class=\"f-fallback purchase_total\">LKR $total_amount</p>
+            </td></tr></table></td></tr></table>";
+        
+        $extra_rows = "";
+
+        if($order_type=="delivery"){
+            $delivery_address = str_replace('$', ',', $delivery_address);
+            $extra_rows .= "<p> Delivery address : $delivery_address </p>";
+        }
+        if(!$isOrderforMe){
+            //get recipient info name, phone no
+            $other_recipient = $this->model->getOtherRecipient($order_id);
+            $extra_rows .= "<p> Recipient name : $other_recipient </p>";
+        }
+        
+        $email_footer ="
         <p>If you have any questions about this invoice, simply reply to this email or reach out to our <a href=\"mailto:cafe99.teamdashcode@gmail.com\">support team</a> for help.</p>
         <p>Cheers,<br>Team Cafe99.</p></div></td></tr></table></td></tr></table></td></tr></table></body></html>
         ";
-        $html_body = $email_head . $email_body . $order_item_records . $service_charge_row . $email_footer ;
+        $html_body = $email_head . $email_body . $order_item_records . $service_charge_row .  $total_row . $extra_rows  . $email_footer ;
 
         $send = $mailer->sendEmail($recipient_email, $recipient_name, $subject, $html_body, "");//
 
