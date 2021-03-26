@@ -50,7 +50,7 @@ $("#reorder_now").click(function() {
 
         success: function() {
             popup_win.style.display = "none";
-            //location.reload(true);
+            location.reload(true);
             // $(".food_menu_wrapper").load(location.href + " .food_menu_wrapper");
             // tried using this, just to reload the food_menu_wrapper component..
             // but the content position changed.. so went with reloading the whole page :)

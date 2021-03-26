@@ -1028,15 +1028,13 @@ class Customer_controller extends JB_Controller{
     }
 
     public function reorder_checkFoodItemAvailability($order_id){
-        $this->debug("gonna re order");
         //get order items from order_items and fooditem tables (ordered qty, food item_count)
         $food_items_and_qty = $this->model->getQtywithItemCount_reorder($order_id);
-        $this->debug($food_items_and_qty, $order_id);
+        // $this->debug($food_items_and_qty, $order_id);
         if($food_items_and_qty['status'] === "success"){
-            $this->debug("items are available");
+
             foreach($food_items_and_qty['data'] as $item){
                 if($item->Quantity >= $item->Current_count){
-                    $this->debug($item->Quantity,$item->Current_count,"scarcity");
                     return false;
                 }
             }
@@ -1059,7 +1057,6 @@ class Customer_controller extends JB_Controller{
             //order time is due, current time + 30 mins
             $current_time =  strtotime(date('H:i'));
             $order_time = date('H:i', strtotime('+30 minutes',$current_time));
-            $this->debug($order_time);
             $data = [
                 'Order_Date_Time' => date("Y-m-d ". $order_time), //combined order time with current date 
                 'Item_count' => $order_data->Item_count,
@@ -1080,6 +1077,7 @@ class Customer_controller extends JB_Controller{
             $this->invoiceEmail($result_data['Order_ID'], $data);
             //logs
             
+
             if($result_data['Order_ID']){
                 //order success
                 $this->view('customer/cust-isorderplaced',$result_data);    /////////////////////////////////////payment successs page
