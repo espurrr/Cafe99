@@ -61,7 +61,7 @@
                     <small>*Payment should be done in cash</small>   
                     <small>*All other order details will remain same</small>  
                     <br>
-                    <button id="reorder_now" class="popup-btn tooltip btn order-now-btn" onclick="showModal(5019)">Order now! </button> 
+                    <button id="reorder_now" class="popup-btn tooltip btn order-now-btn" >Order now! </button> 
                   </div>
             </div>
         </div>

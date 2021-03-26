@@ -394,7 +394,7 @@ class Customer_model extends Database{
     public function  getQtywithItemCount_reorder($order_id){
       
         $query = 
-        "SELECT order_item.Quantity AS Quantity , fooditem.Current_count AS Current_count,
+        "SELECT order_item.Quantity AS Quantity , fooditem.Current_count AS Current_count
         FROM order_item
         INNER JOIN fooditem ON order_item.Food_ID = fooditem.Food_ID
         WHERE order_item.Order_ID='".$order_id."' ";
@@ -427,7 +427,7 @@ class Customer_model extends Database{
     }
 
     public function createReorder($data, $old_order_id){
-        echo "shere";
+       
         $new_order_ID = $this->InsertAndReturnID("orders", $data);
         if(!$new_order_ID){ //order creation failed
             return false;
@@ -463,8 +463,13 @@ class Customer_model extends Database{
                 $service_charge = $total_price * 0.05;
 
                 //update order table with total price, service charge
-                if($this->Update("orders", ['Total_price'=>$total_price, 'Service_charge'=>$service_charge],['Order_ID' => $new_order_ID])){
-                    return true;
+                if($this->Update("orders", ['Total_price'=>$total_price+$service_charge, 'Service_charge'=>$service_charge],['Order_ID' => $new_order_ID])){
+                    $result_data = [
+                        'Order_ID' => $new_order_ID,
+                        'Total_price'=>$total_price+$service_charge,
+                        'Service_charge'=>$service_charge
+                    ];
+                    return $result_data;
                 }else{
                     return "tot_sercharge_not_updated";
                 }

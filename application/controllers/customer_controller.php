@@ -1026,15 +1026,17 @@ class Customer_controller extends JB_Controller{
         } 
         else return FALSE;
     }
-    
-    public function reorder_checkFoodItemAvailability($order_id){
 
+    public function reorder_checkFoodItemAvailability($order_id){
+        $this->debug("gonna re order");
         //get order items from order_items and fooditem tables (ordered qty, food item_count)
         $food_items_and_qty = $this->model->getQtywithItemCount_reorder($order_id);
+        $this->debug($food_items_and_qty, $order_id);
         if($food_items_and_qty['status'] === "success"){
-            echo "checkavail";
+            $this->debug("items are available");
             foreach($food_items_and_qty['data'] as $item){
                 if($item->Quantity >= $item->Current_count){
+                    $this->debug($item->Quantity,$item->Current_count,"scarcity");
                     return false;
                 }
             }
@@ -1046,19 +1048,18 @@ class Customer_controller extends JB_Controller{
     public function reorderSubmit($order_id){
 
         if(!$this->reorder_checkFoodItemAvailability($order_id)){
-            // $this->set_flash("ItemsNotSufficient", "Sorry, some of the items you tried to reorder are not available right now");
-             echo "not suff";
-            // $this->view('customer/cust-myorders');
+            $this->set_flash("ItemsNotSufficient", "Sorry, some of the items you tried to reorder are not available right now");
+            $this->view('customer/cust-myorders');
         }else{
-            echo " suff";
+
             $user_id = $this->get_session('user_id');
             date_default_timezone_set('Asia/Colombo');
             $order_data = $this->model->getOrderDetails($order_id);
 
             //order time is due, current time + 30 mins
             $current_time =  strtotime(date('H:i'));
-            $order_time = strtotime(date('H:i', strtotime('+30 minutes',$current_time)));
-               
+            $order_time = date('H:i', strtotime('+30 minutes',$current_time));
+            $this->debug($order_time);
             $data = [
                 'Order_Date_Time' => date("Y-m-d ". $order_time), //combined order time with current date 
                 'Item_count' => $order_data->Item_count,
@@ -1066,21 +1067,23 @@ class Customer_controller extends JB_Controller{
                 'Service_charge' => 0, //temp set to zero
                 'Special_notes' => $order_data->Special_notes,
                 'Payment_method' => "cash",     //reordering is only for cash 
-                'Order_type' => $order_data->Payment_method,
-                'Delivery_Address' => $order_data->Payment_method,
+                'Order_type' => $order_data->Order_type,
+                'Delivery_Address' => $order_data->Delivery_Address,
                 'Order_is_for_me' => 1, //reordering is only for self
                 'User_ID' => $order_data->User_ID,
             ];
             
             //make a new order with current prices for the food items
             $result_data = $this->model->createReorder($data, $order_id);
-            // $this->invoiceEmail($result_data['orderID'], $data);
+            $data['Total_price'] = $result_data['Total_price'];
+            $data['Service_charge'] = $result_data['Service_charge'];
+            $this->invoiceEmail($result_data['Order_ID'], $data);
             //logs
             
-            // if($result_data['newCartID']){
-            //     //order success
-            //     $this->view('customer/cust-isorderplaced',$result_data);    /////////////////////////////////////payment successs page
-            // }
+            if($result_data['Order_ID']){
+                //order success
+                $this->view('customer/cust-isorderplaced',$result_data);    /////////////////////////////////////payment successs page
+            }
 
         }    
 

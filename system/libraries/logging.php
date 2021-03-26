@@ -22,6 +22,7 @@ trait logging {
         1 => 'ERROR',             // error conditions
         2 => 'WARNING',           //warning conditions
         3 => 'INFORMATIONAL',     // informational messages
+        4 => 'DEBUG'
 
     );
 
@@ -29,21 +30,24 @@ trait logging {
     // alias functions
 
     public function alert($log_msg){
-        $this->write_log($log_msg, 1);
+        $this->write_log($log_msg, 0);
     }
 
     public function error($log_msg){
-        $this->write_log($log_msg, 3);
+        $this->write_log($log_msg, 1);
     }
 
     public function warning($log_msg){
-        $this->write_log($log_msg, 4);
+        $this->write_log($log_msg, 2);
     }
 
     public function informational($log_msg){
-        $this->write_log($log_msg, 6);
+        $this->write_log($log_msg, 3);
     }
-
+    
+    public function debug($log_msg){
+        $this->write_log($log_msg, 4);
+    }
 
     // write the log entry
     public function write_log($log_msg, $sev_level) {
