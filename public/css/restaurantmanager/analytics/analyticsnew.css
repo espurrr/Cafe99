@@ -70,7 +70,7 @@ body{
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-    margin-left: 300px;
+    margin-left: 100px;
 }
 
 .cus-pay{
@@ -78,4 +78,8 @@ body{
     flex-flow: row wrap;
     align-items: center;
     margin-left: 300px;
+}
+
+.chart{
+    margin-left: 100px;
 }
