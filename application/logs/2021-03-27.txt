@@ -1,0 +1,13 @@
+2021-03-27 23:00:31		localhost/cafe99/account_controller/loginSubmit				session opened for user 198		3 INFORMATIONAL
+2021-03-27 23:01:10		localhost/cafe99/account_controller/loginSubmit				session opened for user 202		3 INFORMATIONAL
+2021-03-27 23:02:26		localhost/cafe99/account_controller/loginSubmit				session opened for user 202		3 INFORMATIONAL
+2021-03-27 23:03:09		localhost/cafe99/account_controller/loginSubmit				session opened for user 198		3 INFORMATIONAL
+2021-03-27 23:03:34		localhost/cafe99/account_controller/loginSubmit				session opened for user 198		3 INFORMATIONAL
+2021-03-27 23:06:47		localhost/cafe99/account_controller/loginSubmit				session opened for user 202		3 INFORMATIONAL
+2021-03-27 23:08:11		localhost/cafe99/account_controller/loginSubmit				session opened for user 198		3 INFORMATIONAL
+2021-03-27 23:10:31		localhost/cafe99/account_controller/loginSubmit				session opened for user 198		3 INFORMATIONAL
+2021-03-27 23:14:16		localhost/cafe99/account_controller/loginSubmit				session opened for user 198		3 INFORMATIONAL
+2021-03-27 23:18:35		localhost/cafe99/account_controller/signupSubmit				new customer account added: @email = imeudani@gmail.com, @ip = ::1		3 INFORMATIONAL
+2021-03-27 23:18:42		localhost/cafe99/account_controller/signupSubmit				customer account activation mail sent; @email = imeudani@gmail.com		3 INFORMATIONAL
+2021-03-27 23:20:06		localhost/cafe99/account_controller/loginSubmit				session opened for user 240		3 INFORMATIONAL
+2021-03-27 23:20:07		localhost/cafe99/account_controller/loginSubmit				cart 32 assigned for user 240		3 INFORMATIONAL

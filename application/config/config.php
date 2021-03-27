@@ -5,7 +5,7 @@ Database parameters
 */
 $database = [
 
-    'host'      =>  'localhost:3308',
+    'host'      =>  'localhost',
     'username'  =>  'root',
     'database'  =>  'cafe99',
     'password'  =>  ''
