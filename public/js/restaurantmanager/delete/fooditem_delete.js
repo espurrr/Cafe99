@@ -14,7 +14,7 @@ modal_cancel_btn.onclick = function() {
     popup_win.style.display = "none";
 };
 $("#modal-delete-btn").click(function() {
-    var id = $(this).data("id");
+    var food_id = $(this).data("id");
     // alert(food_id);
     $.ajax({
         url: "http://localhost/cafe99/rm_controller/delete_fooditem/" + food_id,
