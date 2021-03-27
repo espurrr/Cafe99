@@ -3,7 +3,7 @@ class RM_Controller extends JB_Controller{
     public $model;
     public function __construct(){
         parent::__construct();
-      if(!$this->get_session('user_id')){
+       if(!$this->get_session('user_id')){
             redirect("account_controller/login");
         }
         if($this->get_session('role')!="restaurant_manager"){
@@ -13,21 +13,6 @@ class RM_Controller extends JB_Controller{
         $this->model = $this->model("rm_model");
     }
     
-   /* public function index(){
-        $result=$this->model->getAnalytics();
-
-        if($result === "Analytics_not_retrieved"){
-            $this->set_flash("databaseError", "Sorry, cannot show Overviews at the moment. Please try again later.");
-            //echo"dberror";
-        }else if($result === "Analytics_not_found"){
-            $this->set_flash("noOverviewsError", "Sorry, cannot show Overviews at the moment. Please try again later.");
-            //echo"noOverviews";
-        }else if($result['status'] === "success"){
-            $this->view('restaurantmanager/analytics/analyticsnew',$result['data']);
-        }
-
-      //$this->view('restaurantmanager/analytics/analyticsnew');
-    }*/
 
 //create overviews
     public function index(){
@@ -39,58 +24,69 @@ class RM_Controller extends JB_Controller{
     $results_cards=$this->model->getcards_data();
     
     $this->view('restaurantmanager/analytics/analyticsnew',$results_cards['data']);
-
+ 
     }
 
   
 //create newsfeed
     public function create(){
+
+        $this->validation('Announcement_title','Title','required');
+        $this->validation('Announcement_date','Date','required');
+        $this->validation('Announcement_time','Time','required');
+        $this->validation('Content','Content','required');
+      //  $this->validation('To_whom','Whom','required');
         
         if($this->run()){
-            // $Ann_id = $this->post('Ann_id');
-            //$Ann_title = $this->post('Ann_title');
-            $Ann_title=$_POST['Ann_title'];
-            //$Ann_date = $this->post('Ann_date');
-            $Ann_date=$_POST['Ann_date'];
-            //$Ann_time = $this->post('Ann_time');
-            $Ann_time=$_POST['Ann_time'];
-            //$content = $this->post('content');
-            $content=$_POST['content'];
-            //$Ann_towhom = $this->post('Ann_towhom');
-            $Ann_towhom=$_POST['Ann_towhom'];
-            // $Ann_user = $this->post('Ann_user');
-         //   $Ann_user=$this->get_session('user_id');
+         
+            
+            /*$Ann_title=$_POST['Announcement_title'];
+            
+            $Ann_date=$_POST['Announcement_date'];
+            
+            $Ann_time=$_POST['Announcement_time'];
+            
+            $content=$_POST['Content'];
+            
+            $Ann_towhom=$_POST['To_whom'];
+            
+            $Ann_user=$this->get_session('user_id');*/
              // will replace with the ID later
             
-           /*  $Ann_title = $this->post('Ann_title'); 
-             $Ann_date = $this->post('Ann_date');
-             $Ann_time = $this->post('Ann_time');
-             $content = $this->post('content');
-             $Ann_towhom = $this->post('Ann_towhom');*/
+             $Ann_title = $this->post('Announcement_title'); 
+             $Ann_date = $this->post('Announcement_date');
+             $Ann_time = $this->post('Announcement_time');
+             $content = $this->post('Content');
+             $Ann_towhom=$_POST['To_whom'];
+            // $Ann_towhom = $this->post('To_whom');
+             $Ann_user=$this->get_session('user_id');
              
              
             $data = [
-                // 'Announcement_id'=> $Ann_id,
+                //'Announcement_id'=> $Ann_id,
                 'Announcement_title'=> $Ann_title,
                 'Announcement_date'=> $Ann_date,
                 'Announcement_time'=> $Ann_time,
                 'Content'=> $content,
                 'To_whom'=> $Ann_towhom ,              
-                // 'User_ID'=> $Ann_user
+                'RM_User_ID'=> $Ann_user
             ];
             
             if($this->model->addNews($data)){
                 $this->set_flash("newsfeedSuccess", "News feed added successfully");
-                $this->view('restaurantmanager/RMnewsfeed');
+              //  $this->view('restaurantmanager/RMnewsfeed');
+              $this->newsfeed();
                 
 
             }else{
                 $this->set_flash("newsfeedError", "Something went wrong :( Please try again later.)");
-                $this->view('restaurantmanager/create');
+               // $this->view('restaurantmanager/create');
+               $this->newsfeed();
 
             }
         }else{
-            $this->view('restaurantmanager/create');
+           $this->view('restaurantmanager/create');
+           //$this->newsfeed();
 
         }
 
@@ -123,15 +119,16 @@ class RM_Controller extends JB_Controller{
 
    public function newsfeed_update_save(){
 
-    $newsfeed_id=$this->get('Announcement_id');
+    $newsfeed_id=$this->post('Announcement_id');
 
     if($this->run()){
-        // $Ann_id = $this->post('Ann_id');
-        $Ann_title = $this->post('Ann_title');
-        $Ann_date = $this->post('Ann_date');
-        $Ann_time = $this->post('Ann_time');
-        $content = $this->post('content');
-        $Ann_towhom = $this->post('Ann_towhom');
+        // $Ann_id = $this->post('Announcement_id');
+        $Ann_title = $this->post('Announcement_title');
+        $Ann_date = $this->post('Announcement_date');
+        $Ann_time = $this->post('Announcement_time');
+        $content = $this->post('Content');
+       // $Ann_towhom = $this->post('To_whom');
+        $Ann_towhom=$_POST['To_whom'];
         // $Ann_user = $this->post('Ann_user');
          // will replace with the ID later
         
@@ -142,21 +139,23 @@ class RM_Controller extends JB_Controller{
             'Announcement_time'=> $Ann_time,
             'Content'=> $content,
             'To_whom'=> $Ann_towhom               
-            // 'User_ID'=> $Ann_user,
+            // 'RM_User_ID'=> $Ann_user,
         ];
 
         
         if($this->model->newsfeed_data_update($data,  $newsfeed_id)){
             $this-> set_flash("updateSuccess","Announcement is successfully updated.");
-            $this->view('restaurantmanager/edit');
+           // $this->view('restaurantmanager/edit');
+           $this->newsfeed();
            
         }else{
             $this->set_flash("updateError", "Something went wrong :( Please try again.");
-            $this->view('restaurantmanager/edit');
+           // $this->view('restaurantmanager/edit');
+           $this->newsfeed();
         }
         
     }else{
- //   redirect('rm_controller/newsfeed');
+    redirect('rm_controller/newsfeed');
     }
 
    }
@@ -173,6 +172,7 @@ class RM_Controller extends JB_Controller{
 //create users   
     public function savedata(){
         /*   $this->view('restaurantmanager/users/create');*/
+        $x=$this->get_session('user_id');
         
            $this->validation('User_name', 'Name' , 'required|not_int|max_len|50');
            $this->validation('Email_address','Email address', 'unique|user|required');
@@ -181,14 +181,13 @@ class RM_Controller extends JB_Controller{
    
            if($this->run()){
           //   echo "data insert";
-   
-               $this->view('restaurantmanager/users/create');
                $User_name = $this->post('User_name');
                $Email_address = $this->post('Email_address');
                $Phone_no = $this->post('Phone_no');
             // $User_Password = $this->post('password');
                $User_Password = $this->hash($this->post('User_Password'));
-               $User_role=$this->post('User_role');
+            //   $User_role=$this->post('User_role');
+               $User_role=$_POST['User_role'];
           //   $Token = bin2hex(openssl_random_pseudo_bytes(16));
                $Token="abc";
             
@@ -207,14 +206,17 @@ class RM_Controller extends JB_Controller{
               
               
                 if($this->model->userscreate($data)){
+                    //logs
+                    $this->informational("New user added:Email_address=$Email_address by RM_User_ID $x");
+
                   //  echo "New user create successfully";
                    $this->set_flash("userSuccess", "New user create successfully");
                   // redirect('rmuser_controller/users');
-                  $this->view('restaurantmanager/users/create');
+                  $this->users();
                }
                 
                 else{
-                   $this->set_flash("Error", "Something went wrong :( Please try again later.");
+                   $this->set_flash("userError", "Something went wrong :( Please try again later.");
                    $this->view('restaurantmanager/users/create');
               }
               
@@ -237,10 +239,10 @@ class RM_Controller extends JB_Controller{
            $result = $this->model->display_users();
 
             if($result === "user_not_retrieved"){
-                $this->set_flash("RM_user_not_retrieved", "Sorry, cannot show orders at the moment. Please try again later.");
+                $this->set_flash("RM_user_not_retrieved", "Sorry, cannot show users at the moment. Please try again later.");
                 //echo"dberror";
             }else if($result === "user_not_found"){
-                $this->set_flash("RM_user_not_found", "Sorry, cannot show orders at the moment. Please try again later.");
+                $this->set_flash("RM_user_not_found", "Sorry, cannot show users at the moment. Please try again later.");
                 //echo"nofood";
             }
            $this->view('restaurantmanager/users/RM', $result['data']);
@@ -282,31 +284,19 @@ class RM_Controller extends JB_Controller{
    //update users
    public function user_update_values(){
    
-    //   $id = $this->get_session('User_ID');
     $id=$this->get('User_ID');
    
        $result = $this->model->user_data( $id);
   // print_r($result);
        $this->view('restaurantmanager/users/edit',$result['data']);
    
-     /*  if($result === "User_not_found"){
-           echo "user no";
-           $this->set_flash("userError", "Hmm.. You are an imposter, aren't you??");
-           $this->view('customer/cus_profile_update');
-       }else if($result === "Data_not_retrieved"){
-           echo "datano";
-           $this->set_flash("dbError", "It seems like your data is not ready yet.");
-           $this->view('customer/cus_profile_update');
-       }else if($result['status'] === "success"){
-           $this->view('customer/cus_profile_update',$result['data']);
-       }*/
    
    }
    
    public function user_update_save(){
-   //   $id = $this->get_session('user_id');
+   
     $id=$this->post('User_ID'); 
-//$id=$_GET['User_ID'];
+   //$id=$_GET['User_ID'];
     //echo $id;
            $this->validation('User_name', 'Name' , 'required|not_int|max_len|50');
         //   $this->validation('Email_address','Email address', 'unique|user|required');
@@ -320,7 +310,8 @@ class RM_Controller extends JB_Controller{
                $User_name = $this->post('User_name');
             //   $Email_address = $this->post('Email_address');
                $Phone_no = $this->post('Phone_no');
-               $User_role=$this->post('User_role');
+            //   $User_role=$this->post('User_role');
+               $User_role=$_POST['User_role'];
    
            $data = [
                'User_name' => $User_name,
@@ -331,7 +322,7 @@ class RM_Controller extends JB_Controller{
            // print_r($data);
    
            if($this->model->user_data_update($data,  $id)){
-               $this-> set_flash("updateSuccess","Hey $User_name! Your profile is successfully updated.");
+               $this-> set_flash("updateSuccess","User is successfully updated.");
                $this->users();
               
            }else{
@@ -347,48 +338,70 @@ class RM_Controller extends JB_Controller{
    //delete users
    public function delete_user_data($id){
    
-     //  $id = $this->get_session('user_id');
+       $x = $this->get_session('user_id');
     // $id=$this->get('User_ID');
       // echo $id;
        $result = $this->model->deleteuser( $id );
+       $this->informational("User deleted:Email_address=$Email_address by RM_User_ID $x");
    redirect('rm_controller/users');
     //   $this->view('restaurantmanager/users/RM');
    } 
 
+   public function block_user($id){
+    $x = $this->get_session('user_id');
+    //$id=$this->get('User_ID');
+    $data=['User_status'=>'block'];
+    $this->model->user_status_block($data,$id);
+    $this->informational("User blocked:Email_address=$Email_address by RM_User_ID $x");
+    redirect('rm_controller/users');
+
+   }
+
    //create orders
 public function createOrders(){
+    $this->validation('Order_Date_Time','Order Date Time','required');
+    $this->validation('Item_count','Count','required');
     $this->validation('Total_price', 'Total price' , 'required');
  //   $this->validation('Special_notes','Special notes','required');
-    $this->validation('Payment_Method','Payment method','required');
-    $this->validation('Order_status','Order status','required');
+    $this->validation('Payment_method','Payment method','required');
+  //  $this->validation('Order_status','Order status','required');
     $this->validation('Order_type','Order type','required');
   
       if($this->run()){
-          $Order_Date_Time=$this->post('Order_Date_Time'); 
+          $Order_Date_Time=$this->post('Order_Date_Time');
+          $Item_count=$this->post('Item_count'); 
           $Total_price = $this->post('Total_price');
           $Special_notes=$this->post('Special_notes');
-          $Payment_method=$this->post('Payment_Method');
+          $Payment_method=$this->post('Payment_method');
           $Order_status=$this->post('Order_status');
-          $Order_type=$this->post('Order_type');
-          $User_ID=$this->get_session('User_ID');
+         // $Order_status=$_POST['Order_status'];
+         // $Order_type=$this->post('Order_type');
+          $Order_type=$_POST['Order_type'];
+          $User_ID=$this->get_session('user_id');
+          date_default_timezone_set('Asia/Colombo');
+          $mod_time = date('Y-m-d H:i:s');
   
           $data=['Order_Date_Time'=>$Order_Date_Time,
+          'Item_count'=>$Item_count,
           'Total_price'=>$Total_price,
           'Special_notes'=>$Special_notes,
-          'Payment_Method'=>$Payment_Method,
+          'Payment_method'=>$Payment_method,
           'Order_status'=>$Order_status,
           'Order_type'=>$Order_type,
-          'User_ID'=>$User_ID
+          'User_ID'=>$User_ID,
+          'ModifiedDateTime' => $mod_time
 
       ];
   
       if($this->model->addOrders($data)){
           $this->set_flash("OrderSuccess", "Order added successfully");
-          $this->view('restaurantmanager/orders/create');
-  
+         // $this->view('restaurantmanager/orders/create');
+         $this->orders();
+
       }else{
           $this->set_flash("OrderError", "Something went wrong :( Please try again later.");
-          $this->view('restaurantmanager/orders/create');
+         // $this->view('restaurantmanager/orders/create');
+         $this->orders();
   
       }
   
@@ -398,7 +411,7 @@ public function createOrders(){
       }
 }
 
-    public function orders(){
+    public function orders($order_id="Order_ID"){
         $result =  $this->model->getOrders();
 
         if($result === "Order_not_retrieved"){
@@ -464,45 +477,56 @@ public function createOrders(){
     }
 
     public function order_update_save(){
-        $order_id=$this->get('Order_ID');
+        $order_id=$this->post('Order_ID');
         
         $this->validation('Total_price', 'Total price' , 'required');
    //     $this->validation('Special_notes','Special notes','required');
-        $this->validation('Payment_Method','Payment method','required');
+        $this->validation('Payment_method','Payment method','required');
         $this->validation('Order_status','Order status','required');
         $this->validation('Order_type','Order type','required');
       
           if($this->run()){
               $Order_Date_Time=$this->post('Order_Date_Time'); 
+              $Item_count=$this->post('Item_count');
               $Total_price = $this->post('Total_price');
               $Special_notes=$this->post('Special_notes');
-              $Payment_method=$this->post('Payment_Method');
+              $Payment_method=$this->post('Payment_method');
               $Order_status=$this->post('Order_status');
+              //$Order_status=$_POST['Order_status'];
               $Order_type=$this->post('Order_type');
-              $User_ID=$this->get_session('User_ID');
+              //$Order_type=$_POST['Order_type'];
+              $Order_is_for_me=$this->post('Order_is_for_me');
+              $User_ID=$this->get_session('user_id');
+              date_default_timezone_set('Asia/Colombo');
+              $mod_time = date('Y-m-d H:i:s');
       
               $data=['Order_Date_Time'=>$Order_Date_Time,
+              'Item_count'=>$Item_count,
               'Total_price'=>$Total_price,
               'Special_notes'=>$Special_notes,
-              'Payment_Method'=>$Payment_Method,
+              'Payment_method'=>$Payment_method,
               'Order_status'=>$Order_status,
               'Order_type'=>$Order_type,
-              'User_ID'=>$User_ID
+              'Order_is_for_me'=>$Order_is_for_me,
+              'User_ID'=>$User_ID,
+              'ModifiedDateTime' => $mod_time
     
           ];
       
-          if($this->model->order_data_update($data)){
+          if($this->model->order_data_update($data,$order_id)){
               $this->set_flash("updateSuccess", "Order is successfully updated.");
-              $this->view('restaurantmanager/orders/edit');
+             // $this->view('restaurantmanager/orders/edit');
+              $this->orders();
       
           }else{
               $this->set_flash("updateError", "Something went wrong :( Please try again later.");
-              $this->view('restaurantmanager/orders/edit');
+              //$this->view('restaurantmanager/orders/edit');
+              $this->orders();
       
           }
       
           }else{
-              //redirect('rm_controller/orders');
+              redirect('rm_controller/orders');
           }
         
     }
@@ -533,7 +557,7 @@ public function createOrders(){
         // echo $_POST['Subcategory_ID'];
         // echo $_POST['Availability'];
         $this->validation('Food_name', 'Food name' , 'required|not_int|unique|fooditem|max_len|30');
-        $this->validation('Description', 'Description' , 'required');
+      //  $this->validation('Description', 'Description' , 'required');
         $this->validation('Unit_Price', 'Unit price' , 'required|int');
         $this->validation('Category_name', 'Category' , 'required');
         $this->validation('Subcategory_ID', 'Subcategory' , 'required');
@@ -638,14 +662,14 @@ public function createOrders(){
 
     public function fooditem_update_save(){
 
-        $food_id=$this->get('Food_ID');
+        $food_id=$this->post('Food_ID');
 
-        $this->validation('Food_name', 'Food name' , 'required|not_int|unique|fooditem|max_len|30');
-        $this->validation('Description', 'Description' , 'required');
+      /*  $this->validation('Food_name', 'Food name' , 'required|not_int|unique|fooditem|max_len|30');
+       // $this->validation('Description', 'Description' , 'required');
         $this->validation('Unit_Price', 'Unit price' , 'required|int');
         $this->validation('Category_name', 'Category' , 'required');
         $this->validation('Subcategory_ID', 'Subcategory' , 'required');
-        $this->validation('Availability', 'Availability' , 'required');
+        $this->validation('Availability', 'Availability' , 'required');*/
 
         if($this->run()){
             $Food_name = $this->post('Food_name');
@@ -665,11 +689,13 @@ public function createOrders(){
        
             if($this->model->fooditem_data_update($data,  $food_id)){
                 $this-> set_flash("updateSuccess","Fooditem is successfully updated.");
-                $this->view('restaurantmanager/fooditem/edit');
+               // $this->view('restaurantmanager/fooditem/edit');
+                $this->fooditem();
                
             }else{
                 $this->set_flash("updateError", "Something went wrong :( Please try again.");
-                $this->view('restaurantmanager/fooditem/edit');
+               // $this->view('restaurantmanager/fooditem/edit');
+                $this->fooditem();
             }
             
         }else{
@@ -688,37 +714,39 @@ public function createOrders(){
   
     //create subcategory
     public function createSubcategory(){
-        $this->validation('Subcategory_name', 'Subcategory name' , 'required');
-      //  $this->validation('Category_ID','Category','required');
+        $this->validation('Subcategory_name', 'Subcategory name' , 'required|unique|subcategory|not_int');
+       // $this->validation('Category_ID','Category','required');
     
         if($this->run()){
             $Subcategory_name = $this->post('Subcategory_name');
-        //    $Category_ID=$this->post('Category_ID');//will replace the ID later because it is FK
+            $Category_ID=$this->post('Category_ID');//will replace the ID later because it is FK
     
             $data=['Subcategory_name'=>$Subcategory_name,
-          //  'Category_ID'=>$Category_ID
+           'Category_ID'=>$Category_ID
         ];
     
         if($this->model->addSubcategory($data)){
             $this->set_flash("subcategorySuccess", "Subcategory added successfully");
-            $this->view('restaurantmanager/subcategory/create');
+           // $this->view('restaurantmanager/subcategory/create');
+           $this->subcategory();
     
         }else{
             $this->set_flash("subcategoryError", "Something went wrong :( Please try again later.");
-            $this->view('restaurantmanager/subcategory/create');
+           // $this->view('restaurantmanager/subcategory/create');
+           $this->subcategory();
     
         }
     
         }else{
             $this->view('restaurantmanager/subcategory/create');
-    
+          // $this->subcategory();
         }
     }
 
     //read subcategory
     public function subcategory($id="Subcategory_ID"){
         if(empty($id)){
-            $this->view('restaurantmanager/category/RM');
+            $this->view('restaurantmanager/subcategory/RM');
     
         }else{
             $subcategory_data['id'] = $id;
@@ -774,7 +802,7 @@ public function createOrders(){
     }
 
     public function subcategory_update_save(){
-        $subcat_id=$this->get('Subcategory_ID');
+        $subcat_id=$this->post('Subcategory_ID');
 
         $this->validation('Subcategory_name', 'Subcategory name' , 'required');
         //  $this->validation('Category_ID','Category','required');
@@ -789,15 +817,17 @@ public function createOrders(){
 
           if($this->model->subcategory_data_update($data,  $subcat_id)){
             $this-> set_flash("updateSuccess","Subcategory is successfully updated.");
-            $this->view('restaurantmanager/subcategory/edit');
+           // $this->view('restaurantmanager/subcategory/edit');
+           $this->subcategory();
            
         }else{
             $this->set_flash("updateError", "Something went wrong :( Please try again.");
-            $this->view('restaurantmanager/subcategory/edit');
+           // $this->view('restaurantmanager/subcategory/edit');
+           $this->subcategory();
         }
         
     }else{
- //   redirect('rm_controller/subcategory');
+    redirect('rm_controller/subcategory');
     }
     }
 
@@ -812,11 +842,11 @@ public function createOrders(){
   
 //create category
     public function createCategory(){
-        $this->validation('Category_name', 'Category name' , 'required');
+        $this->validation('Category_name', 'Category name' , 'required|unique|category|not_int');
       
     
         if($this->run()){
-            $Subcategory_name = $this->post('Category_name');
+            $Category_name = $this->post('Category_name');
         
             $data=['Category_name'=>$Category_name,
          
@@ -824,16 +854,19 @@ public function createOrders(){
     
         if($this->model->addCategory($data)){
             $this->set_flash("categorySuccess", "Category added successfully");
-            $this->view('restaurantmanager/category/create');
+           // $this->view('restaurantmanager/category/create');
+           $this->category();
     
         }else{
             $this->set_flash("categoryError", "Something went wrong :( Please try again later.");
-            $this->view('restaurantmanager/category/create');
+           // $this->view('restaurantmanager/category/create');
+           $this->category();
     
         }
     
         }else{
             $this->view('restaurantmanager/category/create');
+          // $this->category();
     
         }
     }
@@ -897,13 +930,13 @@ public function createOrders(){
     }
 
     public function category_update_save(){
-        $cat_id=$this->get('Category_ID');
+        $cat_id=$this->post('Category_ID');
 
         $this->validation('Category_name', 'Category name' , 'required');
       
     
         if($this->run()){
-            $Subcategory_name = $this->post('Category_name');
+            $Category_name = $this->post('Category_name');
         
             $data=['Category_name'=>$Category_name,
          
@@ -911,15 +944,17 @@ public function createOrders(){
 
         if($this->model->category_data_update($data,  $cat_id)){
             $this-> set_flash("updateSuccess","Category is successfully updated.");
-            $this->view('restaurantmanager/category/edit');
+           // $this->view('restaurantmanager/category/edit');
+           $this->category();
            
         }else{
             $this->set_flash("updateError", "Something went wrong :( Please try again.");
-            $this->view('restaurantmanager/category/edit');
+            //$this->view('restaurantmanager/category/edit');
+            $this->category();
         }
         
     }else{
- //   redirect('rm_controller/category');
+    redirect('rm_controller/category');
     }
     }
 

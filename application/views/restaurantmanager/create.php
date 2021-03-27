@@ -22,7 +22,7 @@
       
              <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
              <!--   <a href="RMnewsfeed.php" class="button">News Feed</a>-->
-                <?php echo anchor("rm_controller/newsfeed", "News Feed",['class'=>"button"]) ?>
+                <?php //echo anchor("rm_controller/newsfeed", "News Feed",['class'=>"button"]) ?>
 
 
              <div class="content">
@@ -30,55 +30,64 @@
                 
                 <!-- taken from food.create -->
                  <div class="status-msg" style="margin-bottom:20px">
-                    <?php $this->flash('newsfeedSuccess','alert alert-success','fa fa-check'); ?>
+                    <?php $this->flash('newsfeedError','alert alert-warning','fa fa-check'); ?>
                 </div>
     
 
-                 <!-- <form action="RMnewsfeed.php" method="post"> -->
                  <?php echo form_open("rm_controller/create","post");?>   
                  
-                        <!-- <label for="Ann_id">Announcement_id</label>
-                        <input type="text" id="Ann_id" name="Ann_id" ><br> -->
-
-                     <!--   <label for="Ann_title">Title</label>
-                        <input type="text" id="Ann_title" name="Ann_title" ><br>
-
-                        <label for="Ann_date">Date</label>
-                        <input type="date" id="Ann_date" name="Ann_date" ><br>
-                        
-                        <label for="Ann_time">Time</label>
-                         <input type="time" id="Ann_time" name="Ann_time" ><br>
-
-                        <label for="content">Content</label>
-                        <textarea name="content" id="content" ></textarea>
-
-                        <label for="Ann_towhom">To Whom</label>
-                        <input type="text" id="Ann_towhom" name="Ann_towhom" ><br>-->
-
-                        <!-- <label for="Ann_user">User ID</label> -->
-                        <!-- <input type="text" id="Ann_user" name="Ann_user" ><br> -->
-
-                  <!--      <div>
-                            <input type="submit" value="Save">
-                        </div>-->
                         
                       <!--  <label for="Ann_id">Announcement_id</label>-->
-                    <!--    <?php echo form_input(['type'=>'text','id'=>'Ann_id', 'name'=>'Ann_id','value'=>$this->set_value('Announcement_id')])?>-->
+                    <!--    <?php //echo form_input(['type'=>'text','id'=>'Ann_id', 'name'=>'Ann_id','value'=>$this->set_value('Announcement_id')])?>-->
 
                         <label for="Ann_title">Title</label><br>
-                        <?php echo form_input(['type'=>'text','id'=>'Ann_title', 'name'=>'Ann_title','value'=>$this->set_value('Announcement_title')])?><br>
-                        <br>
+                        <?php echo form_input(['type'=>'text','id'=>'Ann_title', 'name'=>'Announcement_title','value'=>$this->set_value('Announcement_title')])?><br>
+                        <div class="dashboard-error">
+                            <?php if(!empty($this->errors['Announcement_title'])):?>
+                            <?php echo $this->errors['Announcement_title'];?>
+                            <?php endif;?>
+                        </div>
+
                         <label for="Ann_date">Date</label><br>
-                        <?php echo form_input(['type'=>'date','id'=>'Ann_date', 'name'=>'Ann_date','value'=>$this->set_value('Announcement_date')])?><br>
-                        <br>
+                        <?php echo form_input(['type'=>'date','id'=>'Ann_date', 'name'=>'Announcement_date','value'=>$this->set_value('Announcement_date')])?><br>
+                        <div class="dashboard-error">
+                            <?php if(!empty($this->errors['Announcement_date'])):?>
+                            <?php echo $this->errors['Announcement_date'];?>
+                            <?php endif;?>
+                        </div>
+
                         <label for="Ann_time">Time</label><br>
-                        <?php echo form_input(['type'=>'time','id'=>'Ann_time', 'name'=>'Ann_time','value'=>$this->set_value('Announcement_time')])?><br>
-                        <br>
+                        <?php echo form_input(['type'=>'time','id'=>'Ann_time', 'name'=>'Announcement_time','value'=>$this->set_value('Announcement_time')])?><br>
+                        <div class="dashboard-error">
+                            <?php if(!empty($this->errors['Announcement_time'])):?>
+                            <?php echo $this->errors['Announcement_time'];?>
+                            <?php endif;?>
+                        </div>
+
                         <label for="content">Content</label><br>
-                        <?php echo form_input(['type'=>'text','id'=>'content', 'name'=>'content','value'=>$this->set_value('Content')])?><br>
-                        <br>
+                        <?php echo form_input(['type'=>'text','id'=>'content', 'name'=>'Content','value'=>$this->set_value('Content')])?><br>
+                        <div class="dashboard-error">
+                            <?php if(!empty($this->errors['Content'])):?>
+                            <?php echo $this->errors['Content'];?>
+                            <?php endif;?>
+                        </div>
+
                         <label for="Ann_towhom">To Whom</label><br>
-                        <?php echo form_input(['type'=>'text','id'=>'Ann_towhom', 'name'=>'Ann_towhom','value'=>$this->set_value('To_whom')])?><br>
+                        <?php //echo form_input(['type'=>'text','id'=>'Ann_towhom', 'name'=>'Ann_towhom','value'=>$this->set_value('To_whom')])?><br>
+                        <select id="ann" name="To_whom">
+                            <option value="All Employees" style="display:none;">All Employees</option>
+                            <option value="All Employees">All Employees</option>
+                            <option value="Restaurant managers">Restaurant managers</option>
+                            <option value="Cashiers">Cashiers</option>
+                            <option value="Delivery person">Delivery person</option>
+                            <option value="Kitchen managers">Kitchen managers</option>
+                        </select>
+
+                        <div class="dashboard-error">
+                            <?php if(!empty($this->errors['To_whom'])):?>
+                            <?php echo $this->errors['To_whom'];?>
+                            <?php endif;?>
+                        </div>
 
                         <div class="btn-container">
                             <button type="submit" formaction="<?php echo BASE_URL?>/rm_controller/newsfeed" class="btn cancel-btn">Cancel</button>
@@ -97,7 +106,7 @@
     </div>
   <!--ckeditor-->  
  <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
- <?php echo link_js("js/restaurantmanager/RM.js?ts=<?=time()?>");?>
+ <?php //echo link_js("js/restaurantmanager/RM.js?ts=<?=time()?>");?>
  </div>
  <?php include '../application/views/footer/footer_3.php';?>
  </div>

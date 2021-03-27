@@ -29,21 +29,13 @@
                  <h2 class="page-title">Edit Subcategories</h2>
                 
                  <div class="status-msg" style="margin-bottom:20px">
-                    <?php $this->flash('UpdateSuccess','alert alert-success','fa fa-check'); ?>
+                    <?php $this->flash('UpdateError','alert alert-warning','fa fa-check'); ?>
                 </div>
-              <!--   <form action="RM.php" method="post">
-                     
-                        
-                        <label for="subname">Subcategory name</label>
-                        <input type="text" id="subname" name="subcatname" ><br>
-                        
-                        <div>
-                            <input type="submit" value="Update" onclick="alert('Are you sure update')">
-                        </div>
-                    
-                 </form>-->
 
                  <?php echo form_open("rm_controller/subcategory_update_save","post");?>
+                 <label for="Subcategory_ID">Subcategory_ID</label>
+                 <?php echo form_input(['type'=>'text','name'=>'Subcategory_ID','value'=>$data->Subcategory_ID,'readonly'=> 'readonly'])?>
+                 
                  <label for="subname">Subcategory name</label><br><br>
              <!--    <input type="text" id="subname" name="Subcategory_name" ><br>-->
              <?php echo form_input(['type'=>'text', 'name'=>'Subcategory_name','value'=>$data->Subcategory_name])?><br>

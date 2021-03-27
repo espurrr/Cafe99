@@ -69,6 +69,8 @@
                         <div class="status-msg" style="margin-bottom:20px">
                             <?php $this->flash('RM_category_databaseError','alert alert-danger','fa fa-times-circle'); ?>
                             <?php $this->flash('RM_category_NotFound','alert alert-warning','fa fa-times-circle'); ?>
+                            <?php $this->flash('categorySuccess','alert alert-success','fa fa-check'); ?>
+                            <?php $this->flash('updateSuccess','alert alert-success','fa fa-check'); ?>
                         </div>
                     </div> <!-- status-msg-wrapper ends here -->
 
@@ -79,15 +81,6 @@
                         <th colspan="2">Action</th>
                         </thead>
                         
-                       <!-- <tbody>
-                           <tr>
-                               <td>Food</td>-->
-                            <!--   <td><a href="edit.php" class="edit">Edit</a></td>-->
-                             <!--  <td><?php echo anchor("rm_controller/categoryedit", "Edit",['class'=>"edit"]) ?></td> 
-                               <td><a href="#" class="delete" onclick='showDeleteModal()'>Delete</a></td>
-                              
-                            </tr>
-                        </tbody>-->
 
                         <?php
                         $fooditem=new Rm_model;

@@ -29,20 +29,9 @@
                  <h2 class="page-title">Add Subcategories</h2>
                 
                  <div class="status-msg" style="margin-bottom:20px">
-                    <?php $this->flash('subcategorySuccess','alert alert-success','fa fa-check'); ?>
+                    <?php $this->flash('subcategoryError','alert alert-warning','fa fa-check'); ?>
                 </div>
 
-             <!--    <form action="RM.php" method="post">
-                     
-                        
-                        <label for="subname">Subcategory name</label>
-                        <input type="text" id="subname" name="subcatname" ><br>
-                        
-                        <div>
-                            <input type="submit" value="Save">
-                        </div>
-                    
-                 </form>-->
                  <?php echo form_open("rm_controller/createSubcategory","post");?>
                  <label for="subname">Subcategory name</label><br><br>
                <!--  <input type="text" id="subname" name="Subcategory_name" ><br>-->
@@ -51,6 +40,20 @@
                             <?php if(!empty($this->errors['Subcategory_name'])):?>
                             <?php echo $this->errors['Subcategory_name'];?>
                             <?php endif;?>
+                        </div>
+
+                 <label for="cat">Category</label><br><br>
+
+<?php echo form_input(['type'=>'radio','id'=>'food','name'=>'Category_ID','value'=>'1']) ?>
+<label for="food">Food</label><br>
+<?php echo form_input(['type'=>'radio','id'=>'drink','name'=>'Category_ID','value'=>'2']) ?>
+<label for="drink">Drinks</label><br>
+<?php echo form_input(['type'=>'radio','id'=>'desserts','name'=>'Category_ID','value'=>'3']) ?>
+<label for="dessert">Desserts</label>
+                        <div class="dashboard-error">
+                            <?php //if(!empty($this->errors['Category_ID'])):?>
+                             <?php //echo $this->errors['Category_ID']));?>
+                             <?php //endif;?>
                         </div>
 
                 <div class="btn-container">

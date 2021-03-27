@@ -63,6 +63,7 @@
                             <?php $this->flash('RM_fooditem_databaseError', 'alert alert-danger','fa fa-times-circle'); ?>
                             <?php $this->flash('RM_fooditem_NotFound', 'alert alert-warning','fa fa-times-circle'); ?>
                             <?php $this->flash('fooditemSuccess','alert alert-success','fa fa-check'); ?>
+                            <?php $this->flash('updateSuccess','alert alert-success','fa fa-check'); ?>
                         </div>
                     </div> <!-- status-msg-wrapper ends here -->
 
@@ -73,27 +74,17 @@
                         <th>Food name</th>
                         <th>Unit Price</th>
                         <th>Availability</th>
+                        <th>Current Count</th>
                         <th colspan="3">Action</th>
                         </thead>
                         
-                      <!--  <tbody>
-                           <tr>
-                               <td>Chicken Fried Rice</td>
-                               <td>490</td>
-                               <td>Please note that vegetables may be substituted based on availability</td>
-                               <td>Available</td>-->
-                             <!--  <td><a href="edit.php" class="edit">Edit</a></td>-->
-                             <!--  <td><?php //echo anchor("rm_controller/fooditemedit", "Edit",['class'=>"edit"]) ?></td> 
-                               <td><a href="#" class="delete"  onclick='showDeleteModal()'>Delete</a></td>
-                              
-                            </tr>
-                        </tbody>-->
                         <?php foreach($data as $row): ?>
                         <tr>
                         <td><?php echo $row->Food_ID ?></td>
                         <td><?php echo $row->Food_name ?></td>
                         <td><?php echo $row->Unit_Price ?></td>
                         <td><?php echo $row->Availability ?></td>
+                        <td><?php echo $row->Current_count ?></td>
                         <td> <?php echo anchor("rm_controller/fooditem_update_values?Food_ID=".$row->Food_ID."", "Edit",['class'=>"edit"])?> </td>
                       <!--  <td> <?php //echo anchor("rm_controller/delete_fooditem?Food_ID=".$row->Food_ID."", "Delete",['class'=>"delete"])?> </td>-->
                         <td><a class="delete" onclick='showDeleteModal(<?php echo $row->Food_ID?>)'>Delete</a></td>

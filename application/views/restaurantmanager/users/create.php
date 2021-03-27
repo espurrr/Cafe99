@@ -30,42 +30,9 @@
                  <h2 class="page-title">Add Users</h2>
                 
                  <div class="status-msg" style="margin-bottom:20px">
-                    <?php $this->flash('userSuccess','alert alert-success','fa fa-check'); ?>
+                    <?php $this->flash('userError','alert alert-warning','fa fa-check'); ?>
                 </div>
 
-              <!--   <form action="RM.php" method="post">
-                     
-                        
-                        <label for="name">User Name</label>
-                        <input type="text" id="name" name="name" placeholder="Enter Name..."><br>
-                        
-                        <label for="password">User Password</label>
-                        <input type="password" id="password" name="password" placeholder="Enter Password..."><br>
-                         
-                         <label for="email">Email Address</label>
-                         <input type="email" id="email" name="emailaddress" placeholder="Enter email address..."><br>
-                          
-                         <label for="Pno">Phone No</label>
-                         <input type="text" id="Pno" name="title" placeholder="Enter Phone No..."><br>
-                         
-
-                         <label for="role">Role</label>
-                         <select id="role" name="role" >
-                             <option value="RestaurantManager">Restaurant Manager</option>
-                             <option value="KitchenManager">Kitchen Manager</option>
-                             <option value="Cashier">Cashier</option>
-                             <option value="DeliveryPerson">Delivery Person</option>
-                         </select>
-                        
-                         <label for="regDate">Registered Date</label>
-                         <input type="text" name="regDate" placeholder="Enter Date..."><br>
-                        
-                        
-                        <div>
-                            <input type="submit" value="Save">
-                        </div>
-                    
-                 </form>-->
 
                  <?php echo form_open("rm_controller/savedata","post");?>
           
@@ -94,7 +61,7 @@
           </div>
 
           <label for="User_Password">User Password</label>
-          <?php echo form_input(['type'=>'password', 'name'=>'User_Password', 'placeholder'=>'Enter Password...'])?>
+          <?php echo form_input(['type'=>'password', 'name'=>'User_Password', 'placeholder'=>'Enter Password...','value'=>$this->set_value('User_Password')])?>
           <div class="dashboard-error">
             <?php if(!empty($this->errors['User_Password'])):?>
             <?php echo $this->errors['User_Password'];?>
@@ -102,7 +69,16 @@
           </div>
 
           <label for="User_role">Role</label>
-          <?php echo form_input(['type'=>'text', 'name'=>'User_role', 'placeholder'=>'Enter Role...', 'value'=>$this->set_value('User_role')])?>
+          <?php //echo form_input(['type'=>'text', 'name'=>'User_role', 'placeholder'=>'Enter Role...', 'value'=>$this->set_value('User_role')])?>
+          <select id="role" name="User_role">
+                            <option value="customer" style="display:none;">customer</option>
+                            <option value="customer">customer</option>
+                            <option value="kitchen_manager">kitchen_manager</option>
+                            <option value="cashier">cashier</option>
+                            <option value="delivery_person">delivery_person</option>
+                            <option value="restaurant_manager">restaurant_manager</option>
+                        </select>
+
           <div class="error">
             <?php if(!empty($this->errors['User_role'])):?>
             <?php echo $this->errors['User_role'];?>

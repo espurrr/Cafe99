@@ -10,7 +10,7 @@
                 </div>
             </div>
             <ul>
-            <li><?php echo anchor("rm_controller/index", "Overviews",['class'=>"normal"]) ?></li>
+            <li><?php echo anchor("rm_controller/index", "Overview",['class'=>"normal"]) ?></li>
 
             <!--    <li><a href="#" class="active normal">News Feed</a></li>-->
               <li><?php echo anchor("rm_controller/newsfeed", "News Feed",['class'=>"active normal"]) ?></li>

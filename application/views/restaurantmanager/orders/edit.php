@@ -30,36 +30,12 @@
                  <h2 class="page-title">Edit Orders</h2>
 
                  <div class="status-msg" style="margin-bottom:20px">
-                    <?php $this->flash('UpdateSuccess','alert alert-success','fa fa-check'); ?>
+                    <?php $this->flash('UpdateError','alert alert-warning','fa fa-check'); ?>
                 </div>
                 
-              <!--   <form action="RM.php" method="post">
-                     
-                        
-                    <label for="totalprice">Total Price</label>
-                    <input type="text" id="totalprice" name="totalprice" ><br>
-                    
-                    <label for="snotes">Special Notes</label>
-                    <textarea name="content" id="snotes" ></textarea>
-                    
-                     
-                     <label for="paymethod">Payment Method</label>
-                     <input type="text" id="paymethod" name="paymethod" ><br>
-                      
-                     <label for="ostatus">Order Status</label>
-                     <input type="text" id="ostatus" name="ostatus" ><br>
-                     
-                     <label for="otype">Order Type</label>
-                     <input type="text" id="otype" name="otype" ><br>
-                     
-                    
-                    <div class="btn-container">
-                        <button type="submit" formaction="<?php echo BASE_URL?>/rm_controller/orders" class="btn cancel-btn">Cancel</button>
-                        <input type="submit" value="Update">
-                    </div>
-                    
-                 </form>-->
                  <?php echo form_open("rm_controller/order_update_save","post");?>
+                 <label for="Order_ID">Order_ID</label>
+                 <?php echo form_input(['type'=>'text','name'=>'Order_ID','value'=>$data->Order_ID,'readonly'=>'readonly'])?>
 
 <label for="orderdatetime">Order Date & Time</label><br>
 <?php echo form_input(['type'=>'date', 'name'=>'Order_Date_Time','value'=>$data->Order_Date_Time])?><br>
@@ -86,15 +62,26 @@
        </div>
 
 <label for="paymethod">Payment Method</label><br>  
-<?php echo form_input(['type'=>'text', 'name'=>'Payment_Method','value'=>$data->Payment_method])?><br>
+<?php echo form_input(['type'=>'text', 'name'=>'Payment_method','value'=>$data->Payment_method,'readonly'=>'readonly'])?><br>
 <div class="dashboard-error">
-           <?php if(!empty($this->errors['Payment_Method'])):?>
-           <?php echo $this->errors['Payment_Method'];?>
+           <?php if(!empty($this->errors['Payment_method'])):?>
+           <?php echo $this->errors['Payment_method'];?>
            <?php endif;?>
        </div>
 
 <label for="ostatus">Order Status</label><br>
-<?php echo form_input(['type'=>'text', 'name'=>'Order_status','value'=>$data->Order_status])?><br>
+<?php //echo form_input(['type'=>'text', 'name'=>'Order_status','value'=>$data->Order_status])?><br>
+<select id="ostatus" name="Order_status">
+                            <option value="<?php echo $data->Order_status ?>" style="display:none;"><?php echo $data->Order_status ?></option>
+                            <option value="onqueue">onqueue</option>
+                            <option value="processing">processing</option>
+                            <option value="ready">ready</option>
+                            <option value="dispatched">dispatched</option>
+                            <option value="delivery_new">delivery_new</option>
+                            <option value="delivery_ondelivery">delivery_ondelivery</option>
+                            <option value="delivery_dispatched">delivery_dispatched</option>
+                        </select>
+
 <div class="dashboard-error">
            <?php if(!empty($this->errors['Order_status'])):?>
            <?php echo $this->errors['Order_status'];?>
@@ -102,7 +89,14 @@
        </div>
 
 <label for="otype">Order Type</label><br>
-<?php echo form_input(['type'=>'text', 'name'=>'Order_type','value'=>$data->Order_type])?><br>
+<?php //echo form_input(['type'=>'text', 'name'=>'Order_type','value'=>$data->Order_type])?><br>
+<select id="otype" name="Order_type">
+                            <option value="<?php echo $data->Order_type ?>" style="display:none;"><?php echo $data->Order_type ?></option>
+                            <option value="dine-in">dine-in</option>
+                            <option value="pick-up">pick-up</option>
+                            <option value="delivery">delivery</option>
+                        </select>
+
 <div class="dashboard-error">
            <?php if(!empty($this->errors['Order_type'])):?>
            <?php echo $this->errors['Order_type'];?>
@@ -113,7 +107,7 @@
 
       <div class="btn-container">
            <button type="submit" formaction="<?php echo BASE_URL?>/rm_controller/orders" class="btn cancel-btn">Cancel</button>
-           <input type="submit" value="Add">
+           <input type="submit" value="Update">
        </div>
 
        <?php echo form_close();?>
@@ -125,7 +119,7 @@
     </div>
    <!--ckeditor-->  
  <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
- <?php echo link_js("js/restaurantmanager/RM.js?ts=<?=time()?>");?>
+ <?php //echo link_js("js/restaurantmanager/RM.js?ts=<?=time()?>");?>
  </div>
  <?php include '../application/views/footer/footer_3.php';?>  
  </div>  

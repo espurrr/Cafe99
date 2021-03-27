@@ -2,34 +2,24 @@
 
 class Rm_model extends Database{
 
-   /* public function getAnalytics(){
-        //echo "This is Overviews page";
-        $count_query="SELECT COUNT(Order_ID) FROM orders";
-        $delivery_count_query="SELECT COUNT(Order_ID) FROM orders where Order_type='delivery'";
-        $sum_query="SELECT SUM(Total_price) FROM orders";
-        $new_customer_query="SELECT COUNT(User_ID) FROM users where User_role='customer' AND Registered_date=2020-02-23";
-
-
-        $result =$this->Query($count_query, $options = []);
-        if($this->Count() > 0){
-          $count=$this->Row();
-         // print_r($count); 
-          if($count){
-            return ['status'=>'success', 'data'=>$count];
-        }else{
-            return "Data_not_retrieved";
-        } 
-        }else{
-            return "Data_not_found";
-        }*/
-        
-
+   
         public function getcards_data(){
 
         $count_query="SELECT COUNT(Order_ID) as OrderCount FROM orders";
+         //current date
+        //$count_query="SELECT COUNT(Order_ID) as OrderCount FROM orders where Order_Date_Time=CURRENT_DATE";
+
         $delivery_count_query="SELECT COUNT(Order_ID) as DeliveryOrderCount FROM orders where Order_type='delivery'";
+        //current date
+        //$delivery_count_query="SELECT COUNT(Order_ID) as DeliveryOrderCount FROM orders where Order_type='delivery' AND Order_Date_Time=CURRENT_DATE";
+
         $sum_query="SELECT SUM(Total_price) as TotalPrice FROM orders";
+        //current date
+        //$sum_query="SELECT SUM(Total_price) as TotalPrice FROM orders where Order_Date_Time=CURRENT_DATE";
+
         $new_customer_query="SELECT COUNT(User_ID) as NewCustomerCount FROM user where User_role='customer' AND Registered_date='2020-02-23'";
+         //Registered_date should be current date
+        //$new_customer_query="SELECT COUNT(User_ID) as NewCustomerCount FROM user where User_role='customer' AND Registered_date=CURRENT_DATE";
 
 
         $result =$this->Query($count_query, $options = []);
@@ -147,7 +137,7 @@ class Rm_model extends Database{
          }
 
     public function display_users(){
-        $query = "SELECT User_ID,User_name,Email_address,Phone_no,User_role FROM user";
+        $query = "SELECT User_ID,User_name,Email_address,Phone_no,User_role,User_status FROM user";
         $result = $this->Query($query, $options = []);
      //   echo "$User_name";
     //    if($this->Select_Where("user", ['User_id' => $user_id])){
@@ -225,6 +215,14 @@ class Rm_model extends Database{
       }else{
           return false;
       }
+  }
+
+  public function user_status_block($data,$id){
+    if($this->Update("user", $data,['User_ID' =>  $id])){
+        return true;
+    }else{
+        return false;
+    }
   }
 
     public function addFoodItem($data){

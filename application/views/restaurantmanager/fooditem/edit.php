@@ -27,32 +27,15 @@
                  <h2 class="page-title">Edit Fooditems</h2>
                 
                  <div class="status-msg" style="margin-bottom:20px">
-                    <?php $this->flash('UpdateSuccess','alert alert-success','fa fa-check'); ?>
+                    <?php $this->flash('UpdateError','alert alert-warning','fa fa-check'); ?>
                 </div>
-             <!--    <form action="RM.php" method="post">
-                     
-                        
-                        <label for="fname">Food name</label>
-                        <input type="text" id="fname" name="foodname" ><br>
-                        
-
-                         <label for="price">Unit Price</label>
-                         <input type="text" id="price" name="Uprice" ><br>
-                          
-                         <label for="description">Description</label>
-                         <textarea name="description" id="description" ></textarea>
-                        
-                         <label for="availability">Availability</label>
-                         <input type="text" id="availability" name="availability" ><br>
-                        
-                        
-                        <div>
-                            <input type="submit" value="Update" onclick="alert('Are you sure update')">
-                        </div>
-                    
-                 </form>-->
+             
                  <?php echo form_open("rm_controller/fooditem_update_save","post");?>
 <?php foreach ($data as $row):?>
+<label for="Food_ID">Food_ID</label><br>
+<input type="text" id="food_id" name="Food_ID" value="<?php echo $row->Food_ID?>" readonly="readonly"><br>
+<?php //echo form_input(['type'=>'text','name'->'Food_ID','value'=>$row->Food_ID,'readonly'=>'readonly'])?>
+
 <label for="fname">Food name</label>
 <input type="text" id="fname" name="Food_name" value="<?php echo $row->Food_name ?>"><br>
 <?php //echo form_input(['type'=>'text','id'=>'fname', 'name'=>'Food_name','value'=>$data->Food_name)]?><br>
@@ -146,6 +129,7 @@
   <!--ckeditor-->  
  <!-- <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script> -->
  <?php echo link_js("js/restaurantmanager/RM.js?ts=<?=time()?>");?>
+ <?php echo link_js("js/restaurantmanager/food-create.js");?>
     
 </body>
 </html>

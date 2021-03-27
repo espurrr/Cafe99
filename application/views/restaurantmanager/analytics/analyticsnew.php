@@ -69,7 +69,8 @@
         </div>
         <?php //} ?>
 <br><br><br>
-        <div class="column-line">
+<div class="chart"><?php include 'multichart.php';?></div>
+       <!-- <div class="column-line">
             <div class="column-graph">
             <?php //include "column.php"?>
             <img src="<?php echo BASE_URL?>/public/images/analytics-chart/column.jpg">
@@ -92,7 +93,7 @@
             <?php //include "paymentpie.php"?>
             <img src="<?php echo BASE_URL?>/public/images/analytics-chart/paymentpie.jpg">
             </div>
-            </div>
+            </div>-->
         </div>
        </div>
    

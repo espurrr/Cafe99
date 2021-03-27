@@ -29,41 +29,12 @@
                  <h2 class="page-title">Edit Users</h2>
                 
                  <div class="status-msg" style="margin-bottom:20px">
-                    <?php $this->flash('UpdateSuccess','alert alert-success','fa fa-check'); ?>
+                    <?php $this->flash('UpdateError','alert alert-warning','fa fa-check'); ?>
                 </div>
-            <!--     <form action="RM.php" method="post">
-                     
-                        
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" ><br>
-
-                        <label for="password">User Password</label>
-                        <input type="password" id="password" name="password" ><br>
-                        
-
-                         <label for="Pno">Phone No</label>
-                         <input type="text" id="Pno" name="title" ><br>
-                         
-
-                        
-                         <label for="role">Role</label>
-                         <select id="role" name="role" >
-                             <option value="RestaurantManager">Restaurant Manager</option>
-                             <option value="KitchenManager">Kitchen Manager</option>
-                             <option value="Cashier">Cashier</option>
-                             <option value="DeliveryPerson">Delivery Person</option>
-                         </select>
-                        
-                       
-                         <div>
-                            <input type="submit" value="Update" onclick="alert('Are you sure update')">
-                        </div>
-                    
-                 </form>-->
 
                  <?php echo form_open("rm_controller/user_update_save","POST");?>
 
-          <label for="User_name">User ID</label>
+          <label for="User_ID">User ID</label>
           <?php echo form_input(['type'=>'text', 'name'=>'User_ID', 'value'=>$data->User_ID, 'readonly'=> 'readonly'])?>
 
           <br><br>
@@ -92,7 +63,16 @@
           </div>
           <br>
           <label for="User_role">Role</label>
-          <?php echo form_input(['type'=>'text', 'name'=>'User_role', 'placeholder'=>$data->User_role,'value'=>$data->User_role ])?>
+          <?php //echo form_input(['type'=>'text', 'name'=>'User_role', 'placeholder'=>$data->User_role,'value'=>$data->User_role ])?>
+          <select id="role" name="User_role">
+                            <option value="<?php echo $data->User_role ?>" style="display:none;"><?php echo $data->User_role ?></option>
+                            <option value="customer">customer</option>
+                            <option value="kitchen_manager">kitchen_manager</option>
+                            <option value="cashier">cashier</option>
+                            <option value="delivery_person">delivery_person</option>
+                            <option value="restaurant_manager">restaurant_manager</option>
+                        </select>
+
           <div class="error">
             <?php if(!empty($this->errors['User_role'])):?>
             <?php echo $this->errors['User_role'];?>

@@ -9,6 +9,7 @@
     <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/restaurantmanager/admin.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/modal/delete_modal.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/modal/block_modal.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
 
@@ -20,9 +21,10 @@
  <?php include "user_sidebar.php"; ?> 
  <div class="content-wrapper">
  <?php include  "../application/views/header/header-dashboard.php";?>
-
+<?php include "delete_popup.php";?>
+<?php include "block_popup.php";?>
  <!-- Delete pop up modal starts here -->
-  <div id="popup-window" class="popup-window">
+ <!-- <div id="popup-window" class="popup-window">
         <div class="win-content-wrapper">
             <div class="win-content">
                 <p id="message">Are you sure you want to delete?</p>
@@ -33,8 +35,8 @@
                     </div>
                 </div>
             </div>
-        </div><!-- win-content-wrapper ends here -->
-    </div><!-- popup=window ends here -->
+        </div>--><!-- win-content-wrapper ends here -->
+  <!--  </div>--><!-- popup=window ends here -->
   <!-- Delete pop up modal ends here -->
 
     <div class="wrapper">
@@ -60,9 +62,9 @@
                     <div class="status-msg" style="margin-bottom:20px">
                         <?php $this->flash('RM_user_not_retrieved','alert alert-danger','fa fa-times-circle'); ?>
                         <?php $this->flash('RM_user_not_found','alert alert-warning','fa fa-times-circle'); ?>
-
                         <?php $this->flash('RM_user_databaseError','alert alert-danger','fa fa-times-circle'); ?>
-                        <?php $this->flash('RM_user_NotFound','alert alert-warning','fa fa-times-circle'); ?>
+                        <?php $this->flash('userSuccess','alert alert-success','fa fa-check'); ?>
+                        <?php $this->flash('updateSuccess','alert alert-success','fa fa-check'); ?>
                     </div>
                 </div> <!-- status-msg-wrapper ends here -->
                 
@@ -74,50 +76,12 @@
                      <th>Email address</th>
                      <th>Phone Number</th>
                      <th>Role</th>
-                     <th colspan="2">Action</th>
+                     <th>User Status</th>
+                     <th colspan="3">Action</th>
                     </thead>
-                    <!--
-                     <tbody>
-                        <tr>
-                            <td>John</td>
-                            <td>123</td>
-                            <td>0783725988</td>
-                            <td>Cashier</td>
-                            <td><a href="edit.php" class="edit">Edit</a></td>
-                            <td><?php //echo anchor("rm_controller/userscreate", "Edit", ['class'=>"edit"]) ?></td> 
-                            <td><a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a></td>
-                            
-                        </tr>
+                   
+  
 
-                        <tr>
-                            <td>Ama</td>
-                            <td>abc</td>
-                            <td>0773725999</td>
-                            <td>Kitchen Manager</td>
-                           <td><a href="edit.php" class="edit">Edit</a></td>
-                           <td><?php //echo anchor("rm_controller/usersedit", "Edit",['class'=>"edit"]) ?></td> 
-                            <td><a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a></td>
-                        </tr>
-                        
-                    </tbody>-->
-                  <!--  <?php
-    foreach ($data as $row){
-       echo "<tr>";
-       echo $row->User_name;
-       echo $row->User_password;
-       echo $row->Phone_no;
-       echo $row->User_role;
-       echo "</tr>";
-  }
-?>-->
- <!--  <tr>
-        <td><?php echo $data[0]->User_name;?></td>
-        <td><?php echo $data[0]->User_password;?></td>
-        <td><?php echo $data[0]->Phone_no;?></td>
-        <td><?php echo $data[0]->User_role;?></td>
-        <td><?php echo anchor("rm_controller/usersedit", "Edit",['class'=>"edit"]) ?></td> 
-        <td><a href="#" class="delete" onclick="alert('Are you sure delete')">Delete</a></td>
-    </tr>-->
     
    <?php
         foreach($data as $row){
@@ -127,11 +91,13 @@
           echo "<td>".$row->Email_address."</td>";
           echo "<td>".$row->Phone_no."</td>";
           echo "<td>".$row->User_role."</td>";
+          echo "<td>".$row->User_status."</td>";
       //    echo "<td>".anchor("rm_controller/usersedit", "Edit",['class'=>"edit"])."</td>";
           echo "<td>".anchor("rm_controller/user_update_values?User_ID=".$row->User_ID."", "Edit",['class'=>"edit"])."</td>";
        //   echo "<td>".anchor("rm_controller/delete_user_data?User_ID=".$row->User_ID."", "Delete",['class'=>"delete"])."</td>";
       // echo "<td>".anchor("rm_controller/users", "Delete",['class'=>"delete"])."</td>";?>
          <td><a class="delete" onclick='showDeleteModal(<?php echo $row->User_ID;?>)'>Delete</a></td>
+         <td><a class="block" onclick='showBlockModal(<?php echo $row->User_ID;?>)'>Block</a></td>
         <?php  echo "</tr>";
         
         }
@@ -151,6 +117,7 @@
     </div>
    <?php include '../application/views/footer/footer_3.php';?>
    </div>  
-   <?php echo link_js("js/restaurantmanager/delete/user_delete.js"); ?>    
+   <?php echo link_js("js/restaurantmanager/delete/user_delete.js"); ?> 
+   <?php echo link_js("js/restaurantmanager/user_block.js"); ?>  
 </body>
 </html>

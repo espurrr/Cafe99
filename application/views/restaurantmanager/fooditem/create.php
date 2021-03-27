@@ -30,7 +30,6 @@
 
                 <div class="status-msg" style="margin-bottom:20px">
                     <?php $this->flash('fooditemError','alert alert-warning','fa fa-check'); ?>
-                    <?php $this->flash('fooditemError','alert alert-warning','fa fa-check'); ?>
                 </div>
 
                  <!-- <form action="rmfooditem_controller/createFoodItem" method="POST"> -->
@@ -67,6 +66,11 @@
                             <option value="Drinks">Drinks</option>
                             <option value="Desserts">Desserts</option>
                         </select>
+                        <div class="dashboard-error">
+                            <?php if(!empty($this->errors['Category_name'])):?>
+                            <?php echo $this->errors['Category_name'];?>
+                            <?php endif;?>
+                        </div>
 
                         </br>
                         <label for="subcategory" class="subcat-label">Subcategory </label>

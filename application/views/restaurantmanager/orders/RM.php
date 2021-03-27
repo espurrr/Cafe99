@@ -44,7 +44,7 @@
        <!--     <a href="RM.php" class="button">Manage Orders</a>-->
             <?php //echo anchor("rm_controller/orders", "Manage Orders",['class'=>"button"]) ?>
          <!--   <a href="create.php" class="button">Add Orders</a>-->
-            <?php echo anchor("rm_controller/createOrders", "Add Orders",['class'=>"button"]) ?>
+            <?php //echo anchor("rm_controller/createOrders", "Add Orders",['class'=>"button"]) ?>
 
             <div class="search-container">
                 <?php echo form_open("rm_controller/searchOrders", "POST");?>
@@ -54,12 +54,15 @@
             </div>
 
              <div class="content">
-                 <h2 class="page-title">Manage Orders</h2>
+                <!-- <h2 class="page-title">Manage Orders</h2>-->
+                 <h2 class="page-title">Order Details</h2>
 
                  <div class="status-msg-wrapper">
                     <div class="status-msg" style="margin-bottom:20px">
                         <?php $this->flash('RM_order_databaseError','alert alert-danger','fa fa-times-circle'); ?>
                         <?php $this->flash('RM_order_NotFound','alert alert-warning','fa fa-times-circle'); ?>
+                        <?php $this->flash('OrderSuccess','alert alert-success','fa fa-check'); ?>
+                        <?php $this->flash('updateSuccess','alert alert-success','fa fa-check'); ?>
                     </div>
                 </div> <!-- status-msg-wrapper ends here -->
 
@@ -72,8 +75,9 @@
                      <th>Special Notes</th>
                      <th>Payment Method</th>
                      <th>Order Type</th>
-                     <th>Dispatch Time</th>
-                     <th colspan="2">Action</th>
+                     <th>Kitchen Dispatch Time</th>
+                     <th>Delivery Dispatched</th>
+                   <!--  <th colspan="2">Action</th>-->
                     </thead>
                     <tbody>
                 <?php foreach($data as $row): ?>
@@ -85,9 +89,10 @@
                             <td><?php echo $row->Payment_method ?></td>
                             <td><?php echo $row->Order_type ?></td>
                             <td><?php echo $row->Kitchen_Dispatch_DateTime ?></td>
+                            <td><?php echo $row->Delivery_Dispatch_DateTime?></td>
                          <!--   <td><a href="edit.php" class="edit">Edit</a></td>-->
-                            <td><?php echo anchor("rm_controller/order_update_values?Order_ID=".$row->Order_ID."", "Edit",['class'=>"edit"]) ?></td> 
-                            <td><a class="delete" onclick='showDeleteModal(<?php echo $row->Order_ID?>)'>Delete</a></td>
+                            <td><?php //echo anchor("rm_controller/order_update_values?Order_ID=".$row->Order_ID."", "Edit",['class'=>"edit"]) ?></td> 
+                           <!-- <td><a class="delete" onclick='showDeleteModal(<?php echo $row->Order_ID?>)'>Delete</a></td>-->
                             
                         </tr>
                 <?php endforeach ?>

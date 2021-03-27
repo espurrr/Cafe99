@@ -30,20 +30,9 @@
                  <h2 class="page-title">Add Categories</h2>
                 
                  <div class="status-msg" style="margin-bottom:20px">
-                    <?php $this->flash('categorySuccess','alert alert-success','fa fa-check'); ?>
+                    <?php $this->flash('categoryError','alert alert-warning','fa fa-check'); ?>
                 </div>
 
-               <!--  <form action="RM.php" method="post">
-                     
-                        
-                        <label for="cname">Category name</label>
-                        <input type="text" id="cname" name="catname" ><br>
-                        
-                        <div>
-                            <input type="submit" value="Save">
-                        </div>
-                    
-                 </form>-->
                  <?php echo form_open("rm_controller/createCategory","post");?>
                  <label for="catname">Category name</label><br><br>
               <!--   <input type="text" id="catname" name="Category_name" ><br>-->

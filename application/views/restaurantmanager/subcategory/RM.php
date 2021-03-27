@@ -61,6 +61,8 @@
                         <div class="status-msg" style="margin-bottom:20px">
                             <?php $this->flash('RM_subcategory_databaseError','alert alert-danger','fa fa-times-circle'); ?>
                             <?php $this->flash('RM_subcategory_NotFound','alert alert-warning','fa fa-times-circle'); ?>
+                            <?php $this->flash('subcategorySuccess','alert alert-success','fa fa-check'); ?>
+                            <?php $this->flash('updateSuccess','alert alert-success','fa fa-check'); ?>
                         </div>
                     </div> <!-- status-msg-wrapper ends here -->
 
@@ -72,15 +74,6 @@
                         <th colspan="2">Action</th>
                         </thead>
                         
-                      <!--  <tbody>
-                           <tr>
-                               <td>Rice</td>-->
-                            <!--   <td><a href="edit.php" class="edit">Edit</a></td>-->
-                         <!--   <td><?php //echo anchor("rm_controller/subcategoryedit", "Edit",['class'=>"edit"]) ?></td> 
-                               <td><a href="#" class="delete" onclick='showDeleteModal()'>Delete</a></td>
-                              
-                            </tr>
-                        </tbody>-->
                         <?php
                         
                         foreach($data as $row){
