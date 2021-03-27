@@ -8,6 +8,7 @@
     --edit-btn-color:#5e74e2;
     --view-btn-color:#696a6e;
     --delete-btn-color:#f12f2ff1;
+    --block-btn-color:#787272;
     --action-btn-color:rgb(59, 58, 58);
     --colorGreen: #5cb85c;
     --colorGreen-hover:#449d44;
@@ -139,6 +140,16 @@ body{
 
 .admin-content .delete{
     background-color:var(--delete-btn-color);
+    color: var( --colorWhite);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.admin-content .block{
+    background-color:var(--block-btn-color);
     color: var( --colorWhite);
     padding: 12px 20px;
     border: none;
