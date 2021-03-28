@@ -37,7 +37,7 @@ trait form_validation {
         */ 
         if(in_array("int", $rules)){
             if(!preg_match($int_pattern, $data)){
-                return $this->errors[$field_name] = $label . " must be an integer";
+                return $this->errors[$field_name] = $label . " must contain only digits";
             }
         }
 

@@ -106,6 +106,14 @@ body {
     text-transform: uppercase;
 }
 
+.ordersflash {
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    width: 75%;
+    transform: translate(-50%, -50%);
+}
+
 @media screen and (max-width: 650px) {
     .tabcontent {
         margin-left: 4%;

@@ -109,7 +109,7 @@
             <div class="price" >LKR: <?php echo $data['data'][0]->Unit_Price;?></div>
             <div class="quantity">
                 <label>Quantity:&nbsp; </label>
-                <input type="number" id="qty" class="input" name="quantity" value="1" min="1" max="<?php echo $data['data'][0]->Current_count;?>">
+                <input type="number" id="qty" class="input" name="quantity" value="1" min="1" max="<?php echo $data['data'][0]->Current_count;?>" onKeyDown="return false">
          
             </div>
             <div class="btn-container">

@@ -24,8 +24,12 @@
   <?php include '../application/views/header/cust-logged-in-header.php';?>
   <ul class="breadcrumb">
         <li><?php echo anchor("account_controller/index", "Home") ?></li>
-        <li>My Orders</li>
+        <li>My Orders</li> 
   </ul>
+
+  <div class="ordersflash">
+        <?php $this->flash('ItemsNotSufficient','alert alert-danger','fa fa-times-circle'); ?>
+  </div><br><br>
 
 
 

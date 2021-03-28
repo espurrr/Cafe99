@@ -10,7 +10,7 @@
 .popup-window {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 75;
     left: 0;
     top: 0;
     padding-top: 100px;

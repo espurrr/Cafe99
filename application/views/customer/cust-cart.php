@@ -27,7 +27,8 @@
 <div class="cartflash">
         <?php $this->flash('emptyCartAlert','alert alert-info','fa fa-info-circle'); ?>
         <?php $this->flash('cartitemsError','alert alert-danger','fa fa-times-circle'); ?>
-  </div>
+        <?php $this->flash('cartitemsUnavailable','alert alert-danger','fa fa-times-circle'); ?>
+  </div><br><br><br>
 
   <!-- Delete pop up modal starts here -->
   <div id="popup-window" class="popup-window">

@@ -36,7 +36,8 @@ class Food_model extends Database{
         $cat_name = $data['cat'];
         $food_id = $data['id'];
         $query = 
-        "SELECT category.Category_name, subcategory.Subcategory_name, fooditem.Food_ID, fooditem.Food_name, fooditem.Unit_Price, fooditem.Description, fooditem.Availability FROM fooditem
+        "SELECT category.Category_name, subcategory.Subcategory_name, fooditem.Food_ID, fooditem.Food_name, fooditem.Unit_Price, fooditem.Description, fooditem.Availability, fooditem.Current_count 
+        FROM fooditem
         INNER JOIN subcategory ON fooditem.Subcategory_ID = subcategory.Subcategory_ID
         INNER JOIN category ON category.Category_ID = subcategory.Category_ID 
         WHERE subcategory.Subcategory_name='".$subcat_name."' AND category.Category_name='".$cat_name."' AND fooditem.Food_ID='".$food_id."' LIMIT 1 ";

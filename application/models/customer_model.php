@@ -491,6 +491,69 @@ class Customer_model extends Database{
 
     }
 
+    public function  getQtywithItemCount_cart($cart_id){
+      
+        $query = 
+        "SELECT fooditem.Food_name AS FoodName,cartitem.Quantity AS Quantity , fooditem.Current_count AS Current_count
+        FROM cartitem
+        INNER JOIN fooditem ON cartitem.Food_ID = fooditem.Food_ID
+        WHERE cartitem.Cart_id='".$cart_id."' ";
+        
+        $result =$this->Query($query, $options = []);
+
+            if($this->Count() > 0){
+                $cart_items = $this->AllRecords();
+                //print_r($order_items);
+                return ['status'=>'success', 'data'=>$cart_items];
+            }else{
+                return "order_items_not_found";
+            }
+
+
+    }
+
+
+    public function  updateFoodItemCount($order_id){
+      
+        $query = 
+        "SELECT fooditem.Food_ID AS Food_ID, order_item.Quantity AS Quantity , fooditem.Current_count AS Current_count
+        FROM order_item
+        INNER JOIN fooditem ON order_item.Food_ID = fooditem.Food_ID
+        WHERE order_item.Order_ID='".$order_id."' ";
+        
+        $result =$this->Query($query, $options = []);
+
+        if($this->Count() > 0){
+            $order_items = $this->AllRecords();
+            //print_r($order_items);
+            foreach($order_items as $row){
+                //update each food item count
+                $new_count = $row->Current_count - $row->Quantity;
+                
+                if($new_count==0){
+                    $data = ['Current_count'=> $new_count, 'Availability'=>"Unavailable"];
+                    if($this->Update("fooditem", $data,['Food_ID' => $row->Food_ID])){
+                        $output = "item_count_updated";
+                    }else{
+                        $output = "item_count_not_updated";
+                    }
+                }else{
+                    $data = ['Current_count'=> $new_count];
+                    if($this->Update("fooditem", $data,['Food_ID' => $row->Food_ID])){
+                        $output = "item_count_updated";
+                    }else{
+                        $output = "item_count_not_updated";
+                    }
+                }
+            }
+        }else{
+            $output = "order_items_not_found";
+        }
+        return $output;
+    }
+
+
+
 
 
 }

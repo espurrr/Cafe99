@@ -248,10 +248,8 @@ class Customer_controller extends JB_Controller{
             $price = $_POST['price'];
             $user_id = $this->get_session('user_id');
             $cart_id = $this->get_session('cart_id');
-            $cart_item_total = ($price * $qty) * (1-$discount);
-            $cart_sub_total = $this->get_session('cart_sub_total');
-            //get the discount of the food, if any -> need to consider
-            $discount = 0; //must be percentage as decimal. eg: 70% --> 0.7
+            $cart_item_total = ($price * $qty);
+            $cart_sub_total = $this->get_session('cart_sub_total');    
 
             //data for the cart table
             $prev_item_count =  $this->get_session('cart_item_count');
@@ -322,11 +320,20 @@ class Customer_controller extends JB_Controller{
         $this->validation('specialnote','Special Notes', 'max_len|100');
     
         if($this->run()){
+            //check if the items are available as of now
+            $cart_id = $this->get_session('cart_id');
+            $result = $this->cart_checkFoodItemAvailability($cart_id);
 
-
-           $note = $this->post('specialnote');
-           $this->set_session('cart_special_notes',$note);
-           $this->view('customer/cust-order-info');
+            if($result['status']=='unavail'){
+                $food_name = $result['data'];
+                $this->set_flash("cartitemsUnavailable", "Sorry! the amount of $food_name you requested are not available now.");
+                redirect("customer_controller/mycart");
+            }
+            else{
+                $note = $this->post('specialnote');
+                $this->set_session('cart_special_notes',$note);
+                $this->view('customer/cust-order-info');
+            }
 
         }else{
             redirect("customer_controller/mycart");  
@@ -452,62 +459,93 @@ class Customer_controller extends JB_Controller{
         date_default_timezone_set('Asia/Colombo');
         $ip = $_SERVER['SERVER_ADDR'];
 
-        $payment_type = $this->post('pay_option');// if this arrives here, must be cash
+         //check if the items are available as of now
+        $result = $this->cart_checkFoodItemAvailability($cart_id);
 
-        //get cart data
-        $cart_data = $this->model->get_cart_data($cart_id);
+        if($result['status']=='unavail'){
+            $food_name = $result['data'];
+            $this->set_flash("cartitemsUnavailable", "Sorry! the amount of $food_name you requested are not available now.");
+            redirect("customer_controller/mycart");
 
-        //A possible attempt to form resubmission
-        if($cart_data['data']->Item_count==0){
-            //logs
-            $this->warning("possible form resubmission (create order): @user = $user_id, @ip = $ip");
-            $this->set_flash("OrderFormResubmission", "Opps! Sorry, You cannot resubmit the form");
-            $this->view('customer/cust-cart');
+        }else if($result['status']=='avail'){
+            $payment_type = $this->post('pay_option');// if this arrives here, must be cash
 
-        }else{
-            if($cart_data['status'] === "success"){
-   
-                $data = [
-                    'Order_Date_Time' => date($cart_data['data']->Service_date ." ". $cart_data['data']->Service_time), //combined serve date and time
-                    'Item_count' => $cart_data['data']->Item_count,
-                    'Total_price' => $cart_data['data']->Sub_total + $cart_data['data']->Sub_total*0.05, //including service charge, disregarded discounts here...
-                    'Service_charge' => $cart_data['data']->Sub_total*0.05, //service charge is 5%
-                    'Special_notes' => $cart_data['data']->Special_notes,
-                    'Payment_method' => $payment_type,     //payement method from local variable
-                    'Order_type' => $cart_data['data']->Order_type,
-                    'Delivery_Address' => $cart_data['data']->Service_address,
-                    'Order_is_for_me' => $cart_data['data']->Order_is_for_me,
-                    'User_ID' => $cart_data['data']->User_ID,
-                ];
+            //get cart data
+            $cart_data = $this->model->get_cart_data($cart_id);
+
+            //A possible attempt to form resubmission
+            if($cart_data['data']->Item_count==0){
+                //logs
+                $this->warning("possible form resubmission (create order): @user = $user_id, @ip = $ip");
+                $this->set_flash("OrderFormResubmission", "Opps! Sorry, You cannot resubmit the form");
+                $this->view('customer/cust-cart');
+
+            }else{
+                if($cart_data['status'] === "success"){
     
-                if($payment_type=="cash"){
-                    //make a new order
-                    $result_data = $this->model->createNewOrder($data, $cart_id);
-                       //header cart count flag sets to zero
-                    $_SESSION['cart_item_count'] = 0;
-                    //cart sub total flag sets to zero
-                    $_SESSION['cart_sub_total'] = 0;
-                    //cart special notes flag sets to zero
-                    $_SESSION['cart_special_notes'] = "";
-                    //order for whome flag sets to zero
-                    $_SESSION['order_is_for_me'] = 1;
-                    //header cart count flag sets to zero
-                    $_SESSION['cart_id'] = $result_data['newCartID'];
-                    
-                    $result_data['Status'] = 'success';
-    
-                    $this->invoiceEmail($result_data['orderID'], $data);
-                        //logs
-                       
-                    if($result_data['newCartID']){
-                        //order success
-                        $this->view('customer/cust-isorderplaced',$result_data);    /////////////////////////////////////payment successs page
-                    }
+                    $data = [
+                        'Order_Date_Time' => date($cart_data['data']->Service_date ." ". $cart_data['data']->Service_time), //combined serve date and time
+                        'Item_count' => $cart_data['data']->Item_count,
+                        'Total_price' => $cart_data['data']->Sub_total + $cart_data['data']->Sub_total*0.05, //including service charge, disregarded discounts here...
+                        'Service_charge' => $cart_data['data']->Sub_total*0.05, //service charge is 5%
+                        'Special_notes' => $cart_data['data']->Special_notes,
+                        'Payment_method' => $payment_type,     //payement method from local variable
+                        'Order_type' => $cart_data['data']->Order_type,
+                        'Delivery_Address' => $cart_data['data']->Service_address,
+                        'Order_is_for_me' => $cart_data['data']->Order_is_for_me,
+                        'User_ID' => $cart_data['data']->User_ID,
+                    ];
         
-                }        
-               
+                    if($payment_type=="cash"){
+                        //make a new order
+                        $result_data = $this->model->createNewOrder($data, $cart_id);
+                        //header cart count flag sets to zero
+                        $_SESSION['cart_item_count'] = 0;
+                        //cart sub total flag sets to zero
+                        $_SESSION['cart_sub_total'] = 0;
+                        //cart special notes flag sets to zero
+                        $_SESSION['cart_special_notes'] = "";
+                        //order for whome flag sets to zero
+                        $_SESSION['order_is_for_me'] = 1;
+                        //header cart count flag sets to zero
+                        $_SESSION['cart_id'] = $result_data['newCartID'];
+                        
+                        $result_data['Status'] = 'success';
+
+                        //update food item count
+                        $order_id = $result_data['orderID'];
+                        $isUpdated = $this->model->updateFoodItemCount($order_id);
+
+                        if($isUpdated=="item_count_updated"){
+                            //logs
+                            $this->informational("item count updated success");
+                        }else if($isUpdated=="item_count_not_updated"){
+                            //logs
+                            $this->informational("item count updated failed");
+
+                        }else if($isUpdated=="order_items_not_found"){
+                            //logs
+                            $this->informational("order items not found");
+
+                        }
+
+        
+                        $this->invoiceEmail($order_id, $data);
+                            //logs
+                        
+                        if($result_data['newCartID']){
+                            //order success
+                            $this->view('customer/cust-isorderplaced',$result_data);    /////////////////////////////////////payment successs page
+                        }
+            
+                    }        
+                
+                }
             }
+
         }
+
+        
         
         
     
@@ -1069,7 +1107,7 @@ class Customer_controller extends JB_Controller{
 
         if(!$this->reorder_checkFoodItemAvailability($order_id)){
             $this->set_flash("ItemsNotSufficient", "Sorry, some of the items you tried to reorder are not available right now");
-            $this->view('customer/cust-myorders');
+            redirect('customer/cust-myorders');
         }else{
 
             $user_id = $this->get_session('user_id');
@@ -1107,6 +1145,23 @@ class Customer_controller extends JB_Controller{
 
         }    
 
+    }
+
+    public function cart_checkFoodItemAvailability($cart_id){
+        
+        //get order items from cartitem and fooditem tables (requested qty, food item_count)
+        $food_items_and_qty = $this->model->getQtywithItemCount_cart($cart_id);
+        //print_r($food_items_and_qty['data']);
+        if($food_items_and_qty['status'] === "success"){
+
+            foreach($food_items_and_qty['data'] as $item){
+                $this->debug("qty is",$item->Quantity, "count is",$item->Current_count);
+                if($item->Quantity > $item->Current_count){
+                    return ['status'=>'unavail', 'data'=>$item->FoodName];
+                }
+            }
+            return ['status'=>'avail'];
+        }
     }
 
   
