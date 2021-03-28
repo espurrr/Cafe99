@@ -30,6 +30,10 @@ class RM_Controller extends JB_Controller{
   
 //create newsfeed
     public function create(){
+        $this->view('restaurantmanager/create');
+    }
+
+    public function createSubmit(){
 
         $this->validation('Announcement_title','Title','required');
         $this->validation('Announcement_date','Date','required');
@@ -91,6 +95,7 @@ class RM_Controller extends JB_Controller{
         }
 
     }
+
     
 //read newsfeed
     public function newsfeed(){
@@ -103,7 +108,7 @@ class RM_Controller extends JB_Controller{
             $this->set_flash("noAnnouncementError", "Sorry, cannot show Announcement at the moment. Please try again later.");
             //echo"noAnnouncement";
         }else if($result['status'] === "success"){
-            $this->view('restaurantmanager/Rmnewsfeed',$result['data']);
+            $this->view('restaurantmanager/Rmnewsfeed', $result['data']);
         }
     }
 

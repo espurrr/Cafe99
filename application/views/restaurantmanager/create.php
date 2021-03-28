@@ -34,7 +34,7 @@
                 </div>
     
 
-                 <?php echo form_open("rm_controller/create","post");?>   
+                 <?php echo form_open("rm_controller/createSubmit","post");?>   
                  
                         
                       <!--  <label for="Ann_id">Announcement_id</label>-->

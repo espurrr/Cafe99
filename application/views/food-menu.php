@@ -94,7 +94,8 @@
         <main class="grid">
     
           <?php
-          $isfav = new Food_model; 
+          $isfav = new Food_model;
+          // print_r($data['data']); 
           foreach($data['data'] as $row){
           ?>
     

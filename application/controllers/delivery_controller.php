@@ -140,7 +140,7 @@ class Delivery_Controller extends JB_Controller{
     public function updateOrderStatusDispatched(){
         $order_id=$_POST['dispatched'];
 
-        $data=['Order_status'=>'done'];
+        $data=['Order_status'=>'done', 'Delivery_Dispatch_DateTime' => date("Y-m-d H:i:s")];
         if($this->model->updateOrderStatusDispatched($data , $order_id)){
             $this-> set_flash("orderUpdateSuccess","Order item updated successfully");
         }

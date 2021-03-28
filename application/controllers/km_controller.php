@@ -169,8 +169,9 @@ class KM_Controller extends JB_Controller{
     public function updateOrderStatus(){
         if (isset($_POST['onqueue'])){
             $order_id = (int)$_POST['onqueue'];
-            $data = ['Order_status' => 'processing'];
+            $data = ['Order_status' => 'processing', 'Kitchen_Manager' => $this->get_session('user_id')];
             $refresh_state = "Onqueue";
+
         }
 
         if (isset($_POST['processing'])){
@@ -208,7 +209,7 @@ class KM_Controller extends JB_Controller{
 
         if (isset($_POST['dispatched'])){
             $order_id = (int)$_POST['dispatched'];
-            $data = ['Order_status' => 'Done'];
+            $data = ['Order_status' => 'Done', 'Kitchen_Dispatch_DateTime' => date("Y-m-d H:i:s")];
             $refresh_state = "Dispatched";
         }
 
