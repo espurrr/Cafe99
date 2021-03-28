@@ -47,7 +47,6 @@ body{
   margin: 4px 2px;
   cursor: pointer;
   font-weight: 600;
-  margin-left: 100px;
 }
 .newsfeed-wrapper{
     margin-left: var(--sidebar-width);
@@ -73,7 +72,11 @@ body{
     text-align: center;
     margin-bottom: 2.5rem;
 }
-    
+
+.content{
+  width: 78%;
+  margin: auto;
+}
      
 .dashboard{
   margin:12px auto;

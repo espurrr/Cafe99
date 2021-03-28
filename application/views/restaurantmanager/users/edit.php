@@ -34,11 +34,11 @@
 
                  <?php echo form_open("rm_controller/user_update_save","POST");?>
 
-          <label for="User_ID">User ID</label>
+          <div class="label_div">User ID</div>
           <?php echo form_input(['type'=>'text', 'name'=>'User_ID', 'value'=>$data->User_ID, 'readonly'=> 'readonly'])?>
 
           <br><br>
-          <label for="User_name">Username</label>
+          <div class="label_div">Username</div>
           <?php echo form_input(['type'=>'text', 'name'=>'User_name', 'placeholder'=>$data->User_name, 'value'=>$data->User_name])?>
           <div class="error">
             <?php if(!empty($this->errors['User_name'])):?>
@@ -46,7 +46,7 @@
             <?php endif;?>
           </div>
           <br>
-          <label for="Email_address">Email Address</label>
+          <div class="label_div">Email Address</div>
           <?php echo form_input(['type'=>'email', 'name'=>'Email_address', 'placeholder'=>$data->Email_address,'readonly'=>'readonly' ,'value'=>$data->Email_address])?>
           <div class="error">
             <?php if(!empty($this->errors['Email_address'])):?>
@@ -54,7 +54,8 @@
             <?php endif;?>
           </div>
           <br>
-          <label for="Phone_no">Phone No</label>
+
+          <div class="label_div">Phone No</div>
           <?php echo form_input(['type'=>'text', 'name'=>'Phone_no', 'placeholder'=>$data->Phone_no, 'value'=>$data->Phone_no ])?>
           <div class="error">
             <?php if(!empty($this->errors['Phone_no'])):?>
@@ -62,16 +63,17 @@
             <?php endif;?>
           </div>
           <br>
-          <label for="User_role">Role</label>
+
+          <div class="label_div">Phone No</div>
           <?php //echo form_input(['type'=>'text', 'name'=>'User_role', 'placeholder'=>$data->User_role,'value'=>$data->User_role ])?>
           <select id="role" name="User_role">
-                            <option value="<?php echo $data->User_role ?>" style="display:none;"><?php echo $data->User_role ?></option>
-                            <option value="customer">customer</option>
-                            <option value="kitchen_manager">kitchen_manager</option>
-                            <option value="cashier">cashier</option>
-                            <option value="delivery_person">delivery_person</option>
-                            <option value="restaurant_manager">restaurant_manager</option>
-                        </select>
+              <option value="<?php echo $data->User_role ?>" style="display:none;"><?php echo $data->User_role ?></option>
+              <option value="customer">customer</option>
+              <option value="kitchen_manager">kitchen_manager</option>
+              <option value="cashier">cashier</option>
+              <option value="delivery_person">delivery_person</option>
+              <option value="restaurant_manager">restaurant_manager</option>
+          </select>
 
           <div class="error">
             <?php if(!empty($this->errors['User_role'])):?>
@@ -81,7 +83,7 @@
           
           <div class="btn-container">
               <button type="submit" formaction="<?php echo BASE_URL?>/rm_controller/users" class="btn cancel-btn">Cancel</button>
-              <input type="submit" value="Update">
+              <button type="submit" class="btn submit-btn">Update</button>
           </div>
           
     

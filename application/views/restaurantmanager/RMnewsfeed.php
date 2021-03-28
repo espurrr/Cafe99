@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <title>Restaurant Manager dashboard</title>
     <?php echo link_css("css/restaurantmanager/sidebar.css?ts=<?=time()?>");?>
@@ -14,7 +14,7 @@
     <?php echo link_css("css/modal/delete_modal.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script> -->
 </head>
 
 <body>
@@ -42,12 +42,13 @@
     <div class="newsfeed-wrapper" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
 
             <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
-                <div class="newsfeed">
-             <!--  <a href="create.php" class="button">Add  News</a>-->
-              <?php echo anchor("rm_controller/create", "Add News",['class'=>"button"]) ?>
-            </div>
+                
 
                 <div class="content">
+                <div class="newsfeed">
+                    <!--  <a href="create.php" class="button">Add  News</a>-->
+                    <?php echo anchor("rm_controller/create", "Add News",['class'=>"button"]) ?>
+                </div>
                 <h2 class="page-title">News</h2>
               
                 <div class="status-msg" style="margin-bottom:20px">

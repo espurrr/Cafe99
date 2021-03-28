@@ -50,7 +50,7 @@
               
         <div class="search-container">
             <?php echo form_open("rm_controller/searchfood", "POST");?>
-                <input type="text" placeholder="Search.." style="width:79%" name="search" value="<?php if($foodname != "") echo $foodname; ?>">
+                <input type="text" placeholder="Search by food name" style="width:79%" name="search" value="<?php if($foodname != "") echo $foodname; ?>">
                 <button type="submit"><i class="fa fa-search"></i></button>
             <?php echo form_close();?>
         </div>

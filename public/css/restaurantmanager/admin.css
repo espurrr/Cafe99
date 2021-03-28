@@ -80,7 +80,7 @@ body{
 
 .admin-content .search-container{
     float:right;
-    }
+}
  
     
 .admin-content .search-container button {
@@ -216,7 +216,31 @@ input[type=text], input[type=email] ,input[type=password], select, textarea {
     transition: 0.3s;
 
 }
+.content .btn-container .submit-btn{
+    background-color: var(--colorGreen);
+    color: var( --colorWhite);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+    width: 100px;
+    margin-top: 15px;
+}
+
 
 #category, #subcategory{
     margin-bottom: 20px;
+}
+.content #announcement_form label{
+    margin-bottom: 20px;
+}
+.content input, .content select, .content textarea{
+    margin-bottom: 20px;
+    line-height: 26px;
+}
+
+.label_div{
+    margin-bottom: 5px;
 }
