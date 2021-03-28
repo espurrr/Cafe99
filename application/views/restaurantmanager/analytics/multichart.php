@@ -9,7 +9,7 @@ $dataPoints6 = array();
 $dataPoints7 = array();
 
 try{
-    $link = new \PDO('mysql:host=localhost:3308;dbname=cafe99(nnew);charset=utf8mb4','root','',
+    $link = new \PDO('mysql:host=localhost;dbname=cafe99;charset=utf8mb4','root','',
                      
                      array(
                             \PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
