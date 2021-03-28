@@ -40,7 +40,7 @@
                       <!--  <label for="Ann_id">Announcement_id</label>-->
                     <!--    <?php //echo form_input(['type'=>'text','id'=>'Ann_id', 'name'=>'Ann_id','value'=>$this->set_value('Announcement_id')])?>-->
 
-                        <label for="Ann_title">Title</label><br>
+                        <div class="label_div">Title</div>
                         <?php echo form_input(['type'=>'text','id'=>'Ann_title', 'name'=>'Announcement_title','value'=>$this->set_value('Announcement_title')])?><br>
                         <div class="dashboard-error">
                             <?php if(!empty($this->errors['Announcement_title'])):?>
@@ -48,23 +48,23 @@
                             <?php endif;?>
                         </div>
 
-                        <label for="Ann_date">Date</label><br>
+                        <!-- <label for="Ann_date">Date</label><br>
                         <?php echo form_input(['type'=>'date','id'=>'Ann_date', 'name'=>'Announcement_date','value'=>$this->set_value('Announcement_date')])?><br>
                         <div class="dashboard-error">
                             <?php if(!empty($this->errors['Announcement_date'])):?>
                             <?php echo $this->errors['Announcement_date'];?>
                             <?php endif;?>
-                        </div>
+                        </div> -->
 
-                        <label for="Ann_time">Time</label><br>
+                        <!-- <label for="Ann_time">Time</label><br>
                         <?php echo form_input(['type'=>'time','id'=>'Ann_time', 'name'=>'Announcement_time','value'=>$this->set_value('Announcement_time')])?><br>
                         <div class="dashboard-error">
                             <?php if(!empty($this->errors['Announcement_time'])):?>
                             <?php echo $this->errors['Announcement_time'];?>
                             <?php endif;?>
-                        </div>
+                        </div> -->
 
-                        <label for="content">Content</label><br>
+                        <div class="label_div">Content</div>
                         <?php echo form_input(['type'=>'text','id'=>'content', 'name'=>'Content','value'=>$this->set_value('Content')])?><br>
                         <div class="dashboard-error">
                             <?php if(!empty($this->errors['Content'])):?>
@@ -72,8 +72,8 @@
                             <?php endif;?>
                         </div>
 
-                        <label for="Ann_towhom">To Whom</label><br>
-                        <?php //echo form_input(['type'=>'text','id'=>'Ann_towhom', 'name'=>'Ann_towhom','value'=>$this->set_value('To_whom')])?><br>
+                        <div class="label_div">To whom</div>
+                        <?php //echo form_input(['type'=>'text','id'=>'Ann_towhom', 'name'=>'Ann_towhom','value'=>$this->set_value('To_whom')])?>
                         <select id="ann" name="To_whom">
                             <option value="All Employees" style="display:none;">All Employees</option>
                             <option value="All Employees">All Employees</option>
@@ -91,7 +91,8 @@
 
                         <div class="btn-container">
                             <button type="submit" formaction="<?php echo BASE_URL?>/rm_controller/newsfeed" class="btn cancel-btn">Cancel</button>
-                            <input type="submit" value="Add">
+                            <button type="submit" class="btn submit-btn">Create</button>
+
                         </div>
 
                         <?php echo form_close();?>  

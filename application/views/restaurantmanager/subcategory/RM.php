@@ -50,7 +50,7 @@
              
             <div class="search-container">
                 <?php echo form_open("rm_controller/searchSubcategory", "POST");?>
-                    <input type="text" placeholder="Search.." style="width:79%" name="search" value="<?php if($subcategory_name != "") echo $subcategory_name; ?>">
+                    <input type="text" placeholder="Search by subcategory" style="width:79%" name="search" value="<?php if($subcategory_name != "") echo $subcategory_name; ?>">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 <?php echo form_close();?>
             </div>

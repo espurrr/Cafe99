@@ -45,11 +45,11 @@
           <!--  <a href="RM.php" class="button">Manage Users</a>-->
             <?php //echo anchor("rm_controller/users", "Manage Users",['class'=>"button"]) ?>
          <!--   <a href="create.php" class="button">Add User</a>-->
-            <?php echo anchor("rm_controller/savedata", "Add Users",['class'=>"button"]) ?>
+            <?php echo anchor("rm_controller/addUser", "Add Users",['class'=>"button"]) ?>
             
         <div class="search-container">
             <?php echo form_open("rm_controller/search_user", "POST");?>
-                <input type="text" style="width:79%" placeholder="Search..." name="search" value="<?php echo $username; ?>">
+                <input type="text" style="width:79%" placeholder="Search by User ID" name="search" value="<?php if($user_id != "") echo $user_id; ?>">
                 <button type="submit"><i class="fa fa-search"></i></button>
             <?php echo form_close();?>
 
@@ -61,7 +61,7 @@
                  <div class="status-msg-wrapper">
                     <div class="status-msg" style="margin-bottom:20px">
                         <?php $this->flash('RM_user_not_retrieved','alert alert-danger','fa fa-times-circle'); ?>
-                        <?php $this->flash('RM_user_not_found','alert alert-warning','fa fa-times-circle'); ?>
+                        <?php $this->flash('RM_user_NotFound','alert alert-warning','fa fa-times-circle'); ?>
                         <?php $this->flash('RM_user_databaseError','alert alert-danger','fa fa-times-circle'); ?>
                         <?php $this->flash('userSuccess','alert alert-success','fa fa-check'); ?>
                         <?php $this->flash('updateSuccess','alert alert-success','fa fa-check'); ?>
@@ -74,7 +74,7 @@
                      <th>User ID</th>
                      <th>User Name</th>
                      <th>Email address</th>
-                     <th>Phone Number</th>
+                     <!-- <th>Phone Number</th> -->
                      <th>Role</th>
                      <th>User Status</th>
                      <th colspan="3">Action</th>
@@ -89,7 +89,7 @@
           echo "<td>".$row->User_ID."</td>";
           echo "<td>".$row->User_name."</td>";
           echo "<td>".$row->Email_address."</td>";
-          echo "<td>".$row->Phone_no."</td>";
+        //   echo "<td>".$row->Phone_no."</td>";
           echo "<td>".$row->User_role."</td>";
           echo "<td>".$row->User_status."</td>";
       //    echo "<td>".anchor("rm_controller/usersedit", "Edit",['class'=>"edit"])."</td>";

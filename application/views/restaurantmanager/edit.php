@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <title>Restaurant Manager dashboard</title>
 
     <?php echo link_css("css/restaurantmanager/sidebar.css?ts=<?=time()?>");?>
@@ -33,25 +33,25 @@
                     <?php $this->flash('UpdateError','alert alert-warning','fa fa-check'); ?>
                 </div>
 
-                 <?php echo form_open("rm_controller/newsfeed_update_save","post");?>   
+                <?php echo form_open("rm_controller/newsfeed_update_save","post",["id"=>"announcement_form"]);?>   
                  
-                        <label for="Ann_id">Announcement ID</label><br>
+                        <div class="label_div">Announcement ID</div>
                         <?php echo form_input(['type'=>'text','id'=>'Ann_id','name'=>'Announcement_id','value'=>$data->Announcement_id,'readonly'=>'readonly'])?>
-
-                        <label for="Ann_title">Title</label>
-                        <?php echo form_input(['type'=>'text','id'=>'Ann_title', 'name'=>'Announcement_title','value'=>$data->Announcement_title])?><br>
-
-                        <label for="Ann_date">Date</label><br>
-                        <?php echo form_input(['type'=>'date','id'=>'Ann_date', 'name'=>'Announcement_date','value'=>$data->Announcement_date])?><br>
+                        
+                        <div class="label_div">Title</div>
+                        <?php echo form_input(['type'=>'text','id'=>'Ann_title', 'name'=>'Announcement_title','value'=>$data->Announcement_title])?>
+                        
+                        <!-- <label for="Ann_date">Date</label><br>
+                        <?php //echo form_input(['type'=>'date','id'=>'Ann_date', 'name'=>'Announcement_date','value'=>$data->Announcement_date])?><br>
 
                         <label for="Ann_time">Time</label><br>
-                        <?php echo form_input(['type'=>'time','id'=>'Ann_time', 'name'=>'Announcement_time','value'=>$data->Announcement_time])?><br>
+                        <?php //echo form_input(['type'=>'time','id'=>'Ann_time', 'name'=>'Announcement_time','value'=>$data->Announcement_time])?><br> -->
 
-                        <label for="content">Content</label>
-                        <?php echo form_input(['type'=>'text','id'=>'content', 'name'=>'Content','value'=>$data->Content])?><br>
+                        <!-- <label for="content">Content</label>
+                        <?php //echo form_input(['type'=>'text','id'=>'content', 'name'=>'Content','value'=>$data->Content])?><br> -->
 
-                        <label for="Ann_towhom">To Whom</label>
-                        <?php //echo form_input(['type'=>'text','id'=>'Ann_towhom', 'name'=>'To_whom','value'=>$data->To_whom])?><br>
+                        <div class="label_div">To Whom</div>
+                        <?php //echo form_input(['type'=>'text','id'=>'Ann_towhom', 'name'=>'To_whom','value'=>$data->To_whom])?>
                         <select id="ann" name="To_whom">
                             <option value="<?php echo $data->To_whom ?>" style="display:none;"><?php echo $data->To_whom ?></option>
                             <option value="All Employees">All Employees</option>
@@ -61,12 +61,19 @@
                             <option value="Kitchen managers">Kitchen managers</option>
                         </select>
 
+                        <div class="label_div">Content</div>
+                        <!-- <?php //echo form_input(['type'=>'text','id'=>'content', 'name'=>'Content','value'=>$data->Content])?><br> -->
+                        <textarea rows="10"  name="Content" form="announcement_form"><?php echo $data->Content; ?></textarea> 
+
                         <div class="btn-container">
-    <button type="submit" formaction="<?php echo BASE_URL?>/rm_controller/newsfeed" class="btn cancel-btn">Cancel</button>
-    <input type="submit" value="Update">
-</div>
-                        <?php echo form_close();?>  
-                 <!-- </form> -->
+                            <button type="submit" formaction="<?php echo BASE_URL?>/rm_controller/newsfeed" class="btn cancel-btn">Cancel</button>
+                            <button type="submit" class="btn submit-btn">Update</button>
+
+                        </div>
+                        <?php echo form_close();?> 
+
+                        
+                <!-- </form> -->
              </div>
             </div>
         

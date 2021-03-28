@@ -154,16 +154,20 @@ class Rm_model extends Database{
            
      //   }
     }
-    public function searchUser($username){
-        $query = "SELECT User_ID, User_name, Email_address, Phone_no, User_role FROM user WHERE User_name LIKE '%$username%'";
+    public function searchUser($user_id){
+        if(empty($user_id)){
+            $query = "SELECT User_ID, User_name, Email_address, Phone_no, User_role FROM user";
+        }else{
+            $query = "SELECT User_ID, User_name, Email_address, Phone_no, User_role FROM user WHERE User_ID = '$user_id'";
+        }
 
         $result =$this->Query($query, $options = []);
 
         if($this->Count() > 0){
-            $users = $this->AllRecords();
+            $user = $this->AllRecords();
             // print_r($food);
-            if($users){
-                return ['status'=>'success', 'data'=>$users];
+            if($user){
+                return ['status'=>'success', 'data'=>$user];
             }else{
                 return "User_not_retrieved";
             }
@@ -255,12 +259,13 @@ class Rm_model extends Database{
     }
     public function searchFooditem($foodname){
         $query = 
-        "SELECT fooditem.Food_ID, fooditem.Food_name, fooditem.Availability,
-        subcategory.Subcategory_ID, subcategory.Subcategory_name, category.Category_ID, category.Category_name 
-        FROM fooditem 
-        INNER JOIN subcategory ON fooditem.Subcategory_ID = subcategory.Subcategory_ID
-        INNER JOIN category ON subcategory.Category_ID = category.Category_ID 
-        WHERE fooditem.Food_name LIKE '%".$foodname."%' OR subcategory.Subcategory_name LIKE '%".$foodname."%'";
+            "SELECT fooditem.Food_ID, fooditem.Food_name, fooditem.Availability,
+            subcategory.Subcategory_ID, subcategory.Subcategory_name, category.Category_ID, category.Category_name 
+            FROM fooditem 
+            INNER JOIN subcategory ON fooditem.Subcategory_ID = subcategory.Subcategory_ID
+            INNER JOIN category ON subcategory.Category_ID = category.Category_ID 
+            WHERE fooditem.Food_name LIKE '%".$foodname."%' OR subcategory.Subcategory_name LIKE '%".$foodname."%'";
+        
 
         $result =$this->Query($query, $options = []);
 
@@ -517,7 +522,13 @@ class Rm_model extends Database{
     }
 
     public function searchOrder($order_id){
-        $query =  "SELECT * FROM orders WHERE Order_ID = $order_id";
+        if(empty($order_id)){
+            $query =  "SELECT * FROM orders";
+
+        }else{
+            $query =  "SELECT * FROM orders WHERE Order_ID = $order_id";
+
+        }
 
         $result =$this->Query($query, $options = []);
 

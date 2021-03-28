@@ -36,7 +36,7 @@
 
                  <?php echo form_open("rm_controller/savedata","post");?>
           
-          <label for="User_name">User Name</label>
+          <div class="label_div">User Name</div>
           <?php echo form_input(['type'=>'text', 'name'=>'User_name', 'placeholder'=>'Enter Name...', 'value'=>$this->set_value('User_name')])?>
           <div class="dashboard-error">
             <?php if(!empty($this->errors['User_name'])):?>
@@ -44,7 +44,7 @@
             <?php endif;?>
           </div>
 
-          <label for="Email_address">Email Address</label>
+          <div class="label_div">Email Address</div>
           <?php echo form_input(['type'=>'email', 'name'=>'Email_address', 'placeholder'=>'Enter email address...' ,'value'=>$this->set_value('Email_address')])?>
           <div class="dashboard-error">
             <?php if(!empty($this->errors['Email_address'])):?>
@@ -52,7 +52,7 @@
             <?php endif;?>
           </div>
 
-          <label for="Phone_no">Phone No</label>
+          <div class="label_div">Phone No</div>
           <?php echo form_input(['type'=>'text', 'name'=>'Phone_no', 'placeholder'=>'Enter Phone No...', 'value'=>$this->set_value('Phone_no')])?>
           <div class="dashboard-error">
             <?php if(!empty($this->errors['Phone_no'])):?>
@@ -60,7 +60,7 @@
             <?php endif;?>
           </div>
 
-          <label for="User_Password">User Password</label>
+          <div class="label_div">User Password</div>
           <?php echo form_input(['type'=>'password', 'name'=>'User_Password', 'placeholder'=>'Enter Password...','value'=>$this->set_value('User_Password')])?>
           <div class="dashboard-error">
             <?php if(!empty($this->errors['User_Password'])):?>
@@ -68,16 +68,16 @@
             <?php endif;?>
           </div>
 
-          <label for="User_role">Role</label>
+          <div class="label_div">Role</div>
           <?php //echo form_input(['type'=>'text', 'name'=>'User_role', 'placeholder'=>'Enter Role...', 'value'=>$this->set_value('User_role')])?>
           <select id="role" name="User_role">
-                            <option value="customer" style="display:none;">customer</option>
-                            <option value="customer">customer</option>
-                            <option value="kitchen_manager">kitchen_manager</option>
-                            <option value="cashier">cashier</option>
-                            <option value="delivery_person">delivery_person</option>
-                            <option value="restaurant_manager">restaurant_manager</option>
-                        </select>
+              <option value="customer" style="display:none;">customer</option>
+              <option value="customer">customer</option>
+              <option value="kitchen_manager">kitchen_manager</option>
+              <option value="cashier">cashier</option>
+              <option value="delivery_person">delivery_person</option>
+              <option value="restaurant_manager">restaurant_manager</option>
+          </select>
 
           <div class="error">
             <?php if(!empty($this->errors['User_role'])):?>
@@ -95,7 +95,8 @@
 
           <div class="btn-container">
             <button type="submit" formaction="<?php echo BASE_URL?>/rm_controller/users" class="btn cancel-btn">Cancel</button>
-            <input type="submit" value="Add user">
+            <button type="submit" class="btn submit-btn">Add</button>
+
           </div>
           
     

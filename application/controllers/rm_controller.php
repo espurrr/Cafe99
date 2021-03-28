@@ -36,8 +36,8 @@ class RM_Controller extends JB_Controller{
     public function createSubmit(){
 
         $this->validation('Announcement_title','Title','required');
-        $this->validation('Announcement_date','Date','required');
-        $this->validation('Announcement_time','Time','required');
+        // $this->validation('Announcement_date','Date','required');
+        // $this->validation('Announcement_time','Time','required');
         $this->validation('Content','Content','required');
       //  $this->validation('To_whom','Whom','required');
         
@@ -58,8 +58,10 @@ class RM_Controller extends JB_Controller{
              // will replace with the ID later
             
              $Ann_title = $this->post('Announcement_title'); 
-             $Ann_date = $this->post('Announcement_date');
-             $Ann_time = $this->post('Announcement_time');
+            //  $Ann_date = $this->post('Announcement_date');
+            //  $Ann_time = $this->post('Announcement_time');
+            $Ann_date = date("Y-d-m");
+            $Ann_time = date("H:i:s");
              $content = $this->post('Content');
              $Ann_towhom=$_POST['To_whom'];
             // $Ann_towhom = $this->post('To_whom');
@@ -78,14 +80,14 @@ class RM_Controller extends JB_Controller{
             
             if($this->model->addNews($data)){
                 $this->set_flash("newsfeedSuccess", "News feed added successfully");
-              //  $this->view('restaurantmanager/RMnewsfeed');
-              $this->newsfeed();
+                //  $this->view('restaurantmanager/RMnewsfeed');
+                redirect("rm_controller/newsfeed");
                 
 
             }else{
                 $this->set_flash("newsfeedError", "Something went wrong :( Please try again later.)");
-               // $this->view('restaurantmanager/create');
-               $this->newsfeed();
+                // $this->view('restaurantmanager/create');
+                $this->newsfeed();
 
             }
         }else{
@@ -175,6 +177,11 @@ class RM_Controller extends JB_Controller{
 
  
 //create users   
+    public function addUser(){
+        $this->view('restaurantmanager/users/create');
+
+    }
+
     public function savedata(){
         /*   $this->view('restaurantmanager/users/create');*/
         $x=$this->get_session('user_id');
@@ -256,9 +263,8 @@ class RM_Controller extends JB_Controller{
 
     public function search_user(){
         if(isset($_POST["search"])){
-            $username = $_POST["search"];
-            $searched = ($foodname == "") ? false : true;
-            $result =  $this->model->searchUser($username);
+            $user_id = $_POST["search"];
+            $result =  $this->model->searchUser($user_id);
 
             if($result === "User_not_retrieved"){
                 $this->set_flash("RM_user_databaseError", "Sorry, cannot show fooditems at the moment. Please try again later.");
@@ -442,9 +448,9 @@ public function createOrders(){
 
     public function searchOrders(){
         if(isset($_POST["search"])){
-            $order_id = $_POST["search"];
+            $order_Id = $_POST["search"];
             // $searched = ($order_id == "") ? false : true;
-            $result =  $this->model->searchOrder($order_id);
+            $result =  $this->model->searchOrder($order_Id);
 
             if($result === "Order_not_retrieved"){
                 $this->set_flash("RM_order_databaseError", "Sorry, cannot show fooditems at the moment. Please try again later.");

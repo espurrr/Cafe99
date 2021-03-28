@@ -48,7 +48,7 @@
 
             <div class="search-container">
                 <?php echo form_open("rm_controller/searchOrders", "POST");?>
-                    <input type="text" placeholder="Search.." style="width:79%" name="search" value="<?php if($order_id != "") echo $order_id; ?>">
+                    <input type="text" placeholder="Search by Order ID" style="width:79%" name="search" value="<?php if($order_Id != "") echo $order_Id; ?>">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 <?php echo form_close();?>
             </div>
