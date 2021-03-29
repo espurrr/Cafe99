@@ -113,7 +113,7 @@
          
             </div>
             <div class="btn-container">
-                <button href="#" class="fav btn"><i class="fas fa-heart"></i></button>
+                <!-- <button href="#" class="fav btn"><i class="fas fa-heart"></i></button> -->
                 
                 <button id="add_to_cart_btn"
                 class="cart btn shoppingcartbtn" 
