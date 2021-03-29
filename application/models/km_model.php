@@ -202,6 +202,29 @@
                 return false;
             }
         }
+
+        public function getCustomerData($order_id){
+            $query = 
+            "SELECT user.User_name AS username ,user.Email_address AS email
+            FROM user
+            INNER JOIN orders ON orders.User_ID = user.User_ID
+            WHERE orders.Order_ID='".$order_id."' ";
+            
+            $result =$this->Query($query, $options = []);
+    
+            if($this->Count() > 0){
+                $data = $this->Row();
+                if($data){
+                    return ['status'=>'success', 'data'=>$data];
+                }else{
+                    return ['status'=>'User_data_not_retrieved'];
+                }
+            }else{
+                return ['status'=>'User_not_found'];
+            }
+        }
+
+
     }
 
 ?>

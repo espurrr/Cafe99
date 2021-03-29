@@ -175,9 +175,30 @@ class KM_Controller extends JB_Controller{
         }
 
         if (isset($_POST['processing'])){
+
+            $isPickup = 0;  //need to send an email notif when pick-up order is ready
+            
             $order_id = (int)$_POST['processing'];
             $data = ['Order_status' => 'ready'];
             $refresh_state = "Processing";
+            $order_result = $this->model->getOrderType($order_id);
+
+            if($order_result === "Order_type_not_retrieved"){
+                $this->set_flash("databaseError", "Sorry, cannot show order type at the moment. Please try again later.");
+                $this->view('kitchenmanager/orders/orders');
+                //echo"dberror";
+            }else if($order_result === "Order_type_not_found"){
+                $this->set_flash("noorderTypeError", "Sorry, cannot show order type at the moment. Please try again later.");
+                $this->view('kitchenmanager/orders/orders');
+                //echo"nofood";
+            }else if($order_result['status'] === "success"){
+                $order_type = $order_result['data'][0]->Order_type;
+                //echo $order_type;
+            }
+            if($order_type == "pick-up"){
+                $isPickup = 1;  //pick-up flag turns 1. need to send email notif.
+            }
+
         }
 
         if (isset($_POST['ready'])){
@@ -214,7 +235,34 @@ class KM_Controller extends JB_Controller{
         }
 
         if($this->model->updateOrderStatus($data , $order_id)){
-            $this-> set_flash("orderUpdateSuccess","Order item updated successfully");
+            
+            if($isPickup){
+                //send an email notif saying order is ready to pickup
+
+                //  -> get customer's name and email address
+                $user_info = $this->model->getCustomerData($order_id);
+                if($user_info['status'] === "User_data_not_retrieved" or $user_info['status'] === "User_not_found" ){
+                    $this->set_flash("EmailError", "User information was not retrieved. Email notification was not sent.");
+                    redirect("km_controller/orders/".$refresh_state);
+                }else if($user_info['status'] === "success"){
+                //  -> send the email notification
+                    if($this->pickup_email($order_id,$user_info['data']->username,$user_info['data']->email)){
+                        $this-> set_flash("orderUpdateSuccessEmailSent","Order item updated successfully. Pick up email notification sent to customer.");
+                        //logs
+                        $this->informational("order#$order_id pickup order email notif is sent successfully");
+
+                    }else{
+                        $this-> set_flash("orderUpdateSuccessEmailNotSent","Order item was updated successfully. Pick up email notification failed to send.");
+                        //logs
+                        $this->warning("order#$order_id pickup order email notif failed to send");
+
+                    }
+                }
+            }else{
+                //delivery and dine-in order need not to send an email notif
+                $this-> set_flash("orderUpdateSuccess","Order item updated successfully");
+            }
+
         }
         else{
             $this-> set_flash("orderUpdateUnsuccess","Order item wasn't updated successfully");
@@ -242,6 +290,28 @@ class KM_Controller extends JB_Controller{
             redirect("km_controller/orders/".$refresh_state);
         }   
 
+    }
+
+    public function pickup_email($order_id, $recipient_name, $recipient_email){
+ 
+        $mailer = new JB_Mailer(true);
+      
+        $date = date("F j, Y");
+        $subject = "Your Order#$order_id is ready for pickup";
+        $html_body = "<html><body style=\"font-family: sans-serif;\">
+        <h2>Hey $recipient_name,</h2> 
+        <p>Your order is ready for pickup. Please bring your email invoice when you come to collect your order</p> 
+        <h3> Order #$order_id </h3>
+        $date<br>
+        <h3>Pick up Location</h3>
+        <p>Cafe99,<br>Ledger Avenue,<br>Maharagama.</p><br>
+        <p><i>If you did not make this order or need assistance, please email <a href=\"mailto:cafe99.teamdashcode@gmail.com\">us</a></i></p><p>Cheers,<br>Team Cafe99.</p>
+        </body></html>";
+
+        $send = $mailer->sendEmail($recipient_email, $recipient_name, $subject, $html_body, "");//
+        if($send) return TRUE;
+        else return FALSE;
+        
     }
 
 }
