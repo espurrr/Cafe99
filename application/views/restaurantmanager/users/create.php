@@ -61,7 +61,7 @@
           </div>
 
           <div class="label_div">User Password</div>
-          <?php echo form_input(['type'=>'password', 'name'=>'User_Password', 'placeholder'=>'Enter Password...','value'=>$this->set_value('User_Password')])?>
+          <?php echo form_input(['type'=>'password', 'name'=>'User_Password', 'placeholder'=>'Enter Password...','readonly'=>'readonly','value'=>'passwordpassword'])?>
           <div class="dashboard-error">
             <?php if(!empty($this->errors['User_Password'])):?>
             <?php echo $this->errors['User_Password'];?>

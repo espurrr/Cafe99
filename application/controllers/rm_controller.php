@@ -190,7 +190,6 @@ class RM_Controller extends JB_Controller{
            $this->validation('User_name', 'Name' , 'required|not_int|max_len|50');
            $this->validation('Email_address','Email address', 'unique|user|required');
            $this->validation('Phone_no','Phone no', 'unique|user|required|len|10');
-           $this->validation('User_Password','User password', 'required|min_len|8');
    
            if($this->run()){
           //   echo "data insert";
@@ -198,7 +197,7 @@ class RM_Controller extends JB_Controller{
                $Email_address = $this->post('Email_address');
                $Phone_no = $this->post('Phone_no');
             // $User_Password = $this->post('password');
-               $User_Password = $this->hash($this->post('User_Password'));
+               $User_Password = $this->hash("$User_name-12345");
             //   $User_role=$this->post('User_role');
                $User_role=$_POST['User_role'];
                $Token = bin2hex(openssl_random_pseudo_bytes(16));
@@ -212,7 +211,6 @@ class RM_Controller extends JB_Controller{
                    'Phone_no' => $Phone_no,
                    'User_Password' => $User_Password,
                    'User_role'=>$User_role,
-                   'User_status'=> "active",
                    'Registered_date' => date("Y-m-d"),
               /*  'Registered_date' => $Registered_date,*/
                    'Token' => $Token,
@@ -221,11 +219,19 @@ class RM_Controller extends JB_Controller{
               
               
                 if($this->model->userscreate($data)){
-                    //logs
-                    $this->informational("New user added:Email_address=$Email_address by RM_User_ID $x");
+                    //email of reset password should be sent to the employee
+                    if($this->resetPwEmployeeEmail($Email_address, $User_name, $Token)){
+                        //logs
+                        $this->informational("password reset link sent to member; @email =  $Email_address");
+                    }else{
+                       //logs
+                       $this->warning("password reset link failed to send to member; @email = $Email_address");
+                    }            
+
+                   $this->informational("New user added:Email_address=$Email_address by RM_User_ID $x");
+                   $this->set_flash("userSuccess", "New user create successfully");
 
                   //  echo "New user create successfully";
-                   $this->set_flash("userSuccess", "New user create successfully");
                    redirect('rm_controller/users');
                  // $this->users();
                }
@@ -1017,6 +1023,37 @@ public function addCategory(){
           $result=$this->model->deletecategory($cat_id);
           redirect('rm_controller/category');  
     }
+
+    public function resetPwEmployeeEmail($recipient_email, $recipient_name, $token){//$
+
+        $mailer = new JB_Mailer(true);
+
+        $subject = "Cafe99 - Password Reset Link";
+        $html_body = "<html><body style=\"font-family: sans-serif;\">
+        <p>Hello $recipient_name,<br> This email is to inform that you're officially a member of Cafe 99 team.</p> 
+        <p>In order to reset your password to your dashboard, click on the button below. <br> *IMPORTANT* Please note that you cannot use this link again, once you clicked it.</p>
+        <a href=\"http://localhost/cafe99/account_controller/resetpw/$token\" target=\"_blank\">
+        <button style=\"border: none;
+        padding: 1rem 2rem;
+        text-decoration: none;
+        background: #0069ed;
+        color: #ffffff;
+        font-size: 1rem;
+        line-height: 1;
+        text-align: center;\">
+
+        Reset Your Password
+        </a>
+        <p><i>If you need assistance, please email <a href=\"mailto:cafe99.teamdashcode@gmail.com\">us</a></i></p><p>Cheers,<br>Team Cafe99.</p>
+        </body></html>";
+
+
+        $send = $mailer->sendEmail($recipient_email, $recipient_name, $subject, $html_body, "");//
+        if($send) return TRUE;
+        else return FALSE;
+    
+    }
+
 
  
 
