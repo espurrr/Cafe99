@@ -54,20 +54,77 @@ class Cashier_Controller extends JB_Controller{
     //     $this->view('cashier/foodmenu/foodmenu');
     // }
 
-    public function foodmenu(){
+    public function foodmenu($status = "Food", $searched = false){
+        // $result =  $this->model->getFooditems();
+
+        // if($result === "Food_not_retrieved"){
+        //     $this->set_flash("databaseError", "Sorry, cannot show fooditems at the moment. Please try again later.");
+        //     //echo"dberror";
+        // }else if($result === "Food_not_found"){
+        //     $this->set_flash("nofoodError", "Sorry, cannot show fooditems at the moment. Please try again later.");
+        //     //echo"nofood";
+        // }else if($result['status'] === "success"){
+        //     $this->view('cashier/foodmenu/foodmenu',$result['data']);
+        // }
+
         $result =  $this->model->getFooditems();
 
-        if($result === "Food_not_retrieved"){
+        if($result === "Food_not_retrieved" || $result === "Subcat_not_retrieved" || $result === "Category_not_retrieved"){
             $this->set_flash("databaseError", "Sorry, cannot show fooditems at the moment. Please try again later.");
             //echo"dberror";
-        }else if($result === "Food_not_found"){
+        }else if($result === "Food_not_found" || $result === "Subcat_not_found" || $result === "Category_not_found"){
             $this->set_flash("nofoodError", "Sorry, cannot show fooditems at the moment. Please try again later.");
             //echo"nofood";
         }else if($result['status'] === "success"){
-            $this->view('cashier/foodmenu/foodmenu',$result['data']);
+            $data = $result['data'];
+            // print_r($data);
+
+            // $this->view('cashier/foodmenu/foodmenu_new',$result['data']);
+            if(file_exists("../application/views/cashier/foodmenu/foodmenu_new.php")){
+                require_once "../application/views/cashier/foodmenu/foodmenu_new.php";
+            }else{
+                include "../application/views/error.php";
+                die();
+                // die("<div style='background-color:#f1f4f4;color:#afaaaa;border:1px dotted #afaaaa;padding:10px; border-radius:4px'>Sorry View <strong>".$view_name."</strong> is not found</div>");
+            }
         }
 
     }
+
+    public function searchfood($status = "Food"){
+        if(isset($_POST["search"])){
+            $foodname = $_POST["search"];
+            $searched = ($foodname == "")? false : true;
+
+            if($searched == false){
+                $this->foodmenu($status);
+            }else{
+                $result =  $this->model->getSearchFooditems($foodname);
+                if($result === "Food_not_retrieved" || $result === "Category_not_retrieved"){
+                    $this->set_flash("databaseError", "Sorry, cannot show fooditems at the moment. Please try again later.");
+                    //echo"dberror";
+                }else if($result === "Food_not_found" || $result === "Category_not_found"){
+                    $this->set_flash("foodNotFound", "It looks like there aren't many great matches for your search");
+                    $this->foodmenu();
+                    //echo"nofood";
+                }else if($result['status'] === "success"){
+                    $data = $result['data'];
+                    // print_r($data);
+    
+                    if(file_exists("../application/views/cashier/foodmenu/foodmenu_new.php")){
+                        require_once "../application/views/cashier/foodmenu/foodmenu_new.php";
+                    }else{
+                        include "../application/views/error.php";
+                        die();
+                        // die("<div style='background-color:#f1f4f4;color:#afaaaa;border:1px dotted #afaaaa;padding:10px; border-radius:4px'>Sorry View <strong>".$view_name."</strong> is not found</div>");
+                    }
+                }
+            }
+        }else{
+            $this->foodmenu($status);
+        }
+    }
+
     public function newsfeed(){
         $result = $this->model->getAnnouncement();
         //$this->view('cashier/newsfeed/newsfeed');

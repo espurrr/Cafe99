@@ -83,7 +83,7 @@
             <div class="autocomplete" style="width:300px;">
             <input id="search_page" type="text" name="search_food" placeholder="Search...">
             </div>
-            <button type="submit"><i class="fa fa-search"></i></button>
+            <button type="submit" id="searchbar_submit"><i class="fa fa-search"></i></button>
         </form>
         <?php //echo form_close();?>
     </div>
