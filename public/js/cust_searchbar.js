@@ -71,6 +71,8 @@ function autocomplete(searchbar, food_arr) {
         if (currentFocus > -1) { 
           if (list_items)
             list_items[currentFocus].click();
+            document.getElementById("searchbar_submit").focus();
+
         }
       }
   });
@@ -115,6 +117,7 @@ function autocomplete(searchbar, food_arr) {
   });
 }
 
+
 var food_names = document.getElementById("search_food_names").value;
 food_names = food_names.split(",");
 // var food_names = ["pizza", "bun", "rice", "juice", "cake"];
@@ -129,6 +132,9 @@ if(screen.width >= 910){
   document.getElementById("search_header_container").style.display = "block";
   autocomplete(document.getElementById("search_header"), food_names);
 
+
 }
+
+
 
 

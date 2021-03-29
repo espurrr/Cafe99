@@ -61,7 +61,7 @@
           </div>
 
           <div class="label_div">User Password</div>
-          <?php echo form_input(['type'=>'password', 'name'=>'User_Password', 'placeholder'=>'Enter Password...','value'=>$this->set_value('User_Password')])?>
+          <?php echo form_input(['type'=>'password', 'name'=>'User_Password', 'placeholder'=>'Enter Password...','readonly'=>'readonly','value'=>'passwordpassword'])?>
           <div class="dashboard-error">
             <?php if(!empty($this->errors['User_Password'])):?>
             <?php echo $this->errors['User_Password'];?>
@@ -71,8 +71,8 @@
           <div class="label_div">Role</div>
           <?php //echo form_input(['type'=>'text', 'name'=>'User_role', 'placeholder'=>'Enter Role...', 'value'=>$this->set_value('User_role')])?>
           <select id="role" name="User_role">
-              <option value="customer" style="display:none;">customer</option>
-              <option value="customer">customer</option>
+              <option value="kitchen_manager" style="display:none;">kitchen_manager</option>
+             <!-- <option value="customer">customer</option>-->
               <option value="kitchen_manager">kitchen_manager</option>
               <option value="cashier">cashier</option>
               <option value="delivery_person">delivery_person</option>
@@ -85,6 +85,16 @@
             <?php endif;?>
           </div>
           
+          <div class="label_div">Department</div>
+          
+          <select id="dep" name="Dep_No">
+              <option value="empty" style="display:none;">-Select Department-</option>
+              <option value="1">1-Management Department</option>
+              <option value="2">2-Kitchen Department</option>
+              <option value="3">3-Cashier Department</option>
+              <option value="4">4-Delivery Department</option>
+          </select>
+          
          <!-- <label for="Registered_date">Registered Date</label>
           <?php echo form_input(['type'=>'text', 'name'=>'Registered_date', 'placeholder'=>'Enter Register Date...', 'value'=>$this->set_value('Registered_date')])?>
           <div class="error">
@@ -95,7 +105,7 @@
 
           <div class="btn-container">
             <button type="submit" formaction="<?php echo BASE_URL?>/rm_controller/users" class="btn cancel-btn">Cancel</button>
-            <button type="submit" class="btn submit-btn">Add</button>
+            <button type="submit" class="btn submit-btn">Create</button>
 
           </div>
           

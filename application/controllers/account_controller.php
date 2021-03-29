@@ -176,7 +176,12 @@ class Account_controller extends JB_Controller{
 
                 if($this->model->login_time($this->get_session('user_id'))){
                     
-                    if($session_data['role']=="customer" AND $session_data['user_status']=="active" ){
+                    if($session_data['user_status']=="inactive"){
+                        $this->set_flash("notActivatedYetInfo","Opps! Looks like you haven't activated your account yet. Please check the email we sent.");
+                        $this->view('login');
+                    }
+                    
+                    else if($session_data['role']=="customer" ){
 
                         //check whether the customer already has a cart
                         //has -> load it, has not -> assign new cart
@@ -203,9 +208,6 @@ class Account_controller extends JB_Controller{
                         }
                     
                         redirect("customer_controller/index");
-                    }else if($session_data['role']=="customer" AND $session_data['user_status']=="inactive"){
-                        $this->set_flash("notActivatedYetInfo","Opps! Looks like you haven't activated your account yet. Please check the email we sent.");
-                        $this->view('login');
                     }else if($session_data['role']=="kitchen_manager"){
                         redirect("km_controller/index");
                     }else if($session_data['role']=="cashier"){
@@ -294,7 +296,7 @@ class Account_controller extends JB_Controller{
                        $this->model->nullToken($Token);
                        $this->set_flash("resetEmailError", "Something went wrong :( Please try again.");
                        //logs
-                       $this->notice("password reset attempt; reset link failed to send to $Email_address");
+                       $this->warning("password reset attempt; reset link failed to send to $Email_address");
                        $this->view('forgot');
                    }              
                    
@@ -345,7 +347,7 @@ class Account_controller extends JB_Controller{
             //this way, if there's no user_id set in the session, it means he/she came from the url. drives away to the HOME 
             redirect("account_controller/index");
         }
-        $this->validation('New_Password','New Password', 'required|min_len|5');
+        $this->validation('New_Password','New Password', 'required|min_len|8');
         $this->validation('Confirm_Password','Confirm Password', 'required|confirm|New_Password');
         if($this->run()){
             $user_id = $this->get_session('user_id');

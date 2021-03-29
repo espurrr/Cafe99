@@ -55,7 +55,6 @@ class RM_Controller extends JB_Controller{
             $Ann_towhom=$_POST['To_whom'];
             
             $Ann_user=$this->get_session('user_id');*/
-             // will replace with the ID later
             
              $Ann_title = $this->post('Announcement_title'); 
             //  $Ann_date = $this->post('Announcement_date');
@@ -86,13 +85,13 @@ class RM_Controller extends JB_Controller{
 
             }else{
                 $this->set_flash("newsfeedError", "Something went wrong :( Please try again later.)");
-                // $this->view('restaurantmanager/create');
-                $this->newsfeed();
+                 $this->view('restaurantmanager/create');
+               // $this->newsfeed();
 
             }
         }else{
-           $this->view('restaurantmanager/create');
            //$this->newsfeed();
+           redirect("rm_controller/newsfeed");
 
         }
 
@@ -131,8 +130,10 @@ class RM_Controller extends JB_Controller{
     if($this->run()){
         // $Ann_id = $this->post('Announcement_id');
         $Ann_title = $this->post('Announcement_title');
-        $Ann_date = $this->post('Announcement_date');
-        $Ann_time = $this->post('Announcement_time');
+       // $Ann_date = $this->post('Announcement_date');
+       //$Ann_time = $this->post('Announcement_time');
+        $Ann_date = date("Y-d-m");
+        $Ann_time = date("H:i:s");
         $content = $this->post('Content');
        // $Ann_towhom = $this->post('To_whom');
         $Ann_towhom=$_POST['To_whom'];
@@ -152,13 +153,13 @@ class RM_Controller extends JB_Controller{
         
         if($this->model->newsfeed_data_update($data,  $newsfeed_id)){
             $this-> set_flash("updateSuccess","Announcement is successfully updated.");
-           // $this->view('restaurantmanager/edit');
-           $this->newsfeed();
+           // $this->newsfeed();
+            redirect('rm_controller/newsfeed');
            
         }else{
             $this->set_flash("updateError", "Something went wrong :( Please try again.");
-           // $this->view('restaurantmanager/edit');
-           $this->newsfeed();
+            $this->view('restaurantmanager/edit');
+          // $this->newsfeed();
         }
         
     }else{
@@ -189,7 +190,6 @@ class RM_Controller extends JB_Controller{
            $this->validation('User_name', 'Name' , 'required|not_int|max_len|50');
            $this->validation('Email_address','Email address', 'unique|user|required');
            $this->validation('Phone_no','Phone no', 'unique|user|required|len|10');
-           $this->validation('User_Password','User password', 'required|min_len|8');
    
            if($this->run()){
           //   echo "data insert";
@@ -197,11 +197,12 @@ class RM_Controller extends JB_Controller{
                $Email_address = $this->post('Email_address');
                $Phone_no = $this->post('Phone_no');
             // $User_Password = $this->post('password');
-               $User_Password = $this->hash($this->post('User_Password'));
+               $User_Password = $this->hash("$User_name-12345");
             //   $User_role=$this->post('User_role');
                $User_role=$_POST['User_role'];
-          //   $Token = bin2hex(openssl_random_pseudo_bytes(16));
-               $Token="abc";
+               $Token = bin2hex(openssl_random_pseudo_bytes(16));
+           //    $Token="abc";
+               $Dep_No=$_POST['Dep_No'];
             
    
                $data = [
@@ -210,21 +211,29 @@ class RM_Controller extends JB_Controller{
                    'Phone_no' => $Phone_no,
                    'User_Password' => $User_Password,
                    'User_role'=>$User_role,
-                   'User_status'=> "active",
                    'Registered_date' => date("Y-m-d"),
               /*  'Registered_date' => $Registered_date,*/
-                   'Token' => $Token
+                   'Token' => $Token,
+                   'Dep_No'=>$Dep_No
                ];
               
               
                 if($this->model->userscreate($data)){
-                    //logs
-                    $this->informational("New user added:Email_address=$Email_address by RM_User_ID $x");
+                    //email of reset password should be sent to the employee
+                    if($this->resetPwEmployeeEmail($Email_address, $User_name, $Token)){
+                        //logs
+                        $this->informational("password reset link sent to member; @email =  $Email_address");
+                    }else{
+                       //logs
+                       $this->warning("password reset link failed to send to member; @email = $Email_address");
+                    }            
+
+                   $this->informational("New user added:Email_address=$Email_address by RM_User_ID $x");
+                   $this->set_flash("userSuccess", "New user create successfully");
 
                   //  echo "New user create successfully";
-                   $this->set_flash("userSuccess", "New user create successfully");
-                  // redirect('rmuser_controller/users');
-                  $this->users();
+                   redirect('rm_controller/users');
+                 // $this->users();
                }
                 
                 else{
@@ -234,7 +243,8 @@ class RM_Controller extends JB_Controller{
               
            }
            else{
-               $this->view('restaurantmanager/users/create');
+              // $this->view('restaurantmanager/users/create');
+                 redirect('rm_controller/users');
            }
    
        }
@@ -323,22 +333,26 @@ class RM_Controller extends JB_Controller{
                $Phone_no = $this->post('Phone_no');
             //   $User_role=$this->post('User_role');
                $User_role=$_POST['User_role'];
+              // $Dep_No=$_POST['Dep_No'];
    
            $data = [
                'User_name' => $User_name,
                'Phone_no' => $Phone_no,
            //    'Email_address' => $Email_address,
-               'User_role'=>$User_role
+               'User_role'=>$User_role,
+              // 'Dep_No'=>$Dep_No
            ];
            // print_r($data);
    
            if($this->model->user_data_update($data,  $id)){
                $this-> set_flash("updateSuccess","User is successfully updated.");
-               $this->users();
+              // $this->users();
+              redirect('rm_controller/users');
               
            }else{
                $this->set_flash("updateError", "Something went wrong :( Please try again.");
-               $this->users();
+              // $this->users();
+              $this->view("restaurantmanager/users/create");
            }
            
        }else{
@@ -367,6 +381,18 @@ class RM_Controller extends JB_Controller{
     redirect('rm_controller/users');
 
    }
+
+   public function unblock_user($id){
+    $x = $this->get_session('user_id');
+    //$id=$this->get('User_ID');
+    $data=['User_status'=>'active'];
+    $this->model->user_status_unblock($data,$id);
+    $this->informational("User unblocked:Email_address=$Email_address by RM_User_ID $x");
+    redirect('rm_controller/users');
+
+   }
+
+
 
    //create orders
 public function createOrders(){
@@ -406,18 +432,19 @@ public function createOrders(){
   
       if($this->model->addOrders($data)){
           $this->set_flash("OrderSuccess", "Order added successfully");
-         // $this->view('restaurantmanager/orders/create');
-         $this->orders();
+         // $this->orders();
+         redirect('rm_controller/orders');
 
       }else{
           $this->set_flash("OrderError", "Something went wrong :( Please try again later.");
-         // $this->view('restaurantmanager/orders/create');
-         $this->orders();
+          $this->view('restaurantmanager/orders/create');
+        // $this->orders();
   
       }
   
       }else{
-          $this->view('restaurantmanager/orders/create');
+         // $this->view('restaurantmanager/orders/create');
+         redirect('rm_controller/orders');
   
       }
 }
@@ -526,13 +553,13 @@ public function createOrders(){
       
           if($this->model->order_data_update($data,$order_id)){
               $this->set_flash("updateSuccess", "Order is successfully updated.");
-             // $this->view('restaurantmanager/orders/edit');
-              $this->orders();
+             // $this->orders();
+             redirect('rm_controller/orders');
       
           }else{
               $this->set_flash("updateError", "Something went wrong :( Please try again later.");
-              //$this->view('restaurantmanager/orders/edit');
-              $this->orders();
+              $this->view('restaurantmanager/orders/edit');
+              //$this->orders();
       
           }
       
@@ -560,6 +587,11 @@ public function createOrders(){
 
   
 //create fooditem
+public function addFooditem(){
+    $this->view('restaurantmanager/fooditem/create');
+
+}
+
     public function createFoodItem(){
         // echo $_POST['Food_name'];
         // echo $_POST['Description'];
@@ -591,7 +623,9 @@ public function createOrders(){
             
             if($this->model->addFoodItem($data)){
                 $this->set_flash("fooditemSuccess", "Fooditem added successfully");
-                $this->fooditem();
+                //$this->fooditem();
+                redirect("rm_controller/fooditem");
+
 
             }else{
                 $this->set_flash("fooditemError", "Something went wrong :( Please try again later.");
@@ -599,7 +633,8 @@ public function createOrders(){
 
             }
         }else{
-            $this->view('restaurantmanager/fooditem/create');
+           // $this->view('restaurantmanager/fooditem/create');
+            redirect("rm_controller/fooditem");
 
         }
 
@@ -700,17 +735,17 @@ public function createOrders(){
        
             if($this->model->fooditem_data_update($data,  $food_id)){
                 $this-> set_flash("updateSuccess","Fooditem is successfully updated.");
-               // $this->view('restaurantmanager/fooditem/edit');
-                $this->fooditem();
+               // $this->fooditem();
+                redirect("rm_controller/fooditem");
                
             }else{
                 $this->set_flash("updateError", "Something went wrong :( Please try again.");
-               // $this->view('restaurantmanager/fooditem/edit');
-                $this->fooditem();
+                $this->view('restaurantmanager/fooditem/edit');
+               // $this->fooditem();
             }
             
         }else{
-     //   redirect('rm_controller/fooditem');
+        redirect('rm_controller/fooditem');
         }
     }
 
@@ -724,6 +759,11 @@ public function createOrders(){
 
   
     //create subcategory
+    public function addSubcategory(){
+        $this->view('restaurantmanager/subcategory/create');
+
+    }
+
     public function createSubcategory(){
         $this->validation('Subcategory_name', 'Subcategory name' , 'required|unique|subcategory|not_int');
        // $this->validation('Category_ID','Category','required');
@@ -739,18 +779,19 @@ public function createOrders(){
         if($this->model->addSubcategory($data)){
             $this->set_flash("subcategorySuccess", "Subcategory added successfully");
            // $this->view('restaurantmanager/subcategory/create');
-           $this->subcategory();
+          // $this->subcategory();
+          redirect('rm_controller/subcategory');
     
         }else{
             $this->set_flash("subcategoryError", "Something went wrong :( Please try again later.");
-           // $this->view('restaurantmanager/subcategory/create');
-           $this->subcategory();
+            $this->view('restaurantmanager/subcategory/create');
+           //$this->subcategory();
     
         }
     
         }else{
-            $this->view('restaurantmanager/subcategory/create');
           // $this->subcategory();
+          redirect('rm_controller/subcategory');
         }
     }
 
@@ -828,13 +869,13 @@ public function createOrders(){
 
           if($this->model->subcategory_data_update($data,  $subcat_id)){
             $this-> set_flash("updateSuccess","Subcategory is successfully updated.");
-           // $this->view('restaurantmanager/subcategory/edit');
-           $this->subcategory();
+          // $this->subcategory();
+            redirect('rm_controller/subcategory');
            
         }else{
             $this->set_flash("updateError", "Something went wrong :( Please try again.");
-           // $this->view('restaurantmanager/subcategory/edit');
-           $this->subcategory();
+            $this->view('restaurantmanager/subcategory/edit');
+           //$this->subcategory();
         }
         
     }else{
@@ -852,6 +893,11 @@ public function createOrders(){
 
   
 //create category
+public function addCategory(){
+    $this->view('restaurantmanager/category/create');
+
+}
+
     public function createCategory(){
         $this->validation('Category_name', 'Category name' , 'required|unique|category|not_int');
       
@@ -866,18 +912,19 @@ public function createOrders(){
         if($this->model->addCategory($data)){
             $this->set_flash("categorySuccess", "Category added successfully");
            // $this->view('restaurantmanager/category/create');
-           $this->category();
+           //$this->category();
+           redirect("rm_controller/category");
     
         }else{
             $this->set_flash("categoryError", "Something went wrong :( Please try again later.");
-           // $this->view('restaurantmanager/category/create');
-           $this->category();
+            $this->view('restaurantmanager/category/create');
+           // $this->category();
     
         }
     
         }else{
-            $this->view('restaurantmanager/category/create');
           // $this->category();
+          redirect("rm_controller/category");
     
         }
     }
@@ -955,13 +1002,13 @@ public function createOrders(){
 
         if($this->model->category_data_update($data,  $cat_id)){
             $this-> set_flash("updateSuccess","Category is successfully updated.");
-           // $this->view('restaurantmanager/category/edit');
-           $this->category();
+           // $this->category();
+           redirect("rm_controller/category");
            
         }else{
             $this->set_flash("updateError", "Something went wrong :( Please try again.");
-            //$this->view('restaurantmanager/category/edit');
-            $this->category();
+            $this->view('restaurantmanager/category/edit');
+            //$this->category();
         }
         
     }else{
@@ -976,6 +1023,37 @@ public function createOrders(){
           $result=$this->model->deletecategory($cat_id);
           redirect('rm_controller/category');  
     }
+
+    public function resetPwEmployeeEmail($recipient_email, $recipient_name, $token){//$
+
+        $mailer = new JB_Mailer(true);
+
+        $subject = "Cafe99 - Password Reset Link";
+        $html_body = "<html><body style=\"font-family: sans-serif;\">
+        <p>Hello $recipient_name,<br> This email is to inform that you're officially a member of Cafe 99 team.</p> 
+        <p>In order to reset your password to your dashboard, click on the button below. <br> *IMPORTANT* Please note that you cannot use this link again, once you clicked it.</p>
+        <a href=\"http://localhost/cafe99/account_controller/resetpw/$token\" target=\"_blank\">
+        <button style=\"border: none;
+        padding: 1rem 2rem;
+        text-decoration: none;
+        background: #0069ed;
+        color: #ffffff;
+        font-size: 1rem;
+        line-height: 1;
+        text-align: center;\">
+
+        Reset Your Password
+        </a>
+        <p><i>If you need assistance, please email <a href=\"mailto:cafe99.teamdashcode@gmail.com\">us</a></i></p><p>Cheers,<br>Team Cafe99.</p>
+        </body></html>";
+
+
+        $send = $mailer->sendEmail($recipient_email, $recipient_name, $subject, $html_body, "");//
+        if($send) return TRUE;
+        else return FALSE;
+    
+    }
+
 
  
 

@@ -85,7 +85,7 @@
                         
                         <div class="btn-container">
                             <button type="submit" formaction="<?php echo BASE_URL?>/rm_controller/fooditem" class="btn cancel-btn">Cancel</button>
-                            <input type="submit" value="Add">
+                            <input type="submit" value="Create">
                         </div>
                     
                 <?php echo form_close();?>

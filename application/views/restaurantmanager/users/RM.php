@@ -97,7 +97,11 @@
        //   echo "<td>".anchor("rm_controller/delete_user_data?User_ID=".$row->User_ID."", "Delete",['class'=>"delete"])."</td>";
       // echo "<td>".anchor("rm_controller/users", "Delete",['class'=>"delete"])."</td>";?>
          <td><a class="delete" onclick='showDeleteModal(<?php echo $row->User_ID;?>)'>Delete</a></td>
-         <td><a class="block" onclick='showBlockModal(<?php echo $row->User_ID;?>)'>Block</a></td>
+         <?php if($row->User_status=='block'){?>
+            <td><a id="unblock-button" class="block" onclick='showUnblockModal(<?php echo $row->User_ID;?>)'>Unblock</a></td>
+         <?php }else{ ?>
+         <td><a id="block-button" class="block" onclick='showBlockModal(<?php echo $row->User_ID;?>)'>Block</a></td>
+         <?php } ?> 
         <?php  echo "</tr>";
         
         }
@@ -119,5 +123,6 @@
    </div>  
    <?php echo link_js("js/restaurantmanager/delete/user_delete.js"); ?> 
    <?php echo link_js("js/restaurantmanager/user_block.js"); ?>  
+   <?php echo link_js("js/restaurantmanager/user_unblock.js"); ?> 
 </body>
 </html>

@@ -229,6 +229,13 @@ class Rm_model extends Database{
     }
   }
 
+  public function user_status_unblock($data,$id){
+    if($this->Update("user", $data,['User_ID' =>  $id])){
+        return true;
+    }else{
+        return false;
+    }
+  }
     public function addFoodItem($data){
 
         if($this->Insert("fooditem", $data)){
