@@ -46,7 +46,7 @@
             <!--    <a href="RM.php" class="button">Manage Subcategories</a>-->
                 <?php //echo anchor("rm_controller/subcategory", "Manage Subcategories",['class'=>"button"]) ?>
             <!--    <a href="create.php" class="button">Add  Subcategories</a>-->
-            <?php echo anchor("rm_controller/createSubcategory", "Add Subcategories",['class'=>"button"]) ?>
+            <?php echo anchor("rm_controller/addSubcategory", "Add Subcategories",['class'=>"button"]) ?>
              
             <div class="search-container">
                 <?php echo form_open("rm_controller/searchSubcategory", "POST");?>

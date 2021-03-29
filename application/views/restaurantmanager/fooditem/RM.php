@@ -46,7 +46,7 @@
         <!--    <a href="RM.php" class="button">Manage Fooditems</a>-->
         <?php //echo anchor("rm_controller/fooditem", "Manage Fooditems",['class'=>"button"]) ?>
          <!--   <a href="create.php" class="button">Add  Fooditems</a>-->
-         <?php echo anchor("rm_controller/createFoodItem", "Add  Fooditems",['class'=>"button"]) ?>
+         <?php echo anchor("rm_controller/addFoodItem", "Add  Fooditems",['class'=>"button"]) ?>
               
         <div class="search-container">
             <?php echo form_open("rm_controller/searchfood", "POST");?>

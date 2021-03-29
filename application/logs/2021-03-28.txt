@@ -1,0 +1,5 @@
+2021-03-28 12:19:19		localhost/cafe99/account_controller/loginSubmit				session opened for user 200		3 INFORMATIONAL
+2021-03-28 12:20:38		localhost/cafe99/account_controller/loginSubmit				session opened for user 240		3 INFORMATIONAL
+2021-03-28 12:35:46		localhost/cafe99/account_controller/loginSubmit				session opened for user 200		3 INFORMATIONAL
+2021-03-28 12:36:47		localhost/cafe99/account_controller/loginSubmit				session opened for user 198		3 INFORMATIONAL
+2021-03-28 12:40:54		localhost/cafe99/account_controller/loginSubmit				session opened for user 202		3 INFORMATIONAL

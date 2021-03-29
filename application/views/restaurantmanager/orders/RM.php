@@ -75,8 +75,8 @@
                      <th>Special Notes</th>
                      <th>Payment Method</th>
                      <th>Order Type</th>
-                     <th>Kitchen Dispatch Time</th>
-                     <th>Delivery Dispatched</th>
+                     <th>Dispatch Time(Delivery or Kitchen)</th>
+                   <!--  <th>Delivery Dispatched</th>-->
                    <!--  <th colspan="2">Action</th>-->
                     </thead>
                     <tbody>
@@ -88,8 +88,11 @@
                             <td><?php echo $row->Special_notes ?></td>
                             <td><?php echo $row->Payment_method ?></td>
                             <td><?php echo $row->Order_type ?></td>
-                            <td><?php echo $row->Kitchen_Dispatch_DateTime ?></td>
-                            <td><?php echo $row->Delivery_Dispatch_DateTime?></td>
+                            <?php if($row->Order_type="delivery"){?>
+                            <td><?php echo $row->Delivery_Dispatch_DateTime ?></td>
+                            <?php } else{ ?>
+                            <td><?php echo $row->Kitchen_Dispatch_DateTime?></td>
+                            <?php } ?>
                          <!--   <td><a href="edit.php" class="edit">Edit</a></td>-->
                             <td><?php //echo anchor("rm_controller/order_update_values?Order_ID=".$row->Order_ID."", "Edit",['class'=>"edit"]) ?></td> 
                            <!-- <td><a class="delete" onclick='showDeleteModal(<?php echo $row->Order_ID?>)'>Delete</a></td>-->

@@ -63,23 +63,37 @@
             <?php endif;?>
           </div>
           <br>
-
-          <div class="label_div">Phone No</div>
-          <?php //echo form_input(['type'=>'text', 'name'=>'User_role', 'placeholder'=>$data->User_role,'value'=>$data->User_role ])?>
+           
+          <?php if($data->User_role=='customer') { ?>
+          <div class="label_div">User Role</div>
+          <?php echo form_input(['type'=>'text', 'name'=>'User_role', 'placeholder'=>$data->User_role,'value'=>$data->User_role,'readonly'=>'readonly' ])?>
+          <?php } else{ ?>
           <select id="role" name="User_role">
               <option value="<?php echo $data->User_role ?>" style="display:none;"><?php echo $data->User_role ?></option>
-              <option value="customer">customer</option>
+             <!--- <option value="customer">customer</option>-->
               <option value="kitchen_manager">kitchen_manager</option>
               <option value="cashier">cashier</option>
               <option value="delivery_person">delivery_person</option>
               <option value="restaurant_manager">restaurant_manager</option>
           </select>
+          <?php } ?>
 
           <div class="error">
             <?php if(!empty($this->errors['User_role'])):?>
             <?php echo $this->errors['User_role'];?>
             <?php endif;?>
           </div>
+          
+          <?php if($data->User_role != 'customer'){?>
+          <div class="label_div">Department</div>
+          <select id="dep" name="Dep_No">
+              <option value="<?php echo $data->Dep_No?>" style="display:none;"><?php echo $data->Dep_No ?></option>
+              <option value="1">1-Management Department</option>
+              <option value="2">2-Kitchen Department</option>
+              <option value="3">3-Cashier Department</option>
+              <option value="4">4-Delivery Department</option>
+          </select>
+          <?php }?>
           
           <div class="btn-container">
               <button type="submit" formaction="<?php echo BASE_URL?>/rm_controller/users" class="btn cancel-btn">Cancel</button>
