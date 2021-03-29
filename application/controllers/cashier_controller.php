@@ -87,6 +87,55 @@ class Cashier_Controller extends JB_Controller{
     public function orderfood(){
         $this->view('cashier/orderfood/orderfood');
     }
+    public function addtocart(){
+        if(isset($_POST['action'])){
+            //echo json_encode(array('msg'=>'does this work'));
+            // data for cartitem table
+            $food_id = $_POST['food_id'];
+            $food_subcat = $_POST['food_subcat'];
+            $food_cat = $_POST['food_cat'];
+
+            $food_name = $_POST['food_name'];
+            $qty = $_POST['qty'];
+            $price = $_POST['price'];
+            $user_id = $this->get_session('user_id');
+            $cart_id = $this->get_session('cart_id');
+            $cart_item_total = ($price * $qty);
+            $cart_sub_total = $this->get_session('cart_sub_total');    
+
+            //data for the cart table
+            $prev_item_count =  $this->get_session('cart_item_count');
+            $new_item_count = $prev_item_count + 1;
+            date_default_timezone_set('Asia/Colombo');
+            $mod_time = date('Y-m-d H:i:s');
+
+            //bundled data
+            $data_cartitem = [
+                'Cart_id' => 203,
+                'Food_ID' => $food_id,
+                'Quantity' => $qty,
+                'Price' => $price,
+                'CartItem_total' => $cart_item_total
+            ];
+
+            $data_cart = [
+                'Item_count' => $new_item_count, 
+                'Sub_total' => $cart_sub_total + $cart_item_total,
+                'ModifiedDateTime' => $mod_time
+            ];
+         
+            if($this->model->addtoCart($data_cartitem, $data_cart)){
+                //increment the cart item count of session data
+               $this->set_session('cart_item_count', $data_cart['Item_count']);
+                //increment the cart sub total of session data
+               $this->set_session('cart_sub_total', $data_cart['Sub_total']);
+
+               //add to cart success modal box---------------------------------------------todo
+            }
+  
+        }
+        
+    }
 
     public function mycart(){
         $this->view('cashier/orderfood/cashier-cart');

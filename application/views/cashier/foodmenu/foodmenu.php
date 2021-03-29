@@ -107,7 +107,7 @@
                             <p class="availability"><?php echo $row->Availability; ?></p>
                         </div>
 
-                        <?php echo form_open("km_controller/updateAvailability","POST");?>
+                        
                         <!-- <form action="" method="POST"> -->
                         <div class="btn-container">
                             <div class="row">
@@ -115,9 +115,9 @@
                                         <input type="text" class="input-cart" value="1" min="1" />
                                     <!-- <button class="button-cart">+</button> -->
                                 </div>
-                            <button class="btn" >Add to Cart</button>
+                            <button class="addtocartbtn" >Add to Cart</button>
                         </div>
-                        <?php echo form_close();?>
+                        
                         <!-- </form> -->
                     </article>
             <?php endif; ?>
@@ -149,6 +149,7 @@
                                     <!-- <button class="button-cart">+</button> -->
                                 </div>
                             <button class="btn" >Add to Cart</button>
+                            
                         </div>
                         <?php echo form_close();?>
                         <!-- </form> -->
@@ -635,7 +636,7 @@
     <?php include '../application/views/footer/footer_3.php';?>
 
     </div> <!-- page-contianer ends-->
-    
+    <?php echo link_js("js-cashier/foodmenu/cashier_addtocart.js"); ?>
     <?php echo link_js("js/kitchen-manager/foodmenu/searchbar.js"); ?>
     <?php echo link_js("js/kitchen-manager/foodmenu/foodmenu.js"); ?>
 </body>

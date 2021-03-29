@@ -48,30 +48,30 @@
 
     <div class="cart-container">
         <div class="cart-items">
-        <?php
-            foreach($data as $row){
-            ?>
-           <!-- cart-item-container starts-->
-            <div class="cart-item-container">
-                <div class="container-image">
-                    <?php
-                    $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
-                    ?>
-                    <img src="<?php echo $img_path;?>" alt="Image Not Found">
-                </div>
-        
-                <div class="container-text">
-                        <div class="food-name"><?php echo anchor("food_controller/menu/".$row->Category_name."/".$row->Subcategory_name."/".$row->Food_ID, $row->Food_name) ?></div>
-                        <div class="quantity">Quantity : <b><?php echo $row->Quantity; ?></b></div>
-                        <div class="price">Price LKR: <?php echo $row->Price; ?></div>
-                        <div class="subtotal">Subtotal LKR: <b><?php echo $row->CartItem_total; ?></b></div>
-                </div>
+            <?php
+                foreach($data as $row){
+                ?>
+            <!-- cart-item-container starts-->
+                <div class="cart-item-container">
+                    <div class="container-image">
+                        <?php
+                        $img_path = BASE_URL."/public/images/food-dash-images/".$row->Category_name."/".$row->Subcategory_name."/".str_replace(' ','',$row->Food_name).".jpg";
+                        ?>
+                        <img src="<?php echo $img_path;?>" alt="Image Not Found">
+                    </div>
+            
+                    <div class="container-text">
+                            <div class="food-name"><?php echo anchor("food_controller/menu/".$row->Category_name."/".$row->Subcategory_name."/".$row->Food_ID, $row->Food_name) ?></div>
+                            <div class="quantity">Quantity : <b><?php echo $row->Quantity; ?></b></div>
+                            <div class="price">Price LKR: <?php echo $row->Price; ?></div>
+                            <div class="subtotal">Subtotal LKR: <b><?php echo $row->CartItem_total; ?></b></div>
+                    </div>
 
-                <div class="btn-container">
-                    <a href="#" class="delete"><i class="fas fa-trash-alt" onclick='showDeleteModal(<?php echo $row->Quantity;?>,"\"<?php echo $row->Food_name;?>\"",<?php echo $row->Food_ID;?>,<?php echo $row->Price; ?>)'></i></a>
+                    <div class="btn-container">
+                        <a href="#" class="delete"><i class="fas fa-trash-alt" onclick='showDeleteModal(<?php echo $row->Quantity;?>,"\"<?php echo $row->Food_name;?>\"",<?php echo $row->Food_ID;?>,<?php echo $row->Price; ?>)'></i></a>
+                    </div>
                 </div>
-            </div>
-            <!-- cart-item-container ends-->
+                <!-- cart-item-container ends-->
             <?php
             }
             ?>
@@ -105,7 +105,7 @@
         <!-- modal end -->
 
         <div class="summary-container">
-
+        
         <?php echo form_open("customer_controller/proceedToOrderDetails","post");?><br>
             <div class="summary-title">Order Summary</div><br>
             <div class="input-details"><br>
