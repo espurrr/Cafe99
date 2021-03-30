@@ -150,6 +150,208 @@
                 return "Announcement_not_found";
             }
         }
+
+        public function addtoCart($data_cartitem, $data_cart){
+
+            if($this->Insert("cartitem", $data_cartitem)){
+                if($this->Update("cart", $data_cart, ['Cart_id' => $data_cartitem['Cart_id']])){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }
+
+        public function removefromCart($data){
+            $cartitem_data = [
+                'Food_ID' => $data['food_id'],
+                'Cart_id' => $data['cart_id'],
+                'Quantity' => $data['food_qty']
+            ];
+    
+            $cart_data = [
+                'Item_count' => $data['cart_item_count'],
+                'Sub_total' =>$data['cart_subtotal']
+            ];
+           
+      
+            if($this->Delete("cartitem", $cartitem_data)){
+                if($this->Update("cart", $cart_data, ['Cart_id' => $data['cart_id']])){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }
+
+        public function get_cart_items($cart_id){
+            $query = 
+            "SELECT cartitem.CartItem_ID, cartitem.Quantity, cartitem.Price, cartitem.CartItem_total, cartitem.Food_ID,
+            fooditem.Food_name, category.Category_name, subcategory.Subcategory_name
+            FROM cartitem
+            INNER JOIN fooditem ON cartitem.Food_ID = fooditem.Food_ID
+            INNER JOIN subcategory ON fooditem.Subcategory_ID = subcategory.Subcategory_ID
+            INNER JOIN category ON category.Category_ID = subcategory.Category_ID 
+            WHERE cartitem.Cart_ID='".$cart_id."' ORDER BY cartitem.CreationDateTime ASC ";
+            
+            $result =$this->Query($query, $options = []);
+                  
+                if($this->Count() > 0){
+                    $item = $this->AllRecords();
+                    // print_r($food);
+                    if($item){
+                        return ['status'=>'success', 'data'=>$item];
+                    }else{
+                        return "Cart_items_not_retrieved";
+                    }
+                }else{
+                    return "Empty_cart";
+                }
+        }
+
+        public function  getQtywithItemCount_reorder($order_id){
+      
+            $query = 
+            "SELECT order_item.Quantity AS Quantity , fooditem.Current_count AS Current_count
+            FROM order_item
+            INNER JOIN fooditem ON order_item.Food_ID = fooditem.Food_ID
+            WHERE order_item.Order_ID='".$order_id."' ";
+            
+            $result =$this->Query($query, $options = []);
+    
+            if($this->Count() > 0){
+                $order_items = $this->AllRecords();
+                //print_r($order_items);
+                return ['status'=>'success', 'data'=>$order_items];
+            }else{
+                return "order_items_not_found";
+            }
+        }
+
+        public function get_cart_data($cart_id){
+      
+            if($this->Select_Where("cart", ['Cart_id' => $cart_id])){
+    
+                if($this->Count() > 0){
+                    $row = $this->Row();
+                    return ['status'=>'success', 'data'=>$row];
+                }else{
+                    return "cart_not_found";
+                }
+    
+            }
+    
+        }
+
+        public function  updateFoodItemCount($order_id){
+      
+            $query = 
+            "SELECT fooditem.Food_ID AS Food_ID, order_item.Quantity AS Quantity , fooditem.Current_count AS Current_count
+            FROM order_item
+            INNER JOIN fooditem ON order_item.Food_ID = fooditem.Food_ID
+            WHERE order_item.Order_ID='".$order_id."' ";
+            
+            $result =$this->Query($query, $options = []);
+    
+            if($this->Count() > 0){
+                $order_items = $this->AllRecords();
+                //print_r($order_items);
+                foreach($order_items as $row){
+                    //update each food item count
+                    $new_count = $row->Current_count - $row->Quantity;
+                    
+                    if($new_count==0){
+                        $data = ['Current_count'=> $new_count, 'Availability'=>"Unavailable"];
+                        if($this->Update("fooditem", $data,['Food_ID' => $row->Food_ID])){
+                            $output = "item_count_updated";
+                        }else{
+                            $output = "item_count_not_updated";
+                        }
+                    }else{
+                        $data = ['Current_count'=> $new_count];
+                        if($this->Update("fooditem", $data,['Food_ID' => $row->Food_ID])){
+                            $output = "item_count_updated";
+                        }else{
+                            $output = "item_count_not_updated";
+                        }
+                    }
+                }
+            }else{
+                $output = "order_items_not_found";
+            }
+            return $output;
+        }
+
+        public function createNewOrder($data, $cart_id){
+
+            $user_id = $data['User_ID'];
+    
+            $Order_ID = $this->InsertAndReturnID("orders", $data);
+            if(!$Order_ID){ //order creation failed
+                return false;
+            }
+            //now order is created
+            //cart items should me migrated to order items table
+            //get cart items
+            // echo "order made";
+            if($this->Select_Where("cartitem", ['Cart_id' => $cart_id] )){
+                if($this->Count() > 0){
+                    $cartitems = $this->AllRecords();
+                    //print_r($cartitems);
+                    foreach($cartitems as $row){
+                        $orderitem_data = [
+                            'Order_ID' => $Order_ID,
+                            'Food_ID' => $row->Food_ID,
+                            'Quantity' => $row->Quantity,
+                            'Price' => $row->Price,
+                            'Food_Discount' => $row->Discount
+                        ];
+                        //insert each order item
+                        $this->Insert("order_item", $orderitem_data);
+                    }
+                    // echo "cart items migrated successfully";
+                }else{
+                    return false;
+                }
+            }
+            //delete cart-items
+            $this->Delete("cartitem", ['Cart_id' => $cart_id]);
+            // echo "old cart items deleted";
+            //if the order is for someone else -> 0
+            //the other recipient table should be modified with the order_id
+            if($data['Order_is_for_me']==0){
+                $this->Update("other_recipient", ['Order_ID' => $Order_ID ],['Cart_ID' => $cart_id]);
+            }
+            //delete cart
+            $this->Delete("cart", ['Cart_id' => $cart_id]);
+            // echo "old cart deleted";
+    
+            //create new cart
+            date_default_timezone_set('Asia/Colombo');
+            $creation_date_time = date('Y-m-d H:i:s');
+            
+            $new_cart_data = [
+                'User_ID' => $user_id,
+                'CreationDateTime' => $creation_date_time
+            ];
+    
+            $new_cart_ID = $this->InsertAndReturnID("cart", $new_cart_data);
+            if(!$new_cart_ID){  //new cart is not created
+                return false;
+            }
+            $return_data = [
+                'newCartID' => $new_cart_ID,
+                'orderID' => $Order_ID
+            ];
+            return $return_data;
+    
+        }
+
+        
     }
 
 ?>

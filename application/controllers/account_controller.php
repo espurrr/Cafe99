@@ -208,9 +208,35 @@ class Account_controller extends JB_Controller{
                         }
                     
                         redirect("customer_controller/index");
+
                     }else if($session_data['role']=="kitchen_manager"){
                         redirect("km_controller/index");
+
                     }else if($session_data['role']=="cashier"){
+
+                        //check whether the customer already has a cart
+                        //has -> load it, has not -> assign new cart
+                        if($this->get_session('cart_assigned')){ // has a cart
+                            $cart_data = $this->model->getAssignedCart($this->get_session('user_id'));
+                            $this->set_session('cart_id',$cart_data->Cart_id);
+                            $this->set_session('cart_item_count',$cart_data->Item_count);
+                            $this->set_session('cart_sub_total',$cart_data->Sub_total);
+                           
+
+                        }else{  //no cart assigned..should create one
+                            $new_cart_id = $this->model->createCart($this->get_session('user_id'));
+                            if($new_cart_id){
+                                //update user data that cart is assigned -> 1
+                                $this->model->updateIsAssignedCart($this->get_session('user_id'));
+                                $this->set_session('cart_assigned',1);
+                                $this->set_session('cart_id',$new_cart_id);
+                                
+                            }
+                            //logs
+                            $this->informational("cart $new_cart_id assigned for user $user_id");
+                            //no need to make a db request to get the cart count cause it's already 0 in session data
+                        }
+
                         redirect("cashier_controller/index");
                     }else if($session_data['role']=="delivery_person"){
                         redirect("delivery_controller/index");

@@ -298,7 +298,7 @@ article .label_div{
     margin-bottom: 5px;
 }
 
-article .quantity input[type="number"]{
+article .quantity_data_wrapper input[type="number"]{
     padding: 2px;
     padding-left: 10px;
 }
@@ -351,6 +351,18 @@ article .shoppingcartbtn{
     background-color: var(--btn-green);
     width: 150px;
     color: #fff;
+}
+
+article .disablecartbtn{
+    cursor: pointer;
+    padding: 15px;
+    border: #fff;
+    border-radius: 25px;
+    box-shadow: 1px 1px 1px 0px #999;
+    background-color: #999;
+    width: 150px;
+    color: #fff;
+    cursor: not-allowed;
 }
 
 article .shoppingcartbtn:hover{

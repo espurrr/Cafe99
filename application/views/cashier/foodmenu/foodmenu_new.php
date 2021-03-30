@@ -93,12 +93,17 @@
                     </div>
 
                     <div class="action_container column column5">
+
                         <div class="action_data_wrapper">
-                            <button id="add_to_cart_btn"
-                                class="cart btn shoppingcartbtn" 
+                            <button id="add_to_cart_btn<?php echo  $row->Food_ID ?>"
+                                <?php if($row->Availability == "Unavailable") echo "disabled"?>
+                                class="<?php if($row->Availability == "Available") echo "cart btn shoppingcartbtn"; else echo"cart btn disablecartbtn"?>" 
+                                onclick="onclickAddToCart(<?php echo  $row->Food_ID ?>)"
                                 data-id="<?php echo  $row->Food_ID ?>"
                                 data-name="<?php echo $row->Food_name ?>"
                                 data-price="<?php echo $row->Unit_Price;?>"
+                                data-cat="<?php echo $row->Category_name;?>"
+                                data-subcat="<?php echo $row->Subcategory_name;?>"
                                 >Add to Cart</button>
                         </div>
                         
@@ -142,17 +147,21 @@
                                 <div class="column column4">
                                     <div class="quantity_data_wrapper">
                                         <div class="label_div">Quantity:</div>
-                                        <input type="number" id="qty" class="input" name="quantity" value="1" min="1" max="<?php echo $data['data'][0]->Current_count;?>">
+                                        <input type="number" id="qty<?php echo  $row->Food_ID ?>" class="input" name="quantity" value="1" min="1" max="<?php echo $data['data'][0]->Current_count;?>">
                                     </div>
                                 </div>
 
                                 <div class="action_container column column5">
                                     <div class="action_data_wrapper">
-                                        <button id="add_to_cart_btn"
-                                            class="cart btn shoppingcartbtn" 
+                                        <button id="add_to_cart_btn<?php echo  $row->Food_ID ?>"
+                                            <?php if($row->Availability == "Unavailable") echo "disabled"?>
+                                            class="<?php if($row->Availability == "Available") echo "cart btn shoppingcartbtn"; else echo"cart btn disablecartbtn"?>" 
+                                            onclick="onclickAddToCart(<?php echo  $row->Food_ID ?>)"
                                             data-id="<?php echo  $row->Food_ID ?>"
                                             data-name="<?php echo $row->Food_name ?>"
                                             data-price="<?php echo $row->Unit_Price;?>"
+                                            data-cat="<?php echo $row->Category_name;?>"
+                                            data-subcat="<?php echo $row->Subcategory_name;?>"
                                             >Add to Cart</button>
                                     </div>
                                     
@@ -176,6 +185,7 @@
     <?php echo link_js("js/cashier/foodmenu/searchbar.js"); ?>
     <?php echo link_js("js/cashier/foodmenu/foodmenu.js"); ?>
     <?php echo link_js("js/cashier/foodmenu/searchbar.js"); ?>
+    <?php echo link_js("js/cashier/orderfood/cashier-addtocart.js"); ?>
 
 </body>
 </html> 

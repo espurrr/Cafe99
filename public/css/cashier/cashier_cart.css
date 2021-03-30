@@ -85,10 +85,21 @@ body {
 }
 .cart-item-container .btn-container i {
   font-size: 22px;
+  transition: 0.5s;
+
 }
 .cart-item-container .btn-container i:hover {
   color: #f84278;
+  transition: 0.2s;
+
 }
+.cart-item-container .btn-container .delete {
+  background: #fff;
+  border: none;
+  cursor: pointer;
+
+}
+
 
 /* Cart Summary */
 .cart-container .summary-container {

@@ -6,20 +6,15 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <?php echo link_css("css/cashier/cashier_cart.css"); ?>
     <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?>
-    <?php echo link_css("css/kitchen-manager/newsfeed/sidebar.css?ts=<?=time()?>"); ?>
+    <?php echo link_css("css/cashier/newsfeed/sidebar.css?ts=<?=time()?>"); ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <title>Cart</title>
 </head>
 <body>
     <div class="page-container" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
     <?php include "sidebar.php";?>
     <?php include "../application/views/header/header-dashboard.php";?> 
-
-    <ul id="breadcrumbs">
-        <li>Cart</li>
-        <!-- <li><?php echo anchor("cashier_controller/order", "Order") ?></li>
-        <li>Payment</li> -->
-  
-    </ul>
 
     <div class="cart-container">
         <div class="cart-items">
@@ -43,7 +38,15 @@
                     </div>
 
                     <div class="btn-container">
-                        <a href="#" class="delete"><i class="fas fa-trash-alt" onclick='showDeleteModal(<?php echo $row->Quantity;?>,"\"<?php echo $row->Food_name;?>\"",<?php echo $row->Food_ID;?>,<?php echo $row->Price; ?>)'></i></a>
+                        <!-- <a href="#" class="delete"><i class="fas fa-trash-alt" onclick='showDeleteModal(,"\"\"",,<?php //echo $row->Price; ?>)'></i></a> -->
+                        <button id="remove_from_cart_btn<?php echo  $row->CartItem_ID ?>"
+                            class="delete" onclick="onclickDeleteCartitem(<?php echo  $row->CartItem_ID ?>)"
+                            data-id="<?php echo  $row->Food_ID; ?>"
+                            data-name="<?php echo $row->Food_name; ?>"
+                            data-qty="<?php echo $row->Quantity; ?>"
+                            data-price="<?php echo $row->Price; ?>"
+                            ><i class="fas fa-trash-alt"></i></button>
+                    
                     </div>
                 </div>
                 <!-- cart-item-container ends-->
@@ -60,59 +63,26 @@
         </div>
 
         <div class="overlay" id="overlay"></div>
-        <!-- modal starts -->
-        <div class="modal" id="modal">
-            <button class="modal-close-btn" id="close-btn">
-                <i class="fa fa-times" title="cross"></i>
-            </button>
-            <?php echo form_open("customer_controller/proceedToOrderDetails","post");?><br>
-
-            <div class="summary-title"><b>Order Summary</b></div><br>
-            <div class="input-details">
-                <p type="Special Notes to Chef">  <?php echo form_input(['type'=>'text', 'name'=>'specialnote', 'value'=>$this->get_session('cart_special_notes')])?></p>
-            </div><br>
-            <div class="total"><b>Total: LKR <?php echo number_format($this->get_session('cart_sub_total'),2,'.', ','); ?></b></div><br>
-            <input type="submit" class="checkout-button" value="PROCEED TO CHECKOUT">
-
-            
-            <?php echo form_close();?>    
-        </div>
-        <!-- modal end -->
 
         <div class="summary-container">
         
-        <?php echo form_open("customer_controller/proceedToOrderDetails","post");?><br>
+        <?php echo form_open("cashier_controller/completeOrder","post");?><br>
             <div class="summary-title">Order Summary</div><br>
             <div class="input-details"><br>
-                <p type="Special Notes to Chef">  <?php echo form_input(['type'=>'text', 'name'=>'specialnote', 'value'=> $this->get_session('cart_special_notes')])?></p>
+                <p type="Special Notes to Chef">  <?php echo form_input(['type'=>'text', 'name'=>'specialnote'])?></p>
                
             </div><br><br>
             <div class="total"><b>Total: LKR <?php echo number_format($this->get_session('cart_sub_total'),2,'.', ','); ?></b></div><br>
-            <input type="submit" class="checkout-button" value="PROCEED TO CHECKOUT">
+            <input type="submit" class="checkout-button" value="COMPLETE ORDER">
 
         <?php echo form_close();?>    
         </div>
         
        
     </div>
-    <script>
-        // Modal script
-        document.getElementById('float').addEventListener('click', function() {
-            document.getElementById('overlay').classList.add('is-visible');
-            document.getElementById('modal').classList.add('is-visible');
-        });
 
-        document.getElementById('close-btn').addEventListener('click', function() {
-            document.getElementById('overlay').classList.remove('is-visible');
-            document.getElementById('modal').classList.remove('is-visible');
-        });
-        document.getElementById('overlay').addEventListener('click', function() {
-            document.getElementById('overlay').classList.remove('is-visible');
-            document.getElementById('modal').classList.remove('is-visible');
-        });
-
-
-    </script>
     <?php include '../application/views/footer/footer_3.php';?>
+    <?php echo link_js("js/cashier/orderfood/cashier_removefromcart.js"); ?>
+
 </body>
 </html>

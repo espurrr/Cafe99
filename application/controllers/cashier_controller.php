@@ -144,6 +144,7 @@ class Cashier_Controller extends JB_Controller{
     public function orderfood(){
         $this->view('cashier/orderfood/orderfood');
     }
+
     public function addtocart(){
         if(isset($_POST['action'])){
             //echo json_encode(array('msg'=>'does this work'));
@@ -151,12 +152,13 @@ class Cashier_Controller extends JB_Controller{
             $food_id = $_POST['food_id'];
             $food_subcat = $_POST['food_subcat'];
             $food_cat = $_POST['food_cat'];
-
             $food_name = $_POST['food_name'];
             $qty = $_POST['qty'];
             $price = $_POST['price'];
+
             $user_id = $this->get_session('user_id');
             $cart_id = $this->get_session('cart_id');
+
             $cart_item_total = ($price * $qty);
             $cart_sub_total = $this->get_session('cart_sub_total');    
 
@@ -168,7 +170,7 @@ class Cashier_Controller extends JB_Controller{
 
             //bundled data
             $data_cartitem = [
-                'Cart_id' => 203,
+                'Cart_id' => $cart_id,
                 'Food_ID' => $food_id,
                 'Quantity' => $qty,
                 'Price' => $price,
@@ -187,15 +189,107 @@ class Cashier_Controller extends JB_Controller{
                 //increment the cart sub total of session data
                $this->set_session('cart_sub_total', $data_cart['Sub_total']);
 
-               //add to cart success modal box---------------------------------------------todo
             }
   
         }
         
     }
 
+    public function removefromcart(){
+        if(isset($_POST['action'])){
+            $food_id = $_POST['food_id'];
+            $food_name = $_POST['food_name'];
+            $food_qty = $_POST['qty'];
+            $food_price = $_POST['price'];
+
+            $cart_id = $this->get_session('cart_id');
+            //to update count in table 
+            $current_count = $this->get_session('cart_item_count');
+            $new_count = $current_count - 1;
+
+            //to update subtotal in table
+            $cart_item_total = $food_qty * $food_price;
+            $current_cart_subtotal = $this->get_session('cart_sub_total');
+            $new_cart_subtotal = $current_cart_subtotal - $cart_item_total;
+
+            $data = [
+                'cart_id' => $cart_id,
+                'food_id' => $food_id,
+                'food_qty' => $food_qty,
+                'food_price' => $food_price,
+                'cart_item_count' =>  $new_count,
+                'cart_subtotal' => $new_cart_subtotal
+            ];
+    
+            $result = $this->model->removefromCart($data);
+            
+            if($result){
+                $_SESSION['cart_item_count'] = $new_count;
+                $_SESSION['cart_sub_total'] = $new_cart_subtotal;
+            }
+        }
+    }
+
     public function mycart(){
-        $this->view('cashier/orderfood/cashier-cart');
+        $cart_id = $this->get_session('cart_id');
+        $result = $this->model->get_cart_items($cart_id);
+
+        if($result === "Cart_items_not_retrieved"){
+            $this->set_flash("cartitemsError", "Sorry! Your cart cannot be viewed at the moment.");
+            $this->view('cashier/orderfood/cashier-cart');
+
+        }else if($result === "Empty_cart"){
+            $this->set_flash("emptyCartAlert", "Your cart seems to be empty.. You know you're hungry😏");
+            $this->view('cashier/orderfood/cashier-cart');
+
+        }else if($result['status'] === "success"){
+            $this->view('cashier/orderfood/cashier-cart',$result['data']);
+
+        }
+        // $this->view('cashier/orderfood/cashier-cart');
+    }
+
+    public function proceedToOrderDetails(){
+        
+        $this->validation('specialnote','Special Notes', 'max_len|100');
+    
+        if($this->run()){
+            //check if the items are available as of now
+            $cart_id = $this->get_session('cart_id');
+            $result = $this->cart_checkFoodItemAvailability($cart_id);
+
+            if($result['status']=='unavail'){
+                $food_name = $result['data'];
+                $this->set_flash("cartitemsUnavailable", "Sorry! the amount of $food_name you requested are not available now.");
+                redirect("cashier_controller/mycart");
+            }
+            else{
+                $note = $this->post('specialnote');
+                $this->set_session('cart_special_notes',$note);
+                $this->view('cashier/orderfood/cashier-order-info');
+            }
+
+        }else{
+            redirect("cashier_controller/mycart");  
+        }
+
+    }
+
+    public function cart_checkFoodItemAvailability($cart_id){
+        
+        //get order items from cartitem and fooditem tables (requested qty, food item_count)
+        $food_items_and_qty = $this->model->getQtywithItemCount_cart($cart_id);
+        //print_r($food_items_and_qty['data']);
+        if($food_items_and_qty['status'] === "success"){
+
+            foreach($food_items_and_qty['data'] as $item){
+                $this->debug("qty is",$item->Quantity, "count is",$item->Current_count);
+                if($item->Quantity > $item->Current_count){
+                    return ['status'=>'unavail', 'data'=>$item->FoodName];
+                }
+            }
+            return ['status'=>'avail'];
+        }
     }
 
     public function order(){  
@@ -209,6 +303,91 @@ class Cashier_Controller extends JB_Controller{
 
     public function orderSubmit(){  
         $this->view('cashier/orderfood/cust-order-info');
+    }
+
+    public function completeOrder(){
+       
+        $user_id = $this->get_session('user_id');
+        $cart_id = $this->get_session('cart_id');
+        date_default_timezone_set('Asia/Colombo');
+        $ip = $_SERVER['SERVER_ADDR'];
+
+            $payment_type = "cash";// if this arrives here, must be cash
+
+            //get cart data
+            $cart_data = $this->model->get_cart_data($cart_id);
+
+            //A possible attempt to form resubmission
+            if($cart_data['data']->Item_count==0){
+                //logs
+                $this->warning("possible form resubmission (create order): @user = $user_id, @ip = $ip");
+                $this->set_flash("OrderFormResubmission", "Opps! Sorry, You cannot resubmit the form");
+                $this->view('cashier/orderfood/cashier-cart');
+
+            }else{
+                if($cart_data['status'] === "success"){
+    
+                    $data = [
+                        'Order_Date_Time' => date($cart_data['data']->Service_date ." ". $cart_data['data']->Service_time), //combined serve date and time
+                        'Item_count' => $cart_data['data']->Item_count,
+                        'Total_price' => $cart_data['data']->Sub_total + $cart_data['data']->Sub_total*0.05, //including service charge, disregarded discounts here...
+                        'Service_charge' => $cart_data['data']->Sub_total*0.05, //service charge is 5%
+                        'Special_notes' => $this->post('specialnote'),
+                        'Payment_method' => "cash",     //payement method from local variable
+                        'Order_type' => "dine-in", //$cart_data['data']->Order_type
+                        'User_ID' => $cart_data['data']->User_ID,
+                    ];
+                    // print_r($data);
+
+                    if($payment_type=="cash"){
+                        //make a new order
+                        $result_data = $this->model->createNewOrder($data, $cart_id);
+                        //header cart count flag sets to zero
+                        $_SESSION['cart_item_count'] = 0;
+                        //cart sub total flag sets to zero
+                        $_SESSION['cart_sub_total'] = 0;
+                        //cart special notes flag sets to zero
+                        $_SESSION['cart_special_notes'] = "";
+                        //order for whome flag sets to zero
+                        $_SESSION['order_is_for_me'] = 1;
+                        //header cart count flag sets to zero
+                        $_SESSION['cart_id'] = $result_data['newCartID'];
+                        
+                        $result_data['Status'] = 'success';
+
+                        //update food item count
+                        $order_id = $result_data['orderID'];
+                        $isUpdated = $this->model->updateFoodItemCount($order_id);
+
+                        if($isUpdated=="item_count_updated"){
+                            //logs
+                            $this->informational("item count updated success");
+                        }else if($isUpdated=="item_count_not_updated"){
+                            //logs
+                            $this->informational("item count updated failed");
+
+                        }else if($isUpdated=="order_items_not_found"){
+                            //logs
+                            $this->informational("order items not found");
+
+                        }
+                        
+                        if($result_data['newCartID']){
+                            //order success
+                            $this->view('cashier/orderfood/cashier-isorderplaced',$result_data); 
+                        }
+            
+                    }        
+                
+                }
+            }
+
+        // }
+
+        
+        
+        
+    
     }
    
 }
