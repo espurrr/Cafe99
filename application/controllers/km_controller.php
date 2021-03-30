@@ -295,7 +295,7 @@ class KM_Controller extends JB_Controller{
     public function pickup_email($order_id, $recipient_name, $recipient_email){
  
         $mailer = new JB_Mailer(true);
-      
+        date_default_timezone_set('Asia/Colombo');
         $date = date("F j, Y");
         $subject = "Your Order#$order_id is ready for pickup";
         $html_body = "<html><body style=\"font-family: sans-serif;\">

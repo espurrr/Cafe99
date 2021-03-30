@@ -74,8 +74,9 @@
 
   <div class="status-msg-wrapper">
     <div class="status-msg" style="margin-bottom:20px">
-        <?php $this->flash('orderUpdateSuccess','alert alert-success','fa fa-check'); ?>
-        <?php $this->flash('orderUpdateUnsuccess','alert alert-danger','fa fa-times-circle'); ?>
+        <?php $this->flash('orderUpdateSuccessEmailSent','alert alert-success','fa fa-check'); ?>
+        <?php $this->flash('orderUpdateSuccessEmailNotSent','alert alert-danger','fa fa-times-circle'); ?>
+
         <div id="status_msg_break"></div>
         <?php $this->flash('databaseError','alert alert-warning','fa fa-times-circle'); ?>
         <?php $this->flash('noNewOrderError','alert alert-warning','fa fa-info-circle'); ?>
