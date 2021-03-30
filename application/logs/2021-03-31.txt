@@ -1,5 +1,0 @@
-2021-03-31 00:58:37		localhost/cafe99/customer_controller/payhere_success/?order_id=5f661022227ff8a311cebe31cea46841				email invoice sent; @orderID = 93, @email = 2018cs001@stu.ucsc.cmb.ac.lk		3 INFORMATIONAL
-2021-03-31 01:02:25		localhost/cafe99/customer_controller/completeOrder				qty is		4 DEBUG
-2021-03-31 01:02:25		localhost/cafe99/customer_controller/completeOrder				item count updated success		3 INFORMATIONAL
-2021-03-31 01:02:30		localhost/cafe99/customer_controller/completeOrder				email invoice sent; @orderID = 94, @email = 2018cs001@stu.ucsc.cmb.ac.lk		3 INFORMATIONAL
-2021-03-31 01:20:58		localhost/cafe99/customer_controller/payhere_success/?order_id=89f4368dc879114853ce371ddce7e12f				email invoice sent; @orderID = 95, @email = 2018cs001@stu.ucsc.cmb.ac.lk		3 INFORMATIONAL
