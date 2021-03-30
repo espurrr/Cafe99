@@ -1,0 +1,25 @@
+2021-03-30 16:07:31		localhost/cafe99/account_controller/loginSubmit				session opened for user 203		3 INFORMATIONAL
+2021-03-30 16:07:32		localhost/cafe99/account_controller/loginSubmit				cart 70 assigned for user 203		3 INFORMATIONAL
+2021-03-30 16:08:50		localhost/cafe99/cashier_controller/completeOrder				item count updated success		3 INFORMATIONAL
+2021-03-30 16:10:36		localhost/cafe99/cashier_controller/completeOrder				possible form resubmission (create order): @user = 203, @ip = ::1		2 WARNING
+2021-03-30 16:10:38		localhost/cafe99/cashier_controller/completeOrder				possible form resubmission (create order): @user = 203, @ip = ::1		2 WARNING
+2021-03-30 16:10:39		localhost/cafe99/cashier_controller/completeOrder				possible form resubmission (create order): @user = 203, @ip = ::1		2 WARNING
+2021-03-30 16:11:17		localhost/cafe99/account_controller/loginSubmit				session opened for user 203		3 INFORMATIONAL
+2021-03-30 16:11:54		localhost/cafe99/cashier_controller/completeOrder				item count updated success		3 INFORMATIONAL
+2021-03-31 00:24:09		localhost/cafe99/account_controller/loginSubmit				session opened for user 217		3 INFORMATIONAL
+2021-03-31 00:24:16		localhost/cafe99/customer_controller/proceedToOrderDetails				qty is		4 DEBUG
+2021-03-31 00:24:23		localhost/cafe99/customer_controller/proceedToOrderDetails				qty is		4 DEBUG
+2021-03-31 00:24:53		localhost/cafe99/customer_controller/proceedToOrderDetails				qty is		4 DEBUG
+2021-03-31 00:56:13		localhost/cafe99/customer_controller/proceedToOrderDetails				qty is		4 DEBUG
+2021-03-31 01:01:47		localhost/cafe99/customer_controller/proceedToOrderDetails				qty is		4 DEBUG
+2021-03-31 01:03:57		localhost/cafe99/customer_controller/proceedToOrderDetails				qty is		4 DEBUG
+2021-03-31 01:38:30		localhost/cafe99/account_controller/loginSubmit				session opened for user 202		3 INFORMATIONAL
+2021-03-31 01:44:43		localhost/cafe99/account_controller/loginSubmit				session opened for user 217		3 INFORMATIONAL
+2021-03-31 01:46:33		localhost/cafe99/account_controller/loginSubmit				session opened for user 198		3 INFORMATIONAL
+2021-03-31 02:13:47		localhost/cafe99/account_controller/loginSubmit				authentication failure: @email = 2018cs001@stu.ucsc.cmb.ac.lk, @ip = ::1		3 INFORMATIONAL
+2021-03-31 02:13:51		localhost/cafe99/account_controller/loginSubmit				session opened for user 217		3 INFORMATIONAL
+2021-03-31 02:15:15		localhost/cafe99/account_controller/loginSubmit				authentication failure: @email = 2018cs001@stu.ucsc.cmb.ac.lk, @ip = ::1		3 INFORMATIONAL
+2021-03-31 02:15:26		localhost/cafe99/account_controller/loginSubmit				authentication failure: @email = 2018cs001@stu.ucsc.cmb.ac.lk, @ip = ::1		3 INFORMATIONAL
+2021-03-31 02:15:30		localhost/cafe99/account_controller/loginSubmit				session opened for user 217		3 INFORMATIONAL
+2021-03-31 02:20:14		localhost/cafe99/account_controller/loginSubmit				authentication failure: @email = 2018cs001@stu.ucsc.cmb.ac.lk, @ip = ::1		3 INFORMATIONAL
+2021-03-31 02:20:19		localhost/cafe99/account_controller/loginSubmit				session opened for user 217		3 INFORMATIONAL

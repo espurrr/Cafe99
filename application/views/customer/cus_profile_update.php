@@ -36,7 +36,7 @@
       <div class="update-details">
         <p type="Name">  <?php echo form_input(['type'=>'text', 'name'=>'User_name', 'value'=>$data->User_name])?></p>
         <p type="Email">  <?php echo form_input(['type'=>'email', 'name'=>'Email_address', 'value'=>$data->Email_address, 'placeholder'=>$data->Email_address,'readonly'=>'readonly'])?></p>
-        <p type="Phone number"><?php echo form_input(['type'=>'tel', 'name'=>'Phone_no', 'value'=>$data->Phone_no ,'placeholder'=> $data->Phone_no])?></p>
+        <p type="Phone number"><?php echo form_input(['type'=>'tel', 'name'=>'Phone_no', 'value'=>"0$data->Phone_no" ,'placeholder'=> "0$data->Phone_no"])?></p>
         <br><input type="submit" class="save_changes" value="SAVE CHANGES">
       </div>
 

@@ -6,11 +6,11 @@ class Customer_controller extends JB_Controller{
     public function __construct(){
         parent::__construct();
         if(!$this->get_session('user_id')){
-            redirect("account_controller/login");
+            redirect("account_controller/forbidden");
         }
         if($this->get_session('role')!="customer"){
             $this->destroy_session();
-            redirect("account_controller/login");
+            redirect("account_controller/forbidden");
             // $this->view('error');
 
         }
@@ -57,11 +57,11 @@ class Customer_controller extends JB_Controller{
         $result = $this->model->cus_data($user_id);
 
         if($result === "User_not_found"){
-            echo "user no";
+           // echo "user no";
             $this->set_flash("userError", "Hmm.. You are an imposter, aren't you??");
             $this->view('customer/cus_profile_update');
         }else if($result === "Data_not_retrieved"){
-            echo "datano";
+           // echo "datano";
             $this->set_flash("dbError", "It seems like your data is not ready yet.");
             $this->view('customer/cus_profile_update');
         }else if($result['status'] === "success"){
@@ -74,8 +74,8 @@ class Customer_controller extends JB_Controller{
 
         $user_id = $this->get_session('user_id');
         
-        $this->validation('User_name', 'Name' , 'required|not_int|max_len|50');
-        $this->validation('Phone_no','Phone number', 'required|int|len|10');
+        $this->validation('User_name', 'Name' , 'not_int|max_len|50');
+        $this->validation('Phone_no','Phone number', 'int|len|10');
   
         if($this->run()){
             // echo "Form is submitted";
@@ -370,7 +370,7 @@ class Customer_controller extends JB_Controller{
         }else if($order_type=='delivery'){
            // echo 'delivery';
             $this->validation('Delivery-address', 'Delivery address' , 'required|Maharagama');
-            $this->validation('Delivery-time', 'Delivery time' , 'required');//....................................................................|service_time put
+            $this->validation('Delivery-time', 'Delivery time' , 'required|service_time');//....................................................................|service_time put
             $order_date = $this->post('Delivery-date');
             $order_time = $this->post('Delivery-time');
             $order_address = $this->post('Delivery-address');
@@ -518,20 +518,22 @@ class Customer_controller extends JB_Controller{
 
                         if($isUpdated=="item_count_updated"){
                             //logs
-                            $this->informational("item count updated success");
+                            //$this->debug("item count updated success");
                         }else if($isUpdated=="item_count_not_updated"){
                             //logs
                             $this->informational("item count updated failed");
 
                         }else if($isUpdated=="order_items_not_found"){
                             //logs
-                            $this->informational("order items not found");
+                            //$this->debug("order items not found");
 
                         }
 
         
                         $this->invoiceEmail($order_id, $data);
-                            //logs
+                        //logs
+                        $amount = $data['Total_price'];
+                        $this->informational("cash on service order placed. @amount=$amount, @order_id=$new_order_id, @user=$user_id");
                         
                         if($result_data['newCartID']){
                             //order success
@@ -635,6 +637,11 @@ class Customer_controller extends JB_Controller{
                 //email the invoice
                 $this->invoiceEmail($result_data['orderID'], $data_order);
                 //logs
+                $new_order_id = $result_data['orderID'];
+                $user_id = $data_order['User_ID'];
+                $amount = $data_order['Total_price'];
+                $this->informational("payhere order placed. @amount=$amount, @order_id=$new_order_id, @user=$user_id");
+
                 $result_data['Status'] = 'success';
 
                 if($result_data['newCartID']){
@@ -664,6 +671,9 @@ class Customer_controller extends JB_Controller{
                 'User_ID' => $user_id
             ];
             $this->model->Payhere_update($data);
+            //logs
+            $this->warning("cash on service order failed. @user=$user_id");
+
         }  
 
         $this->view('customer/cust-order-isorderplaced',$data);             /////////////////////////////////////payment failed page
@@ -1155,7 +1165,6 @@ class Customer_controller extends JB_Controller{
         if($food_items_and_qty['status'] === "success"){
 
             foreach($food_items_and_qty['data'] as $item){
-                $this->debug("qty is",$item->Quantity, "count is",$item->Current_count);
                 if($item->Quantity > $item->Current_count){
                     return ['status'=>'unavail', 'data'=>$item->FoodName];
                 }

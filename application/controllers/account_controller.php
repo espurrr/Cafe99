@@ -15,6 +15,10 @@ class Account_controller extends JB_Controller{
         $this->view('home',['food_names'=>$food_names['data']]);
     }
 
+    public function forbidden(){
+        $this->view('forbidden');
+    }
+
     public function signup(){
         $this->view('signup');
     }
