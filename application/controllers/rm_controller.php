@@ -59,7 +59,8 @@ class RM_Controller extends JB_Controller{
              $Ann_title = $this->post('Announcement_title'); 
             //  $Ann_date = $this->post('Announcement_date');
             //  $Ann_time = $this->post('Announcement_time');
-            $Ann_date = date("Y-d-m");
+            date_default_timezone_set('Asia/Colombo');
+            $Ann_date = date("Y-m-d");
             $Ann_time = date("H:i:s");
              $content = $this->post('Content');
              $Ann_towhom=$_POST['To_whom'];
@@ -132,7 +133,8 @@ class RM_Controller extends JB_Controller{
         $Ann_title = $this->post('Announcement_title');
        // $Ann_date = $this->post('Announcement_date');
        //$Ann_time = $this->post('Announcement_time');
-        $Ann_date = date("Y-d-m");
+        date_default_timezone_set('Asia/Colombo');
+        $Ann_date = date("Y-m-d");
         $Ann_time = date("H:i:s");
         $content = $this->post('Content');
        // $Ann_towhom = $this->post('To_whom');
@@ -593,6 +595,7 @@ public function addFooditem(){
 }
 
     public function createFoodItem(){
+        $x=$this->get_session('user_id');
         // echo $_POST['Food_name'];
         // echo $_POST['Description'];
         // echo $_POST['Unit_Price'];
@@ -622,6 +625,7 @@ public function addFooditem(){
             ];
             
             if($this->model->addFoodItem($data)){
+                $this->informational("New fooditem,$Food_name:unit price is $Unit_Price create by $x");
                 $this->set_flash("fooditemSuccess", "Fooditem added successfully");
                 //$this->fooditem();
                 redirect("rm_controller/fooditem");
