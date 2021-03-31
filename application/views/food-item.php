@@ -116,7 +116,7 @@
                 <!-- <button href="#" class="fav btn"><i class="fas fa-heart"></i></button> -->
                 
                 <button id="add_to_cart_btn"
-                class="cart btn shoppingcartbtn" 
+                class="<?php if($data['data'][0]->Availability == "Available") echo "cart btn shoppingcartbtn"; else echo  "disable btn shoppingcartbtn"?>" 
                 data-id="<?php echo $data['data'][0]->Food_ID;?>"
                 data-name="<?php echo $data['data'][0]->Food_name;?>"
                 data-price="<?php echo $data['data'][0]->Unit_Price;?>"

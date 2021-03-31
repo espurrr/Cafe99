@@ -75,7 +75,7 @@
                         <?php //echo form_close();?>
                     </div>
 
-                    <h1>You want it. We have it.</h1>
+                    <h1>You want it. We have it.<?php echo $data[0]->Food_name ?></h1>
                     <p>Food, drinks, and desserts for dinein, delivery and pickup.</p>
                 </div>
             </section>
@@ -85,37 +85,27 @@
             <div class="product-list">
                 <div class="title">Most Popular</div>
                 <div class="row">
+                    <?php foreach($data['most_popular_food'] as $row): ?>
                     <div class="column">
                         <div class="card">
-                                <img src="<?php echo BASE_URL?>/public/images/food-dash-images/Food/Pizza/DevilledChicken.jpg" alt="">
-                                <p class="name">Devilled Chicken</p>
-                                <p class="text">Devilled chicken in spicy sauce with a double layer of mozzarella cheese</p>
+                        <a href="<?php echo BASE_URL?>/food_controller/menu/<?php echo $row->Category_name."/".$row->Subcategory_name."/".$row->Food_ID ?>">
+                        <img src="<?php echo BASE_URL?>/public/images/food-dash-images/<?php echo $row->Category_name?>/<?php echo $row->Subcategory_name?>/<?php echo str_replace(' ','',$row->Food_name)?>.jpg" 
+                        alt="Image not found"></a>
+                            <p class="name">
+                            <a href="<?php echo BASE_URL?>/food_controller/menu/<?php echo $row->Category_name."/".$row->Subcategory_name."/".$row->Food_ID ?>">
+                            <?php echo $row->Food_name ?></p></a>
+                            <!-- <p class="text">
+                            <?php
+                                if(empty($row->Description)){
+                                    echo str_repeat('&nbsp;', 50)."\n".str_repeat('&nbsp;', 50);
+                                }else{
+                                    echo substr($row->Description, 0, 47)."...";
+                                }
+                            ?>
+                            </p> -->
                         </div>
                     </div>
-                
-                    <div class="column">
-                        <div class="card">
-                            <img src="<?php echo BASE_URL?>/public/images/food-dash-images/Food/Buns/HotDogBun.jpg" alt="">
-                                <p class="name">Hot Dog Bun</p>
-                                <p class="text">A chicken sausage with combination of tomato sauce and lemon mustard dressing</p>
-                        </div>
-                    </div>
-                    
-                    <div class="column">
-                        <div class="card">
-                            <img src="<?php echo BASE_URL?>/public/images/food-dash-images/Food/Rice/VegetablesFriedRice.jpg" alt="">
-                                <p class="name">Vegetables Fried Rice</p>
-                                <p class="text">Soy sauce, white rice, toasted sesame oil, carrot, egg</p>
-                        </div>
-                    </div>
-                    
-                    <div class="column">
-                        <div class="card">
-                            <img src="<?php echo BASE_URL?>/public/images/food-dash-images/Food/Buns/SausageBun.jpg" alt="">
-                                <p class="name">Sausage Bun</p>
-                                <p class="text">Butter sugar, egg wash, all purpose flour, active yeast</p>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
@@ -124,37 +114,27 @@
             <div class="product-list">
                 <div class="title">Newly Introduced</div>
                 <div class="row">
-                    <div class="column">
-                        <div class="card">
-                                <img src="<?php echo BASE_URL?>/public/images/food-dash-images/Food/Biriyani/FishBiriyani.jpg" alt="">
-                                <p  class="name">Fish Biriyani</p>
-                                <p class="text">Basmathi rice, Fresh Dill leaves, Jalapeno , Ginger</p>
+                    <?php foreach($data['newly_added'] as $row): ?>
+                        <div class="column">
+                            <div class="card">
+                                <a href="<?php echo BASE_URL?>/food_controller/menu/<?php echo $row->Category_name."/".$row->Subcategory_name."/".$row->Food_ID ?>">
+                                <img src="<?php echo BASE_URL?>/public/images/food-dash-images/<?php echo $row->Category_name?>/<?php echo $row->Subcategory_name?>/<?php echo str_replace(' ','',$row->Food_name)?>.jpg" 
+                                alt="image not found"></a>
+                                <p class="name">
+                                <a href="<?php echo BASE_URL?>/food_controller/menu/<?php echo $row->Category_name."/".$row->Subcategory_name."/".$row->Food_ID ?>">
+                                <?php echo $row->Food_name ?></p></a>
+                                <!-- <p class="text">
+                                <?php
+                                    if(empty($row->Description)){
+                                        echo str_repeat('&nbsp;', 50)."\n".str_repeat('&nbsp;', 50);
+                                    }else{
+                                        echo substr($row->Description, 0, 47)."...";
+                                    }
+                                ?>
+                                </p> -->
+                            </div>
                         </div>
-                    </div>
-                
-                    <div class="column">
-                        <div class="card">
-                            <img src="<?php echo BASE_URL?>/public/images/food-dash-images/Drinks/Coffee/IcedCoffee.jpg" alt="">
-                                <p class="name">Iced Coffee</p>
-                                <p class="text">Chocalate Syrup, fat free, sugar subtitute</p>
-                        </div>
-                    </div>
-                    
-                    <div class="column">
-                        <div class="card">
-                            <img src="<?php echo BASE_URL?>/public/images/food-dash-images/Food/Pizza/VeggieSupreme.jpg" alt="">
-                                <p class="name">Veggie Supreme</p>
-                                <p class="text">Crescent rolls, cream cheese, cheddar, fresh vegetables</p>
-                        </div>
-                    </div>
-                    
-                    <div class="column">
-                        <div class="card">
-                            <img src="<?php echo BASE_URL?>/public/images/food-dash-images/Food/Buns/ChocolateBun.jpg" alt="">
-                                <p class="name">Chocolate Bun</p>
-                                <p class="text">Coco powder, Instant yeast, egg white, milk</p>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

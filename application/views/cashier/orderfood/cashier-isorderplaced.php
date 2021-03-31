@@ -23,7 +23,7 @@
                 <div class="win-table">
                     <?php if($data['Status'] == "success"): ?>
                     <i class="fas fa-check fa-8x"></i>
-                    <p class="para">Congratulations! Your order has been placed successfully.<br><br>We have emailed you the order details. <br>Please Check inbox.</p>
+                    <p class="para">Order has been placed successfully</p>
 
                     <div class="popup-btn-container">
                         <a href="<?php echo BASE_URL?>/cashier_controller/mycart"><button id="ok-btn" class="popup-btn btn av-btn">OK</button></a>
@@ -33,7 +33,7 @@
                     
                     <?php if($data['Status'] == "failed"): ?>
                     <i class="fas fa-times fa-8x"></i>
-                    <p class="para">Sorry! Your order has been Failed.</p>
+                    <p class="para">Sorry! Order has been Failed.</p>
 
                     <div class="popup-btn-container">
                         <a href="<?php echo BASE_URL?>/cashier_controller/mycart"><button id="ok-btn" class="popup-btn btn av-btn">OK</button></a>

@@ -12,7 +12,10 @@ class Account_controller extends JB_Controller{
     public function index(){
         $food_names = $this->food_model->get_food_names();
         // print_r($food_names['data']);
-        $this->view('home',['food_names'=>$food_names['data']]);
+        $most_popular_food = $this->model->get_most_popular_food();
+        $new_food = $this->model->get_newly_introduced_fooditem();
+
+        $this->view('home', ['food_names'=>$food_names['data'], 'most_popular_food'=>$most_popular_food['data'], 'newly_added'=>$new_food['data']]);
     }
 
     public function forbidden(){

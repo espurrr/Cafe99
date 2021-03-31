@@ -15,11 +15,19 @@ class Customer_controller extends JB_Controller{
 
         }
         $this->model = $this->model("customer_model");
+        $this->food_model = $this->model("food_model");
+        $this->account_model = $this->model("account_model");
+
     }
     
 
     public function index(){
-        $this->view('home');
+        $food_names = $this->food_model->get_food_names();
+        // print_r($food_names['data']);
+        $most_popular_food = $this->account_model->get_most_popular_food();
+        $new_food = $this->account_model->get_newly_introduced_fooditem();
+
+        $this->view('home', ['food_names'=>$food_names['data'], 'most_popular_food'=>$most_popular_food['data'], 'newly_added'=>$new_food['data']]);
     }
 
     public function logout(){

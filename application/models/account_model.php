@@ -162,6 +162,55 @@ class Account_model extends Database{
         }
     }
 
+    public function get_most_popular_food(){
+        $food_query = 
+        "SELECT fooditem.Food_ID, fooditem.Food_name, fooditem.Description,  
+        subcategory.Subcategory_name, category.Category_name,
+        COUNT(order_item.Food_ID) AS id_count
+        FROM fooditem INNER JOIN subcategory ON fooditem.Subcategory_ID = subcategory.Subcategory_ID
+        INNER JOIN category ON subcategory.Category_ID = category.Category_ID
+        INNER JOIN order_item ON fooditem.Food_ID = order_item.Food_ID
+        GROUP BY order_item.Food_ID LIMIT 4";
+
+        $result = $this->Query($food_query, $options = []);
+        if($this->Count() > 0){
+            $food = $this->AllRecords();
+            // print_r($food);
+
+            if($food){
+                return ['status'=>'success', 'data'=>$food];
+            }else{
+                return "Food_not_retrieved";
+            }
+        }else{
+            return "Food_not_found";
+        }
+    }
+
+    public function get_newly_introduced_fooditem(){
+        $food_query = 
+        "SELECT fooditem.Food_ID,fooditem.Food_name, fooditem.Description, 
+        subcategory.Subcategory_name, category.Category_name 
+        FROM fooditem 
+        INNER JOIN subcategory ON fooditem.Subcategory_ID = subcategory.Subcategory_ID
+        INNER JOIN category ON subcategory.Category_ID = category.Category_ID
+        ORDER BY fooditem.Food_ID DESC LIMIT 4";
+
+        $result = $this->Query($food_query, $options = []);
+        if($this->Count() > 0){
+            $food = $this->AllRecords();
+            // print_r($food);
+
+            if($food){
+                return ['status'=>'success', 'data'=>$food];
+            }else{
+                return "Food_not_retrieved";
+            }
+        }else{
+            return "Food_not_found";
+        }
+    } 
+
 
 
 

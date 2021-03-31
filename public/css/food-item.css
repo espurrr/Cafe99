@@ -384,6 +384,14 @@ ul.breadcrumb li a:hover {
     background-color: var(--cart-color);
     color: #fff;
 }
+.food_item_container .container__text .btn-container .disable {
+    grid-area: a;
+    border: 1px solid #bbb;
+    background-color: #999;
+    color: #fff;
+    cursor: not-allowed;
+
+}
 
 .food_item_container .container__text .btn-container .cart .fa-shopping-cart {
     color: #fff;
@@ -394,6 +402,14 @@ ul.breadcrumb li a:hover {
     border: 1px solid #aaa;
     background-color: #fff;
     color: #bbb;
+}
+
+.food_item_container .container__text .btn-container .disable:hover {
+    border: 1px solid #bbb;
+    background-color: #999;
+    color: #fff;
+    cursor: not-allowed;
+
 }
 
 .food_item_container .container__text .btn-container .cart:hover .fa-shopping-cart {
