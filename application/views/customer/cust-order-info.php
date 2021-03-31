@@ -83,7 +83,7 @@
                         <?php echo form_input(['type'=>'date', 'name'=>'Dine-in-date', 'placeholder'=>'Dine-in Date' ,'value'=>date('Y-m-d'), 'min'=>date('Y-m-d'), 'max'=>date('Y-m-d')])?>
                        
                         <p> Dine-in Time </p>
-                        <?php echo form_input(['type'=>'time', 'name'=>'Dine-in-time', 'placeholder'=>'Dine-in Time' , 'value'=>$this->set_value('Dine-in-time'), 'min'=>date('06:00'), 'max'=>date('19:00')])?>
+                        <?php echo form_input(['type'=>'time', 'name'=>'Dine-in-time', 'placeholder'=>'Dine-in Time' , 'value'=>$this->set_value('Dine-in-time')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['Dine-in-time'])):?>
                             <?php echo $this->errors['Dine-in-time'];?>
@@ -97,7 +97,7 @@
                         <?php echo form_input(['type'=>'date', 'name'=>'Pick-up-date', 'placeholder'=>'Pick-up Date' ,'value'=>date('Y-m-d'), 'min'=>date('Y-m-d'), 'max'=>date('Y-m-d')])?>
                       
                         <p> Pick-up Time </p>
-                        <?php echo form_input(['type'=>'time', 'name'=>'Pick-up-time', 'placeholder'=>'Pick-up Time' , 'value'=>$this->set_value('Pick-up-time'), 'min'=>date('06:00'), 'max'=>date('19:00')])?>
+                        <?php echo form_input(['type'=>'time', 'name'=>'Pick-up-time', 'placeholder'=>'Pick-up Time' , 'value'=>$this->set_value('Pick-up-time')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['Pick-in-time'])):?>
                             <?php echo $this->errors['Pick-in-time'];?>
@@ -118,7 +118,7 @@
                         <?php echo form_input(['type'=>'date','class'=>'del_details' , 'name'=>'Delivery-date', 'placeholder'=>'Delivery Date' ,'value'=>date('Y-m-d'), 'min'=>date('Y-m-d'), 'max'=>date('Y-m-d')])?>
                         
                     <p> Delivery Time </p>
-                        <?php echo form_input(['type'=>'time','class'=>'del_details' , 'name'=>'Delivery-time', 'placeholder'=>'Delivery Time' ,'value'=>$this->set_value('Delivery-time'), 'min'=>date('06:00'), 'max'=>date('19:00')])?>
+                        <?php echo form_input(['type'=>'time','class'=>'del_details' , 'name'=>'Delivery-time', 'placeholder'=>'Delivery Time' ,'value'=>$this->set_value('Delivery-time')])?>
                         <div class="error">
                             <?php if(!empty($this->errors['Delivery-time'])):?>
                             <?php echo $this->errors['Delivery-time'];?>
