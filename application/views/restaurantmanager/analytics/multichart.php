@@ -32,8 +32,8 @@ try{
     $handle3->execute(); 
     $result3 = $handle3->fetchAll(\PDO::FETCH_OBJ);
 
-    $handle4 = $link->prepare('select Order_ID,sum(case when Order_is_for_me="1" then 1 else 0 end) AS App,sum(case when Order_is_for_me="0" then 1 else 0 end) AS WalkingCustomer From orders'); 
-    //select Order_ID,sum(case when Order_is_for_me="1" then 1 else 0 end) AS App,sum(case when Order_is_for_me="0" then 1 else 0 end) AS WalkingCustomer From orders where Order_Date_Time=CURRENT_DATE  
+    $handle4 = $link->prepare('select Order_ID,sum(case when isCashier="0" then 1 else 0 end) AS App,sum(case when isCashier="1" then 1 else 0 end) AS WalkingCustomer From orders'); 
+    //select Order_ID,sum(case when isCashier="0" then 1 else 0 end) AS App,sum(case when isCashier="1" then 1 else 0 end) AS WalkingCustomer From orders where Order_Date_Time=CURRENT_DATE  
     $handle4->execute(); 
     $result4 = $handle4->fetchAll(\PDO::FETCH_OBJ);
 

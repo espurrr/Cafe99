@@ -73,7 +73,7 @@
                
             </div><br><br>
             <div class="total"><b>Total: LKR <?php echo number_format($this->get_session('cart_sub_total'),2,'.', ','); ?></b></div><br>
-            <input type="submit" class="checkout-button" value="COMPLETE ORDER">
+            <input type="submit" class="checkout-button" value="COMPLETE  ORDER">
 
         <?php echo form_close();?>    
         </div>
