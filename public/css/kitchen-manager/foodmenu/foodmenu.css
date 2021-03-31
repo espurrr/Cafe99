@@ -128,7 +128,7 @@
     .grid article .quantity input[type=number]{
         height: 30px;
         padding-left: 10px;
-        width: 60px;
+        width: 50px;
         border: 1px solid #999;
     }
 

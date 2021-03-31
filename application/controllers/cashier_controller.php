@@ -328,7 +328,7 @@ class Cashier_Controller extends JB_Controller{
                 if($cart_data['status'] === "success"){
     
                     $data = [
-                        'Order_Date_Time' => date($cart_data['data']->Service_date ." ". $cart_data['data']->Service_time), //combined serve date and time
+                        'Order_Date_Time' => date("Y-m-d H:i:s"), //combined serve date and time
                         'Item_count' => $cart_data['data']->Item_count,
                         'Total_price' => $cart_data['data']->Sub_total + $cart_data['data']->Sub_total*0.05, //including service charge, disregarded discounts here...
                         'Service_charge' => $cart_data['data']->Sub_total*0.05, //service charge is 5%

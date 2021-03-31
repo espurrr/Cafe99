@@ -77,7 +77,7 @@ class Rm_model extends Database{
             $announcement = $this->AllRecords();
             //print_r($announcement);
             if($announcement){
-                return ['status'=>'success', 'data'=>$announcement];
+                return ['status'=>'success', 'data'=>array_reverse($announcement, true)];
             }else{
                 return "Announcement_not_retrieved";
             }

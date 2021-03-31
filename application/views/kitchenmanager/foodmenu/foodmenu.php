@@ -76,8 +76,8 @@
                     <?php echo form_open("km_controller/updateCurrentCount/".$row->Food_ID."/".$category->Category_name, "POST");?>
                         <label for="quantity">Count :</label>
                         <input type="number" id="quantity" name="quantity" value=<?php echo $row->Current_count;?> min="1" max="1000">
-                        <!-- <input type="submit" value='<i class="fas fa-check"></i>'> -->
-                        <button type="submit" id="count_submit"><i class="fas fa-check"></i></button>
+                        <input type="submit" value="submit">
+                        <!-- <button type="submit" id="count_submit"><i class="fas fa-check"></i></button> -->
                     <?php echo form_close();?>
                     </div>
 
@@ -123,7 +123,7 @@
                                 <?php echo form_open("km_controller/updateCurrentCount/".$row->Food_ID."/".$category->Category_name, "POST");?>
                                     <label for="quantity">Count :</label>
                                     <input type="number" id="quantity" name="quantity" value=<?php echo $row->Current_count;?> min="1" max="1000">
-                                    <input type="submit">
+                                    <input type="submit" value="submit">
                                 <?php echo form_close();?>
                                 </div>
 

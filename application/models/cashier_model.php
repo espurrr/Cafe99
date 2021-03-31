@@ -213,24 +213,24 @@
                 }
         }
 
-        public function  getQtywithItemCount_reorder($order_id){
+        // public function  getQtywithItemCount_reorder($order_id){
       
-            $query = 
-            "SELECT order_item.Quantity AS Quantity , fooditem.Current_count AS Current_count
-            FROM order_item
-            INNER JOIN fooditem ON order_item.Food_ID = fooditem.Food_ID
-            WHERE order_item.Order_ID='".$order_id."' ";
+        //     $query = 
+        //     "SELECT order_item.Quantity AS Quantity , fooditem.Current_count AS Current_count
+        //     FROM order_item
+        //     INNER JOIN fooditem ON order_item.Food_ID = fooditem.Food_ID
+        //     WHERE order_item.Order_ID='".$order_id."' ";
             
-            $result =$this->Query($query, $options = []);
+        //     $result =$this->Query($query, $options = []);
     
-            if($this->Count() > 0){
-                $order_items = $this->AllRecords();
-                //print_r($order_items);
-                return ['status'=>'success', 'data'=>$order_items];
-            }else{
-                return "order_items_not_found";
-            }
-        }
+        //     if($this->Count() > 0){
+        //         $order_items = $this->AllRecords();
+        //         //print_r($order_items);
+        //         return ['status'=>'success', 'data'=>$order_items];
+        //     }else{
+        //         return "order_items_not_found";
+        //     }
+        // }
 
         public function get_cart_data($cart_id){
       
