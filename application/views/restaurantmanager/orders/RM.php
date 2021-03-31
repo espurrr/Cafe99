@@ -88,7 +88,7 @@
                             <td><?php echo $row->Special_notes ?></td>
                             <td><?php echo $row->Payment_method ?></td>
                             <td><?php echo $row->Order_type ?></td>
-                            <?php if($row->Order_type="delivery"){?>
+                            <?php if($row->Order_type=="delivery"){?>
                             <td><?php echo $row->Delivery_Dispatch_DateTime ?></td>
                             <?php } else{ ?>
                             <td><?php echo $row->Kitchen_Dispatch_DateTime?></td>
