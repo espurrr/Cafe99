@@ -1,0 +1,10 @@
+2021-03-31 20:09:31		localhost/cafe99/account_controller/loginSubmit				session opened for user 200		3 INFORMATIONAL
+2021-03-31 20:58:26		localhost/cafe99/account_controller/loginSubmit				session opened for user 202		3 INFORMATIONAL
+2021-03-31 20:58:53		localhost/cafe99/km_controller/updateOrderStatus				order#24 pickup order email notif is sent successfully		3 INFORMATIONAL
+2021-03-31 21:00:33		localhost/cafe99/account_controller/loginSubmit				session opened for user 198		3 INFORMATIONAL
+2021-03-31 21:00:43		localhost/cafe99/account_controller/loginSubmit				session opened for user 202		3 INFORMATIONAL
+2021-03-31 21:03:16		localhost/cafe99/account_controller/loginSubmit				session opened for user 200		3 INFORMATIONAL
+2021-03-31 21:03:39		localhost/cafe99/account_controller/loginSubmit				session opened for user 202		3 INFORMATIONAL
+2021-03-31 22:46:19		localhost/cafe99/km_controller/updateOrderStatus				order#24 pickup order email notif is sent successfully		3 INFORMATIONAL
+2021-03-31 23:04:11		localhost/cafe99/account_controller/loginSubmit				session opened for user 202		3 INFORMATIONAL
+2021-03-31 23:56:31		localhost/cafe99/account_controller/loginSubmit				session opened for user 202		3 INFORMATIONAL

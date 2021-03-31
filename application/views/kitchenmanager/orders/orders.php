@@ -108,7 +108,7 @@
             <?php if($order_status[$order_id] == "Onqueue" || $order_status[$order_id] == "onqueue"):?>
 
             <tr>
-                <td><?php echo $order_id ?></td>
+                <td><?php echo $order_id.str_repeat('&nbsp;', 3)."(".$order_types[$order_id].")" ?></td>
                 <td ><div class="cell-desc"><?php echo $values ?></div></td>
                 <td>
                     <div class="btn-container">
@@ -144,7 +144,7 @@
             <?php if($order_status[$order_id] == "Processing" || $order_status[$order_id] == "processing"):?>
 
             <tr>
-                <td><?php echo $order_id ?></td>
+                <td><?php echo $order_id.str_repeat('&nbsp;', 3)."(".$order_types[$order_id].")" ?></td>
                 <td ><div class="cell-desc"><?php echo $values ?></div></td>
                 <td>
                     <div class="btn-container">
@@ -181,11 +181,13 @@
             <tr>
                 <td>
                     <?php 
-                        if($order_types[$order_id] == "delivery"){
-                            echo $order_id .str_repeat('&nbsp;', 3)."(Delivery)";
-                        }else{
-                            echo $order_id;
-                        }
+                        // if($order_types[$order_id] == "delivery"){
+                        //     echo $order_id .str_repeat('&nbsp;', 3)."(Delivery)";
+                        // }else{
+                        //     echo $order_id;
+                        // }
+                        echo $order_id.str_repeat('&nbsp;', 3)."(".$order_types[$order_id].")"
+
                     ?>
                 </td>
                 <td ><div class="cell-desc"><?php echo $values ?></div></td>
@@ -235,7 +237,7 @@
             <?php if($order_status[$order_id] == "Dispatched" || $order_status[$order_id] == "dispatched"):?>
 
             <tr>
-                <td><?php echo $order_id ?></td>
+                <td><?php echo $order_id.str_repeat('&nbsp;', 3)."(".$order_types[$order_id].")" ?></td>
                 <td ><div class="cell-desc"><?php echo $values ?></div></td>
                 <td>
                     <div class="btn-container">
