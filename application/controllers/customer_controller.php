@@ -147,16 +147,15 @@ class Customer_controller extends JB_Controller{
         $user_name = $this->get_session('user_name');
          
         $text = $this->post('bye');
-        $new_pw = $this->hash($this->post('New_Password'));
-        $result = $this->model->password_update($current_pw,$new_pw,$user_id);
-    
+        
         if($text==="GOODBYE"){
             $result = $this->model->deactivate_user($user_id);
-            if($result==="DB_error"){
+            if(!$result){
                 $this->set_flash("dbError", "Something went wrong :( Please try again.");
                 $this->view('customer/cus_profile_delete');
                 
-            }else if($result==="success"){
+            }else if($result){
+                $this->informational("successfully deactivated @user_id=$user_id");
                 $this->set_flash("deactivateSuccess", "Good bye friend! You will be missed :)");
                 redirect("account_controller/signup");
             }
@@ -164,8 +163,9 @@ class Customer_controller extends JB_Controller{
             $this->set_flash("wrongGoodBye", "Nice teasing, $user_name :) Stay with us please");
             $this->view('customer/cus_profile_delete');
         }
-
+        
     }
+        
     
 
     public function myfavourites(){

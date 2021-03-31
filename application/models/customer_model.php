@@ -63,10 +63,18 @@ class Customer_model extends Database{
     }
 
     public function deactivate_user($user_id){
-        if($this->Delete("user", ['User_ID' => $user_id])){
-            return "success";
+        $data = [
+            'User_Password' => "",
+            'User_name' => "",
+            'Phone_no' => NULL,
+            'Token' => "",
+            'User_status' =>"deactivated",
+            'Email_address' => ""
+        ];
+        if($this->Update("user", $data,['User_ID' => $user_id])){
+            return true;
         }else{
-            return "DB_error";
+            return false;
         }
     }
 

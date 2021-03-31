@@ -29,6 +29,7 @@
 
   <div class="ordersflash">
         <?php $this->flash('ItemsNotSufficient','alert alert-danger','fa fa-times-circle'); ?>
+        <?php $this->flash('Orders404Error','alert alert-info','fa fa-info-circle'); ?>
   </div><br><br>
 
 
