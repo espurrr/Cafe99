@@ -369,7 +369,7 @@ class Customer_controller extends JB_Controller{
             // echo $order_date;
             // echo $order_time;
        }else if($order_type=='pick-up'){
-            $this->validation('Pick-up-time', 'Pick-up time' , 'required');
+            $this->validation('Pick-up-time', 'Pick-up time' , 'required|service_time');
 
             $order_date = $this->post('Pick-up-date');
             $order_time = $this->post('Pick-up-time');
@@ -378,7 +378,7 @@ class Customer_controller extends JB_Controller{
         }else if($order_type=='delivery'){
            // echo 'delivery';
             $this->validation('Delivery-address', 'Delivery address' , 'required|Maharagama');
-            $this->validation('Delivery-time', 'Delivery time' , 'required');//....................................................................|service_time put
+            $this->validation('Delivery-time', 'Delivery time' , 'required|service_time');//....................................................................|service_time put
             $order_date = $this->post('Delivery-date');
             $order_time = $this->post('Delivery-time');
             $order_address = $this->post('Delivery-address');
