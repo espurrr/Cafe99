@@ -47,7 +47,7 @@
 
             <div class="column">
             <div class="order-delivered-box">
-            <h3>Orders deilivered</h3><br>
+            <h3>Orders delivered</h3><br>
             <h1><?php print_r($d['card2']);?></h1>
             </div>
             </div>
@@ -70,6 +70,7 @@
         <?php //} ?>
 <br><br><br>
 <div class="chart"><?php include 'multichart.php';?></div>
+<div class="report"><?php include 'report-view.php';?></div>
        <!-- <div class="column-line">
             <div class="column-graph">
             <?php //include "column.php"?>
