@@ -2,7 +2,7 @@
  function fetch_data()  
  {  
       $output = '';  
-      $conn = mysqli_connect("localhost:3308", "root", "", "cafe99");  
+      $conn = mysqli_connect("localhostg", "root", "", "cafe99");  
       $sql = "select Date(Order_Date_Time) AS date,SUM(Item_Count) AS item_count_of_day,SUM(Total_price) AS total_price_of_day From orders where (CURRENT_DATE - INTERVAL 7 DAY) Group By date";  
       $result = mysqli_query($conn, $sql);  
       while($row = mysqli_fetch_array($result))  
