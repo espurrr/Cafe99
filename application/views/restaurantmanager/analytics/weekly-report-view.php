@@ -36,7 +36,7 @@
       $obj_pdf->AddPage();  
       $content = '';  
       $content .= '  
-      <h4 align="center">Weekly Sales Report</h4><br /> 
+      <h2 align="center">Weekly Sales Report | Cafe99</h2><br /> 
       <table border="1" cellspacing="0" cellpadding="3">  
            <tr>  
                 <th width="30%">Date</th>  
@@ -53,15 +53,26 @@
  ?>  
  <!DOCTYPE html>  
  <html>  
-      <head> 
-      <?php echo link_css("css/restaurantmanager/admin.css?ts=<?=time()?>"); ?> 
+      <head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <?php echo link_css("css/restaurantmanager/analytics/analytics-sidebar.css?ts=<?=time()?>");?>
+      <?php echo link_css("css/header-dashboard.css?ts=<?=time()?>"); ?> 
+      <?php echo link_css("css/restaurantmanager/admin.css?ts=<?=time()?>"); ?>
+      <?php echo link_css("css/footer_3.css?ts=<?=time()?>"); ?> 
            <title>Cafe99 | Weekly Sales Report</title>  
                       
       </head>  
-      <body>  
+      <body>
+     <div class="page-container">
+     <?php include "analytics-sidebar.php"; ?>
+     <div class="content-wrapper">
+     <?php include  "../application/views/header/header-dashboard.php";?>  
            <br />
-             
-                <h4 align="center"> Weekly Sales Report</h4><br />  
+
+        <div class="wrapper">
+        <div class="admin-content" style="background: #FBDD3F url('<?php echo BASE_URL?>/public/images/texture.png') repeat;">
+        <div class="content">    
+                <h1 align="center"> Weekly Sales Report</h1><br />  
                   
                     
                      <form method="post">  
@@ -83,8 +94,14 @@
                      <?php  
                      echo fetch_data();  
                      ?>  
-                     </table>  
+                     </table>
+
+       </div>
+       </div>
+       </div>  
                   
-             
+ </div><!-- content-wrapper ends here -->
+<?php include '../application/views/footer/footer_3.php';?> 
+</div><!-- page-container ends here -->     
       </body>  
 </html>

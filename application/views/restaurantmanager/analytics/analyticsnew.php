@@ -70,7 +70,9 @@
         <?php //} ?>
 <br><br><br>
 <div class="chart"><?php include 'multichart.php';?></div>
-<div class="report"><?php include 'report-view.php';?></div>
+<div class="report"><?php echo anchor("rm_controller/weeklyReport", "Get Weekly Sales Report",['class'=>"button"])?>
+<?php echo anchor("rm_controller/monthlyReport", "Get Monthly Sales Report",['class'=>"button"])?>
+</div>
        <!-- <div class="column-line">
             <div class="column-graph">
             <?php //include "column.php"?>

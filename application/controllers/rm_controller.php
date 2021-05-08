@@ -27,6 +27,13 @@ class RM_Controller extends JB_Controller{
  
     }
 
+    public function weeklyReport(){
+        $this->view('restaurantmanager/analytics/weekly-report-view');
+    }
+
+    public function monthlyReport(){
+        $this->view('restaurantmanager/analytics/monthly-report-view');
+    }
   
 //create newsfeed
     public function create(){
