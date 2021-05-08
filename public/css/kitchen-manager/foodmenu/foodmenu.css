@@ -20,6 +20,12 @@
         --dark-grey:#363740;
         --tab-text-color:#ccc;
         --transition-time: 0.3s;
+
+        --reset-hover-transition:0.3s;
+        --reset-non-hover-transition:0.3s;
+        --reset-btn-color:#363740;
+        --reset-btn-color-hover:#3a3b47;
+        --reset-btn-hover-text-color:#dde2ff;
     }
 
     *{
@@ -338,3 +344,29 @@
       margin-top: 20px;
       padding: 0 20px;
   }
+
+    .reset_btn_contianer{
+        position: absolute;
+        top:30px;
+        left: 50px;
+
+    }
+    .content-wrapper .reset-btn{
+        cursor: pointer;
+        color: var(--tab-text-color);
+        height: 40px;
+        width:200px;
+        border: none;
+        border-radius: 20px;
+        box-shadow: 1px 1px 1px 0px #999;
+        transition: var(--reset-non-hover-transition);
+        background-color: var(--reset-btn-color);
+    }
+
+    .content-wrapper .reset-btn:hover{
+        transition: var(--reset-hover-transition);
+        box-shadow: 1px 1px 1px 0px #666;
+        background-color: var(--reset-btn-color-hover);
+        color: var(--reset-btn-hover-text-color);
+
+    }

@@ -102,6 +102,32 @@
             }
         }
 
+        public function updateCountToDefault($category_name){
+            $count_query = "SELECT Food_ID, Default_count FROM fooditem 
+            INNER JOIN subcategory ON fooditem.Subcategory_ID = subcategory.Subcategory_ID
+            INNER JOIN category ON subcategory.Category_ID = category.Category_ID
+            WHERE category.Category_name = '".$category_name."'";
+
+            $count_query_result = $this->Query($count_query, $options = []);
+
+            if($this->Count() > 0){
+                $default_counts = $this->AllRecords();
+                // print_r($default_counts);
+
+                if($default_counts){
+                    foreach($default_counts as $row){
+                        $data = ['Current_count'=> $row->Default_count];
+                        $this->Update("fooditem", $data, ['Food_ID' => $row->Food_ID]);
+                    }
+                    return true;
+                }else{
+                    return "Deafult_count_not_retrieved";
+                }
+            }else{
+                return "Deafult_count__not_found";
+            }
+        }
+
         public function getOrders(){
             $query = 
             "SELECT orders.Order_ID, orders.Order_type, orders.Order_status, orders.Special_notes, order_item.Quantity, fooditem.Food_name 

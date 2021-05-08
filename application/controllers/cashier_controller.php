@@ -235,11 +235,9 @@ class Cashier_Controller extends JB_Controller{
         $result = $this->model->get_cart_items($cart_id);
 
         if($result === "Cart_items_not_retrieved"){
-            $this->set_flash("cartitemsError", "Sorry! Your cart cannot be viewed at the moment.");
             $this->view('cashier/orderfood/cashier-cart');
 
         }else if($result === "Empty_cart"){
-            $this->set_flash("emptyCartAlert", "Your cart seems to be empty.. You know you're hungry😏");
             $this->view('cashier/orderfood/cashier-cart');
 
         }else if($result['status'] === "success"){
@@ -260,7 +258,6 @@ class Cashier_Controller extends JB_Controller{
 
             if($result['status']=='unavail'){
                 $food_name = $result['data'];
-                $this->set_flash("cartitemsUnavailable", "Sorry! the amount of $food_name you requested are not available now.");
                 redirect("cashier_controller/mycart");
             }
             else{

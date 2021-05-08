@@ -166,6 +166,19 @@ class KM_Controller extends JB_Controller{
         redirect("km_controller/foodmenu/".$refresh_state);
     }
 
+    public function updateCountToDefault($category_name){
+        if($this->model->updateCountToDefault($category_name)){
+            $this-> set_flash("updateSuccess","Food count updated successfully");
+        }
+        else{
+            $this-> set_flash("updateUnsuccess","Food count wasn't updated successfully");
+
+        }
+
+        redirect("km_controller/foodmenu/".$category_name);
+
+    }
+
     public function updateOrderStatus(){
         if (isset($_POST['onqueue'])){
             $order_id = (int)$_POST['onqueue'];

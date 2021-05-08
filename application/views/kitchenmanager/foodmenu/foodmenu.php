@@ -34,7 +34,13 @@
     <!-- ************ Category ************ -->
     <?php foreach($data['category'] as $category): ?>
     <div id="<?php echo strtolower($category->Category_name) ?>" class="menu_container" style="display: <?php echo ($status == $category->Category_name) ? "block": "none"; ?>;">
+    <div class="reset_btn_contianer">
+        <form action="<?php echo BASE_URL; ?>/km_controller/updateCountToDefault/<?php echo $category->Category_name ?>" method="POST">
+            <button class="reset-btn">Reset <?php echo $category->Category_name; ?> Count</button>
+        </form>
+    </div>
     
+
     <!-- ************ Search bar ************ -->
         <div class="search_container">
             <?php //echo form_open("km_controller/searchfood/Food", "POST");?>
