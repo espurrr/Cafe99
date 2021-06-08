@@ -37,19 +37,19 @@ Enjoy our luscious app! :drooling_face:
 ## For Testing Purposes, Use
 
 1. Customer
-  - email : buddhini@gmail.com
-  - password : 12345678
+  -- email : buddhini@gmail.com
+  -- password : 12345678
 2. Kitchen Manager
-  - email : yeshan@gmail.com
-  - password : 12345
+  -- email : yeshan@gmail.com
+  -- password : 12345
 3. Cashier
-  - email : chenuka@gmail.com
-  - password : 12345
+  -- email : chenuka@gmail.com
+  -- password : 12345
 4. Delivery Person
-  - email : udani@gmail.com
-  - password : 12345
+  -- email : udani@gmail.com
+  -- password : 12345
 5. Restaurant Manager
-  - email : imesha@gmail.com
-  - password : 12345
+  -- email : imesha@gmail.com
+  -- password : 12345
 
 
