@@ -46,7 +46,7 @@
         
                     </div>
                 
-                    <input type="hidden" name="merchant_id" value="1216595">    <!-- Replace your Merchant ID -->
+                    <input type="hidden" name="merchant_id" value="">    <!-- Replace your Merchant ID -->
                     <input type="hidden" name="return_url" value="<?=BASE_URL?>/customer_controller/payhere_success/">
                     <input type="hidden" name="cancel_url" value="<?=BASE_URL?>/customer_controller/payhere_failed/">
                     <input type="hidden" name="notify_url" value="<?=BASE_URL?>/customer_controller/payhere_form">

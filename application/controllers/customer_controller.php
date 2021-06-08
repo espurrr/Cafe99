@@ -357,8 +357,7 @@ class Customer_controller extends JB_Controller{
 
         $order_type = $this->post('opinion');
         $order_is_for = $this->post('opinion2');
-        // echo $order_type;
-        // echo $order_is_for;
+   
 
         //order type
         if($order_type=='dine-in'){
@@ -366,15 +365,13 @@ class Customer_controller extends JB_Controller{
       
             $order_date = $this->post('Dine-in-date');
             $order_time = $this->post('Dine-in-time');
-            // echo $order_date;
-            // echo $order_time;
+          
        }else if($order_type=='pick-up'){
             $this->validation('Pick-up-time', 'Pick-up time' , 'required|service_time');
 
             $order_date = $this->post('Pick-up-date');
             $order_time = $this->post('Pick-up-time');
-            // echo $order_date;
-            // echo $order_time;
+    
         }else if($order_type=='delivery'){
            // echo 'delivery';
             $this->validation('Delivery-address', 'Delivery address' , 'required|Maharagama');
@@ -383,9 +380,7 @@ class Customer_controller extends JB_Controller{
             $order_time = $this->post('Delivery-time');
             $order_address = $this->post('Delivery-address');
             $order_address = str_replace(',', '$', $order_address);
-            // echo $order_date;
-            // echo $order_time;
-            // echo $order_address;
+        
         }
 
         //order is for whom?
@@ -411,9 +406,6 @@ class Customer_controller extends JB_Controller{
             }
             
 
-            // echo $order_receiver_id;
-            // echo $rec_name;
-            // echo $rec_phone;
        }
         
         if($this->run()){
