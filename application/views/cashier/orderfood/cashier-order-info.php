@@ -7,7 +7,7 @@
     <?php echo link_css("css/style.css?ts=<?=time()?>"); ?>
     <?php echo link_css("css/cart.css?ts=<?=time()?>"); ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCFf0ePaevUaQtMRNnPtMQwcgS5q-SZxLw"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=<PLACE_YOUR_API_KEY_HERE>"></script>
     <title>Cart</title>
 </head>
 <body style="background: rgb(247, 239, 193) url('<?php echo BASE_URL?>/public/images/home/texture.png') repeat;">
