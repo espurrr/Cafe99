@@ -1,8 +1,8 @@
 # Cafe99
 
 Cafe99 is a Web-based Order Management System customized for a 'non-existent' Lounge.  
-This web app was made using raw PHP as backend, built upon MVC architecture. MySQL to satisfy database needs. And raw HTML,CSS,JS for front-end.  
-This project was focused on learning purposes, more specifically.. to build a fully functioncal web application WITHOUT using ANY FRAMEWORKS!  
+This web app was made using raw PHP as backend, built upon MVC architecture, with MySQL to satisfy database needs, and raw HTML,CSS,JS for front-end.    
+This project was focused on learning purposes, more specifically.. to build a fully functional web application WITHOUT using ANY FRAMEWORKS!    
 Actors in the system are as follows :  
   - Customer
   - Kitchen Manager
