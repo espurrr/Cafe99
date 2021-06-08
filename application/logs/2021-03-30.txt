@@ -1,7 +1,0 @@
-2021-03-30 16:07:31		localhost/cafe99/account_controller/loginSubmit				session opened for user 203		3 INFORMATIONAL
-2021-03-30 16:07:32		localhost/cafe99/account_controller/loginSubmit				cart 70 assigned for user 203		3 INFORMATIONAL
-2021-03-30 16:08:50		localhost/cafe99/cashier_controller/completeOrder				item count updated success		3 INFORMATIONAL
-2021-03-30 16:10:36		localhost/cafe99/cashier_controller/completeOrder				possible form resubmission (create order): @user = 203, @ip = ::1		2 WARNING
-2021-03-30 16:10:38		localhost/cafe99/cashier_controller/completeOrder				possible form resubmission (create order): @user = 203, @ip = ::1		2 WARNING
-2021-03-30 16:10:39		localhost/cafe99/cashier_controller/completeOrder				possible form resubmission (create order): @user = 203, @ip = ::1		2 WARNING
-2021-03-30 16:11:17		localhost/cafe99/account_controller/loginSubmit				session opened for user 203		3 INFORMATIONAL
