@@ -12,7 +12,7 @@ Actors in the system are as follows :
 
 ## Installation
 
-First, you will need to install  [XAMPP](https://www.apachefriends.org/index.html). following the instructions on their site.  
+First, you will need to install  [XAMPP](https://www.apachefriends.org/index.html), following the instructions on their site.  
 Then, simply clone the git repo and proceed with the configuration.
 
 ## Configuration
